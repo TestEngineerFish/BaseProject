@@ -6,7 +6,9 @@
 //  Copyright © 2019 沙庭宇. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import AVFoundation
+import Photos
 import UserNotifications
 
 class YYAuthorizationManager: NSObject {
@@ -35,7 +37,7 @@ class YYAuthorizationManager: NSObject {
     // MARK: - --相机权限
     class func authorizeCameraWith(_ autoAlert: Bool = true, completion:@escaping (Bool) -> Void ) {
         let granted = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-
+        
         switch granted {
         case .authorized:
             completion(true)
@@ -55,6 +57,8 @@ class YYAuthorizationManager: NSObject {
                     if (!granted && autoAlert) { showCameraAlert() }
                 }
             })
+        @unknown default:
+            return
         }
     }
 

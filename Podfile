@@ -11,6 +11,9 @@ target 'BaseProject' do
   pod 'ObjectMapper', '~> 3.3.0'
   pod 'AlamofireObjectMapper', '~> 5.0'
   pod 'CocoaLumberjack/Swift'
+  pod 'SnapKit', '~> 4.0.0'
+  pod 'Toast-Swift', '~> 4.0.0'
+  pod 'SSZipArchive'
   # Pods for BaseProject
 
 end

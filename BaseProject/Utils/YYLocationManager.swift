@@ -6,7 +6,8 @@
 //  Copyright © 2019 沙庭宇. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import CoreLocation
 
 class YYLocationManager: NSObject {
 
