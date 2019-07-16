@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 /**
  * 所有需要显示到最顶层的页面，必须继承自该View
