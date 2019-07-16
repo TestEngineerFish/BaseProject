@@ -33,6 +33,7 @@
 		22C621FA22DC8E9600A7C849 /* YYLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621F922DC8E9600A7C849 /* YYLocationManager.swift */; };
 		22C621FC22DC8F1700A7C849 /* YYAuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621FB22DC8F1700A7C849 /* YYAuthorizationManager.swift */; };
 		7B212ACC1EB4CBADF5DD63D4 /* Pods_BaseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE0B51EBB89FBFB5A61CACA /* Pods_BaseProject.framework */; };
+		CF27E38622DE28540056ADFA /* YYSettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF27E38522DE28540056ADFA /* YYSettingManager.swift */; };
 		CF8EB56422DCC05D00EC2FE5 /* YYSAMKeychain+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56322DCC05D00EC2FE5 /* YYSAMKeychain+Extension.swift */; };
 		CF8EB56622DCC09B00EC2FE5 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56522DCC09B00EC2FE5 /* Bundle+Extension.swift */; };
 		CF8EB56922DCC0E600EC2FE5 /* YYEnvChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56822DCC0E600EC2FE5 /* YYEnvChangeViewController.swift */; };
@@ -93,6 +94,8 @@
 		22C621F922DC8E9600A7C849 /* YYLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYLocationManager.swift; sourceTree = "<group>"; };
 		22C621FB22DC8F1700A7C849 /* YYAuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYAuthorizationManager.swift; sourceTree = "<group>"; };
 		62C207CFF7FD424CF4B3C8C3 /* Pods-BaseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.release.xcconfig"; path = "Target Support Files/Pods-BaseProject/Pods-BaseProject.release.xcconfig"; sourceTree = "<group>"; };
+		CF27E37F22DE279E0056ADFA /* BaseProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseProject-Bridging-Header.h"; sourceTree = "<group>"; };
+		CF27E38522DE28540056ADFA /* YYSettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYSettingManager.swift; sourceTree = "<group>"; };
 		CF8EB56322DCC05D00EC2FE5 /* YYSAMKeychain+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YYSAMKeychain+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB56522DCC09B00EC2FE5 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB56822DCC0E600EC2FE5 /* YYEnvChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYEnvChangeViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 		22C621B622DC805600A7C849 /* BaseProject */ = {
 			isa = PBXGroup;
 			children = (
+				CF27E38322DE28390056ADFA /* Model */,
+				CF27E37E22DE27400056ADFA /* Resource */,
 				CF8EB58522DCCB8200EC2FE5 /* Base */,
 				CF8EB56C22DCC48F00EC2FE5 /* DataCenter */,
 				22C621F822DC8E7600A7C849 /* Utils */,
@@ -302,6 +307,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CF27E37E22DE27400056ADFA /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				CF27E37F22DE279E0056ADFA /* BaseProject-Bridging-Header.h */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		CF27E38322DE28390056ADFA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF27E38422DE28440056ADFA /* Setting */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF27E38422DE28440056ADFA /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				CF27E38522DE28540056ADFA /* YYSettingManager.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		CF8EB56722DCC0C500EC2FE5 /* Evn */ = {
 			isa = PBXGroup;
 			children = (
@@ -422,6 +451,7 @@
 				TargetAttributes = {
 					22C621B322DC805600A7C849 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -532,6 +562,7 @@
 				CF8EB57922DCC5EC00EC2FE5 /* YYLogModel.swift in Sources */,
 				22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */,
 				CF8EB59C22DCCEBC00EC2FE5 /* IconFontString.swift in Sources */,
+				CF27E38622DE28540056ADFA /* YYSettingManager.swift in Sources */,
 				CF8EB57F22DCC7C700EC2FE5 /* Double+Extension.swift in Sources */,
 				CF8EB5A222DCD0DC00EC2FE5 /* UIViewController+Extension.swift in Sources */,
 				CF8EB57222DCC50A00EC2FE5 /* YYCache.swift in Sources */,
@@ -699,6 +730,7 @@
 			baseConfigurationReference = D1A3EF0650A7F2326222FB45 /* Pods-BaseProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U9HAAL78T3;
 				INFOPLIST_FILE = BaseProject/Info.plist;
@@ -708,6 +740,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = samOriginal.BaseProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BaseProject/Resource/BaseProject-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -718,6 +752,7 @@
 			baseConfigurationReference = 62C207CFF7FD424CF4B3C8C3 /* Pods-BaseProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U9HAAL78T3;
 				INFOPLIST_FILE = BaseProject/Info.plist;
@@ -727,6 +762,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = samOriginal.BaseProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BaseProject/Resource/BaseProject-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

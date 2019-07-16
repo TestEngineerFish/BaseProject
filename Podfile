@@ -13,6 +13,7 @@ target 'BaseProject' do
   pod 'CocoaLumberjack/Swift'
   pod 'SnapKit', '~> 4.0.0'
   pod 'Toast-Swift', '~> 4.0.0'
+  pod 'Toast', '~> 4.0.0'
   pod 'SSZipArchive'
   # Pods for BaseProject
 
