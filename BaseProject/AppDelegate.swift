@@ -11,6 +11,8 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    public static let `default` = UIApplication.shared.delegate as! AppDelegate
+
     var window: UIWindow?
 
 

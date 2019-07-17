@@ -32,6 +32,11 @@
 		22C621F722DC8E0B00A7C849 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621F622DC8E0B00A7C849 /* UIColor+Extension.swift */; };
 		22C621FA22DC8E9600A7C849 /* YYLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621F922DC8E9600A7C849 /* YYLocationManager.swift */; };
 		22C621FC22DC8F1700A7C849 /* YYAuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621FB22DC8F1700A7C849 /* YYAuthorizationManager.swift */; };
+		22C6220F22DF0F5C00A7C849 /* YYPrivacySettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6220E22DF0F5C00A7C849 /* YYPrivacySettingModel.swift */; };
+		22C6221322DF0FCB00A7C849 /* YYSettingDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6221222DF0FCB00A7C849 /* YYSettingDataRequest.swift */; };
+		22C6221622DF104500A7C849 /* YYShieldListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6221522DF104500A7C849 /* YYShieldListModel.swift */; };
+		22C6221B22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6221A22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift */; };
+		22C6221D22DF120900A7C849 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6221C22DF120900A7C849 /* Error+Extension.swift */; };
 		7B212ACC1EB4CBADF5DD63D4 /* Pods_BaseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE0B51EBB89FBFB5A61CACA /* Pods_BaseProject.framework */; };
 		CF27E38622DE28540056ADFA /* YYSettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF27E38522DE28540056ADFA /* YYSettingManager.swift */; };
 		CF8EB56422DCC05D00EC2FE5 /* YYSAMKeychain+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56322DCC05D00EC2FE5 /* YYSAMKeychain+Extension.swift */; };
@@ -93,6 +98,11 @@
 		22C621F622DC8E0B00A7C849 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		22C621F922DC8E9600A7C849 /* YYLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYLocationManager.swift; sourceTree = "<group>"; };
 		22C621FB22DC8F1700A7C849 /* YYAuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYAuthorizationManager.swift; sourceTree = "<group>"; };
+		22C6220E22DF0F5C00A7C849 /* YYPrivacySettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYPrivacySettingModel.swift; sourceTree = "<group>"; };
+		22C6221222DF0FCB00A7C849 /* YYSettingDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYSettingDataRequest.swift; sourceTree = "<group>"; };
+		22C6221522DF104500A7C849 /* YYShieldListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYShieldListModel.swift; sourceTree = "<group>"; };
+		22C6221A22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYUsrHomePageDataRequestAPI.swift; sourceTree = "<group>"; };
+		22C6221C22DF120900A7C849 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		62C207CFF7FD424CF4B3C8C3 /* Pods-BaseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.release.xcconfig"; path = "Target Support Files/Pods-BaseProject/Pods-BaseProject.release.xcconfig"; sourceTree = "<group>"; };
 		CF27E37F22DE279E0056ADFA /* BaseProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF27E38522DE28540056ADFA /* YYSettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYSettingManager.swift; sourceTree = "<group>"; };
@@ -163,7 +173,7 @@
 		22C621B622DC805600A7C849 /* BaseProject */ = {
 			isa = PBXGroup;
 			children = (
-				CF27E38322DE28390056ADFA /* Model */,
+				CF27E38322DE28390056ADFA /* Module */,
 				CF27E37E22DE27400056ADFA /* Resource */,
 				CF8EB58522DCCB8200EC2FE5 /* Base */,
 				CF8EB56C22DCC48F00EC2FE5 /* DataCenter */,
@@ -272,6 +282,7 @@
 				CF8EB59D22DCD04300EC2FE5 /* Data+Extension.swift */,
 				CF8EB59F22DCD08A00EC2FE5 /* UIView+Extension.swift */,
 				CF8EB5A122DCD0DC00EC2FE5 /* UIViewController+Extension.swift */,
+				22C6221C22DF120900A7C849 /* Error+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -298,6 +309,54 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		22C6221022DF0FB300A7C849 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				22C6221122DF0FBE00A7C849 /* Http */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		22C6221122DF0FBE00A7C849 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				22C6221222DF0FCB00A7C849 /* YYSettingDataRequest.swift */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		22C6221422DF103200A7C849 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				22C6221522DF104500A7C849 /* YYShieldListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		22C6221722DF118400A7C849 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				22C6221822DF119000A7C849 /* Manager */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		22C6221822DF119000A7C849 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				22C6221922DF119600A7C849 /* Request */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		22C6221922DF119600A7C849 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				22C6221A22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		C7C580CA7C5CFA0EEAB645A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,18 +374,22 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		CF27E38322DE28390056ADFA /* Model */ = {
+		CF27E38322DE28390056ADFA /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				22C6221722DF118400A7C849 /* HomePage */,
 				CF27E38422DE28440056ADFA /* Setting */,
 			);
-			path = Model;
+			path = Module;
 			sourceTree = "<group>";
 		};
 		CF27E38422DE28440056ADFA /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				22C6221422DF103200A7C849 /* Model */,
+				22C6221022DF0FB300A7C849 /* Manager */,
 				CF27E38522DE28540056ADFA /* YYSettingManager.swift */,
+				22C6220E22DF0F5C00A7C849 /* YYPrivacySettingModel.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -538,10 +601,12 @@
 				CF8EB59622DCCD4400EC2FE5 /* YYImageAlertView.swift in Sources */,
 				CF8EB57722DCC59400EC2FE5 /* YYAlertManger.swift in Sources */,
 				22C621BA22DC805600A7C849 /* ViewController.swift in Sources */,
+				22C6220F22DF0F5C00A7C849 /* YYPrivacySettingModel.swift in Sources */,
 				22C621FC22DC8F1700A7C849 /* YYAuthorizationManager.swift in Sources */,
 				22C621DD22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift in Sources */,
 				CF8EB58B22DCCCA600EC2FE5 /* UIFont+Extension.swift in Sources */,
 				22C621D422DC818E00A7C849 /* YYBaseResopnse.swift in Sources */,
+				22C6221D22DF120900A7C849 /* Error+Extension.swift in Sources */,
 				22C621E622DC895300A7C849 /* YYNetFoxHelper.swift in Sources */,
 				CF8EB5A022DCD08A00EC2FE5 /* UIView+Extension.swift in Sources */,
 				22C621D522DC818E00A7C849 /* YYNetworkService.swift in Sources */,
@@ -549,8 +614,10 @@
 				22C621E722DC895300A7C849 /* YYAuthenticationChallengeSender.swift in Sources */,
 				CF8EB56422DCC05D00EC2FE5 /* YYSAMKeychain+Extension.swift in Sources */,
 				CF8EB59722DCCD4400EC2FE5 /* YYOneButtonAlertView.swift in Sources */,
+				22C6221322DF0FCB00A7C849 /* YYSettingDataRequest.swift in Sources */,
 				22C621F322DC8D4F00A7C849 /* YYGlobalMacro.swift in Sources */,
 				CF8EB59A22DCCE6900EC2FE5 /* UIImage+Extension.swift in Sources */,
+				22C6221622DF104500A7C849 /* YYShieldListModel.swift in Sources */,
 				CF8EB59E22DCD04300EC2FE5 /* Data+Extension.swift in Sources */,
 				22C621E922DC895300A7C849 /* YYNetFoxHTTPModel.swift in Sources */,
 				CF8EB59322DCCD4400EC2FE5 /* YYThreeVerticalButtonAlertView.swift in Sources */,
@@ -567,6 +634,7 @@
 				CF8EB5A222DCD0DC00EC2FE5 /* UIViewController+Extension.swift in Sources */,
 				CF8EB57222DCC50A00EC2FE5 /* YYCache.swift in Sources */,
 				CF8EB5A622DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift in Sources */,
+				22C6221B22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift in Sources */,
 				CF8EB57522DCC56600EC2FE5 /* YYLoggerManager.swift in Sources */,
 				CF8EB5A822DCD22800EC2FE5 /* YYCustomNavigationBar.swift in Sources */,
 				CF8EB5AA22DCD26300EC2FE5 /* YYFileManager.swift in Sources */,

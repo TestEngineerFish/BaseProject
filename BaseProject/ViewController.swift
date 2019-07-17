@@ -17,7 +17,7 @@ class ViewController: UIViewController {
 
     // 求介绍 - 问题列表
     public static func fetchQuestionList(_ completion: @escaping ((_ questionList:YYWantToKnowQuestionListModel?, _ errorMsg: String?) -> Void)){
-        let request = "/v1/question/getlist"
+        let request = YYUsrHomePageDataRequestAPI.fetchWantToKnowQuestionList
         YYNetworkService.default.httpRequestTask(YYStructResponse<YYWantToKnowQuestionListModel>.self, request: request, success: { (response) in
             completion(response.data, nil)
         }) { (error) in

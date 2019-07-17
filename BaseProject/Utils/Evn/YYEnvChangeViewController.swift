@@ -181,7 +181,7 @@ extension YYEnvChangeViewController {
         
         if YYUserModel.hasBeenLogin() {
             YYSettingManager.logout(completion: { (resultModel, errorMsg) in
-                AppDelegate.default.appLogout()
+//                AppDelegate.default.appLogout()
                 exitBlock()
             })
         } else {
