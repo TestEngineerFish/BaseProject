@@ -13,7 +13,7 @@ import UIKit
  */
 public extension UIView {
     
-    public var top: CGFloat {
+    var top: CGFloat {
         get{
             return self.frame.origin.y
         }
@@ -25,7 +25,7 @@ public extension UIView {
         }
     }
     
-    public var left: CGFloat {
+    var left: CGFloat {
         get{
             return self.frame.origin.x
         }
@@ -37,7 +37,7 @@ public extension UIView {
         }
     }
     
-    public var bottom: CGFloat {
+    var bottom: CGFloat {
         get {
             return self.frame.origin.y + self.frame.size.height
         }
@@ -49,7 +49,7 @@ public extension UIView {
         }
     }
     
-    public var right: CGFloat {
+    var right: CGFloat {
         get {
             return self.frame.origin.x + self.frame.size.width
         }
@@ -61,7 +61,7 @@ public extension UIView {
         }
     }
     
-    public var width: CGFloat {
+    var width: CGFloat {
         get {
             return self.frame.size.width
         }
@@ -73,7 +73,7 @@ public extension UIView {
         }
     }
     
-    public var height: CGFloat {
+    var height: CGFloat {
         get {
             return self.frame.size.height
         }
@@ -85,7 +85,7 @@ public extension UIView {
         }
     }
     
-    public var centerX: CGFloat {
+    var centerX: CGFloat {
         get {
             return self.center.x
         }
@@ -95,7 +95,7 @@ public extension UIView {
         }
     }
     
-    public var centerY: CGFloat {
+    var centerY: CGFloat {
         get {
             return self.center.y
         }
@@ -105,7 +105,7 @@ public extension UIView {
         }
     }
     
-    public var origin: CGPoint {
+    var origin: CGPoint {
         get {
             return self.frame.origin
         }
@@ -117,7 +117,7 @@ public extension UIView {
         }
     }
     
-    public var size: CGSize {
+    var size: CGSize {
         get {
             return self.frame.size
         }
