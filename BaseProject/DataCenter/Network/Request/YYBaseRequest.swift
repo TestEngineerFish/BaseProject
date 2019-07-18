@@ -36,19 +36,19 @@ protocol YYBaseRequest {
 extension YYBaseRequest {
 
     public var header: [String : String] {
-        let _header = ["Content-Type" : "application/json",
-                       "Connection" : "keep-alive",
-                       "YY-OS-VERSION" : UIDevice.OSVersion,
+        let _header = ["Content-Type"   : "application/json",
+                       "Connection"     : "keep-alive",
+                       "YY-OS-VERSION"  : UIDevice.OSVersion,
                        "YY-APP-VERSION" : Bundle.appVersion,
-                       "YY-CHANNEL-ID" : "AppStore",
-                       "YY-CLIENT-ID" : "100",
-                       "YY-BUNDLE-ID" : Bundle.bundleIdentifier,
-                       "YY-UDID" : UIDevice.openUDID,
-                       "YY-MODEL" : UIDevice.deviceName,
-                       "YY-GPS-LNG" : YYLocationManager.default.longitude,
-                       "YY-GPS-LAT" : YYLocationManager.default.latitude,
-                       "YY-GPS-ALT" : YYLocationManager.default.altitude,
-                       "YY-TIMESTAMP" : "\(Int(Date().timeIntervalSince1970))"]
+                       "YY-CHANNEL-ID"  : "AppStore",
+                       "YY-CLIENT-ID"   : "100",
+                       "YY-BUNDLE-ID"   : Bundle.bundleIdentifier,
+                       "YY-UDID"        : UIDevice.openUDID,
+                       "YY-MODEL"       : UIDevice.deviceName,
+                       "YY-GPS-LNG"     : YYLocationManager.default.longitude,
+                       "YY-GPS-LAT"     : YYLocationManager.default.latitude,
+                       "YY-GPS-ALT"     : YYLocationManager.default.altitude,
+                       "YY-TIMESTAMP"   : "\(Int(Date().timeIntervalSince1970))"]
         
         return _header
     }
