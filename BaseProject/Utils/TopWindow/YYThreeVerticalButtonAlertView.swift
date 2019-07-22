@@ -32,7 +32,7 @@ class YYThreeVerticalButtonAlertView: YYTopWindowView {
         self.secondButtonClosure = secondButtonClosure
         self.threeButtonClosure = threeButtonClosure
         
-        self.descriptionHeight = description.textHeight(font: descriptionLabel.font, width: screenWidth - 64)
+        self.descriptionHeight = description.textHeight(font: descriptionLabel.font, width: kScreenWidth - 64)
 
         self.titleLabel.text = title
         self.descriptionLabel.text = description

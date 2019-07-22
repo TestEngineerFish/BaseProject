@@ -15,9 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var navController: Nav?
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let vc = ViewController()
+        self.navController = Nav(rootViewController: vc)
+        self.navController?.title = "Title"
+        self.window?.rootViewController = self.navController
+        self.window?.makeKeyAndVisible()
         return true
     }
 

@@ -46,7 +46,7 @@ class YYImageAlertView: YYTopWindowView {
             self.descriptionLabel.text = "打开通知获得实时消息和聊天通知"
             self.rightOrTheOneButton.setTitle("打开通知", for: UIControl.State.normal)
             
-            self.descriptionHeight = descriptionLabel.text!.textHeight(font: descriptionLabel.font, width: screenWidth - 64)
+            self.descriptionHeight = descriptionLabel.text!.textHeight(font: descriptionLabel.font, width: kScreenWidth - 64)
             
         case .commandCopied?:
             self.titleLabel.text = "口令已复制"
@@ -54,7 +54,7 @@ class YYImageAlertView: YYTopWindowView {
             self.descriptionLabel.text = UIPasteboard.general.string ?? ""
             self.rightOrTheOneButton.setTitle("好的", for: UIControl.State.normal)
             
-            self.descriptionHeight = descriptionLabel.text!.textHeight(font: descriptionLabel.font, width: screenWidth - 64)
+            self.descriptionHeight = descriptionLabel.text!.textHeight(font: descriptionLabel.font, width: kScreenWidth - 64)
             
         case .none:
             break

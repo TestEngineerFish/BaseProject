@@ -20,7 +20,7 @@ class YYTopWindowView: UIView {
     // MARK: - 视图相关
     // 半透明黑色背景，当弹窗没有关闭按钮时，设置 backgroundView 的 isUserInteractionEnabled 为 true，即可实现点击此半透明黑色背景关闭弹窗。
     lazy var backgroundView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight))
         view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(closeButtonAction))
@@ -98,7 +98,7 @@ class YYTopWindowView: UIView {
     
     // MARK: - 初始化
     override init(frame: CGRect) {
-        super.init(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
+        super.init(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight))
         self.tag = 999
     }
     

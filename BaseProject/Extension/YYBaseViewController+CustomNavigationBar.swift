@@ -70,7 +70,7 @@ extension UIViewController: YYCustomNavigationBarProtocol {
 }
 
 extension YYCustomNavigationBarProtocol where Self: UIViewController {
-    
+    // 该扩展中的内容仅能使用在:UIViewController的子类中,且需要实现YYCustomNavigationBvarProtocol协议
     
 }
 
@@ -95,16 +95,5 @@ extension UIViewController: UINavigationControllerDelegate {
                 navigationController.delegate = nil
             }
         }
-    }
-}
-
-
-extension YYBaseViewController {
-    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        #if DEBUG
-        if event?.subtype == .motionShake && UIViewController.currentViewController?.classForCoder != YYEnvChangeViewController.classForCoder() {
-            self.navigationController?.pushViewController(YYEnvChangeViewController(), animated: true)
-        }
-        #endif
     }
 }

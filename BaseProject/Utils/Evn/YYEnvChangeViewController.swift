@@ -32,10 +32,10 @@ class YYEnvChangeViewController: YYBaseViewController {
     
     private lazy var tableView: UITableView = {
         let tv = UITableView()
-        tv.frame = CGRect(x: 0 , y: YYConstants.contentView_TopOffset, width: screenWidth, height: screenHeight - YYConstants.contentView_TopOffset)
+        tv.frame = CGRect(x: 0 , y: YYConstants.contentView_TopOffset, width: kScreenWidth, height: kScreenHeight - YYConstants.contentView_TopOffset)
         tv.delegate = self
         tv.dataSource = self
-        tv.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 120))
+        tv.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 120))
         tv.tableFooterView?.backgroundColor = UIColor.white1
         tv.tableFooterView?.addSubview(self.button)
         tv.tableFooterView?.addSubview(self.tipsLabel)
@@ -46,7 +46,7 @@ class YYEnvChangeViewController: YYBaseViewController {
     private lazy var button: UIButton = {
         let button = UIButton()
         
-        button.frame = CGRect(x: 30, y: 40, width: screenWidth - 60, height: 50)
+        button.frame = CGRect(x: 30, y: 40, width: kScreenWidth - 60, height: 50)
         button.setTitle("确认切换", for: .normal)
         button.titleLabel?.textColor = UIColor.black2
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.green1), for: .normal)
@@ -63,7 +63,7 @@ class YYEnvChangeViewController: YYBaseViewController {
     
     private lazy var tipsLabel: UILabel = {
         let label = UILabel()
-        label.frame = CGRect(x: 0, y: 90, width: screenWidth, height: 30)
+        label.frame = CGRect(x: 0, y: 90, width: kScreenWidth, height: 30)
         label.text = "点击确认切换，会杀掉App"
         label.textColor = UIColor.gray1
         label.font = UIFont.lightFont(ofSize: 14)
@@ -180,10 +180,7 @@ extension YYEnvChangeViewController {
         }
         
         if YYUserModel.hasBeenLogin() {
-            YYSettingManager.logout(completion: { (resultModel, errorMsg) in
-//                AppDelegate.default.appLogout()
-                exitBlock()
-            })
+           //退出登录
         } else {
             exitBlock()
         }

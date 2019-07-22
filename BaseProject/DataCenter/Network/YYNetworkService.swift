@@ -66,16 +66,15 @@ struct YYNetworkService {
     
     public func httpDownloadRequestTask <T> (_ type: T.Type, request: YYBaseRequest, localSavePath: String, success: ((_ response: T) -> Void)?, fail: ((_ responseError: NSError) -> Void)?) -> Void where T: YYBaseResopnse {
         
-        guard let postJSON = request.postJson as? [AnyHashable : Any] else {
-            return
-        }
+        guard let postJSON = request.postJson as? [AnyHashable : Any] else { return }
         
-        let _requestPostJson = (postJSON as? [String : Any?])?.reduce([String : Any]()) { (dict, e) in
+        let requestPostJson = (postJSON as? [String : Any?])?.reduce([String : Any]()) { (dict, e) in
             guard let value = e.1 else { return dict }
             var dict = dict
             dict[e.0] = value
             return dict
-            } as! [String : Any]
+            }
+        guard let _requestPostJson: [String:Any] = requestPostJson else {return}
         
         Alamofire.download(request.url, method: HTTPMethod(rawValue: request.method.rawValue) ?? .get, parameters: _requestPostJson, headers: request.handleHeader(parameters: _requestPostJson, headers: request.header)) { (url, response) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
             let path = YYFileManager.share.createPath(documentPath: localSavePath)
@@ -87,7 +86,6 @@ struct YYNetworkService {
             }.response { (defaultDownloadResponse) in
                 
         }
-        
     }
     
     /**
@@ -101,20 +99,19 @@ struct YYNetworkService {
             return
         }
         
-        var _requestPostJson = (postJSON as? [String : Any?])?.reduce([String : Any]()) { (dict, e) in
+        let requestPostJson = (postJSON as? [String : Any?])?.reduce([String : Any]()) { (dict, e) in
             guard let value = e.1 else { return dict }
             var dict = dict
             dict[e.0] = value
             return dict
-            } as! [String : Any]
+            }
+        guard var _requestPostJson: [String:Any] = requestPostJson else {return}
         
-        var headerRequestPostJson = _requestPostJson
-        
-        if headerRequestPostJson.keys.contains("cover") {
-            headerRequestPostJson.removeValue(forKey: "cover")
+        if _requestPostJson.keys.contains("cover") {
+            _requestPostJson.removeValue(forKey: "cover")
         }
-        if headerRequestPostJson.keys.contains("file_info") {
-            headerRequestPostJson.removeValue(forKey: "file_info")
+        if _requestPostJson.keys.contains("file_info") {
+            _requestPostJson.removeValue(forKey: "file_info")
         }
         
         //MARK: 上传
@@ -142,7 +139,7 @@ struct YYNetworkService {
             for (key, value) in _requestPostJson {
                 multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key )
             }
-        }, usingThreshold: UInt64.init(), to: request.url, method: HTTPMethod(rawValue: request.method.rawValue) ?? .post , headers: request.handleHeader(parameters: headerRequestPostJson, headers: requestHeader)) { (result) in
+        }, usingThreshold: UInt64.init(), to: request.url, method: HTTPMethod(rawValue: request.method.rawValue) ?? .post , headers: request.handleHeader(parameters: _requestPostJson, headers: requestHeader)) { (result) in
             switch result {
             case .success(let upload, _, _):
                 upload.responseObject(completionHandler: { (response: DataResponse <T>) in
@@ -332,24 +329,25 @@ struct YYNetworkService {
             YYLoggerManager.default.addLoggerDataSource(.network, logText: logText)
         }
     }
-    
-    /**
-     *  保存 Session ID
-     */
+
+    /// 保存 Session ID
     private func saveSessID(response: HTTPURLResponse?) {
         if let sessID = response?.allHeaderFields["YY-SESSID"] {
             UserDefaults.standard.archive(object: sessID, forkey: "YY-SESSID")
         }
     }
-    
+
+    /// 确保参数key对应的Value不为空
     private func requestParametersReduceValueNil(_ requestionParameters: [AnyHashable : Any]?) -> [String : Any]? {
         if let _requestionParameters = requestionParameters {
-            return (_requestionParameters as? [String : Any?])?.reduce([String : Any]()) { (dict, e) in
+            let parameters = (_requestionParameters as? [String : Any?])?.reduce([String : Any]()) { (dict, e) in
                 guard let value = e.1 else { return dict }
                 var dict = dict
                 dict[e.0] = value
                 return dict
-                } as! [String : Any]
+                }
+            guard let _parameters: [String:Any] = parameters else {return nil}
+            return _parameters
         }
         
         return nil

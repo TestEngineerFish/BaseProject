@@ -36,13 +36,14 @@ public func UIImageNamed(_ imageName: String) -> UIImage? {
 }
 
 /*屏幕宽*/
-public let screenWidth: CGFloat = UIScreen.width
+public let kScreenWidth: CGFloat = UIScreen.width
 
 /**屏幕高*/
-public let screenHeight: CGFloat = UIScreen.height
+public let kScreenHeight: CGFloat = UIScreen.height
 
 public let screenScale: CGFloat = UIScreen.screenScale
 
+public let kWindow = UIApplication.shared.keyWindow
 
 //MARK: **************** 颜色值 **********************
 @objc public extension UIColor {

@@ -17,7 +17,7 @@ class YYOneButtonAlertView: YYTopWindowView {
 
         self.buttonClosure = buttonClosure
         
-        self.descriptionHeight = description.textHeight(font: descriptionLabel.font, width: screenWidth - 64)
+        self.descriptionHeight = description.textHeight(font: descriptionLabel.font, width: kScreenWidth - 64)
 
         titleLabel.text = title
         descriptionLabel.text = description

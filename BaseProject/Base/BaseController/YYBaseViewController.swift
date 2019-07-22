@@ -33,4 +33,12 @@ class YYBaseViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        #if DEBUG
+        if event?.subtype == .motionShake && UIViewController.currentViewController?.classForCoder != YYEnvChangeViewController.classForCoder() {
+            self.navigationController?.pushViewController(YYEnvChangeViewController(), animated: true)
+        }
+        #endif
+    }
 }
