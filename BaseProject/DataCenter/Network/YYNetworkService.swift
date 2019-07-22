@@ -36,7 +36,7 @@ struct YYNetworkService {
      */
     @discardableResult
     public func httpRequestTask <T> (_ type: T.Type, request: YYBaseRequest, success: ((_ response: T) -> Void)?, fail: ((_ responseError: NSError) -> Void)?) -> YYTaskRequest? where T: YYBaseResopnse {
-        
+        // 根据是否有postJson来区别是Get还是Post请求
         if let postJSON = request.postJson {
             var _request = URLRequest(url: request.url)
             _request.httpMethod = request.method.rawValue
@@ -56,7 +56,7 @@ struct YYNetworkService {
                 return nil
             }
         } else {
-            return self.httpRequest(type, request: request, header: request.handleHeader(parameters: requestParametersReduceValueNil(request.parameters)), success: { (response, httpStatusCode) in
+            return self.httpGetRequest(type, request: request, header: request.handleHeader(parameters: requestParametersReduceValueNil(request.parameters)), success: { (response, httpStatusCode) in
                 self.handleStatusCodeLogicResponseObject(response, statusCode: httpStatusCode, request: request, success: success, fail: fail)
             }, fail: { (error) in
                 fail?(error as NSError)
@@ -235,7 +235,7 @@ struct YYNetworkService {
     }
     
     @discardableResult
-    private func httpRequest <T>(_ type: T.Type, request: YYBaseRequest, header:[String:String], success:@escaping (_ response: T, _ httpStatusCode: Int) -> Void, fail: @escaping (_ error: NSError) -> Void?) -> YYTaskRequest where T: YYBaseResopnse {
+    private func httpGetRequest <T>(_ type: T.Type, request: YYBaseRequest, header:[String:String], success:@escaping (_ response: T, _ httpStatusCode: Int) -> Void, fail: @escaping (_ error: NSError) -> Void?) -> YYTaskRequest where T: YYBaseResopnse {
         let encoding: ParameterEncoding = (.get == request.method ? URLEncoding.default : JSONEncoding.default)
         let request = Alamofire.request(request.url, method: HTTPMethod(rawValue: request.method.rawValue) ?? .get, parameters: requestParametersReduceValueNil(request.parameters), encoding: encoding, headers: header).responseObject { (response: DataResponse <T>) in
             
