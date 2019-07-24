@@ -11,17 +11,17 @@ import Foundation
 public extension Bundle {
     fileprivate static let _mainBundle: Bundle = Bundle.main
     
-    // 获取应用标识号
+    /// 获取应用标识号
     static let bundleIdentifier: String = {
         return _mainBundle.infoDictionary?["CFBundleIdentifier"] as? String ?? ""
     }()
     
-    // 获取App Bundle 版本号
+    /// 获取App Nmae 项目名称
     static let bundleName: String = {
         return _mainBundle.infoDictionary?["CFBundleName"] as? String ?? ""
     }()
     
-    // 获取App Bundle 版本号
+    /// 获取App Bundle 版本号
     static let appVersion: String = {
         return _mainBundle.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
     }()

@@ -90,3 +90,6 @@ public var kPathForMainStorageLocation: String {
         return NSHomeDirectory() + "/Documents"
     }
 }
+
+// MARK: 常量
+public let UQID_KEY = "Sam_UQID_KEY"

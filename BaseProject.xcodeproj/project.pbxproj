@@ -25,7 +25,7 @@
 		22C6221B22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6221A22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift */; };
 		22C6221D22DF120900A7C849 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6221C22DF120900A7C849 /* Error+Extension.swift */; };
 		7B212ACC1EB4CBADF5DD63D4 /* Pods_BaseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE0B51EBB89FBFB5A61CACA /* Pods_BaseProject.framework */; };
-		CF8EB56422DCC05D00EC2FE5 /* YYSAMKeychain+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56322DCC05D00EC2FE5 /* YYSAMKeychain+Extension.swift */; };
+		CF8EB56422DCC05D00EC2FE5 /* SAMKeychain+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56322DCC05D00EC2FE5 /* SAMKeychain+Extension.swift */; };
 		CF8EB56622DCC09B00EC2FE5 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56522DCC09B00EC2FE5 /* Bundle+Extension.swift */; };
 		CF8EB56B22DCC45800EC2FE5 /* UserDefault+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56A22DCC45800EC2FE5 /* UserDefault+Extension.swift */; };
 		CF8EB57B22DCC61400EC2FE5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8EB57A22DCC61400EC2FE5 /* AVFoundation.framework */; };
@@ -63,7 +63,7 @@
 		22C6221C22DF120900A7C849 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		62C207CFF7FD424CF4B3C8C3 /* Pods-BaseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.release.xcconfig"; path = "Target Support Files/Pods-BaseProject/Pods-BaseProject.release.xcconfig"; sourceTree = "<group>"; };
 		CF27E37F22DE279E0056ADFA /* BaseProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseProject-Bridging-Header.h"; sourceTree = "<group>"; };
-		CF8EB56322DCC05D00EC2FE5 /* YYSAMKeychain+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YYSAMKeychain+Extension.swift"; sourceTree = "<group>"; };
+		CF8EB56322DCC05D00EC2FE5 /* SAMKeychain+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SAMKeychain+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB56522DCC09B00EC2FE5 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB56A22DCC45800EC2FE5 /* UserDefault+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB57A22DCC61400EC2FE5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -167,7 +167,7 @@
 			children = (
 				22C621ED22DC8A7800A7C849 /* UIDevice+Extension.swift */,
 				22C621F622DC8E0B00A7C849 /* UIColor+Extension.swift */,
-				CF8EB56322DCC05D00EC2FE5 /* YYSAMKeychain+Extension.swift */,
+				CF8EB56322DCC05D00EC2FE5 /* SAMKeychain+Extension.swift */,
 				CF8EB56522DCC09B00EC2FE5 /* Bundle+Extension.swift */,
 				CF8EB56A22DCC45800EC2FE5 /* UserDefault+Extension.swift */,
 				CF8EB57E22DCC7C700EC2FE5 /* Double+Extension.swift */,
@@ -406,7 +406,7 @@
 				22C6221D22DF120900A7C849 /* Error+Extension.swift in Sources */,
 				CF8EB5A022DCD08A00EC2FE5 /* UIView+Extension.swift in Sources */,
 				22C621D522DC818E00A7C849 /* YYNetworkService.swift in Sources */,
-				CF8EB56422DCC05D00EC2FE5 /* YYSAMKeychain+Extension.swift in Sources */,
+				CF8EB56422DCC05D00EC2FE5 /* SAMKeychain+Extension.swift in Sources */,
 				CF8EB59E22DCD04300EC2FE5 /* Data+Extension.swift in Sources */,
 				CF8EB56B22DCC45800EC2FE5 /* UserDefault+Extension.swift in Sources */,
 				22C621F122DC8D1000A7C849 /* YYGlobal.swift in Sources */,

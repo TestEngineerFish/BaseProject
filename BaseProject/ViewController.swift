@@ -17,7 +17,7 @@ class ViewController: UIViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        print(iPhoneXLater)
+        let value = UserDefaults(suiteName: "name")
         let vc = BClass()
         self.navigationController?.pushViewController(vc, animated: true)
 
