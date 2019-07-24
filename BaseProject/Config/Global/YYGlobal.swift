@@ -1,0 +1,92 @@
+//
+//  YYGlobal.swift
+//  BaseProject
+//
+//  Created by 沙庭宇 on 2019/7/15.
+//  Copyright © 2019 沙庭宇. All rights reserved.
+//
+
+import UIKit
+
+// MARK: ---尺寸相关---
+/// 屏幕宽
+public var kScreenWidth: CGFloat {
+    get {
+        return UIScreen.main.bounds.size.width
+    }
+}
+
+/// 屏幕高
+public var kScreenHeight: CGFloat {
+    get {
+        return UIScreen.main.bounds.size.height
+    }
+}
+
+/// 屏幕比例,返回
+/// 1: 代表320 x 480 的分辨率(就是iphone4之前的设备，非Retain屏幕);
+/// 2: 代表640 x 960 的分辨率(Retain屏幕);
+/// 3: 代表1242 x 2208 的分辨率;
+public var kScreenScale: CGFloat {
+    get {
+        return UIScreen.main.scale
+    }
+}
+/// 状态栏高度
+public var kStatusBarHeight:CGFloat {
+    get {
+        return iPhoneXLater ? 44.0 : 20.0
+    }
+}
+
+/// Navigation Bar 高度
+public var kNavHeight:CGFloat {
+    get {
+        return kStatusBarHeight + 44.0
+    }
+}
+
+/// 全面屏的底部安全高度
+public var kSafeBottomMargin:CGFloat {
+    get {
+        return iPhoneXLater ? 34.0 : 0.0
+    }
+}
+
+// MARK: ---其他---
+/// 当前Window
+public var kWindow: UIWindow {
+    get {
+        guard let window = UIApplication.shared.keyWindow else {
+            return UIWindow(frame: CGRect.zero)
+        }
+        return window
+    }
+}
+
+/// 是否是iPhoneX之后的设备
+public var iPhoneXLater: Bool {
+    get {
+        let iPhoneXLaterModelList = [DeviceModelType.iPhoneX, DeviceModelType.iPhoneXr, DeviceModelType.iPhoneXs, DeviceModelType.iPhoneXsMax]
+        return iPhoneXLaterModelList.contains(DeviceInfoGlobal.model())
+    }
+}
+
+/// 当前设备是否是模拟器
+public var isSimulator: Bool {
+    get {
+        var isSim = false
+        #if arch(i386) || arch(x86_64)
+        isSim = true
+        #endif
+        return isSim
+    }
+}
+
+// MARK: ---文件存储路径或目录---
+/// 存储总目录路径
+public var kPathForMainStorageLocation: String {
+    get {
+        return NSHomeDirectory() + "/Documents"
+    }
+}

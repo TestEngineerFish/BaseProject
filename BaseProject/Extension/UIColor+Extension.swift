@@ -18,6 +18,9 @@ public extension UIColor {
         }
     }
 
+    /// 十六进制颜色值
+    /// - parameter hex: 十六进制值,例如:“0x000fff”
+    /// - parameter alpha: 透明度
     class func make(hex:String, alpha: CGFloat = 1.0) -> UIColor {
         var hexint: UInt32 = 0
 

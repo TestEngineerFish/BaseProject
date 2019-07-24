@@ -6,7 +6,6 @@
 //  Copyright © 2019 沙庭宇. All rights reserved.
 //
 
-import Foundation
 public enum Iconfont: String {
     
     // MARK: --- common ---

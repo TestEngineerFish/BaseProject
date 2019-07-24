@@ -25,12 +25,11 @@ public enum YYHTTPMethod: String {
 protocol YYBaseRequest {
     var method: YYHTTPMethod { get }
     var header: [String : String] { get }
-    var parameters: [String : Any]? { get }
+    var parameters: [String : Any?]? { get }
     var url: URL { get }
     var path: String { get }
-    var postJson: Any? { get }
     
-    func handleHeader(parameters: [String : Any]?, headers: [String : String]?) -> [String : String]
+    func handleHeader(parameters: [String : Any?]?, headers: [String : String]?) -> [String : String]
 }
 
 extension YYBaseRequest {
@@ -43,22 +42,22 @@ extension YYBaseRequest {
                        "YY-CHANNEL-ID"  : "AppStore",
                        "YY-CLIENT-ID"   : "100",
                        "YY-BUNDLE-ID"   : Bundle.bundleIdentifier,
-                       "YY-UDID"        : UIDevice.openUDID,
+//                       "YY-UDID"        : UIDevice.openUDID,
                        "YY-MODEL"       : UIDevice.deviceName,
-                       "YY-GPS-LNG"     : YYLocationManager.default.longitude,
-                       "YY-GPS-LAT"     : YYLocationManager.default.latitude,
-                       "YY-GPS-ALT"     : YYLocationManager.default.altitude,
+//                       "YY-GPS-LNG"     : YYLocationManager.default.longitude,
+//                       "YY-GPS-LAT"     : YYLocationManager.default.latitude,
+//                       "YY-GPS-ALT"     : YYLocationManager.default.altitude,
                        "YY-TIMESTAMP"   : "\(Int(Date().timeIntervalSince1970))"]
         
         return _header
     }
     
-    public var parameters: [String : Any]? {
+    public var parameters: [String : Any?]? {
         return nil
     }
     
     public var baseURL: URL {
-        return URL(string: YYEVC.apiUrl)!
+        return URL(string: "https://api-test.helloyouyou.com")!
     }
     
     public var method: YYHTTPMethod {
@@ -71,9 +70,7 @@ extension YYBaseRequest {
     
     public var path: String { return "" }
     
-    public var postJson : Any? { return nil }
-    
-    func handleHeader(parameters: [String : Any]?, headers: [String : String]? = nil) -> [String : String] {
+    func handleHeader(parameters: [String : Any?]?, headers: [String : String]? = nil) -> [String : String] {
         
         var _header: [String : String] = self.header
         if headers != nil { _header = headers!}

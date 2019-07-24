@@ -143,7 +143,7 @@ extension String {
 //MARK: -
 public extension String {
     
-    func layoutSize(font: UIFont, preferredMaxLayoutWidth width: CGFloat = UIScreen.width) -> CGSize {
+    func layoutSize(font: UIFont, preferredMaxLayoutWidth width: CGFloat = kScreenWidth) -> CGSize {
         let str: NSString = self as NSString
         return str.boundingRect(
             with: CGSize(width: width, height: CGFloat.greatestFiniteMagnitude),

@@ -10,39 +10,120 @@ import Foundation
 import UIKit.UIDevice
 import SAMKeychain
 import CommonCrypto
-
-struct Platform {
-    static let isSimulator: Bool = {
-        var isSim = false
-        #if arch(i386) || arch(x86_64)
-        isSim = true
-        #endif
-        return isSim
-    }()
-}
+import AdSupport
 
 public extension UIDevice {
 
-    //操作系统版本号
+    /// 操作系统版本号
     static let systemOperationVersion: Double = {
         return Double(UIDevice.current.systemVersion) ?? 0.0
     }()
 
-    //设备名称
+    /// 设备名称
     static let deviceName: String = {
         return UIDevice.current.name
     }()
 
-    static let deviceModel: String = {
-        return UIDevice.current.model
+    /// OS版本号
+    /// - returns: e.g. "iPhone 12.2"
+    static let OSVersion: String = {
+        return UIDevice.current.systemName + " " + UIDevice.current.systemVersion
     }()
 
-    //OS版本号
-    static let OSVersion: String = {
-        return UIDevice.current.systemName + UIDevice.current.systemVersion
+    /// 获取广告标识符
+    /// IDFA (Identifier For Advertising)
+    /** -
+     * 苹果用于提供给广告商追踪用户而设定的,在同一个设备上的所有App都会取到相同的值
+     * 但是IDFA并不是唯一不变的，如果用户完全重置系统（设置程序 -> 通用 -> 还原 -> 还原位置与隐私），这个广告标示符会重新生成。
+     * 另外如果用户明确的还原广告（设置程序-> 通用 -> 关于本机 -> 广告 -> 还原广告标示符），那么广告标示符也会重新生成。
+     * 在iOS 10.0以后如果用户打开限制广告跟踪（设置程序-> 通用 -> 关于本机 -> 广告 -> 限制广告跟踪），则获取到的IDFA为一个固定值00000000-0000-0000-0000-000000000000。
+     */
+    static let IDFA: String = {
+        return ASIdentifierManager.shared().advertisingIdentifier.uuidString
     }()
+
+    /// - summary: 获取供应商标识符
+    /// IDFV（Identifier For Vendor）
+    /** -
+     IDFV是给Vendor标识用户用的，每个设备在所属同一个Vendor的应用里，都有相同的值。其中的Vendor是指应用提供商，准确的说，是通过BundleID的反转的前两部分进行匹配，如果相同就是同一个Vendor，例如对于com.abc.app1, com.abc.app2 这两个BundleID来说，就属于同一个Vendor，共享同一个IDFV的值。当然，对于同一个设备不同Vendor的话，获取到的值是不同的。和IDFA不同的是，IDFV的值是一定能取到的。它是iOS 6中新增的
+     但是使用IDFV也会存在一些问题。如果用户将属于此Vendor的所有App卸载，则IDFV的值会被重置，即再重装此Vendor的App，IDFV的值也会和之前的不同。
+     */
+    static let IDFV: String? = {
+        guard let uuid = UIDevice.current.identifierForVendor else {
+            return nil
+        }
+        return uuid.uuidString
+    }()
+
+    /// 通用唯一标示码
+    /// UUID（Universally Unique Identifier）
+    /// 获取方法: UUID().uuidString
+    /// 每次获取都不一样.建议存储
+
+    /// UQID:https://www.jianshu.com/p/a2879b2cbe04
+    /*
+        //获取UQID
+        + (NSString *)getUQID
+    {
+    //从本地沙盒取
+    NSString *uqid = [[NSUserDefaults standardUserDefaults] objectForKey:UQID_KEY];
+
+    if (!uqid) {
+    //从keychain取
+    uqid = (NSString *)[YDKeyChain readObjectForKey:UQID_KEY];
+
+    if (uqid) {
+    [[NSUserDefaults standardUserDefaults] setObject:uqid forKey:UQID_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    } else {
+    //从pasteboard取
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    id data = [pasteboard dataForPasteboardType:UQID_KEY];
+    if (data) {
+    uqid = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    }
+
+    if (uqid) {
+    [[NSUserDefaults standardUserDefaults] setObject:uqid forKey:UQID_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [YDKeyChain saveObject:uqid forKey:UQID_KEY];
+
+    } else {
+
+    //获取idfa
+    uqid = [self getIDFA];
+
+    //idfa获取失败的情况，获取idfv
+    if (!uqid || [uqid isEqualToString:@"00000000-0000-0000-0000-000000000000"]) {
+    uqid = [self getIDFV];
+
+    //idfv获取失败的情况，获取uuid
+    if (!uqid) {
+    uqid = [self getUUID];
+    }
+    }
+
+    [[NSUserDefaults standardUserDefaults] setObject:uqid forKey:UQID_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    [YDKeyChain saveObject:uqid forKey:UQID_KEY];
+
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    NSData *data = [uqid dataUsingEncoding:NSUTF8StringEncoding];
+    [pasteboard setData:data forPasteboardType:UQID_KEY];
+
+    }
+    }
+    }
+    return uqid;
+    }
+    */
 
     //openUDID
+    /// 设备唯一描述标识符
+    /// UDID（Unique Device Identifier Description)
+    /// 5.0之后已被苹果禁止获取
     static let openUDID: String = {
         var localOpenUDID: String = SAMKeychain.openUDID
         if !localOpenUDID.isEmpty {

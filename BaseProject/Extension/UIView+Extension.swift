@@ -274,12 +274,6 @@ extension UIView {
         return UIViewController.currentViewController
     }
     
-    /** 把当前 View 显示到顶层窗口上 */
-    public func showTopWindow() {
-        UIView.cleanTopWindow(anyClass: YYTopWindowView.classForCoder())
-        UIApplication.shared.keyWindow?.addSubview(self)
-    }
-    
     public class func cleanTopWindow(anyClass: AnyClass) {
         if let tviews = UIApplication.shared.keyWindow?.subviews {
             for tview in tviews {

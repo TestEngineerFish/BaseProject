@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22413E3122E83E2100F2C678 /* DeviceInfoGlobal.swift */; };
+		22413E3422E8400900F2C678 /* NotificationNameGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22413E3322E8400900F2C678 /* NotificationNameGlobal.swift */; };
 		22C621B822DC805600A7C849 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B722DC805600A7C849 /* AppDelegate.swift */; };
 		22C621BA22DC805600A7C849 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B922DC805600A7C849 /* ViewController.swift */; };
 		22C621BF22DC805600A7C849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22C621BE22DC805600A7C849 /* Assets.xcassets */; };
@@ -17,53 +19,31 @@
 		22C621D822DC818E00A7C849 /* YYBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621D122DC818D00A7C849 /* YYBaseRequest.swift */; };
 		22C621DD22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621DC22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift */; };
 		22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621DE22DC886300A7C849 /* YYBaseModel.swift */; };
-		22C621E622DC895300A7C849 /* YYNetFoxHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621E122DC895300A7C849 /* YYNetFoxHelper.swift */; };
-		22C621E722DC895300A7C849 /* YYAuthenticationChallengeSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621E222DC895300A7C849 /* YYAuthenticationChallengeSender.swift */; };
-		22C621E822DC895300A7C849 /* YYNetFoxProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621E322DC895300A7C849 /* YYNetFoxProtocol.swift */; };
-		22C621E922DC895300A7C849 /* YYNetFoxHTTPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621E522DC895300A7C849 /* YYNetFoxHTTPModel.swift */; };
-		22C621EC22DC89F700A7C849 /* YYDateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621EB22DC89F700A7C849 /* YYDateUtils.swift */; };
 		22C621EE22DC8A7800A7C849 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621ED22DC8A7800A7C849 /* UIDevice+Extension.swift */; };
 		22C621F122DC8D1000A7C849 /* YYGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621F022DC8D1000A7C849 /* YYGlobal.swift */; };
-		22C621F322DC8D4F00A7C849 /* YYGlobalMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621F222DC8D4F00A7C849 /* YYGlobalMacro.swift */; };
-		22C621F522DC8DC200A7C849 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621F422DC8DC200A7C849 /* UIScreen+Extension.swift */; };
 		22C621F722DC8E0B00A7C849 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621F622DC8E0B00A7C849 /* UIColor+Extension.swift */; };
-		22C621FA22DC8E9600A7C849 /* YYLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621F922DC8E9600A7C849 /* YYLocationManager.swift */; };
-		22C621FC22DC8F1700A7C849 /* YYAuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621FB22DC8F1700A7C849 /* YYAuthorizationManager.swift */; };
 		22C6221B22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6221A22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift */; };
 		22C6221D22DF120900A7C849 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6221C22DF120900A7C849 /* Error+Extension.swift */; };
 		7B212ACC1EB4CBADF5DD63D4 /* Pods_BaseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE0B51EBB89FBFB5A61CACA /* Pods_BaseProject.framework */; };
 		CF8EB56422DCC05D00EC2FE5 /* YYSAMKeychain+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56322DCC05D00EC2FE5 /* YYSAMKeychain+Extension.swift */; };
 		CF8EB56622DCC09B00EC2FE5 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56522DCC09B00EC2FE5 /* Bundle+Extension.swift */; };
-		CF8EB56922DCC0E600EC2FE5 /* YYEnvChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56822DCC0E600EC2FE5 /* YYEnvChangeViewController.swift */; };
 		CF8EB56B22DCC45800EC2FE5 /* UserDefault+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56A22DCC45800EC2FE5 /* UserDefault+Extension.swift */; };
-		CF8EB56F22DCC4AD00EC2FE5 /* YYUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56E22DCC4AD00EC2FE5 /* YYUserModel.swift */; };
-		CF8EB57222DCC50A00EC2FE5 /* YYCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB57122DCC50A00EC2FE5 /* YYCache.swift */; };
-		CF8EB57522DCC56600EC2FE5 /* YYLoggerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB57422DCC56600EC2FE5 /* YYLoggerManager.swift */; };
-		CF8EB57722DCC59400EC2FE5 /* YYAlertManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB57622DCC59400EC2FE5 /* YYAlertManger.swift */; };
-		CF8EB57922DCC5EC00EC2FE5 /* YYLogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB57822DCC5EC00EC2FE5 /* YYLogModel.swift */; };
 		CF8EB57B22DCC61400EC2FE5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8EB57A22DCC61400EC2FE5 /* AVFoundation.framework */; };
 		CF8EB57F22DCC7C700EC2FE5 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB57E22DCC7C700EC2FE5 /* Double+Extension.swift */; };
-		CF8EB58222DCC9C100EC2FE5 /* YYTopWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB58122DCC9C100EC2FE5 /* YYTopWindowView.swift */; };
-		CF8EB58422DCCAD300EC2FE5 /* YYLoggerFileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB58322DCCAD300EC2FE5 /* YYLoggerFileOperation.swift */; };
 		CF8EB58722DCCBA900EC2FE5 /* YYBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB58622DCCBA900EC2FE5 /* YYBaseViewController.swift */; };
 		CF8EB58B22DCCCA600EC2FE5 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB58A22DCCCA600EC2FE5 /* UIFont+Extension.swift */; };
 		CF8EB58D22DCCCFC00EC2FE5 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB58C22DCCCFC00EC2FE5 /* String+Extension.swift */; };
-		CF8EB59322DCCD4400EC2FE5 /* YYThreeVerticalButtonAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB58E22DCCD4400EC2FE5 /* YYThreeVerticalButtonAlertView.swift */; };
-		CF8EB59422DCCD4400EC2FE5 /* YYTwoHorizontalButtonAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB58F22DCCD4400EC2FE5 /* YYTwoHorizontalButtonAlertView.swift */; };
-		CF8EB59522DCCD4400EC2FE5 /* YYTwoVerticalButtonAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB59022DCCD4400EC2FE5 /* YYTwoVerticalButtonAlertView.swift */; };
-		CF8EB59622DCCD4400EC2FE5 /* YYImageAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB59122DCCD4400EC2FE5 /* YYImageAlertView.swift */; };
-		CF8EB59722DCCD4400EC2FE5 /* YYOneButtonAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB59222DCCD4400EC2FE5 /* YYOneButtonAlertView.swift */; };
-		CF8EB59A22DCCE6900EC2FE5 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB59922DCCE6800EC2FE5 /* UIImage+Extension.swift */; };
 		CF8EB59C22DCCEBC00EC2FE5 /* IconFontString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB59B22DCCEBC00EC2FE5 /* IconFontString.swift */; };
 		CF8EB59E22DCD04300EC2FE5 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB59D22DCD04300EC2FE5 /* Data+Extension.swift */; };
 		CF8EB5A022DCD08A00EC2FE5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB59F22DCD08A00EC2FE5 /* UIView+Extension.swift */; };
 		CF8EB5A222DCD0DC00EC2FE5 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB5A122DCD0DC00EC2FE5 /* UIViewController+Extension.swift */; };
 		CF8EB5A622DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB5A522DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift */; };
 		CF8EB5A822DCD22800EC2FE5 /* YYCustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB5A722DCD22800EC2FE5 /* YYCustomNavigationBar.swift */; };
-		CF8EB5AA22DCD26300EC2FE5 /* YYFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB5A922DCD26300EC2FE5 /* YYFileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22413E3122E83E2100F2C678 /* DeviceInfoGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoGlobal.swift; sourceTree = "<group>"; };
+		22413E3322E8400900F2C678 /* NotificationNameGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameGlobal.swift; sourceTree = "<group>"; };
 		22C621B422DC805600A7C849 /* BaseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C621B722DC805600A7C849 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22C621B922DC805600A7C849 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,51 +56,27 @@
 		22C621D122DC818D00A7C849 /* YYBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYBaseRequest.swift; sourceTree = "<group>"; };
 		22C621DC22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYWantToKnowQuestionListModel.swift; sourceTree = "<group>"; };
 		22C621DE22DC886300A7C849 /* YYBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYBaseModel.swift; sourceTree = "<group>"; };
-		22C621E122DC895300A7C849 /* YYNetFoxHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYNetFoxHelper.swift; sourceTree = "<group>"; };
-		22C621E222DC895300A7C849 /* YYAuthenticationChallengeSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYAuthenticationChallengeSender.swift; sourceTree = "<group>"; };
-		22C621E322DC895300A7C849 /* YYNetFoxProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYNetFoxProtocol.swift; sourceTree = "<group>"; };
-		22C621E522DC895300A7C849 /* YYNetFoxHTTPModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYNetFoxHTTPModel.swift; sourceTree = "<group>"; };
-		22C621EB22DC89F700A7C849 /* YYDateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYDateUtils.swift; sourceTree = "<group>"; };
 		22C621ED22DC8A7800A7C849 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		22C621F022DC8D1000A7C849 /* YYGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYGlobal.swift; sourceTree = "<group>"; };
-		22C621F222DC8D4F00A7C849 /* YYGlobalMacro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYGlobalMacro.swift; sourceTree = "<group>"; };
-		22C621F422DC8DC200A7C849 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		22C621F622DC8E0B00A7C849 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		22C621F922DC8E9600A7C849 /* YYLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYLocationManager.swift; sourceTree = "<group>"; };
-		22C621FB22DC8F1700A7C849 /* YYAuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYAuthorizationManager.swift; sourceTree = "<group>"; };
 		22C6221A22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYUsrHomePageDataRequestAPI.swift; sourceTree = "<group>"; };
 		22C6221C22DF120900A7C849 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		62C207CFF7FD424CF4B3C8C3 /* Pods-BaseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.release.xcconfig"; path = "Target Support Files/Pods-BaseProject/Pods-BaseProject.release.xcconfig"; sourceTree = "<group>"; };
 		CF27E37F22DE279E0056ADFA /* BaseProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF8EB56322DCC05D00EC2FE5 /* YYSAMKeychain+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YYSAMKeychain+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB56522DCC09B00EC2FE5 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
-		CF8EB56822DCC0E600EC2FE5 /* YYEnvChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYEnvChangeViewController.swift; sourceTree = "<group>"; };
 		CF8EB56A22DCC45800EC2FE5 /* UserDefault+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Extension.swift"; sourceTree = "<group>"; };
-		CF8EB56E22DCC4AD00EC2FE5 /* YYUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYUserModel.swift; sourceTree = "<group>"; };
-		CF8EB57122DCC50A00EC2FE5 /* YYCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYCache.swift; sourceTree = "<group>"; };
-		CF8EB57422DCC56600EC2FE5 /* YYLoggerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYLoggerManager.swift; sourceTree = "<group>"; };
-		CF8EB57622DCC59400EC2FE5 /* YYAlertManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYAlertManger.swift; sourceTree = "<group>"; };
-		CF8EB57822DCC5EC00EC2FE5 /* YYLogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYLogModel.swift; sourceTree = "<group>"; };
 		CF8EB57A22DCC61400EC2FE5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CF8EB57E22DCC7C700EC2FE5 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
-		CF8EB58122DCC9C100EC2FE5 /* YYTopWindowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYTopWindowView.swift; sourceTree = "<group>"; };
-		CF8EB58322DCCAD300EC2FE5 /* YYLoggerFileOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYLoggerFileOperation.swift; sourceTree = "<group>"; };
 		CF8EB58622DCCBA900EC2FE5 /* YYBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYBaseViewController.swift; sourceTree = "<group>"; };
 		CF8EB58A22DCCCA600EC2FE5 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB58C22DCCCFC00EC2FE5 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		CF8EB58E22DCCD4400EC2FE5 /* YYThreeVerticalButtonAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYThreeVerticalButtonAlertView.swift; sourceTree = "<group>"; };
-		CF8EB58F22DCCD4400EC2FE5 /* YYTwoHorizontalButtonAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYTwoHorizontalButtonAlertView.swift; sourceTree = "<group>"; };
-		CF8EB59022DCCD4400EC2FE5 /* YYTwoVerticalButtonAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYTwoVerticalButtonAlertView.swift; sourceTree = "<group>"; };
-		CF8EB59122DCCD4400EC2FE5 /* YYImageAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYImageAlertView.swift; sourceTree = "<group>"; };
-		CF8EB59222DCCD4400EC2FE5 /* YYOneButtonAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYOneButtonAlertView.swift; sourceTree = "<group>"; };
-		CF8EB59922DCCE6800EC2FE5 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB59B22DCCEBC00EC2FE5 /* IconFontString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconFontString.swift; sourceTree = "<group>"; };
 		CF8EB59D22DCD04300EC2FE5 /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB59F22DCD08A00EC2FE5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB5A122DCD0DC00EC2FE5 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB5A522DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YYBaseViewController+CustomNavigationBar.swift"; sourceTree = "<group>"; };
 		CF8EB5A722DCD22800EC2FE5 /* YYCustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYCustomNavigationBar.swift; sourceTree = "<group>"; };
-		CF8EB5A922DCD26300EC2FE5 /* YYFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYFileManager.swift; sourceTree = "<group>"; };
 		D1A3EF0650A7F2326222FB45 /* Pods-BaseProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.debug.xcconfig"; path = "Target Support Files/Pods-BaseProject/Pods-BaseProject.debug.xcconfig"; sourceTree = "<group>"; };
 		FCE0B51EBB89FBFB5A61CACA /* Pods_BaseProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -138,6 +94,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22413E3022E83DF400F2C678 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				22C621F022DC8D1000A7C849 /* YYGlobal.swift */,
+				22413E3122E83E2100F2C678 /* DeviceInfoGlobal.swift */,
+				22413E3322E8400900F2C678 /* NotificationNameGlobal.swift */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
 		22C621AB22DC805600A7C849 = {
 			isa = PBXGroup;
 			children = (
@@ -196,33 +162,10 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
-		22C621E022DC893A00A7C849 /* NetFox */ = {
-			isa = PBXGroup;
-			children = (
-				22C621E422DC895300A7C849 /* Model */,
-				22C621E222DC895300A7C849 /* YYAuthenticationChallengeSender.swift */,
-				22C621E122DC895300A7C849 /* YYNetFoxHelper.swift */,
-				22C621E322DC895300A7C849 /* YYNetFoxProtocol.swift */,
-			);
-			path = NetFox;
-			sourceTree = "<group>";
-		};
-		22C621E422DC895300A7C849 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				22C621E522DC895300A7C849 /* YYNetFoxHTTPModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		22C621EA22DC89D500A7C849 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				CF8EB59922DCCE6800EC2FE5 /* UIImage+Extension.swift */,
-				22C621EB22DC89F700A7C849 /* YYDateUtils.swift */,
 				22C621ED22DC8A7800A7C849 /* UIDevice+Extension.swift */,
-				22C621F222DC8D4F00A7C849 /* YYGlobalMacro.swift */,
-				22C621F422DC8DC200A7C849 /* UIScreen+Extension.swift */,
 				22C621F622DC8E0B00A7C849 /* UIColor+Extension.swift */,
 				CF8EB56322DCC05D00EC2FE5 /* YYSAMKeychain+Extension.swift */,
 				CF8EB56522DCC09B00EC2FE5 /* Bundle+Extension.swift */,
@@ -242,7 +185,7 @@
 		22C621EF22DC8CFD00A7C849 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				22C621F022DC8D1000A7C849 /* YYGlobal.swift */,
+				22413E3022E83DF400F2C678 /* Global */,
 				CF8EB59B22DCCEBC00EC2FE5 /* IconFontString.swift */,
 			);
 			path = Config;
@@ -251,12 +194,6 @@
 		22C621F822DC8E7600A7C849 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				CF8EB58022DCC97E00EC2FE5 /* TopWindow */,
-				CF8EB56722DCC0C500EC2FE5 /* Evn */,
-				22C621F922DC8E9600A7C849 /* YYLocationManager.swift */,
-				22C621FB22DC8F1700A7C849 /* YYAuthorizationManager.swift */,
-				CF8EB57622DCC59400EC2FE5 /* YYAlertManger.swift */,
-				CF8EB5A922DCD26300EC2FE5 /* YYFileManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -310,63 +247,12 @@
 			path = Module;
 			sourceTree = "<group>";
 		};
-		CF8EB56722DCC0C500EC2FE5 /* Evn */ = {
-			isa = PBXGroup;
-			children = (
-				CF8EB56822DCC0E600EC2FE5 /* YYEnvChangeViewController.swift */,
-			);
-			path = Evn;
-			sourceTree = "<group>";
-		};
 		CF8EB56C22DCC48F00EC2FE5 /* DataCenter */ = {
 			isa = PBXGroup;
 			children = (
 				22C621C922DC815A00A7C849 /* Network */,
-				CF8EB57322DCC54F00EC2FE5 /* Log */,
-				CF8EB57022DCC4F600EC2FE5 /* Cache */,
-				CF8EB56D22DCC49800EC2FE5 /* Model */,
-				22C621E022DC893A00A7C849 /* NetFox */,
 			);
 			path = DataCenter;
-			sourceTree = "<group>";
-		};
-		CF8EB56D22DCC49800EC2FE5 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				CF8EB56E22DCC4AD00EC2FE5 /* YYUserModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		CF8EB57022DCC4F600EC2FE5 /* Cache */ = {
-			isa = PBXGroup;
-			children = (
-				CF8EB57122DCC50A00EC2FE5 /* YYCache.swift */,
-			);
-			path = Cache;
-			sourceTree = "<group>";
-		};
-		CF8EB57322DCC54F00EC2FE5 /* Log */ = {
-			isa = PBXGroup;
-			children = (
-				CF8EB58322DCCAD300EC2FE5 /* YYLoggerFileOperation.swift */,
-				CF8EB57422DCC56600EC2FE5 /* YYLoggerManager.swift */,
-				CF8EB57822DCC5EC00EC2FE5 /* YYLogModel.swift */,
-			);
-			path = Log;
-			sourceTree = "<group>";
-		};
-		CF8EB58022DCC97E00EC2FE5 /* TopWindow */ = {
-			isa = PBXGroup;
-			children = (
-				CF8EB59122DCCD4400EC2FE5 /* YYImageAlertView.swift */,
-				CF8EB59222DCCD4400EC2FE5 /* YYOneButtonAlertView.swift */,
-				CF8EB58E22DCCD4400EC2FE5 /* YYThreeVerticalButtonAlertView.swift */,
-				CF8EB58F22DCCD4400EC2FE5 /* YYTwoHorizontalButtonAlertView.swift */,
-				CF8EB59022DCCD4400EC2FE5 /* YYTwoVerticalButtonAlertView.swift */,
-				CF8EB58122DCC9C100EC2FE5 /* YYTopWindowView.swift */,
-			);
-			path = TopWindow;
 			sourceTree = "<group>";
 		};
 		CF8EB58522DCCB8200EC2FE5 /* Base */ = {
@@ -511,55 +397,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				22C621D822DC818E00A7C849 /* YYBaseRequest.swift in Sources */,
-				22C621FA22DC8E9600A7C849 /* YYLocationManager.swift in Sources */,
-				CF8EB59622DCCD4400EC2FE5 /* YYImageAlertView.swift in Sources */,
-				CF8EB57722DCC59400EC2FE5 /* YYAlertManger.swift in Sources */,
 				22C621BA22DC805600A7C849 /* ViewController.swift in Sources */,
-				22C621FC22DC8F1700A7C849 /* YYAuthorizationManager.swift in Sources */,
+				22413E3422E8400900F2C678 /* NotificationNameGlobal.swift in Sources */,
+				22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */,
 				22C621DD22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift in Sources */,
 				CF8EB58B22DCCCA600EC2FE5 /* UIFont+Extension.swift in Sources */,
 				22C621D422DC818E00A7C849 /* YYBaseResopnse.swift in Sources */,
 				22C6221D22DF120900A7C849 /* Error+Extension.swift in Sources */,
-				22C621E622DC895300A7C849 /* YYNetFoxHelper.swift in Sources */,
 				CF8EB5A022DCD08A00EC2FE5 /* UIView+Extension.swift in Sources */,
 				22C621D522DC818E00A7C849 /* YYNetworkService.swift in Sources */,
-				CF8EB59522DCCD4400EC2FE5 /* YYTwoVerticalButtonAlertView.swift in Sources */,
-				22C621E722DC895300A7C849 /* YYAuthenticationChallengeSender.swift in Sources */,
 				CF8EB56422DCC05D00EC2FE5 /* YYSAMKeychain+Extension.swift in Sources */,
-				CF8EB59722DCCD4400EC2FE5 /* YYOneButtonAlertView.swift in Sources */,
-				22C621F322DC8D4F00A7C849 /* YYGlobalMacro.swift in Sources */,
-				CF8EB59A22DCCE6900EC2FE5 /* UIImage+Extension.swift in Sources */,
 				CF8EB59E22DCD04300EC2FE5 /* Data+Extension.swift in Sources */,
-				22C621E922DC895300A7C849 /* YYNetFoxHTTPModel.swift in Sources */,
-				CF8EB59322DCCD4400EC2FE5 /* YYThreeVerticalButtonAlertView.swift in Sources */,
-				CF8EB56F22DCC4AD00EC2FE5 /* YYUserModel.swift in Sources */,
 				CF8EB56B22DCC45800EC2FE5 /* UserDefault+Extension.swift in Sources */,
 				22C621F122DC8D1000A7C849 /* YYGlobal.swift in Sources */,
 				22C621EE22DC8A7800A7C849 /* UIDevice+Extension.swift in Sources */,
-				CF8EB57922DCC5EC00EC2FE5 /* YYLogModel.swift in Sources */,
 				22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */,
 				CF8EB59C22DCCEBC00EC2FE5 /* IconFontString.swift in Sources */,
 				CF8EB57F22DCC7C700EC2FE5 /* Double+Extension.swift in Sources */,
 				CF8EB5A222DCD0DC00EC2FE5 /* UIViewController+Extension.swift in Sources */,
-				CF8EB57222DCC50A00EC2FE5 /* YYCache.swift in Sources */,
 				CF8EB5A622DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift in Sources */,
 				22C6221B22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift in Sources */,
-				CF8EB57522DCC56600EC2FE5 /* YYLoggerManager.swift in Sources */,
 				CF8EB5A822DCD22800EC2FE5 /* YYCustomNavigationBar.swift in Sources */,
-				CF8EB5AA22DCD26300EC2FE5 /* YYFileManager.swift in Sources */,
 				22C621D622DC818E00A7C849 /* YYTaskRequest.swift in Sources */,
 				22C621B822DC805600A7C849 /* AppDelegate.swift in Sources */,
-				CF8EB56922DCC0E600EC2FE5 /* YYEnvChangeViewController.swift in Sources */,
 				CF8EB58722DCCBA900EC2FE5 /* YYBaseViewController.swift in Sources */,
 				CF8EB56622DCC09B00EC2FE5 /* Bundle+Extension.swift in Sources */,
-				22C621F522DC8DC200A7C849 /* UIScreen+Extension.swift in Sources */,
-				22C621E822DC895300A7C849 /* YYNetFoxProtocol.swift in Sources */,
-				22C621EC22DC89F700A7C849 /* YYDateUtils.swift in Sources */,
-				CF8EB59422DCCD4400EC2FE5 /* YYTwoHorizontalButtonAlertView.swift in Sources */,
-				CF8EB58222DCC9C100EC2FE5 /* YYTopWindowView.swift in Sources */,
 				CF8EB58D22DCCCFC00EC2FE5 /* String+Extension.swift in Sources */,
 				22C621F722DC8E0B00A7C849 /* UIColor+Extension.swift in Sources */,
-				CF8EB58422DCCAD300EC2FE5 /* YYLoggerFileOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
