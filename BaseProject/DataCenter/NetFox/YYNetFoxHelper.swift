@@ -64,6 +64,8 @@ extension URLRequest {
         case .returnCacheDataElseLoad: return "ReturnCacheDataElseLoad"
         case .returnCacheDataDontLoad: return "ReturnCacheDataDontLoad"
         case .reloadRevalidatingCacheData: return "ReloadRevalidatingCacheData"
+        @unknown default:
+            return ""
         }
     }
     

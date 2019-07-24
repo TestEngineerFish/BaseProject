@@ -1,7 +1,5 @@
 *.xcuserstate  
 project.xcworkspace  
-xcuserdata  
-UserInterfaceState.xcuserstate  
+xcuserdata
 project.xcworkspace/  
-xcuserdata/  
-UserInterfaceState.xcuserstate
+xcuserdata/

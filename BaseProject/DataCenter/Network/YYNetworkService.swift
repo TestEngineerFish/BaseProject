@@ -34,6 +34,7 @@ struct YYNetworkService {
     /**
      *  普通HTTP Request, 支持GET、POST方式
      */
+    /// - parameter type: 只是定义泛型对象类型,没有其他作用
     @discardableResult
     public func httpRequestTask <T> (_ type: T.Type, request: YYBaseRequest, success: ((_ response: T) -> Void)?, fail: ((_ responseError: NSError) -> Void)?) -> YYTaskRequest? where T: YYBaseResopnse {
         // 根据是否有postJson来区别是Get还是Post请求
@@ -73,7 +74,7 @@ struct YYNetworkService {
             var dict = dict
             dict[e.0] = value
             return dict
-            }
+        }
         guard let _requestPostJson: [String:Any] = requestPostJson else {return}
         
         Alamofire.download(request.url, method: HTTPMethod(rawValue: request.method.rawValue) ?? .get, parameters: _requestPostJson, headers: request.handleHeader(parameters: _requestPostJson, headers: request.header)) { (url, response) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
@@ -104,7 +105,7 @@ struct YYNetworkService {
             var dict = dict
             dict[e.0] = value
             return dict
-            }
+        }
         guard var _requestPostJson: [String:Any] = requestPostJson else {return}
         
         if _requestPostJson.keys.contains("cover") {
@@ -345,7 +346,7 @@ struct YYNetworkService {
                 var dict = dict
                 dict[e.0] = value
                 return dict
-                }
+            }
             guard let _parameters: [String:Any] = parameters else {return nil}
             return _parameters
         }

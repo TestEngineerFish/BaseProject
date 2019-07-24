@@ -220,7 +220,7 @@ extension YYNetFoxHTTPModelProtocol {
 
 public class YYNetFoxHTTPModel: Mappable {
     
-    var requestModel: YYNetFoxHTTPRequestModel?
+    var requestModel:  YYNetFoxHTTPRequestModel?
     var responseModel: YYNetFoxHTTPResponseModel?
     
     init() {}

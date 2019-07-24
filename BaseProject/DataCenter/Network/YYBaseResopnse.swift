@@ -41,10 +41,10 @@ public struct YYStructResponse<T: Mappable> : YYBaseResopnse {
     public init?(map: Map) {}
     
     public mutating func mapping(map: Map) {
-        status <- map["code"]
+        status  <- map["code"]
         message <- map["message"]
         warning <- map["warning"]
-        data <- map["data"]
+        data    <- map["data"]
     }
 }
 
@@ -64,9 +64,9 @@ public struct YYStructDataArrayResponse<T: Mappable> : YYBaseResopnse {
     public init?(map: Map) {}
     
     public mutating func mapping(map: Map) {
-        status <- map["code"]
-        message <- map["message"]
-        warning <- map["warning"]
+        status    <- map["code"]
+        message   <- map["message"]
+        warning   <- map["warning"]
         dataArray <- map["data"]
     }
     

@@ -14,9 +14,7 @@
 		22C621D422DC818E00A7C849 /* YYBaseResopnse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621CB22DC818D00A7C849 /* YYBaseResopnse.swift */; };
 		22C621D522DC818E00A7C849 /* YYNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621CC22DC818D00A7C849 /* YYNetworkService.swift */; };
 		22C621D622DC818E00A7C849 /* YYTaskRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621CD22DC818D00A7C849 /* YYTaskRequest.swift */; };
-		22C621D722DC818E00A7C849 /* YYNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621CF22DC818D00A7C849 /* YYNetworkError.swift */; };
 		22C621D822DC818E00A7C849 /* YYBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621D122DC818D00A7C849 /* YYBaseRequest.swift */; };
-		22C621D922DC818E00A7C849 /* Mappable+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621D322DC818D00A7C849 /* Mappable+Transform.swift */; };
 		22C621DD22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621DC22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift */; };
 		22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621DE22DC886300A7C849 /* YYBaseModel.swift */; };
 		22C621E622DC895300A7C849 /* YYNetFoxHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621E122DC895300A7C849 /* YYNetFoxHelper.swift */; };
@@ -75,9 +73,7 @@
 		22C621CB22DC818D00A7C849 /* YYBaseResopnse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYBaseResopnse.swift; sourceTree = "<group>"; };
 		22C621CC22DC818D00A7C849 /* YYNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYNetworkService.swift; sourceTree = "<group>"; };
 		22C621CD22DC818D00A7C849 /* YYTaskRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYTaskRequest.swift; sourceTree = "<group>"; };
-		22C621CF22DC818D00A7C849 /* YYNetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYNetworkError.swift; sourceTree = "<group>"; };
 		22C621D122DC818D00A7C849 /* YYBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYBaseRequest.swift; sourceTree = "<group>"; };
-		22C621D322DC818D00A7C849 /* Mappable+Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Mappable+Transform.swift"; sourceTree = "<group>"; };
 		22C621DC22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYWantToKnowQuestionListModel.swift; sourceTree = "<group>"; };
 		22C621DE22DC886300A7C849 /* YYBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYBaseModel.swift; sourceTree = "<group>"; };
 		22C621E122DC895300A7C849 /* YYNetFoxHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYNetFoxHelper.swift; sourceTree = "<group>"; };
@@ -183,46 +179,12 @@
 		22C621C922DC815A00A7C849 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				22C621CE22DC818D00A7C849 /* Error */,
-				22C621D022DC818D00A7C849 /* Request */,
-				22C621CA22DC818D00A7C849 /* Response */,
-				22C621D222DC818D00A7C849 /* Transform */,
+				22C621D122DC818D00A7C849 /* YYBaseRequest.swift */,
+				22C621CB22DC818D00A7C849 /* YYBaseResopnse.swift */,
 				22C621CC22DC818D00A7C849 /* YYNetworkService.swift */,
 				22C621CD22DC818D00A7C849 /* YYTaskRequest.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		22C621CA22DC818D00A7C849 /* Response */ = {
-			isa = PBXGroup;
-			children = (
-				22C621CB22DC818D00A7C849 /* YYBaseResopnse.swift */,
-			);
-			path = Response;
-			sourceTree = "<group>";
-		};
-		22C621CE22DC818D00A7C849 /* Error */ = {
-			isa = PBXGroup;
-			children = (
-				22C621CF22DC818D00A7C849 /* YYNetworkError.swift */,
-			);
-			path = Error;
-			sourceTree = "<group>";
-		};
-		22C621D022DC818D00A7C849 /* Request */ = {
-			isa = PBXGroup;
-			children = (
-				22C621D122DC818D00A7C849 /* YYBaseRequest.swift */,
-			);
-			path = Request;
-			sourceTree = "<group>";
-		};
-		22C621D222DC818D00A7C849 /* Transform */ = {
-			isa = PBXGroup;
-			children = (
-				22C621D322DC818D00A7C849 /* Mappable+Transform.swift */,
-			);
-			path = Transform;
 			sourceTree = "<group>";
 		};
 		22C621DB22DC821000A7C849 /* Demo */ = {
@@ -573,7 +535,6 @@
 				CF8EB56F22DCC4AD00EC2FE5 /* YYUserModel.swift in Sources */,
 				CF8EB56B22DCC45800EC2FE5 /* UserDefault+Extension.swift in Sources */,
 				22C621F122DC8D1000A7C849 /* YYGlobal.swift in Sources */,
-				22C621D922DC818E00A7C849 /* Mappable+Transform.swift in Sources */,
 				22C621EE22DC8A7800A7C849 /* UIDevice+Extension.swift in Sources */,
 				CF8EB57922DCC5EC00EC2FE5 /* YYLogModel.swift in Sources */,
 				22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */,
@@ -586,7 +547,6 @@
 				CF8EB57522DCC56600EC2FE5 /* YYLoggerManager.swift in Sources */,
 				CF8EB5A822DCD22800EC2FE5 /* YYCustomNavigationBar.swift in Sources */,
 				CF8EB5AA22DCD26300EC2FE5 /* YYFileManager.swift in Sources */,
-				22C621D722DC818E00A7C849 /* YYNetworkError.swift in Sources */,
 				22C621D622DC818E00A7C849 /* YYTaskRequest.swift in Sources */,
 				22C621B822DC805600A7C849 /* AppDelegate.swift in Sources */,
 				CF8EB56922DCC0E600EC2FE5 /* YYEnvChangeViewController.swift in Sources */,
