@@ -18,11 +18,10 @@ class ViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
 
-        /*
         let vc = BClass()
         self.navigationController?.pushViewController(vc, animated: true)
-        */
 
+        /*
         self.fetchQuestionList { (model, error: String?) in
             if let _error = error {
                 self.view.toast(_error)
@@ -30,6 +29,7 @@ class ViewController: UIViewController {
             }
             self.view.toast("Successed")
         }
+        */
     }
 
     // 求介绍 - 问题列表
