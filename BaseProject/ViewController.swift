@@ -21,7 +21,13 @@ class ViewController: UIViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        let value = UIDevice.telephonyNetworkInfo
+//        UserDefaults.standard.archive(object: 99, forkey: "name")
+//        let name = UserDefaults.standard.unarchivedObject(forkey: "name")
+//        print(name)
+//        UserDefaults.standard.hasKey("name")
+//        UserDefaults.standard.hasKey("age")
+        print(UIDevice.signalStrength(with: true))
+        print(UIDevice.signalStrength(with: false))
         /*
         let vc = BClass()
         self.navigationController?.pushViewController(vc, animated: true)

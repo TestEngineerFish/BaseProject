@@ -187,7 +187,7 @@ extension YYCustomNavigationBar {
         self.leftButton.setTitleColor(UIColor.black, for: .normal)
         self.leftButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
         self.leftButton.setTitle(Iconfont.back.rawValue, for: .normal)
-        self.leftButton.titleLabel?.font = UIFont.newIconFont(size: 26)
+        self.leftButton.titleLabel?.font = UIFont.iconFont(size: 26)
         self.leftButton.contentHorizontalAlignment = .left
         self.leftButton.addTarget(self, action: #selector(backViewController), for: .touchUpInside)
 
@@ -198,10 +198,10 @@ extension YYCustomNavigationBar {
         self.rightFirstButton.addTarget(self, action: #selector(rightButtonDidClick), for: .touchUpInside)
         if self.isLargeTitle {
             self.rightFirstButton.frame = CGRect(x: kScreenWidth - 40, y: iPhoneXLater ? 8 : 18, width: 28, height: 29)
-            self.rightFirstButton.titleLabel?.font = UIFont.newIconFont(size: 26)
+            self.rightFirstButton.titleLabel?.font = UIFont.iconFont(size: 26)
         } else {
             self.rightFirstButton.frame = CGRect(x: kScreenWidth - 42, y: 9, width: 26, height: 26)
-            self.rightFirstButton.titleLabel?.font = UIFont.newIconFont(size: 26)
+            self.rightFirstButton.titleLabel?.font = UIFont.iconFont(size: 26)
         }
 
         /** 右边第二个按钮 **/
@@ -209,7 +209,7 @@ extension YYCustomNavigationBar {
         self.rightSecondButton.setTitleColor(UIColor.black, for: .normal)
         self.rightSecondButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
         self.rightSecondButton.contentHorizontalAlignment = .right
-        self.rightSecondButton.titleLabel?.font = UIFont.newIconFont(size: 26)
+        self.rightSecondButton.titleLabel?.font = UIFont.iconFont(size: 26)
         self.rightSecondButton.addTarget(self, action: #selector(rightSecondButtonDidClick), for: .touchUpInside)
     }
     

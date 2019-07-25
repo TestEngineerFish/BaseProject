@@ -110,7 +110,77 @@ public extension UIDevice {
         return model
     }()
 
-
+    /// 获取网络信号强弱
+    /// - parameter isWifi: true: Wifi网络 false: 移动信号网络
+    /// - returns: 信号强弱, 0最低,依次递增
+    static func signalStrength(with isWifi: Bool) -> Int {
+        var strength = 0
+        if iPhoneXLater {
+            guard let statusbarDic: AnyObject = UIApplication.shared.value(forKeyPath: "statusBar") as AnyObject? else {
+                return 0
+            }
+            guard let statusBarView: AnyObject = statusbarDic.value(forKeyPath: "statusBar") as AnyObject? else {
+                return 0
+            }
+            guard let foregroundView = statusBarView.value(forKeyPath: "foregroundView") as? UIView else {
+                return 0
+            }
+            guard let wifiSignalViewClass = NSClassFromString("_UIStatusBarWifiSignalView") else {
+                return 0
+            }
+            guard let signalStringViewClass = NSClassFromString("_UIStatusBarStringView") else {
+                return 0
+            }
+            let subviews = foregroundView.subviews[2].subviews
+            for subview in subviews {
+                if subview.isKind(of: wifiSignalViewClass.self) && isWifi {
+                    guard let numberBars = subview.value(forKeyPath: "numberOfActiveBars") as? NSNumber else {
+                        return 0
+                    }
+                    strength = numberBars.intValue
+                    break
+                }
+                if subview.isKind(of: signalStringViewClass.self) && !isWifi {
+                    guard let numberBars = subview.value(forKeyPath: "numberOfActiveBars") as? NSNumber else {
+                        return 0
+                    }
+                    strength = numberBars.intValue
+                    break
+                }
+            }
+        } else {
+            guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBar") as? UIView else {
+                return 0
+            }
+            guard let foregroundView = statusBar.value(forKeyPath: "foregroundView") as? UIView else {
+                return 0
+            }
+            guard let wifiSignalViewClass = NSClassFromString("UIStatusBarDataNetworkItemView") else {
+                return 0
+            }
+            guard let signalStringViewClass = NSClassFromString("UIStatusBarDataNetworkItemView") else {
+                return 0
+            }
+            let subviews = foregroundView.subviews
+            for subview in subviews {
+                if subview.isKind(of: wifiSignalViewClass.self) && isReachableOnEthernetOrWiFi && isReachable && isWifi {
+                    guard let numberBars = subview.value(forKeyPath: "_wifiStrengthBars") as? NSNumber else {
+                        return 0
+                    }
+                    strength = numberBars.intValue
+                    break
+                }
+                if subview.isKind(of: signalStringViewClass.self) && isReachableOnWWAN && isReachable && isWifi {
+                    guard let numberBars = subview.value(forKeyPath: "dataNetworkType") as? NSNumber else {
+                        return 0
+                    }
+                    strength = numberBars.intValue
+                    break
+                }
+            }
+        }
+        return strength
+    }
 
 }
 

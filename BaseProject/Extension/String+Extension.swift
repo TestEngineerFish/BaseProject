@@ -9,15 +9,9 @@
 import UIKit
 import CommonCrypto
 
-/**
- *  IconFont
- */
 public extension String {
-    public static func iconfont(iconfont: Iconfont) -> String? {
-        return "\\u{" + iconfont.rawValue + "}"
-    }
     
-    public static func stringWithUTFCharacter(UTFCharacter: UTF32Char) -> String {
+    static func stringWithUTFCharacter(UTFCharacter: UTF32Char) -> String {
         if (UTFCharacter & 0xFFFF0000) != 0 {
             return stringWithUTF32Char(char32: UTFCharacter)
         } else {
@@ -25,7 +19,7 @@ public extension String {
         }
     }
     
-    public static func stringWithUTF32Char(char32: UTF32Char) -> String {
+    static func stringWithUTF32Char(char32: UTF32Char) -> String {
         var char32 = char32
         char32 -= 0x10000
         var highSurrogate:UniChar = UniChar(char32 >> 10)
@@ -36,32 +30,31 @@ public extension String {
         return String(utf16CodeUnits: [highSurrogate, lowSurrogate] as! [unichar], count: 2)
     }
     
-    public static func stringWithUTF16Char(char16: UTF16Char) -> String {
+    static func stringWithUTF16Char(char16: UTF16Char) -> String {
         return String(utf16CodeUnits: [char16], count: 1)
     }
-    
 }
 
 //MARK: -
 public extension String {
     
-    public var trimed: String {
+    var trimed: String {
         return trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
     
-    public var isEmpty: Bool {
+    var isEmpty: Bool {
         return 0 == trimed.count
     }
     
-    public var isNotEmpty: Bool {
+    var isNotEmpty: Bool {
         return trimed.count > 0
     }
     
-    public subscript (rang: Range<Index>) -> String {
+    subscript (rang: Range<Index>) -> String {
         return String(self[rang])
     }
     
-    public func substring(fromIndex minIndex: Int, toIndex maxIndex: Int) -> String {
+    func substring(fromIndex minIndex: Int, toIndex maxIndex: Int) -> String {
         let start = index(startIndex, offsetBy: minIndex)
         let end = index(startIndex, offsetBy: maxIndex, limitedBy: endIndex)
         
@@ -69,17 +62,17 @@ public extension String {
         return String(self[rang])
     }
     
-    public func substring(fromIndex minIndex: Int) -> String {
+    func substring(fromIndex minIndex: Int) -> String {
         let start = index(startIndex, offsetBy: minIndex)
         return String(self[start...])
     }
     
-    public func substring(toIndex maxIndex: Int) -> String {
+    func substring(toIndex maxIndex: Int) -> String {
         return substring(fromIndex: 0, toIndex: maxIndex)
     }
     
     /** 获取安全的子字符串 */
-    public func safeSubstring(toIndex index: Int) -> String {
+    func safeSubstring(toIndex index: Int) -> String {
         var index = index
         if index >= self.count {
             index = self.count - 1
