@@ -15,13 +15,17 @@ class ViewController: UIViewController {
         self.view.backgroundColor = UIColor.gray
     }
 
+    @objc func reachabilityChanged(_ note:Notification) {
+        print(note)
+    }
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        let value = UserDefaults(suiteName: "name")
+        let value = UIDevice.telephonyNetworkInfo
+        /*
         let vc = BClass()
         self.navigationController?.pushViewController(vc, animated: true)
 
-        /*
         self.fetchQuestionList { (model, error: String?) in
             if let _error = error {
                 self.view.toast(_error)

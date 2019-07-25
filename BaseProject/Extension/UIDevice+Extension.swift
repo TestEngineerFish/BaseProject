@@ -11,6 +11,7 @@ import UIKit.UIDevice
 import SAMKeychain
 import CommonCrypto
 import AdSupport
+import CoreTelephony
 
 public extension UIDevice {
 
@@ -42,12 +43,14 @@ public extension UIDevice {
         return ASIdentifierManager.shared().advertisingIdentifier.uuidString
     }()
 
-    /// - summary: 获取供应商标识符
+    /// 获取供应商标识符
     /// IDFV（Identifier For Vendor）
-    /** -
-     IDFV是给Vendor标识用户用的，每个设备在所属同一个Vendor的应用里，都有相同的值。其中的Vendor是指应用提供商，准确的说，是通过BundleID的反转的前两部分进行匹配，如果相同就是同一个Vendor，例如对于com.abc.app1, com.abc.app2 这两个BundleID来说，就属于同一个Vendor，共享同一个IDFV的值。当然，对于同一个设备不同Vendor的话，获取到的值是不同的。和IDFA不同的是，IDFV的值是一定能取到的。它是iOS 6中新增的
-     但是使用IDFV也会存在一些问题。如果用户将属于此Vendor的所有App卸载，则IDFV的值会被重置，即再重装此Vendor的App，IDFV的值也会和之前的不同。
-     */
+    /// - note: IDFV是给Vendor标识用户用的，每个设备在所属同一个Vendor的应用里，都有相同的值。
+    /// 其中的Vendor是指应用提供商，准确的说，是通过BundleID的反转的前两部分进行匹配.
+    /// 如果相同就是同一个Vendor，例如对于com.abc.app1, com.abc.app2 这两个BundleID来说，就属于同一个Vendor，共享同一个IDFV的值。
+    /// 当然，对于同一个设备不同Vendor的话，获取到的值是不同的。
+    /// 和IDFA不同的是，IDFV的值是一定能取到的。它是iOS 6中新增的
+    /// 但是使用IDFV也会存在一些问题。如果用户将属于此Vendor的所有App卸载，则IDFV的值会被重置，即再重装此Vendor的App，IDFV的值也会和之前的不同。
     static let IDFV: String? = {
         guard let uuid = UIDevice.current.identifierForVendor else {
             return nil
@@ -60,7 +63,7 @@ public extension UIDevice {
     /// 获取方法: UUID().uuidString
     /// 每次获取都不一样.建议存储
 
-    //openUDID
+    /// openUDID
     /// 设备唯一描述标识符
     /// UDID（Unique Device Identifier Description)
     /// 5.0之后已被苹果禁止获取
@@ -86,4 +89,44 @@ public extension UIDevice {
 
         return udid
     }()
+
+    /// 获取运营商信息
+    static let telephonyNetworkInfo: TelephonyNetworkInfoModel? = {
+        let info = CTTelephonyNetworkInfo()
+        var model: TelephonyNetworkInfoModel?
+        if #available(iOS 12, *) {
+            let carrierDic = info.serviceSubscriberCellularProviders
+            guard let carrier = carrierDic?["0000000100000001"] else {
+                return model
+            }
+            model = TelephonyNetworkInfoModel(info: carrier)
+        } else {
+            let carrierOptional = info.subscriberCellularProvider
+            guard let carrier = carrierOptional else {
+                return model
+            }
+            model = TelephonyNetworkInfoModel(info: carrier)
+        }
+        return model
+    }()
+
+
+
+}
+
+/// 设备运营商信息
+public struct TelephonyNetworkInfoModel {
+    var carrierName: String?
+    var mobileCountryCode: String?
+    var mobileNetworkCode: String?
+    var isoCountryCode: String?
+    var allowsVOIP = false
+
+    init(info: CTCarrier) {
+        carrierName       = info.carrierName
+        mobileCountryCode = info.mobileCountryCode
+        mobileNetworkCode = info.mobileNetworkCode
+        isoCountryCode    = info.isoCountryCode
+        allowsVOIP        = info.allowsVOIP
+    }
 }

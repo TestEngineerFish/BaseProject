@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		221F5C4A22E95B4000F9355C /* AppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */; };
 		22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22413E3122E83E2100F2C678 /* DeviceInfoGlobal.swift */; };
 		22413E3422E8400900F2C678 /* NotificationNameGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22413E3322E8400900F2C678 /* NotificationNameGlobal.swift */; };
 		22C621B822DC805600A7C849 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B722DC805600A7C849 /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Extension.swift"; sourceTree = "<group>"; };
 		22413E3122E83E2100F2C678 /* DeviceInfoGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoGlobal.swift; sourceTree = "<group>"; };
 		22413E3322E8400900F2C678 /* NotificationNameGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameGlobal.swift; sourceTree = "<group>"; };
 		22C621B422DC805600A7C849 /* BaseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +180,7 @@
 				CF8EB5A122DCD0DC00EC2FE5 /* UIViewController+Extension.swift */,
 				CF8EB5A522DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift */,
 				22C6221C22DF120900A7C849 /* Error+Extension.swift */,
+				221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				CF8EB59C22DCCEBC00EC2FE5 /* IconFontString.swift in Sources */,
 				CF8EB57F22DCC7C700EC2FE5 /* Double+Extension.swift in Sources */,
 				CF8EB5A222DCD0DC00EC2FE5 /* UIViewController+Extension.swift in Sources */,
+				221F5C4A22E95B4000F9355C /* AppDelegate+Extension.swift in Sources */,
 				CF8EB5A622DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift in Sources */,
 				22C6221B22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift in Sources */,
 				CF8EB5A822DCD22800EC2FE5 /* YYCustomNavigationBar.swift in Sources */,

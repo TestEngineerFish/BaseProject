@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import Alamofire
+
+
+// MARK: 常量
+public let UQID_KEY = "Sam_UQID_KEY"
 
 // MARK: ---尺寸相关---
 /// 屏幕宽
@@ -53,6 +58,37 @@ public var kSafeBottomMargin:CGFloat {
     }
 }
 
+// MARK: ---文件存储路径或目录---
+/// 存储总目录路径
+public var kPathForMainStorageLocation: String {
+    get {
+        return NSHomeDirectory() + "/Documents"
+    }
+}
+
+// MARK: ---网络相关---
+/// 是否有网络
+public var isReachable: Bool {
+    get {
+        return NetworkReachabilityManager()?.isReachable ?? false
+    }
+}
+
+/// 是否是蜂窝网络,WWAN网络
+/// WWAN（Wireless Wide Area Network，无线广域网）
+public var isReachableOnWWAN: Bool {
+    get {
+        return NetworkReachabilityManager()?.isReachableOnWWAN ?? false
+    }
+}
+
+/// 是否是Wifi或者以太网网络
+public var isReachableOnEthernetOrWiFi: Bool {
+    get {
+        return NetworkReachabilityManager()?.isReachableOnEthernetOrWiFi ?? false
+    }
+}
+
 // MARK: ---其他---
 /// 当前Window
 public var kWindow: UIWindow {
@@ -82,14 +118,3 @@ public var isSimulator: Bool {
         return isSim
     }
 }
-
-// MARK: ---文件存储路径或目录---
-/// 存储总目录路径
-public var kPathForMainStorageLocation: String {
-    get {
-        return NSHomeDirectory() + "/Documents"
-    }
-}
-
-// MARK: 常量
-public let UQID_KEY = "Sam_UQID_KEY"

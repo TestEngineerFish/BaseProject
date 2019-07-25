@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,8 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var navController: Nav?
 
+    let networkManager = NetworkReachabilityManager()
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        self.monitorNetWork()
         window = UIWindow(frame: UIScreen.main.bounds)
         let vc = ViewController()
         self.navController = Nav(rootViewController: vc)
