@@ -182,6 +182,9 @@ public extension UIDevice {
         return strength
     }
 
+    /// 获取电池信息
+    /// 获取设备IP地址
+
 }
 
 /// 设备运营商信息
