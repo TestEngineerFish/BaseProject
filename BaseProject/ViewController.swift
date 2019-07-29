@@ -10,36 +10,25 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var showView = UIView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.gray
-    }
-
-    @objc func reachabilityChanged(_ note:Notification) {
-        print(note)
+        self.view.backgroundColor = UIColor.white
+        self.showView.frame = CGRect(origin: CGPoint.zero, size: CGSize.zero)
+        self.showView.center = self.view.center
+        self.showView.backgroundColor = UIColor.red
+        self.view.addSubview(self.showView)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-//        UserDefaults.standard.archive(object: 99, forkey: "name")
-//        let name = UserDefaults.standard.unarchivedObject(forkey: "name")
-//        print(name)
-//        UserDefaults.standard.hasKey("name")
-//        UserDefaults.standard.hasKey("age")
-        print(UIDevice.signalStrength(with: true))
-        print(UIDevice.signalStrength(with: false))
-        /*
-        let vc = BClass()
-        self.navigationController?.pushViewController(vc, animated: true)
-
-        self.fetchQuestionList { (model, error: String?) in
-            if let _error = error {
-                self.view.toast(_error)
-                return
-            }
-            self.view.toast("Successed")
+        UIView.animate(withDuration: 2.0) {
+            self.showView.size = CGSize(width: 100, height: 100)
+            self.showView.layer.configPathShadow(opacity: 1.0, shadowRadius: 10, cornerRadius: 50)
+            self.showView.layer.bezierPathBorder(.white, width: 5)
         }
-        */
+
     }
 
     // 求介绍 - 问题列表

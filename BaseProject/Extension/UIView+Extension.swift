@@ -148,53 +148,6 @@ public extension UIView {
     }
 }
 
-// MARK: CAShapeLayer + UIBezierPath
-extension UIView {
-
-    /// 有可能图形用在复用的Cell或者Item上,所以定义一个name
-    fileprivate var bezierPathIdentifier:String { return "bezierPathBorderLayer" }
-
-    /// 查找View是否包含有已创建的CAShapeLayer
-    fileprivate var bezierPathBorder:CAShapeLayer? {
-        return (self.layer.sublayers?.filter({ (layer) -> Bool in
-            return layer.name == self.bezierPathIdentifier && (layer as? CAShapeLayer) != nil
-        }) as? [CAShapeLayer])?.first
-    }
-
-    /// 以当前View边框为path,创建一个CAShapeLayer,添加到Layer层中
-    func bezierPathBorder(_ color:UIColor = .white, width:CGFloat = 1) {
-        // 设置遮罩层形状与最终结果一致,保证显示的视图不会超过mask范围(其实可有可无,因为之后的代码保证了图层背景色透明,且)
-        let path = UIBezierPath(roundedRect: self.bounds, cornerRadius:self.layer.cornerRadius)
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        self.layer.mask = mask
-        self.layer.masksToBounds = true
-
-        var border = self.bezierPathBorder
-        if (border == nil) {
-            border = CAShapeLayer()
-            border!.name = self.bezierPathIdentifier
-            self.layer.addSublayer(border!)
-        }
-        
-        border!.frame = self.bounds
-        let pathUsingCorrectInsetIfAny =
-            UIBezierPath(roundedRect: border!.bounds, cornerRadius:self.layer.cornerRadius)
-        
-        border!.path = pathUsingCorrectInsetIfAny.cgPath
-        border!.fillColor = UIColor.clear.cgColor
-        border!.strokeColor = color.cgColor
-        border!.lineWidth = width
-        
-    }
-
-    /// 移除当前View已存在的CAShapeLayer和mask遮罩层
-    func removeBezierPathBorder() {
-        self.layer.mask = nil
-        self.bezierPathBorder?.removeFromSuperlayer()
-    }
-}
-
 extension UIView {
     
     /** 移除父视图中的所有子视图 */
@@ -205,40 +158,7 @@ extension UIView {
     }
 }
 
-
 extension UIView {
-    
-    /// 设置阴影
-    public func configPathShadow(opacity: Float, radius: CGFloat, offset: CGSize, shadowColor: UIColor) {
-        self.layer.shadowColor   = shadowColor.cgColor
-        self.layer.shadowOffset  = offset
-        self.layer.shadowOpacity = opacity //0.8，默认0，阴影透明度
-        self.layer.shadowRadius  = radius  //8，阴影半径，默认3
-        self.layer.cornerRadius  = radius  //切圆角
-        
-        // 路径阴影
-        // 宽高必须为 屏幕/self的宽高定，不能使用设置控件的bounds
-        let width  = self.bounds.width - 30 //shadowV.bounds.width
-        let height = self.bounds.height - 40 //shadowV.bounds.size.height
-        let x      = self.bounds.origin.x
-        let y      = self.bounds.origin.y
-        
-        let topLeft     = self.origin
-        let topRight    = CGPoint.init(x: x + width, y: y)
-        let bottomRight = CGPoint.init(x: x + width, y: y + height)
-        let bottomLeft  = CGPoint.init(x: x, y: y + height)
-        
-        let offset: CGFloat = 0.0
-        let path = UIBezierPath()
-        path.move(to: CGPoint.init(x: topLeft.x - offset, y: topLeft.y - offset))
-        path.addLine(to: CGPoint.init(x: topRight.x + offset, y: topRight.y - offset))
-        path.addLine(to: CGPoint.init(x: bottomRight.x + offset, y: bottomRight.y + offset))
-        path.addLine(to: CGPoint.init(x: bottomLeft.x - offset, y: bottomLeft.y + offset))
-        path.addLine(to: CGPoint.init(x: topLeft.x - offset, y: topLeft.y - offset))
-        
-        //设置阴影路径
-        self.layer.shadowPath = path.cgPath
-    }
     
     /** 裁剪 view 的圆角 */
     public func clipRectCorner(direction: UIRectCorner, cornerRadius: CGFloat) {
