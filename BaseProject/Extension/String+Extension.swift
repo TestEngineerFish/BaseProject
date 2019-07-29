@@ -35,49 +35,56 @@ public extension String {
     }
 }
 
-//MARK: -
 public extension String {
     
+    /// 祛除字符串前后空格
     var trimed: String {
         return trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
     
+    /// 是否为空(仅有空格也属于空)
     var isEmpty: Bool {
-        return 0 == trimed.count
+        return trimed.count == 0
     }
     
+    /// 是否不为空
     var isNotEmpty: Bool {
         return trimed.count > 0
     }
     
-    subscript (rang: Range<Index>) -> String {
-        return String(self[rang])
-    }
-    
+    /// 获取指定范围的内容
     func substring(fromIndex minIndex: Int, toIndex maxIndex: Int) -> String {
         let start = index(startIndex, offsetBy: minIndex)
         let end = index(startIndex, offsetBy: maxIndex, limitedBy: endIndex)
         
-        let rang = start ..< end!
-        return String(self[rang])
+        let range = start ..< end!
+        return String(self[range])
     }
     
-    func substring(fromIndex minIndex: Int) -> String {
-        let start = index(startIndex, offsetBy: minIndex)
+    /// 获取指定长度的内容
+    func substring(fromIndex from: Int, length: Int) -> String {
+        let start = index(startIndex, offsetBy: from)
+        let end = index(start, offsetBy: length)
+        
+        let range = start ..< end
+        return String(self[range])
+    }
+    
+    /// 获取指定索引之后的内容
+    /// - parameter minIndex: 指定的索引位置
+    func substring(minIndex min: Int) -> String {
+        let start = index(startIndex, offsetBy: min)
         return String(self[start...])
     }
     
-    func substring(toIndex maxIndex: Int) -> String {
-        return substring(fromIndex: 0, toIndex: maxIndex)
-    }
-    
-    /** 获取安全的子字符串 */
-    func safeSubstring(toIndex index: Int) -> String {
-        var index = index
+    /// 获取指定索引之前的内容
+    /// - parameter maxIndex: 指定的索引位置
+    func substring(maxIndex max: Int) -> String {
+        var index = max
         if index >= self.count {
             index = self.count - 1
         }
-        return substring(toIndex: index)
+        return substring(fromIndex: 0, toIndex: max)
     }
     
     /** 是否为整数字 */
