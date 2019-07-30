@@ -87,36 +87,73 @@ public extension String {
         return substring(fromIndex: 0, toIndex: max)
     }
     
-    /** 是否为整数字 */
-    func isNumber() -> Bool {
-        let scan: Scanner = Scanner(string: self)
+    /// 是否是Double类型
+    func isDouble() -> Bool {
+        let scan = Scanner(string: self)
+        var val:Double = 0.0
+        // 扫描的内容符合Double格式内容,并且已扫描到内容的末尾
+        return scan.scanDouble(&val) && scan.isAtEnd
+    }
+
+    /// 是否是Float类型
+    func isFloat() -> Bool {
+        let scan = Scanner(string: self)
+        var val:Float = 0.0
+        // 扫描的内容符合Float格式内容,并且已扫描到内容的末尾
+        return scan.scanFloat(&val) && scan.isAtEnd
+    }
+
+    /// 是否是Int类型
+    func isInt() -> Bool {
+        let scan = Scanner(string: self)
         var val:Int = 0
+        // 扫描的内容符合Int格式内容,并且已扫描到内容的末尾
         return scan.scanInt(&val) && scan.isAtEnd
     }
     
-    /** 是否包括英文字符 */
+    /// 是否包含英文字符,仅限:[A-Za-z]
+    ///
+    /// 也可用于匹配密码是否符合要求,可通过符合条件的count来做比较(数字+英文的可结合isContainNumber()函数)
     func isContainLetter() -> Bool {
-        guard self.count > 0 else {
-            return false
+        var result = false
+        do {
+            let regular = try NSRegularExpression(pattern: "[A-Za-z]", options: NSRegularExpression.Options.caseInsensitive)
+            let count = regular.numberOfMatches(in: self, options: NSRegularExpression.MatchingOptions.reportProgress, range: NSRange(location: 0, length: self.count))
+            result = count > 0
+        } catch {
+            print("Regular expression error!!")
         }
-        
-        for i in 0 ... self.count - 1 {
-            let c: unichar = (self as NSString).character(at: i)
-            if (c >= 0x4E00) { return true }
+        return result
+    }
+
+    /// 是否包含英文字符,仅限:[A-Za-z]
+    ///
+    /// 也可用于匹配密码是否符合要求,可通过符合条件的count来做比较(数字+英文的可结合isContainLetter()函数)
+    func isContainNumber() -> Bool {
+        var result = false
+        do {
+            let regular = try NSRegularExpression(pattern: "[0-9]", options: NSRegularExpression.Options.caseInsensitive)
+            let count = regular.numberOfMatches(in: self, options: NSRegularExpression.MatchingOptions.reportProgress, range: NSRange(location: 0, length: self.count))
+            result = count > 0
+        } catch {
+            print("Regular expression error!!")
         }
-        
-        return false
+        return result
     }
     
-    /** 根据字符串的组成计算字符所占位数 */
+    /// 获取字符占位数
+    ///
+    /// 英文(半角)字符占位: 1
+    ///
+    /// 中文(全角)字符占位: 2
+    ///
+    /// 表情占位: 3
     func numberOfChars() -> Int {
         var number = 0
-        
         guard self.count > 0 else {
-            return 0
+            return number
         }
-        
-        for i in 0 ... self.count - 1 {
+        for i in 0..<self.count {
             let c: unichar = (self as NSString).character(at: i)
             if (c >= 0x4E00) {
                 number += 2
@@ -124,12 +161,7 @@ public extension String {
                 number += 1
             }
         }
-        
         return number
-    }
-    
-    func isEqualToString(find: String) -> Bool {
-        return String(format: self) == find
     }
 }
 
