@@ -37,7 +37,7 @@ public extension String {
 
 public extension String {
     
-    /// 祛除字符串前后空格
+    /// 去除字符串前后空格
     var trimed: String {
         return trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
@@ -87,6 +87,11 @@ public extension String {
         return substring(fromIndex: 0, toIndex: max)
     }
     
+    /// 获取Bool值
+    var boolValue: Bool {
+        return NSString(string: self).boolValue
+    }
+    
     /// 是否是Double类型
     func isDouble() -> Bool {
         let scan = Scanner(string: self)
@@ -94,7 +99,7 @@ public extension String {
         // 扫描的内容符合Double格式内容,并且已扫描到内容的末尾
         return scan.scanDouble(&val) && scan.isAtEnd
     }
-
+    
     /// 是否是Float类型
     func isFloat() -> Bool {
         let scan = Scanner(string: self)
@@ -102,7 +107,7 @@ public extension String {
         // 扫描的内容符合Float格式内容,并且已扫描到内容的末尾
         return scan.scanFloat(&val) && scan.isAtEnd
     }
-
+    
     /// 是否是Int类型
     func isInt() -> Bool {
         let scan = Scanner(string: self)
@@ -125,7 +130,7 @@ public extension String {
         }
         return result
     }
-
+    
     /// 是否包含英文字符,仅限:[A-Za-z]
     ///
     /// 也可用于匹配密码是否符合要求,可通过符合条件的count来做比较(数字+英文的可结合isContainLetter()函数)
@@ -165,73 +170,66 @@ public extension String {
     }
 }
 
-extension String {
-    var boolValue: Bool {
-        return NSString(string: self).boolValue
-    }
-}
-
 
 //MARK: -
 public extension String {
     
+    /// 根据字体和画布宽度,计算文字在画布上的Size
+    /// - parameter font: 字体大小
+    /// - parameter width: 限制的宽度
     func layoutSize(font: UIFont, preferredMaxLayoutWidth width: CGFloat = kScreenWidth) -> CGSize {
-        let str: NSString = self as NSString
-        return str.boundingRect(
+        let str = self as NSString
+        let size = str.boundingRect(
             with: CGSize(width: width, height: CGFloat.greatestFiniteMagnitude),
             options: [.usesLineFragmentOrigin, .usesFontLeading, .truncatesLastVisibleLine],
             attributes: [.font: font],
             context: nil
             ).size
+        return size
     }
     
-    /**
-     * 获取字符串宽度
-     * @param font 字体
-     * @param height 行高
-     */
+    /// 根据字体和画布高度,计算文字在画布上的宽度
+    /// - parameter font: 字体
+    /// - parameter height: 限制的高度
     func textWidth(font: UIFont, height: CGFloat) -> CGFloat {
         let rect = NSString(string: self).boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height: height), options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
         return ceil(rect.width)
     }
     
-    /**
-     * 获取字符串高度
-     * @param font 字体
-     * @param width 行宽
-     */
+    /// 根据字体和画布宽度,计算文字在画布上的高度
+    /// - parameter font: 字体
+    /// - parameter width: 限制的宽度
     func textHeight(font: UIFont, width: CGFloat) -> CGFloat {
         let rect = NSString(string: self).boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
         return ceil(rect.height)
     }
     
-}
-
-@objc public extension NSString {
-    
-    @objc func regularPattern(_ keys: [String]) -> String? {
-        if keys.count > 0 {
-            return String(format: "%@", keys.joined(separator: "|"))
-        }
-        
-        return nil
+    /// 将数组各个内容结合给定字符拼接后返回
+    /// - parameter keys: 字符串数组
+    /// - parameter separator: 需要拼接的字符
+    func regularPattern(_ keys: [String], separator: String) -> String {
+        return String(format: "%@", keys.joined(separator: separator))
     }
     
-    @objc func rangRegularPattern(_ keys: [String]) -> [NSValue]? {
-        if keys.count > 0 && self.length > 0 {
-            var _rangRegularPatterns: [NSValue] = []
+    /// 查询数组中有哪些key,被包含在当前字符中
+    /// - parameter keys: 需要查找的字符串数组
+    /// - returns: 返回符合的key和范围
+    ///
+    /// 符合的范围可通过NSValue的rangeValue属性.来获取具体的Range值
+    func rangeRegularPattern(_ keys: [String]) -> [(String,NSValue)] {
+        let templetStr = self as NSString
+        var resultList: [(String,NSValue)] = []
+        if templetStr.length > 0 {
             for value in keys {
-                let _strRange = self.range(of: value)
-                if _strRange.location != NSNotFound {
-                    _rangRegularPatterns.append(NSValue(range: _strRange))
+                let includeRange = templetStr.range(of: value)
+                if includeRange.location != NSNotFound {
+                    resultList.append((value,NSValue(range: includeRange)))
                 }
             }
-            
-            return _rangRegularPatterns
         }
-        
-        return nil
+        return resultList
     }
+    
 }
 
 extension String {
