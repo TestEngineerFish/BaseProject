@@ -229,18 +229,100 @@ public extension String {
         }
         return resultList
     }
-    
 }
 
 extension String {
-    func sha1() -> String {
-        let data = self.data(using: String.Encoding.utf8)!
-        var digest = [UInt8](repeating: 0, count:Int(CC_SHA1_DIGEST_LENGTH))
-        data.withUnsafeBytes {
-            _ = CC_SHA1($0, CC_LONG(data.count), &digest)
+
+    /// 获取MD5值
+    func md5() -> String {
+        let hash         = NSMutableString()
+        let str          = self.cString(using: String.Encoding.utf8)
+        let strLength    = CUnsignedInt(self.lengthOfBytes(using: String.Encoding.utf8))
+        let digestLength = Int(CC_MD5_DIGEST_LENGTH)
+        let result       = UnsafeMutablePointer<UInt8>.allocate(capacity: 16)
+
+        CC_MD5(str!, strLength, result)
+        for i in 0..<digestLength {
+            hash.appendFormat("%02x", result[i])
         }
-        let hexBytes = digest.map { String(format: "%02hhx", $0) }
-        return hexBytes.joined()
+        free(result)
+        return hash as String
+    }
+
+    /// Base64 - 编码
+    func base64Encoding() -> String {
+        let data = self.data(using: String.Encoding.utf8)
+        let encodeStr = data?.base64EncodedString(options: Data.Base64EncodingOptions.init(rawValue: 0))
+        return encodeStr ?? ""
+    }
+
+    /// Base64 - 解码
+    func base64Decoding() -> String {
+        let data = Data(base64Encoded: self, options: Data.Base64DecodingOptions.init(rawValue: 0)) ?? Data()
+        let decodeStr = String(data: data, encoding: String.Encoding.utf8)
+        return decodeStr ?? ""
+    }
+
+    /// HASH 散列算法
+    ///
+    /// 支持 MD5 SHA1 SHA224 SHA256 SHA384 SHA512
+    /// HMAC (Hash-based Message Authentication Code) 常用于接口签名验证
+    /// - parameter algorithm: 需要加密的方式
+    /// - parameter key: 用作加密的密钥
+    /// - returns: 返回加密之后的32位字符串
+    func hmac(algorithm: HMACAlgorithm, key: String) -> String {
+        let cKey = key.cString(using: String.Encoding.utf8)
+        let cData = self.cString(using: String.Encoding.utf8)
+        var result = [CUnsignedChar](repeating: 0, count: algorithm.digestLength())
+        CCHmac(algorithm.toCCHmacAlgorithm(), cKey, strlen(cKey!), cData, strlen(cData!), &result)
+        let hmacData = Data(bytes: result, count: algorithm.digestLength())
+        let hmacBase64 = hmacData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength76Characters)
+        return hmacBase64
+    }
+}
+
+enum HMACAlgorithm {
+
+    case SHA1, MD5, SHA224, SHA256, SHA384, SHA512
+
+    /// 获取对应算法摘要值
+    func toCCHmacAlgorithm() -> CCHmacAlgorithm {
+        var result: Int = 0
+        switch self {
+        case .SHA1:
+            result = kCCHmacAlgSHA1
+        case .MD5:
+            result = kCCHmacAlgMD5
+        case .SHA224:
+            result = kCCHmacAlgSHA224
+        case .SHA256:
+            result = kCCHmacAlgSHA256
+        case .SHA384:
+            result = kCCHmacAlgSHA384
+        case .SHA512:
+            result = kCCHmacAlgSHA512
+        }
+        return CCHmacAlgorithm(result)
+    }
+
+    /// 获取对应算法摘要长度
+    func digestLength() -> Int {
+        var result: CInt = 0
+        switch self {
+        case .SHA1:
+            result = CC_SHA1_DIGEST_LENGTH   //20
+        case .MD5:
+            result = CC_MD5_DIGEST_LENGTH    //16
+        case .SHA224:
+            result = CC_SHA224_DIGEST_LENGTH //28
+        case .SHA256:
+            result = CC_SHA256_DIGEST_LENGTH //32
+        case .SHA384:
+            result = CC_SHA384_DIGEST_LENGTH //48
+        case .SHA512:
+            result = CC_SHA512_DIGEST_LENGTH //64
+        }
+        return Int(result)
     }
 }
 
