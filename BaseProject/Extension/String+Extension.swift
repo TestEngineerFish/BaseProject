@@ -49,7 +49,7 @@ public extension String {
     
     /// 是否不为空
     var isNotEmpty: Bool {
-        return trimed.count > 0
+        return !isEmpty
     }
     
     /// 获取指定范围的内容
@@ -233,6 +233,20 @@ public extension String {
 
 extension String {
 
+    /// Base64 - 编码
+    func base64Encoding() -> String {
+        let data = self.data(using: String.Encoding.utf8)
+        let encodeStr = data?.base64EncodedString(options: Data.Base64EncodingOptions.init(rawValue: 0))
+        return encodeStr ?? ""
+    }
+
+    /// Base64 - 解码
+    func base64Decoding() -> String {
+        let data = Data(base64Encoded: self, options: Data.Base64DecodingOptions.init(rawValue: 0)) ?? Data()
+        let decodeStr = String(data: data, encoding: String.Encoding.utf8)
+        return decodeStr ?? ""
+    }
+
     /// 获取MD5值
     func md5() -> String {
         let hash         = NSMutableString()
@@ -249,18 +263,17 @@ extension String {
         return hash as String
     }
 
-    /// Base64 - 编码
-    func base64Encoding() -> String {
+    /// 获取SHA1值
+    func sha1() -> String {
         let data = self.data(using: String.Encoding.utf8)
-        let encodeStr = data?.base64EncodedString(options: Data.Base64EncodingOptions.init(rawValue: 0))
-        return encodeStr ?? ""
-    }
-
-    /// Base64 - 解码
-    func base64Decoding() -> String {
-        let data = Data(base64Encoded: self, options: Data.Base64DecodingOptions.init(rawValue: 0)) ?? Data()
-        let decodeStr = String(data: data, encoding: String.Encoding.utf8)
-        return decodeStr ?? ""
+        var digest = [UInt8](repeating: 0, count: Int(CC_SHA1_DIGEST_LENGTH))
+        let newData = NSData(data: data!)
+        CC_SHA1(newData.bytes, CC_LONG(data!.count), &digest)
+        let output = NSMutableString(capacity: Int(CC_SHA1_DIGEST_LENGTH))
+        for byte in digest {
+            output.appendFormat("%02x", byte)
+        }
+        return output as String
     }
 
     /// HASH 散列算法
@@ -330,15 +343,26 @@ enum HMACAlgorithm {
  *  String/Json互转
  */
 extension String {
-    
-    func convertToDictionary() -> [AnyHashable : Any]? {
+
+    /// 转换Json格式的String到Diction类型,一般用于解析接口返回结果
+    ///
+    /// String必须包含{}这两个大括号,否则直接进入catch块,报错:The data couldn’t be read because it isn’t in the correct format.
+    ///
+    /// 遇到不存在的key,返回对象为nil
+    func convertToDictionary() -> [String : Any] {
+        var dict = [String:Any]()
         if let data = self.data(using: .utf8) {
             do {
-                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                guard let jsonDict = json as? [AnyHashable:Any], let dictTmp = jsonDict as? [String:Any] else {
+                    return dict
+                }
+                dict = dictTmp
+                return dict
             } catch {
                 print(error.localizedDescription)
             }
         }
-        return nil
+        return dict
     }
 }

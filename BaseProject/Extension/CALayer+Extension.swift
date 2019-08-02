@@ -15,7 +15,7 @@ extension CALayer {
     func configPathShadow(opacity: Float = 0.8, shadowRadius: CGFloat = 3.0, cornerRadius: CGFloat) {
 
         // 设置阴影Layer
-        let shadowLayer = CALayer()
+        let shadowLayer           = CALayer()
         shadowLayer.frame         = self.frame
         shadowLayer.shadowOpacity = opacity
         shadowLayer.shadowOffset  = CGSize.zero
@@ -39,17 +39,18 @@ extension CALayer {
         let offset: CGFloat = 20.0
 
         bezierPath.move(to: CGPoint(x: topLeft.x - offset, y: topLeft.y + cornerRadius))
-        bezierPath.addArc(withCenter: CGPoint(x: topLeft.x + cornerRadius, y: topLeft.y + cornerRadius), radius: (cornerRadius + offset), startAngle: CGFloat.pi, endAngle: CGFloat.pi/2*3, clockwise: true)
+        bezierPath.addArc(withCenter: CGPoint(x: topLeft.x + cornerRadius, y: topLeft.y + cornerRadius), radius: (cornerRadius + offset), startAngle: CGFloat.pi, endAngle: CGFloat.pi*1.5, clockwise: true)
+
         bezierPath.addLine(to: CGPoint(x: topRight.x - cornerRadius, y: topRight.y - offset))
+        bezierPath.addArc(withCenter: CGPoint(x: topRight.x - cornerRadius, y: topRight.y + cornerRadius), radius: (cornerRadius + offset), startAngle: CGFloat.pi*1.5, endAngle: CGFloat.pi*2, clockwise: true)
 
-        bezierPath.addArc(withCenter: CGPoint(x: topRight.x - cornerRadius, y: topRight.y + cornerRadius), radius: (cornerRadius + offset), startAngle: CGFloat.pi/2*3, endAngle: CGFloat.pi/2, clockwise: true)
         bezierPath.addLine(to: CGPoint(x: bottomRight.x + offset, y: bottomRight.y - cornerRadius))
-
         bezierPath.addArc(withCenter: CGPoint(x: bottomRight.x - cornerRadius, y: bottomRight.y - cornerRadius), radius: cornerRadius + offset, startAngle: 0, endAngle: CGFloat.pi/2, clockwise: true)
+
         bezierPath.addLine(to: CGPoint(x: bottomLeft.x + cornerRadius, y: bottomLeft.y + offset))
         bezierPath.addArc(withCenter: CGPoint(x: bottomLeft.x + cornerRadius, y: bottomLeft.y - cornerRadius), radius: (cornerRadius + offset), startAngle: CGFloat.pi/2, endAngle: CGFloat.pi, clockwise: true)
-        bezierPath.addLine(to: CGPoint(x: topLeft.x - offset, y: topLeft.y + cornerRadius))
 
+        bezierPath.addLine(to: CGPoint(x: topLeft.x - offset, y: topLeft.y + cornerRadius))
         shadowLayer.shadowPath = bezierPath.cgPath
 
         self.cornerRadius = cornerRadius
@@ -58,6 +59,7 @@ extension CALayer {
         self.rasterizationScale = UIScreen.main.scale
         self.superlayer?.insertSublayer(shadowLayer, below: self)
     }
+
 
     /// 有可能图形用在复用的Cell或者Item上,所以定义一个name
     fileprivate var bezierPathIdentifier:String { return "bezierPathBorderLayer" }
