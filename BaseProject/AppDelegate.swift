@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        self.monitorNetWork()
+        self.monitorNetWork() //添加网络监听
         window = UIWindow(frame: UIScreen.main.bounds)
         let vc = ViewController()
         self.navController = Nav(rootViewController: vc)

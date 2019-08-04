@@ -75,11 +75,6 @@ extension YYBaseRequest {
         var _header: [String : String] = self.header
         if headers != nil { _header = headers!}
         
-        let token: String? = UserDefaults.standard["user_token"] as? String
-        if token?.isEmpty ?? false {
-            _header["PYYX-SESSID"] = token
-        }
-        
         if let sessID = UserDefaults.standard.unarchivedObject(forkey: "YY-SESSID") as? String {
             _header["YY-SESSID"] = sessID
         }

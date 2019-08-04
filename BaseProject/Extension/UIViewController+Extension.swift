@@ -8,40 +8,9 @@
 
 import UIKit
 
-extension UINavigationController {
-    
-    public func findViewController<T: UIViewController>(with targetViewControllerClass: T.Type, offset: Int = 0) -> UIViewController? {
-        
-        var targetViewController: UIViewController?
-        
-        let viewControllers: [UIViewController] = self.viewControllers
-        if viewControllers.count == 0 {
-            return targetViewController
-        }
-        
-        for (index, viewController) in viewControllers.enumerated() where viewController.classForCoder == targetViewControllerClass {
-            var targetIndex: Int = index
-            if offset > 0 {
-                targetIndex = targetIndex + offset
-            }else if offset < 0 {
-                targetIndex = targetIndex - abs(offset)
-            }
-            
-            if targetIndex >= viewControllers.count || targetIndex < 0 {
-                break
-            }
-            
-            targetViewController = viewControllers[targetIndex]
-            break
-        }
-        
-        return targetViewController
-    }
-}
-
-// MARK: - 获取当前显示的ViewController
 extension UIViewController {
     
+    /// 查找目标ViewController
     public func findViewController<T: UIViewController>(with targetViewControllerClass: T.Type) -> T? {
         var currentResponder: UIResponder? = self.next
         while currentResponder != nil {
@@ -54,7 +23,8 @@ extension UIViewController {
         return nil
     }
     
-    @objc public static var currentNavgationController: UINavigationController? {
+    /// 当前的NavigationController
+    public static var currentNavigationController: UINavigationController? {
         let currentVController: UIViewController? = self.currentViewController
         var navgationController: UINavigationController? = currentVController?.navigationController
         var currentResponder: UIResponder? = currentVController?.next
@@ -65,11 +35,11 @@ extension UIViewController {
                 currentResponder = currentResponder?.next
             }
         }
-        
         return navgationController
     }
     
-    @objc public static var currentViewController: UIViewController? {
+    /// 当前的ViewController
+    public static var currentViewController: UIViewController? {
         var rootViewController: UIViewController?
         let textEffectsWindowClass: AnyClass? = NSClassFromString("UITextEffectsWindow")
         for window in UIApplication.shared.windows where !window.isHidden {
@@ -83,7 +53,10 @@ extension UIViewController {
         return self.topMost(of: rootViewController)
     }
     
-    @objc private static func topMost(of viewController: UIViewController?) -> UIViewController? {
+    /// 查找目标ViewController的根视图
+    ///
+    /// 当前视图可能是UITabBarController、UINavigationController、UIPageViewController或者普通ViewController
+    private static func topMost(of viewController: UIViewController?) -> UIViewController? {
         // presented view controller
         if let presentedViewController = viewController?.presentedViewController {
             return self.topMost(of: presentedViewController)

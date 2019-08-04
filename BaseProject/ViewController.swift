@@ -11,25 +11,36 @@ import UIKit
 class ViewController: UIViewController {
 
     var showView = UIView()
+    let button = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-        self.showView.frame = CGRect(origin: CGPoint.zero, size: CGSize.zero)
+        self.showView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 100, height: 100))
         self.showView.center = self.view.center
         self.showView.backgroundColor = UIColor.red
         self.view.addSubview(self.showView)
+        self.button.frame = CGRect(origin: CGPoint(x: self.view.centerX, y: self.view.height - 100), size: CGSize(width: 50, height: 30))
+        self.button.backgroundColor = UIColor.blue
+        self.button.setTitle("RESET", for: .normal)
+        self.button.setTitleColor(UIColor.white, for: .normal)
+        self.button.addTarget(self, action: #selector(reset), for: .touchUpInside)
+        self.view.addSubview(button)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        UIView.animate(withDuration: 2.0) {
-            self.showView.size = CGSize(width: 100, height: 100)
-            self.showView.layer.configPathShadow(opacity: 1.0, shadowRadius: 10, cornerRadius: 50)
-            self.showView.layer.bezierPathBorder(.white, width: 5)
-        }
-
+        self.button.frame = CGRect(x: 199, y: 199, width: 199, height: 199)
+        kWindow.addSubview(self.button)
     }
+    
+    @objc func reset() {
+        UIView.cleanTopWindow(anyClass: UIButton.self)
+//        UIView.animate(withDuration: 0.5) {
+//            self.showView.transform = CGAffineTransform.identity
+//        }
+    }
+    
 
     // 求介绍 - 问题列表
     func fetchQuestionList(_ completion: @escaping ((_ questionList:YYWantToKnowQuestionListModel?, _ errorMsg: String?) -> Void)){

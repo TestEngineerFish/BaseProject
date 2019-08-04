@@ -28,6 +28,8 @@
 		22C6221B22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6221A22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift */; };
 		22C6221D22DF120900A7C849 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6221C22DF120900A7C849 /* Error+Extension.swift */; };
 		7B212ACC1EB4CBADF5DD63D4 /* Pods_BaseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE0B51EBB89FBFB5A61CACA /* Pods_BaseProject.framework */; };
+		CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869522F6F5380031E4B9 /* UINavigationController+Extension.swift */; };
+		CF87869822F709C20031E4B9 /* AuthoriationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869722F709C20031E4B9 /* AuthoriationManager.swift */; };
 		CF8EB56422DCC05D00EC2FE5 /* SAMKeychain+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56322DCC05D00EC2FE5 /* SAMKeychain+Extension.swift */; };
 		CF8EB56622DCC09B00EC2FE5 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56522DCC09B00EC2FE5 /* Bundle+Extension.swift */; };
 		CF8EB56B22DCC45800EC2FE5 /* UserDefault+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56A22DCC45800EC2FE5 /* UserDefault+Extension.swift */; };
@@ -68,6 +70,8 @@
 		22C6221C22DF120900A7C849 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		62C207CFF7FD424CF4B3C8C3 /* Pods-BaseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.release.xcconfig"; path = "Target Support Files/Pods-BaseProject/Pods-BaseProject.release.xcconfig"; sourceTree = "<group>"; };
 		CF27E37F22DE279E0056ADFA /* BaseProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseProject-Bridging-Header.h"; sourceTree = "<group>"; };
+		CF87869522F6F5380031E4B9 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
+		CF87869722F709C20031E4B9 /* AuthoriationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthoriationManager.swift; path = BaseProject/Extension/AuthoriationManager.swift; sourceTree = SOURCE_ROOT; };
 		CF8EB56322DCC05D00EC2FE5 /* SAMKeychain+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SAMKeychain+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB56522DCC09B00EC2FE5 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB56A22DCC45800EC2FE5 /* UserDefault+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Extension.swift"; sourceTree = "<group>"; };
@@ -177,12 +181,13 @@
 				CF8EB58A22DCCCA600EC2FE5 /* UIFont+Extension.swift */,
 				CF8EB58C22DCCCFC00EC2FE5 /* String+Extension.swift */,
 				CF8EB59D22DCD04300EC2FE5 /* Date+Extension.swift */,
+				2211803222EEE47500B77911 /* CALayer+Extension.swift */,
 				CF8EB59F22DCD08A00EC2FE5 /* UIView+Extension.swift */,
 				CF8EB5A122DCD0DC00EC2FE5 /* UIViewController+Extension.swift */,
+				CF87869522F6F5380031E4B9 /* UINavigationController+Extension.swift */,
 				CF8EB5A522DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift */,
 				22C6221C22DF120900A7C849 /* Error+Extension.swift */,
 				221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */,
-				2211803222EEE47500B77911 /* CALayer+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 		22C621F822DC8E7600A7C849 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CF87869722F709C20031E4B9 /* AuthoriationManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -407,6 +413,7 @@
 				22C621BA22DC805600A7C849 /* ViewController.swift in Sources */,
 				22413E3422E8400900F2C678 /* NotificationNameGlobal.swift in Sources */,
 				22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */,
+				CF87869822F709C20031E4B9 /* AuthoriationManager.swift in Sources */,
 				22C621DD22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift in Sources */,
 				CF8EB58B22DCCCA600EC2FE5 /* UIFont+Extension.swift in Sources */,
 				22C621D422DC818E00A7C849 /* YYBaseResopnse.swift in Sources */,
@@ -420,6 +427,7 @@
 				22C621EE22DC8A7800A7C849 /* UIDevice+Extension.swift in Sources */,
 				22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */,
 				CF8EB59C22DCCEBC00EC2FE5 /* IconFontString.swift in Sources */,
+				CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */,
 				CF8EB5A222DCD0DC00EC2FE5 /* UIViewController+Extension.swift in Sources */,
 				221F5C4A22E95B4000F9355C /* AppDelegate+Extension.swift in Sources */,
 				CF8EB5A622DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift in Sources */,

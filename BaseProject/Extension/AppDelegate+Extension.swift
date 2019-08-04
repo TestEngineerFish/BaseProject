@@ -21,7 +21,7 @@ extension AppDelegate {
                 if type == .wwan {
                     print("手机网络")
                 } else if type == .ethernetOrWiFi {
-                    print("wifi网络")
+                    print("WI-FI网络")
                 }
             }
         }

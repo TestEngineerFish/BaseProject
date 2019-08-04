@@ -149,7 +149,7 @@ extension YYCustomNavigationBar {
         rightFirstButton.removeTarget(self, action: #selector(rightButtonDidClick), for: .touchUpInside)
         rightSecondButton.removeTarget(self, action: #selector(rightSecondButtonDidClick), for: .touchUpInside)
         
-        UIViewController.currentNavgationController?.popViewController(animated: true)
+        UIViewController.currentNavigationController?.popViewController(animated: true)
     }
     
     @objc fileprivate func rightButtonDidClick() {
@@ -246,7 +246,7 @@ extension YYCustomNavigationBar {
     }
     
     private var currentNavigationController: UINavigationController? {
-        return self.currentViewController?.navigationController
+        return UIViewController.currentViewController?.navigationController
     }
 }
 

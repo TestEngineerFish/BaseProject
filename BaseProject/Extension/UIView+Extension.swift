@@ -261,7 +261,7 @@ extension UIView {
     
     /// 设置渐变色
     /// - parameter colors: 渐变颜色数组
-    /// - parameter location: 逐个对应渐变色的数组,设置颜色的渐变占比,nil则默认平均分配
+    /// - parameter locations: 逐个对应渐变色的数组,设置颜色的渐变占比,nil则默认平均分配
     /// - parameter startPoint: 开始渐变的坐标(控制渐变的方向),取值(0 ~ 1)
     /// - parameter endPoint: 结束渐变的坐标(控制渐变的方向),取值(0 ~ 1)
     @discardableResult
@@ -306,55 +306,26 @@ extension UIView {
 }
 
 extension UIView {
-    /** 获取当前的 ViewController */
-    public var currentViewController: UIViewController? {
-        return UIViewController.currentViewController
-    }
-    
+    /// 清除当前Window下指定View
+    /// - parameter anyClass: 指定需要清除View的类别
     public class func cleanTopWindow(anyClass: AnyClass) {
-        if let tviews = UIApplication.shared.keyWindow?.subviews {
-            for tview in tviews {
-                if tview.isKind(of: anyClass) {
-                    tview.removeFromSuperview()
-                }
+        for subview in kWindow.subviews {
+            if subview.isKind(of: anyClass) {
+                subview.removeFromSuperview()
             }
         }
     }
     
-    /**
-     * 显示Toast提示，基于当前的View，不影响其他页面的操作
-     */
-    public func toast(_ message: String?) {
-        if let msg = message, msg.isNotEmpty {
-            self.makeToast(msg, duration: 1.5, position: CSToastPositionCenter)
+    /// 显示Toast提示，基于当前的View，不影响其他页面的操作
+    public func toast(_ message: String) {
+        self.makeToast(message, duration: 1.5, position: CSToastPositionCenter)
+    }
+    
+    /// 显示Toast提示，基于最顶层，可能会影响其他的操作
+    public class func topToast(_ message: String) {
+        if let topWindow = UIApplication.shared.windows.last {
+            topWindow.toast(message)
         }
-    }
-    
-    /**
-     * 显示Toast提示，基于最顶层，可能会影响其他的操作
-     */
-    public class func topToast(_ message: String?) {
-        if let msg = message, msg.isNotEmpty {
-            if let topWindow = UIApplication.shared.windows.last {
-                topWindow.toast(msg)
-            }
-        }
-    }
-}
-
-extension CGAffineTransform {
-    var angle: CGFloat { return atan2(-self.c, self.a) }
-    
-    var angleInDegrees: CGFloat { return self.angle * 180 / .pi }
-    
-    var scaleX: CGFloat {
-        let angle = self.angle
-        return self.a * cos(angle) - self.c * sin(angle)
-    }
-    
-    var scaleY: CGFloat {
-        let angle = self.angle
-        return self.d * cos(angle) + self.b * sin(angle)
     }
 }
 
