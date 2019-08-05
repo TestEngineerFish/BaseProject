@@ -1,5 +1,5 @@
 //
-//  AuthoriationManager.swift
+//  BPAuthoriationManager.swift
 //  BaseProject
 //
 //  Created by 沙庭宇 on 2019/8/4.
@@ -9,7 +9,7 @@
 import Photos
 import UserNotifications
 
-class AuthorizationManager: NSObject {
+class BPAuthorizationManager: NSObject {
     
     // MARK: - ---获取相册权限
     class func authorizePhotoWith(_ autoAlert: Bool = true, completion:@escaping (Bool) -> Void) {
@@ -145,7 +145,7 @@ class AuthorizationManager: NSObject {
     }
 }
 
-extension AuthorizationManager: CLLocationManagerDelegate {
+extension BPAuthorizationManager: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
@@ -158,7 +158,7 @@ extension AuthorizationManager: CLLocationManagerDelegate {
 }
 
 // MARK: 显示 Alert Controller ================
-extension AuthorizationManager {
+extension BPAuthorizationManager {
     
     class func showCameraAlert() {
         showAlert(title: "无法访问你的相机", message: "请到设置 -> 友友 -> 相机 ，打开访问权限")
