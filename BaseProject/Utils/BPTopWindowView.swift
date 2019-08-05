@@ -14,10 +14,10 @@ class BPTopWindowView: UIView {
     var descriptionHeight: CGFloat = 0.0
 
     // 全屏透明背景
-    var backgroundView: UIView = {
+    lazy var backgroundView: UIView = {
         let view = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: kScreenWidth, height: kScreenHeight)))
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(closeAction))
+        view.backgroundColor = UIColor.orange
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closeBtnAction))
         view.addGestureRecognizer(tap)
         view.isUserInteractionEnabled = true
         return view
@@ -55,9 +55,9 @@ class BPTopWindowView: UIView {
     // 左边按钮
     var leftButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor     = UIColor.gray3
-        button.titleLabel?.font    = UIFont.mediumFont(ofSize: 18)
+        button.setBackgroundImage(UIImage.imageWithColor(UIColor.gray3), for: .normal)
         button.setTitleColor(UIColor.black1, for: .normal)
+        button.titleLabel?.font    = UIFont.mediumFont(ofSize: 18)
         button.layer.cornerRadius  = 10
         button.layer.masksToBounds = true
         button.addTarget(self, action: #selector(leftBtnAction), for: .touchUpInside)
@@ -67,9 +67,9 @@ class BPTopWindowView: UIView {
     // 右边按钮
     var rightButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor     = UIColor.green1
+        button.setBackgroundImage(UIImage.imageWithColor(UIColor.green1), for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font    = UIFont.mediumFont(ofSize: 18)
-        button.setTitleColor(UIColor.black1, for: .normal)
         button.layer.cornerRadius  = 10
         button.layer.masksToBounds = true
         button.addTarget(self, action: #selector(rightBtnAction), for: .touchUpInside)
@@ -82,7 +82,7 @@ class BPTopWindowView: UIView {
         button.setTitle(Iconfont.close.rawValue, for: .normal)
         button.setTitleColor(UIColor.black1.withAlphaComponent(0.5), for: .normal)
         button.titleLabel?.font = UIFont.iconFont(size: 26)
-        button.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(closeBtnAction), for: .touchUpInside)
         button.isHidden = true
         return button
     }()
@@ -96,14 +96,14 @@ class BPTopWindowView: UIView {
     }
 
     func setupSubviews() {
-        var viewHeight: CGFloat = 126
+        var viewHeight: CGFloat = 110
         self.addSubview(backgroundView)
         self.addSubview(containerView)
 
         containerView.snp.makeConstraints { (make) in
             make.center.equalTo(self)
-            make.left.equalToSuperview().offset(15)
-            make.right.equalToSuperview().offset(-15)
+            make.left.equalToSuperview().offset(30)
+            make.right.equalToSuperview().offset(-30)
             make.height.equalTo(viewHeight + descriptionHeight)
         }
 
@@ -114,18 +114,22 @@ class BPTopWindowView: UIView {
         // 是否显示标题
         if let title = titleLabel.text, title.isNotEmpty {
             containerView.addSubview(titleLabel)
-            viewHeight = 186.0
+            viewHeight = 156.0
             titleLabel.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(36)
+                make.top.equalToSuperview().offset(18)
                 make.left.equalToSuperview().offset(15)
                 make.right.equalToSuperview().offset(-15)
                 make.height.equalTo(22)
             }
 
             descriptionLabel.snp.makeConstraints { (make) in
-                make.top.equalTo(titleLabel.snp.bottom).offset(36)
+                make.top.equalTo(titleLabel.snp.bottom).offset(18)
                 make.left.right.equalTo(titleLabel)
                 make.height.equalTo(descriptionHeight)
+            }
+            
+            containerView.snp.updateConstraints { (make) in
+                make.height.equalTo(viewHeight + descriptionHeight)
             }
         } else {
             descriptionLabel.snp.makeConstraints { (make) in
@@ -161,9 +165,15 @@ class BPTopWindowView: UIView {
         }
     }
 
-    @objc func leftBtnAction() {}
+    @objc func leftBtnAction() {
+        self.removeFromSuperview()
+    }
 
-    @objc func rightBtnAction() {}
+    @objc func rightBtnAction() {
+        self.removeFromSuperview()
+    }
 
-    @objc func closeAction() {}
+    @objc func closeBtnAction() {
+        self.removeFromSuperview()
+    }
 }

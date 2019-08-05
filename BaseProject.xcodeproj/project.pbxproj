@@ -33,6 +33,7 @@
 		7B212ACC1EB4CBADF5DD63D4 /* Pods_BaseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE0B51EBB89FBFB5A61CACA /* Pods_BaseProject.framework */; };
 		CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869522F6F5380031E4B9 /* UINavigationController+Extension.swift */; };
 		CF87869822F709C20031E4B9 /* BPAuthoriationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869722F709C20031E4B9 /* BPAuthoriationManager.swift */; };
+		CF87869A22F87BD60031E4B9 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869922F87BD60031E4B9 /* UIImage+Extension.swift */; };
 		CF8EB56422DCC05D00EC2FE5 /* SAMKeychain+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56322DCC05D00EC2FE5 /* SAMKeychain+Extension.swift */; };
 		CF8EB56622DCC09B00EC2FE5 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56522DCC09B00EC2FE5 /* Bundle+Extension.swift */; };
 		CF8EB56B22DCC45800EC2FE5 /* UserDefault+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56A22DCC45800EC2FE5 /* UserDefault+Extension.swift */; };
@@ -78,6 +79,7 @@
 		CF27E37F22DE279E0056ADFA /* BaseProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF87869522F6F5380031E4B9 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		CF87869722F709C20031E4B9 /* BPAuthoriationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BPAuthoriationManager.swift; path = BaseProject/Extension/BPAuthoriationManager.swift; sourceTree = SOURCE_ROOT; };
+		CF87869922F87BD60031E4B9 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB56322DCC05D00EC2FE5 /* SAMKeychain+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SAMKeychain+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB56522DCC09B00EC2FE5 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB56A22DCC45800EC2FE5 /* UserDefault+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Extension.swift"; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				CF8EB5A522DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift */,
 				22C6221C22DF120900A7C849 /* Error+Extension.swift */,
 				221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */,
+				CF87869922F87BD60031E4B9 /* UIImage+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -212,8 +215,8 @@
 			children = (
 				CF87869722F709C20031E4B9 /* BPAuthoriationManager.swift */,
 				2264EF7A22F7BDE500A89C82 /* BPAlertManager.swift */,
-				2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */,
 				2264EF7E22F820F900A89C82 /* BPAlertView.swift */,
+				2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				CF8EB59C22DCCEBC00EC2FE5 /* IconFontString.swift in Sources */,
 				CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */,
 				CF8EB5A222DCD0DC00EC2FE5 /* UIViewController+Extension.swift in Sources */,
+				CF87869A22F87BD60031E4B9 /* UIImage+Extension.swift in Sources */,
 				2264EF7B22F7BDE500A89C82 /* BPAlertManager.swift in Sources */,
 				221F5C4A22E95B4000F9355C /* AppDelegate+Extension.swift in Sources */,
 				CF8EB5A622DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift in Sources */,

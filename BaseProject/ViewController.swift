@@ -20,7 +20,11 @@ class ViewController: UIViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        BPAlertManager.showAlert(title: "标题", description: "描述", leftBtnName: "左边", leftBtnClosure: {}, rightBtnName: "右边", rightBtnClosure: {})
+        BPAlertManager.showAlert(title: "描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息", description: "描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊", leftBtnName: "", leftBtnClosure: {
+            print("left")
+        }, rightBtnName: "右边按钮") {
+            print("right")
+        }
     }
     
     @objc func reset() {
