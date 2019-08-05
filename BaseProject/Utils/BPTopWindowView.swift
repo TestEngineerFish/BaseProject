@@ -24,13 +24,13 @@ class BPTopWindowView: UIView {
     }()
 
     // 弹框的背景
-    var containerView: UIView {
+    var containerView: UIView = {
         let view = UIView()
         view.backgroundColor     = UIColor.white
         view.layer.cornerRadius  = 20
         view.layer.masksToBounds = true
         return view
-    }
+    }()
 
     // 弹窗标题
     var titleLabel: UILabel = {
@@ -99,6 +99,14 @@ class BPTopWindowView: UIView {
         var viewHeight: CGFloat = 126
         self.addSubview(backgroundView)
         self.addSubview(containerView)
+
+        containerView.snp.makeConstraints { (make) in
+            make.center.equalTo(self)
+            make.left.equalToSuperview().offset(15)
+            make.right.equalToSuperview().offset(-15)
+            make.height.equalTo(viewHeight + descriptionHeight)
+        }
+
         containerView.addSubview(descriptionLabel)
         containerView.addSubview(rightButton)
         containerView.addSubview(closeButton)
@@ -151,26 +159,11 @@ class BPTopWindowView: UIView {
                 make.height.equalTo(56)
             }
         }
-
-        containerView.snp.makeConstraints { (make) in
-            make.center.equalTo(self)
-            make.left.equalToSuperview().offset(15)
-            make.right.equalToSuperview().offset(-15)
-            make.height.equalTo(viewHeight + descriptionHeight)
-        }
-
-
     }
 
-    @objc func leftBtnAction() {
-        UIView.topToast("点击了左边按钮")
-    }
+    @objc func leftBtnAction() {}
 
-    @objc func rightBtnAction() {
-        UIView.topToast("点击了右边按钮")
-    }
+    @objc func rightBtnAction() {}
 
-    @objc func closeAction() {
-        UIView.topToast("点击了关闭按钮")
-    }
+    @objc func closeAction() {}
 }

@@ -305,10 +305,16 @@ extension UIView {
     }
 }
 
-extension UIView {
+public extension UIView {
+
+    func showToWindow() {
+        UIView.cleanTopWindow(anyClass: BPTopWindowView.classForCoder())
+        kWindow.addSubview(self)
+    }
+
     /// 清除当前Window下指定View
     /// - parameter anyClass: 指定需要清除View的类别
-    public class func cleanTopWindow(anyClass: AnyClass) {
+    class func cleanTopWindow(anyClass: AnyClass) {
         for subview in kWindow.subviews {
             if subview.isKind(of: anyClass) {
                 subview.removeFromSuperview()
@@ -317,12 +323,12 @@ extension UIView {
     }
     
     /// 显示Toast提示，基于当前的View，不影响其他页面的操作
-    public func toast(_ message: String) {
+    func toast(_ message: String) {
         self.makeToast(message, duration: 1.5, position: CSToastPositionCenter)
     }
     
     /// 显示Toast提示，基于最顶层，可能会影响其他的操作
-    public class func topToast(_ message: String) {
+    class func topToast(_ message: String) {
         if let topWindow = UIApplication.shared.windows.last {
             topWindow.toast(message)
         }

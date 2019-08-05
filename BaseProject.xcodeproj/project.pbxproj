@@ -14,6 +14,7 @@
 		22413E3422E8400900F2C678 /* NotificationNameGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22413E3322E8400900F2C678 /* NotificationNameGlobal.swift */; };
 		2264EF7B22F7BDE500A89C82 /* BPAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF7A22F7BDE500A89C82 /* BPAlertManager.swift */; };
 		2264EF7D22F7C6E500A89C82 /* BPTopWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */; };
+		2264EF7F22F820F900A89C82 /* BPAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF7E22F820F900A89C82 /* BPAlertView.swift */; };
 		22C621B822DC805600A7C849 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B722DC805600A7C849 /* AppDelegate.swift */; };
 		22C621BA22DC805600A7C849 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B922DC805600A7C849 /* ViewController.swift */; };
 		22C621BF22DC805600A7C849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22C621BE22DC805600A7C849 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		22413E3322E8400900F2C678 /* NotificationNameGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameGlobal.swift; sourceTree = "<group>"; };
 		2264EF7A22F7BDE500A89C82 /* BPAlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAlertManager.swift; sourceTree = "<group>"; };
 		2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTopWindowView.swift; sourceTree = "<group>"; };
+		2264EF7E22F820F900A89C82 /* BPAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAlertView.swift; sourceTree = "<group>"; };
 		22C621B422DC805600A7C849 /* BaseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C621B722DC805600A7C849 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22C621B922DC805600A7C849 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				CF87869722F709C20031E4B9 /* BPAuthoriationManager.swift */,
 				2264EF7A22F7BDE500A89C82 /* BPAlertManager.swift */,
 				2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */,
+				2264EF7E22F820F900A89C82 /* BPAlertView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				22C6221D22DF120900A7C849 /* Error+Extension.swift in Sources */,
 				CF8EB5A022DCD08A00EC2FE5 /* UIView+Extension.swift in Sources */,
 				22C621D522DC818E00A7C849 /* YYNetworkService.swift in Sources */,
+				2264EF7F22F820F900A89C82 /* BPAlertView.swift in Sources */,
 				CF8EB56422DCC05D00EC2FE5 /* SAMKeychain+Extension.swift in Sources */,
 				CF8EB59E22DCD04300EC2FE5 /* Date+Extension.swift in Sources */,
 				CF8EB56B22DCC45800EC2FE5 /* UserDefault+Extension.swift in Sources */,
