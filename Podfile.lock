@@ -1,33 +1,31 @@
 PODS:
-  - Alamofire (4.7.3)
-  - AlamofireObjectMapper (5.1.0):
-    - Alamofire (~> 4.1)
-    - ObjectMapper (~> 3.3)
+  - Alamofire (4.8.2)
+  - AlamofireObjectMapper (5.2.0):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
   - Bugly (2.5.0)
   - CocoaLumberjack/Core (3.5.3)
   - CocoaLumberjack/Swift (3.5.3):
     - CocoaLumberjack/Core
-  - ObjectMapper (3.3.0)
+  - ObjectMapper (3.5.1)
   - SAMKeychain (1.5.3)
-  - SnapKit (4.0.1)
+  - SnapKit (5.0.1)
   - SSZipArchive (2.2.2)
-  - Toast (4.0.0)
-  - Toast-Swift (4.0.1)
+  - Toast-Swift (5.0.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.7.3)
-  - AlamofireObjectMapper (~> 5.0)
+  - Alamofire (~> 4.8.2)
+  - AlamofireObjectMapper (~> 5.2)
   - Bugly
   - CocoaLumberjack/Swift
-  - ObjectMapper (~> 3.3.0)
+  - ObjectMapper (~> 3.5.1)
   - SAMKeychain
-  - SnapKit (~> 4.0.0)
+  - SnapKit (~> 5.0.0)
   - SSZipArchive
-  - Toast (~> 4.0.0)
-  - Toast-Swift (~> 4.0.0)
+  - Toast-Swift (~> 5.0.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - AlamofireObjectMapper
     - Bugly
@@ -36,21 +34,19 @@ SPEC REPOS:
     - SAMKeychain
     - SnapKit
     - SSZipArchive
-    - Toast
     - Toast-Swift
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
-  ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
+  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
-  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
-  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
+  Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
 
-PODFILE CHECKSUM: 50d282d0a9aaa86195655dccdbeffd6467e02d1b
+PODFILE CHECKSUM: d02d7327236f22aa90e2ba0b790e124c74108d73
 
-COCOAPODS: 1.7.3
+COCOAPODS: 1.8.0.beta.1

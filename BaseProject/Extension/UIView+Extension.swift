@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toast_Swift
 
 /**
  *  ViewGeometry
@@ -324,7 +325,7 @@ public extension UIView {
     
     /// 显示Toast提示，基于当前的View，不影响其他页面的操作
     func toast(_ message: String) {
-        self.makeToast(message, duration: 1.5, position: CSToastPositionCenter)
+        self.makeToast(message, duration: 1.5, point: self.center, title: nil, image: nil, style: ToastStyle(), completion: nil)
     }
     
     /// 显示Toast提示，基于最顶层，可能会影响其他的操作

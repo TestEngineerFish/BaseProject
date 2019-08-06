@@ -21,11 +21,16 @@ class ViewController: UIViewController {
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.green1), for: .normal)
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(showToast), for: .touchUpInside)
         self.view.addSubview(button)
         button.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.size.equalTo(CGSize(width: 100, height: 50))
         }
+    }
+    
+    @objc func showToast() {
+        self.view.toast("Message showMessage show\nMessage showMessage showMessage showMessage showMessage showMessage show")
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
