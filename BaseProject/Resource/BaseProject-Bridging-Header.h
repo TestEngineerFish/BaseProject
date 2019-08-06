@@ -4,4 +4,5 @@
 
 #import "SSZipArchive.h"
 #import "UIView+Toast.h"
+#import <Bugly/Bugly.h>
 

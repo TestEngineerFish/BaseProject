@@ -9,20 +9,25 @@
 /* Begin PBXBuildFile section */
 		2211803322EEE47500B77911 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2211803222EEE47500B77911 /* CALayer+Extension.swift */; };
 		221F5C4A22E95B4000F9355C /* AppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */; };
-		221F5C4C22E9B79E00F9355C /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 221F5C4B22E9B79E00F9355C /* iconfont.ttf */; };
 		22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22413E3122E83E2100F2C678 /* DeviceInfoGlobal.swift */; };
 		22413E3422E8400900F2C678 /* NotificationNameGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22413E3322E8400900F2C678 /* NotificationNameGlobal.swift */; };
 		2264EF7B22F7BDE500A89C82 /* BPAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF7A22F7BDE500A89C82 /* BPAlertManager.swift */; };
 		2264EF7D22F7C6E500A89C82 /* BPTopWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */; };
-		2264EF7F22F820F900A89C82 /* BPAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF7E22F820F900A89C82 /* BPAlertView.swift */; };
+		2264EF7F22F820F900A89C82 /* BPAlerViewTwoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF7E22F820F900A89C82 /* BPAlerViewTwoButton.swift */; };
+		2264EF8122F90EED00A89C82 /* BPBaseAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF8022F90EED00A89C82 /* BPBaseAlertView.swift */; };
+		2264EF8422F91BF900A89C82 /* BPAlertViewOneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF8322F91BF900A89C82 /* BPAlertViewOneButton.swift */; };
+		2264EF8622F91E0700A89C82 /* BPAlertViewZeroButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF8522F91E0700A89C82 /* BPAlertViewZeroButton.swift */; };
+		2264EF8822F9302B00A89C82 /* BPAlertViewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF8722F9302B00A89C82 /* BPAlertViewImage.swift */; };
+		2264EF8C22F9738700A89C82 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2264EF8B22F9738700A89C82 /* iconfont.ttf */; };
+		2264EF8E22F979BD00A89C82 /* BPBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF8D22F979BD00A89C82 /* BPBaseRequest.swift */; };
+		2264EF9022F979DB00A89C82 /* BPBaseResopnse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF8F22F979DB00A89C82 /* BPBaseResopnse.swift */; };
+		2264EF9222F97A0E00A89C82 /* BPNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF9122F97A0E00A89C82 /* BPNetworkService.swift */; };
+		2264EF9422F97A2800A89C82 /* BPTaskRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF9322F97A2800A89C82 /* BPTaskRequest.swift */; };
+		2264EF9622F98A3700A89C82 /* BPBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF9522F98A3700A89C82 /* BPBaseButton.swift */; };
 		22C621B822DC805600A7C849 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B722DC805600A7C849 /* AppDelegate.swift */; };
 		22C621BA22DC805600A7C849 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B922DC805600A7C849 /* ViewController.swift */; };
 		22C621BF22DC805600A7C849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22C621BE22DC805600A7C849 /* Assets.xcassets */; };
 		22C621C222DC805600A7C849 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C621C022DC805600A7C849 /* LaunchScreen.storyboard */; };
-		22C621D422DC818E00A7C849 /* YYBaseResopnse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621CB22DC818D00A7C849 /* YYBaseResopnse.swift */; };
-		22C621D522DC818E00A7C849 /* YYNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621CC22DC818D00A7C849 /* YYNetworkService.swift */; };
-		22C621D622DC818E00A7C849 /* YYTaskRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621CD22DC818D00A7C849 /* YYTaskRequest.swift */; };
-		22C621D822DC818E00A7C849 /* YYBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621D122DC818D00A7C849 /* YYBaseRequest.swift */; };
 		22C621DD22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621DC22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift */; };
 		22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621DE22DC886300A7C849 /* YYBaseModel.swift */; };
 		22C621EE22DC8A7800A7C849 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621ED22DC8A7800A7C849 /* UIDevice+Extension.swift */; };
@@ -52,22 +57,27 @@
 /* Begin PBXFileReference section */
 		2211803222EEE47500B77911 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Extension.swift"; sourceTree = "<group>"; };
-		221F5C4B22E9B79E00F9355C /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
 		22413E3122E83E2100F2C678 /* DeviceInfoGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoGlobal.swift; sourceTree = "<group>"; };
 		22413E3322E8400900F2C678 /* NotificationNameGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameGlobal.swift; sourceTree = "<group>"; };
 		2264EF7A22F7BDE500A89C82 /* BPAlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAlertManager.swift; sourceTree = "<group>"; };
 		2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTopWindowView.swift; sourceTree = "<group>"; };
-		2264EF7E22F820F900A89C82 /* BPAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAlertView.swift; sourceTree = "<group>"; };
+		2264EF7E22F820F900A89C82 /* BPAlerViewTwoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAlerViewTwoButton.swift; sourceTree = "<group>"; };
+		2264EF8022F90EED00A89C82 /* BPBaseAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseAlertView.swift; sourceTree = "<group>"; };
+		2264EF8322F91BF900A89C82 /* BPAlertViewOneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAlertViewOneButton.swift; sourceTree = "<group>"; };
+		2264EF8522F91E0700A89C82 /* BPAlertViewZeroButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAlertViewZeroButton.swift; sourceTree = "<group>"; };
+		2264EF8722F9302B00A89C82 /* BPAlertViewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAlertViewImage.swift; sourceTree = "<group>"; };
+		2264EF8B22F9738700A89C82 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
+		2264EF8D22F979BD00A89C82 /* BPBaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseRequest.swift; sourceTree = "<group>"; };
+		2264EF8F22F979DB00A89C82 /* BPBaseResopnse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseResopnse.swift; sourceTree = "<group>"; };
+		2264EF9122F97A0E00A89C82 /* BPNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPNetworkService.swift; sourceTree = "<group>"; };
+		2264EF9322F97A2800A89C82 /* BPTaskRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTaskRequest.swift; sourceTree = "<group>"; };
+		2264EF9522F98A3700A89C82 /* BPBaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseButton.swift; sourceTree = "<group>"; };
 		22C621B422DC805600A7C849 /* BaseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C621B722DC805600A7C849 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22C621B922DC805600A7C849 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		22C621BE22DC805600A7C849 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22C621C122DC805600A7C849 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22C621C322DC805600A7C849 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22C621CB22DC818D00A7C849 /* YYBaseResopnse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYBaseResopnse.swift; sourceTree = "<group>"; };
-		22C621CC22DC818D00A7C849 /* YYNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYNetworkService.swift; sourceTree = "<group>"; };
-		22C621CD22DC818D00A7C849 /* YYTaskRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYTaskRequest.swift; sourceTree = "<group>"; };
-		22C621D122DC818D00A7C849 /* YYBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYBaseRequest.swift; sourceTree = "<group>"; };
 		22C621DC22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYWantToKnowQuestionListModel.swift; sourceTree = "<group>"; };
 		22C621DE22DC886300A7C849 /* YYBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYBaseModel.swift; sourceTree = "<group>"; };
 		22C621ED22DC8A7800A7C849 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
@@ -120,6 +130,19 @@
 			path = Global;
 			sourceTree = "<group>";
 		};
+		2264EF8222F9108500A89C82 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				2264EF7A22F7BDE500A89C82 /* BPAlertManager.swift */,
+				2264EF8022F90EED00A89C82 /* BPBaseAlertView.swift */,
+				2264EF8522F91E0700A89C82 /* BPAlertViewZeroButton.swift */,
+				2264EF8322F91BF900A89C82 /* BPAlertViewOneButton.swift */,
+				2264EF7E22F820F900A89C82 /* BPAlerViewTwoButton.swift */,
+				2264EF8722F9302B00A89C82 /* BPAlertViewImage.swift */,
+			);
+			path = AlertView;
+			sourceTree = "<group>";
+		};
 		22C621AB22DC805600A7C849 = {
 			isa = PBXGroup;
 			children = (
@@ -161,10 +184,10 @@
 		22C621C922DC815A00A7C849 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				22C621D122DC818D00A7C849 /* YYBaseRequest.swift */,
-				22C621CB22DC818D00A7C849 /* YYBaseResopnse.swift */,
-				22C621CC22DC818D00A7C849 /* YYNetworkService.swift */,
-				22C621CD22DC818D00A7C849 /* YYTaskRequest.swift */,
+				2264EF8D22F979BD00A89C82 /* BPBaseRequest.swift */,
+				2264EF8F22F979DB00A89C82 /* BPBaseResopnse.swift */,
+				2264EF9122F97A0E00A89C82 /* BPNetworkService.swift */,
+				2264EF9322F97A2800A89C82 /* BPTaskRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -213,9 +236,8 @@
 		22C621F822DC8E7600A7C849 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				2264EF8222F9108500A89C82 /* AlertView */,
 				CF87869722F709C20031E4B9 /* BPAuthoriationManager.swift */,
-				2264EF7A22F7BDE500A89C82 /* BPAlertManager.swift */,
-				2264EF7E22F820F900A89C82 /* BPAlertView.swift */,
 				2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */,
 			);
 			path = Utils;
@@ -257,7 +279,7 @@
 		CF27E37E22DE27400056ADFA /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				221F5C4B22E9B79E00F9355C /* iconfont.ttf */,
+				2264EF8B22F9738700A89C82 /* iconfont.ttf */,
 				CF27E37F22DE279E0056ADFA /* BaseProject-Bridging-Header.h */,
 			);
 			path = Resource;
@@ -283,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				CF8EB5A422DCD18400EC2FE5 /* BaseController */,
+				2264EF9522F98A3700A89C82 /* BPBaseButton.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -368,7 +391,7 @@
 			files = (
 				22C621C222DC805600A7C849 /* LaunchScreen.storyboard in Resources */,
 				22C621BF22DC805600A7C849 /* Assets.xcassets in Resources */,
-				221F5C4C22E9B79E00F9355C /* iconfont.ttf in Resources */,
+				2264EF8C22F9738700A89C82 /* iconfont.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,18 +444,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22C621D822DC818E00A7C849 /* YYBaseRequest.swift in Sources */,
 				22C621BA22DC805600A7C849 /* ViewController.swift in Sources */,
 				22413E3422E8400900F2C678 /* NotificationNameGlobal.swift in Sources */,
 				22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */,
 				CF87869822F709C20031E4B9 /* BPAuthoriationManager.swift in Sources */,
 				22C621DD22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift in Sources */,
 				CF8EB58B22DCCCA600EC2FE5 /* UIFont+Extension.swift in Sources */,
-				22C621D422DC818E00A7C849 /* YYBaseResopnse.swift in Sources */,
+				2264EF8622F91E0700A89C82 /* BPAlertViewZeroButton.swift in Sources */,
 				22C6221D22DF120900A7C849 /* Error+Extension.swift in Sources */,
 				CF8EB5A022DCD08A00EC2FE5 /* UIView+Extension.swift in Sources */,
-				22C621D522DC818E00A7C849 /* YYNetworkService.swift in Sources */,
-				2264EF7F22F820F900A89C82 /* BPAlertView.swift in Sources */,
+				2264EF8422F91BF900A89C82 /* BPAlertViewOneButton.swift in Sources */,
+				2264EF9222F97A0E00A89C82 /* BPNetworkService.swift in Sources */,
+				2264EF8E22F979BD00A89C82 /* BPBaseRequest.swift in Sources */,
+				2264EF7F22F820F900A89C82 /* BPAlerViewTwoButton.swift in Sources */,
 				CF8EB56422DCC05D00EC2FE5 /* SAMKeychain+Extension.swift in Sources */,
 				CF8EB59E22DCD04300EC2FE5 /* Date+Extension.swift in Sources */,
 				CF8EB56B22DCC45800EC2FE5 /* UserDefault+Extension.swift in Sources */,
@@ -440,6 +464,7 @@
 				22C621EE22DC8A7800A7C849 /* UIDevice+Extension.swift in Sources */,
 				2264EF7D22F7C6E500A89C82 /* BPTopWindowView.swift in Sources */,
 				22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */,
+				2264EF9422F97A2800A89C82 /* BPTaskRequest.swift in Sources */,
 				CF8EB59C22DCCEBC00EC2FE5 /* IconFontString.swift in Sources */,
 				CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */,
 				CF8EB5A222DCD0DC00EC2FE5 /* UIViewController+Extension.swift in Sources */,
@@ -449,9 +474,12 @@
 				CF8EB5A622DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift in Sources */,
 				2211803322EEE47500B77911 /* CALayer+Extension.swift in Sources */,
 				22C6221B22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift in Sources */,
+				2264EF9622F98A3700A89C82 /* BPBaseButton.swift in Sources */,
+				2264EF8122F90EED00A89C82 /* BPBaseAlertView.swift in Sources */,
 				CF8EB5A822DCD22800EC2FE5 /* YYCustomNavigationBar.swift in Sources */,
-				22C621D622DC818E00A7C849 /* YYTaskRequest.swift in Sources */,
 				22C621B822DC805600A7C849 /* AppDelegate.swift in Sources */,
+				2264EF8822F9302B00A89C82 /* BPAlertViewImage.swift in Sources */,
+				2264EF9022F979DB00A89C82 /* BPBaseResopnse.swift in Sources */,
 				CF8EB58722DCCBA900EC2FE5 /* YYBaseViewController.swift in Sources */,
 				CF8EB56622DCC09B00EC2FE5 /* Bundle+Extension.swift in Sources */,
 				CF8EB58D22DCCCFC00EC2FE5 /* String+Extension.swift in Sources */,

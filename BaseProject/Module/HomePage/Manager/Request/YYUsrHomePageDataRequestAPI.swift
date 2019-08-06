@@ -20,7 +20,7 @@ public enum YYUsrHomePageDataRequestAPI: YYBaseRequest {
 }
 
 extension YYUsrHomePageDataRequestAPI {
-    public var method: YYHTTPMethod {
+    public var method: BPHTTPMethod {
         switch self {
         case .fetchWantToKnowQuestionList:
             return .get

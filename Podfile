@@ -6,6 +6,7 @@ use_frameworks!
 
 target 'BaseProject' do
   # Comment the next line if you don't want to use dynamic frameworks
+  pod 'Bugly'
   pod 'SAMKeychain'
   pod 'Alamofire', '~> 4.7.3'
   pod 'ObjectMapper', '~> 3.3.0'

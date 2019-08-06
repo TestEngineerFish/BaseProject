@@ -1,9 +1,9 @@
 //
-//  YYNetworkService.swift
-//  YouYou
+//  BPNetworkService.swift
+//  BaseProject
 //
-//  Created by pyyx on 2018/10/23.
-//  Copyright © 2018 YueRen. All rights reserved.
+//  Created by 沙庭宇 on 2019/8/6.
+//  Copyright © 2019 沙庭宇. All rights reserved.
 //
 
 import Foundation
@@ -12,29 +12,29 @@ import AlamofireObjectMapper
 import ObjectMapper
 import CocoaLumberjack
 
-struct YYNetworkService {
+struct BPNetworkService {
     private let MAX_CONCURRENT_OPERATION_COUNT: Int = 3
     private let request_time_out: TimeInterval = 60
-    
+
     private var defaultConfiguration: URLSessionConfiguration {
         let _configuration = URLSessionConfiguration.default
         _configuration.timeoutIntervalForRequest = request_time_out
         //_configuration.protocolClasses = [YYNetFoxProtocol.self]
         return _configuration
     }
-    
-    public static let `default` = YYNetworkService()
+
+    public static let `default` = BPNetworkService()
     private init() {
         let sessionManager:SessionManager = Alamofire.SessionManager.init(configuration: self.defaultConfiguration)
         sessionManager.session.delegateQueue.maxConcurrentOperationCount = MAX_CONCURRENT_OPERATION_COUNT
     }
-    
+
     /**
      *  普通HTTP Request, 支持GET、POST方式
      */
     /// - parameter type: 只是定义泛型对象类型,没有其他作用
     @discardableResult
-    public func httpRequestTask <T> (_ type: T.Type, request: YYBaseRequest, success: ((_ response: T) -> Void)?, fail: ((_ responseError: NSError) -> Void)?) -> YYTaskRequest? where T: YYBaseResopnse {
+    public func httpRequestTask <T> (_ type: T.Type, request: YYBaseRequest, success: ((_ response: T) -> Void)?, fail: ((_ responseError: NSError) -> Void)?) -> BPTaskRequest? where T: BPBaseResopnse {
         switch request.method {
         case .post:
             var _request = URLRequest(url: request.url)
@@ -64,28 +64,28 @@ struct YYNetworkService {
             return nil
         }
     }
-    
-    public func httpDownloadRequestTask <T> (_ type: T.Type, request: YYBaseRequest, localSavePath: String, success: ((_ response: T) -> Void)?, fail: ((_ responseError: NSError) -> Void)?) -> Void where T: YYBaseResopnse {
 
-//        let requestParameters = self.requestParametersReduceValueNil(request.parameters)
-//        
-//        Alamofire.download(request.url, method: HTTPMethod(rawValue: request.method.rawValue) ?? .get, parameters: requestParameters, headers: request.handleHeader(parameters: requestParameters, headers: request.header)) { (url, response) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
-//            let path = YYFileManager.share.createPath(documentPath: localSavePath)
-//            return (URL(fileURLWithPath: path), [.removePreviousFile, .createIntermediateDirectories])
-//            }.downloadProgress { (progress) in
-//                DispatchQueue.main.async {
-//                    DDLogInfo("progress.completedUnitCount is \(progress.completedUnitCount)")
-//                }
-//            }.response { (defaultDownloadResponse) in
-//                
-//        }
+    public func httpDownloadRequestTask <T> (_ type: T.Type, request: YYBaseRequest, localSavePath: String, success: ((_ response: T) -> Void)?, fail: ((_ responseError: NSError) -> Void)?) -> Void where T: BPBaseResopnse {
+
+        //        let requestParameters = self.requestParametersReduceValueNil(request.parameters)
+        //
+        //        Alamofire.download(request.url, method: HTTPMethod(rawValue: request.method.rawValue) ?? .get, parameters: requestParameters, headers: request.handleHeader(parameters: requestParameters, headers: request.header)) { (url, response) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
+        //            let path = YYFileManager.share.createPath(documentPath: localSavePath)
+        //            return (URL(fileURLWithPath: path), [.removePreviousFile, .createIntermediateDirectories])
+        //            }.downloadProgress { (progress) in
+        //                DispatchQueue.main.async {
+        //                    DDLogInfo("progress.completedUnitCount is \(progress.completedUnitCount)")
+        //                }
+        //            }.response { (defaultDownloadResponse) in
+        //
+        //        }
     }
-    
+
     /**
      *  文件内容上传 Request
      */
-    public func httpUploadRequestTask <T> (_ type: T.Type, request: YYBaseRequest, mimeType: String = "image/jpeg", fileName: String = "photo", success: ((_ response: T) -> Void)?, fail: ((_ responseError: NSError) -> Void)?) -> Void where T: YYBaseResopnse {
-        
+    public func httpUploadRequestTask <T> (_ type: T.Type, request: YYBaseRequest, mimeType: String = "image/jpeg", fileName: String = "photo", success: ((_ response: T) -> Void)?, fail: ((_ responseError: NSError) -> Void)?) -> Void where T: BPBaseResopnse {
+
         var requestHeader = request.header
         requestHeader["Content-Type"] = "multipart/form-data"
 
@@ -98,7 +98,7 @@ struct YYNetworkService {
         if parameters.keys.contains("file_info") {
             parameters.removeValue(forKey: "file_info")
         }
-        
+
         //MARK: 上传
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             var fileData: Any?
@@ -113,14 +113,14 @@ struct YYNetworkService {
                 fileData = parameters["file_info"]
                 name = "file_info"
             }
-            
+
             if let _fileData = fileData, _fileData is String {
                 multipartFormData.append(URL(fileURLWithPath:(_fileData as! String)), withName: name, fileName: fileName, mimeType: mimeType)
             }else if let _fileData = fileData, fileData is Data {
                 multipartFormData.append(_fileData as! Data, withName: name, fileName: fileName, mimeType: mimeType)
             }
             parameters.removeValue(forKey: name)
-            
+
             for (key, value) in parameters {
                 multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key )
             }
@@ -140,10 +140,10 @@ struct YYNetworkService {
             }
         }
     }
-    
+
     @discardableResult
-    private func httpPostRequest <T> (_ type: T.Type, request: URLRequest, success:@escaping (_ response: T, _ httpStatusCode: Int) -> Void?, fail: @escaping (_ error: NSError) -> Void?) -> YYTaskRequest where T: YYBaseResopnse {
-        
+    private func httpPostRequest <T> (_ type: T.Type, request: URLRequest, success:@escaping (_ response: T, _ httpStatusCode: Int) -> Void?, fail: @escaping (_ error: NSError) -> Void?) -> BPTaskRequest where T: BPBaseResopnse {
+
         let request = Alamofire.request(request).responseObject { (response: DataResponse<T>) in
             self.saveSessID(response: response.response)
             switch response.result {
@@ -155,16 +155,16 @@ struct YYNetworkService {
                 fail(error as NSError)
             }
         }
-        
-        let taskRequest: YYTaskRequest = YYTaskRequestModel(request: request)
+
+        let taskRequest: BPTaskRequest = BPTaskRequestModel(request: request)
         return taskRequest
     }
-    
+
     @discardableResult
-    private func httpGetRequest <T>(_ type: T.Type, request: YYBaseRequest, header:[String:String], success:@escaping (_ response: T, _ httpStatusCode: Int) -> Void, fail: @escaping (_ error: NSError) -> Void?) -> YYTaskRequest where T: YYBaseResopnse {
+    private func httpGetRequest <T>(_ type: T.Type, request: YYBaseRequest, header:[String:String], success:@escaping (_ response: T, _ httpStatusCode: Int) -> Void, fail: @escaping (_ error: NSError) -> Void?) -> BPTaskRequest where T: BPBaseResopnse {
         let encoding: ParameterEncoding = (.get == request.method ? URLEncoding.default : JSONEncoding.default)
         let request = Alamofire.request(request.url, method: HTTPMethod(rawValue: request.method.rawValue) ?? .get, parameters: requestParametersReduceValueNil(request.parameters), encoding: encoding, headers: header).responseObject { (response: DataResponse <T>) in
-            
+
             self.saveSessID(response: response.response)
             switch response.result {
             case .success(var x):
@@ -175,18 +175,18 @@ struct YYNetworkService {
                 fail(error as NSError)
             }
         }
-        
-        let taskRequest: YYTaskRequest = YYTaskRequestModel(request: request)
+
+        let taskRequest: BPTaskRequest = BPTaskRequestModel(request: request)
         return taskRequest
     }
-    
+
     /**
      *  请求状态码逻辑处理
      */
-    private func handleStatusCodeLogicResponseObject <T> (_ response: T, statusCode: Int, request: YYBaseRequest, success: ((_ response: T) -> Void)?, fail: ((_ responseError: NSError) -> Void)?) -> Void where T: YYBaseResopnse {
-        let baseResponse = response as YYBaseResopnse
+    private func handleStatusCodeLogicResponseObject <T> (_ response: T, statusCode: Int, request: YYBaseRequest, success: ((_ response: T) -> Void)?, fail: ((_ responseError: NSError) -> Void)?) -> Void where T: BPBaseResopnse {
+        let baseResponse = response as BPBaseResopnse
         let responseStatusCode : Int = baseResponse.statusCode
-        
+
         if responseStatusCode == 0 {
             success?(response)
         } else {

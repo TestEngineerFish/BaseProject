@@ -7,6 +7,7 @@
 //
 
 public enum Iconfont: String {
-    case back = "\u{e6c9}"  // 返回
-    case close = "\u{ea60}" // 弹窗关闭按钮
+    case back   = "\u{e610}" // 返回
+    case close  = "\u{e61e}" // 关闭按钮
+    case close1 = "\u{e62f}" // 带圆圈的关闭按钮
 }

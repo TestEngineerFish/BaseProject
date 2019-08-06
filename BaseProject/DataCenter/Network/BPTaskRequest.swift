@@ -1,40 +1,40 @@
 //
-//  YYTaskRequest.swift
-//  YouYou
+//  BPTaskRequest.swift
+//  BaseProject
 //
-//  Created by Jie Yang on 2019/6/20.
-//  Copyright © 2019 YueRen. All rights reserved.
+//  Created by 沙庭宇 on 2019/8/6.
+//  Copyright © 2019 沙庭宇. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-protocol YYTaskRequest {
-    var request: YYTaskRequest { get }
+protocol BPTaskRequest {
+    var request: BPTaskRequest { get }
     func cancel()
 }
 
-class YYTaskRequestModel {
-    
+class BPTaskRequestModel {
+
     ///请求Request类型对象
     private var taskRequest: Request?
-    
+
     init(request: Request) {
         self.taskRequest = request
     }
 }
 
-extension YYTaskRequestModel: YYTaskRequest {
-    
-    var request: YYTaskRequest {
+extension BPTaskRequestModel: BPTaskRequest {
+
+    var request: BPTaskRequest {
         return self
     }
-    
+
     func cancel() {
         guard let request = self.taskRequest else {
             return
         }
-        
+
         request.cancel()
     }
 }

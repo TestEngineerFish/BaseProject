@@ -50,6 +50,11 @@ SOFTWARE.
 
 
 
+## Bugly
+
+Copyright (C) 2017 Tencent Bugly, Inc. All rights reserved.
+
+
 ## CocoaLumberjack
 
 BSD 3-Clause License

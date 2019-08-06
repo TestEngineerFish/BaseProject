@@ -16,17 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    var navController: Nav?
+    var navController: BPCustomNavigationController?
 
     let networkManager = NetworkReachabilityManager()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.monitorNetWork() //添加网络监听
+        Bugly.start(withAppId: buglyAppKey)
+        // 设置自定义的NavigationController为初始NavigationController
         window = UIWindow(frame: UIScreen.main.bounds)
         let vc = ViewController()
-        self.navController = Nav(rootViewController: vc)
-        self.navController?.title = "Title"
+        self.navController = BPCustomNavigationController(rootViewController: vc)
+        self.navController?.title = ""
         self.window?.rootViewController = self.navController
         self.window?.makeKeyAndVisible()
         return true

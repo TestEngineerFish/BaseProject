@@ -11,34 +11,33 @@ import UIKit
 class ViewController: UIViewController {
 
     var showView = UIView()
-    let button = UIButton()
+    let button = BPBaseButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
+        button.setTitle("Touch me", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.setBackgroundImage(UIImage.imageWithColor(UIColor.green1), for: .normal)
+        button.layer.cornerRadius = 5
+        button.layer.masksToBounds = true
+        self.view.addSubview(button)
+        button.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.size.equalTo(CGSize(width: 100, height: 50))
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        BPAlertManager.showAlert(title: "描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息", description: "描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊描述信息啊", leftBtnName: "", leftBtnClosure: {
-            print("left")
-        }, rightBtnName: "右边按钮") {
-            print("right")
-        }
-    }
-    
-    @objc func reset() {
-        UIView.cleanTopWindow(anyClass: UIButton.self)
-//        UIView.animate(withDuration: 0.5) {
-//            self.showView.transform = CGAffineTransform.identity
-//        }
+
     }
     
 
     // 求介绍 - 问题列表
     func fetchQuestionList(_ completion: @escaping ((_ questionList:YYWantToKnowQuestionListModel?, _ errorMsg: String?) -> Void)){
         let request = YYUsrHomePageDataRequestAPI.fetchWantToKnowQuestionList
-        YYNetworkService.default.httpRequestTask(YYStructResponse<YYWantToKnowQuestionListModel>.self, request: request, success: { (response) in
+        BPNetworkService.default.httpRequestTask(BPStructResponse<YYWantToKnowQuestionListModel>.self, request: request, success: { (response) in
             completion(response.data, nil)
         }) { (error) in
             completion(nil, error.message)
@@ -59,7 +58,7 @@ class BClass: UIViewController {
     }
 }
 
-class Nav: UINavigationController {
+class BPCustomNavigationController: UINavigationController {
 
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
