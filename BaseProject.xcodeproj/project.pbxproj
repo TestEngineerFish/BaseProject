@@ -24,6 +24,7 @@
 		2264EF9222F97A0E00A89C82 /* BPNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF9122F97A0E00A89C82 /* BPNetworkService.swift */; };
 		2264EF9422F97A2800A89C82 /* BPTaskRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF9322F97A2800A89C82 /* BPTaskRequest.swift */; };
 		2264EF9622F98A3700A89C82 /* BPBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF9522F98A3700A89C82 /* BPBaseButton.swift */; };
+		22A877BE22FAB679004FF3A7 /* BPBaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A877BD22FAB679004FF3A7 /* BPBaseImageView.swift */; };
 		22C621B822DC805600A7C849 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B722DC805600A7C849 /* AppDelegate.swift */; };
 		22C621BA22DC805600A7C849 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B922DC805600A7C849 /* ViewController.swift */; };
 		22C621BF22DC805600A7C849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22C621BE22DC805600A7C849 /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		2264EF9122F97A0E00A89C82 /* BPNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPNetworkService.swift; sourceTree = "<group>"; };
 		2264EF9322F97A2800A89C82 /* BPTaskRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTaskRequest.swift; sourceTree = "<group>"; };
 		2264EF9522F98A3700A89C82 /* BPBaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseButton.swift; sourceTree = "<group>"; };
+		22A877BD22FAB679004FF3A7 /* BPBaseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseImageView.swift; sourceTree = "<group>"; };
 		22C621B422DC805600A7C849 /* BaseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C621B722DC805600A7C849 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22C621B922DC805600A7C849 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 			children = (
 				CF8EB5A422DCD18400EC2FE5 /* BaseController */,
 				2264EF9522F98A3700A89C82 /* BPBaseButton.swift */,
+				22A877BD22FAB679004FF3A7 /* BPBaseImageView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				CF87869822F709C20031E4B9 /* BPAuthoriationManager.swift in Sources */,
 				22C621DD22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift in Sources */,
 				CF8EB58B22DCCCA600EC2FE5 /* UIFont+Extension.swift in Sources */,
+				22A877BE22FAB679004FF3A7 /* BPBaseImageView.swift in Sources */,
 				2264EF8622F91E0700A89C82 /* BPAlertViewZeroButton.swift in Sources */,
 				22C6221D22DF120900A7C849 /* Error+Extension.swift in Sources */,
 				CF8EB5A022DCD08A00EC2FE5 /* UIView+Extension.swift in Sources */,

@@ -15,6 +15,7 @@ target 'BaseProject' do
   pod 'SnapKit', '~> 5.0.0'
   pod 'Toast-Swift', '~> 5.0.0'
   pod 'SSZipArchive'
+  pod 'Kingfisher', '~> 5.7'
   # Pods for BaseProject
 
 end

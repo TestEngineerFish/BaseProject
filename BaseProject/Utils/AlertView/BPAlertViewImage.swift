@@ -7,27 +7,28 @@
 //
 
 import UIKit
-
+import Kingfisher
 
 class BPAlertViewImage: BPBaseAlertView {
 
-    private var rightAction: (() -> Void)?
+    typealias TouchOnImageBlock = (Source) -> Void
+    var tmpTouchBlack: TouchOnImageBlock?
 
-    /// 底部左右两个按钮的Alert弹框
-    /// - parameter title: 标题
-    /// - parameter description: 描述
-    /// - parameter showCloseBtn: 是否显示右上角的关闭按钮
-    init(imageStr: String, showCloseBtn: Bool = true) {
+    /// 纯图片Alert弹框
+    /// - parameter imageStr: 图片路径
+    /// - parameter hideCloseBtn: 是否显示底部关闭按钮,默认不隐藏
+    /// - parameter touchBlock: 点击图片事件
+    init(imageStr: String, hideCloseBtn: Bool = true, touchBlock: ((Source) -> Void)?) {
         super.init(frame: .zero)
-        if let url = URL(string: imageStr) {
-            do {
-                let data = try Data(contentsOf: url)
-                self.imageView.image = UIImage(data: data)
-            } catch {
-                print("Is bad url")
-            }
+        self.imageView.showImage(with: imageStr)
+        // 这里做个中间商赚差价,点击图片的闭包函数执行后,增加关闭当前View的事件
+        tmpTouchBlack = touchBlock
+        let touchBlockWrap: TouchOnImageBlock? = { (source) in
+            self.tmpTouchBlack?(source)
+            self.closeBtnAction()
         }
-        self.closeButton.isHidden = !showCloseBtn
+        self.imageView.touchOnBlock = touchBlockWrap
+        self.closeButton.isHidden   = hideCloseBtn
         self.setupSubviews()
     }
 

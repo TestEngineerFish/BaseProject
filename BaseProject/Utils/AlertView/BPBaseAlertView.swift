@@ -79,8 +79,8 @@ class BPBaseAlertView: BPTopWindowView {
     }()
 
     // 图片
-    var imageView: UIImageView = {
-        let imageView = UIImageView()
+    var imageView: BPBaseImageView = {
+        let imageView = BPBaseImageView()
         imageView.contentMode = UIView.ContentMode.scaleAspectFill
         return imageView
     }()

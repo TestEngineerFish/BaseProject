@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 struct BPAlertManager {
 
@@ -23,14 +24,16 @@ struct BPAlertManager {
     }
 
     /// 底部没有按钮
-    static func showAlertZeroBtn(title: String, description: String, showCloseBtn: Bool) {
-        let alertView = BPAlertViewZeroButton(title: title, description: description, showCloseBtn: showCloseBtn)
+    static func showAlertZeroBtn(title: String, description: String, hideCloseBtn: Bool = true) {
+        let alertView = BPAlertViewZeroButton(title: title, description: description, hideCloseBtn: hideCloseBtn)
         alertView.showToWindow()
     }
 
     /// 显示纯图片
-    static func showAlertImage(imageStr: String, showCloseBtn: Bool) {
-        let alertView = BPAlertViewImage(imageStr: imageStr, showCloseBtn: showCloseBtn)
+    @discardableResult
+    static func showAlertImage(imageStr: String, hideCloseBtn: Bool = true, touchBlock: ((Source) -> Void)? = nil) -> BPAlertViewImage {
+        let alertView = BPAlertViewImage(imageStr: imageStr, hideCloseBtn: hideCloseBtn, touchBlock: touchBlock)
         alertView.showToWindow()
+        return alertView
     }
 }

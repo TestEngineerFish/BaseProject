@@ -30,7 +30,9 @@ class ViewController: UIViewController {
     }
     
     @objc func showToast() {
-        self.view.toast("Message showMessage show\nMessage showMessage showMessage showMessage showMessage showMessage show")
+        BPAlertManager.showAlertImage(imageStr: "https://maxst.icons8.com/_nuxt/ouch/img/art-2.0e6fbc3.png", hideCloseBtn: false) { (source) in
+            self.view.toast(source.url?.absoluteString ?? "???")
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

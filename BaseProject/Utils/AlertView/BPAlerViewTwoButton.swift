@@ -41,7 +41,6 @@ class BPAlerViewTwoButton: BPBaseAlertView {
         super.setupSubviews()
         // 是否显示标题
         if let title = titleLabel.text, title.isNotEmpty {
-            //            viewHeight = 156.0
             titleLabel.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(18)
                 make.left.equalToSuperview().offset(15)

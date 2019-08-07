@@ -10,18 +10,16 @@ import UIKit
 
 class BPAlertViewZeroButton: BPBaseAlertView {
 
-    private var rightAction: (() -> Void)?
-
     /// 底部左右两个按钮的Alert弹框
     /// - parameter title: 标题
     /// - parameter description: 描述
-    /// - parameter showCloseBtn: 是否显示右上角的关闭按钮
-    init(title: String?, description: String, showCloseBtn: Bool = false) {
+    /// - parameter hideCloseBtn: 是否显示右上角的关闭按钮
+    init(title: String?, description: String, hideCloseBtn: Bool = false) {
         super.init(frame: .zero)
         self.titleLabel.text       = title
         self.descriptionHeight     = description.textHeight(font: self.descriptionLabel.font, width: kScreenWidth - 90)
         self.descriptionLabel.text = description
-        self.closeButton.isHidden  = !showCloseBtn
+        self.closeButton.isHidden  = hideCloseBtn
         self.setupSubviews()
     }
 
