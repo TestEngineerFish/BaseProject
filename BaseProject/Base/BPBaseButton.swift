@@ -22,7 +22,7 @@ class BPBaseButton: UIButton {
     }
 
     @objc func touchDown(sender: UIButton) {
-        sender.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        sender.transform = CGAffineTransform(scaleX: 0.93, y: 0.93)
     }
 
     @objc func touchUp(sender: UIButton) {

@@ -44,8 +44,8 @@ class BPBaseAlertView: BPTopWindowView {
     }()
 
     // 左边按钮
-    var leftButton: UIButton = {
-        let button = UIButton()
+    var leftButton: BPBaseButton = {
+        let button = BPBaseButton()
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.gray3), for: .normal)
         button.setTitleColor(UIColor.black1, for: .normal)
         button.titleLabel?.font    = UIFont.mediumFont(ofSize: 18)
@@ -56,8 +56,8 @@ class BPBaseAlertView: BPTopWindowView {
     }()
 
     // 右边按钮
-    var rightButton: UIButton = {
-        let button = UIButton()
+    var rightButton: BPBaseButton = {
+        let button = BPBaseButton()
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.green1), for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font    = UIFont.mediumFont(ofSize: 18)
@@ -68,8 +68,8 @@ class BPBaseAlertView: BPTopWindowView {
     }()
 
     // 关闭按钮
-    var closeButton: UIButton = {
-        let button = UIButton()
+    var closeButton: BPBaseButton = {
+        let button = BPBaseButton()
         button.setTitle(Iconfont.close1.rawValue, for: .normal)
         button.setTitleColor(UIColor.black1.withAlphaComponent(0.8), for: .normal)
         button.titleLabel?.font = UIFont.iconFont(size: 40)
@@ -85,9 +85,17 @@ class BPBaseAlertView: BPTopWindowView {
         return imageView
     }()
 
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.containerView.layer.addJellyAnimation()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func setupSubviews() {
         super.setupSubviews()
-        self.addSubview(backgroundView)
         self.addSubview(containerView)
         self.addSubview(closeButton)
 

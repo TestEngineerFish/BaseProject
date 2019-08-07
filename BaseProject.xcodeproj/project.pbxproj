@@ -236,9 +236,9 @@
 		22C621F822DC8E7600A7C849 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				2264EF8222F9108500A89C82 /* AlertView */,
 				CF87869722F709C20031E4B9 /* BPAuthoriationManager.swift */,
 				2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */,
+				2264EF8222F9108500A89C82 /* AlertView */,
 			);
 			path = Utils;
 			sourceTree = "<group>";

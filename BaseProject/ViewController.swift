@@ -35,6 +35,7 @@ class ViewController: UIViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
+        BPAlertManager.showAlert(title: "T##String?", description: "T##String", leftBtnName: "T##String", leftBtnClosure: nil, rightBtnName: "T##String", rightBtnClosure: nil)
 
     }
     
