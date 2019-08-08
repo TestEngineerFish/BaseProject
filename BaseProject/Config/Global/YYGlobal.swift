@@ -105,7 +105,7 @@ public var kWindow: UIWindow {
 /// 是否是iPhoneX之后的设备
 public var iPhoneXLater: Bool {
     get {
-        let iPhoneXLaterModelList = [DeviceModelType.iPhoneX, DeviceModelType.iPhoneXr, DeviceModelType.iPhoneXs, DeviceModelType.iPhoneXsMax]
+        let iPhoneXLaterModelList = [DeviceModelType.iPhoneX, DeviceModelType.iPhoneXr, DeviceModelType.iPhoneXs, DeviceModelType.iPhoneXsMax, DeviceModelType.simulator]
         return iPhoneXLaterModelList.contains(DeviceInfoGlobal.model())
     }
 }

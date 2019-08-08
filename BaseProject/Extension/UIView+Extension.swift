@@ -351,14 +351,19 @@ public extension UIView {
 
     /// 显示下拉加载动画
     /// - parameter top: 加载动画顶部在Y轴上的位置
-    func showTopLoading(with top: CGFloat) {
-        let loadView      = AnimationView(name: "top-loading")
-        loadView.frame    = CGRect(origin: CGPoint.zero, size: CGSize(width: 100, height: 50))
-        loadView.centerX  = self.centerX
-        loadView.top      = top
-        loadView.loopMode = LottieLoopMode.loop
-        self.addSubview(loadView)
-        objc_setAssociatedObject(self, &AssociatedKeys.topLoadingView, loadView, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
+    func showTopLoading(with top: CGFloat = -50) {
+        // 先尝试获取,如果已存在,则直接播放动画
+        if let loadView = objc_getAssociatedObject(self, &AssociatedKeys.topLoadingView), let _loadView = loadView as? AnimationView {
+            _loadView.play()
+        } else {
+            let loadView      = AnimationView(name: "top-loading")
+            loadView.frame    = CGRect(origin: CGPoint.zero, size: CGSize(width: 100, height: 50))
+            loadView.centerX  = self.centerX
+            loadView.top      = top
+            loadView.loopMode = LottieLoopMode.loop
+            self.addSubview(loadView)
+            objc_setAssociatedObject(self, &AssociatedKeys.topLoadingView, loadView, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
+        }
     }
 
 

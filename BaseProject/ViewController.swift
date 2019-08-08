@@ -13,7 +13,6 @@ class ViewController: UIViewController {
 
     var showView = UIView()
     let button   = BPBaseButton()
-    let loadView = AnimationView(name: "top-loading")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,16 +29,9 @@ class ViewController: UIViewController {
             make.center.equalToSuperview()
             make.size.equalTo(CGSize(width: 100, height: 50))
         }
-        loadView.frame    = CGRect(x: 0, y: 0, width: 100, height: 100)
-        loadView.centerX  = self.view.centerX
-        loadView.top      = kNavHeight
-        loadView.loopMode = LottieLoopMode.loop
-        self.view.addSubview(loadView)
     }
 
     @objc func hideToast() {
-        self.loadView.stop()
-        self.loadView.isHidden = true
     }
     
     @objc func showToast() {
@@ -47,9 +39,8 @@ class ViewController: UIViewController {
 //        BPAlertManager.showAlertImage(imageStr: "https://maxst.icons8.com/_nuxt/ouch/img/art-2.0e6fbc3.png", hideCloseBtn: false) { (source) in
 //            self.view.toast(source.url?.absoluteString ?? "???")
 //        }
-
-        loadView.isHidden = false
-        loadView.play()
+        let vc = BPBaseTableViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
