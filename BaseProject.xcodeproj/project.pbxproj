@@ -36,6 +36,11 @@
 		22C621F722DC8E0B00A7C849 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621F622DC8E0B00A7C849 /* UIColor+Extension.swift */; };
 		22C6221B22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6221A22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift */; };
 		22C6221D22DF120900A7C849 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6221C22DF120900A7C849 /* Error+Extension.swift */; };
+		22D4980D22FBC67300281530 /* top-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 22D4980C22FBC67300281530 /* top-loading.json */; };
+		22D4980F22FBCD0800281530 /* center-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 22D4980E22FBCD0800281530 /* center-loading.json */; };
+		22D4981122FBCD9B00281530 /* BPBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981022FBCD9B00281530 /* BPBaseTableViewController.swift */; };
+		22D4981322FBCDA900281530 /* BPBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981222FBCDA900281530 /* BPBaseViewController.swift */; };
+		22D4981522FBCDC600281530 /* BPCustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981422FBCDC600281530 /* BPCustomNavigationBar.swift */; };
 		7B212ACC1EB4CBADF5DD63D4 /* Pods_BaseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE0B51EBB89FBFB5A61CACA /* Pods_BaseProject.framework */; };
 		CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869522F6F5380031E4B9 /* UINavigationController+Extension.swift */; };
 		CF87869822F709C20031E4B9 /* BPAuthoriationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869722F709C20031E4B9 /* BPAuthoriationManager.swift */; };
@@ -44,7 +49,6 @@
 		CF8EB56622DCC09B00EC2FE5 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56522DCC09B00EC2FE5 /* Bundle+Extension.swift */; };
 		CF8EB56B22DCC45800EC2FE5 /* UserDefault+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56A22DCC45800EC2FE5 /* UserDefault+Extension.swift */; };
 		CF8EB57B22DCC61400EC2FE5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8EB57A22DCC61400EC2FE5 /* AVFoundation.framework */; };
-		CF8EB58722DCCBA900EC2FE5 /* YYBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB58622DCCBA900EC2FE5 /* YYBaseViewController.swift */; };
 		CF8EB58B22DCCCA600EC2FE5 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB58A22DCCCA600EC2FE5 /* UIFont+Extension.swift */; };
 		CF8EB58D22DCCCFC00EC2FE5 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB58C22DCCCFC00EC2FE5 /* String+Extension.swift */; };
 		CF8EB59C22DCCEBC00EC2FE5 /* IconFontString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB59B22DCCEBC00EC2FE5 /* IconFontString.swift */; };
@@ -52,7 +56,6 @@
 		CF8EB5A022DCD08A00EC2FE5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB59F22DCD08A00EC2FE5 /* UIView+Extension.swift */; };
 		CF8EB5A222DCD0DC00EC2FE5 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB5A122DCD0DC00EC2FE5 /* UIViewController+Extension.swift */; };
 		CF8EB5A622DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB5A522DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift */; };
-		CF8EB5A822DCD22800EC2FE5 /* YYCustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB5A722DCD22800EC2FE5 /* YYCustomNavigationBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +90,11 @@
 		22C621F622DC8E0B00A7C849 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		22C6221A22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYUsrHomePageDataRequestAPI.swift; sourceTree = "<group>"; };
 		22C6221C22DF120900A7C849 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
+		22D4980C22FBC67300281530 /* top-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "top-loading.json"; sourceTree = "<group>"; };
+		22D4980E22FBCD0800281530 /* center-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "center-loading.json"; sourceTree = "<group>"; };
+		22D4981022FBCD9B00281530 /* BPBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseTableViewController.swift; sourceTree = "<group>"; };
+		22D4981222FBCDA900281530 /* BPBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseViewController.swift; sourceTree = "<group>"; };
+		22D4981422FBCDC600281530 /* BPCustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPCustomNavigationBar.swift; sourceTree = "<group>"; };
 		62C207CFF7FD424CF4B3C8C3 /* Pods-BaseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.release.xcconfig"; path = "Target Support Files/Pods-BaseProject/Pods-BaseProject.release.xcconfig"; sourceTree = "<group>"; };
 		CF27E37F22DE279E0056ADFA /* BaseProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF87869522F6F5380031E4B9 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
@@ -96,7 +104,6 @@
 		CF8EB56522DCC09B00EC2FE5 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB56A22DCC45800EC2FE5 /* UserDefault+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB57A22DCC61400EC2FE5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		CF8EB58622DCCBA900EC2FE5 /* YYBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYBaseViewController.swift; sourceTree = "<group>"; };
 		CF8EB58A22DCCCA600EC2FE5 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB58C22DCCCFC00EC2FE5 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB59B22DCCEBC00EC2FE5 /* IconFontString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconFontString.swift; sourceTree = "<group>"; };
@@ -104,7 +111,6 @@
 		CF8EB59F22DCD08A00EC2FE5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB5A122DCD0DC00EC2FE5 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB5A522DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YYBaseViewController+CustomNavigationBar.swift"; sourceTree = "<group>"; };
-		CF8EB5A722DCD22800EC2FE5 /* YYCustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYCustomNavigationBar.swift; sourceTree = "<group>"; };
 		D1A3EF0650A7F2326222FB45 /* Pods-BaseProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.debug.xcconfig"; path = "Target Support Files/Pods-BaseProject/Pods-BaseProject.debug.xcconfig"; sourceTree = "<group>"; };
 		FCE0B51EBB89FBFB5A61CACA /* Pods_BaseProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -269,6 +275,15 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		22D497FF22FBB0E700281530 /* LottieFiles */ = {
+			isa = PBXGroup;
+			children = (
+				22D4980E22FBCD0800281530 /* center-loading.json */,
+				22D4980C22FBC67300281530 /* top-loading.json */,
+			);
+			path = LottieFiles;
+			sourceTree = "<group>";
+		};
 		C7C580CA7C5CFA0EEAB645A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +296,7 @@
 		CF27E37E22DE27400056ADFA /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				22D497FF22FBB0E700281530 /* LottieFiles */,
 				2264EF8B22F9738700A89C82 /* iconfont.ttf */,
 				CF27E37F22DE279E0056ADFA /* BaseProject-Bridging-Header.h */,
 			);
@@ -316,8 +332,9 @@
 		CF8EB5A422DCD18400EC2FE5 /* BaseController */ = {
 			isa = PBXGroup;
 			children = (
-				CF8EB5A722DCD22800EC2FE5 /* YYCustomNavigationBar.swift */,
-				CF8EB58622DCCBA900EC2FE5 /* YYBaseViewController.swift */,
+				22D4981022FBCD9B00281530 /* BPBaseTableViewController.swift */,
+				22D4981222FBCDA900281530 /* BPBaseViewController.swift */,
+				22D4981422FBCDC600281530 /* BPCustomNavigationBar.swift */,
 			);
 			path = BaseController;
 			sourceTree = "<group>";
@@ -392,8 +409,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22D4980D22FBC67300281530 /* top-loading.json in Resources */,
 				22C621C222DC805600A7C849 /* LaunchScreen.storyboard in Resources */,
 				22C621BF22DC805600A7C849 /* Assets.xcassets in Resources */,
+				22D4980F22FBCD0800281530 /* center-loading.json in Resources */,
 				2264EF8C22F9738700A89C82 /* iconfont.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,6 +467,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22C621BA22DC805600A7C849 /* ViewController.swift in Sources */,
+				22D4981322FBCDA900281530 /* BPBaseViewController.swift in Sources */,
 				22413E3422E8400900F2C678 /* NotificationNameGlobal.swift in Sources */,
 				22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */,
 				CF87869822F709C20031E4B9 /* BPAuthoriationManager.swift in Sources */,
@@ -465,6 +485,7 @@
 				CF8EB59E22DCD04300EC2FE5 /* Date+Extension.swift in Sources */,
 				CF8EB56B22DCC45800EC2FE5 /* UserDefault+Extension.swift in Sources */,
 				22C621F122DC8D1000A7C849 /* YYGlobal.swift in Sources */,
+				22D4981522FBCDC600281530 /* BPCustomNavigationBar.swift in Sources */,
 				22C621EE22DC8A7800A7C849 /* UIDevice+Extension.swift in Sources */,
 				2264EF7D22F7C6E500A89C82 /* BPTopWindowView.swift in Sources */,
 				22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */,
@@ -479,12 +500,11 @@
 				2211803322EEE47500B77911 /* CALayer+Extension.swift in Sources */,
 				22C6221B22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift in Sources */,
 				2264EF9622F98A3700A89C82 /* BPBaseButton.swift in Sources */,
+				22D4981122FBCD9B00281530 /* BPBaseTableViewController.swift in Sources */,
 				2264EF8122F90EED00A89C82 /* BPBaseAlertView.swift in Sources */,
-				CF8EB5A822DCD22800EC2FE5 /* YYCustomNavigationBar.swift in Sources */,
 				22C621B822DC805600A7C849 /* AppDelegate.swift in Sources */,
 				2264EF8822F9302B00A89C82 /* BPAlertViewImage.swift in Sources */,
 				2264EF9022F979DB00A89C82 /* BPBaseResopnse.swift in Sources */,
-				CF8EB58722DCCBA900EC2FE5 /* YYBaseViewController.swift in Sources */,
 				CF8EB56622DCC09B00EC2FE5 /* Bundle+Extension.swift in Sources */,
 				CF8EB58D22DCCCFC00EC2FE5 /* String+Extension.swift in Sources */,
 				22C621F722DC8E0B00A7C849 /* UIColor+Extension.swift in Sources */,

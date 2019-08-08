@@ -308,6 +308,9 @@ extension UIView {
 
 public extension UIView {
 
+    /// 将当前View添加到 Window 层显示
+    ///
+    /// UIApplication.shared.keyWindow
     func showToWindow() {
         UIView.cleanTopWindow(anyClass: BPTopWindowView.classForCoder())
         kWindow.addSubview(self)
@@ -334,5 +337,37 @@ public extension UIView {
             topWindow.toast(message)
         }
     }
+}
+
+import Lottie
+
+// - MARK: Lottie 动画类
+public extension UIView {
+
+    /// Runtime关联Key
+    private struct AssociatedKeys {
+        static var topLoadingView: String = "kTopLoadingView"
+    }
+
+    /// 显示下拉加载动画
+    /// - parameter top: 加载动画顶部在Y轴上的位置
+    func showTopLoading(with top: CGFloat) {
+        let loadView      = AnimationView(name: "top-loading")
+        loadView.frame    = CGRect(origin: CGPoint.zero, size: CGSize(width: 100, height: 50))
+        loadView.centerX  = self.centerX
+        loadView.top      = top
+        loadView.loopMode = LottieLoopMode.loop
+        self.addSubview(loadView)
+        objc_setAssociatedObject(self, &AssociatedKeys.topLoadingView, loadView, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
+    }
+
+
+    /// 隐藏顶部加载动画
+    func hideTopLoading() {
+        let loadView = objc_getAssociatedObject(self, &AssociatedKeys.topLoadingView)
+        guard let _loadView = loadView as? AnimationView else { return }
+        _loadView.removeFromSuperview()
+    }
+
 }
 

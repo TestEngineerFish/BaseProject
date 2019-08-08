@@ -1,8 +1,8 @@
 //
-//  YYCustomNavigationBar.swift
+//  BPCustomNavigationBar.swift
 //  BaseProject
 //
-//  Created by 沙庭宇 on 2019/7/15.
+//  Created by 沙庭宇 on 2019/8/8.
 //  Copyright © 2019 沙庭宇. All rights reserved.
 //
 
@@ -12,14 +12,14 @@ import UIKit
  * 自定义导航
  */
 public class YYCustomNavigationBar: UIView {
-    
+
     // MARK: ++++++++++++++++++++++++++++ Title
 
     /**
      * 是否为大标题
      */
     private var isLargeTitle: Bool = false
-    
+
     /** 小标题 */
     public var title: String? {
         set { self.titleLabel.text = newValue }
@@ -45,8 +45,8 @@ public class YYCustomNavigationBar: UIView {
         set { self.rightSecondButton.setTitle(newValue, for: .normal) }
         get { return self.rightSecondButton.title(for: .normal) }
     }
-    
-    
+
+
     // MARK: ++++++++++++++++++++++++++++ Title Color
 
     /** 小标题字体颜色 */
@@ -87,27 +87,27 @@ public class YYCustomNavigationBar: UIView {
         }
         get { return self.rightSecondButton.titleColor(for: .normal) }
     }
-    
-    
+
+
     // MARK: ++++++++++++++++++++++++++++ Action
-    
+
     /** 左边按钮的点击事件 */
     public var leftButtonAction: (() -> Void)?
     /** 右边第一个按钮的点击事件 */
     public var rightFirstButtonAction: (() -> Void)?
     /** 右边第二个按钮的点击事件 */
     public var rightSecondButtonAction: (() -> Void)?
-    
-    
-    
+
+
+
     // MARK: ++++++++++++++++++++++++++++ Control
-    
+
     /** 正常小标题 */
     public var titleLabel        = UILabel()
 
     /** 大标题 */
     public var largeTitleButton  = UIButton()
-    
+
     /** 左边的返回按钮 */
     public var leftButton        = UIButton()
 
@@ -116,7 +116,7 @@ public class YYCustomNavigationBar: UIView {
 
     /** 右边第二个按钮 **/
     public var rightSecondButton = UIButton ()
-    
+
     // MARK: ++++++++++++++++++++++++++++ life cycle
     deinit {
         print("自定义导航头释放")
@@ -124,38 +124,38 @@ public class YYCustomNavigationBar: UIView {
 
     /**
      * 初始化时确认当前Navigate显示的是大标题还是小标题
-    */
+     */
     public init(largeTitle: Bool) {
         super.init(frame: CGRect.zero)
-        
+
         self.isLargeTitle = largeTitle
         self.setSubviews()
         self.createSubviews()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
 }
 
 // MARK: ++++++++++++++++++++++++++++ Event
 extension YYCustomNavigationBar {
-    
+
     @objc fileprivate func backViewController() {
         self.leftButtonAction?()
-        
+
         leftButton.removeTarget(self, action: #selector(backViewController), for: .touchUpInside)
         rightFirstButton.removeTarget(self, action: #selector(rightButtonDidClick), for: .touchUpInside)
         rightSecondButton.removeTarget(self, action: #selector(rightSecondButtonDidClick), for: .touchUpInside)
-        
+
         UIViewController.currentNavigationController?.popViewController(animated: true)
     }
-    
+
     @objc fileprivate func rightButtonDidClick() {
         self.rightFirstButtonAction?()
     }
-    
+
     @objc fileprivate func rightSecondButtonDidClick() {
         self.rightSecondButtonAction?()
     }
@@ -212,7 +212,7 @@ extension YYCustomNavigationBar {
         self.rightSecondButton.titleLabel?.font = UIFont.iconFont(size: 26)
         self.rightSecondButton.addTarget(self, action: #selector(rightSecondButtonDidClick), for: .touchUpInside)
     }
-    
+
     private func createSubviews() {
 
         let height: CGFloat = self.isLargeTitle ? 62.0 : 44.0
@@ -228,9 +228,9 @@ extension YYCustomNavigationBar {
             self.addSubview(self.rightFirstButton)
         }
     }
-    
+
     private func setLargeTitle(_ title: String?) {
-        
+
         if let t = title {
             self.largeTitleButton.setTitle(t, for: .normal)
         }
@@ -242,9 +242,9 @@ extension YYCustomNavigationBar {
         }
         self.largeTitleButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         self.largeTitleButton.setTitleColor(UIColor.black, for: .highlighted)
-        
+
     }
-    
+
     private var currentNavigationController: UINavigationController? {
         return UIViewController.currentViewController?.navigationController
     }

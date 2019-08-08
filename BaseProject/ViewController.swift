@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Lottie
 
 class ViewController: UIViewController {
 
     var showView = UIView()
-    let button = BPBaseButton()
+    let button   = BPBaseButton()
+    let loadView = AnimationView(name: "top-loading")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,17 +24,32 @@ class ViewController: UIViewController {
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
         button.addTarget(self, action: #selector(showToast), for: .touchUpInside)
+        button.addTarget(self, action: #selector(hideToast), for: .touchUpOutside)
         self.view.addSubview(button)
         button.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.size.equalTo(CGSize(width: 100, height: 50))
         }
+        loadView.frame    = CGRect(x: 0, y: 0, width: 100, height: 100)
+        loadView.centerX  = self.view.centerX
+        loadView.top      = kNavHeight
+        loadView.loopMode = LottieLoopMode.loop
+        self.view.addSubview(loadView)
+    }
+
+    @objc func hideToast() {
+        self.loadView.stop()
+        self.loadView.isHidden = true
     }
     
     @objc func showToast() {
-        BPAlertManager.showAlertImage(imageStr: "https://maxst.icons8.com/_nuxt/ouch/img/art-2.0e6fbc3.png", hideCloseBtn: false) { (source) in
-            self.view.toast(source.url?.absoluteString ?? "???")
-        }
+
+//        BPAlertManager.showAlertImage(imageStr: "https://maxst.icons8.com/_nuxt/ouch/img/art-2.0e6fbc3.png", hideCloseBtn: false) { (source) in
+//            self.view.toast(source.url?.absoluteString ?? "???")
+//        }
+
+        loadView.isHidden = false
+        loadView.play()
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

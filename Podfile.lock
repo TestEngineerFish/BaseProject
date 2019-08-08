@@ -8,6 +8,7 @@ PODS:
   - CocoaLumberjack/Swift (3.5.3):
     - CocoaLumberjack/Core
   - Kingfisher (5.7.0)
+  - lottie-ios (3.1.2)
   - ObjectMapper (3.5.1)
   - SAMKeychain (1.5.3)
   - SnapKit (5.0.1)
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - Bugly
   - CocoaLumberjack/Swift
   - Kingfisher (~> 5.7)
+  - lottie-ios
   - ObjectMapper (~> 3.5.1)
   - SAMKeychain
   - SnapKit (~> 5.0.0)
@@ -33,6 +35,7 @@ SPEC REPOS:
     - Bugly
     - CocoaLumberjack
     - Kingfisher
+    - lottie-ios
     - ObjectMapper
     - SAMKeychain
     - SnapKit
@@ -45,12 +48,13 @@ SPEC CHECKSUMS:
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
   Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
+  lottie-ios: 49cd85b1f24f61a7708ad7ec76a523ab2d0e3100
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
   Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
 
-PODFILE CHECKSUM: 1302d9b0c061016aff1530c61c892d629e88544c
+PODFILE CHECKSUM: 32515d349d498ffb2413a43a124106b3c212b9e2
 
 COCOAPODS: 1.8.0.beta.1
