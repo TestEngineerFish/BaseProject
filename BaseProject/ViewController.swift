@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     }
 
     @objc func hideToast() {
+        self.view.hideTopLoading()
     }
     
     @objc func showToast() {
@@ -39,8 +40,9 @@ class ViewController: UIViewController {
 //        BPAlertManager.showAlertImage(imageStr: "https://maxst.icons8.com/_nuxt/ouch/img/art-2.0e6fbc3.png", hideCloseBtn: false) { (source) in
 //            self.view.toast(source.url?.absoluteString ?? "???")
 //        }
-        let vc = BPBaseTableViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.view.showTopLoading(with: 100)
+//        let vc = BPBaseTableViewController()
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

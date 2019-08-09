@@ -361,6 +361,7 @@ public extension UIView {
             loadView.centerX  = self.centerX
             loadView.top      = top
             loadView.loopMode = LottieLoopMode.loop
+            loadView.play()
             self.addSubview(loadView)
             objc_setAssociatedObject(self, &AssociatedKeys.topLoadingView, loadView, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
         }

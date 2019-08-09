@@ -14,55 +14,21 @@ class BPBaseTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let refresh = UIRefreshControl()
+        refresh.attributedTitle = NSAttributedString(string: "刷新咯")
+        refresh .addTarget(self, action: #selector(_refresh), for: .valueChanged)
+        self.refreshControl = refresh
     }
-    
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-    }
-    
-    override func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
-        
-    }
-    
-    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        
-    }
-    
-    override func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        
-    }
-    
-    override func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
-        
-    }
-    
-    override func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
-        
-    }
-    
-    override func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        
-    }
-    
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
-    }
-    
-    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        print(scrollView.contentOffset.y)
-        if decelerate {
-            let minY = (-50 - kNavHeight)
-            // 显示loading动画
-            if scrollView.contentOffset.y < minY {
-                UIView.animate(withDuration: 0.25) {
-                    // 显示顶部loading动画的时候,设置TableView加载动画
-                    scrollView.contentOffset = CGPoint(x: 0, y: abs(minY))
-                }
-                // 显示loading动画
-                self.view.showTopLoading()
-            }
+
+    @objc func _refresh() {
+        if self.refreshControl?.isRefreshing ?? false {
+            print("refreshing")
+        } else {
+            print("refresh end")
         }
     }
+    
+
 
     // - MARK: Delegate
     // - MARK: DataSource
