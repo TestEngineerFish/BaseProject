@@ -260,7 +260,7 @@ extension UIView {
 // MARK: --- 颜色处理 ---
 extension UIView {
     
-    /// 设置渐变色
+    /// 设置View渐变色
     /// - parameter colors: 渐变颜色数组
     /// - parameter locations: 逐个对应渐变色的数组,设置颜色的渐变占比,nil则默认平均分配
     /// - parameter startPoint: 开始渐变的坐标(控制渐变的方向),取值(0 ~ 1)

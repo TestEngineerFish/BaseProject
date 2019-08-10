@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreGraphics
 
 public extension UIColor {
     class func make(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat = 1.0) -> UIColor {
@@ -43,7 +44,26 @@ public extension UIColor {
             return UIColor(red: red, green: green, blue: blue, alpha: alpha / 100)
         }
     }
-
+    
+    /// 设置渐变色
+    /// - parameter size: 渐变文字区域的大小.也就是用于绘制的区域
+    /// - parameter colors: 渐变的颜色数组,从左到右顺序渐变,区域均匀分布
+    /// - returns: 返回一个渐变的color,如果绘制失败,则返回nil;
+    class func gradientColor(with size: CGSize, colors:[CGColor]) -> UIColor? {
+        UIGraphicsBeginImageContextWithOptions(size, false, kScreenScale)
+        // 设置绘制需要的数据
+        guard let context     = UIGraphicsGetCurrentContext() else { return nil }
+        let colorSpaceRef     = CGColorSpaceCreateDeviceRGB()
+        guard let gradientRef = CGGradient(colorsSpace: colorSpaceRef,colors: colors as CFArray, locations: nil) else { return nil }
+        let startPoint        = CGPoint.zero
+        let endPoint          = CGPoint(x: size.width, y: size.height)
+        // 开始绘制图片
+        context.drawLinearGradient(gradientRef, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: CGGradientDrawingOptions.drawsBeforeStartLocation.rawValue | CGGradientDrawingOptions.drawsAfterEndLocation.rawValue))
+        // 获取渐变图片
+        guard let gradientImage = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
+        return UIColor(patternImage: gradientImage)
+    }
+    
 }
 //MARK: **************** 颜色值 **********************
 public extension UIColor {

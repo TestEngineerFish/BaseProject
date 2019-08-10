@@ -26,7 +26,7 @@
 		2264EF9622F98A3700A89C82 /* BPBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF9522F98A3700A89C82 /* BPBaseButton.swift */; };
 		22A877BE22FAB679004FF3A7 /* BPBaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A877BD22FAB679004FF3A7 /* BPBaseImageView.swift */; };
 		22C621B822DC805600A7C849 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B722DC805600A7C849 /* AppDelegate.swift */; };
-		22C621BA22DC805600A7C849 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B922DC805600A7C849 /* ViewController.swift */; };
+		22C621BA22DC805600A7C849 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B922DC805600A7C849 /* ViewController1.swift */; };
 		22C621BF22DC805600A7C849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22C621BE22DC805600A7C849 /* Assets.xcassets */; };
 		22C621C222DC805600A7C849 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C621C022DC805600A7C849 /* LaunchScreen.storyboard */; };
 		22C621DD22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621DC22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift */; };
@@ -46,6 +46,12 @@
 		22D4981F22FD163A00281530 /* BPRefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981E22FD163A00281530 /* BPRefreshHeaderView.swift */; };
 		22D4982122FD164600281530 /* BPRefreshFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4982022FD164600281530 /* BPRefreshFooterView.swift */; };
 		7B212ACC1EB4CBADF5DD63D4 /* Pods_BaseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE0B51EBB89FBFB5A61CACA /* Pods_BaseProject.framework */; };
+		CF26719022FEB39B00E6B47F /* BPBaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26718F22FEB39B00E6B47F /* BPBaseTabBarController.swift */; };
+		CF26719222FEF6E700E6B47F /* BPTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719122FEF6E700E6B47F /* BPTabBar.swift */; };
+		CF26719422FF0A4300E6B47F /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719322FF0A4300E6B47F /* ViewController2.swift */; };
+		CF26719622FF0A5900E6B47F /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719522FF0A5900E6B47F /* ViewController3.swift */; };
+		CF26719822FF0A6B00E6B47F /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719722FF0A6B00E6B47F /* ViewController4.swift */; };
+		CF26719A22FF0B1B00E6B47F /* BPBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719922FF0B1B00E6B47F /* BPBaseNavigationController.swift */; };
 		CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869522F6F5380031E4B9 /* UINavigationController+Extension.swift */; };
 		CF87869822F709C20031E4B9 /* BPAuthoriationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869722F709C20031E4B9 /* BPAuthoriationManager.swift */; };
 		CF87869A22F87BD60031E4B9 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869922F87BD60031E4B9 /* UIImage+Extension.swift */; };
@@ -83,7 +89,7 @@
 		22A877BD22FAB679004FF3A7 /* BPBaseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseImageView.swift; sourceTree = "<group>"; };
 		22C621B422DC805600A7C849 /* BaseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C621B722DC805600A7C849 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		22C621B922DC805600A7C849 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		22C621B922DC805600A7C849 /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
 		22C621BE22DC805600A7C849 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22C621C122DC805600A7C849 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22C621C322DC805600A7C849 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -104,6 +110,12 @@
 		22D4981E22FD163A00281530 /* BPRefreshHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPRefreshHeaderView.swift; sourceTree = "<group>"; };
 		22D4982022FD164600281530 /* BPRefreshFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPRefreshFooterView.swift; sourceTree = "<group>"; };
 		62C207CFF7FD424CF4B3C8C3 /* Pods-BaseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.release.xcconfig"; path = "Target Support Files/Pods-BaseProject/Pods-BaseProject.release.xcconfig"; sourceTree = "<group>"; };
+		CF26718F22FEB39B00E6B47F /* BPBaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseTabBarController.swift; sourceTree = "<group>"; };
+		CF26719122FEF6E700E6B47F /* BPTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTabBar.swift; sourceTree = "<group>"; };
+		CF26719322FF0A4300E6B47F /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		CF26719522FF0A5900E6B47F /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
+		CF26719722FF0A6B00E6B47F /* ViewController4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
+		CF26719922FF0B1B00E6B47F /* BPBaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseNavigationController.swift; sourceTree = "<group>"; };
 		CF27E37F22DE279E0056ADFA /* BaseProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF87869522F6F5380031E4B9 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		CF87869722F709C20031E4B9 /* BPAuthoriationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BPAuthoriationManager.swift; path = BaseProject/Extension/BPAuthoriationManager.swift; sourceTree = SOURCE_ROOT; };
@@ -189,7 +201,6 @@
 				22C621EA22DC89D500A7C849 /* Extension */,
 				22C621DB22DC821000A7C849 /* Demo */,
 				22C621B722DC805600A7C849 /* AppDelegate.swift */,
-				22C621B922DC805600A7C849 /* ViewController.swift */,
 				22C621BE22DC805600A7C849 /* Assets.xcassets */,
 				22C621C022DC805600A7C849 /* LaunchScreen.storyboard */,
 				22C621C322DC805600A7C849 /* Info.plist */,
@@ -213,6 +224,10 @@
 			children = (
 				22C621DC22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift */,
 				22C621DE22DC886300A7C849 /* YYBaseModel.swift */,
+				22C621B922DC805600A7C849 /* ViewController1.swift */,
+				CF26719322FF0A4300E6B47F /* ViewController2.swift */,
+				CF26719522FF0A5900E6B47F /* ViewController3.swift */,
+				CF26719722FF0A6B00E6B47F /* ViewController4.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -345,6 +360,8 @@
 				CF8EB5A422DCD18400EC2FE5 /* BaseController */,
 				2264EF9522F98A3700A89C82 /* BPBaseButton.swift */,
 				22A877BD22FAB679004FF3A7 /* BPBaseImageView.swift */,
+				CF26719122FEF6E700E6B47F /* BPTabBar.swift */,
+				22D4981422FBCDC600281530 /* BPCustomNavigationBar.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -352,9 +369,10 @@
 		CF8EB5A422DCD18400EC2FE5 /* BaseController */ = {
 			isa = PBXGroup;
 			children = (
+				CF26719922FF0B1B00E6B47F /* BPBaseNavigationController.swift */,
 				22D4981022FBCD9B00281530 /* BPBaseTableViewController.swift */,
 				22D4981222FBCDA900281530 /* BPBaseViewController.swift */,
-				22D4981422FBCDC600281530 /* BPCustomNavigationBar.swift */,
+				CF26718F22FEB39B00E6B47F /* BPBaseTabBarController.swift */,
 			);
 			path = BaseController;
 			sourceTree = "<group>";
@@ -486,15 +504,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22C621BA22DC805600A7C849 /* ViewController.swift in Sources */,
+				22C621BA22DC805600A7C849 /* ViewController1.swift in Sources */,
 				22D4981322FBCDA900281530 /* BPBaseViewController.swift in Sources */,
 				22413E3422E8400900F2C678 /* NotificationNameGlobal.swift in Sources */,
 				22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */,
 				CF87869822F709C20031E4B9 /* BPAuthoriationManager.swift in Sources */,
 				22C621DD22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift in Sources */,
+				CF26719022FEB39B00E6B47F /* BPBaseTabBarController.swift in Sources */,
 				CF8EB58B22DCCCA600EC2FE5 /* UIFont+Extension.swift in Sources */,
 				22A877BE22FAB679004FF3A7 /* BPBaseImageView.swift in Sources */,
 				2264EF8622F91E0700A89C82 /* BPAlertViewZeroButton.swift in Sources */,
+				CF26719822FF0A6B00E6B47F /* ViewController4.swift in Sources */,
 				22C6221D22DF120900A7C849 /* Error+Extension.swift in Sources */,
 				CF8EB5A022DCD08A00EC2FE5 /* UIView+Extension.swift in Sources */,
 				2264EF8422F91BF900A89C82 /* BPAlertViewOneButton.swift in Sources */,
@@ -513,17 +533,21 @@
 				22D4981F22FD163A00281530 /* BPRefreshHeaderView.swift in Sources */,
 				22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */,
 				2264EF9422F97A2800A89C82 /* BPTaskRequest.swift in Sources */,
+				CF26719422FF0A4300E6B47F /* ViewController2.swift in Sources */,
 				CF8EB59C22DCCEBC00EC2FE5 /* IconFontString.swift in Sources */,
+				CF26719622FF0A5900E6B47F /* ViewController3.swift in Sources */,
 				CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */,
 				CF8EB5A222DCD0DC00EC2FE5 /* UIViewController+Extension.swift in Sources */,
 				CF87869A22F87BD60031E4B9 /* UIImage+Extension.swift in Sources */,
 				2264EF7B22F7BDE500A89C82 /* BPAlertManager.swift in Sources */,
+				CF26719A22FF0B1B00E6B47F /* BPBaseNavigationController.swift in Sources */,
 				221F5C4A22E95B4000F9355C /* AppDelegate+Extension.swift in Sources */,
 				CF8EB5A622DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift in Sources */,
 				2211803322EEE47500B77911 /* CALayer+Extension.swift in Sources */,
 				22D4982122FD164600281530 /* BPRefreshFooterView.swift in Sources */,
 				22C6221B22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift in Sources */,
 				2264EF9622F98A3700A89C82 /* BPBaseButton.swift in Sources */,
+				CF26719222FEF6E700E6B47F /* BPTabBar.swift in Sources */,
 				22D4981122FBCD9B00281530 /* BPBaseTableViewController.swift in Sources */,
 				2264EF8122F90EED00A89C82 /* BPBaseAlertView.swift in Sources */,
 				22C621B822DC805600A7C849 /* AppDelegate.swift in Sources */,

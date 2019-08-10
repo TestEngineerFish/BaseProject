@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    var navController: BPCustomNavigationController?
+    var navController: BPBaseNavigationController?
 
     let networkManager = NetworkReachabilityManager()
 
@@ -26,10 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Bugly.start(withAppId: buglyAppKey)
         // 设置自定义的NavigationController为初始NavigationController
         window = UIWindow(frame: UIScreen.main.bounds)
-        let vc = ViewController()
-        self.navController = BPCustomNavigationController(rootViewController: vc)
-        self.navController?.title = ""
-        self.window?.rootViewController = self.navController
+        let tabBarController = BPBaseTabBarController()
+        tabBarController.selectedIndex = 1
+        self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
         return true
     }

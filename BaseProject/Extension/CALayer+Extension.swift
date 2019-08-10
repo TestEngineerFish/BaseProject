@@ -55,9 +55,9 @@ extension CALayer {
         bezierPath.addLine(to: CGPoint(x: topLeft.x - offset, y: topLeft.y + cornerRadius))
         shadowLayer.shadowPath = bezierPath.cgPath
 
-        self.cornerRadius = cornerRadius
-        self.masksToBounds = true
-        self.shouldRasterize = true
+        self.cornerRadius       = cornerRadius
+        self.masksToBounds      = true
+        self.shouldRasterize    = true
         self.rasterizationScale = UIScreen.main.scale
         self.superlayer?.insertSublayer(shadowLayer, below: self)
     }
@@ -95,10 +95,10 @@ extension CALayer {
         let pathUsingCorrectInsetIfAny =
             UIBezierPath(roundedRect: border!.bounds, cornerRadius:self.cornerRadius)
 
-        border!.path = pathUsingCorrectInsetIfAny.cgPath
-        border!.fillColor = UIColor.clear.cgColor
+        border!.path        = pathUsingCorrectInsetIfAny.cgPath
+        border!.fillColor   = UIColor.clear.cgColor
         border!.strokeColor = color.cgColor
-        border!.lineWidth = width
+        border!.lineWidth   = width
 
     }
 

@@ -10,14 +10,6 @@ import UIKit
 
 public extension UIImage {
     
-    class func imageWithColor(_ color: UIColor, height: CGFloat = 1.0) -> UIImage {
-        return self.imageWithColor(color, width: 1.0, height: height)
-    }
-    
-    class func imageWithColor(_ color: UIColor, width: CGFloat = 1.0, height: CGFloat = 1.0) -> UIImage {
-        return self.imageWithColor(color, width: width, height: height, cornerRadius: 0.0)
-    }
-    
     class func imageWithColor(_ color: UIColor, width: CGFloat = 1.0, height: CGFloat = 1.0, cornerRadius: CGFloat = 0) -> UIImage {
         
         let rect = CGRect(x: 0, y: 0, width: width, height: height)
