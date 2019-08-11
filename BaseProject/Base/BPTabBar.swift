@@ -11,10 +11,11 @@ import UIKit
 /// 自定义设置底部TabBar中间按钮
 class BPCenterTabBar: UITabBar {
     
+    /// 自定义中间的按钮
     let centerButton: UIButton = {
-        let button = UIButton(type: .custom)
-        let width:  CGFloat  = kScreenWidth/5 - 10
-        let height: CGFloat = width
+        let button   = UIButton(type: .custom)
+        let width    = CGFloat(kScreenWidth/5 - 10)
+        let height   = width
         button.frame = CGRect(x: (kScreenWidth - width)/2, y: -height/2, width: width, height: height)
         button.setImage(UIImage(named: "publish"), for: .normal)
         button.adjustsImageWhenHighlighted = false
@@ -34,6 +35,7 @@ class BPCenterTabBar: UITabBar {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // 处理超出TabBar区域的点击事件
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         if !self.isHidden {
             let touchPoint = centerButton.convert(point, from: self)
@@ -43,5 +45,4 @@ class BPCenterTabBar: UITabBar {
         }
         return super.hitTest(point, with: event)
     }
-    
 }

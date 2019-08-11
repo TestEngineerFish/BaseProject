@@ -8,7 +8,34 @@
 
 import UIKit
 
-class BPBaseTabBarController: UITabBarController {
+/// TabBar的事件处理协议
+protocol BPTabBarControllerProtocol {
+    /// 发布View的滑动进度事件,用于同步底部按钮的旋转角度
+    /// - parameter progress: 滑动进度
+    func publishViewOffset(_ progress: CGFloat)
+}
+
+/// 自定义底部TabBar控制器,实现了TabBar的事件处理协议
+class BPBaseTabBarController: UITabBarController, BPTabBarControllerProtocol {
+    
+    /// 发布页面
+    lazy var publisView: PublishView = {
+        let height    = kScreenHeight - kTabBarHeight
+        let view      = PublishView()
+        view.frame    = CGRect(x: 0, y: 0, width: kScreenWidth, height: height)
+        view.isHidden = true
+        view.delegate = self
+        return view
+    }()
+    
+    /// 自定义TabBar
+    let customTabBar: BPCenterTabBar = {
+        let tabBar           = BPCenterTabBar()
+        tabBar.tintColor     = UIColor.red1
+        tabBar.isTranslucent = false
+        tabBar.centerButton.addTarget(self, action: #selector(showPublishView), for: .touchUpInside)
+        return tabBar
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,15 +43,13 @@ class BPBaseTabBarController: UITabBarController {
         self.setCustomTabBar()
     }
     
+    /// 设置自定义的TabBar
     func setCustomTabBar() {
-        let customTabBar = BPCenterTabBar()
         //利用kVC,将自定义的tabBar赋值到系统的tabBar
         self.setValue(customTabBar, forKeyPath: "tabBar")
-        customTabBar.tintColor     = UIColor.red1
-        customTabBar.isTranslucent = false
-        customTabBar.centerButton.addTarget(self, action: #selector(showPublishView), for: .touchUpInside)
     }
     
+    /// 设置底部TabBarItem
     func addChildViewController() {
         let home = ViewController1()
         home.tabBarItem.title         = "HOME"
@@ -39,6 +64,7 @@ class BPBaseTabBarController: UITabBarController {
         dynamic.tabBarItem.selectedImage = UIImage(named: "dynamic_selected")
         self.addChild(dynamic)
         
+        // 仅用作占位符
         let publish = UIViewController()
         publish.tabBarItem.title         = ""
         publish.tabBarItem.image         = nil
@@ -62,14 +88,22 @@ class BPBaseTabBarController: UITabBarController {
     /// 点击中间自定自定义的“+”按钮事件
     /// - parameter button: 点击的按钮
     @objc func showPublishView(button: UIButton) {
-        self.view.toast("来啦.老弟")
         button.isSelected = !button.isSelected
-        UIView.animate(withDuration: 0.25) {
-            if button.isSelected {
-                button.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/4)
-            } else {
-                button.transform = CGAffineTransform.identity
-            }
+        if button.isSelected {
+            // 显示按钮动画
+            self.selectedViewController?.view.addSubview(self.publisView)
+            // 显示发布页面(自下而上出现)
+            self.publisView.showView()
+        } else {
+            // 恢复按钮动画
+            self.publisView.hideView()
         }
+    }
+    
+    // - MARK: BPTabBarControllerProtocol
+    func publishViewOffset(_ progress: CGFloat) {
+        let angle = CGFloat.pi/4 * progress
+        self.customTabBar.centerButton.transform  = CGAffineTransform(rotationAngle: -angle)
+        self.customTabBar.centerButton.isSelected = !angle.isZero
     }
 }

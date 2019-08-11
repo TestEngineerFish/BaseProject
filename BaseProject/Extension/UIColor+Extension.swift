@@ -50,12 +50,17 @@ public extension UIColor {
     /// - parameter colors: 渐变的颜色数组,从左到右顺序渐变,区域均匀分布
     /// - returns: 返回一个渐变的color,如果绘制失败,则返回nil;
     class func gradientColor(with size: CGSize, colors:[CGColor]) -> UIColor? {
+        // 设置画布,开始准备绘制
         UIGraphicsBeginImageContextWithOptions(size, false, kScreenScale)
-        // 设置绘制需要的数据
+        // 获取当前画布上下文,用于操作画布对象
         guard let context     = UIGraphicsGetCurrentContext() else { return nil }
+        // 创建RGB空间
         let colorSpaceRef     = CGColorSpaceCreateDeviceRGB()
-        guard let gradientRef = CGGradient(colorsSpace: colorSpaceRef,colors: colors as CFArray, locations: nil) else { return nil }
+        // 在RGB空间中绘制渐变色,可设置渐变色占比,默认均分
+        guard let gradientRef = CGGradient(colorsSpace: colorSpaceRef, colors: colors as CFArray, locations: nil) else { return nil }
+        // 设置渐变起始坐标
         let startPoint        = CGPoint.zero
+        // 设置渐变结束坐标
         let endPoint          = CGPoint(x: size.width, y: size.height)
         // 开始绘制图片
         context.drawLinearGradient(gradientRef, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: CGGradientDrawingOptions.drawsBeforeStartLocation.rawValue | CGGradientDrawingOptions.drawsAfterEndLocation.rawValue))

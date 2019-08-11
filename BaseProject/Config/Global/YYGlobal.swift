@@ -53,6 +53,13 @@ public var kNavHeight:CGFloat {
     }
 }
 
+// TabBar 高度
+public var kTabBarHeight:CGFloat {
+    get {
+        return 49 + kSafeBottomMargin
+    }
+}
+
 /// 全面屏的底部安全高度
 public var kSafeBottomMargin:CGFloat {
     get {

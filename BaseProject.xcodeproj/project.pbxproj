@@ -40,7 +40,7 @@
 		22D4980F22FBCD0800281530 /* center-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 22D4980E22FBCD0800281530 /* center-loading.json */; };
 		22D4981122FBCD9B00281530 /* BPBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981022FBCD9B00281530 /* BPBaseTableViewController.swift */; };
 		22D4981322FBCDA900281530 /* BPBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981222FBCDA900281530 /* BPBaseViewController.swift */; };
-		22D4981522FBCDC600281530 /* BPCustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981422FBCDC600281530 /* BPCustomNavigationBar.swift */; };
+		22D4981522FBCDC600281530 /* BPNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981422FBCDC600281530 /* BPNavigationBar.swift */; };
 		22D4981722FD05DD00281530 /* BPBaseRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981622FD05DD00281530 /* BPBaseRefreshControl.swift */; };
 		22D4981A22FD0A8B00281530 /* BPScrollRefreshProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981922FD0A8B00281530 /* BPScrollRefreshProtocol.swift */; };
 		22D4981F22FD163A00281530 /* BPRefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981E22FD163A00281530 /* BPRefreshHeaderView.swift */; };
@@ -52,6 +52,7 @@
 		CF26719622FF0A5900E6B47F /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719522FF0A5900E6B47F /* ViewController3.swift */; };
 		CF26719822FF0A6B00E6B47F /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719722FF0A6B00E6B47F /* ViewController4.swift */; };
 		CF26719A22FF0B1B00E6B47F /* BPBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719922FF0B1B00E6B47F /* BPBaseNavigationController.swift */; };
+		CF26719D22FF973300E6B47F /* PublishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719C22FF973300E6B47F /* PublishView.swift */; };
 		CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869522F6F5380031E4B9 /* UINavigationController+Extension.swift */; };
 		CF87869822F709C20031E4B9 /* BPAuthoriationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869722F709C20031E4B9 /* BPAuthoriationManager.swift */; };
 		CF87869A22F87BD60031E4B9 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869922F87BD60031E4B9 /* UIImage+Extension.swift */; };
@@ -104,7 +105,7 @@
 		22D4980E22FBCD0800281530 /* center-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "center-loading.json"; sourceTree = "<group>"; };
 		22D4981022FBCD9B00281530 /* BPBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseTableViewController.swift; sourceTree = "<group>"; };
 		22D4981222FBCDA900281530 /* BPBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseViewController.swift; sourceTree = "<group>"; };
-		22D4981422FBCDC600281530 /* BPCustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPCustomNavigationBar.swift; sourceTree = "<group>"; };
+		22D4981422FBCDC600281530 /* BPNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPNavigationBar.swift; sourceTree = "<group>"; };
 		22D4981622FD05DD00281530 /* BPBaseRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseRefreshControl.swift; sourceTree = "<group>"; };
 		22D4981922FD0A8B00281530 /* BPScrollRefreshProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPScrollRefreshProtocol.swift; sourceTree = "<group>"; };
 		22D4981E22FD163A00281530 /* BPRefreshHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPRefreshHeaderView.swift; sourceTree = "<group>"; };
@@ -116,6 +117,7 @@
 		CF26719522FF0A5900E6B47F /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		CF26719722FF0A6B00E6B47F /* ViewController4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
 		CF26719922FF0B1B00E6B47F /* BPBaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseNavigationController.swift; sourceTree = "<group>"; };
+		CF26719C22FF973300E6B47F /* PublishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishView.swift; sourceTree = "<group>"; };
 		CF27E37F22DE279E0056ADFA /* BaseProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF87869522F6F5380031E4B9 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		CF87869722F709C20031E4B9 /* BPAuthoriationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BPAuthoriationManager.swift; path = BaseProject/Extension/BPAuthoriationManager.swift; sourceTree = SOURCE_ROOT; };
@@ -222,6 +224,7 @@
 		22C621DB22DC821000A7C849 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				CF26719B22FF970F00E6B47F /* Publish */,
 				22C621DC22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift */,
 				22C621DE22DC886300A7C849 /* YYBaseModel.swift */,
 				22C621B922DC805600A7C849 /* ViewController1.swift */,
@@ -327,6 +330,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CF26719B22FF970F00E6B47F /* Publish */ = {
+			isa = PBXGroup;
+			children = (
+				CF26719C22FF973300E6B47F /* PublishView.swift */,
+			);
+			path = Publish;
+			sourceTree = "<group>";
+		};
 		CF27E37E22DE27400056ADFA /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,7 +372,7 @@
 				2264EF9522F98A3700A89C82 /* BPBaseButton.swift */,
 				22A877BD22FAB679004FF3A7 /* BPBaseImageView.swift */,
 				CF26719122FEF6E700E6B47F /* BPTabBar.swift */,
-				22D4981422FBCDC600281530 /* BPCustomNavigationBar.swift */,
+				22D4981422FBCDC600281530 /* BPNavigationBar.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -527,7 +538,7 @@
 				CF8EB59E22DCD04300EC2FE5 /* Date+Extension.swift in Sources */,
 				CF8EB56B22DCC45800EC2FE5 /* UserDefault+Extension.swift in Sources */,
 				22C621F122DC8D1000A7C849 /* YYGlobal.swift in Sources */,
-				22D4981522FBCDC600281530 /* BPCustomNavigationBar.swift in Sources */,
+				22D4981522FBCDC600281530 /* BPNavigationBar.swift in Sources */,
 				22C621EE22DC8A7800A7C849 /* UIDevice+Extension.swift in Sources */,
 				2264EF7D22F7C6E500A89C82 /* BPTopWindowView.swift in Sources */,
 				22D4981F22FD163A00281530 /* BPRefreshHeaderView.swift in Sources */,
@@ -536,6 +547,7 @@
 				CF26719422FF0A4300E6B47F /* ViewController2.swift in Sources */,
 				CF8EB59C22DCCEBC00EC2FE5 /* IconFontString.swift in Sources */,
 				CF26719622FF0A5900E6B47F /* ViewController3.swift in Sources */,
+				CF26719D22FF973300E6B47F /* PublishView.swift in Sources */,
 				CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */,
 				CF8EB5A222DCD0DC00EC2FE5 /* UIViewController+Extension.swift in Sources */,
 				CF87869A22F87BD60031E4B9 /* UIImage+Extension.swift in Sources */,

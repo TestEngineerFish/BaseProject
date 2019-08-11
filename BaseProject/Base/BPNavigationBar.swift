@@ -11,7 +11,7 @@ import UIKit
 /**
  * 自定义导航
  */
-public class YYCustomNavigationBar: UIView {
+public class BPNavigationBar: UIView {
 
     // MARK: ++++++++++++++++++++++++++++ Title
 
@@ -140,7 +140,7 @@ public class YYCustomNavigationBar: UIView {
 }
 
 // MARK: ++++++++++++++++++++++++++++ Event
-extension YYCustomNavigationBar {
+extension BPNavigationBar {
 
     @objc fileprivate func backViewController() {
         self.leftButtonAction?()
@@ -163,7 +163,7 @@ extension YYCustomNavigationBar {
 
 
 // MARK: ++++++++++++++++++++++++++++ private method
-extension YYCustomNavigationBar {
+extension BPNavigationBar {
 
     private func setSubviews() {
 

@@ -16,7 +16,7 @@ import UIKit
     @objc optional func useCustomNavigationBar()
     
     /** 自定义的导航栏 */
-    @objc optional var customNavigationBar: YYCustomNavigationBar? { get }
+    @objc optional var customNavigationBar: BPNavigationBar? { get }
     
     /** 是否为大标题 */
     @objc var isLargeTitle: Bool { set get }
@@ -38,8 +38,8 @@ extension UIViewController: YYCustomNavigationBarProtocol {
         self.view.addSubview(self.createCustomNavigationBar())
     }
     
-    @objc public var customNavigationBar: YYCustomNavigationBar? {
-        return objc_getAssociatedObject(self, &AssociatedKeys.customeNavigationBar) as? YYCustomNavigationBar
+    @objc public var customNavigationBar: BPNavigationBar? {
+        return objc_getAssociatedObject(self, &AssociatedKeys.customeNavigationBar) as? BPNavigationBar
     }
     
     @objc public var isLargeTitle: Bool {
@@ -56,13 +56,13 @@ extension UIViewController: YYCustomNavigationBarProtocol {
     
     
     // MARK: ++++++++++ Private ++++++++++
-    private func createCustomNavigationBar() -> YYCustomNavigationBar {
+    private func createCustomNavigationBar() -> BPNavigationBar {
         #if DEBUG
         // 摇一摇功能
         self.becomeFirstResponder()
         #endif
         
-        let cnb = YYCustomNavigationBar(largeTitle: self.isLargeTitle)
+        let cnb = BPNavigationBar(largeTitle: self.isLargeTitle)
         objc_setAssociatedObject(self, &AssociatedKeys.customeNavigationBar, cnb, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         return cnb
     }

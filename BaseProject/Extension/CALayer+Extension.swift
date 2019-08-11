@@ -107,6 +107,51 @@ extension CALayer {
         self.mask = nil
         self.bezierPathBorder?.removeFromSuperlayer()
     }
+    
+    /// 设置渐变色
+    /// - parameter colors: 渐变颜色数组
+    /// - parameter locations: 逐个对应渐变色的数组,设置颜色的渐变占比,nil则默认平均分配
+    /// - parameter startPoint: 开始渐变的坐标(控制渐变的方向),取值(0 ~ 1)
+    /// - parameter endPoint: 结束渐变的坐标(控制渐变的方向),取值(0 ~ 1)
+    @discardableResult
+    public func setGradient(colors: [UIColor], locations: [NSNumber]? = nil, startPoint: CGPoint = CGPoint.zero ,endPoint: CGPoint = CGPoint(x: 1, y: 1)) -> CAGradientLayer {
+        /// 设置渐变色
+        func _setGradient(_ layer: CAGradientLayer) {
+            // self.layoutIfNeeded()
+            var colorArr = [CGColor]()
+            for color in colors {
+                colorArr.append(color.cgColor)
+            }
+            
+            /** 将UI操作的事务,先打包提交,防止出现视觉上的延迟展示,
+             * 但如果在提交的线程中还有其他UI操作,则这些UI操作会被隐式的包在CATransaction事务中
+             * 则当前显式创建的CATransaction则还是会等到这个UI操作的事务结束后,才会展示,毕竟嵌套了嘛
+             * 如果一定要立马展示,可以结束之前的UI操作,强制展示:CATransaction.flush(),缺点就是会造成其他UI操作的异常
+             */
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            layer.frame = self.bounds
+            CATransaction.commit()
+            
+            layer.colors     = colorArr
+            layer.locations  = locations
+            layer.startPoint = startPoint
+            layer.endPoint   = endPoint
+        }
+        
+        //查找是否有已经存在的渐变色Layer
+        var kCAGradientLayerType = CAGradientLayerType.axial
+        if let gradientLayer = objc_getAssociatedObject(self, &kCAGradientLayerType) as? CAGradientLayer {
+            // 清除渐变颜色
+            gradientLayer.removeFromSuperlayer()
+        }
+        let gradientLayer = CAGradientLayer()
+        self.insertSublayer(gradientLayer , at: 0)
+        _setGradient(gradientLayer)
+        // 添加渐变色属性到当前Layer
+        objc_setAssociatedObject(self, &kCAGradientLayerType, gradientLayer, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        return gradientLayer
+    }
 }
 
 extension CALayer {
