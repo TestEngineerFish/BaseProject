@@ -16,7 +16,7 @@ protocol BPTabBarControllerProtocol {
 }
 
 /// 自定义底部TabBar控制器,实现了TabBar的事件处理协议
-class BPBaseTabBarController: UITabBarController, BPTabBarControllerProtocol {
+class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BPTabBarControllerProtocol {
     
     /// 发布页面
     lazy var publisView: PublishView = {
@@ -39,6 +39,7 @@ class BPBaseTabBarController: UITabBarController, BPTabBarControllerProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
         self.addChildViewController()
         self.setCustomTabBar()
     }
@@ -99,6 +100,13 @@ class BPBaseTabBarController: UITabBarController, BPTabBarControllerProtocol {
             self.publisView.hideView()
         }
     }
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        // 隐藏发布页面
+        self.publisView.hideView()
+        return true
+    }
+    
     
     // - MARK: BPTabBarControllerProtocol
     func publishViewOffset(_ progress: CGFloat) {
