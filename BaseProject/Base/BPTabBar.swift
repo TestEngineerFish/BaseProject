@@ -12,8 +12,8 @@ import UIKit
 class BPCenterTabBar: UITabBar {
     
     /// 自定义中间的按钮
-    let centerButton: UIButton = {
-        let button   = UIButton(type: .custom)
+    let centerButton: BPBaseButton = {
+        let button   = BPBaseButton(type: .custom)
         let width    = CGFloat(kScreenWidth/5 - 10)
         let height   = width
         button.frame = CGRect(x: (kScreenWidth - width)/2, y: -height/2, width: width, height: height)

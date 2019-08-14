@@ -18,7 +18,7 @@ class ViewController1: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         button.setTitle("Touch me", for: .normal)
-        let textColor = UIColor.gradientColor(with: CGSize(width: 100, height: 50), colors: [UIColor.white.cgColor, UIColor.black.cgColor])
+        let textColor = UIColor.gradientColor(with: CGSize(width: 100, height: 50), colors: [UIColor.white.cgColor, UIColor.black.cgColor], direction: .horizontal)
         button.setTitleColor(textColor, for: .normal)
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.green1), for: .normal)
         button.layer.cornerRadius = 5

@@ -45,11 +45,29 @@ public extension UIColor {
         }
     }
     
+    /// 渐变色方向的枚举
+    enum GradientDirectionType: Int {
+        case horizontal = 0 // 水平
+        case vertical   = 1 // 垂直
+    }
+
+    /// 根据方向,设置渐变色
+    class func gradientColor(with size: CGSize, colors: [CGColor], direction: GradientDirectionType) -> UIColor? {
+        switch direction {
+        case .horizontal:
+            return gradientColor(with: size, colors: colors, startPoint: CGPoint(x: 0, y: 0.5), endPoint: CGPoint(x: 1, y: 0.5))
+        case .vertical:
+            return gradientColor(with: size, colors: colors, startPoint: CGPoint(x: 0.5, y: 0), endPoint: CGPoint(x: 0.5, y: 1))
+        }
+    }
+
     /// 设置渐变色
     /// - parameter size: 渐变文字区域的大小.也就是用于绘制的区域
     /// - parameter colors: 渐变的颜色数组,从左到右顺序渐变,区域均匀分布
+    /// - parameter startPoint: 渐变开始坐标
+    /// - parameter endPoint: 渐变结束坐标
     /// - returns: 返回一个渐变的color,如果绘制失败,则返回nil;
-    class func gradientColor(with size: CGSize, colors:[CGColor]) -> UIColor? {
+    class func gradientColor(with size: CGSize, colors: [CGColor], startPoint: CGPoint, endPoint: CGPoint) -> UIColor? {
         // 设置画布,开始准备绘制
         UIGraphicsBeginImageContextWithOptions(size, false, kScreenScale)
         // 获取当前画布上下文,用于操作画布对象

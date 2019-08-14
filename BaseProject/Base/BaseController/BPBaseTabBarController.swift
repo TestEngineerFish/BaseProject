@@ -31,7 +31,6 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
     /// 自定义TabBar
     let customTabBar: BPCenterTabBar = {
         let tabBar           = BPCenterTabBar()
-        tabBar.tintColor     = UIColor.red1
         tabBar.isTranslucent = false
         tabBar.centerButton.addTarget(self, action: #selector(showPublishView), for: .touchUpInside)
         return tabBar
