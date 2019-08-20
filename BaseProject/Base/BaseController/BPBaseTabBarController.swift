@@ -32,7 +32,6 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
     let customTabBar: BPCenterTabBar = {
         let tabBar           = BPCenterTabBar()
         tabBar.isTranslucent = false
-        tabBar.centerButton.addTarget(self, action: #selector(showPublishView), for: .touchUpInside)
         return tabBar
     }()
     
@@ -45,8 +44,11 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
     
     /// 设置自定义的TabBar
     func setCustomTabBar() {
-        //利用kVC,将自定义的tabBar赋值到系统的tabBar
+        // 利用kVC,将自定义的tabBar赋值到系统的tabBar
         self.setValue(customTabBar, forKeyPath: "tabBar")
+        // 添加点击事件
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showPublishView))
+        customTabBar.buttonBgView.addGestureRecognizer(tap)
     }
     
     /// 设置底部TabBarItem
@@ -87,9 +89,8 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
 
     /// 点击中间自定自定义的“+”按钮事件
     /// - parameter button: 点击的按钮
-    @objc func showPublishView(button: UIButton) {
-        button.isSelected = !button.isSelected
-        if button.isSelected {
+    @objc func showPublishView() {
+        if self.publisView.isHidden {
             // 显示按钮动画
             self.selectedViewController?.view.addSubview(self.publisView)
             // 显示发布页面(自下而上出现)
@@ -109,8 +110,9 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
     
     // - MARK: BPTabBarControllerProtocol
     func publishViewOffset(_ progress: CGFloat) {
-        let angle = CGFloat.pi/4 * progress
-        self.customTabBar.centerButton.transform  = CGAffineTransform(rotationAngle: -angle)
-        self.customTabBar.centerButton.isSelected = !angle.isZero
+        let angle      = CGFloat.pi/4 * progress
+        let alphaColor = 0.3 * progress
+        self.customTabBar.publishLabel.transform  = CGAffineTransform(rotationAngle: angle)
+        self.publisView.backgroundView.backgroundColor         = UIColor.black.withAlphaComponent(alphaColor)
     }
 }

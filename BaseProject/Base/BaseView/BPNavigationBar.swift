@@ -186,7 +186,7 @@ extension BPNavigationBar {
         self.leftButton.frame = CGRect(x: 6, y: 9, width: 40, height: 26)
         self.leftButton.setTitleColor(UIColor.black, for: .normal)
         self.leftButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
-        self.leftButton.setTitle(Iconfont.back.rawValue, for: .normal)
+        self.leftButton.setTitle(IconFont.back.rawValue, for: .normal)
         self.leftButton.titleLabel?.font = UIFont.iconFont(size: 26)
         self.leftButton.contentHorizontalAlignment = .left
         self.leftButton.addTarget(self, action: #selector(backViewController), for: .touchUpInside)

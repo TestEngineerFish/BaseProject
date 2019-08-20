@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+// MARK: - 阴影和遮罩
 extension CALayer {
 
     /// 设置阴影
@@ -107,14 +109,42 @@ extension CALayer {
         self.mask = nil
         self.bezierPathBorder?.removeFromSuperlayer()
     }
-    
+}
+
+/// 渐变色的方向枚举
+public enum GradientDirectionType: Int {
+    case horizontal = 0 /// 水平(左->右)
+    case vertical   = 1 /// 垂直(上->下)
+    case leftTop    = 2 /// 斜角(左上->右下)
+    case leftBottom = 3 /// 斜角(左下->右上)
+}
+
+// MARK: - 渐变色
+extension CALayer {
+    /// 根据方向,设置渐变色
+    /// - parameter colors: 渐变的颜色数组
+    /// - parameter direction: 渐变方向的枚举对象
+    /// - note: 设置前,一定要确定当前View的高宽!!!否则无法准确的绘制
+    public func setGradient(colors: [UIColor], direction: GradientDirectionType) {
+        switch direction {
+        case .horizontal:
+            setGradient(colors: colors, startPoint: CGPoint(x: 0, y: 0.5), endPoint: CGPoint(x: 1, y: 0.5))
+        case .vertical:
+            setGradient(colors: colors, startPoint: CGPoint(x: 0.5, y: 0), endPoint: CGPoint(x: 0.5, y: 1))
+        case .leftTop:
+            setGradient(colors: colors, startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
+        case .leftBottom:
+            setGradient(colors: colors, startPoint: CGPoint(x: 0, y: 1), endPoint: CGPoint(x: 1, y: 0))
+        }
+    }
+
     /// 设置渐变色
     /// - parameter colors: 渐变颜色数组
     /// - parameter locations: 逐个对应渐变色的数组,设置颜色的渐变占比,nil则默认平均分配
     /// - parameter startPoint: 开始渐变的坐标(控制渐变的方向),取值(0 ~ 1)
     /// - parameter endPoint: 结束渐变的坐标(控制渐变的方向),取值(0 ~ 1)
     @discardableResult
-    public func setGradient(colors: [UIColor], locations: [NSNumber]? = nil, startPoint: CGPoint = CGPoint.zero ,endPoint: CGPoint = CGPoint(x: 1, y: 1)) -> CAGradientLayer {
+    public func setGradient(colors: [UIColor], locations: [NSNumber]? = nil, startPoint: CGPoint, endPoint: CGPoint) -> CAGradientLayer {
         /// 设置渐变色
         func _setGradient(_ layer: CAGradientLayer) {
             // self.layoutIfNeeded()
@@ -122,7 +152,7 @@ extension CALayer {
             for color in colors {
                 colorArr.append(color.cgColor)
             }
-            
+
             /** 将UI操作的事务,先打包提交,防止出现视觉上的延迟展示,
              * 但如果在提交的线程中还有其他UI操作,则这些UI操作会被隐式的包在CATransaction事务中
              * 则当前显式创建的CATransaction则还是会等到这个UI操作的事务结束后,才会展示,毕竟嵌套了嘛
@@ -132,13 +162,13 @@ extension CALayer {
             CATransaction.setDisableActions(true)
             layer.frame = self.bounds
             CATransaction.commit()
-            
+
             layer.colors     = colorArr
             layer.locations  = locations
             layer.startPoint = startPoint
             layer.endPoint   = endPoint
         }
-        
+
         //查找是否有已经存在的渐变色Layer
         var kCAGradientLayerType = CAGradientLayerType.axial
         if let gradientLayer = objc_getAssociatedObject(self, &kCAGradientLayerType) as? CAGradientLayer {
@@ -154,6 +184,7 @@ extension CALayer {
     }
 }
 
+// MARK: - 动画
 extension CALayer {
     /// 添加弹框动画,frame的比例放大缩小效果,类似果冻(Jelly)晃动
     /// - parameter duration: 动画持续时间

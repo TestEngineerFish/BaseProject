@@ -6,8 +6,9 @@
 //  Copyright © 2019 沙庭宇. All rights reserved.
 //
 
-public enum Iconfont: String {
-    case back   = "\u{e610}" // 返回
+public enum IconFont: String {
+    case back   = "\u{e610}" // 返回按钮
     case close  = "\u{e61e}" // 关闭按钮
-    case close1 = "\u{e62f}" // 带圆圈的关闭按钮
+    case close1 = "\u{e62f}" // 关闭按钮(带圆圈的)
+    case publis = "\u{e718}" // 加号按钮
 }

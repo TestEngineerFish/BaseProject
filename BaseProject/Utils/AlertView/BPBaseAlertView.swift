@@ -70,7 +70,7 @@ class BPBaseAlertView: BPTopWindowView {
     // 关闭按钮
     var closeButton: BPBaseButton = {
         let button = BPBaseButton()
-        button.setTitle(Iconfont.close1.rawValue, for: .normal)
+        button.setTitle(IconFont.close1.rawValue, for: .normal)
         button.setTitleColor(UIColor.black1.withAlphaComponent(0.8), for: .normal)
         button.titleLabel?.font = UIFont.iconFont(size: 40)
         button.addTarget(self, action: #selector(closeBtnAction), for: .touchUpInside)

@@ -20,44 +20,42 @@ public extension UIColor {
     }
 
     /// 十六进制颜色值
-    /// - parameter hex: 十六进制值,例如:“0x000fff”
+    /// - parameter hex: 十六进制值,例如: 0x000fff
     /// - parameter alpha: 透明度
-    class func make(hex:String, alpha: CGFloat = 1.0) -> UIColor {
-        var hexint: UInt32 = 0
-
-        let scanner = Scanner(string: hex)
-
-        scanner.charactersToBeSkipped = CharacterSet(charactersIn: "#")
-        scanner.scanHexInt32(&hexint)
-
-        if hex.count <= 4 {
-            let divisor = CGFloat(15)
-            let red     = CGFloat((hexint & 0xF00) >> 8) / divisor
-            let green   = CGFloat((hexint & 0x0F0) >> 4) / divisor
-            let blue    = CGFloat( hexint & 0x00F      ) / divisor
-            return UIColor(red: red, green: green, blue: blue, alpha: alpha / 100)
-        }else {
+    class func hex(_ hex: UInt32, alpha: CGFloat = 1.0) -> UIColor {
+        if hex > 0xFFF {
             let divisor = CGFloat(255)
-            let red     = CGFloat((hexint & 0xFF0000) >> 16) / divisor
-            let green   = CGFloat((hexint & 0xFF00  ) >> 8)  / divisor
-            let blue    = CGFloat( hexint & 0xFF    )        / divisor
-            return UIColor(red: red, green: green, blue: blue, alpha: alpha / 100)
+            let red     = CGFloat((hex & 0xFF0000) >> 16) / divisor
+            let green   = CGFloat((hex & 0xFF00  ) >> 8)  / divisor
+            let blue    = CGFloat( hex & 0xFF    )        / divisor
+            return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+        } else {
+            let divisor = CGFloat(15)
+            let red     = CGFloat((hex & 0xF00) >> 8) / divisor
+            let green   = CGFloat((hex & 0x0F0) >> 4) / divisor
+            let blue    = CGFloat( hex & 0x00F      ) / divisor
+            return UIColor(red: red, green: green, blue: blue, alpha: alpha)
         }
-    }
-    
-    /// 渐变色方向的枚举
-    enum GradientDirectionType: Int {
-        case horizontal = 0 // 水平
-        case vertical   = 1 // 垂直
     }
 
     /// 根据方向,设置渐变色
+    ///
+    /// - Parameters:
+    ///   - size: 渐变区域大小
+    ///   - colors: 渐变色数组
+    ///   - direction: 渐变方向
+    /// - Returns: 渐变后的颜色,如果设置失败,则返回nil
+    /// - note: 设置前,一定要确定当前View的高宽!!!否则无法准确的绘制
     class func gradientColor(with size: CGSize, colors: [CGColor], direction: GradientDirectionType) -> UIColor? {
         switch direction {
         case .horizontal:
             return gradientColor(with: size, colors: colors, startPoint: CGPoint(x: 0, y: 0.5), endPoint: CGPoint(x: 1, y: 0.5))
         case .vertical:
             return gradientColor(with: size, colors: colors, startPoint: CGPoint(x: 0.5, y: 0), endPoint: CGPoint(x: 0.5, y: 1))
+        case .leftTop:
+            return gradientColor(with: size, colors: colors, startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
+        case .leftBottom:
+            return gradientColor(with: size, colors: colors, startPoint: CGPoint(x: 0, y: 1), endPoint: CGPoint(x: 1, y: 0))
         }
     }
 
@@ -96,8 +94,8 @@ public extension UIColor {
         return UIColor.make(red: red, green: green, blue: blue, alpha: alpha)
     }
 
-    static func ColorWithHexRGBA(_ hex: String, alpha: CGFloat = 1.0) -> UIColor {
-        return UIColor.make(hex: hex, alpha: alpha)
+    static func ColorWithHexRGBA(_ hex: UInt32, alpha: CGFloat = 1.0) -> UIColor {
+        return UIColor.hex(hex, alpha: alpha)
     }
 
     /// 主色绿 (red: 8, green: 207, blue: 78))

@@ -43,7 +43,7 @@ class PublishView: BPTopWindowView, UIScrollViewDelegate, UIGestureRecognizerDel
         addSubview(_publishView)
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panView(pan:)))
         pan.cancelsTouchesInView = false
-        pan.delaysTouchesEnded = false
+        pan.delaysTouchesEnded   = false
         _publishView.addGestureRecognizer(pan)
     }
     
@@ -87,7 +87,7 @@ class PublishView: BPTopWindowView, UIScrollViewDelegate, UIGestureRecognizerDel
         }
     }
     
-    // 隐藏发布页面,自上而下
+    /// 隐藏发布页面,自上而下
     func hideView(){
         UIView.animate(withDuration: 0.25, animations: {
             self._publishView.transform = CGAffineTransform.identity
@@ -96,8 +96,13 @@ class PublishView: BPTopWindowView, UIScrollViewDelegate, UIGestureRecognizerDel
             self.removeFromSuperview()
         }
     }
-    
+
+    override func closeBtnAction() {
+        // 不用处理,与touch事件会冲突
+    }
+
     // - MARK: KVO
+    /// 通过发布页的滑动距离.来控制窗口上的背景色渐变显示和底部加号按钮的旋转
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "transform" {
             guard let delegate = self.delegate else {

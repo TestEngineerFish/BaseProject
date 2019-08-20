@@ -13,7 +13,7 @@ class BPTopWindowView: UIView {
 
     /// 全屏透明背景
     ///
-    /// 因为子类调用super.init()函数时,会先检查对象是否有有效值,但是当前类还没有被初始化,这个闭包里面的self会为空,所以需要添加lazy来延迟初始化当前属性
+    /// 因为子类调用super.init()函数时, 会先检查对象是否有有效值,但是当前类还没有被初始化,这个闭包里面的self会为空,所以需要添加lazy来延迟初始化当前属性
     lazy var backgroundView: UIView = {
         let view = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: kScreenWidth, height: kScreenHeight)))
         view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
