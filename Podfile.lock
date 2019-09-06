@@ -7,6 +7,9 @@ PODS:
   - CocoaLumberjack/Core (3.5.3)
   - CocoaLumberjack/Swift (3.5.3):
     - CocoaLumberjack/Core
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
   - Kingfisher (5.7.0)
   - lottie-ios (3.1.2)
   - ObjectMapper (3.5.1)
@@ -20,6 +23,7 @@ DEPENDENCIES:
   - AlamofireObjectMapper (~> 5.2)
   - Bugly
   - CocoaLumberjack/Swift
+  - FMDB
   - Kingfisher (~> 5.7)
   - lottie-ios
   - ObjectMapper (~> 3.5.1)
@@ -34,6 +38,7 @@ SPEC REPOS:
     - AlamofireObjectMapper
     - Bugly
     - CocoaLumberjack
+    - FMDB
     - Kingfisher
     - lottie-ios
     - ObjectMapper
@@ -47,6 +52,7 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
   lottie-ios: 49cd85b1f24f61a7708ad7ec76a523ab2d0e3100
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
@@ -55,6 +61,6 @@ SPEC CHECKSUMS:
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
   Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
 
-PODFILE CHECKSUM: 32515d349d498ffb2413a43a124106b3c212b9e2
+PODFILE CHECKSUM: 4f3f9d747b04632188af824c8b48bd1a4a6842b0
 
 COCOAPODS: 1.8.0.beta.1

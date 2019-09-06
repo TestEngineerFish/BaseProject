@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 设置自定义的NavigationController为初始NavigationController
         window = UIWindow(frame: UIScreen.main.bounds)
         let tabBarController = BPBaseTabBarController()
-        tabBarController.selectedIndex = 1
+        tabBarController.selectedIndex = 0
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
         return true

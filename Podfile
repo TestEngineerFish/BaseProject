@@ -17,6 +17,7 @@ target 'BaseProject' do
   pod 'SSZipArchive'
   pod 'Kingfisher', '~> 5.7'
   pod 'lottie-ios'
+  pod 'FMDB'
   # Pods for BaseProject
 
 end
