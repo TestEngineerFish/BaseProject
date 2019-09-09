@@ -15,7 +15,7 @@ import ObjectMapper
 public class YYBaseModel: NSObject, Mappable {
 
     override init() {}
-
+    
     required public init?(map: Map) {}
 
     /** 子类只需要重写改方法，进行字段绑定 */

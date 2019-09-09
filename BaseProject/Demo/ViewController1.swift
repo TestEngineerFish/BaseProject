@@ -30,6 +30,7 @@ class ViewController1: UIViewController {
             make.center.equalToSuperview()
             make.size.equalTo(CGSize(width: 100, height: 50))
         }
+        UserDefaults.standard.value(forKey: <#T##String#>)
         IMDBCenter.default.fetchAllRecnetSession().forEach { (str) in
             print(str)
         }

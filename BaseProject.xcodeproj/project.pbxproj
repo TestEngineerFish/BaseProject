@@ -16,6 +16,7 @@
 		224582032326044D0031CC7A /* NormalDBCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224582022326044D0031CC7A /* NormalDBCenter.swift */; };
 		22458205232604D90031CC7A /* BPIMDBOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22458204232604D90031CC7A /* BPIMDBOperator.swift */; };
 		22458207232604EA0031CC7A /* BPNormalDBOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22458206232604EA0031CC7A /* BPNormalDBOperator.swift */; };
+		2245820B2326549E0031CC7A /* BPCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245820A2326549E0031CC7A /* BPCacheManager.swift */; };
 		2264EF7B22F7BDE500A89C82 /* BPAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF7A22F7BDE500A89C82 /* BPAlertManager.swift */; };
 		2264EF7D22F7C6E500A89C82 /* BPTopWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */; };
 		2264EF7F22F820F900A89C82 /* BPAlerViewTwoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF7E22F820F900A89C82 /* BPAlerViewTwoButton.swift */; };
@@ -86,6 +87,7 @@
 		224582022326044D0031CC7A /* NormalDBCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalDBCenter.swift; sourceTree = "<group>"; };
 		22458204232604D90031CC7A /* BPIMDBOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPIMDBOperator.swift; sourceTree = "<group>"; };
 		22458206232604EA0031CC7A /* BPNormalDBOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPNormalDBOperator.swift; sourceTree = "<group>"; };
+		2245820A2326549E0031CC7A /* BPCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPCacheManager.swift; sourceTree = "<group>"; };
 		2264EF7A22F7BDE500A89C82 /* BPAlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAlertManager.swift; sourceTree = "<group>"; };
 		2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTopWindowView.swift; sourceTree = "<group>"; };
 		2264EF7E22F820F900A89C82 /* BPAlerViewTwoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAlerViewTwoButton.swift; sourceTree = "<group>"; };
@@ -185,6 +187,14 @@
 				22458206232604EA0031CC7A /* BPNormalDBOperator.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		224582092326513B0031CC7A /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				2245820A2326549E0031CC7A /* BPCacheManager.swift */,
+			);
+			path = FileManager;
 			sourceTree = "<group>";
 		};
 		2264EF8222F9108500A89C82 /* AlertView */ = {
@@ -408,6 +418,7 @@
 		CF8EB56C22DCC48F00EC2FE5 /* DataCenter */ = {
 			isa = PBXGroup;
 			children = (
+				224582092326513B0031CC7A /* FileManager */,
 				22D018F62321F36A007AFA1B /* FMDatabase */,
 				22C621C922DC815A00A7C849 /* Network */,
 			);
@@ -583,6 +594,7 @@
 				22D4981722FD05DD00281530 /* BPBaseRefreshControl.swift in Sources */,
 				22D4981A22FD0A8B00281530 /* BPScrollRefreshProtocol.swift in Sources */,
 				2264EF8E22F979BD00A89C82 /* BPBaseRequest.swift in Sources */,
+				2245820B2326549E0031CC7A /* BPCacheManager.swift in Sources */,
 				2264EF7F22F820F900A89C82 /* BPAlerViewTwoButton.swift in Sources */,
 				CF8EB56422DCC05D00EC2FE5 /* SAMKeychain+Extension.swift in Sources */,
 				22D018F92321F7F0007AFA1B /* BPDatabaseProtocol.swift in Sources */,
