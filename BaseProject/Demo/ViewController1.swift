@@ -30,6 +30,9 @@ class ViewController1: UIViewController {
             make.center.equalToSuperview()
             make.size.equalTo(CGSize(width: 100, height: 50))
         }
+        IMDBCenter.default.fetchAllRecnetSession().forEach { (str) in
+            print(str)
+        }
     }
 
     @objc func hideToast() {
