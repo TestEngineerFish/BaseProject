@@ -23,17 +23,19 @@ class ViewController1: UIViewController {
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.green1), for: .normal)
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
-        button.addTarget(self, action: #selector(showToast), for: .touchUpInside)
+        button.addTarget(self, action: Selector(("showToast2")), for: .touchUpInside)
         button.addTarget(self, action: #selector(hideToast), for: .touchUpOutside)
         self.view.addSubview(button)
         button.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.size.equalTo(CGSize(width: 100, height: 50))
         }
-        UserDefaults.standard.value(forKey: <#T##String#>)
         IMDBCenter.default.fetchAllRecnetSession().forEach { (str) in
             print(str)
         }
+
+//        NSObject().performSelector(inBackground: Selector(("waht")), with: nil)
+
     }
 
     @objc func hideToast() {
@@ -42,11 +44,11 @@ class ViewController1: UIViewController {
     
     @objc func showToast() {
 
-//        BPAlertManager.showAlertImage(imageStr: "https://maxst.icons8.com/_nuxt/ouch/img/art-2.0e6fbc3.png", hideCloseBtn: false) { (source) in
-//            self.view.toast(source.url?.absoluteString ?? "???")
-//        }
-        let vc = BPBaseTabBarController()
-        self.navigationController?.present(vc, animated: true, completion: nil)
+        BPAlertManager.showAlertImage(imageStr: "https://maxst.icons8.com/_nuxt/ouch/img/art-2.0e6fbc3.png", hideCloseBtn: false) { (source) in
+            self.view.toast(source.url?.absoluteString ?? "???")
+        }
+//        let vc = BPBaseTabBarController()
+//        self.navigationController?.present(vc, animated: true, completion: nil)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

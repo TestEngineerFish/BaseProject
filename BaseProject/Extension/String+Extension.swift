@@ -55,7 +55,7 @@ public extension String {
     /// 获取指定范围的内容
     func substring(fromIndex minIndex: Int, toIndex maxIndex: Int) -> String {
         let start = index(startIndex, offsetBy: minIndex)
-        let end = index(startIndex, offsetBy: maxIndex, limitedBy: endIndex)
+        let end   = index(startIndex, offsetBy: maxIndex, limitedBy: endIndex)
         
         let range = start ..< end!
         return String(self[range])

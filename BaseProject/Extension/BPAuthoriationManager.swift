@@ -8,6 +8,7 @@
 
 import Photos
 import UserNotifications
+import UIKit
 
 class BPAuthorizationManager: NSObject {
     

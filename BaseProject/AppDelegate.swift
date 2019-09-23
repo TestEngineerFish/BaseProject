@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.monitorNetWork() //添加网络监听
-        Bugly.start(withAppId: buglyAppKey)
+        Bugly.start(withAppId: buglyAppId)
         // 设置自定义的NavigationController为初始NavigationController
         window = UIWindow(frame: UIScreen.main.bounds)
         let tabBarController = BPBaseTabBarController()
