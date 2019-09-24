@@ -17,6 +17,7 @@
 		22458205232604D90031CC7A /* BPIMDBOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22458204232604D90031CC7A /* BPIMDBOperator.swift */; };
 		22458207232604EA0031CC7A /* BPNormalDBOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22458206232604EA0031CC7A /* BPNormalDBOperator.swift */; };
 		2245820B2326549E0031CC7A /* BPCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245820A2326549E0031CC7A /* BPCacheManager.swift */; };
+		22642BA6233A451D004E1DF9 /* NSObject+CrashDefender.m in Sources */ = {isa = PBXBuildFile; fileRef = 22642BA5233A451D004E1DF9 /* NSObject+CrashDefender.m */; };
 		2264EF7B22F7BDE500A89C82 /* BPAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF7A22F7BDE500A89C82 /* BPAlertManager.swift */; };
 		2264EF7D22F7C6E500A89C82 /* BPTopWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */; };
 		2264EF7F22F820F900A89C82 /* BPAlerViewTwoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF7E22F820F900A89C82 /* BPAlerViewTwoButton.swift */; };
@@ -30,7 +31,6 @@
 		2264EF9222F97A0E00A89C82 /* BPNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF9122F97A0E00A89C82 /* BPNetworkService.swift */; };
 		2264EF9422F97A2800A89C82 /* BPTaskRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF9322F97A2800A89C82 /* BPTaskRequest.swift */; };
 		2264EF9622F98A3700A89C82 /* BPBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF9522F98A3700A89C82 /* BPBaseButton.swift */; };
-		22A86B3F2338CE60007423CA /* NSObject+SelectorDefender.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A86B3E2338CE60007423CA /* NSObject+SelectorDefender.m */; };
 		22A877BE22FAB679004FF3A7 /* BPBaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A877BD22FAB679004FF3A7 /* BPBaseImageView.swift */; };
 		22C621B822DC805600A7C849 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B722DC805600A7C849 /* AppDelegate.swift */; };
 		22C621BA22DC805600A7C849 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B922DC805600A7C849 /* ViewController1.swift */; };
@@ -89,6 +89,8 @@
 		22458204232604D90031CC7A /* BPIMDBOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPIMDBOperator.swift; sourceTree = "<group>"; };
 		22458206232604EA0031CC7A /* BPNormalDBOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPNormalDBOperator.swift; sourceTree = "<group>"; };
 		2245820A2326549E0031CC7A /* BPCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPCacheManager.swift; sourceTree = "<group>"; };
+		22642BA4233A451D004E1DF9 /* NSObject+CrashDefender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CrashDefender.h"; sourceTree = "<group>"; };
+		22642BA5233A451D004E1DF9 /* NSObject+CrashDefender.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CrashDefender.m"; sourceTree = "<group>"; };
 		2264EF7A22F7BDE500A89C82 /* BPAlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAlertManager.swift; sourceTree = "<group>"; };
 		2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTopWindowView.swift; sourceTree = "<group>"; };
 		2264EF7E22F820F900A89C82 /* BPAlerViewTwoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAlerViewTwoButton.swift; sourceTree = "<group>"; };
@@ -102,8 +104,6 @@
 		2264EF9122F97A0E00A89C82 /* BPNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPNetworkService.swift; sourceTree = "<group>"; };
 		2264EF9322F97A2800A89C82 /* BPTaskRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTaskRequest.swift; sourceTree = "<group>"; };
 		2264EF9522F98A3700A89C82 /* BPBaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseButton.swift; sourceTree = "<group>"; };
-		22A86B3D2338CE60007423CA /* NSObject+SelectorDefender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+SelectorDefender.h"; sourceTree = "<group>"; };
-		22A86B3E2338CE60007423CA /* NSObject+SelectorDefender.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SelectorDefender.m"; sourceTree = "<group>"; };
 		22A877BD22FAB679004FF3A7 /* BPBaseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseImageView.swift; sourceTree = "<group>"; };
 		22C621B422DC805600A7C849 /* BaseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C621B722DC805600A7C849 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -305,8 +305,8 @@
 				22C6221C22DF120900A7C849 /* Error+Extension.swift */,
 				221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */,
 				CF87869922F87BD60031E4B9 /* UIImage+Extension.swift */,
-				22A86B3D2338CE60007423CA /* NSObject+SelectorDefender.h */,
-				22A86B3E2338CE60007423CA /* NSObject+SelectorDefender.m */,
+				22642BA4233A451D004E1DF9 /* NSObject+CrashDefender.h */,
+				22642BA5233A451D004E1DF9 /* NSObject+CrashDefender.m */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -579,7 +579,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				22458205232604D90031CC7A /* BPIMDBOperator.swift in Sources */,
-				22A86B3F2338CE60007423CA /* NSObject+SelectorDefender.m in Sources */,
 				22C621BA22DC805600A7C849 /* ViewController1.swift in Sources */,
 				22D4981322FBCDA900281530 /* BPBaseViewController.swift in Sources */,
 				22413E3422E8400900F2C678 /* NotificationNameGlobal.swift in Sources */,
@@ -598,6 +597,7 @@
 				2264EF8422F91BF900A89C82 /* BPAlertViewOneButton.swift in Sources */,
 				2264EF9222F97A0E00A89C82 /* BPNetworkService.swift in Sources */,
 				22D4981722FD05DD00281530 /* BPBaseRefreshControl.swift in Sources */,
+				22642BA6233A451D004E1DF9 /* NSObject+CrashDefender.m in Sources */,
 				22D4981A22FD0A8B00281530 /* BPScrollRefreshProtocol.swift in Sources */,
 				2264EF8E22F979BD00A89C82 /* BPBaseRequest.swift in Sources */,
 				2245820B2326549E0031CC7A /* BPCacheManager.swift in Sources */,

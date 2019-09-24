@@ -1,17 +1,16 @@
 //
-//  NSObject+SelectorDefender.h
+//  NSObject+CrashDefender.h
 //  BaseProject
 //
-//  Created by 沙庭宇 on 2019/9/23.
+//  Created by 沙庭宇 on 2019/9/24.
 //  Copyright © 2019 沙庭宇. All rights reserved.
 //
-
 
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSObject (SelectorDefender)
+@interface NSObject (CrashDefender)
 
 @end
 

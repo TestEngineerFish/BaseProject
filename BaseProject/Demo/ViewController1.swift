@@ -33,9 +33,7 @@ class ViewController1: UIViewController {
         IMDBCenter.default.fetchAllRecnetSession().forEach { (str) in
             print(str)
         }
-
-//        NSObject().performSelector(inBackground: Selector(("waht")), with: nil)
-
+        button.addObserver(self, forKeyPath: "", options: .new, context: nil)
     }
 
     @objc func hideToast() {
@@ -47,15 +45,18 @@ class ViewController1: UIViewController {
         BPAlertManager.showAlertImage(imageStr: "https://maxst.icons8.com/_nuxt/ouch/img/art-2.0e6fbc3.png", hideCloseBtn: false) { (source) in
             self.view.toast(source.url?.absoluteString ?? "???")
         }
-//        let vc = BPBaseTabBarController()
-//        self.navigationController?.present(vc, animated: true, completion: nil)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        BPAlertManager.showAlert(title: "T##String?", description: "T##String", leftBtnName: "T##String", leftBtnClosure: nil, rightBtnName: "T##String", rightBtnClosure: nil)
-
+//        BPAlertManager.showAlert(title: "T##String?", description: "T##String", leftBtnName: "T##String", leftBtnClosure: nil, rightBtnName: "T##String", rightBtnClosure: nil)
+        testCrash()
     }
+
+    func testCrash() {
+        button.removeObserver(self, forKeyPath: "notKey")
+    }
+
     
 
     // 求介绍 - 问题列表
