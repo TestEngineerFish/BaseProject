@@ -8,11 +8,43 @@
     },
     {
       "idiom" : "iphone",
+      "filename" : "动态感知 (1)-1.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "compression-type" : "automatic",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "iphone",
       "scale" : "2x"
     },
     {
       "idiom" : "iphone",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "idiom" : "iphone",
       "scale" : "3x"
+    },
+    {
+      "idiom" : "iphone",
+      "scale" : "3x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

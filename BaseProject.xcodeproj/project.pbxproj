@@ -18,6 +18,7 @@
 		22458207232604EA0031CC7A /* BPNormalDBOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22458206232604EA0031CC7A /* BPNormalDBOperator.swift */; };
 		2245820B2326549E0031CC7A /* BPCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245820A2326549E0031CC7A /* BPCacheManager.swift */; };
 		22642BA6233A451D004E1DF9 /* NSObject+CrashDefender.m in Sources */ = {isa = PBXBuildFile; fileRef = 22642BA5233A451D004E1DF9 /* NSObject+CrashDefender.m */; };
+		22642BA9233A4745004E1DF9 /* NSArray+CrashDefender.m in Sources */ = {isa = PBXBuildFile; fileRef = 22642BA8233A4745004E1DF9 /* NSArray+CrashDefender.m */; };
 		2264EF7B22F7BDE500A89C82 /* BPAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF7A22F7BDE500A89C82 /* BPAlertManager.swift */; };
 		2264EF7D22F7C6E500A89C82 /* BPTopWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */; };
 		2264EF7F22F820F900A89C82 /* BPAlerViewTwoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF7E22F820F900A89C82 /* BPAlerViewTwoButton.swift */; };
@@ -91,6 +92,8 @@
 		2245820A2326549E0031CC7A /* BPCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPCacheManager.swift; sourceTree = "<group>"; };
 		22642BA4233A451D004E1DF9 /* NSObject+CrashDefender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CrashDefender.h"; sourceTree = "<group>"; };
 		22642BA5233A451D004E1DF9 /* NSObject+CrashDefender.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CrashDefender.m"; sourceTree = "<group>"; };
+		22642BA7233A4745004E1DF9 /* NSArray+CrashDefender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+CrashDefender.h"; sourceTree = "<group>"; };
+		22642BA8233A4745004E1DF9 /* NSArray+CrashDefender.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CrashDefender.m"; sourceTree = "<group>"; };
 		2264EF7A22F7BDE500A89C82 /* BPAlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAlertManager.swift; sourceTree = "<group>"; };
 		2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTopWindowView.swift; sourceTree = "<group>"; };
 		2264EF7E22F820F900A89C82 /* BPAlerViewTwoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAlerViewTwoButton.swift; sourceTree = "<group>"; };
@@ -307,6 +310,8 @@
 				CF87869922F87BD60031E4B9 /* UIImage+Extension.swift */,
 				22642BA4233A451D004E1DF9 /* NSObject+CrashDefender.h */,
 				22642BA5233A451D004E1DF9 /* NSObject+CrashDefender.m */,
+				22642BA7233A4745004E1DF9 /* NSArray+CrashDefender.h */,
+				22642BA8233A4745004E1DF9 /* NSArray+CrashDefender.m */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -583,6 +588,7 @@
 				22D4981322FBCDA900281530 /* BPBaseViewController.swift in Sources */,
 				22413E3422E8400900F2C678 /* NotificationNameGlobal.swift in Sources */,
 				22458207232604EA0031CC7A /* BPNormalDBOperator.swift in Sources */,
+				22642BA9233A4745004E1DF9 /* NSArray+CrashDefender.m in Sources */,
 				22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */,
 				CF87869822F709C20031E4B9 /* BPAuthoriationManager.swift in Sources */,
 				224582012326032B0031CC7A /* IMDBCenter.swift in Sources */,

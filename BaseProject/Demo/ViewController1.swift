@@ -33,7 +33,12 @@ class ViewController1: UIViewController {
         IMDBCenter.default.fetchAllRecnetSession().forEach { (str) in
             print(str)
         }
-        button.addObserver(self, forKeyPath: "", options: .new, context: nil)
+
+        if #available(iOS 13.0, *) {
+            self.overrideUserInterfaceStyle = .dark
+        } else {
+            // Fallback on earlier versions
+        }
     }
 
     @objc func hideToast() {
@@ -54,7 +59,8 @@ class ViewController1: UIViewController {
     }
 
     func testCrash() {
-        button.removeObserver(self, forKeyPath: "notKey")
+        let keyPaths: Array = [1]
+        keyPaths[0, true]
     }
 
     
@@ -67,5 +73,20 @@ class ViewController1: UIViewController {
         }) { (error) in
             completion(nil, error.message)
         }
+    }
+}
+
+extension Array {
+
+    subscript(_ index: Int, safe: Bool) -> Element? {
+        print("safe")
+        return self[index]
+    }
+
+    func safeObject(_ index: Int) -> Element? {
+        if index > self.count {
+            return nil
+        }
+        return self.safeObject(index)
     }
 }

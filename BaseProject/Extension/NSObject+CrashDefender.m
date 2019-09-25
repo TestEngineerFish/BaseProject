@@ -153,12 +153,12 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
 
-        // ---- 交换消息转发函数 ----
+//        // ---- 交换消息转发函数 ----
         [NSObject bpDefenderSwizzlingClassMethod:@selector(forwardingTargetForSelector:)
-                                      withMethod:@selector(bpForwardingTargetForSelect:)
+                                      withMethod:@selector(bpForwardingClassTargetForSelect:)
                                        withClass:[NSObject class]];
         [NSObject bpDefenderSwizzlingInstanceMethod:@selector(forwardingTargetForSelector:)
-                                         withMethod:@selector(bpForwardingTargetForSelect:)
+                                         withMethod:@selector(bpForwardingInstanceTargetForSelect:)
                                           withClass:[NSObject class]];
         // ---- 交换KVO函数 ----
         [NSObject bpDefenderSwizzlingInstanceMethod:@selector(addObserver:forKeyPath:options:context:)
@@ -301,9 +301,9 @@ static NSString *const KVODefenderValue = @"BP_KVODefender";
 
 #pragma mark - 消息转发相关
 
-/// 解决找不到实例函数的具体实现而发生的崩溃
+/// 解决找不到类函数的具体实现而发生的崩溃
 /// @param aSelector 方法对象
-+ (id)bpForwardingTargetForSelect:(SEL)aSelector {
++ (id)bpForwardingClassTargetForSelect:(SEL)aSelector {
 
     // 第一步: 判断是否实现了消息接收者重定向
     SEL forwardingSel = @selector(forwardingTargetForSelector:);
@@ -337,12 +337,12 @@ static NSString *const KVODefenderValue = @"BP_KVODefender";
         return [[bpCrashClass alloc] init];
     }
 
-    return [self bpForwardingTargetForSelect:aSelector];
+    return [self bpForwardingClassTargetForSelect:aSelector];
 }
 
 /// 解决找不到实例函数的具体实现而发生的崩溃
 /// @param aSelector 方法对象
-- (id)bpForwardingTargetForSelect:(SEL)aSelector {
++ (id)bpForwardingInstanceTargetForSelect:(SEL)aSelector {
 
     // 第一步: 判断是否实现了消息接收者重定向
     SEL forwardingSel = @selector(forwardingTargetForSelector:);
@@ -360,7 +360,7 @@ static NSString *const KVODefenderValue = @"BP_KVODefender";
         // 第三步: 都没有实现,则动态添加函数到目标类
         NSString *errorClassName = NSStringFromClass([self class]);
         NSString *errorSel       = NSStringFromSelector(aSelector);
-        NSLog(@"出错类: %@, \n未处理实例函数: %@", errorClassName, errorSel);
+        NSLog(@"出错类: %@, \n未处理类函数: %@", errorClassName, errorSel);
 
         NSString *className = @"BPCrashClass";
         Class bpCrashClass = NSClassFromString(className);
@@ -376,7 +376,7 @@ static NSString *const KVODefenderValue = @"BP_KVODefender";
         return [[bpCrashClass alloc] init];
     }
 
-    return [self bpForwardingTargetForSelect:aSelector];
+    return [self bpForwardingInstanceTargetForSelect:aSelector];
 }
 
 /// 动态添加的函数实现,防止Crash
@@ -424,7 +424,7 @@ void swizzlingInstanceMethod(Class class, SEL originalSelector, SEL swizzledSele
     // 添加函数
     BOOL didAddMethod = class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
     if (didAddMethod) {
-        // 覆盖i掉原函数的实现和属性
+        // 覆盖掉原函数的实现和属性
         class_replaceMethod(class, originalSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
     } else {
         method_exchangeImplementations(originalMethod, swizzledMethod);
