@@ -15,6 +15,15 @@ class BPBaseButton: UIButton {
         self.addTarget(self, action: #selector(touchUp(sender:)), for: .touchUpInside)
         self.addTarget(self, action: #selector(touchUp(sender:)), for: .touchUpOutside)
         self.addTarget(self, action: #selector(touchUp(sender:)), for: .touchCancel)
+        self.makeUI()
+    }
+
+    func makeUI() {
+        self.layer.cornerRadius  = 5
+        self.layer.masksToBounds = true
+        self.backgroundColor     = UIColor.orange1
+        self.setTitleColor(UIColor.white1, for: .normal)
+        self.setTitleColor(UIColor.gray1, for: .highlighted)
     }
 
     required init?(coder aDecoder: NSCoder) {

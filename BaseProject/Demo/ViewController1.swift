@@ -13,6 +13,7 @@ class ViewController1: UIViewController {
 
     var showView = UIView()
     let button   = BPBaseButton()
+    let text = UITextField()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +24,7 @@ class ViewController1: UIViewController {
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.green1), for: .normal)
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
-        button.addTarget(self, action: Selector(("showToast2")), for: .touchUpInside)
-        button.addTarget(self, action: #selector(hideToast), for: .touchUpOutside)
+        button.addTarget(self, action: #selector(showToast), for: .touchUpInside)
         self.view.addSubview(button)
         button.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
@@ -46,7 +46,6 @@ class ViewController1: UIViewController {
     }
     
     @objc func showToast() {
-
         BPAlertManager.showAlertImage(imageStr: "https://maxst.icons8.com/_nuxt/ouch/img/art-2.0e6fbc3.png", hideCloseBtn: false) { (source) in
             self.view.toast(source.url?.absoluteString ?? "???")
         }
@@ -56,11 +55,6 @@ class ViewController1: UIViewController {
         super.touchesBegan(touches, with: event)
 //        BPAlertManager.showAlert(title: "T##String?", description: "T##String", leftBtnName: "T##String", leftBtnClosure: nil, rightBtnName: "T##String", rightBtnClosure: nil)
         testCrash()
-    }
-
-    func testCrash() {
-        let keyPaths: Array = [1]
-        keyPaths[0, true]
     }
 
     

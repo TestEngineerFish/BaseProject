@@ -33,6 +33,9 @@
 		2264EF9422F97A2800A89C82 /* BPTaskRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF9322F97A2800A89C82 /* BPTaskRequest.swift */; };
 		2264EF9622F98A3700A89C82 /* BPBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF9522F98A3700A89C82 /* BPBaseButton.swift */; };
 		22A877BE22FAB679004FF3A7 /* BPBaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A877BD22FAB679004FF3A7 /* BPBaseImageView.swift */; };
+		22AED50D234DD6AE00A91A68 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AED509234DD6AE00A91A68 /* GCDAsyncSocket.m */; };
+		22AED50E234DD6AE00A91A68 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AED50A234DD6AE00A91A68 /* GCDAsyncUdpSocket.m */; };
+		22AED510234DFEF200A91A68 /* BPSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AED50F234DFEF200A91A68 /* BPSocketManager.swift */; };
 		22C621B822DC805600A7C849 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B722DC805600A7C849 /* AppDelegate.swift */; };
 		22C621BA22DC805600A7C849 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B922DC805600A7C849 /* ViewController1.swift */; };
 		22C621BF22DC805600A7C849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22C621BE22DC805600A7C849 /* Assets.xcassets */; };
@@ -108,6 +111,11 @@
 		2264EF9322F97A2800A89C82 /* BPTaskRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTaskRequest.swift; sourceTree = "<group>"; };
 		2264EF9522F98A3700A89C82 /* BPBaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseButton.swift; sourceTree = "<group>"; };
 		22A877BD22FAB679004FF3A7 /* BPBaseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseImageView.swift; sourceTree = "<group>"; };
+		22AED509234DD6AE00A91A68 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		22AED50A234DD6AE00A91A68 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		22AED50B234DD6AE00A91A68 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		22AED50C234DD6AE00A91A68 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		22AED50F234DFEF200A91A68 /* BPSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPSocketManager.swift; sourceTree = "<group>"; };
 		22C621B422DC805600A7C849 /* BaseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C621B722DC805600A7C849 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22C621B922DC805600A7C849 /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
@@ -225,6 +233,18 @@
 				22D4981422FBCDC600281530 /* BPNavigationBar.swift */,
 			);
 			path = BaseView;
+			sourceTree = "<group>";
+		};
+		22AED508234DD69300A91A68 /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				22AED50C234DD6AE00A91A68 /* GCDAsyncSocket.h */,
+				22AED509234DD6AE00A91A68 /* GCDAsyncSocket.m */,
+				22AED50B234DD6AE00A91A68 /* GCDAsyncUdpSocket.h */,
+				22AED50A234DD6AE00A91A68 /* GCDAsyncUdpSocket.m */,
+				22AED50F234DFEF200A91A68 /* BPSocketManager.swift */,
+			);
+			path = Socket;
 			sourceTree = "<group>";
 		};
 		22C621AB22DC805600A7C849 = {
@@ -428,6 +448,7 @@
 		CF8EB56C22DCC48F00EC2FE5 /* DataCenter */ = {
 			isa = PBXGroup;
 			children = (
+				22AED508234DD69300A91A68 /* Socket */,
 				224582092326513B0031CC7A /* FileManager */,
 				22D018F62321F36A007AFA1B /* FMDatabase */,
 				22C621C922DC815A00A7C849 /* Network */,
@@ -594,6 +615,7 @@
 				224582012326032B0031CC7A /* IMDBCenter.swift in Sources */,
 				22C621DD22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift in Sources */,
 				CF26719022FEB39B00E6B47F /* BPBaseTabBarController.swift in Sources */,
+				22AED50E234DD6AE00A91A68 /* GCDAsyncUdpSocket.m in Sources */,
 				CF8EB58B22DCCCA600EC2FE5 /* UIFont+Extension.swift in Sources */,
 				22A877BE22FAB679004FF3A7 /* BPBaseImageView.swift in Sources */,
 				2264EF8622F91E0700A89C82 /* BPAlertViewZeroButton.swift in Sources */,
@@ -615,6 +637,7 @@
 				CF8EB56B22DCC45800EC2FE5 /* UserDefault+Extension.swift in Sources */,
 				22C621F122DC8D1000A7C849 /* YYGlobal.swift in Sources */,
 				22D4981522FBCDC600281530 /* BPNavigationBar.swift in Sources */,
+				22AED50D234DD6AE00A91A68 /* GCDAsyncSocket.m in Sources */,
 				22C621EE22DC8A7800A7C849 /* UIDevice+Extension.swift in Sources */,
 				2264EF7D22F7C6E500A89C82 /* BPTopWindowView.swift in Sources */,
 				22D4981F22FD163A00281530 /* BPRefreshHeaderView.swift in Sources */,
@@ -633,6 +656,7 @@
 				221F5C4A22E95B4000F9355C /* AppDelegate+Extension.swift in Sources */,
 				CF8EB5A622DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift in Sources */,
 				2211803322EEE47500B77911 /* CALayer+Extension.swift in Sources */,
+				22AED510234DFEF200A91A68 /* BPSocketManager.swift in Sources */,
 				22D4982122FD164600281530 /* BPRefreshFooterView.swift in Sources */,
 				22C6221B22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift in Sources */,
 				2264EF9622F98A3700A89C82 /* BPBaseButton.swift in Sources */,
