@@ -20,12 +20,12 @@ class BPServerSocketManager: NSObject, GCDAsyncSocketDelegate {
         serverSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
         do {
             try serverSocket?.accept(onPort: port)
-            self.delegate?.updateEvent("服务端监听端口: \(port) 成功")
+            self.delegate?.updateEvent("服务端监听端口: \(port) 成功", level: .DEBUG)
             if !self.timer.isValid {
                 self.addTimer()
             }
         } catch {
-            self.delegate?.updateEvent("服务端监听失败")
+            self.delegate?.updateEvent("服务端监听失败",level: .ERROR)
         }
     }
 
@@ -41,7 +41,7 @@ class BPServerSocketManager: NSObject, GCDAsyncSocketDelegate {
     /// - Parameter data: 数据对象
     func sendData(_ data: Data?) {
         guard let _data = data else {
-            self.delegate?.updateEvent("服务端发送的消息不应为nil")
+            self.delegate?.updateEvent("服务端发送的消息不应为nil",level: .WARN)
             return
         }
         self.clientSockets.forEach({ (clientSocket) in
@@ -51,12 +51,12 @@ class BPServerSocketManager: NSObject, GCDAsyncSocketDelegate {
 
     /// 客户端心跳检测,超过10秒没有收到客户端心跳消息,则自动断开
     func checkSocketConnect() {
-        self.delegate?.updateEvent("开始检查连接设备是否有离线")
+        self.delegate?.updateEvent("开始检查连接设备是否有离线",level: .DEBUG)
         self.clientHeartbeatTimeDict?.forEach({ (key, value) in
             let currentTime = Date().timeIntervalSinceNow
             if currentTime - value > 10 {
                 self.clientHeartbeatTimeDict?.removeValue(forKey: key)
-                self.delegate?.updateEvent("设备\(key.connectedHost ?? " unknow host ")已离线,从当前在线设备列表中移除")
+                self.delegate?.updateEvent("设备\(key.connectedHost ?? " unknow host ")已离线,从当前在线设备列表中移除", level: .INFO)
             }
         })
     }
@@ -75,7 +75,7 @@ class BPServerSocketManager: NSObject, GCDAsyncSocketDelegate {
 
     func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
         let message = String(data: data, encoding: .utf8) ?? ""
-        self.delegate?.updateEvent("服务端接收到数据: " + message)
+        self.delegate?.updateEvent("服务端接收到数据: " + message,level: .INFO)
         sock.readData(withTimeout: -1, tag: 0)
     }
 
@@ -85,7 +85,7 @@ class BPServerSocketManager: NSObject, GCDAsyncSocketDelegate {
         self.clientSockets.removeAll()
         self.timer?.invalidate()
         self.timer = nil
-        self.delegate?.updateEvent("服务端关闭Socket监听")
+        self.delegate?.updateEvent("服务端关闭Socket监听",level: .DEBUG)
         self.delegate?.disconnectServerSocket()
     }
 

@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 protocol BPSocketProtocol {
-    func updateEvent(_ log: String)
+    func updateEvent(_ log: String, level: LogLevel)
     func disconnectServerSocket()
     func disconnectClientSocket()
 }
@@ -27,10 +28,10 @@ class BPSocketManager: NSObject, GCDAsyncSocketDelegate {
         clientSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
         do {
             try clientSocket?.connect(toHost: host, onPort: port, viaInterface: nil, withTimeout: -1)
-            self.delegate?.updateEvent("准备连接")
+            self.delegate?.updateEvent("准备连接",level: .DEBUG)
         } catch {
-            self.delegate?.updateEvent("连接错误,请重试")
-            self.delegate?.updateEvent("错误日志:\n" + error.localizedDescription)
+            self.delegate?.updateEvent("连接错误,请重试", level: .ERROR)
+            self.delegate?.updateEvent("错误日志:\n" + error.localizedDescription,level: .DEBUG)
         }
     }
 
@@ -38,11 +39,11 @@ class BPSocketManager: NSObject, GCDAsyncSocketDelegate {
     /// - Parameter data: 数据对象
     func sendData(_ data: Data?) {
         guard let _data = data else {
-            self.delegate?.updateEvent("发送的数据不应为nil")
+            self.delegate?.updateEvent("发送的数据不应为nil", level: .WARN)
             return
         }
-        self.clientSocket.write(_data, withTimeout: -1, tag: 0)
-        self.delegate?.updateEvent("客户端消息发送成功")
+        self.clientSocket?.write(_data, withTimeout: -1, tag: 0)
+        self.delegate?.updateEvent("客户端消息发送成功",level: .DEBUG)
     }
 
     /// 断开连接
@@ -54,7 +55,7 @@ class BPSocketManager: NSObject, GCDAsyncSocketDelegate {
     func addTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { (timer) in
             let data = String(format: "%@", "heartbeat test: \(timer.timeInterval)").data(using: .utf8)
-            self.delegate?.updateEvent("准备发送心跳消息")
+            self.delegate?.updateEvent("准备发送心跳消息", level: .DEBUG)
             self.sendData(data)
         }
         RunLoop.current.add(timer!, forMode: .common)
@@ -62,14 +63,14 @@ class BPSocketManager: NSObject, GCDAsyncSocketDelegate {
 
     //TODO: GCDAsyncSocketDelegate
     func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
-        self.delegate?.updateEvent(String(format: "连接到主机: %@:%d", host, port))
+        self.delegate?.updateEvent(String(format: "连接到主机: %@:%d", host, port),level: .DEBUG)
         self.clientSocket.readData(withTimeout: -1, tag: 0)
         self.addTimer()
     }
 
     func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
         let dataStr = String(data: data, encoding: .utf8) ?? ""
-        self.delegate?.updateEvent("客户端接收到数据: " + dataStr)
+        self.delegate?.updateEvent("客户端接收到数据: " + dataStr,level: .INFO)
         sock.readData(withTimeout: -1, tag: 0)
     }
 
@@ -78,8 +79,26 @@ class BPSocketManager: NSObject, GCDAsyncSocketDelegate {
         self.clientSocket?.delegate = nil
         self.timer?.invalidate()
         self.timer = nil
-        self.delegate?.updateEvent("客户端断开Socket连接")
+        self.delegate?.updateEvent("客户端断开Socket连接",level: .DEBUG)
         self.delegate?.disconnectClientSocket()
     }
+}
 
+enum LogLevel: Int {
+    case DEBUG, INFO, WARN, ERROR, FATAL
+
+    func getColor() -> UIColor{
+        switch self {
+        case .DEBUG:
+            return .gray1
+        case .INFO:
+            return .black1
+        case .WARN:
+            return .yellow1
+        case .ERROR:
+            return .red1
+        case .FATAL:
+            return .blue1
+        }
+    }
 }

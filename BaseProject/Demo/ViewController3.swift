@@ -20,6 +20,7 @@ class ViewController3: UIViewController, BPSocketProtocol {
     var sendButton          = BPBaseButton()
     var infoShowLabel       = UILabel()
     var infoTextView        = UITextView()
+    var clearButton         = BPBaseButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class ViewController3: UIViewController, BPSocketProtocol {
         view.addSubview(sendButton)
         view.addSubview(infoShowLabel)
         view.addSubview(infoTextView)
+        view.addSubview(clearButton)
 
         serverHostTextField.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview().offset(-100)
@@ -80,6 +82,11 @@ class ViewController3: UIViewController, BPSocketProtocol {
             make.right.equalTo(sendButton)
             make.bottom.equalToSuperview().offset(-kSafeBottomMargin)
         }
+        clearButton.snp.makeConstraints { (make) in
+            make.right.equalTo(sendButton)
+            make.top.height.equalTo(infoShowLabel)
+            make.width.equalTo(80)
+        }
 
         serverHostTextField.borderStyle     = .roundedRect
         serverPortTextField.borderStyle     = .roundedRect
@@ -96,23 +103,28 @@ class ViewController3: UIViewController, BPSocketProtocol {
         serverPortTextField.textColor       = UIColor.black1
         sendTextField.textColor             = UIColor.black1
         infoTextView.textColor              = UIColor.black1
+        serverLabel.textColor               = UIColor.black1
         infoShowLabel.textColor             = UIColor.black1
+        clearButton.backgroundColor         = UIColor.clear
+        clearButton.contentHorizontalAlignment = .right
     }
 
     func makeData() {
-//        serverHostTextField.text = "127.0.0.1"
-        serverHostTextField.text = "10.100.1.191"
+        serverHostTextField.text = "127.0.0.1"
         serverLabel.text         = ":"
         serverPortTextField.text = "8080"
-        sendTextField.text       = "消息内容"
+        sendTextField.text       = "客户端发送的消息"
         infoShowLabel.text       = "以下显示日志内容"
         infoTextView.text        = ""
         statusButton.setTitle("⚽️启动", for: .normal)
         statusButton.setTitle("🥅停止", for: .selected)
-        sendButton.setTitle("发送", for: .normal)
+        sendButton.setTitle("🚀发送", for: .normal)
+        clearButton.setTitle("⚠️Clear", for: .normal)
+        clearButton.setTitleColor(UIColor.gray, for: .normal)
 
         statusButton.addTarget(self, action: #selector(startConnection(_:)), for: .touchUpInside)
         sendButton.addTarget(self, action: #selector(sendMessage(_:)), for: .touchUpInside)
+        clearButton.addTarget(self, action: #selector(clearInfoLog(_:)), for: .touchUpInside)
     }
 
     // TODO: Event
@@ -130,8 +142,16 @@ class ViewController3: UIViewController, BPSocketProtocol {
     }
 
     @objc func sendMessage(_ button: UIButton) {
-        let data = self.sendTextField.text?.data(using: .utf8)
+        guard let message = self.sendTextField.text, message.isNotEmpty else {
+            self.updateEvent("发送的数据不应为nil", level: .WARN)
+            return
+        }
+        let data = message.data(using: .utf8)
         socketManager?.sendData(data)
+    }
+
+    @objc func clearInfoLog(_ button: UIButton) {
+        self.infoTextView.text = ""
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -140,8 +160,13 @@ class ViewController3: UIViewController, BPSocketProtocol {
     }
 
     // TODO: BPSocketProtocol
-    func updateEvent(_ log: String) {
-        self.infoTextView.text += String(format: "\n%@", log)
+    func updateEvent(_ log: String, level: LogLevel) {
+        let value = String(format: "\n%@", log)
+        let color = level.getColor()
+        let attriMutStr = NSMutableAttributedString(attributedString: self.infoTextView.attributedText)
+        attriMutStr.append(NSAttributedString(string: value))
+        attriMutStr.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: NSMakeRange(attriMutStr.length - value.count, value.count))
+        self.infoTextView.attributedText = attriMutStr
         self.infoTextView.scrollRectToVisible(CGRect(x: 0, y: self.infoTextView.bounds.height, width: self.infoTextView.width, height: self.infoTextView.height), animated: true)
     }
 
@@ -151,7 +176,7 @@ class ViewController3: UIViewController, BPSocketProtocol {
     }
 
     func disconnectServerSocket() {
-        self.updateEvent("服务端已断开连接")
+        self.updateEvent("服务端已断开连接",level: .INFO)
     }
 
 }
