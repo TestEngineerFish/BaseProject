@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController3: UIViewController, BPSocketProtocol, UITextFieldDelegate {
+class ViewController3: UIViewController, BPSocketProtocol {
 
     var socketManager: BPSocketManager?
 
@@ -51,7 +51,7 @@ class ViewController3: UIViewController, BPSocketProtocol, UITextFieldDelegate {
         serverPortTextField.snp.makeConstraints { (make) in
             make.left.equalTo(serverLabel.snp.right)
             make.top.equalTo(serverHostTextField.snp.top)
-            make.size.equalTo(CGSize(width: 60, height: 50))
+            make.size.equalTo(CGSize(width: 70, height: 50))
         }
         statusButton.snp.makeConstraints { (make) in
             make.left.equalTo(serverPortTextField.snp.right).offset(20)
@@ -81,28 +81,38 @@ class ViewController3: UIViewController, BPSocketProtocol, UITextFieldDelegate {
             make.bottom.equalToSuperview().offset(-kSafeBottomMargin)
         }
 
-        serverHostTextField.borderStyle  = .roundedRect
-        serverPortTextField.borderStyle  = .roundedRect
-        sendTextField.borderStyle        = .roundedRect
-        serverHostTextField.keyboardType = .numbersAndPunctuation
-        serverPortTextField.keyboardType = .numberPad
-        serverLabel.textAlignment        = .center
-
-        serverHostTextField.delegate = self
+        serverHostTextField.borderStyle     = .roundedRect
+        serverPortTextField.borderStyle     = .roundedRect
+        sendTextField.borderStyle           = .roundedRect
+        serverHostTextField.keyboardType    = .numbersAndPunctuation
+        serverPortTextField.keyboardType    = .numberPad
+        serverLabel.textAlignment           = .center
+        infoTextView.isEditable             = false
+        serverHostTextField.backgroundColor = UIColor.gray1.withAlphaComponent(0.15)
+        serverPortTextField.backgroundColor = UIColor.gray1.withAlphaComponent(0.15)
+        sendTextField.backgroundColor       = UIColor.gray1.withAlphaComponent(0.15)
+        infoTextView.backgroundColor        = UIColor.gray1.withAlphaComponent(0.15)
+        serverHostTextField.textColor       = UIColor.black1
+        serverPortTextField.textColor       = UIColor.black1
+        sendTextField.textColor             = UIColor.black1
+        infoTextView.textColor              = UIColor.black1
+        infoShowLabel.textColor             = UIColor.black1
     }
 
     func makeData() {
-        serverHostTextField.placeholder = "127.0.0.1"
-        serverLabel.text                = ":"
-        serverPortTextField.placeholder = "8080"
-        sendTextField.placeholder       = "消息内容"
-        infoShowLabel.text              = "以下显示日志内容"
-        infoTextView.text               = ""
-        statusButton.setTitle("启动", for: .normal)
-        statusButton.setTitle("暂停", for: .selected)
+//        serverHostTextField.text = "127.0.0.1"
+        serverHostTextField.text = "10.100.1.191"
+        serverLabel.text         = ":"
+        serverPortTextField.text = "8080"
+        sendTextField.text       = "消息内容"
+        infoShowLabel.text       = "以下显示日志内容"
+        infoTextView.text        = ""
+        statusButton.setTitle("⚽️启动", for: .normal)
+        statusButton.setTitle("🥅停止", for: .selected)
         sendButton.setTitle("发送", for: .normal)
 
         statusButton.addTarget(self, action: #selector(startConnection(_:)), for: .touchUpInside)
+        sendButton.addTarget(self, action: #selector(sendMessage(_:)), for: .touchUpInside)
     }
 
     // TODO: Event
@@ -110,13 +120,23 @@ class ViewController3: UIViewController, BPSocketProtocol, UITextFieldDelegate {
         if button.isSelected {
             socketManager?.disconnect()
         } else {
-            let host = self.serverHostTextField.text ?? ""
-            let port = UInt16(self.serverPortTextField.text ?? "") ?? 0
+            let host = self.serverHostTextField.text.isNilOrEmpty ? "" : self.serverHostTextField.text!
+            let port = UInt16(self.serverPortTextField.text.isNilOrEmpty ? "" : self.serverPortTextField.text!) ?? 0
             socketManager = BPSocketManager()
             socketManager?.delegate = self
             socketManager?.connection(toHost: host, onPort: port)
         }
         button.isSelected = !button.isSelected
+    }
+
+    @objc func sendMessage(_ button: UIButton) {
+        let data = self.sendTextField.text?.data(using: .utf8)
+        socketManager?.sendData(data)
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        self.view.endEditing(true)
     }
 
     // TODO: BPSocketProtocol
@@ -125,12 +145,13 @@ class ViewController3: UIViewController, BPSocketProtocol, UITextFieldDelegate {
         self.infoTextView.scrollRectToVisible(CGRect(x: 0, y: self.infoTextView.bounds.height, width: self.infoTextView.width, height: self.infoTextView.height), animated: true)
     }
 
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return true
+    func disconnectClientSocket() {
+        self.statusButton.isSelected = true
+        self.startConnection(self.statusButton)
     }
 
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        return true
+    func disconnectServerSocket() {
+        self.updateEvent("服务端已断开连接")
     }
 
 }

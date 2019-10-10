@@ -43,7 +43,7 @@ public extension String {
     }
     
     /// 是否为空(仅有空格也属于空)
-    var isEmpty: Bool {
+    var isNilOrEmpty: Bool {
         return trimed.count == 0
     }
     

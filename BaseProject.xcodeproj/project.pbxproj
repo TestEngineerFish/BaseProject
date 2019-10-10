@@ -36,6 +36,8 @@
 		22AED50D234DD6AE00A91A68 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AED509234DD6AE00A91A68 /* GCDAsyncSocket.m */; };
 		22AED50E234DD6AE00A91A68 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AED50A234DD6AE00A91A68 /* GCDAsyncUdpSocket.m */; };
 		22AED510234DFEF200A91A68 /* BPSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AED50F234DFEF200A91A68 /* BPSocketManager.swift */; };
+		22AED512234EC75500A91A68 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AED511234EC75500A91A68 /* Optional+Extension.swift */; };
+		22AED514234ED5DB00A91A68 /* BPServerSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AED513234ED5DB00A91A68 /* BPServerSocketManager.swift */; };
 		22C621B822DC805600A7C849 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B722DC805600A7C849 /* AppDelegate.swift */; };
 		22C621BA22DC805600A7C849 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B922DC805600A7C849 /* ViewController1.swift */; };
 		22C621BF22DC805600A7C849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22C621BE22DC805600A7C849 /* Assets.xcassets */; };
@@ -116,7 +118,9 @@
 		22AED50B234DD6AE00A91A68 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
 		22AED50C234DD6AE00A91A68 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		22AED50F234DFEF200A91A68 /* BPSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPSocketManager.swift; sourceTree = "<group>"; };
-		22C621B422DC805600A7C849 /* BaseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22AED511234EC75500A91A68 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
+		22AED513234ED5DB00A91A68 /* BPServerSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPServerSocketManager.swift; sourceTree = "<group>"; };
+		22C621B422DC805600A7C849 /* BaseProject_Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseProject_Client.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C621B722DC805600A7C849 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22C621B922DC805600A7C849 /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
 		22C621BE22DC805600A7C849 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -243,6 +247,7 @@
 				22AED50B234DD6AE00A91A68 /* GCDAsyncUdpSocket.h */,
 				22AED50A234DD6AE00A91A68 /* GCDAsyncUdpSocket.m */,
 				22AED50F234DFEF200A91A68 /* BPSocketManager.swift */,
+				22AED513234ED5DB00A91A68 /* BPServerSocketManager.swift */,
 			);
 			path = Socket;
 			sourceTree = "<group>";
@@ -260,7 +265,7 @@
 		22C621B522DC805600A7C849 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				22C621B422DC805600A7C849 /* BaseProject.app */,
+				22C621B422DC805600A7C849 /* BaseProject_Client.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -332,6 +337,7 @@
 				22642BA5233A451D004E1DF9 /* NSObject+CrashDefender.m */,
 				22642BA7233A4745004E1DF9 /* NSArray+CrashDefender.h */,
 				22642BA8233A4745004E1DF9 /* NSArray+CrashDefender.m */,
+				22AED511234EC75500A91A68 /* Optional+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -505,7 +511,7 @@
 			);
 			name = BaseProject;
 			productName = BaseProject;
-			productReference = 22C621B422DC805600A7C849 /* BaseProject.app */;
+			productReference = 22C621B422DC805600A7C849 /* BaseProject_Client.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -607,6 +613,7 @@
 				22458205232604D90031CC7A /* BPIMDBOperator.swift in Sources */,
 				22C621BA22DC805600A7C849 /* ViewController1.swift in Sources */,
 				22D4981322FBCDA900281530 /* BPBaseViewController.swift in Sources */,
+				22AED514234ED5DB00A91A68 /* BPServerSocketManager.swift in Sources */,
 				22413E3422E8400900F2C678 /* NotificationNameGlobal.swift in Sources */,
 				22458207232604EA0031CC7A /* BPNormalDBOperator.swift in Sources */,
 				22642BA9233A4745004E1DF9 /* NSArray+CrashDefender.m in Sources */,
@@ -644,6 +651,7 @@
 				22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */,
 				2264EF9422F97A2800A89C82 /* BPTaskRequest.swift in Sources */,
 				CF26719422FF0A4300E6B47F /* ViewController2.swift in Sources */,
+				22AED512234EC75500A91A68 /* Optional+Extension.swift in Sources */,
 				CF8EB59C22DCCEBC00EC2FE5 /* IconFontString.swift in Sources */,
 				CF26719622FF0A5900E6B47F /* ViewController3.swift in Sources */,
 				CF26719D22FF973300E6B47F /* PublishView.swift in Sources */,
@@ -816,8 +824,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = samOriginal.BaseProject;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = samOriginal.BaseProject0;
+				PRODUCT_NAME = BaseProject_Client;
 				SWIFT_OBJC_BRIDGING_HEADER = "BaseProject/Resource/BaseProject-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -838,8 +846,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = samOriginal.BaseProject;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = samOriginal.BaseProject0;
+				PRODUCT_NAME = BaseProject_Client;
 				SWIFT_OBJC_BRIDGING_HEADER = "BaseProject/Resource/BaseProject-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
