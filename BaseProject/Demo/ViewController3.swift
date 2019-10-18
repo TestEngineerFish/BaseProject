@@ -21,7 +21,7 @@ class ViewController3: UIViewController, BPSocketProtocol {
     var infoShowLabel       = UILabel()
     var infoTextView        = UITextView()
     var clearButton         = BPBaseButton()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white

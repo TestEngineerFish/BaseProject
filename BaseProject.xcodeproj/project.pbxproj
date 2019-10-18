@@ -82,6 +82,13 @@
 		CF8EB5A022DCD08A00EC2FE5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB59F22DCD08A00EC2FE5 /* UIView+Extension.swift */; };
 		CF8EB5A222DCD0DC00EC2FE5 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB5A122DCD0DC00EC2FE5 /* UIViewController+Extension.swift */; };
 		CF8EB5A622DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB5A522DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift */; };
+		CFFB34E02358C1C4002D440E /* BPBaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFB34DF2358C1C4002D440E /* BPBaseWebViewController.swift */; };
+		CFFB34E823595EF9002D440E /* backbutton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFB34E223595EF8002D440E /* backbutton@3x.png */; };
+		CFFB34E923595EF9002D440E /* girl.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFB34E323595EF8002D440E /* girl.png */; };
+		CFFB34EA23595EF9002D440E /* JStoOC.html in Resources */ = {isa = PBXBuildFile; fileRef = CFFB34E423595EF9002D440E /* JStoOC.html */; };
+		CFFB34EB23595EF9002D440E /* backbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFB34E523595EF9002D440E /* backbutton@2x.png */; };
+		CFFB34EC23595EF9002D440E /* webRefreshButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFB34E623595EF9002D440E /* webRefreshButton@3x.png */; };
+		CFFB34ED23595EF9002D440E /* webRefreshButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFB34E723595EF9002D440E /* webRefreshButton@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -168,6 +175,13 @@
 		CF8EB59F22DCD08A00EC2FE5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB5A122DCD0DC00EC2FE5 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB5A522DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YYBaseViewController+CustomNavigationBar.swift"; sourceTree = "<group>"; };
+		CFFB34DF2358C1C4002D440E /* BPBaseWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseWebViewController.swift; sourceTree = "<group>"; };
+		CFFB34E223595EF8002D440E /* backbutton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backbutton@3x.png"; sourceTree = "<group>"; };
+		CFFB34E323595EF8002D440E /* girl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = girl.png; sourceTree = "<group>"; };
+		CFFB34E423595EF9002D440E /* JStoOC.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = JStoOC.html; sourceTree = "<group>"; };
+		CFFB34E523595EF9002D440E /* backbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backbutton@2x.png"; sourceTree = "<group>"; };
+		CFFB34E623595EF9002D440E /* webRefreshButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webRefreshButton@3x.png"; sourceTree = "<group>"; };
+		CFFB34E723595EF9002D440E /* webRefreshButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webRefreshButton@2x.png"; sourceTree = "<group>"; };
 		D1A3EF0650A7F2326222FB45 /* Pods-BaseProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.debug.xcconfig"; path = "Target Support Files/Pods-BaseProject/Pods-BaseProject.debug.xcconfig"; sourceTree = "<group>"; };
 		FCE0B51EBB89FBFB5A61CACA /* Pods_BaseProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -303,6 +317,7 @@
 		22C621DB22DC821000A7C849 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				CFFB34E123595ED8002D440E /* WebSource */,
 				CF26719B22FF970F00E6B47F /* Publish */,
 				22C621DC22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift */,
 				22C621DE22DC886300A7C849 /* YYBaseModel.swift */,
@@ -479,8 +494,22 @@
 				22D4981022FBCD9B00281530 /* BPBaseTableViewController.swift */,
 				22D4981222FBCDA900281530 /* BPBaseViewController.swift */,
 				CF26718F22FEB39B00E6B47F /* BPBaseTabBarController.swift */,
+				CFFB34DF2358C1C4002D440E /* BPBaseWebViewController.swift */,
 			);
 			path = BaseController;
+			sourceTree = "<group>";
+		};
+		CFFB34E123595ED8002D440E /* WebSource */ = {
+			isa = PBXGroup;
+			children = (
+				CFFB34E523595EF9002D440E /* backbutton@2x.png */,
+				CFFB34E223595EF8002D440E /* backbutton@3x.png */,
+				CFFB34E323595EF8002D440E /* girl.png */,
+				CFFB34E423595EF9002D440E /* JStoOC.html */,
+				CFFB34E723595EF9002D440E /* webRefreshButton@2x.png */,
+				CFFB34E623595EF9002D440E /* webRefreshButton@3x.png */,
+			);
+			path = WebSource;
 			sourceTree = "<group>";
 		};
 		FBA72A1EACBAF5BFC2A38AAD /* Pods */ = {
@@ -553,10 +582,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFFB34EA23595EF9002D440E /* JStoOC.html in Resources */,
+				CFFB34E823595EF9002D440E /* backbutton@3x.png in Resources */,
+				CFFB34EC23595EF9002D440E /* webRefreshButton@3x.png in Resources */,
 				22D4980D22FBC67300281530 /* top-loading.json in Resources */,
+				CFFB34EB23595EF9002D440E /* backbutton@2x.png in Resources */,
 				22C621C222DC805600A7C849 /* LaunchScreen.storyboard in Resources */,
+				CFFB34E923595EF9002D440E /* girl.png in Resources */,
 				22C621BF22DC805600A7C849 /* Assets.xcassets in Resources */,
 				22D4980F22FBCD0800281530 /* center-loading.json in Resources */,
+				CFFB34ED23595EF9002D440E /* webRefreshButton@2x.png in Resources */,
 				2264EF8C22F9738700A89C82 /* iconfont.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,6 +675,7 @@
 				CF8EB56422DCC05D00EC2FE5 /* SAMKeychain+Extension.swift in Sources */,
 				22D018F92321F7F0007AFA1B /* BPDatabaseProtocol.swift in Sources */,
 				CF8EB59E22DCD04300EC2FE5 /* Date+Extension.swift in Sources */,
+				CFFB34E02358C1C4002D440E /* BPBaseWebViewController.swift in Sources */,
 				224582032326044D0031CC7A /* NormalDBCenter.swift in Sources */,
 				CF8EB56B22DCC45800EC2FE5 /* UserDefault+Extension.swift in Sources */,
 				22C621F122DC8D1000A7C849 /* YYGlobal.swift in Sources */,

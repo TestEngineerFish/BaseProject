@@ -112,4 +112,14 @@ class PublishView: BPTopWindowView, UIScrollViewDelegate, UIGestureRecognizerDel
             delegate.publishViewOffset(offsetY)
         }
     }
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        print("hitTest")
+        return super.hitTest(point, with: event)
+    }
+    
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        print("point")
+         return super.point(inside: point, with: event)
+    }
 }

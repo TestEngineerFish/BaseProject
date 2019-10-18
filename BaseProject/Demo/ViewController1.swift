@@ -10,13 +10,17 @@ import UIKit
 import Lottie
 
 class ViewController1: UIViewController {
-
+    
     var showView = UIView()
     let button   = BPBaseButton()
     let text = UITextField()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.makeUI()
+    }
+    
+    private func makeUI() {
         self.view.backgroundColor = UIColor.white
         button.setTitle("Touch me", for: .normal)
         let textColor = UIColor.gradientColor(with: CGSize(width: 100, height: 50), colors: [UIColor.white.cgColor, UIColor.black.cgColor], direction: .horizontal)
@@ -33,31 +37,35 @@ class ViewController1: UIViewController {
         IMDBCenter.default.fetchAllRecnetSession().forEach { (str) in
             print(str)
         }
-
+        
         if #available(iOS 13.0, *) {
             self.overrideUserInterfaceStyle = .dark
         } else {
             // Fallback on earlier versions
         }
     }
-
+    
     @objc func hideToast() {
         self.view.hideTopLoading()
     }
     
     @objc func showToast() {
+        
+        let vc = BPBaseWebViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
         BPAlertManager.showAlertImage(imageStr: "https://maxst.icons8.com/_nuxt/ouch/img/art-2.0e6fbc3.png", hideCloseBtn: false) { (source) in
             self.view.toast(source.url?.absoluteString ?? "???")
         }
+        //        BPAlertManager.showAlert(title: "T##String?", description: "T##String", leftBtnName: "T##String", leftBtnClosure: nil, rightBtnName: "T##String", rightBtnClosure: nil)
     }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        BPAlertManager.showAlert(title: "T##String?", description: "T##String", leftBtnName: "T##String", leftBtnClosure: nil, rightBtnName: "T##String", rightBtnClosure: nil)
-    }
-
     
-
+    
+    
     // 求介绍 - 问题列表
     func fetchQuestionList(_ completion: @escaping ((_ questionList:YYWantToKnowQuestionListModel?, _ errorMsg: String?) -> Void)){
         let request = YYUsrHomePageDataRequestAPI.fetchWantToKnowQuestionList
@@ -67,15 +75,18 @@ class ViewController1: UIViewController {
             completion(nil, error.message)
         }
     }
+    
+    
+    
 }
 
 extension Array {
-
+    
     subscript(_ index: Int, safe: Bool) -> Element? {
         print("safe")
         return self[index]
     }
-
+    
     func safeObject(_ index: Int) -> Element? {
         if index > self.count {
             return nil

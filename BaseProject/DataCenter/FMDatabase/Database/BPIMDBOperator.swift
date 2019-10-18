@@ -53,6 +53,7 @@ class BPIMDBOperator: BPIMDBProtocol, BPDatabaseProtocol {
         return true
     }
 
+    @discardableResult
     func selectRecentSession() -> Bool {
         let sql = BPSQLManager.SelectIMTableSQLs.selectAllRecentSession.rawValue
         let result = self.imRunner.executeQuery(sql, withArgumentsIn: [])

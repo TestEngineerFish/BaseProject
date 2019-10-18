@@ -14,4 +14,6 @@ class ViewController2: UIViewController {
         self.view.backgroundColor = UIColor.red1
         self.view.layer.setGradient(colors: [UIColor.green1, UIColor.yellow1, UIColor.orange1], direction: .leftTop)
     }
+    
+    
 }

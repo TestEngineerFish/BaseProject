@@ -53,7 +53,8 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
     
     /// 设置底部TabBarItem
     func addChildViewController() {
-        let home = ViewController1()
+        let vc = ViewController1()
+        let home = UINavigationController(rootViewController: vc)
         home.tabBarItem.title         = "HOME"
         home.tabBarItem.image         = UIImage(named: "home_unselect")
         home.tabBarItem.selectedImage = UIImage(named: "home_selected")

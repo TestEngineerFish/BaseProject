@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YYBaseViewController: UIViewController {
+class BPBaseViewController: UIViewController {
 
     deinit {
         print("控制器释放: " + String(describing: self.classForCoder))
