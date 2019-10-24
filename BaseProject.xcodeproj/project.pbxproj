@@ -68,6 +68,7 @@
 		CF26719822FF0A6B00E6B47F /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719722FF0A6B00E6B47F /* ViewController4.swift */; };
 		CF26719A22FF0B1B00E6B47F /* BPBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719922FF0B1B00E6B47F /* BPBaseNavigationController.swift */; };
 		CF26719D22FF973300E6B47F /* PublishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719C22FF973300E6B47F /* PublishView.swift */; };
+		CF6E171E235F56540008C466 /* BPWebViewImplementClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E171D235F56540008C466 /* BPWebViewImplementClass.swift */; };
 		CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869522F6F5380031E4B9 /* UINavigationController+Extension.swift */; };
 		CF87869822F709C20031E4B9 /* BPAuthoriationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869722F709C20031E4B9 /* BPAuthoriationManager.swift */; };
 		CF87869A22F87BD60031E4B9 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869922F87BD60031E4B9 /* UIImage+Extension.swift */; };
@@ -161,6 +162,8 @@
 		CF26719922FF0B1B00E6B47F /* BPBaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseNavigationController.swift; sourceTree = "<group>"; };
 		CF26719C22FF973300E6B47F /* PublishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishView.swift; sourceTree = "<group>"; };
 		CF27E37F22DE279E0056ADFA /* BaseProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseProject-Bridging-Header.h"; sourceTree = "<group>"; };
+		CF6E171D235F56540008C466 /* BPWebViewImplementClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPWebViewImplementClass.swift; sourceTree = "<group>"; };
+		CF6E171F235F56C80008C466 /* WebViewControllerReadMe.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = WebViewControllerReadMe.md; sourceTree = "<group>"; };
 		CF87869522F6F5380031E4B9 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		CF87869722F709C20031E4B9 /* BPAuthoriationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BPAuthoriationManager.swift; path = BaseProject/Extension/BPAuthoriationManager.swift; sourceTree = SOURCE_ROOT; };
 		CF87869922F87BD60031E4B9 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -466,6 +469,16 @@
 			path = Module;
 			sourceTree = "<group>";
 		};
+		CF6E171C235F55F40008C466 /* WebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CFFB34DF2358C1C4002D440E /* BPBaseWebViewController.swift */,
+				CF6E171D235F56540008C466 /* BPWebViewImplementClass.swift */,
+				CF6E171F235F56C80008C466 /* WebViewControllerReadMe.md */,
+			);
+			path = WebViewController;
+			sourceTree = "<group>";
+		};
 		CF8EB56C22DCC48F00EC2FE5 /* DataCenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,11 +503,11 @@
 		CF8EB5A422DCD18400EC2FE5 /* BaseController */ = {
 			isa = PBXGroup;
 			children = (
+				CF6E171C235F55F40008C466 /* WebViewController */,
 				CF26719922FF0B1B00E6B47F /* BPBaseNavigationController.swift */,
 				22D4981022FBCD9B00281530 /* BPBaseTableViewController.swift */,
 				22D4981222FBCDA900281530 /* BPBaseViewController.swift */,
 				CF26718F22FEB39B00E6B47F /* BPBaseTabBarController.swift */,
-				CFFB34DF2358C1C4002D440E /* BPBaseWebViewController.swift */,
 			);
 			path = BaseController;
 			sourceTree = "<group>";
@@ -659,6 +672,7 @@
 				CF26719022FEB39B00E6B47F /* BPBaseTabBarController.swift in Sources */,
 				22AED50E234DD6AE00A91A68 /* GCDAsyncUdpSocket.m in Sources */,
 				CF8EB58B22DCCCA600EC2FE5 /* UIFont+Extension.swift in Sources */,
+				CF6E171E235F56540008C466 /* BPWebViewImplementClass.swift in Sources */,
 				22A877BE22FAB679004FF3A7 /* BPBaseImageView.swift in Sources */,
 				2264EF8622F91E0700A89C82 /* BPAlertViewZeroButton.swift in Sources */,
 				CF26719822FF0A6B00E6B47F /* ViewController4.swift in Sources */,

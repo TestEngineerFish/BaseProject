@@ -52,16 +52,40 @@ class ViewController1: UIViewController {
     @objc func showToast() {
         
         let vc = BPBaseWebViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+//        self.navigationController?.pushViewController(vc, animated: true)
+        let jsToOcNoPrams   = "jsToOcNoPrams"
+        let jsToOcWithPrams = "jsToOcWithPrams:"
+        let jSString = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
+//        vc.funciontList = [jsToOcNoPrams, jsToOcWithPrams]
+//        vc.jsScriptList = [jSString]
+        self.navigationController?.present(vc, animated: true, completion: nil)
         
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        BPAlertManager.showAlertImage(imageStr: "https://maxst.icons8.com/_nuxt/ouch/img/art-2.0e6fbc3.png", hideCloseBtn: false) { (source) in
-            self.view.toast(source.url?.absoluteString ?? "???")
+        var count: UInt32 = 0
+        if let methodList = class_copyMethodList(BPBaseWebViewController.classForCoder(), &count) {
+            for i in 0..<Int(count) {
+                let method = methodList[i]
+//                if let methodUTF8 = method_getTypeEncoding(method) {
+//                    let methodStr = String(utf8String: methodUTF8) ?? ""
+//                    print(methodStr)
+//                }
+                let sel = method_getName(method)
+                let methodStr = String(_sel: sel)
+                print(methodStr)
+            }
         }
-        //        BPAlertManager.showAlert(title: "T##String?", description: "T##String", leftBtnName: "T##String", leftBtnClosure: nil, rightBtnName: "T##String", rightBtnClosure: nil)
+        
+        
+//        for method in methodList {
+//            print(method)
+//        }
+        
+//        BPAlertManager.showAlertImage(imageStr: "https://maxst.icons8.com/_nuxt/ouch/img/art-2.0e6fbc3.png", hideCloseBtn: false) { (source) in
+//            self.view.toast(source.url?.absoluteString ?? "???")
+//        }
     }
     
     

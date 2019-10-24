@@ -24,6 +24,7 @@ class BPAlertViewOneButton: BPBaseAlertView {
         self.descriptionHeight     = description.textHeight(font: self.descriptionLabel.font, width: kScreenWidth - 90)
         self.descriptionLabel.text = description
         self.rightButton.setTitle(buttonName, for: .normal)
+        self.rightButton.addTarget(self, action: #selector(rightBtnAction), for: .touchUpInside)
         self.setupSubviews()
     }
 

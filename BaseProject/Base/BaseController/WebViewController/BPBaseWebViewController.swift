@@ -10,12 +10,49 @@ import UIKit
 import WebKit
 
 class BPBaseWebViewController: UIViewController {
+    
+    /// 定义注册函数的实现类
+    static var implClass: AnyClass?
+    
     let keyPath         = "title"
     let jsToOcNoPrams   = "jsToOcNoPrams"
-    let jsToOcWithPrams = "jsToOcWithPrams"
+    let jsToOcWithPrams = "jsToOcWithPrams:"
     
-    var webView: WKWebView {
-        let configuration = WKWebViewConfiguration()
+    let configuration = WKWebViewConfiguration()
+    
+    /// 需要注册的函数
+    var funciontList: [String] = {
+        var list = [String]()
+        guard let implClass = BPBaseWebViewController.implClass else { return list }
+        
+        var count: UInt32 = 0
+        if let methodList = class_copyMethodList(implClass, &count) {
+            for i in 0..<Int(count) {
+                let method = methodList[i]
+                let sel = method_getName(method)
+                let methodStr = String(_sel: sel)
+                print(methodStr)
+            }
+        }
+        return list
+    }()
+    var jsScriptList = [String]()
+    
+    lazy var webView: WKWebView = {
+        self.setConfiguration()
+        let _webView = WKWebView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight), configuration: configuration)
+        _webView.uiDelegate = self
+        _webView.navigationDelegate = self
+        // 允许左滑返回上一级
+        _webView.allowsBackForwardNavigationGestures = true
+        let path = Bundle.main.path(forResource: "JStoOC.html", ofType: nil) ?? ""
+        let pathStr = try? String(contentsOfFile: path, encoding: .utf8)
+        _webView.loadHTMLString(pathStr ?? "", baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
+        return _webView
+    }()
+    var progressView: UIProgressView?
+    
+    private func setConfiguration() {
         // 视频播放是否允许调用本地播放器
         configuration.allowsInlineMediaPlayback = true
         // 设置哪些设备(音频或视频)需要用户主动播放,不自动播放
@@ -36,39 +73,30 @@ class BPBaseWebViewController: UIViewController {
         
         // ---- 自定义处理JS消息对象 ----
         let weakScriptMessageDelegate = WeakWkScriptMessageHeaderDelegate(self)
+        
         // 这个类主要负责与JS交互管理
-        let userContentController     =  WKUserContentController()
-        // 向JS注册函数,使用自定义的WKScriptMessageHeader对象来处理
-        userContentController.add(weakScriptMessageDelegate, name: jsToOcNoPrams)
-        userContentController.add(weakScriptMessageDelegate, name: jsToOcWithPrams)
-        //以下代码适配文本大小
-        let jSString = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
-        //用于进行JavaScript注入
-        let userScript = WKUserScript(source: jSString, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
-        userContentController.addUserScript(userScript)
+        let userContentController =  WKUserContentController()
+        for name in funciontList {
+            // 向JS注册函数,使用自定义的WKScriptMessageHeader对象来处理
+            userContentController.add(weakScriptMessageDelegate, name: name)
+        }
         configuration.userContentController = userContentController
         
-        let _webView = WKWebView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight), configuration: configuration)
-        _webView.uiDelegate = self
-        _webView.navigationDelegate = self
-        // 允许左滑返回上一级
-        _webView.allowsBackForwardNavigationGestures = true
-        let path = Bundle.main.path(forResource: "JStoOC.html", ofType: nil) ?? ""
-        let pathStr = try? String(contentsOfFile: path, encoding: .utf8)
-        _webView.loadHTMLString(pathStr ?? "", baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
-        return _webView
+        // 注入JS内容,注入到JS文件末尾
+        for script in jsScriptList {
+            let userScript = WKUserScript(source: script, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+            userContentController.addUserScript(userScript)
+        }
     }
-    var progressView: UIProgressView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.orange1
         self.makeUI()
-        
+        self.makeNotification()
     }
     
     private func makeUI() {
-        self.customNavigationItems()
+//        self.customNavigationItems()
         self.view.addSubview(webView)
 //        self.view.addSubview(progressView)
     }
@@ -98,10 +126,8 @@ class BPBaseWebViewController: UIViewController {
         self.navigationItem.rightBarButtonItems = [refreshBtnItem, oc2JS]
     }
     
-    
-    
     @objc private func goBackAction(_ btn: UIButton) {
-        
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc private func jsToOCAction() {
@@ -116,14 +142,13 @@ class BPBaseWebViewController: UIViewController {
         
     }
     
-    
     ///  移除注册的函数
     deinit {
-        webView.configuration.userContentController.removeScriptMessageHandler(forName: jsToOcNoPrams)
-        webView.configuration.userContentController.removeScriptMessageHandler(forName: jsToOcWithPrams)
+        for name in funciontList {
+            webView.configuration.userContentController.removeScriptMessageHandler(forName: name)
+        }
         webView.removeObserver(self, forKeyPath: keyPath)
     }
-    
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == self.keyPath {
@@ -141,12 +166,21 @@ class BPBaseWebViewController: UIViewController {
 // 接收WebView传递来的信息
 extension BPBaseWebViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        print("收到 JS 的调用: function name = \(message.name), 参数: \(message.body)")
+        let funcName = message.name
+        let parameters = message.body
+        if funcName == jsToOcNoPrams {
+            BPAlertManager.showAlertOntBtn(title: "JS调用了没有参数函数", description: "函数名:" + funcName, buttonName: "知道了", closure: nil)
+        } else if funcName == jsToOcWithPrams {
+            BPAlertManager.showAlertOntBtn(title: "JS调用了有参数函数", description: "函数名:" + funcName + "参数是 : \(parameters)", buttonName: "知道了", closure: nil)
+        }
     }
 }
 
 // 将web常见视图,转换成原生试视图展示
 extension BPBaseWebViewController: WKUIDelegate {
+    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+        BPAlertManager.showAlertOntBtn(title: "捕获到JS的弹框", description: message, buttonName: "知道了", closure: completionHandler)
+    }
     
 }
 
@@ -161,8 +195,8 @@ class WeakWkScriptMessageHeaderDelegate: NSObject,WKScriptMessageHandler {
     weak var scriptDelegate: WKScriptMessageHandler?
     
     init(_ delegate: WKScriptMessageHandler) {
-        self.scriptDelegate = delegate
         super.init()
+        self.scriptDelegate = delegate
     }
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {

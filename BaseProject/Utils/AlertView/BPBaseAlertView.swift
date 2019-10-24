@@ -75,6 +75,7 @@ class BPBaseAlertView: BPTopWindowView {
         button.titleLabel?.font = UIFont.iconFont(size: 40)
         button.addTarget(self, action: #selector(closeBtnAction), for: .touchUpInside)
         button.isHidden = true
+        button.backgroundColor = UIColor.clear
         return button
     }()
 
