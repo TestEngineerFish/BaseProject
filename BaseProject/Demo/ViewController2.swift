@@ -13,7 +13,14 @@ class ViewController2: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.red1
         self.view.layer.setGradient(colors: [UIColor.green1, UIColor.yellow1, UIColor.orange1], direction: .leftTop)
+        
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        let index = arc4random()%16
+        let route = FindRouteUtil.getRoute(Int(index))
+        print("------查找有效路径是:\(route)!!!!!!!!!")
+    }
     
 }
