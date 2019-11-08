@@ -1,21 +1,24 @@
 PODS:
   - Alamofire (4.8.2)
-  - AlamofireObjectMapper (5.2.0):
+  - AlamofireObjectMapper (5.2.1):
     - Alamofire (~> 4.7)
     - ObjectMapper (~> 3.4)
   - Bugly (2.5.0)
-  - CocoaLumberjack/Core (3.5.3)
-  - CocoaLumberjack/Swift (3.5.3):
+  - CocoaLumberjack/Core (3.6.0)
+  - CocoaLumberjack/Swift (3.6.0):
     - CocoaLumberjack/Core
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
-  - Kingfisher (5.7.0)
-  - lottie-ios (3.1.2)
+  - Kingfisher (5.9.0):
+    - Kingfisher/Core (= 5.9.0)
+  - Kingfisher/Core (5.9.0)
+  - lottie-ios (3.1.3)
   - ObjectMapper (3.5.1)
   - SAMKeychain (1.5.3)
   - SnapKit (5.0.1)
   - SSZipArchive (2.2.2)
+  - TesseractOCRiOS (5.0.1)
   - Toast-Swift (5.0.0)
 
 DEPENDENCIES:
@@ -30,6 +33,7 @@ DEPENDENCIES:
   - SAMKeychain
   - SnapKit (~> 5.0.0)
   - SSZipArchive
+  - TesseractOCRiOS
   - Toast-Swift (~> 5.0.0)
 
 SPEC REPOS:
@@ -45,22 +49,24 @@ SPEC REPOS:
     - SAMKeychain
     - SnapKit
     - SSZipArchive
+    - TesseractOCRiOS
     - Toast-Swift
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
+  AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
-  CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
+  CocoaLumberjack: 78b0c238666f4f58db069738ec176f4519557516
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
-  lottie-ios: 49cd85b1f24f61a7708ad7ec76a523ab2d0e3100
+  Kingfisher: ff98240aebb7302bdc4f1ecd701761030ce18b16
+  lottie-ios: 496ac5cea1bbf1a7bd1f1f472f3232eb1b8d744b
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
+  TesseractOCRiOS: 2c189465f86abb030d0c5141c90da9705b647854
   Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
 
-PODFILE CHECKSUM: 8f2bae6ce43c6de99a42e1ede6ca3ca00cf384c4
+PODFILE CHECKSUM: e0becc60557ee305f0b9d1d9c7d326e74698767e
 
-COCOAPODS: 1.8.0.beta.1
+COCOAPODS: 1.8.4

@@ -6,4 +6,5 @@
 #import <Bugly/Bugly.h>
 #import "NSObject+CrashDefender.h"
 #import "GCDAsyncSocket.h"
+#import "UIBezierPath+AllPoints.h"
 

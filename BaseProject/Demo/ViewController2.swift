@@ -10,23 +10,30 @@ import UIKit
 
 class ViewController2: UIViewController {
 
-    let diameter = CGFloat(300)
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.red1
-        self.view.layer.setGradient(colors: [UIColor.green1, UIColor.yellow1, UIColor.orange1], direction: .leftTop)
+        self.view.backgroundColor = UIColor.white
+//        self.view.layer.setGradient(colors: [UIColor.green1, UIColor.yellow1, UIColor.orange1], direction: .leftTop)
+        let imageView = UIImageView(image: UIImage(named: "dog"))
+        imageView.contentMode = .scaleAspectFill
+        self.view.addSubview(imageView)
+        imageView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+//        let learningPath = LearningProgressView(units: 14, frame: self.view.bounds)
+//        self.view.addSubview(learningPath)
+//        learningPath.snp.makeConstraints { (make) in
+//            make.edges.equalToSuperview()
+//        }
 
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        let sexangle = self.makeSexangle(diameter)
-        self.view.addSubview(sexangle)
-        sexangle.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            make.size.equalTo(CGSize(width: diameter, height: diameter))
-        }
+        self.hidesBottomBarWhenPushed = true
+        let vc = YXLearningPathViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+        self.hidesBottomBarWhenPushed = false
     }
 
     private func makeSexangle(_ diameter: CGFloat) -> UIView {
@@ -72,6 +79,7 @@ class ViewController2: UIViewController {
         animation.duration  = 10
         proShapeLayer.add(animation, forKey: nil)
 
+        print(backPath.points())
 //        let graLayer = CAGradientLayer()
 //        graLayer.frame      = CGRect(x: 0, y: 0, width: diameter, height: diameter)
 //        graLayer.colors     = [UIColor.blue1.cgColor, UIColor.orange1.cgColor]
@@ -79,6 +87,7 @@ class ViewController2: UIViewController {
 //        graLayer.endPoint   = CGPoint(x: 1, y: 1)
 //        view.layer.addSublayer(graLayer)
 //        graLayer.mask = proShapeLayer
+
         return view
     }
 }

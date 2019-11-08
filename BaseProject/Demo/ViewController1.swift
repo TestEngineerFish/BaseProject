@@ -14,15 +14,33 @@ class ViewController1: UIViewController {
     var showView = UIView()
     let button   = BPBaseButton()
     let text = UITextField()
+    var shaperLayer = CAShapeLayer()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.makeUI()
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(pan(_:)))
+        self.view.addGestureRecognizer(pan)
+    }
+
+    @objc private func pan(_ pan: UIPanGestureRecognizer) {
+        let point = pan.location(in: self.view)
+        shaperLayer.removeFromSuperlayer()
+        let path = UIBezierPath()
+        path.move(to: self.view.center)
+        path.addLine(to: point)
+        shaperLayer.path = path.cgPath
+        shaperLayer.lineWidth = 6
+        shaperLayer.strokeColor = UIColor.orange1.cgColor
+        shaperLayer.fillColor = nil
+        self.view.layer.addSublayer(shaperLayer)
+
     }
     
     private func makeUI() {
         self.view.backgroundColor = UIColor.white
-        button.setTitle("Touch me", for: .normal)
+        button.setTitle("right-data", for: .normal)
         let textColor = UIColor.gradientColor(with: CGSize(width: 100, height: 50), colors: [UIColor.white.cgColor, UIColor.black.cgColor], direction: .horizontal)
         button.setTitleColor(textColor, for: .normal)
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.green1), for: .normal)
@@ -53,9 +71,9 @@ class ViewController1: UIViewController {
         
         let vc = BPBaseWebViewController()
 //        self.navigationController?.pushViewController(vc, animated: true)
-        let jsToOcNoPrams   = "jsToOcNoPrams"
-        let jsToOcWithPrams = "jsToOcWithPrams:"
-        let jSString = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
+//        let jsToOcNoPrams   = "jsToOcNoPrams"
+//        let jsToOcWithPrams = "jsToOcWithPrams:"
+//        let jSString = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
 //        vc.funciontList = [jsToOcNoPrams, jsToOcWithPrams]
 //        vc.jsScriptList = [jSString]
         self.navigationController?.present(vc, animated: true, completion: nil)
@@ -64,6 +82,7 @@ class ViewController1: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
+        return
         var count: UInt32 = 0
         if let methodList = class_copyMethodList(BPBaseWebViewController.classForCoder(), &count) {
             for i in 0..<Int(count) {

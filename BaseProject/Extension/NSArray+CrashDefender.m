@@ -63,10 +63,4 @@
     }
     return nil;
 }
-
-- (void)test {
-    NSArray *array = @[@0,@1,@2];
-    [array objectAtIndex:5];
-    array[10];
-}
 @end

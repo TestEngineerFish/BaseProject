@@ -307,7 +307,7 @@ public extension UIView {
         if let loadView = objc_getAssociatedObject(self, &AssociatedKeys.topLoadingView), let _loadView = loadView as? AnimationView {
             _loadView.play()
         } else {
-            let loadView      = AnimationView(name: "top-loading")
+            let loadView      = AnimationView(name: "letter_A")
             loadView.frame    = CGRect(origin: CGPoint.zero, size: CGSize(width: 100, height: 50))
             loadView.centerX  = self.centerX
             loadView.top      = top

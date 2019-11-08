@@ -61,10 +61,12 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
         home.tabBarItem.imageInsets   = UIEdgeInsets(top: -1.0, left: 0.0, bottom: 1.0, right: 0.0)
         self.addChild(home)
         
-        let dynamic = ViewController2()
+        let dynamicVC = ViewController2()
+        let dynamic = UINavigationController(rootViewController: dynamicVC)
         dynamic.tabBarItem.title         = "DYNAMIC"
         dynamic.tabBarItem.image         = UIImage(named: "dynamic_unselect")
         dynamic.tabBarItem.selectedImage = UIImage(named: "dynamic_selected")
+
         self.addChild(dynamic)
         
         // 仅用作占位符
@@ -75,13 +77,15 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
         publish.tabBarItem.isEnabled     = false
         self.addChild(publish)
         
-        let message = ViewController3()
+        let messageVC = ViewController3()
+        let message = UINavigationController(rootViewController: messageVC)
         message.tabBarItem.title         = "MESSAGE"
         message.tabBarItem.image         = UIImage(named: "message_unselect")
         message.tabBarItem.selectedImage = UIImage(named: "message_selected")
         self.addChild(message)
         
-        let profile = ViewController4()
+        let profileVC = ViewController4()
+        let profile = UINavigationController(rootViewController: profileVC)
         profile.tabBarItem.title         = "PROFILE"
         profile.tabBarItem.image         = UIImage(named: "profile_unselect")
         profile.tabBarItem.selectedImage = UIImage(named: "profile_selected")
