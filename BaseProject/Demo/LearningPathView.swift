@@ -10,13 +10,13 @@ import UIKit
 
 class LearningPathView: UIScrollView {
 
-//    var modelArray: [YXLearningPathModel] = []
+    var modelArray: [YXLearningPathModel]
 
     // 间距
     let margin = CGFloat(130)
     // 弧线数量
     var sectorAmount: Int
-    // 剩余单元格数量
+    // 单元格数量
     var unitAmount: Int
     // 一个扇形上默认显示4个单元
     let sectorUnits = CGFloat(3)
@@ -31,15 +31,16 @@ class LearningPathView: UIScrollView {
     // 路径
     let proShapeLayer = CAShapeLayer()
 
-    init(units amount: Int, frame: CGRect) {
-        let tmpAmount = amount - 1
+    init(units modelArray: [YXLearningPathModel], frame: CGRect) {
+        self.modelArray = modelArray
+        let tmpAmount = modelArray.count - 1
         sectorAmount = tmpAmount / Int(sectorUnits)
         if tmpAmount % Int(sectorUnits) > 0 {
             sectorAmount += 1
         }
-        unitAmount = amount
+        unitAmount = modelArray.count
         super.init(frame: frame)
-        let h = margin * CGFloat(amount) + kNavHeight + kSafeBottomMargin
+        let h = margin * CGFloat(unitAmount) + kNavHeight + kSafeBottomMargin
         self.contentSize          = CGSize(width: frame.width, height: h)
         self.alwaysBounceVertical = true
         self.backgroundColor      = UIColor.clear
@@ -106,12 +107,14 @@ class LearningPathView: UIScrollView {
 
     /// 添加单元图形
     private func setUnitView() {
-        for point in self.unitPointArray {
-            let model = YXLearningPathModel()
-            let sexangleView = YXSexangleView(model)
-            sexangleView.center = point
-            self.addSubview(sexangleView)
-            self.unitViewArray.append(sexangleView)
+        for (index, point) in self.unitPointArray.enumerated() {
+            if index < self.modelArray.count {
+                let model = self.modelArray[index]
+                let sexangleView = YXSexangleView(model)
+                sexangleView.center = point
+                self.addSubview(sexangleView)
+                self.unitViewArray.append(sexangleView)
+            }
         }
     }
 

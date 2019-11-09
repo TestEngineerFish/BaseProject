@@ -65,7 +65,7 @@ enum YXSexangleType: Int {
         case .uniteIng:
             return UIColor.hex(0xFB6617)
         case .uniteEnd:
-            return UIColor.hex(0xE38B03)
+            return UIColor.hex(0xB78F58)
         case .extendLock:
             return UIColor.hex(0x888888)
         case .extendUniteUnstart:
@@ -106,10 +106,14 @@ class YXSexangleView: UIView {
         self.model = model
         super.init(frame: CGRect(origin: .zero, size: CGSize(width: 81, height: 81)))
         self.createSubview(progress: 0.8)
-        // 创建用户头像
-        self.createAvatarView()
-        // 设置星星等级
-        self.setScoreStarView(2)
+        if model.type == .uniteIng {
+            // 创建用户头像
+            self.createAvatarView()
+        }
+        if model.type == .uniteEnd {
+            // 设置星星等级
+            self.setScoreStarView(model.start)
+        }
     }
 
     required init?(coder: NSCoder) {
@@ -121,7 +125,7 @@ class YXSexangleView: UIView {
         let outSideColor = model.type.getOutSideColor()
         let outSideLayer = self.getSexangleLayer(self.width, strokeColor: outSideColor.cgColor)
         self.layer.addSublayer(outSideLayer)
-        if rate < 1.0 {
+        if model.type == .uniteIng {
             // 设置渐变
             let maskLayer = self.getSexangleLayer(81, strokeColor: UIColor.red.cgColor)
             let gradientLayer = self.getGradientLayer()
@@ -167,7 +171,7 @@ class YXSexangleView: UIView {
         if model.type == .extendUniteIng || model.type == .uniteIng {
             let view = UIView()
             let unitLabel = UILabel()
-            unitLabel.text          = "Unit 2"
+            unitLabel.text          = model.name
             unitLabel.textColor     = UIColor.hex(0xE38B03)
             unitLabel.textAlignment = .center
             unitLabel.font          = UIFont.boldSystemFont(ofSize: 12)
@@ -183,7 +187,7 @@ class YXSexangleView: UIView {
                 make.centerX.equalToSuperview()
                 make.top.equalToSuperview()
                 make.width.equalToSuperview()
-                make.height.width.equalTo(17)
+                make.height.equalTo(17)
             }
             progressLabel!.snp.makeConstraints { (make) in
                 make.centerX.equalToSuperview()
@@ -197,19 +201,28 @@ class YXSexangleView: UIView {
             return view
         } else {
             let view = UIView()
-            let imageView = UIImageView(image: UIImage(named: "fruit"))
+            let imageView = UIImageView()
+            imageView.image = {
+                if model.type == .uniteEnd {
+                    return UIImage(named: "fruit_enable")
+                } else if model.type == .uniteUnstart {
+                    return UIImage(named: "fruit_disable")
+                } else {
+                    return nil
+                }
+            }()
             let label = UILabel()
             label.textAlignment = .center
-            label.text = "Unit 1"
-            label.textColor = UIColor.hex(0xE38B03)
+            label.text = model.name
+            label.textColor = model.type.getTitleColor()
             label.font = UIFont.boldSystemFont(ofSize: 12)
             view.addSubview(imageView)
-            view.addSubview(label)
             imageView.snp.makeConstraints { (make) in
                 make.centerX.equalToSuperview()
                 make.top.equalToSuperview()
                 make.height.width.equalTo(25)
             }
+            view.addSubview(label)
             label.snp.makeConstraints { (make) in
                 make.centerX.equalToSuperview()
                 make.top.equalTo(imageView.snp.bottom)

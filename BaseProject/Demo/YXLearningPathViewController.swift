@@ -14,11 +14,35 @@ class YXLearningPathViewController: UIViewController {
     var leftCloud  = UIImageView()
     var rightCloud = UIImageView()
 
-//    let modelArray: [YXLearningPathModel] = {
-//        let array = [YXLearningPathModel]()
-//
-//        return array
-//    }()
+    let modelArray: [YXLearningPathModel] = {
+        var array = [YXLearningPathModel]()
+        for index in 0..<14 {
+            var model = YXLearningPathModel()
+            model.unit_id = index
+            model.name = "Unit \(index + 1)"
+            if index == 4 {
+                model.rate = 0.8
+                model.start = 0
+                model.isLearned = true
+                model.isLearned = false
+                model.type = .uniteIng
+            } else if index > 4 {
+                model.rate = 0.0
+                model.start = 0
+                model.isLearned = false
+                model.isLearned = false
+                model.type = .uniteUnstart
+            } else {
+                model.rate = 1.0
+                model.start = Int(arc4random()%4)
+                model.isLearned = false
+                model.isLearned = true
+                model.type = .uniteEnd
+            }
+            array.append(model)
+        }
+        return array
+    }()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,7 +66,7 @@ class YXLearningPathViewController: UIViewController {
             make.centerY.equalToSuperview()
         }
         // 学习路径
-        let learningPath = LearningPathView(units: 14, frame: self.view.bounds)
+        let learningPath = LearningPathView(units: self.modelArray, frame: self.view.bounds)
         self.view.addSubview(learningPath)
         learningPath.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
