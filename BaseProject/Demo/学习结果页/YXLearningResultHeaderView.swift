@@ -21,6 +21,10 @@ class YXLearningResultHeaderView: UIView {
 
     var model: YXLearingResultModel
 
+    var firstStar  = UIImageView()
+    var secondStar = UIImageView()
+    var thirdStar  = UIImageView()
+
     init(_ model:YXLearingResultModel) {
         self.model = model
         super.init(frame: CGRect.zero)
@@ -44,15 +48,18 @@ class YXLearningResultHeaderView: UIView {
             make.height.equalTo(AdaptSize(109))
         }
         // 星星
-        let firstStar  = UIImageView(image: UIImage(named: "star_enable"))
-        let secondStar = UIImageView(image: UIImage(named: "star_disable"))
+        firstStar.image  = UIImage(named: "star_enable")
+        secondStar.image = UIImage(named: "star_enable")
         if model.star > 1 {
             secondStar.image = UIImage(named: "star_enable")
         }
-        let thirdStar  = UIImageView(image: UIImage(named: "star_disable"))
+        thirdStar.image = UIImage(named: "star_enable")
         if model.star > 1 {
             thirdStar.image = UIImage(named: "star_enable")
         }
+        firstStar.isHidden  = true
+        secondStar.isHidden = true
+        thirdStar.isHidden  = true
         self.addSubview(firstStar)
         self.addSubview(secondStar)
         self.addSubview(thirdStar)
@@ -120,19 +127,40 @@ class YXLearningResultHeaderView: UIView {
 
         // 如果有扩展单元解锁
         if let _unlockUnit = model.unlockUnit {
-             let unlockLabel = UILabel()
-             unlockLabel.textAlignment = .left
-             let unlockText = "• 解锁了 " + _unlockUnit
-             let unlockMutAttrStr = NSMutableAttributedString(string: unlockText, attributes: [NSAttributedString.Key.foregroundColor : UIColor.hex(0x888888), NSAttributedString.Key.font:UIFont.regularFont(ofSize: 14)])
-             unlockMutAttrStr.addAttributes([NSAttributedString.Key.font:UIFont.mediumFont(ofSize: 14), NSAttributedString.Key.foregroundColor:UIColor.hex(0xFBA217)], range: NSRange(location: 6, length: unlockText.count - 6))
-             unlockLabel.attributedText = unlockMutAttrStr
-             self.addSubview(unlockLabel)
-             unlockLabel.snp.makeConstraints { (make) in
-                 make.left.height.width.equalTo(newLearnLabel)
-                 make.top.equalTo(reviewLabel.snp.bottom).offset(2)
-             }
-         }
+            let unlockLabel = UILabel()
+            unlockLabel.textAlignment = .left
+            let unlockText = "• 解锁了 " + _unlockUnit
+            let unlockMutAttrStr = NSMutableAttributedString(string: unlockText, attributes: [NSAttributedString.Key.foregroundColor : UIColor.hex(0x888888), NSAttributedString.Key.font:UIFont.regularFont(ofSize: 14)])
+            unlockMutAttrStr.addAttributes([NSAttributedString.Key.font:UIFont.mediumFont(ofSize: 14), NSAttributedString.Key.foregroundColor:UIColor.hex(0xFBA217)], range: NSRange(location: 6, length: unlockText.count - 6))
+            unlockLabel.attributedText = unlockMutAttrStr
+            self.addSubview(unlockLabel)
+            unlockLabel.snp.makeConstraints { (make) in
+                make.left.height.width.equalTo(newLearnLabel)
+                make.top.equalTo(reviewLabel.snp.bottom).offset(2)
+            }
+        }
+        self.showAnimation()
+    }
 
+    private func showAnimation() {
+        let duration = Double(0.75)
+        let animation = CAKeyframeAnimation(keyPath: "transform.scale")
+        animation.values = [0.0, 1.2, 1.0]
+        animation.duration = duration
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration*1) {
+            self.firstStar.isHidden = false
+            self.firstStar.layer.add(animation, forKey: nil)
+        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration*2) {
+            self.secondStar.isHidden = false
+            self.secondStar.layer.add(animation, forKey: nil)
+        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration*3) {
+            self.thirdStar.isHidden = false
+            self.thirdStar.layer.add(animation, forKey: nil)
+        }
     }
 
 

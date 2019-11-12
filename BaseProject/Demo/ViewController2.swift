@@ -19,10 +19,6 @@ class ViewController2: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         self.hidesBottomBarWhenPushed = true
-//        let vc = YXLearningPathViewController()
-//        self.navigationController?.pushViewController(vc, animated: true)
-//        self.hidesBottomBarWhenPushed = false
-//        return
         let vc2 = YXLearningResultViewController()
         self.navigationController?.pushViewController(vc2, animated: true)
         self.hidesBottomBarWhenPushed = false

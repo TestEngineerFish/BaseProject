@@ -102,6 +102,7 @@ class YXLearningResultViewController: UIViewController {
         punchButton.size = punchSize
         punchButton.cornerRadius = punchButton.size.height/2
         punchButton.layer.setGradient(colors: [UIColor.hex(0xFDBA33), UIColor.hex(0xFB8417)], direction: .vertical)
+        punchButton.addTarget(self, action: #selector(punchEvent), for: .touchUpInside)
         self.view.addSubview(punchButton)
         punchButton.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
@@ -112,5 +113,11 @@ class YXLearningResultViewController: UIViewController {
 
     @objc private func backClick() {
         self.navigationController?.popViewController(animated: true)
+    }
+
+    @objc private func punchEvent() {
+        let vc = YXLearningPathViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+        self.hidesBottomBarWhenPushed = false
     }
 }

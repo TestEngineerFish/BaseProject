@@ -133,7 +133,7 @@ class LearningPathView: UIScrollView, YXSexangleViewClickProcotol {
 
     /// 移动到对应单元视图
     private func movePinView(to unitView: UIView, animation: Bool = true) {
-        let targetFrame = CGRect(x: unitView.frame.midX - AdaptSize(15), y: unitView.frame.minY - 15, width: AdaptSize(30), height: AdaptSize(30))
+        let targetFrame = CGRect(x: unitView.frame.midX - AdaptSize(15), y: unitView.frame.minY - AdaptSize(5), width: AdaptSize(30), height: AdaptSize(30))
         if animation {
             UIView.animate(withDuration: 1) {
                 self.avatarPinView?.frame = targetFrame

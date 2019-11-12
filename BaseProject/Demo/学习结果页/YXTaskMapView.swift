@@ -53,7 +53,6 @@ class YXTaskMapView: UIView, YXSexangleViewClickProcotol {
         self.setUnitView()
         self.addHillView()
         self.addTipsView()
-        self.addAvatarPinView(CGPoint(x: currentX, y: currentY))
     }
 
     /// 添加单元图形
@@ -65,8 +64,12 @@ class YXTaskMapView: UIView, YXSexangleViewClickProcotol {
                 sexangleView.tag = index
                 sexangleView.center = point
                 sexangleView.delegate = self
-                self.addSubview(sexangleView)
+                self.insertSubview(sexangleView, at: 1)
                 self.unitViewArray.append(sexangleView)
+                // 如果是当前学习的单元,则添加小图钉头像
+                if model.isLearning {
+                    self.addAvatarPinView(sexangleView)
+                }
             }
         }
     }
@@ -92,14 +95,9 @@ class YXTaskMapView: UIView, YXSexangleViewClickProcotol {
 
     /// 添加提示气泡
     private func addTipsView() {
-        let bubbleImageView = UIImageView()
+        let bubbleImageView = UIImageView(image: UIImage(named: "bubble"))
         let bubbleSize = CGSize(width: AdaptSize(170), height: AdaptSize(60))
         bubbleImageView.size = bubbleSize
-        // 写着玩的,到时候记得还张图片
-        bubbleImageView.layer.setGradient(colors: [UIColor.hex(0xFFBE34), UIColor.hex(0xFF790C)], direction: .horizontal)
-        bubbleImageView.layer.cornerRadius  = bubbleSize.height/3
-        bubbleImageView.layer.masksToBounds = true
-        // ^^^^^^^^^^^^
         let label = UILabel()
         label.text = "学得不错，继续学习\n就可以推进这个单元的进度哦~"
         label.textColor = UIColor.white
@@ -108,7 +106,9 @@ class YXTaskMapView: UIView, YXSexangleViewClickProcotol {
         label.textAlignment = .center
         bubbleImageView.addSubview(label)
         label.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.height.equalTo(AdaptSize(34))
+            make.top.equalToSuperview().offset(AdaptSize(8))
         }
         self.addSubview(bubbleImageView)
         bubbleImageView.snp.makeConstraints { (make) in
@@ -119,18 +119,18 @@ class YXTaskMapView: UIView, YXSexangleViewClickProcotol {
     }
 
     /// 添加图钉头像
-    private func addAvatarPinView(_ point: CGPoint) {
+    private func addAvatarPinView(_ view: UIView) {
         // 创建用户头像
         self.avatarPinView = YXAvatarPinView()
-        self.movePinView(to: CGPoint(x: point.x - AdaptSize(15), y: point.y - AdaptSize(50)), animation: false)
+        self.movePinView(to: view, animation: false)
         self.addSubview(avatarPinView!)
     }
 
     /// 移动到对应单元视图
-    private func movePinView(to point: CGPoint, animation: Bool = true) {
-        let targetFrame = CGRect(x: point.x, y: point.y, width: AdaptSize(30), height: AdaptSize(30))
+    private func movePinView(to unitView: UIView, animation: Bool = true) {
+        let targetFrame = CGRect(x: unitView.frame.midX - AdaptSize(15), y: unitView.frame.minY - AdaptSize(5), width: AdaptSize(30), height: AdaptSize(30))
         if animation {
-            UIView.animate(withDuration: 1) {
+            UIView.animate(withDuration: 0.5) {
                 self.avatarPinView?.frame = targetFrame
             }
         } else {
@@ -140,7 +140,7 @@ class YXTaskMapView: UIView, YXSexangleViewClickProcotol {
 
     // MARK: YXSexangleViewClickProcotol
     func clickSexangleView(_ view: YXSexangleView) {
-        self.movePinView(to: CGPoint(x: view.frame.midX - AdaptSize(15), y: view.frame.origin.y - AdaptSize(15)))
+        self.movePinView(to: view)
     }
 
 }

@@ -23,22 +23,24 @@ class YXAvatarPinView: UIView {
     }
 
     private func createAvatarView() {
-        imageView.backgroundColor = UIColor.white
         self.addSubview(imageView)
+        imageView.image = UIImage(named: "pin")
         imageView.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
-            make.top.equalToSuperview().offset(15)
-            make.height.equalToSuperview()
+            make.left.equalToSuperview()
+            make.top.equalToSuperview()
+            make.width.equalTo(AdaptSize(36))
+            make.height.equalTo(AdaptSize(42))
         }
 
         let avatarImageView = UIImageView(image: UIImage(named: "dogAvatar"))
         imageView.addSubview(avatarImageView)
-        avatarImageView.frame = CGRect(x: 0, y: 0, width: 27, height: 27)
+        avatarImageView.frame = CGRect(x: 0, y: 0, width: AdaptSize(24), height: AdaptSize(24))
         avatarImageView.layer.cornerRadius = avatarImageView.frame.width/2
         avatarImageView.layer.masksToBounds = true
         avatarImageView.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.height.width.equalTo(27)
+            make.top.equalToSuperview().offset(AdaptSize(6))
+            make.height.width.equalTo(AdaptSize(24))
         }
     }
 
