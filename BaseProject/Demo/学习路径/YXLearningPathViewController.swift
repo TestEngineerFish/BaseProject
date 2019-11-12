@@ -23,20 +23,20 @@ class YXLearningPathViewController: UIViewController {
             if index == 4 {
                 model.rate = 0.8
                 model.start = 0
-                model.isLearned = true
-                model.isLearned = false
+                model.isLearning = true
+                model.isLearned  = false
                 model.type = .uniteIng
             } else if index > 4 {
                 model.rate = 0.0
                 model.start = 0
-                model.isLearned = false
-                model.isLearned = false
+                model.isLearning = false
+                model.isLearned  = false
                 model.type = .uniteUnstart
             } else {
                 model.rate = 1.0
                 model.start = Int(arc4random()%4)
-                model.isLearned = false
-                model.isLearned = true
+                model.isLearning = false
+                model.isLearned  = true
                 model.type = .uniteEnd
             }
             array.append(model)

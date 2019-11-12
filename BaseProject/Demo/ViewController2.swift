@@ -13,26 +13,18 @@ class ViewController2: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-//        self.view.layer.setGradient(colors: [UIColor.green1, UIColor.yellow1, UIColor.orange1], direction: .leftTop)
-        let imageView = UIImageView(image: UIImage(named: "dog"))
-        imageView.contentMode = .scaleAspectFill
-        self.view.addSubview(imageView)
-        imageView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-//        let learningPath = LearningProgressView(units: 14, frame: self.view.bounds)
-//        self.view.addSubview(learningPath)
-//        learningPath.snp.makeConstraints { (make) in
-//            make.edges.equalToSuperview()
-//        }
-
+        self.view.layer.setGradient(colors: [UIColor.green1, UIColor.yellow1, UIColor.orange1], direction: .leftTop)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         self.hidesBottomBarWhenPushed = true
-        let vc = YXLearningPathViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = YXLearningPathViewController()
+//        self.navigationController?.pushViewController(vc, animated: true)
+//        self.hidesBottomBarWhenPushed = false
+//        return
+        let vc2 = YXLearningResultViewController()
+        self.navigationController?.pushViewController(vc2, animated: true)
         self.hidesBottomBarWhenPushed = false
     }
 

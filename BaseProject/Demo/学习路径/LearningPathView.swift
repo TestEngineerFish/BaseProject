@@ -8,9 +8,10 @@
 
 import UIKit
 
-class LearningPathView: UIScrollView {
+class LearningPathView: UIScrollView, YXSexangleViewClickProcotol {
 
     var modelArray: [YXLearningPathModel]
+    var avatarPinView: YXAvatarPinView?
 
     // 间距
     let margin = CGFloat(130)
@@ -48,6 +49,17 @@ class LearningPathView: UIScrollView {
         self.showsVerticalScrollIndicator   = false
         self.showsHorizontalScrollIndicator = false
         self.createSubview()
+        // 获得当前学习单元对象
+        for (index, model) in self.modelArray.enumerated() {
+            // 默认获取第一个学习中的单元
+            if model.isLearning && index < self.unitViewArray.count {
+                let unitView = self.unitViewArray[index]
+                // 创建用户头像
+                self.avatarPinView = YXAvatarPinView()
+                self.movePinView(to: unitView, animation: false)
+                self.addSubview(avatarPinView!)
+            }
+        }
         self.setContentOffset(CGPoint(x: 0, y: h - self.height + kNavHeight), animated: true)
     }
 
@@ -99,7 +111,7 @@ class LearningPathView: UIScrollView {
                 return
             }
             let scale = 1/3 * Float(index)
-            let x = self.getX(t: scale, p0: p0, c: c, p1: p1)
+            let x = Utils.getAngleX(t: scale, p0: p0, c: c, p1: p1)
             let y = self.startPoint.y - CGFloat(self.unitPointArray.count) * margin
             self.unitPointArray.append(CGPoint(x: x, y: y))
         }
@@ -112,27 +124,29 @@ class LearningPathView: UIScrollView {
                 let model = self.modelArray[index]
                 let sexangleView = YXSexangleView(model)
                 sexangleView.center = point
+                sexangleView.delegate = self
                 self.addSubview(sexangleView)
                 self.unitViewArray.append(sexangleView)
             }
         }
     }
 
-    // MARK: TOOLS
-   
-    /// 获取一个控制点的弧形上X值
-    /// - Parameters:
-    ///   - scale: x点占总长度的比例
-    ///   - p0: 起始点
-    ///   - c  : 控制点
-    ///   - p2: 终点🏁
-    private func getX(t scale: Float, p0: CGPoint, c: CGPoint, p1: CGPoint) -> CGFloat {
-        let t = scale
-        let step0 = powf(Float(1 - t), 2.0) * Float(p0.x)
-        let step1 = 2 * t * (1 - t) * Float(c.x)
-        let step2 = powf(t, 2) * Float(p1.x)
-        let x = step0 + step1 + step2
-        return CGFloat(x)
+    /// 移动到对应单元视图
+    private func movePinView(to unitView: UIView, animation: Bool = true) {
+        let targetFrame = CGRect(x: unitView.frame.midX - AdaptSize(15), y: unitView.frame.minY - 15, width: AdaptSize(30), height: AdaptSize(30))
+        if animation {
+            UIView.animate(withDuration: 1) {
+                self.avatarPinView?.frame = targetFrame
+            }
+        } else {
+            avatarPinView?.frame = targetFrame
+        }
+    }
+
+    // MARK: YXSexangleViewClickProcotol
+
+    func clickSexangleView(_ view: YXSexangleView) {
+        self.movePinView(to: view)
     }
 
 }

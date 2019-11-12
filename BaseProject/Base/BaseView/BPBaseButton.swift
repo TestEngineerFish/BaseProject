@@ -22,8 +22,8 @@ class BPBaseButton: UIButton {
     func makeUI() {
         self.layer.cornerRadius  = 5
         self.layer.masksToBounds = true
-        self.backgroundColor     = UIColor.orange1
-        self.setTitleColor(UIColor.white1, for: .normal)
+//        self.backgroundColor     = UIColor.orange1
+//        self.setTitleColor(UIColor.white1, for: .normal)
         self.setTitleColor(UIColor.gray1, for: .highlighted)
     }
 

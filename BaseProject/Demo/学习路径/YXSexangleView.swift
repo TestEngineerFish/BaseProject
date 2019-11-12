@@ -97,23 +97,29 @@ struct YXLearningPathModel {
     }
 }
 
+protocol YXSexangleViewClickProcotol {
+    func clickSexangleView(_ view: YXSexangleView)
+}
+
 class YXSexangleView: UIView {
 
     var model: YXLearningPathModel
     var progressLabel: BPLabel?
+    var delegate: YXSexangleViewClickProcotol?
+
+    var avatarView: UIView?
 
     init(_ model: YXLearningPathModel) {
         self.model = model
         super.init(frame: CGRect(origin: .zero, size: CGSize(width: 81, height: 81)))
         self.createSubview(progress: 0.8)
-        if model.type == .uniteIng {
-            // 创建用户头像
-            self.createAvatarView()
-        }
         if model.type == .uniteEnd {
             // 设置星星等级
             self.setScoreStarView(model.start)
         }
+        self.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(clickEvent))
+        self.addGestureRecognizer(tap)
     }
 
     required init?(coder: NSCoder) {
@@ -275,62 +281,6 @@ class YXSexangleView: UIView {
         }
     }
 
-    private func createAvatarView() {
-        let bgView = UIView()
-        self.addSubview(bgView)
-        bgView.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview()
-            make.width.height.equalTo(30)
-        }
-
-
-        let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.white
-        bgView.addSubview(imageView)
-        imageView.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
-            make.top.equalToSuperview().offset(15)
-            make.height.equalToSuperview()
-        }
-
-        let avatarImageView = UIImageView(image: UIImage(named: "dogAvatar"))
-        imageView.addSubview(avatarImageView)
-        avatarImageView.frame = CGRect(x: 0, y: 0, width: 27, height: 27)
-        avatarImageView.layer.cornerRadius = avatarImageView.frame.width/2
-        avatarImageView.layer.masksToBounds = true
-        avatarImageView.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.height.width.equalTo(27)
-        }
-
-        // ==== 动画 ====
-        // 1、摇摆动画
-        let shakeAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        shakeAnimation.fromValue      = CGFloat.pi/8
-        shakeAnimation.toValue        = -CGFloat.pi/8
-        shakeAnimation.duration       = 0.5
-        shakeAnimation.repeatCount    = 2.25
-        shakeAnimation.autoreverses   = true
-        shakeAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        // 1.1、修改锚点
-        bgView.layer.anchorPoint = CGPoint(x: 0.5, y: 1)
-        bgView.layer.add(shakeAnimation, forKey: "shakeAnimation")
-
-        // 2、放大动画
-        let zoomAnimation = CABasicAnimation(keyPath: "transform")
-        zoomAnimation.fromValue = CATransform3DMakeScale(0, 0, 0)
-        zoomAnimation.toValue   = CATransform3DMakeScale(1, 1, 1)
-        zoomAnimation.duration    = 1
-        zoomAnimation.repeatCount = 1
-        zoomAnimation.fillMode    = .forwards
-        zoomAnimation.isRemovedOnCompletion = true
-        zoomAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        // 2.1、修改锚点
-        imageView.layer.anchorPoint = CGPoint(x: 0.5, y: 1)
-        imageView.layer.add(zoomAnimation, forKey: nil)
-    }
-
     /// 获取六边形Layer
     /// - Parameters:
     ///   - width: layer宽度
@@ -403,4 +353,12 @@ class YXSexangleView: UIView {
         gradientLayer.addSublayer(layer5)
         return gradientLayer
     }
+
+    // MARK: Event
+
+    @objc private func clickEvent(_ tap: UITapGestureRecognizer) {
+        self.delegate?.clickSexangleView(self)
+//        BPAlertManager.showAlertOntBtn(title: "点击有效", description: "点击的是\(model.unit_id)单元", buttonName: "OK", closure: nil)
+    }
+
 }
