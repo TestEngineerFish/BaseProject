@@ -52,9 +52,9 @@ class ViewController1: UIViewController {
             make.center.equalToSuperview()
             make.size.equalTo(CGSize(width: 100, height: 50))
         }
-        IMDBCenter.default.fetchAllRecnetSession().forEach { (str) in
-            print(str)
-        }
+//        IMDBCenter.default.fetchAllRecnetSession().forEach { (str) in
+//            print(str)
+//        }
         
         if #available(iOS 13.0, *) {
             self.overrideUserInterfaceStyle = .dark
@@ -69,13 +69,14 @@ class ViewController1: UIViewController {
     
     @objc func showToast() {
         
-        let vc = BPBaseWebViewController()
+        let vc = BPBaseWebViewController(BPWebViewImplementClass.classForCoder())
 //        self.navigationController?.pushViewController(vc, animated: true)
 //        let jsToOcNoPrams   = "jsToOcNoPrams"
 //        let jsToOcWithPrams = "jsToOcWithPrams:"
-//        let jSString = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
+
+        let jSString = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
 //        vc.funciontList = [jsToOcNoPrams, jsToOcWithPrams]
-//        vc.jsScriptList = [jSString]
+        vc.jsScriptList = [jSString]
         self.navigationController?.present(vc, animated: true, completion: nil)
         
     }

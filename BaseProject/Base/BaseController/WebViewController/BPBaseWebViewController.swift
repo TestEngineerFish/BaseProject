@@ -9,33 +9,17 @@
 import UIKit
 import WebKit
 
-class BPBaseWebViewController: UIViewController {
+class BPBaseWebViewController: UIViewController, WKScriptMessageHandler, WKUIDelegate {
     
     /// 定义注册函数的实现类
-    static var implClass: AnyClass?
+    var implClass: AnyClass?
     
     let keyPath         = "title"
-    let jsToOcNoPrams   = "jsToOcNoPrams"
-    let jsToOcWithPrams = "jsToOcWithPrams:"
     
     let configuration = WKWebViewConfiguration()
     
     /// 需要注册的函数
-    var funciontList: [String] = {
-        var list = [String]()
-        guard let implClass = BPBaseWebViewController.implClass else { return list }
-        
-        var count: UInt32 = 0
-        if let methodList = class_copyMethodList(implClass, &count) {
-            for i in 0..<Int(count) {
-                let method = methodList[i]
-                let sel = method_getName(method)
-                let methodStr = String(_sel: sel)
-                print(methodStr)
-            }
-        }
-        return list
-    }()
+    var funciontList = [String]()
     var jsScriptList = [String]()
     
     lazy var webView: WKWebView = {
@@ -53,6 +37,7 @@ class BPBaseWebViewController: UIViewController {
     var progressView: UIProgressView?
     
     private func setConfiguration() {
+        funciontList = self.getMethodList()
         // 视频播放是否允许调用本地播放器
         configuration.allowsInlineMediaPlayback = true
         // 设置哪些设备(音频或视频)需要用户主动播放,不自动播放
@@ -89,6 +74,15 @@ class BPBaseWebViewController: UIViewController {
         }
     }
     
+    init(_ implClass: AnyClass? = nil) {
+        super.init(nibName: nil, bundle: nil)
+        self.implClass = implClass
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.makeUI()
@@ -106,41 +100,41 @@ class BPBaseWebViewController: UIViewController {
     }
     
     /// 自定义导航栏左右Item上的按钮
-    private func customNavigationItems() {
-        let backBtn = UIButton(type: .custom)
-        backBtn.setTitle("back", for: .normal)
-        backBtn.setTitleColor(UIColor.black1, for: .normal)
-        backBtn.addTarget(self, action: #selector(goBackAction(_:)), for: .touchUpInside)
-        backBtn.frame = CGRect(x: 0, y: 0, width: 30, height: kNavHeight)
-        let backBtnItem = UIBarButtonItem(customView: backBtn)
-        let js2OC  = UIBarButtonItem(title: "js2OC", style: .done, target: self, action: #selector(jsToOCAction))
-        self.navigationItem.leftBarButtonItems = [backBtnItem, js2OC]
-        
-        let refreshBtn = UIButton(type: .custom)
-        refreshBtn.setTitle("刷新", for: .normal)
-        refreshBtn.setTitleColor(UIColor.black1, for: .normal)
-        refreshBtn.frame = CGRect(x: 0, y: 0, width: 30, height: kNavHeight)
-        refreshBtn.addTarget(self, action: #selector(refreshAction(_:)), for: .touchUpInside)
-        let refreshBtnItem = UIBarButtonItem(customView: refreshBtn)
-        let oc2JS = UIBarButtonItem(title: "oc2JS", style: .done, target: self, action: #selector(ocToJSAction))
-        self.navigationItem.rightBarButtonItems = [refreshBtnItem, oc2JS]
-    }
-    
-    @objc private func goBackAction(_ btn: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    @objc private func jsToOCAction() {
-        
-    }
-    
-    @objc private func refreshAction(_ btn: UIButton) {
-        
-    }
-    
-    @objc private func ocToJSAction() {
-        
-    }
+//    private func customNavigationItems() {
+//        let backBtn = UIButton(type: .custom)
+//        backBtn.setTitle("back", for: .normal)
+//        backBtn.setTitleColor(UIColor.black1, for: .normal)
+//        backBtn.addTarget(self, action: #selector(goBackAction(_:)), for: .touchUpInside)
+//        backBtn.frame = CGRect(x: 0, y: 0, width: 30, height: kNavHeight)
+//        let backBtnItem = UIBarButtonItem(customView: backBtn)
+//        let js2OC  = UIBarButtonItem(title: "js2OC", style: .done, target: self, action: #selector(jsToOCAction))
+//        self.navigationItem.leftBarButtonItems = [backBtnItem, js2OC]
+//
+//        let refreshBtn = UIButton(type: .custom)
+//        refreshBtn.setTitle("刷新", for: .normal)
+//        refreshBtn.setTitleColor(UIColor.black1, for: .normal)
+//        refreshBtn.frame = CGRect(x: 0, y: 0, width: 30, height: kNavHeight)
+//        refreshBtn.addTarget(self, action: #selector(refreshAction(_:)), for: .touchUpInside)
+//        let refreshBtnItem = UIBarButtonItem(customView: refreshBtn)
+//        let oc2JS = UIBarButtonItem(title: "oc2JS", style: .done, target: self, action: #selector(ocToJSAction))
+//        self.navigationItem.rightBarButtonItems = [refreshBtnItem, oc2JS]
+//    }
+//
+//    @objc private func goBackAction(_ btn: UIButton) {
+//        self.navigationController?.popViewController(animated: true)
+//    }
+//
+//    @objc private func jsToOCAction() {
+//
+//    }
+//
+//    @objc private func refreshAction(_ btn: UIButton) {
+//
+//    }
+//
+//    @objc private func ocToJSAction() {
+//
+//    }
     
     ///  移除注册的函数
     deinit {
@@ -150,6 +144,7 @@ class BPBaseWebViewController: UIViewController {
         webView.removeObserver(self, forKeyPath: keyPath)
     }
     
+    // TODO: KVO
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == self.keyPath {
             guard let objc = object as? WKWebView, objc == self.webView else {
@@ -160,29 +155,45 @@ class BPBaseWebViewController: UIViewController {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
-
     
-}
-// 接收WebView传递来的信息
-extension BPBaseWebViewController: WKScriptMessageHandler {
+    // TODO: WKScriptMessageHandler
+    /// 接收WebView传递来的信息
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         let funcName = message.name
         let parameters = message.body
-        if funcName == jsToOcNoPrams {
-            BPAlertManager.showAlertOntBtn(title: "JS调用了没有参数函数", description: "函数名:" + funcName, buttonName: "知道了", closure: nil)
-        } else if funcName == jsToOcWithPrams {
-            BPAlertManager.showAlertOntBtn(title: "JS调用了有参数函数", description: "函数名:" + funcName + "参数是 : \(parameters)", buttonName: "知道了", closure: nil)
+        if funciontList.contains(funcName) {
+            BPAlertManager.showAlertOntBtn(title: "JS调用了没有参数函数", description: "函数名:" + funcName + "参数是 : \(parameters)", buttonName: "知道了", closure: nil)
         }
     }
-}
-
-// 将web常见视图,转换成原生试视图展示
-extension BPBaseWebViewController: WKUIDelegate {
+    
+    // TODO:WKUIDelegate
+    /// 将web常见视图,转换成原生试视图展示
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         BPAlertManager.showAlertOntBtn(title: "捕获到JS的弹框", description: message, buttonName: "知道了", closure: completionHandler)
     }
     
+    // TODO: Tools
+    private func getMethodList() -> [String] {
+        let list = [String]()
+        guard let implClass = self.implClass else { return list }
+        
+        var count: UInt32 = 0
+        if let methodList = class_copyMethodList(implClass, &count) {
+            for i in 0..<Int(count) {
+                let method = methodList[i]
+                let sel = method_getName(method)
+                let methodStr = String(_sel: sel)
+                print("methodStr" + methodStr)
+                if let typeEncode = method_getTypeEncoding(method) {
+                    let typeStr = String(utf8String:typeEncode) ?? ""
+                    print("typeStr:" + typeStr)
+                }
+            }
+        }
+        return list
+    }
 }
+
 
 // 在处理web请求的时候,可拦截进行自定义处理
 extension BPBaseWebViewController: WKNavigationDelegate {

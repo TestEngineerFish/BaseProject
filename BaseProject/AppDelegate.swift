@@ -24,12 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.monitorNetWork() //添加网络监听
         Bugly.start(withAppId: buglyAppId)
-        // 指定WebView的注册函数
-        BPBaseWebViewController.implClass = BPWebViewImplementClass.classForCoder()
         // 设置自定义的NavigationController为初始NavigationController
         window = UIWindow(frame: UIScreen.main.bounds)
         let tabBarController = BPBaseTabBarController()
-        tabBarController.selectedIndex = 1
+        tabBarController.selectedIndex = 0
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
         return true
