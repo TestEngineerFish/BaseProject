@@ -138,8 +138,6 @@ class YXSexangleView: UIView {
             self.layer.addSublayer(gradientLayer)
             gradientLayer.frame = self.bounds
             gradientLayer.mask = maskLayer
-//            maskLayer.strokeStart = 0.0
-//            maskLayer.strokeEnd   = rate
             // 设置动画
             let progressAnimation = CABasicAnimation(keyPath: "strokeEnd")
             progressAnimation.fromValue   = 0.0
@@ -301,8 +299,13 @@ class YXSexangleView: UIView {
         shapLayer.path        = path.cgPath
         shapLayer.lineWidth   = 5
         shapLayer.lineJoin    = .round
-        shapLayer.strokeColor = strokeColor
+        shapLayer.strokeColor = UIColor.black.cgColor
         shapLayer.fillColor   = fillColor
+
+//        let dotLayer = CAShapeLayer()
+//        dotLayer.path = path.cgPath
+//        dotLayer.lineWidth = 10
+//        dotLayer.strokeColor = strokeColor
         return shapLayer
     }
 

@@ -22,6 +22,7 @@
 		22458205232604D90031CC7A /* BPIMDBOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22458204232604D90031CC7A /* BPIMDBOperator.swift */; };
 		22458207232604EA0031CC7A /* BPNormalDBOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22458206232604EA0031CC7A /* BPNormalDBOperator.swift */; };
 		2245820B2326549E0031CC7A /* BPCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245820A2326549E0031CC7A /* BPCacheManager.swift */; };
+		22625315238F9F2B00A1CD54 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22625314238F9F2B00A1CD54 /* Array+Extension.swift */; };
 		22642BA6233A451D004E1DF9 /* NSObject+CrashDefender.m in Sources */ = {isa = PBXBuildFile; fileRef = 22642BA5233A451D004E1DF9 /* NSObject+CrashDefender.m */; };
 		22642BA9233A4745004E1DF9 /* NSArray+CrashDefender.m in Sources */ = {isa = PBXBuildFile; fileRef = 22642BA8233A4745004E1DF9 /* NSArray+CrashDefender.m */; };
 		2264EF7B22F7BDE500A89C82 /* BPAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF7A22F7BDE500A89C82 /* BPAlertManager.swift */; };
@@ -65,12 +66,14 @@
 		22D4980D22FBC67300281530 /* top-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 22D4980C22FBC67300281530 /* top-loading.json */; };
 		22D4980F22FBCD0800281530 /* center-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 22D4980E22FBCD0800281530 /* center-loading.json */; };
 		22D4981122FBCD9B00281530 /* BPBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981022FBCD9B00281530 /* BPBaseTableViewController.swift */; };
-		22D4981322FBCDA900281530 /* BPBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981222FBCDA900281530 /* BPBaseViewController.swift */; };
+		22D4981322FBCDA900281530 /* BPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981222FBCDA900281530 /* BPViewController.swift */; };
 		22D4981522FBCDC600281530 /* BPNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981422FBCDC600281530 /* BPNavigationBar.swift */; };
 		22D4981722FD05DD00281530 /* BPBaseRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981622FD05DD00281530 /* BPBaseRefreshControl.swift */; };
 		22D4981A22FD0A8B00281530 /* BPScrollRefreshProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981922FD0A8B00281530 /* BPScrollRefreshProtocol.swift */; };
 		22D4981F22FD163A00281530 /* BPRefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981E22FD163A00281530 /* BPRefreshHeaderView.swift */; };
 		22D4982122FD164600281530 /* BPRefreshFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4982022FD164600281530 /* BPRefreshFooterView.swift */; };
+		22E01E0B238D532E0030177A /* BPCheckerboardTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E01E0A238D532E0030177A /* BPCheckerboardTransitionAnimator.swift */; };
+		22E01E0F238E4EC60030177A /* AAPLCheckerboardTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E01E0E238E4EC60030177A /* AAPLCheckerboardTransitionAnimator.m */; };
 		22ED54B023687FEF00011B82 /* UIBezierPath+AllPoints.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED54AF23687FEF00011B82 /* UIBezierPath+AllPoints.m */; };
 		22ED54B223693A3700011B82 /* LearningPathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED54B123693A3700011B82 /* LearningPathView.swift */; };
 		22ED54B4236ACD5E00011B82 /* letter_A.json in Resources */ = {isa = PBXBuildFile; fileRef = 22ED54B3236ACD5E00011B82 /* letter_A.json */; };
@@ -98,7 +101,7 @@
 		CF8EB59E22DCD04300EC2FE5 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB59D22DCD04300EC2FE5 /* Date+Extension.swift */; };
 		CF8EB5A022DCD08A00EC2FE5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB59F22DCD08A00EC2FE5 /* UIView+Extension.swift */; };
 		CF8EB5A222DCD0DC00EC2FE5 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB5A122DCD0DC00EC2FE5 /* UIViewController+Extension.swift */; };
-		CF8EB5A622DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB5A522DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift */; };
+		CF8EB5A622DCD1B300EC2FE5 /* BPViewController+CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB5A522DCD1B300EC2FE5 /* BPViewController+CustomNavigationBar.swift */; };
 		CFFB34E02358C1C4002D440E /* BPBaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFB34DF2358C1C4002D440E /* BPBaseWebViewController.swift */; };
 		CFFB34E823595EF9002D440E /* backbutton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFB34E223595EF8002D440E /* backbutton@3x.png */; };
 		CFFB34E923595EF9002D440E /* girl.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFB34E323595EF8002D440E /* girl.png */; };
@@ -124,6 +127,7 @@
 		22458204232604D90031CC7A /* BPIMDBOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPIMDBOperator.swift; sourceTree = "<group>"; };
 		22458206232604EA0031CC7A /* BPNormalDBOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPNormalDBOperator.swift; sourceTree = "<group>"; };
 		2245820A2326549E0031CC7A /* BPCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPCacheManager.swift; sourceTree = "<group>"; };
+		22625314238F9F2B00A1CD54 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		22642BA4233A451D004E1DF9 /* NSObject+CrashDefender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CrashDefender.h"; sourceTree = "<group>"; };
 		22642BA5233A451D004E1DF9 /* NSObject+CrashDefender.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CrashDefender.m"; sourceTree = "<group>"; };
 		22642BA7233A4745004E1DF9 /* NSArray+CrashDefender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+CrashDefender.h"; sourceTree = "<group>"; };
@@ -174,12 +178,16 @@
 		22D4980C22FBC67300281530 /* top-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "top-loading.json"; sourceTree = "<group>"; };
 		22D4980E22FBCD0800281530 /* center-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "center-loading.json"; sourceTree = "<group>"; };
 		22D4981022FBCD9B00281530 /* BPBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseTableViewController.swift; sourceTree = "<group>"; };
-		22D4981222FBCDA900281530 /* BPBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseViewController.swift; sourceTree = "<group>"; };
+		22D4981222FBCDA900281530 /* BPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPViewController.swift; sourceTree = "<group>"; };
 		22D4981422FBCDC600281530 /* BPNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPNavigationBar.swift; sourceTree = "<group>"; };
 		22D4981622FD05DD00281530 /* BPBaseRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseRefreshControl.swift; sourceTree = "<group>"; };
 		22D4981922FD0A8B00281530 /* BPScrollRefreshProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPScrollRefreshProtocol.swift; sourceTree = "<group>"; };
 		22D4981E22FD163A00281530 /* BPRefreshHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPRefreshHeaderView.swift; sourceTree = "<group>"; };
 		22D4982022FD164600281530 /* BPRefreshFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPRefreshFooterView.swift; sourceTree = "<group>"; };
+		22E01E0A238D532E0030177A /* BPCheckerboardTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPCheckerboardTransitionAnimator.swift; sourceTree = "<group>"; };
+		22E01E0C238D64380030177A /* 数学公式.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "数学公式.md"; sourceTree = "<group>"; };
+		22E01E0D238E4EC60030177A /* AAPLCheckerboardTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCheckerboardTransitionAnimator.h; sourceTree = "<group>"; };
+		22E01E0E238E4EC60030177A /* AAPLCheckerboardTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCheckerboardTransitionAnimator.m; sourceTree = "<group>"; };
 		22ED54AE23687FEF00011B82 /* UIBezierPath+AllPoints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+AllPoints.h"; sourceTree = "<group>"; };
 		22ED54AF23687FEF00011B82 /* UIBezierPath+AllPoints.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+AllPoints.m"; sourceTree = "<group>"; };
 		22ED54B123693A3700011B82 /* LearningPathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningPathView.swift; sourceTree = "<group>"; };
@@ -210,7 +218,7 @@
 		CF8EB59D22DCD04300EC2FE5 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB59F22DCD08A00EC2FE5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB5A122DCD0DC00EC2FE5 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		CF8EB5A522DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YYBaseViewController+CustomNavigationBar.swift"; sourceTree = "<group>"; };
+		CF8EB5A522DCD1B300EC2FE5 /* BPViewController+CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BPViewController+CustomNavigationBar.swift"; sourceTree = "<group>"; };
 		CFFB34DF2358C1C4002D440E /* BPBaseWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseWebViewController.swift; sourceTree = "<group>"; };
 		CFFB34E223595EF8002D440E /* backbutton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backbutton@3x.png"; sourceTree = "<group>"; };
 		CFFB34E323595EF8002D440E /* girl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = girl.png; sourceTree = "<group>"; };
@@ -376,6 +384,8 @@
 		22C621DB22DC821000A7C849 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				22E01E0D238E4EC60030177A /* AAPLCheckerboardTransitionAnimator.h */,
+				22E01E0E238E4EC60030177A /* AAPLCheckerboardTransitionAnimator.m */,
 				220154252376A361004E4A99 /* 学习结果页 */,
 				220154242376A342004E4A99 /* 学习路径 */,
 				CFFB34E123595ED8002D440E /* WebSource */,
@@ -405,7 +415,7 @@
 				CF8EB59F22DCD08A00EC2FE5 /* UIView+Extension.swift */,
 				CF8EB5A122DCD0DC00EC2FE5 /* UIViewController+Extension.swift */,
 				CF87869522F6F5380031E4B9 /* UINavigationController+Extension.swift */,
-				CF8EB5A522DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift */,
+				CF8EB5A522DCD1B300EC2FE5 /* BPViewController+CustomNavigationBar.swift */,
 				22C6221C22DF120900A7C849 /* Error+Extension.swift */,
 				221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */,
 				CF87869922F87BD60031E4B9 /* UIImage+Extension.swift */,
@@ -416,6 +426,7 @@
 				22AED511234EC75500A91A68 /* Optional+Extension.swift */,
 				22ED54AE23687FEF00011B82 /* UIBezierPath+AllPoints.h */,
 				22ED54AF23687FEF00011B82 /* UIBezierPath+AllPoints.m */,
+				22625314238F9F2B00A1CD54 /* Array+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -499,6 +510,14 @@
 			path = RefreshControl;
 			sourceTree = "<group>";
 		};
+		22E01E09238D52EC0030177A /* TransitionAnimator */ = {
+			isa = PBXGroup;
+			children = (
+				22E01E0A238D532E0030177A /* BPCheckerboardTransitionAnimator.swift */,
+			);
+			path = TransitionAnimator;
+			sourceTree = "<group>";
+		};
 		C7C580CA7C5CFA0EEAB645A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,6 +568,7 @@
 			children = (
 				CF6E17212362045A0008C466 /* FindRouteUtil.swift */,
 				227DDFCE2376D72D006E38E8 /* Utils.swift */,
+				22E01E0C238D64380030177A /* 数学公式.md */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -567,6 +587,7 @@
 		CF8EB58522DCCB8200EC2FE5 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				22E01E09238D52EC0030177A /* TransitionAnimator */,
 				22868109230AA14D005E113E /* BaseView */,
 				22D4981D22FD160500281530 /* RefreshControl */,
 				CF8EB5A422DCD18400EC2FE5 /* BaseController */,
@@ -580,7 +601,7 @@
 				CF6E171C235F55F40008C466 /* WebViewController */,
 				CF26719922FF0B1B00E6B47F /* BPBaseNavigationController.swift */,
 				22D4981022FBCD9B00281530 /* BPBaseTableViewController.swift */,
-				22D4981222FBCDA900281530 /* BPBaseViewController.swift */,
+				22D4981222FBCDA900281530 /* BPViewController.swift */,
 				CF26718F22FEB39B00E6B47F /* BPBaseTabBarController.swift */,
 			);
 			path = BaseController;
@@ -738,8 +759,9 @@
 			files = (
 				22458205232604D90031CC7A /* BPIMDBOperator.swift in Sources */,
 				22C621BA22DC805600A7C849 /* ViewController1.swift in Sources */,
-				22D4981322FBCDA900281530 /* BPBaseViewController.swift in Sources */,
+				22D4981322FBCDA900281530 /* BPViewController.swift in Sources */,
 				22AED514234ED5DB00A91A68 /* BPServerSocketManager.swift in Sources */,
+				22E01E0F238E4EC60030177A /* AAPLCheckerboardTransitionAnimator.m in Sources */,
 				22413E3422E8400900F2C678 /* NotificationNameGlobal.swift in Sources */,
 				22458207232604EA0031CC7A /* BPNormalDBOperator.swift in Sources */,
 				22642BA9233A4745004E1DF9 /* NSArray+CrashDefender.m in Sources */,
@@ -761,8 +783,10 @@
 				2264EF9222F97A0E00A89C82 /* BPNetworkService.swift in Sources */,
 				22D4981722FD05DD00281530 /* BPBaseRefreshControl.swift in Sources */,
 				22642BA6233A451D004E1DF9 /* NSObject+CrashDefender.m in Sources */,
+				22625315238F9F2B00A1CD54 /* Array+Extension.swift in Sources */,
 				22D4981A22FD0A8B00281530 /* BPScrollRefreshProtocol.swift in Sources */,
 				2201542323758D2A004E4A99 /* BPLabel.swift in Sources */,
+				22E01E0B238D532E0030177A /* BPCheckerboardTransitionAnimator.swift in Sources */,
 				2264EF8E22F979BD00A89C82 /* BPBaseRequest.swift in Sources */,
 				22ED54B223693A3700011B82 /* LearningPathView.swift in Sources */,
 				227DDFCF2376D72D006E38E8 /* Utils.swift in Sources */,
@@ -800,7 +824,7 @@
 				2264EF7B22F7BDE500A89C82 /* BPAlertManager.swift in Sources */,
 				CF26719A22FF0B1B00E6B47F /* BPBaseNavigationController.swift in Sources */,
 				221F5C4A22E95B4000F9355C /* AppDelegate+Extension.swift in Sources */,
-				CF8EB5A622DCD1B300EC2FE5 /* YYBaseViewController+CustomNavigationBar.swift in Sources */,
+				CF8EB5A622DCD1B300EC2FE5 /* BPViewController+CustomNavigationBar.swift in Sources */,
 				2211803322EEE47500B77911 /* CALayer+Extension.swift in Sources */,
 				22AED510234DFEF200A91A68 /* BPSocketManager.swift in Sources */,
 				22D4982122FD164600281530 /* BPRefreshFooterView.swift in Sources */,

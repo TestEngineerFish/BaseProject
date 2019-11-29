@@ -8,74 +8,68 @@
 
 import UIKit
 
-class ViewController2: UIViewController {
+class ViewController2: BPViewController, UINavigationControllerDelegate {
+    var imageView = UIImageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-        self.view.layer.setGradient(colors: [UIColor.green1, UIColor.yellow1, UIColor.orange1], direction: .leftTop)
+//        self.view.layer.setGradient(colors: [UIColor.green1, UIColor.yellow1, UIColor.orange1], direction: .leftTop)
+        imageView.image = UIImage(named: "dog")
+        self.view.addSubview(imageView)
+        imageView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.size.equalTo(CGSize(width: 200, height: 100))
+        }
+        print(0)
+//        self.navigationController?.delegate = self
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(1)
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        print(2)
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print(3)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print(4)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print(5)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print(6)
+    }
+
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return BPCheckerboardTransitionAnimator()
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        self.hidesBottomBarWhenPushed = true
-        let vc2 = YXLearningResultViewController()
-        self.navigationController?.pushViewController(vc2, animated: true)
-        self.hidesBottomBarWhenPushed = false
+        let vc = ViewController3()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
-    private func makeSexangle(_ diameter: CGFloat) -> UIView {
-        let view = UIView()
-        let backPath = UIBezierPath()
-        backPath.move(to: CGPoint(x: diameter/3, y: 0))
-        backPath.addLine(to: CGPoint(x: diameter*2/3, y: 0))
-        backPath.addLine(to: CGPoint(x: diameter, y: diameter/3))
-        backPath.addLine(to: CGPoint(x: diameter, y: diameter*2/3))
-        backPath.addLine(to: CGPoint(x: diameter*2/3, y: diameter))
-        backPath.addLine(to: CGPoint(x: diameter/3, y: diameter))
-        backPath.addLine(to: CGPoint(x: 0, y: diameter*2/3))
-        backPath.addLine(to: CGPoint(x: 0, y: diameter/3))
-        backPath.addLine(to: CGPoint(x: diameter/3, y: 0))
-        let progressPath = UIBezierPath()
-        progressPath.move(to: CGPoint(x: diameter/3, y: 0))
-        progressPath.addLine(to: CGPoint(x: diameter*2/3, y: 0))
-        progressPath.addLine(to: CGPoint(x: diameter, y: diameter/3))
-        progressPath.addLine(to: CGPoint(x: diameter, y: diameter*2/3))
-        progressPath.addLine(to: CGPoint(x: diameter*2/3, y: diameter))
-        progressPath.addLine(to: CGPoint(x: diameter/3, y: diameter))
-        progressPath.addLine(to: CGPoint(x: 0, y: diameter*2/3))
-        progressPath.addLine(to: CGPoint(x: 0, y: diameter/3))
-        progressPath.addLine(to: CGPoint(x: diameter/3, y: 0))
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        let backShapeLayer = CAShapeLayer()
-        backShapeLayer.path = backPath.cgPath
-        backShapeLayer.lineWidth = 10
-        backShapeLayer.strokeColor = UIColor.gray1.cgColor
-        backShapeLayer.fillColor = nil
-        view.layer.addSublayer(backShapeLayer)
+    }
 
-        let proShapeLayer = CAShapeLayer()
-        proShapeLayer.path = backPath.cgPath
-        proShapeLayer.lineWidth = 10
-        proShapeLayer.strokeColor = UIColor.orange1.cgColor
-        proShapeLayer.fillColor = nil
-        view.layer.addSublayer(proShapeLayer)
-
-        let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.fromValue = 0
-        animation.toValue   = 1
-        animation.duration  = 10
-        proShapeLayer.add(animation, forKey: nil)
-
-        print(backPath.points())
-//        let graLayer = CAGradientLayer()
-//        graLayer.frame      = CGRect(x: 0, y: 0, width: diameter, height: diameter)
-//        graLayer.colors     = [UIColor.blue1.cgColor, UIColor.orange1.cgColor]
-//        graLayer.startPoint = CGPoint(x: 0, y: 0)
-//        graLayer.endPoint   = CGPoint(x: 1, y: 1)
-//        view.layer.addSublayer(graLayer)
-//        graLayer.mask = proShapeLayer
-
-        return view
+    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        super.present(viewControllerToPresent, animated: flag, completion: completion)
     }
 }

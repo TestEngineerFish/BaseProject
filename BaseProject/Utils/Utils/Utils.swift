@@ -24,6 +24,18 @@ struct Utils {
         let x = step0 + step1 + step2
         return CGFloat(x)
     }
+
+    /// 解析字符串中的HTML标签
+    /// - Parameter htmlStr: 带有HTML标签的字符串
+    /// - Returns: 返回AttributedString字符串
+    static func paseingHTML(htmlStr: String?) -> NSAttributedString? {
+        guard let _htmlStr = htmlStr, let data = _htmlStr.data(using: .unicode) else {
+            return nil
+        }
+        let attr = try? NSMutableAttributedString(data: data, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+        return attr
+
+    }
 }
 
 

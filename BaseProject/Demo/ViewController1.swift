@@ -20,22 +20,6 @@ class ViewController1: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.makeUI()
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(pan(_:)))
-        self.view.addGestureRecognizer(pan)
-    }
-
-    @objc private func pan(_ pan: UIPanGestureRecognizer) {
-        let point = pan.location(in: self.view)
-        shaperLayer.removeFromSuperlayer()
-        let path = UIBezierPath()
-        path.move(to: self.view.center)
-        path.addLine(to: point)
-        shaperLayer.path = path.cgPath
-        shaperLayer.lineWidth = 6
-        shaperLayer.strokeColor = UIColor.orange1.cgColor
-        shaperLayer.fillColor = nil
-        self.view.layer.addSublayer(shaperLayer)
-
     }
     
     private func makeUI() {
@@ -68,47 +52,27 @@ class ViewController1: UIViewController {
     }
     
     @objc func showToast() {
-        
-        let vc = BPBaseWebViewController(BPWebViewImplementClass.classForCoder())
-//        self.navigationController?.pushViewController(vc, animated: true)
-//        let jsToOcNoPrams   = "jsToOcNoPrams"
-//        let jsToOcWithPrams = "jsToOcWithPrams:"
-
-        let jSString = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
-//        vc.funciontList = [jsToOcNoPrams, jsToOcWithPrams]
-        vc.jsScriptList = [jSString]
+        let vc = BPBaseWebViewController()
         self.navigationController?.present(vc, animated: true, completion: nil)
         
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
+        let vc = ViewController2()
+        let nvc = UINavigationController(rootViewController: vc)
+        self.navigationController?.present(nvc, animated: true, completion: nil)
         return
         var count: UInt32 = 0
         if let methodList = class_copyMethodList(BPBaseWebViewController.classForCoder(), &count) {
             for i in 0..<Int(count) {
                 let method = methodList[i]
-//                if let methodUTF8 = method_getTypeEncoding(method) {
-//                    let methodStr = String(utf8String: methodUTF8) ?? ""
-//                    print(methodStr)
-//                }
                 let sel = method_getName(method)
                 let methodStr = String(_sel: sel)
                 print(methodStr)
             }
         }
-        
-        
-//        for method in methodList {
-//            print(method)
-//        }
-        
-//        BPAlertManager.showAlertImage(imageStr: "https://maxst.icons8.com/_nuxt/ouch/img/art-2.0e6fbc3.png", hideCloseBtn: false) { (source) in
-//            self.view.toast(source.url?.absoluteString ?? "???")
-//        }
     }
-    
-    
     
     // 求介绍 - 问题列表
     func fetchQuestionList(_ completion: @escaping ((_ questionList:YYWantToKnowQuestionListModel?, _ errorMsg: String?) -> Void)){

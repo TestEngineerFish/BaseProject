@@ -7,4 +7,4 @@
 #import "NSObject+CrashDefender.h"
 #import "GCDAsyncSocket.h"
 #import "UIBezierPath+AllPoints.h"
-
+#import "AAPLCheckerboardTransitionAnimator.h"
