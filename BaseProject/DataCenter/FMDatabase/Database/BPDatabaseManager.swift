@@ -69,7 +69,7 @@ class BPDatabaseManager {
     ///
     /// - Parameter fileName: 数据库名称
     /// - Returns: 数据地址
-    private func dbFilePath(fileName: String) -> String {
+    func dbFilePath(fileName: String) -> String {
         var documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
         if documentPath == nil {
             documentPath = NSHomeDirectory() + "/Documents"

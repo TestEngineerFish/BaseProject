@@ -10,5 +10,4 @@ import Foundation
 
 extension Array {
 
-
 }

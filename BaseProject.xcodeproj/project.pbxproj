@@ -13,7 +13,9 @@
 		220154292376A739004E4A99 /* YXLearningResultHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220154282376A739004E4A99 /* YXLearningResultHeaderView.swift */; };
 		2201542B2376A79D004E4A99 /* YXTaskMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201542A2376A79D004E4A99 /* YXTaskMapView.swift */; };
 		2211803322EEE47500B77911 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2211803222EEE47500B77911 /* CALayer+Extension.swift */; };
+		2218AE3923D098D000EF2E42 /* BPLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2218AE3823D098D000EF2E42 /* BPLogManager.swift */; };
 		221F5C4A22E95B4000F9355C /* AppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */; };
+		223D5EF5244DA98100482127 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D5EF4244DA98100482127 /* NSDate+Extension.m */; };
 		22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22413E3122E83E2100F2C678 /* DeviceInfoGlobal.swift */; };
 		22413E3422E8400900F2C678 /* NotificationNameGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22413E3322E8400900F2C678 /* NotificationNameGlobal.swift */; };
 		224581FE2325EFCD0031CC7A /* BPSQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224581FD2325EFCD0031CC7A /* BPSQLManager.swift */; };
@@ -39,11 +41,15 @@
 		2264EF9422F97A2800A89C82 /* BPTaskRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF9322F97A2800A89C82 /* BPTaskRequest.swift */; };
 		2264EF9622F98A3700A89C82 /* BPBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF9522F98A3700A89C82 /* BPBaseButton.swift */; };
 		2265906323744BC0006C9925 /* YXLearningPathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265906223744BC0006C9925 /* YXLearningPathViewController.swift */; };
+		226DCB8A23C36116003C193B /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 226DCB8923C36116003C193B /* test.html */; };
 		227DDFCF2376D72D006E38E8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227DDFCE2376D72D006E38E8 /* Utils.swift */; };
 		227DDFD12376EA3E006E38E8 /* YXAvatarPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227DDFD02376EA3E006E38E8 /* YXAvatarPinView.swift */; };
 		2290EABC236D5EF2000BCA47 /* right11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABB236D5EF2000BCA47 /* right11-data.json */; };
 		2290EABE236D5EF6000BCA47 /* wrong11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABD236D5EF6000BCA47 /* wrong11-data.json */; };
 		229B78182372FFE800073B0C /* YXSexangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B78172372FFE800073B0C /* YXSexangleView.swift */; };
+		22A44AB2244D96DF0039466E /* BPSwiftMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A44AB1244D96DF0039466E /* BPSwiftMacro.swift */; };
+		22A44AB5244D98280039466E /* BPOCLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A44AB4244D98280039466E /* BPOCLog.m */; };
+		22A44AB8244D98B40039466E /* BPLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A44AB7244D98B40039466E /* BPLogFormatter.m */; };
 		22A877BE22FAB679004FF3A7 /* BPBaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A877BD22FAB679004FF3A7 /* BPBaseImageView.swift */; };
 		22AED50D234DD6AE00A91A68 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AED509234DD6AE00A91A68 /* GCDAsyncSocket.m */; };
 		22AED50E234DD6AE00A91A68 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AED50A234DD6AE00A91A68 /* GCDAsyncUdpSocket.m */; };
@@ -78,6 +84,7 @@
 		22ED54B223693A3700011B82 /* LearningPathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED54B123693A3700011B82 /* LearningPathView.swift */; };
 		22ED54B4236ACD5E00011B82 /* letter_A.json in Resources */ = {isa = PBXBuildFile; fileRef = 22ED54B3236ACD5E00011B82 /* letter_A.json */; };
 		22ED54BE236B119200011B82 /* letter.json in Resources */ = {isa = PBXBuildFile; fileRef = 22ED54BD236B119200011B82 /* letter.json */; };
+		22F1A30223B598680046F4D4 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F1A30123B598680046F4D4 /* NSObject+Extension.swift */; };
 		7B212ACC1EB4CBADF5DD63D4 /* Pods_BaseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE0B51EBB89FBFB5A61CACA /* Pods_BaseProject.framework */; };
 		CF26719022FEB39B00E6B47F /* BPBaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26718F22FEB39B00E6B47F /* BPBaseTabBarController.swift */; };
 		CF26719222FEF6E700E6B47F /* BPTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719122FEF6E700E6B47F /* BPTabBar.swift */; };
@@ -118,7 +125,11 @@
 		220154282376A739004E4A99 /* YXLearningResultHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YXLearningResultHeaderView.swift; sourceTree = "<group>"; };
 		2201542A2376A79D004E4A99 /* YXTaskMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YXTaskMapView.swift; sourceTree = "<group>"; };
 		2211803222EEE47500B77911 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
+		2218AE3823D098D000EF2E42 /* BPLogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPLogManager.swift; sourceTree = "<group>"; };
 		221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Extension.swift"; sourceTree = "<group>"; };
+		223D5EF3244DA98100482127 /* NSDate+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
+		223D5EF4244DA98100482127 /* NSDate+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
+		223D5EF7244DAAAA00482127 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		22413E3122E83E2100F2C678 /* DeviceInfoGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoGlobal.swift; sourceTree = "<group>"; };
 		22413E3322E8400900F2C678 /* NotificationNameGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameGlobal.swift; sourceTree = "<group>"; };
 		224581FD2325EFCD0031CC7A /* BPSQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPSQLManager.swift; sourceTree = "<group>"; };
@@ -146,11 +157,18 @@
 		2264EF9322F97A2800A89C82 /* BPTaskRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTaskRequest.swift; sourceTree = "<group>"; };
 		2264EF9522F98A3700A89C82 /* BPBaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseButton.swift; sourceTree = "<group>"; };
 		2265906223744BC0006C9925 /* YXLearningPathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YXLearningPathViewController.swift; sourceTree = "<group>"; };
+		226DCB8923C36116003C193B /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		227DDFCE2376D72D006E38E8 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		227DDFD02376EA3E006E38E8 /* YXAvatarPinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YXAvatarPinView.swift; sourceTree = "<group>"; };
 		2290EABB236D5EF2000BCA47 /* right11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "right11-data.json"; sourceTree = "<group>"; };
 		2290EABD236D5EF6000BCA47 /* wrong11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "wrong11-data.json"; sourceTree = "<group>"; };
 		229B78172372FFE800073B0C /* YXSexangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YXSexangleView.swift; sourceTree = "<group>"; };
+		22A44AB0244D96600039466E /* BPOCMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPOCMacro.h; sourceTree = "<group>"; };
+		22A44AB1244D96DF0039466E /* BPSwiftMacro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPSwiftMacro.swift; sourceTree = "<group>"; };
+		22A44AB3244D98280039466E /* BPOCLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPOCLog.h; sourceTree = "<group>"; };
+		22A44AB4244D98280039466E /* BPOCLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BPOCLog.m; sourceTree = "<group>"; };
+		22A44AB6244D98B30039466E /* BPLogFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPLogFormatter.h; sourceTree = "<group>"; };
+		22A44AB7244D98B40039466E /* BPLogFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BPLogFormatter.m; sourceTree = "<group>"; };
 		22A877BD22FAB679004FF3A7 /* BPBaseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseImageView.swift; sourceTree = "<group>"; };
 		22AED509234DD6AE00A91A68 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		22AED50A234DD6AE00A91A68 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
@@ -159,7 +177,7 @@
 		22AED50F234DFEF200A91A68 /* BPSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPSocketManager.swift; sourceTree = "<group>"; };
 		22AED511234EC75500A91A68 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		22AED513234ED5DB00A91A68 /* BPServerSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPServerSocketManager.swift; sourceTree = "<group>"; };
-		22C621B422DC805600A7C849 /* BaseProject_Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseProject_Client.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22C621B422DC805600A7C849 /* BaseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C621B722DC805600A7C849 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22C621B922DC805600A7C849 /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
 		22C621BE22DC805600A7C849 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -193,6 +211,7 @@
 		22ED54B123693A3700011B82 /* LearningPathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningPathView.swift; sourceTree = "<group>"; };
 		22ED54B3236ACD5E00011B82 /* letter_A.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = letter_A.json; sourceTree = "<group>"; };
 		22ED54BD236B119200011B82 /* letter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = letter.json; sourceTree = "<group>"; };
+		22F1A30123B598680046F4D4 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		62C207CFF7FD424CF4B3C8C3 /* Pods-BaseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.release.xcconfig"; path = "Target Support Files/Pods-BaseProject/Pods-BaseProject.release.xcconfig"; sourceTree = "<group>"; };
 		CF26718F22FEB39B00E6B47F /* BPBaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseTabBarController.swift; sourceTree = "<group>"; };
 		CF26719122FEF6E700E6B47F /* BPTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTabBar.swift; sourceTree = "<group>"; };
@@ -264,6 +283,18 @@
 			path = "学习结果页";
 			sourceTree = "<group>";
 		};
+		2218AE3723D098C200EF2E42 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				2218AE3823D098D000EF2E42 /* BPLogManager.swift */,
+				22A44AB3244D98280039466E /* BPOCLog.h */,
+				22A44AB4244D98280039466E /* BPOCLog.m */,
+				22A44AB6244D98B30039466E /* BPLogFormatter.h */,
+				22A44AB7244D98B40039466E /* BPLogFormatter.m */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
 		22413E3022E83DF400F2C678 /* Global */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +302,8 @@
 				22413E3122E83E2100F2C678 /* DeviceInfoGlobal.swift */,
 				22413E3322E8400900F2C678 /* NotificationNameGlobal.swift */,
 				2201542023745BCB004E4A99 /* BPGlobalFunction.swift */,
+				22A44AB0244D96600039466E /* BPOCMacro.h */,
+				22A44AB1244D96DF0039466E /* BPSwiftMacro.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -346,7 +379,7 @@
 		22C621B522DC805600A7C849 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				22C621B422DC805600A7C849 /* BaseProject_Client.app */,
+				22C621B422DC805600A7C849 /* BaseProject.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -427,6 +460,9 @@
 				22ED54AE23687FEF00011B82 /* UIBezierPath+AllPoints.h */,
 				22ED54AF23687FEF00011B82 /* UIBezierPath+AllPoints.m */,
 				22625314238F9F2B00A1CD54 /* Array+Extension.swift */,
+				22F1A30123B598680046F4D4 /* NSObject+Extension.swift */,
+				223D5EF3244DA98100482127 /* NSDate+Extension.h */,
+				223D5EF4244DA98100482127 /* NSDate+Extension.m */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -541,6 +577,7 @@
 				22D497FF22FBB0E700281530 /* LottieFiles */,
 				2264EF8B22F9738700A89C82 /* iconfont.ttf */,
 				CF27E37F22DE279E0056ADFA /* BaseProject-Bridging-Header.h */,
+				223D5EF7244DAAAA00482127 /* PrefixHeader.pch */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -576,6 +613,7 @@
 		CF8EB56C22DCC48F00EC2FE5 /* DataCenter */ = {
 			isa = PBXGroup;
 			children = (
+				2218AE3723D098C200EF2E42 /* Log */,
 				22AED508234DD69300A91A68 /* Socket */,
 				224582092326513B0031CC7A /* FileManager */,
 				22D018F62321F36A007AFA1B /* FMDatabase */,
@@ -610,6 +648,7 @@
 		CFFB34E123595ED8002D440E /* WebSource */ = {
 			isa = PBXGroup;
 			children = (
+				226DCB8923C36116003C193B /* test.html */,
 				CFFB34E523595EF9002D440E /* backbutton@2x.png */,
 				CFFB34E223595EF8002D440E /* backbutton@3x.png */,
 				CFFB34E323595EF8002D440E /* girl.png */,
@@ -648,7 +687,7 @@
 			);
 			name = BaseProject;
 			productName = BaseProject;
-			productReference = 22C621B422DC805600A7C849 /* BaseProject_Client.app */;
+			productReference = 22C621B422DC805600A7C849 /* BaseProject.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -702,6 +741,7 @@
 				CFFB34E923595EF9002D440E /* girl.png in Resources */,
 				22C621BF22DC805600A7C849 /* Assets.xcassets in Resources */,
 				22D4980F22FBCD0800281530 /* center-loading.json in Resources */,
+				226DCB8A23C36116003C193B /* test.html in Resources */,
 				CFFB34ED23595EF9002D440E /* webRefreshButton@2x.png in Resources */,
 				2290EABE236D5EF6000BCA47 /* wrong11-data.json in Resources */,
 				2264EF8C22F9738700A89C82 /* iconfont.ttf in Resources */,
@@ -772,7 +812,9 @@
 				CF26719022FEB39B00E6B47F /* BPBaseTabBarController.swift in Sources */,
 				22AED50E234DD6AE00A91A68 /* GCDAsyncUdpSocket.m in Sources */,
 				CF8EB58B22DCCCA600EC2FE5 /* UIFont+Extension.swift in Sources */,
+				22A44AB2244D96DF0039466E /* BPSwiftMacro.swift in Sources */,
 				CF6E171E235F56540008C466 /* BPWebViewImplementClass.swift in Sources */,
+				22A44AB8244D98B40039466E /* BPLogFormatter.m in Sources */,
 				22A877BE22FAB679004FF3A7 /* BPBaseImageView.swift in Sources */,
 				2264EF8622F91E0700A89C82 /* BPAlertViewZeroButton.swift in Sources */,
 				CF26719822FF0A6B00E6B47F /* ViewController4.swift in Sources */,
@@ -814,9 +856,11 @@
 				22AED512234EC75500A91A68 /* Optional+Extension.swift in Sources */,
 				CF8EB59C22DCCEBC00EC2FE5 /* IconFontString.swift in Sources */,
 				CF26719622FF0A5900E6B47F /* ViewController3.swift in Sources */,
+				22F1A30223B598680046F4D4 /* NSObject+Extension.swift in Sources */,
 				CF26719D22FF973300E6B47F /* PublishView.swift in Sources */,
 				22D018FB2321F800007AFA1B /* BPDatabaseManager.swift in Sources */,
 				229B78182372FFE800073B0C /* YXSexangleView.swift in Sources */,
+				223D5EF5244DA98100482127 /* NSDate+Extension.m in Sources */,
 				CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */,
 				CF8EB5A222DCD0DC00EC2FE5 /* UIViewController+Extension.swift in Sources */,
 				CF87869A22F87BD60031E4B9 /* UIImage+Extension.swift in Sources */,
@@ -825,11 +869,13 @@
 				CF26719A22FF0B1B00E6B47F /* BPBaseNavigationController.swift in Sources */,
 				221F5C4A22E95B4000F9355C /* AppDelegate+Extension.swift in Sources */,
 				CF8EB5A622DCD1B300EC2FE5 /* BPViewController+CustomNavigationBar.swift in Sources */,
+				22A44AB5244D98280039466E /* BPOCLog.m in Sources */,
 				2211803322EEE47500B77911 /* CALayer+Extension.swift in Sources */,
 				22AED510234DFEF200A91A68 /* BPSocketManager.swift in Sources */,
 				22D4982122FD164600281530 /* BPRefreshFooterView.swift in Sources */,
 				22C6221B22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift in Sources */,
 				2264EF9622F98A3700A89C82 /* BPBaseButton.swift in Sources */,
+				2218AE3923D098D000EF2E42 /* BPLogManager.swift in Sources */,
 				CF26719222FEF6E700E6B47F /* BPTabBar.swift in Sources */,
 				22D4981122FBCD9B00281530 /* BPBaseTableViewController.swift in Sources */,
 				2264EF8122F90EED00A89C82 /* BPBaseAlertView.swift in Sources */,
@@ -900,6 +946,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/BaseProject/Resource/PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -910,7 +958,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -959,13 +1007,15 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/BaseProject/Resource/PrefixHeader.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -982,18 +1032,23 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U9HAAL78T3;
+				DEVELOPMENT_TEAM = ZUFNXAQBQM;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"DEVELOPMENT=0",
+				);
 				INFOPLIST_FILE = BaseProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = samOriginal.BaseProject;
-				PRODUCT_NAME = BaseProject_Client;
+				PRODUCT_NAME = BaseProject;
 				SWIFT_OBJC_BRIDGING_HEADER = "BaseProject/Resource/BaseProject-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1004,17 +1059,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U9HAAL78T3;
+				DEVELOPMENT_TEAM = ZUFNXAQBQM;
 				INFOPLIST_FILE = BaseProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = samOriginal.BaseProject;
-				PRODUCT_NAME = BaseProject_Client;
+				PRODUCT_NAME = BaseProject;
 				SWIFT_OBJC_BRIDGING_HEADER = "BaseProject/Resource/BaseProject-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

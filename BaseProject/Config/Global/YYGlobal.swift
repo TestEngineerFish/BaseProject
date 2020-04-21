@@ -11,8 +11,7 @@ import Alamofire
 
 
 // MARK: 常量
-public let UQID_KEY = "Sam_UQID_KEY"
-public let Y4Md     = "YYYY-MM-dd"
+public let UQID_KEY   = "Sam_UQID_KEY"
 public let buglyAppId = "36cec5946b"
 
 // MARK: ---尺寸相关---

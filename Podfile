@@ -23,7 +23,7 @@ target 'BaseProject' do
   # 弹框
   pod 'Toast-Swift', '~> 5.0.0'
   # 压、解压缩处理
-  pod 'SSZipArchive'
+  pod 'ZipArchive'
   # 下载处理图片
   pod 'Kingfisher', '~> 5.7'
   # 加载、解析动图

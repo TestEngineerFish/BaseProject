@@ -35,7 +35,7 @@ public extension Date {
     var calendar: Calendar {
         get{
             var calendar = Calendar(identifier: .gregorian)
-            calendar.locale = Locale(identifier: "zh_CN")
+            calendar.locale   = Locale(identifier: "zh_CN")
             calendar.timeZone = TimeZone(identifier: "UTC")!
             return calendar
         }
@@ -89,18 +89,18 @@ public extension Date {
         }
     }
 
-    /// 返回当前系统日期字符串,格式:年-月-日
+    /// 返回当前系统日期字符串,格式:年-月-日 时:分:秒
     var dateString: String {
         let formatter = DateFormatter()
-        formatter.dateFormat = Y4Md
+        formatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
         return formatter.string(from: self)
     }
 
     /// 字符串转成制定格式的日期(中国制)
     func date(datestr: String, format: String) -> Date? {
         let fmt = DateFormatter()
-        fmt.locale = Locale(identifier: "zh_CN")
-        fmt.timeZone = TimeZone(identifier: "UTC")
+        fmt.locale     = Locale(identifier: "zh_CN")
+        fmt.timeZone   = TimeZone(identifier: "UTC")
         fmt.dateFormat = format
         let date = fmt.date(from: datestr)
         return date
@@ -110,10 +110,10 @@ public extension Date {
     /// e.g. "YYYY-MM-dd HH:mm:ss" 年-月-日 时:分:秒
     func dateWithFormatter(formatter: String) -> Date? {
         let fmt = DateFormatter()
-        fmt.locale = Locale(identifier: "zh_CN")
-        fmt.timeZone = TimeZone(identifier: "UTC") //TimeZone(secondsFromGMT: +28800)!
+        fmt.locale     = Locale(identifier: "zh_CN")
+        fmt.timeZone   = TimeZone(identifier: "UTC") //TimeZone(secondsFromGMT: +28800)!
         fmt.dateFormat = formatter
-        let selfStr = fmt.string(from: self)
+        let selfStr    = fmt.string(from: self)
         return fmt.date(from: selfStr)
     }
 

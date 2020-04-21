@@ -8,6 +8,7 @@
 
 import UIKit
 import Lottie
+import ZipArchive
 
 class ViewController1: UIViewController {
     
@@ -20,6 +21,11 @@ class ViewController1: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.makeUI()
+        #if DEVELOPMENT
+        print("当前是测试环境")
+        #else
+        print("当前是正式环境")
+        #endif
     }
     
     private func makeUI() {
@@ -59,10 +65,11 @@ class ViewController1: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        let vc = ViewController2()
-        let nvc = UINavigationController(rootViewController: vc)
-        self.navigationController?.present(nvc, animated: true, completion: nil)
-        return
+        self.report()
+//        let vc = ViewController2()
+//        let nvc = UINavigationController(rootViewController: vc)
+//        self.navigationController?.present(nvc, animated: true, completion: nil)
+//        return
         var count: UInt32 = 0
         if let methodList = class_copyMethodList(BPBaseWebViewController.classForCoder(), &count) {
             for i in 0..<Int(count) {
@@ -72,6 +79,23 @@ class ViewController1: UIViewController {
                 print(methodStr)
             }
         }
+    }
+
+
+    func report() {
+        let fileLogger = DDFileLogger()
+        let ziper      = ZipArchive()
+
+        let logPathArray     = fileLogger.logFileManager.sortedLogFileNames
+        let logDirectoryPath = fileLogger.logFileManager.logsDirectory
+        let logZipPath       = logDirectoryPath + "/feadbackLog.zip"
+
+        if ziper.createZipFile2(logZipPath) {
+            logPathArray.forEach { (path) in
+                ziper.addFile(toZip: logDirectoryPath + "/" + path, newname: path)
+            }
+        }
+        print(logDirectoryPath)
     }
     
     // 求介绍 - 问题列表

@@ -30,7 +30,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.selectedIndex = 0
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
+        // 初始化第三方配置
+        self.initThirdPartyServices()
         return true
+    }
+
+    func initThirdPartyServices() {
+        // ---- 日志 ----
+        DDLog.add(DDOSLogger.sharedInstance) // 发送到苹果控制台
+        let fileLogger = DDFileLogger()
+        fileLogger.rollingFrequency = 60 * 60 * 24
+        fileLogger.logFileManager.maximumNumberOfLogFiles = 7
+        DDLog.add(fileLogger)
+        // debug
+        DDLogVerbose("👽Verbose")
+        DDLogDebug("🤷🏻‍♂️Debug")
+        DDLogInfo("💻Info")
+        DDLogWarn("⚠️Warn")
+        DDLogError("❌Error")
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

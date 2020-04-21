@@ -29,7 +29,7 @@ class BPBaseWebViewController: UIViewController, WKScriptMessageHandler, WKUIDel
         _webView.navigationDelegate = self
         // 允许左滑返回上一级
         _webView.allowsBackForwardNavigationGestures = true
-        let path = Bundle.main.path(forResource: "JStoOC.html", ofType: nil) ?? ""
+        let path = Bundle.main.path(forResource: "test.html", ofType: nil) ?? ""
         let pathStr = try? String(contentsOfFile: path, encoding: .utf8)
         _webView.loadHTMLString(pathStr ?? "", baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
         return _webView

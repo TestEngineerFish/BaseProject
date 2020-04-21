@@ -15,7 +15,7 @@ extension NSError {
      */
     var message: String {
         if let msg = self.userInfo[NSLocalizedDescriptionKey] as? String {
-
+            
             return msg
         }
         return self.domain

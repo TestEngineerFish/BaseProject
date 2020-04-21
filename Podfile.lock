@@ -17,9 +17,8 @@ PODS:
   - ObjectMapper (3.5.1)
   - SAMKeychain (1.5.3)
   - SnapKit (5.0.1)
-  - SSZipArchive (2.2.2)
-  - TesseractOCRiOS (5.0.1)
   - Toast-Swift (5.0.0)
+  - ZipArchive (1.4.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.8.2)
@@ -32,9 +31,8 @@ DEPENDENCIES:
   - ObjectMapper (~> 3.5.1)
   - SAMKeychain
   - SnapKit (~> 5.0.0)
-  - SSZipArchive
-  - TesseractOCRiOS
   - Toast-Swift (~> 5.0.0)
+  - ZipArchive
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -48,9 +46,8 @@ SPEC REPOS:
     - ObjectMapper
     - SAMKeychain
     - SnapKit
-    - SSZipArchive
-    - TesseractOCRiOS
     - Toast-Swift
+    - ZipArchive
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
@@ -63,10 +60,9 @@ SPEC CHECKSUMS:
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
-  TesseractOCRiOS: 2c189465f86abb030d0c5141c90da9705b647854
   Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
+  ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: e0becc60557ee305f0b9d1d9c7d326e74698767e
+PODFILE CHECKSUM: 5e33766899fd80fdee4511c1eebbf2cece0376af
 
 COCOAPODS: 1.8.4
