@@ -10,6 +10,16 @@ import Foundation
 let componentFlags = Set<Calendar.Component>([.day, .month, .year, .hour,.minute,.second,.weekday,.weekdayOrdinal])
 
 public extension Date {
+
+    /// 转换本地时间
+    /// - Returns: 转换后的东八区时间
+    func local() -> Date {
+        guard let zone = TimeZone(identifier: "Asia/Shanghai") else {
+            return self
+        }
+        let interval = zone.secondsFromGMT(for: self)
+        return self.addingTimeInterval(Double(interval))
+    }
     
     /// 当前系统时间是否是24小时制
     static var checkDateSetting24Hours: Bool {
