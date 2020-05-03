@@ -126,3 +126,11 @@ public var isSimulator: Bool {
         return isSim
     }
 }
+
+/// 判断当前设备是否是iPad
+public var isPad: Bool {
+    get {
+        return UIDevice.current.userInterfaceIdiom == .pad
+    }
+}
+
