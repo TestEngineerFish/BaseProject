@@ -8,7 +8,10 @@
 
 import Foundation
 
+/// 尺寸自适应
+/// - Parameter size: 设计尺寸
+/// - Returns: 自适应后的尺寸
 public func AdaptSize(_ size: CGFloat) -> CGFloat {
-    let scale = kScreenWidth / 375
-    return scale * size
+    let newSize = kScreenWidth / (isPad ? 768 : 375) * size
+    return newSize
 }

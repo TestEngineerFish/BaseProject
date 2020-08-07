@@ -98,6 +98,19 @@ public extension UIColor {
         return UIColor.hex(hex, alpha: alpha)
     }
 
+    /// 获得随机颜色
+    /// - Returns: 随机颜色
+    static func randomColor(alpheRandom: Bool = false) -> UIColor {
+        let red   = CGFloat.random(in: 0...255)
+        let green = CGFloat.random(in: 0...255)
+        let blue  = CGFloat.random(in: 0...255)
+        var alphe = CGFloat(1)
+        if alpheRandom {
+            alphe = CGFloat.random(in: 0...1)
+        }
+        return ColorWithRGBA(red: red, green: green, blue: blue, alpha: alphe)
+    }
+
     /// 主色绿 (red: 8, green: 207, blue: 78))
     static let green1 = ColorWithRGBA(red: 8, green: 207, blue: 78)
 

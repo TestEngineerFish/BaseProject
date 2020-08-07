@@ -20,9 +20,9 @@ class BPLogManager: NSObject {
     // 上传
     @objc func report(_ showToast: Bool = false) {
         self.addInfo()
-        guard let fileData = self.zipLogFile() else {
-            return
-        }
+//        guard let fileData = self.zipLogFile() else {
+//            return
+//        }
 //        let request = YXLogRequest.report(file: fileData)
 //        YYNetworkService.default.upload(YYStructResponse<YXLogModel>.self, request: request, mimeType: YXMiMeType.file.rawValue, fileName: "log", success: { (response) in
 //            if showToast {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController4: UIViewController, BPSocketProtocol {
+class ViewController4: BPViewController, BPSocketProtocol {
 
     var socketManager: BPServerSocketManager?
     var serverPortLabel     = UILabel()

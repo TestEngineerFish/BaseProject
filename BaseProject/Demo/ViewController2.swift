@@ -13,8 +13,6 @@ class ViewController2: BPViewController, UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
-//        self.view.layer.setGradient(colors: [UIColor.green1, UIColor.yellow1, UIColor.orange1], direction: .leftTop)
         imageView.image = UIImage(named: "dog")
         self.view.addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
@@ -22,7 +20,6 @@ class ViewController2: BPViewController, UINavigationControllerDelegate {
             make.size.equalTo(CGSize(width: 200, height: 100))
         }
         print(0)
-//        self.navigationController?.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {

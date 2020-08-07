@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController3: UIViewController, BPSocketProtocol {
+class ViewController3: BPViewController, BPSocketProtocol {
 
     var socketManager: BPSocketManager?
 
