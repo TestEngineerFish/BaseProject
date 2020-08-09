@@ -90,6 +90,9 @@
 		CF26719822FF0A6B00E6B47F /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719722FF0A6B00E6B47F /* ViewController4.swift */; };
 		CF26719A22FF0B1B00E6B47F /* BPBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719922FF0B1B00E6B47F /* BPBaseNavigationController.swift */; };
 		CF26719D22FF973300E6B47F /* PublishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719C22FF973300E6B47F /* PublishView.swift */; };
+		CF49A88024DFEE5300D8DAC4 /* BubbleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49A87F24DFEE5300D8DAC4 /* BubbleTableView.swift */; };
+		CF49A88224DFF09C00D8DAC4 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49A88124DFF09C00D8DAC4 /* DescriptionView.swift */; };
+		CF49A88724DFF4B900D8DAC4 /* TableFactoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49A88624DFF4B900D8DAC4 /* TableFactoryManager.swift */; };
 		CF6E171E235F56540008C466 /* BPWebViewImplementClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E171D235F56540008C466 /* BPWebViewImplementClass.swift */; };
 		CF6E17222362045A0008C466 /* FindRouteUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E17212362045A0008C466 /* FindRouteUtil.swift */; };
 		CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869522F6F5380031E4B9 /* UINavigationController+Extension.swift */; };
@@ -214,6 +217,9 @@
 		CF26719922FF0B1B00E6B47F /* BPBaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseNavigationController.swift; sourceTree = "<group>"; };
 		CF26719C22FF973300E6B47F /* PublishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishView.swift; sourceTree = "<group>"; };
 		CF27E37F22DE279E0056ADFA /* BaseProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseProject-Bridging-Header.h"; sourceTree = "<group>"; };
+		CF49A87F24DFEE5300D8DAC4 /* BubbleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTableView.swift; sourceTree = "<group>"; };
+		CF49A88124DFF09C00D8DAC4 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		CF49A88624DFF4B900D8DAC4 /* TableFactoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableFactoryManager.swift; sourceTree = "<group>"; };
 		CF6E171D235F56540008C466 /* BPWebViewImplementClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPWebViewImplementClass.swift; sourceTree = "<group>"; };
 		CF6E171F235F56C80008C466 /* WebViewControllerReadMe.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = WebViewControllerReadMe.md; sourceTree = "<group>"; };
 		CF6E17212362045A0008C466 /* FindRouteUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindRouteUtil.swift; sourceTree = "<group>"; };
@@ -303,6 +309,7 @@
 		225C48DA24DD41ED00594FEE /* Algorithm */ = {
 			isa = PBXGroup;
 			children = (
+				CF49A88324DFF46900D8DAC4 /* Manager */,
 				225C48DD24DD420C00594FEE /* Model */,
 				225C48DC24DD420600594FEE /* View */,
 				225C48DB24DD41FF00594FEE /* ViewController */,
@@ -321,8 +328,9 @@
 		225C48DC24DD420600594FEE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CF49A87E24DFEDBA00D8DAC4 /* Sort */,
 				225C48E224DD45EE00594FEE /* BarView.swift */,
-				225C48E624DD4FF800594FEE /* TableView.swift */,
+				CF49A88124DFF09C00D8DAC4 /* DescriptionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -595,6 +603,23 @@
 			path = Module;
 			sourceTree = "<group>";
 		};
+		CF49A87E24DFEDBA00D8DAC4 /* Sort */ = {
+			isa = PBXGroup;
+			children = (
+				225C48E624DD4FF800594FEE /* TableView.swift */,
+				CF49A87F24DFEE5300D8DAC4 /* BubbleTableView.swift */,
+			);
+			path = Sort;
+			sourceTree = "<group>";
+		};
+		CF49A88324DFF46900D8DAC4 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				CF49A88624DFF4B900D8DAC4 /* TableFactoryManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		CF6E171C235F55F40008C466 /* WebViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -859,6 +884,7 @@
 				CF8EB56422DCC05D00EC2FE5 /* SAMKeychain+Extension.swift in Sources */,
 				225C48E724DD4FF800594FEE /* TableView.swift in Sources */,
 				22D018F92321F7F0007AFA1B /* BPDatabaseProtocol.swift in Sources */,
+				CF49A88224DFF09C00D8DAC4 /* DescriptionView.swift in Sources */,
 				CF8EB59E22DCD04300EC2FE5 /* Date+Extension.swift in Sources */,
 				CFFB34E02358C1C4002D440E /* BPBaseWebViewController.swift in Sources */,
 				224582032326044D0031CC7A /* NormalDBCenter.swift in Sources */,
@@ -866,11 +892,13 @@
 				22C621F122DC8D1000A7C849 /* YYGlobal.swift in Sources */,
 				22D4981522FBCDC600281530 /* BPNavigationBar.swift in Sources */,
 				22AED50D234DD6AE00A91A68 /* GCDAsyncSocket.m in Sources */,
+				CF49A88724DFF4B900D8DAC4 /* TableFactoryManager.swift in Sources */,
 				22C621EE22DC8A7800A7C849 /* UIDevice+Extension.swift in Sources */,
 				2264EF7D22F7C6E500A89C82 /* BPTopWindowView.swift in Sources */,
 				22D4981F22FD163A00281530 /* BPRefreshHeaderView.swift in Sources */,
 				22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */,
 				2264EF9422F97A2800A89C82 /* BPTaskRequest.swift in Sources */,
+				CF49A88024DFEE5300D8DAC4 /* BubbleTableView.swift in Sources */,
 				CF26719422FF0A4300E6B47F /* ViewController2.swift in Sources */,
 				22AED512234EC75500A91A68 /* Optional+Extension.swift in Sources */,
 				CF8EB59C22DCCEBC00EC2FE5 /* IconFontString.swift in Sources */,

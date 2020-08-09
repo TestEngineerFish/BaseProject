@@ -21,13 +21,8 @@ class BubbleAlgorithmViewController: BPViewController {
             return list
         }
     }
-    var restartButton: BPBaseButton = {
-        let button = BPBaseButton()
-        button.setTitle("Restart", for: .normal)
-        button.setTitleColor(UIColor.orange1, for: .normal)
-        button.titleLabel?.font = UIFont.regularFont(ofSize: AdaptSize(16))
-        return button
-    }()
+    
+    var descriptionView: DescriptionView?
     var tableView: TableView?
 
     init(type: AlgorithmType) {
@@ -47,15 +42,20 @@ class BubbleAlgorithmViewController: BPViewController {
 
     override func createSubviews() {
         super.createSubviews()
-        let histogramViewSize = CGSize(width: kScreenWidth - AdaptSize(30), height: AdaptSize(200))
-        self.tableView = TableView(type: self.type, frame: CGRect(origin: .zero, size: histogramViewSize))
+        self.descriptionView  = DescriptionView(type: self.type)
+        let tableSize = CGSize(width: kScreenWidth - AdaptSize(30), height: AdaptSize(200))
+        self.tableView = TableFactoryManager.share.createTableView(type: self.type, frame: CGRect(origin: .zero, size: tableSize))
         self.tableView?.layer.setDefaultShadow()
+        self.view.addSubview(descriptionView!)
         self.view.addSubview(tableView!)
-        self.view.addSubview(restartButton)
+        self.descriptionView?.snp.makeConstraints({ (make) in
+            make.left.top.right.equalToSuperview()
+            make.bottom.equalTo(self.tableView!.snp.top).offset(AdaptSize(-15))
+        })
         self.tableView?.snp.makeConstraints({ (make) in
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(AdaptSize(-15))
-            make.size.equalTo(histogramViewSize)
+            make.size.equalTo(tableSize)
         })
     }
 
@@ -63,5 +63,6 @@ class BubbleAlgorithmViewController: BPViewController {
         super.bindProperty()
         self.customNavigationBar?.isHidden = true
         self.tableView?.setData(numberList: numberList)
+        self.descriptionView?.delegate = self.tableView
     }
 }
