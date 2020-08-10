@@ -33,21 +33,17 @@ class ChooseTableView: BaseTableView {
             }
         } else {
             let nextView = self.barList[index]
-            UIView.animate(withDuration: 0.25, animations: { [weak self] in
+            nextView.barView.backgroundColor = self.willSelectColor
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
                 guard let self = self else { return }
-                nextView.barView.backgroundColor = self.willSelectColor
-            }) { [weak self] (finished) in
-                guard let self = self else { return }
-                if finished {
-                    if nextView.number < self.minView!.number {
-                        nextView.barView.backgroundColor = self.didSelectedColor
-                        self.minView!.barView.backgroundColor = self.normalColor
-                        self.minView = nextView
-                    } else {
-                        nextView.barView.backgroundColor = self.normalColor
-                    }
-                    self.sort()
+                if nextView.number < self.minView!.number {
+                    nextView.barView.backgroundColor = self.didSelectedColor
+                    self.minView!.barView.backgroundColor = self.normalColor
+                    self.minView = nextView
+                } else {
+                    nextView.barView.backgroundColor = self.normalColor
                 }
+                self.sort()
             }
         }
     }

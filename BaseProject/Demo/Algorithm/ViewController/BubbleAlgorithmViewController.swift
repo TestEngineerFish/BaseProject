@@ -43,7 +43,7 @@ class BubbleAlgorithmViewController: BPViewController {
 
     override func bindProperty() {
         super.bindProperty()
-        self.customNavigationBar?.isHidden = true
+        self.customNavigationBar?.title    = self.type.rawValue
         self.tableView?.setData()
         self.descriptionView?.delegate = self.tableView
     }
