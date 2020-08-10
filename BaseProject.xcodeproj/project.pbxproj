@@ -12,6 +12,7 @@
 		2211803322EEE47500B77911 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2211803222EEE47500B77911 /* CALayer+Extension.swift */; };
 		2218AE3923D098D000EF2E42 /* BPLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2218AE3823D098D000EF2E42 /* BPLogManager.swift */; };
 		221F5C4A22E95B4000F9355C /* AppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */; };
+		2233952F24E1133C0052C7CC /* ChooseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233952E24E1133C0052C7CC /* ChooseTableView.swift */; };
 		223D5EF5244DA98100482127 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D5EF4244DA98100482127 /* NSDate+Extension.m */; };
 		22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22413E3122E83E2100F2C678 /* DeviceInfoGlobal.swift */; };
 		22413E3422E8400900F2C678 /* NotificationNameGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22413E3322E8400900F2C678 /* NotificationNameGlobal.swift */; };
@@ -76,7 +77,6 @@
 		22D4981A22FD0A8B00281530 /* BPScrollRefreshProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981922FD0A8B00281530 /* BPScrollRefreshProtocol.swift */; };
 		22D4981F22FD163A00281530 /* BPRefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981E22FD163A00281530 /* BPRefreshHeaderView.swift */; };
 		22D4982122FD164600281530 /* BPRefreshFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4982022FD164600281530 /* BPRefreshFooterView.swift */; };
-		22E01E0B238D532E0030177A /* BPCheckerboardTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E01E0A238D532E0030177A /* BPCheckerboardTransitionAnimator.swift */; };
 		22ED54B023687FEF00011B82 /* UIBezierPath+AllPoints.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED54AF23687FEF00011B82 /* UIBezierPath+AllPoints.m */; };
 		22ED54B4236ACD5E00011B82 /* letter_A.json in Resources */ = {isa = PBXBuildFile; fileRef = 22ED54B3236ACD5E00011B82 /* letter_A.json */; };
 		22ED54BE236B119200011B82 /* letter.json in Resources */ = {isa = PBXBuildFile; fileRef = 22ED54BD236B119200011B82 /* letter.json */; };
@@ -123,6 +123,7 @@
 		2211803222EEE47500B77911 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		2218AE3823D098D000EF2E42 /* BPLogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPLogManager.swift; sourceTree = "<group>"; };
 		221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Extension.swift"; sourceTree = "<group>"; };
+		2233952E24E1133C0052C7CC /* ChooseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTableView.swift; sourceTree = "<group>"; };
 		223D5EF3244DA98100482127 /* NSDate+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		223D5EF4244DA98100482127 /* NSDate+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		223D5EF7244DAAAA00482127 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -199,7 +200,6 @@
 		22D4981922FD0A8B00281530 /* BPScrollRefreshProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPScrollRefreshProtocol.swift; sourceTree = "<group>"; };
 		22D4981E22FD163A00281530 /* BPRefreshHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPRefreshHeaderView.swift; sourceTree = "<group>"; };
 		22D4982022FD164600281530 /* BPRefreshFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPRefreshFooterView.swift; sourceTree = "<group>"; };
-		22E01E0A238D532E0030177A /* BPCheckerboardTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPCheckerboardTransitionAnimator.swift; sourceTree = "<group>"; };
 		22E01E0C238D64380030177A /* 数学公式.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "数学公式.md"; sourceTree = "<group>"; };
 		22ED54AE23687FEF00011B82 /* UIBezierPath+AllPoints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+AllPoints.h"; sourceTree = "<group>"; };
 		22ED54AF23687FEF00011B82 /* UIBezierPath+AllPoints.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+AllPoints.m"; sourceTree = "<group>"; };
@@ -556,14 +556,6 @@
 			path = RefreshControl;
 			sourceTree = "<group>";
 		};
-		22E01E09238D52EC0030177A /* TransitionAnimator */ = {
-			isa = PBXGroup;
-			children = (
-				22E01E0A238D532E0030177A /* BPCheckerboardTransitionAnimator.swift */,
-			);
-			path = TransitionAnimator;
-			sourceTree = "<group>";
-		};
 		C7C580CA7C5CFA0EEAB645A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +597,7 @@
 			children = (
 				225C48E624DD4FF800594FEE /* BaseTableView.swift */,
 				CF49A87F24DFEE5300D8DAC4 /* BubbleTableView.swift */,
+				2233952E24E1133C0052C7CC /* ChooseTableView.swift */,
 			);
 			path = Sort;
 			sourceTree = "<group>";
@@ -652,7 +645,6 @@
 		CF8EB58522DCCB8200EC2FE5 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				22E01E09238D52EC0030177A /* TransitionAnimator */,
 				22868109230AA14D005E113E /* BaseView */,
 				22D4981D22FD160500281530 /* RefreshControl */,
 				CF8EB5A422DCD18400EC2FE5 /* BaseController */,
@@ -871,7 +863,6 @@
 				22625315238F9F2B00A1CD54 /* Array+Extension.swift in Sources */,
 				22D4981A22FD0A8B00281530 /* BPScrollRefreshProtocol.swift in Sources */,
 				2201542323758D2A004E4A99 /* BPLabel.swift in Sources */,
-				22E01E0B238D532E0030177A /* BPCheckerboardTransitionAnimator.swift in Sources */,
 				2264EF8E22F979BD00A89C82 /* BPBaseRequest.swift in Sources */,
 				225C48E124DD425700594FEE /* BubbleAlgorithmViewController.swift in Sources */,
 				227DDFCF2376D72D006E38E8 /* Utils.swift in Sources */,
@@ -903,6 +894,7 @@
 				225C48E524DD460F00594FEE /* BPView.swift in Sources */,
 				22F1A30223B598680046F4D4 /* NSObject+Extension.swift in Sources */,
 				CF26719D22FF973300E6B47F /* PublishView.swift in Sources */,
+				2233952F24E1133C0052C7CC /* ChooseTableView.swift in Sources */,
 				22D018FB2321F800007AFA1B /* BPDatabaseManager.swift in Sources */,
 				223D5EF5244DA98100482127 /* NSDate+Extension.m in Sources */,
 				CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */,

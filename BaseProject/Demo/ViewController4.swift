@@ -23,6 +23,7 @@ class ViewController4: BPViewController, BPSocketProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.customNavigationBar?.isHidden = true
         self.view.backgroundColor = UIColor.white
         makeUI()
         makeData()

@@ -12,22 +12,28 @@ class BubbleTableView: BaseTableView {
     
     override func sort() {
         super.sort()
-        if offset + 1 >= self.barList.count {
-            offset = 0
+        if index + 1 >= self.barList.count {
+            index = 0
         }
-        let leftBar  = self.barList[offset]
-        let rightBar = self.barList[offset + 1]
+        let leftBar  = self.barList[index]
+        let rightBar = self.barList[index + 1]
         if leftBar.number > rightBar.number {
-            self.skipCount = 0
+            self.offset = 0
+            let originColor  = leftBar.barView.backgroundColor
+            leftBar.barView.backgroundColor  = didSelectedColor
+            rightBar.barView.backgroundColor = didSelectedColor
+
             self.exchangeFrame(leftBar: leftBar, rightBar: rightBar) { [weak self] in
                 guard let self = self else { return }
-                self.offset += 1
+                leftBar.barView.backgroundColor  = originColor
+                rightBar.barView.backgroundColor = originColor
+                self.index += 1
                 self.sort()
             }
         } else {
-            self.offset    += 1
-            self.skipCount += 1
-            if self.skipCount < self.barList.count {
+            self.index  += 1
+            self.offset += 1
+            if self.offset < self.barList.count {
                 self.sort()
             } else {
                 BPLog("排序完成✅")

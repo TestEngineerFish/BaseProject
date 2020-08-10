@@ -15,9 +15,13 @@ protocol TableViewProtocol {
 
 class BaseTableView: BPView, TableViewProtocol {
     var type: AlgorithmType
-    var barList   = [BarView]()
-    var offset    = 0
-    var skipCount = 0
+    var barList = [BarView]()
+    var index   = 0
+    var offset  = 0
+
+    var normalColor      = UIColor.blue1
+    var willSelectColor  = UIColor.orange1.withAlphaComponent(0.4)
+    var didSelectedColor = UIColor.orange1
 
     init(type: AlgorithmType, frame: CGRect) {
         self.type = type
@@ -29,9 +33,11 @@ class BaseTableView: BPView, TableViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setData(numberList: [CGFloat]) {
-        let barWidth  = self.size.width / CGFloat(numberList.count * 2)
-        var offsetX   = barWidth / 2
+    func setData() {
+        let isRandom   = BPCacheManager.object(forKey: .randomData) as? Bool ?? false
+        let numberList = AlgorithmModelManager.share.numberList(random: isRandom)
+        let barWidth   = self.size.width / CGFloat(numberList.count * 2)
+        var offsetX    = barWidth / 2
         for number in numberList {
             let barView = BarView(number: number)
             self.addSubview(barView)
@@ -43,15 +49,20 @@ class BaseTableView: BPView, TableViewProtocol {
 
     func sort() {}
 
+    /// 交换两个视图的位置
+    /// - Parameters:
+    ///   - leftBar: 左侧的视图
+    ///   - rightBar: 右侧的视图
+    ///   - block: 交换后的回调
     internal func exchangeFrame(leftBar: BarView, rightBar: BarView, finished block: (()->Void)?) {
         
         let leftBarFrame = leftBar.frame
-
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             leftBar.frame = rightBar.frame
             rightBar.frame = leftBarFrame
         }) { (completed) in
             if completed {
+                // 交换数组中对象的位置
                 let leftIndex  = self.barList.firstIndex(of: leftBar) ?? 0
                 let rightIndex = self.barList.firstIndex(of: rightBar) ?? 0
                 self.barList.swapAt(leftIndex, rightIndex)
@@ -59,10 +70,19 @@ class BaseTableView: BPView, TableViewProtocol {
             }
         }
     }
+
+    // MARK: ==== Tools ====
+    private func resetData() {
+        self.barList.removeAll()
+        self.removeAllSubviews()
+        self.index    = 0
+        self.offset   = 0
+    }
     
     // MARK: ==== TableViewProtocol ====
     func restart() {
-        
+        self.resetData()
+        self.setData()
     }
     
     func start() {

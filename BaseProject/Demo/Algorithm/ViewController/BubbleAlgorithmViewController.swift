@@ -11,16 +11,6 @@ import UIKit
 class BubbleAlgorithmViewController: BPViewController {
 
     var type: AlgorithmType = .bubble
-
-    var numberList: [CGFloat] {
-        get {
-            var list = [CGFloat]()
-            for _ in 0...10 {
-                list.append(CGFloat.random(in: 0...10))
-            }
-            return list
-        }
-    }
     
     var descriptionView: DescriptionView?
     var tableView: BaseTableView?
@@ -54,7 +44,7 @@ class BubbleAlgorithmViewController: BPViewController {
     override func bindProperty() {
         super.bindProperty()
         self.customNavigationBar?.isHidden = true
-        self.tableView?.setData(numberList: numberList)
+        self.tableView?.setData()
         self.descriptionView?.delegate = self.tableView
     }
 }

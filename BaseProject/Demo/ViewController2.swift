@@ -13,6 +13,7 @@ class ViewController2: BPViewController, UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.customNavigationBar?.isHidden = true
         imageView.image = UIImage(named: "dog")
         self.view.addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
@@ -50,10 +51,6 @@ class ViewController2: BPViewController, UINavigationControllerDelegate {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print(6)
-    }
-
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return BPCheckerboardTransitionAnimator()
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

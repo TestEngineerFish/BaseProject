@@ -11,7 +11,12 @@ import Foundation
 /// 设定常量值
 /// - note: 1、防止多处写出错; 2、便于查询
 enum BPCacheKey: String {
-    case version = ""
+    /// 版本号
+    case version       = "kVersion"
+    /// 算法数据
+    case algorithmData = "kAlgorithmData"
+    /// 是否随机产生数据
+    case randomData    =  "kRandomData"
 }
 
 struct BPCacheManager {
