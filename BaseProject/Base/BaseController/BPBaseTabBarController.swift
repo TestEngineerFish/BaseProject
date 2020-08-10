@@ -54,7 +54,7 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
     /// 设置底部TabBarItem
     func addChildViewController() {
         let vc = ViewController1()
-        let home = UINavigationController(rootViewController: vc)
+        let home = BPBaseNavigationController(rootViewController: vc)
         home.tabBarItem.title         = "HOME"
         home.tabBarItem.image         = UIImage(named: "home_unselect")
         home.tabBarItem.selectedImage = UIImage(named: "home_selected")
@@ -62,7 +62,7 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
         self.addChild(home)
         
         let dynamicVC = ViewController2()
-        let dynamic = UINavigationController(rootViewController: dynamicVC)
+        let dynamic = BPBaseNavigationController(rootViewController: dynamicVC)
         dynamic.tabBarItem.title         = "DYNAMIC"
         dynamic.tabBarItem.image         = UIImage(named: "dynamic_unselect")
         dynamic.tabBarItem.selectedImage = UIImage(named: "dynamic_selected")
@@ -78,14 +78,14 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
         self.addChild(publish)
         
         let messageVC = ViewController3()
-        let message = UINavigationController(rootViewController: messageVC)
+        let message = BPBaseNavigationController(rootViewController: messageVC)
         message.tabBarItem.title         = "MESSAGE"
         message.tabBarItem.image         = UIImage(named: "message_unselect")
         message.tabBarItem.selectedImage = UIImage(named: "message_selected")
         self.addChild(message)
         
         let profileVC = ViewController4()
-        let profile = UINavigationController(rootViewController: profileVC)
+        let profile = BPBaseNavigationController(rootViewController: profileVC)
         profile.tabBarItem.title         = "PROFILE"
         profile.tabBarItem.image         = UIImage(named: "profile_unselect")
         profile.tabBarItem.selectedImage = UIImage(named: "profile_selected")

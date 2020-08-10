@@ -13,7 +13,7 @@ protocol TableViewProtocol {
     func start()
 }
 
-class TableView: BPView, TableViewProtocol {
+class BaseTableView: BPView, TableViewProtocol {
     var type: AlgorithmType
     var barList   = [BarView]()
     var offset    = 0

@@ -10,7 +10,7 @@ import UIKit
 
 class BubbleAlgorithmViewController: BPViewController {
 
-    var type: AlgorithmType
+    var type: AlgorithmType = .bubble
 
     var numberList: [CGFloat] {
         get {
@@ -23,16 +23,7 @@ class BubbleAlgorithmViewController: BPViewController {
     }
     
     var descriptionView: DescriptionView?
-    var tableView: TableView?
-
-    init(type: AlgorithmType) {
-        self.type = type
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var tableView: BaseTableView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,13 +34,14 @@ class BubbleAlgorithmViewController: BPViewController {
     override func createSubviews() {
         super.createSubviews()
         self.descriptionView  = DescriptionView(type: self.type)
-        let tableSize = CGSize(width: kScreenWidth - AdaptSize(30), height: AdaptSize(200))
+        let tableSize  = CGSize(width: kScreenWidth - AdaptSize(30), height: AdaptSize(200))
         self.tableView = TableFactoryManager.share.createTableView(type: self.type, frame: CGRect(origin: .zero, size: tableSize))
         self.tableView?.layer.setDefaultShadow()
         self.view.addSubview(descriptionView!)
         self.view.addSubview(tableView!)
         self.descriptionView?.snp.makeConstraints({ (make) in
-            make.left.top.right.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.top.equalToSuperview().offset(AdaptSize(150))
             make.bottom.equalTo(self.tableView!.snp.top).offset(AdaptSize(-15))
         })
         self.tableView?.snp.makeConstraints({ (make) in

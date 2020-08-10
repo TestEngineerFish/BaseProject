@@ -53,7 +53,7 @@ class BarView: BPView {
 
     override func bindProperty() {
         super.bindProperty()
-        self.barView.backgroundColor = UIColor.randomColor()
+        self.barView.backgroundColor = UIColor.blue1
         let numberStr = String(format: "%0.1f", number)
         self.numberLabel.text        = numberStr
     }

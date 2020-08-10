@@ -30,7 +30,7 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     override func createSubviews() {
         super.createSubviews()
         self.view.addSubview(tableView)
-        tableView.snp.makeConstraints { (make) in
+        self.tableView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(kNavHeight)
             make.leading.trailing.bottom.equalToSuperview()
         }
@@ -62,8 +62,8 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let type = self.typeList[indexPath.row]
-        let vc = BubbleAlgorithmViewController(type: type)
+        let vc = BubbleAlgorithmViewController()
+        vc.type = self.typeList[indexPath.row]
         self.navigationController?.present(vc, animated: true, completion: nil)
     }
 

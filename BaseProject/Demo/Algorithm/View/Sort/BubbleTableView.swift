@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BubbleTableView: TableView {
+class BubbleTableView: BaseTableView {
     
     override func sort() {
         super.sort()

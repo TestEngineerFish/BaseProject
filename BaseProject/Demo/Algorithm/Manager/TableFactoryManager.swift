@@ -11,7 +11,7 @@ import Foundation
 struct TableFactoryManager {
     static let share = TableFactoryManager()
     
-    func createTableView(type: AlgorithmType, frame rect: CGRect) -> TableView {
+    func createTableView(type: AlgorithmType, frame rect: CGRect) -> BaseTableView {
         switch type {
             case .bubble:
                 return BubbleTableView(type: type, frame: rect)

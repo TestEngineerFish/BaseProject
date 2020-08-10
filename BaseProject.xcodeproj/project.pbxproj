@@ -24,7 +24,7 @@
 		225C48E124DD425700594FEE /* BubbleAlgorithmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C48E024DD425700594FEE /* BubbleAlgorithmViewController.swift */; };
 		225C48E324DD45EE00594FEE /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C48E224DD45EE00594FEE /* BarView.swift */; };
 		225C48E524DD460F00594FEE /* BPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C48E424DD460F00594FEE /* BPView.swift */; };
-		225C48E724DD4FF800594FEE /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C48E624DD4FF800594FEE /* TableView.swift */; };
+		225C48E724DD4FF800594FEE /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C48E624DD4FF800594FEE /* BaseTableView.swift */; };
 		2261F49F24DD685800309DE3 /* AlgorithmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261F49E24DD685800309DE3 /* AlgorithmModel.swift */; };
 		22625315238F9F2B00A1CD54 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22625314238F9F2B00A1CD54 /* Array+Extension.swift */; };
 		22642BA6233A451D004E1DF9 /* NSObject+CrashDefender.m in Sources */ = {isa = PBXBuildFile; fileRef = 22642BA5233A451D004E1DF9 /* NSObject+CrashDefender.m */; };
@@ -59,7 +59,6 @@
 		22C621BA22DC805600A7C849 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B922DC805600A7C849 /* ViewController1.swift */; };
 		22C621BF22DC805600A7C849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22C621BE22DC805600A7C849 /* Assets.xcassets */; };
 		22C621C222DC805600A7C849 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C621C022DC805600A7C849 /* LaunchScreen.storyboard */; };
-		22C621DD22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621DC22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift */; };
 		22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621DE22DC886300A7C849 /* YYBaseModel.swift */; };
 		22C621EE22DC8A7800A7C849 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621ED22DC8A7800A7C849 /* UIDevice+Extension.swift */; };
 		22C621F122DC8D1000A7C849 /* YYGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621F022DC8D1000A7C849 /* YYGlobal.swift */; };
@@ -138,7 +137,7 @@
 		225C48E024DD425700594FEE /* BubbleAlgorithmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleAlgorithmViewController.swift; sourceTree = "<group>"; };
 		225C48E224DD45EE00594FEE /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		225C48E424DD460F00594FEE /* BPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPView.swift; sourceTree = "<group>"; };
-		225C48E624DD4FF800594FEE /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		225C48E624DD4FF800594FEE /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
 		2261F49E24DD685800309DE3 /* AlgorithmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmModel.swift; sourceTree = "<group>"; };
 		22625314238F9F2B00A1CD54 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		22642BA4233A451D004E1DF9 /* NSObject+CrashDefender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CrashDefender.h"; sourceTree = "<group>"; };
@@ -182,7 +181,6 @@
 		22C621BE22DC805600A7C849 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22C621C122DC805600A7C849 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22C621C322DC805600A7C849 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22C621DC22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYWantToKnowQuestionListModel.swift; sourceTree = "<group>"; };
 		22C621DE22DC886300A7C849 /* YYBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYBaseModel.swift; sourceTree = "<group>"; };
 		22C621ED22DC8A7800A7C849 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		22C621F022DC8D1000A7C849 /* YYGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYGlobal.swift; sourceTree = "<group>"; };
@@ -436,7 +434,6 @@
 				225C48DA24DD41ED00594FEE /* Algorithm */,
 				CFFB34E123595ED8002D440E /* WebSource */,
 				CF26719B22FF970F00E6B47F /* Publish */,
-				22C621DC22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift */,
 				22C621DE22DC886300A7C849 /* YYBaseModel.swift */,
 				22C621B922DC805600A7C849 /* ViewController1.swift */,
 				CF26719322FF0A4300E6B47F /* ViewController2.swift */,
@@ -606,7 +603,7 @@
 		CF49A87E24DFEDBA00D8DAC4 /* Sort */ = {
 			isa = PBXGroup;
 			children = (
-				225C48E624DD4FF800594FEE /* TableView.swift */,
+				225C48E624DD4FF800594FEE /* BaseTableView.swift */,
 				CF49A87F24DFEE5300D8DAC4 /* BubbleTableView.swift */,
 			);
 			path = Sort;
@@ -855,7 +852,6 @@
 				22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */,
 				CF87869822F709C20031E4B9 /* BPAuthoriationManager.swift in Sources */,
 				224582012326032B0031CC7A /* IMDBCenter.swift in Sources */,
-				22C621DD22DC822700A7C849 /* YYWantToKnowQuestionListModel.swift in Sources */,
 				CF26719022FEB39B00E6B47F /* BPBaseTabBarController.swift in Sources */,
 				22AED50E234DD6AE00A91A68 /* GCDAsyncUdpSocket.m in Sources */,
 				CF8EB58B22DCCCA600EC2FE5 /* UIFont+Extension.swift in Sources */,
@@ -882,7 +878,7 @@
 				2245820B2326549E0031CC7A /* BPCacheManager.swift in Sources */,
 				2264EF7F22F820F900A89C82 /* BPAlerViewTwoButton.swift in Sources */,
 				CF8EB56422DCC05D00EC2FE5 /* SAMKeychain+Extension.swift in Sources */,
-				225C48E724DD4FF800594FEE /* TableView.swift in Sources */,
+				225C48E724DD4FF800594FEE /* BaseTableView.swift in Sources */,
 				22D018F92321F7F0007AFA1B /* BPDatabaseProtocol.swift in Sources */,
 				CF49A88224DFF09C00D8DAC4 /* DescriptionView.swift in Sources */,
 				CF8EB59E22DCD04300EC2FE5 /* Date+Extension.swift in Sources */,

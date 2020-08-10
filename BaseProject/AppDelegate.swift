@@ -16,8 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    var navController: BPBaseNavigationController?
-
     let networkManager = NetworkReachabilityManager()
 
 
