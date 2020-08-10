@@ -9,66 +9,100 @@
 import Foundation
 
 class InsertionSortTableView: BaseTableView {
+    
+    var rightBar: BarView?
+    
     override func sort() {
         if self.index >= self.barList.count {
             BPLog("排序完成✅")
             return
         }
         BPLog("Index:", index)
-        let rightBar = self.barList[index]
-        rightBar.barView.backgroundColor = willSelectColor
-        // 移出
-        self.transform(bar: rightBar, x: 0, y: self.height / 2) { [weak self] in
-            guard let self = self else { return }
+        if rightBar == nil {
+            self.rightBar = self.barList[index]
+        }
+
+        self.rightBar?.barView.backgroundColor = willSelectColor
+        self.transfromDown(bar: rightBar!) {
             if self.index > 0 {
-                for _offset in 1...self.index {
-                    let priviousBar = self.barList[self.index - _offset]
-                    if priviousBar.number > rightBar.number {
-                        self.transform(bar: priviousBar, x: priviousBar.width * 2, y: 0) { [weak self] in
-                            guard let self = self else { return }
-                            self.transform(bar: rightBar, x: -priviousBar.width * 2, y: 0, block: nil)
-                            // 匹配到了第一个后
-                            if _offset == self.index {
-                                // 插入
-                                self.transform(bar: rightBar, x: 0, y: 0) { [weak self] in
-                                    guard let self = self else { return }
-                                    rightBar.barView.backgroundColor = self.didSelectedColor
-                                    self.index += 1
-                                    BPLog("当前Index：", self.index)
-                                    self.sort()
-                                }
+                while self.offset <= self.index {
+                    let previousBar = self.barList[self.index - self.offset]
+                    if previousBar.number > self.rightBar!.number {
+                        self.transfromRight(bar: previousBar) {
+                            self.transfromLeft(bar: self.rightBar!) {
+                                self.offset += 1
                             }
                         }
                     } else {
-                        // 插入
-                        self.transform(bar: rightBar, x: 0, y: 0) { [weak self] in
-                            guard let self = self else { return }
-                            rightBar.barView.backgroundColor = self.didSelectedColor
-                            self.index += 1
-                            BPLog("当前Index：", self.index)
+                        self.transfromUp(bar: self.rightBar!) {
+                            self.clear()
                             self.sort()
                         }
-                        break
                     }
                 }
-//                self.sort()
+                self.transfromUp(bar: self.rightBar!) {
+                    self.clear()
+                    self.sort()
+                }
             } else {
-                // 插入
-                self.transform(bar: rightBar, x: 0, y: 0) { [weak self] in
-                    guard let self = self else { return }
-                    rightBar.barView.backgroundColor = self.didSelectedColor
-                    self.index += 1
+                self.transfromUp(bar: self.rightBar!) {
+                    self.rightBar?.barView.backgroundColor = self.didSelectedColor
+                    self.clear()
                     self.sort()
                 }
             }
         }
     }
-
-    private func transform(bar: BarView, x: CGFloat, y: CGFloat, block: (()->Void)?) {
-        let tx = bar.transform.tx + x
-        let ty = bar.transform.ty + y
+    
+    private func clear() {
+        self.index += 1
+        self.offset = 0
+        self.rightBar?.barView.backgroundColor = didSelectedColor
+        self.rightBar = nil
+    }
+    
+    /// 左移一格
+    private func transfromLeft(bar: BarView, block: (()->Void)?) {
+        let tx = bar.transform.tx - bar.width * 2
+        let ty = bar.transform.ty
         UIView.animate(withDuration: 0.25, animations: {
             bar.transform = CGAffineTransform(translationX: tx, y: ty)
+        }) { (finished) in
+            if finished {
+                block?()
+            }
+        }
+    }
+    /// 右移一格
+    private func transfromRight(bar: BarView, block: (()->Void)?) {
+        let tx = bar.transform.tx + bar.width * 2
+        let ty = bar.transform.ty
+        UIView.animate(withDuration: 0.25, animations: {
+            bar.transform = CGAffineTransform(translationX: tx, y: ty)
+        }) { (finished) in
+            if finished {
+                block?()
+            }
+        }
+    }
+    /// 下移一格
+    private func transfromDown(bar: BarView, block: (()->Void)?) {
+        let tx = bar.transform.tx
+        let ty = self.height / 2
+        UIView.animate(withDuration: 0.25, animations: {
+            bar.transform = CGAffineTransform(translationX: tx, y: ty)
+        }) { (finished) in
+            if finished {
+                block?()
+            }
+        }
+    }
+    /// 上移一格
+    private func transfromUp(bar: BarView, block: (()->Void)?) {
+        let tx = bar.transform.tx
+        let ty = 0
+        UIView.animate(withDuration: 0.25, animations: {
+            bar.transform = CGAffineTransform(translationX: tx, y: CGFloat(ty))
         }) { (finished) in
             if finished {
                 block?()
