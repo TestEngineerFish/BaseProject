@@ -81,6 +81,7 @@ class DescriptionView: BPView {
     
     override func bindProperty() {
         super.bindProperty()
+        self.switchView.isOn = BPCacheManager.object(forKey: .randomData) as? Bool ?? false
         self.startButton.addTarget(self, action: #selector(startSort), for: .touchUpInside)
         self.restartButton.addTarget(self, action: #selector(restart), for: .touchUpInside)
         self.switchView.addTarget(self, action: #selector(switchChange), for: .valueChanged)
