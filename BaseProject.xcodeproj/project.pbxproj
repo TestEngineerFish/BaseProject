@@ -12,7 +12,8 @@
 		2211803322EEE47500B77911 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2211803222EEE47500B77911 /* CALayer+Extension.swift */; };
 		2218AE3923D098D000EF2E42 /* BPLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2218AE3823D098D000EF2E42 /* BPLogManager.swift */; };
 		221F5C4A22E95B4000F9355C /* AppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */; };
-		2233952F24E1133C0052C7CC /* ChooseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233952E24E1133C0052C7CC /* ChooseTableView.swift */; };
+		2233952F24E1133C0052C7CC /* ChooseSortTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233952E24E1133C0052C7CC /* ChooseSortTableView.swift */; };
+		2233953124E138EA0052C7CC /* InsertionSortTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233953024E138EA0052C7CC /* InsertionSortTableView.swift */; };
 		223D5EF5244DA98100482127 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D5EF4244DA98100482127 /* NSDate+Extension.m */; };
 		22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22413E3122E83E2100F2C678 /* DeviceInfoGlobal.swift */; };
 		22413E3422E8400900F2C678 /* NotificationNameGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22413E3322E8400900F2C678 /* NotificationNameGlobal.swift */; };
@@ -89,7 +90,7 @@
 		CF26719822FF0A6B00E6B47F /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719722FF0A6B00E6B47F /* ViewController4.swift */; };
 		CF26719A22FF0B1B00E6B47F /* BPBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719922FF0B1B00E6B47F /* BPBaseNavigationController.swift */; };
 		CF26719D22FF973300E6B47F /* PublishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719C22FF973300E6B47F /* PublishView.swift */; };
-		CF49A88024DFEE5300D8DAC4 /* BubbleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49A87F24DFEE5300D8DAC4 /* BubbleTableView.swift */; };
+		CF49A88024DFEE5300D8DAC4 /* BubbleSortTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49A87F24DFEE5300D8DAC4 /* BubbleSortTableView.swift */; };
 		CF49A88224DFF09C00D8DAC4 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49A88124DFF09C00D8DAC4 /* DescriptionView.swift */; };
 		CF49A88724DFF4B900D8DAC4 /* TableFactoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49A88624DFF4B900D8DAC4 /* TableFactoryManager.swift */; };
 		CF6E171E235F56540008C466 /* BPWebViewImplementClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E171D235F56540008C466 /* BPWebViewImplementClass.swift */; };
@@ -123,7 +124,8 @@
 		2211803222EEE47500B77911 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		2218AE3823D098D000EF2E42 /* BPLogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPLogManager.swift; sourceTree = "<group>"; };
 		221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Extension.swift"; sourceTree = "<group>"; };
-		2233952E24E1133C0052C7CC /* ChooseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTableView.swift; sourceTree = "<group>"; };
+		2233952E24E1133C0052C7CC /* ChooseSortTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSortTableView.swift; sourceTree = "<group>"; };
+		2233953024E138EA0052C7CC /* InsertionSortTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSortTableView.swift; sourceTree = "<group>"; };
 		223D5EF3244DA98100482127 /* NSDate+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		223D5EF4244DA98100482127 /* NSDate+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		223D5EF7244DAAAA00482127 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -215,7 +217,7 @@
 		CF26719922FF0B1B00E6B47F /* BPBaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseNavigationController.swift; sourceTree = "<group>"; };
 		CF26719C22FF973300E6B47F /* PublishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishView.swift; sourceTree = "<group>"; };
 		CF27E37F22DE279E0056ADFA /* BaseProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseProject-Bridging-Header.h"; sourceTree = "<group>"; };
-		CF49A87F24DFEE5300D8DAC4 /* BubbleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTableView.swift; sourceTree = "<group>"; };
+		CF49A87F24DFEE5300D8DAC4 /* BubbleSortTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleSortTableView.swift; sourceTree = "<group>"; };
 		CF49A88124DFF09C00D8DAC4 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		CF49A88624DFF4B900D8DAC4 /* TableFactoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableFactoryManager.swift; sourceTree = "<group>"; };
 		CF6E171D235F56540008C466 /* BPWebViewImplementClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPWebViewImplementClass.swift; sourceTree = "<group>"; };
@@ -596,8 +598,9 @@
 			isa = PBXGroup;
 			children = (
 				225C48E624DD4FF800594FEE /* BaseTableView.swift */,
-				CF49A87F24DFEE5300D8DAC4 /* BubbleTableView.swift */,
-				2233952E24E1133C0052C7CC /* ChooseTableView.swift */,
+				CF49A87F24DFEE5300D8DAC4 /* BubbleSortTableView.swift */,
+				2233952E24E1133C0052C7CC /* ChooseSortTableView.swift */,
+				2233953024E138EA0052C7CC /* InsertionSortTableView.swift */,
 			);
 			path = Sort;
 			sourceTree = "<group>";
@@ -885,7 +888,7 @@
 				22D4981F22FD163A00281530 /* BPRefreshHeaderView.swift in Sources */,
 				22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */,
 				2264EF9422F97A2800A89C82 /* BPTaskRequest.swift in Sources */,
-				CF49A88024DFEE5300D8DAC4 /* BubbleTableView.swift in Sources */,
+				CF49A88024DFEE5300D8DAC4 /* BubbleSortTableView.swift in Sources */,
 				CF26719422FF0A4300E6B47F /* ViewController2.swift in Sources */,
 				22AED512234EC75500A91A68 /* Optional+Extension.swift in Sources */,
 				CF8EB59C22DCCEBC00EC2FE5 /* IconFontString.swift in Sources */,
@@ -894,7 +897,7 @@
 				225C48E524DD460F00594FEE /* BPView.swift in Sources */,
 				22F1A30223B598680046F4D4 /* NSObject+Extension.swift in Sources */,
 				CF26719D22FF973300E6B47F /* PublishView.swift in Sources */,
-				2233952F24E1133C0052C7CC /* ChooseTableView.swift in Sources */,
+				2233952F24E1133C0052C7CC /* ChooseSortTableView.swift in Sources */,
 				22D018FB2321F800007AFA1B /* BPDatabaseManager.swift in Sources */,
 				223D5EF5244DA98100482127 /* NSDate+Extension.m in Sources */,
 				CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */,
@@ -921,6 +924,7 @@
 				225C48E324DD45EE00594FEE /* BarView.swift in Sources */,
 				CF6E17222362045A0008C466 /* FindRouteUtil.swift in Sources */,
 				CF8EB56622DCC09B00EC2FE5 /* Bundle+Extension.swift in Sources */,
+				2233953124E138EA0052C7CC /* InsertionSortTableView.swift in Sources */,
 				CF8EB58D22DCCCFC00EC2FE5 /* String+Extension.swift in Sources */,
 				2201542123745BCB004E4A99 /* BPGlobalFunction.swift in Sources */,
 				22C621F722DC8E0B00A7C849 /* UIColor+Extension.swift in Sources */,

@@ -9,8 +9,19 @@
 import ObjectMapper
 
 enum AlgorithmType: String {
-    case bubble = "冒泡排序"
-    case choose = "选择排序"
+    case bubbleSort    = "冒泡排序"
+    case chooseSort    = "选择排序"
+    case insertionSort = "插入排序"
+
+    /// 是否双层显示
+    func isDouble() -> Bool {
+        switch self {
+        case .insertionSort:
+            return true
+        default:
+            return false
+        }
+    }
 }
 
 struct AlgorithmModel: Mappable {

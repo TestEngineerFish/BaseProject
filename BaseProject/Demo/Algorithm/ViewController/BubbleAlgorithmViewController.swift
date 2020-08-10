@@ -10,7 +10,7 @@ import UIKit
 
 class BubbleAlgorithmViewController: BPViewController {
 
-    var type: AlgorithmType = .bubble
+    var type: AlgorithmType = .bubbleSort
     
     var descriptionView: DescriptionView?
     var tableView: BaseTableView?
@@ -23,9 +23,8 @@ class BubbleAlgorithmViewController: BPViewController {
 
     override func createSubviews() {
         super.createSubviews()
-        self.descriptionView  = DescriptionView(type: self.type)
-        let tableSize  = CGSize(width: kScreenWidth - AdaptSize(30), height: AdaptSize(200))
-        self.tableView = TableFactoryManager.share.createTableView(type: self.type, frame: CGRect(origin: .zero, size: tableSize))
+        self.descriptionView = DescriptionView(type: self.type)
+        self.tableView       = TableFactoryManager.share.createTableView(type: self.type, frame: .zero)
         self.tableView?.layer.setDefaultShadow()
         self.view.addSubview(descriptionView!)
         self.view.addSubview(tableView!)
@@ -37,13 +36,14 @@ class BubbleAlgorithmViewController: BPViewController {
         self.tableView?.snp.makeConstraints({ (make) in
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(AdaptSize(-15))
-            make.size.equalTo(tableSize)
+            make.size.equalTo(self.tableView!.size)
         })
     }
 
     override func bindProperty() {
         super.bindProperty()
-        self.customNavigationBar?.title    = self.type.rawValue
+        self.customNavigationBar?.leftButton.isHidden = true
+        self.customNavigationBar?.title = self.type.rawValue
         self.tableView?.setData()
         self.descriptionView?.delegate = self.tableView
     }

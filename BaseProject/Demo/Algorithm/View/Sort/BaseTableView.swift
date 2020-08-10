@@ -25,6 +25,11 @@ class BaseTableView: BPView, TableViewProtocol {
 
     init(type: AlgorithmType, frame: CGRect) {
         self.type = type
+        let frame: CGRect = {
+            let _width = kScreenWidth - AdaptSize(30)
+            let _height = type.isDouble() ? AdaptSize(400) : AdaptSize(200)
+            return CGRect(origin: .zero, size: CGSize(width: _width, height: _height))
+        }()
         super.init(frame: frame)
         self.backgroundColor = .white
     }
@@ -37,11 +42,12 @@ class BaseTableView: BPView, TableViewProtocol {
         let isRandom   = BPCacheManager.object(forKey: .randomData) as? Bool ?? false
         let numberList = AlgorithmModelManager.share.numberList(random: isRandom)
         let barWidth   = self.size.width / CGFloat(numberList.count * 2)
+        let barHeight  = self.type.isDouble() ? self.size.height / 2 : self.size.height
         var offsetX    = barWidth / 2
         for number in numberList {
             let barView = BarView(number: number)
             self.addSubview(barView)
-            barView.frame = CGRect(x: offsetX, y: 0, width: barWidth, height: self.size.height)
+            barView.frame = CGRect(x: offsetX, y: 0, width: barWidth, height: barHeight)
             offsetX += barWidth * 2
             self.barList.append(barView)
         }

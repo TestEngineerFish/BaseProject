@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var typeList: [AlgorithmType] = [.bubble, .choose]
+    var typeList: [AlgorithmType] = [.bubbleSort, .chooseSort, .insertionSort]
 
     var tableView: UITableView = {
         let tableView = UITableView()
@@ -64,7 +64,8 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc  = BubbleAlgorithmViewController()
         vc.type = self.typeList[indexPath.row]
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.present(vc, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
 
 }
