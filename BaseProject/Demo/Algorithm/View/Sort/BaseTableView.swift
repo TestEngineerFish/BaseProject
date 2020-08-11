@@ -84,6 +84,55 @@ class BaseTableView: BPView, TableViewProtocol {
         self.index    = 0
         self.offset   = 0
     }
+
+    /// 左移一格
+    internal func transfromLeft(bar: BarView, block: (()->Void)?) {
+        let tx = bar.transform.tx - bar.width * 2
+        let ty = bar.transform.ty
+        UIView.animate(withDuration: 0.25, animations: {
+            bar.transform = CGAffineTransform(translationX: tx, y: ty)
+        }) { (finished) in
+            if finished {
+                block?()
+            }
+        }
+    }
+    /// 右移一格
+    internal func transfromRight(bar: BarView, block: (()->Void)?) {
+        let tx = bar.transform.tx + bar.width * 2
+        let ty = bar.transform.ty
+        UIView.animate(withDuration: 0.25, animations: {
+            bar.transform = CGAffineTransform(translationX: tx, y: ty)
+        }) { (finished) in
+            if finished {
+                block?()
+            }
+        }
+    }
+    /// 下移一格
+    internal func transfromDown(bar: BarView, block: (()->Void)?) {
+        let tx = bar.transform.tx
+        let ty = self.height / 2
+        UIView.animate(withDuration: 0.25, animations: {
+            bar.transform = CGAffineTransform(translationX: tx, y: ty)
+        }) { (finished) in
+            if finished {
+                block?()
+            }
+        }
+    }
+    /// 上移一格
+    internal func transfromUp(bar: BarView, block: (()->Void)?) {
+        let tx = bar.transform.tx
+        let ty = 0
+        UIView.animate(withDuration: 0.25, animations: {
+            bar.transform = CGAffineTransform(translationX: tx, y: CGFloat(ty))
+        }) { (finished) in
+            if finished {
+                block?()
+            }
+        }
+    }
     
     // MARK: ==== TableViewProtocol ====
     func restart() {

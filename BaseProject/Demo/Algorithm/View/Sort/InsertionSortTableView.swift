@@ -55,8 +55,12 @@ class InsertionSortTableView: BaseTableView {
         } else {
             let previousBar = self.barList[self.index - self.offset]
             if previousBar.number > _rightBar.number {
-                self.transfromRight(leftBar: previousBar, rightBar: _rightBar) { [weak self] in
+                self.transfromRight(bar: previousBar) { [weak self] in
                     guard let self = self else { return }
+                    // 交换数组中对象的位置
+                    let leftIndex  = self.barList.firstIndex(of: previousBar) ?? 0
+                    let rightIndex = self.barList.firstIndex(of: _rightBar) ?? 0
+                    self.barList.swapAt(leftIndex, rightIndex)
                     self.transfromLeft(bar: _rightBar) {
                         self.compare()
                     }
@@ -76,7 +80,6 @@ class InsertionSortTableView: BaseTableView {
         self.rightBar = nil
     }
 
-
     // MARK: ==== Tools ====
     
     private func clear() {
@@ -84,59 +87,5 @@ class InsertionSortTableView: BaseTableView {
         self.offset = 0
         self.rightBar?.barView.backgroundColor = didSelectedColor
         self.rightBar = nil
-    }
-    
-    /// 左移一格
-    private func transfromLeft(bar: BarView, block: (()->Void)?) {
-        let tx = bar.transform.tx - bar.width * 2
-        let ty = bar.transform.ty
-        UIView.animate(withDuration: 0.25, animations: {
-            bar.transform = CGAffineTransform(translationX: tx, y: ty)
-        }) { (finished) in
-            if finished {
-                block?()
-            }
-        }
-    }
-    /// 右移一格
-    private func transfromRight(leftBar: BarView, rightBar:BarView, block: (()->Void)?) {
-        let tx = leftBar.transform.tx + leftBar.width * 2
-        let ty = leftBar.transform.ty
-        UIView.animate(withDuration: 0.25, animations: {
-            leftBar.transform = CGAffineTransform(translationX: tx, y: ty)
-        }) { [weak self] (finished) in
-            guard let self = self else { return }
-            if finished {
-                // 交换数组中对象的位置
-                let leftIndex  = self.barList.firstIndex(of: leftBar) ?? 0
-                let rightIndex = self.barList.firstIndex(of: rightBar) ?? 0
-                self.barList.swapAt(leftIndex, rightIndex)
-                block?()
-            }
-        }
-    }
-    /// 下移一格
-    private func transfromDown(bar: BarView, block: (()->Void)?) {
-        let tx = bar.transform.tx
-        let ty = self.height / 2
-        UIView.animate(withDuration: 0.25, animations: {
-            bar.transform = CGAffineTransform(translationX: tx, y: ty)
-        }) { (finished) in
-            if finished {
-                block?()
-            }
-        }
-    }
-    /// 上移一格
-    private func transfromUp(bar: BarView, block: (()->Void)?) {
-        let tx = bar.transform.tx
-        let ty = 0
-        UIView.animate(withDuration: 0.25, animations: {
-            bar.transform = CGAffineTransform(translationX: tx, y: CGFloat(ty))
-        }) { (finished) in
-            if finished {
-                block?()
-            }
-        }
     }
 }
