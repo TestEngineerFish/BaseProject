@@ -12,7 +12,7 @@
 		2211803322EEE47500B77911 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2211803222EEE47500B77911 /* CALayer+Extension.swift */; };
 		2218AE3923D098D000EF2E42 /* BPLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2218AE3823D098D000EF2E42 /* BPLogManager.swift */; };
 		221F5C4A22E95B4000F9355C /* AppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */; };
-		2233952F24E1133C0052C7CC /* ChooseSortTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233952E24E1133C0052C7CC /* ChooseSortTableView.swift */; };
+		2233952F24E1133C0052C7CC /* SelectionSortTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233952E24E1133C0052C7CC /* SelectionSortTableView.swift */; };
 		2233953124E138EA0052C7CC /* InsertionSortTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233953024E138EA0052C7CC /* InsertionSortTableView.swift */; };
 		223D5EF5244DA98100482127 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D5EF4244DA98100482127 /* NSDate+Extension.m */; };
 		22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22413E3122E83E2100F2C678 /* DeviceInfoGlobal.swift */; };
@@ -124,7 +124,7 @@
 		2211803222EEE47500B77911 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		2218AE3823D098D000EF2E42 /* BPLogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPLogManager.swift; sourceTree = "<group>"; };
 		221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Extension.swift"; sourceTree = "<group>"; };
-		2233952E24E1133C0052C7CC /* ChooseSortTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSortTableView.swift; sourceTree = "<group>"; };
+		2233952E24E1133C0052C7CC /* SelectionSortTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSortTableView.swift; sourceTree = "<group>"; };
 		2233953024E138EA0052C7CC /* InsertionSortTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSortTableView.swift; sourceTree = "<group>"; };
 		223D5EF3244DA98100482127 /* NSDate+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		223D5EF4244DA98100482127 /* NSDate+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
@@ -599,7 +599,7 @@
 			children = (
 				225C48E624DD4FF800594FEE /* BaseTableView.swift */,
 				CF49A87F24DFEE5300D8DAC4 /* BubbleSortTableView.swift */,
-				2233952E24E1133C0052C7CC /* ChooseSortTableView.swift */,
+				2233952E24E1133C0052C7CC /* SelectionSortTableView.swift */,
 				2233953024E138EA0052C7CC /* InsertionSortTableView.swift */,
 			);
 			path = Sort;
@@ -897,7 +897,7 @@
 				225C48E524DD460F00594FEE /* BPView.swift in Sources */,
 				22F1A30223B598680046F4D4 /* NSObject+Extension.swift in Sources */,
 				CF26719D22FF973300E6B47F /* PublishView.swift in Sources */,
-				2233952F24E1133C0052C7CC /* ChooseSortTableView.swift in Sources */,
+				2233952F24E1133C0052C7CC /* SelectionSortTableView.swift in Sources */,
 				22D018FB2321F800007AFA1B /* BPDatabaseManager.swift in Sources */,
 				223D5EF5244DA98100482127 /* NSDate+Extension.m in Sources */,
 				CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */,

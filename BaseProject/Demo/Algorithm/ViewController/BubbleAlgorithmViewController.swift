@@ -35,7 +35,7 @@ class BubbleAlgorithmViewController: BPViewController {
         })
         self.tableView?.snp.makeConstraints({ (make) in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(AdaptSize(-15))
+            make.bottom.equalToSuperview().offset(AdaptSize(-15) - kSafeBottomMargin)
             make.size.equalTo(self.tableView!.size)
         })
     }

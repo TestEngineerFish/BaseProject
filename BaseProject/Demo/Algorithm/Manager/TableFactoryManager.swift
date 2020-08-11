@@ -16,7 +16,7 @@ struct TableFactoryManager {
         case .bubbleSort:
             return BubbleSortTableView(type: type, frame: rect)
         case .chooseSort:
-            return ChooseSortTableView(type: type, frame: rect)
+            return SelectionSortTableView(type: type, frame: rect)
         case .insertionSort:
             return InsertionSortTableView(type: type, frame: rect)
         default:
