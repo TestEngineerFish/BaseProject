@@ -23,6 +23,8 @@ class BaseTableView: BPView, TableViewProtocol {
     var willSelectColor  = UIColor.orange1.withAlphaComponent(0.4)
     var didSelectedColor = UIColor.orange1
 
+    var rightBar: BarView?
+
     init(type: AlgorithmType, frame: CGRect) {
         self.type = type
         let frame: CGRect = {
@@ -83,6 +85,7 @@ class BaseTableView: BPView, TableViewProtocol {
         self.removeAllSubviews()
         self.index    = 0
         self.offset   = 0
+        self.rightBar = nil
     }
     
     // MARK: ==== TableViewProtocol ====

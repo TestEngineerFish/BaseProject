@@ -10,8 +10,6 @@ import Foundation
 
 class InsertionSortTableView: BaseTableView {
     
-    var rightBar: BarView?
-    
     override func sort() {
         if self.index >= self.barList.count {
             BPLog("排序完成✅")
@@ -20,33 +18,40 @@ class InsertionSortTableView: BaseTableView {
         BPLog("Index:", index)
         if rightBar == nil {
             self.rightBar = self.barList[index]
+            self.rightBar?.barView.backgroundColor = willSelectColor
         }
 
-        self.rightBar?.barView.backgroundColor = willSelectColor
         self.transfromDown(bar: rightBar!) {
             if self.index > 0 {
-                while self.offset <= self.index {
-                    let previousBar = self.barList[self.index - self.offset]
-                    if previousBar.number > self.rightBar!.number {
-                        self.transfromRight(bar: previousBar) {
-                            self.transfromLeft(bar: self.rightBar!) {
-                                self.offset += 1
-                            }
-                        }
-                    } else {
-                        self.transfromUp(bar: self.rightBar!) {
-                            self.clear()
-                            self.sort()
-                        }
-                    }
-                }
-                self.transfromUp(bar: self.rightBar!) {
-                    self.clear()
-                    self.sort()
-                }
+                // 倒叙比较
+                self.compare()
             } else {
                 self.transfromUp(bar: self.rightBar!) {
                     self.rightBar?.barView.backgroundColor = self.didSelectedColor
+                    self.clear()
+                    self.sort()
+                }
+            }
+        }
+    }
+
+    private func compare() {
+        self.offset += 1
+        if self.offset > self.index {
+            self.transfromUp(bar: self.rightBar!) {
+                self.clear()
+                self.sort()
+            }
+        } else {
+            let previousBar = self.barList[self.index - self.offset]
+            if previousBar.number > self.rightBar!.number {
+                self.transfromRight(leftBar: previousBar, rightBar: self.rightBar!) {
+                    self.transfromLeft(bar: self.rightBar!) {
+                        self.compare()
+                    }
+                }
+            } else {
+                self.transfromUp(bar: self.rightBar!) {
                     self.clear()
                     self.sort()
                 }
@@ -74,13 +79,17 @@ class InsertionSortTableView: BaseTableView {
         }
     }
     /// 右移一格
-    private func transfromRight(bar: BarView, block: (()->Void)?) {
-        let tx = bar.transform.tx + bar.width * 2
-        let ty = bar.transform.ty
+    private func transfromRight(leftBar: BarView, rightBar:BarView, block: (()->Void)?) {
+        let tx = leftBar.transform.tx + leftBar.width * 2
+        let ty = leftBar.transform.ty
         UIView.animate(withDuration: 0.25, animations: {
-            bar.transform = CGAffineTransform(translationX: tx, y: ty)
+            leftBar.transform = CGAffineTransform(translationX: tx, y: ty)
         }) { (finished) in
             if finished {
+                // 交换数组中对象的位置
+                let leftIndex  = self.barList.firstIndex(of: leftBar) ?? 0
+                let rightIndex = self.barList.firstIndex(of: rightBar) ?? 0
+                self.barList.swapAt(leftIndex, rightIndex)
                 block?()
             }
         }
