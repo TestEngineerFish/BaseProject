@@ -11,6 +11,9 @@ import Foundation
 class DescriptionView: BPView {
     let type: AlgorithmType
     var delegate: TableViewProtocol?
+    // 通俗描述
+    // 优点
+    // 缺点
     
     let startButton: BPBaseButton = {
         let button = BPBaseButton(.theme, frame: .zero)

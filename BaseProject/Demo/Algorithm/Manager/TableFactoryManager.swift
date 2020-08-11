@@ -13,14 +13,14 @@ struct TableFactoryManager {
     
     func createTableView(type: AlgorithmType, frame rect: CGRect) -> BaseTableView {
         switch type {
-        case .bubbleSort:
-            return BubbleSortTableView(type: type, frame: rect)
-        case .chooseSort:
-            return SelectionSortTableView(type: type, frame: rect)
-        case .insertionSort:
-            return InsertionSortTableView(type: type, frame: rect)
-        default:
-            return BubbleSortTableView(type: type, frame: rect)
+            case .bubbleSort:
+                return BubbleSortTableView(type: type, frame: rect)
+            case .chooseSort:
+                return SelectionSortTableView(type: type, frame: rect)
+            case .insertionSort:
+                return InsertionSortTableView(type: type, frame: rect)
+            case .shellSort:
+                return ShellSortTableView(type: type, frame: rect)
         }
     }
 }

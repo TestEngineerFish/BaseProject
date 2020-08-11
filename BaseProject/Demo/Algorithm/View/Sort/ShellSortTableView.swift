@@ -15,20 +15,24 @@ class ShellSortTableView: BaseTableView {
         for gap in gapList {
             var tmpList = [BarView]()
             for i in 0..<gap {
-                self.index = i * gap + i
+                self.index = i * gap + self.offset
+                if self.index >= self.barList.count {
+                    continue
+                }
                 let barView = self.barList[self.index]
+                barView.barView.backgroundColor = self.willSelectColor
                 tmpList.append(barView)
+                self.offset = tmpList.count / (self.barList.count / gap)
             }
-            // 移出
-            tmpList.forEach { (barView) in
-                self.transfromDown(bar: barView) {
-                    // 比较
-                    
+            // 比较
+            _ = tmpList.sort { (leftBar, rightBar) -> Bool in
+                if leftBar.number > rightBar.number {
+                    self.exchangeFrame(leftBar: leftBar, rightBar: rightBar, finished: nil)
+                    return false
+                } else {
+                    return true
                 }
             }
-
-            // 交换位置
-            // 插入
         }
     }
 }

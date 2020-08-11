@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var typeList: [AlgorithmType] = [.bubbleSort, .chooseSort, .insertionSort]
+    var typeList: [AlgorithmType] = [.bubbleSort, .chooseSort, .insertionSort, .shellSort]
 
     var tableView: UITableView = {
         let tableView = UITableView()
