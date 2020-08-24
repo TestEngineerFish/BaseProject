@@ -15,6 +15,9 @@
 		2233952F24E1133C0052C7CC /* SelectionSortTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233952E24E1133C0052C7CC /* SelectionSortTableView.swift */; };
 		2233953124E138EA0052C7CC /* InsertionSortTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233953024E138EA0052C7CC /* InsertionSortTableView.swift */; };
 		2233953324E234650052C7CC /* ShellSortTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233953224E234650052C7CC /* ShellSortTableView.swift */; };
+		223AC0EE24F35AEF00C85800 /* DescriptionFactoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223AC0ED24F35AEF00C85800 /* DescriptionFactoryManager.swift */; };
+		223AC0F024F35B5200C85800 /* BubbleSortDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223AC0EF24F35B5200C85800 /* BubbleSortDescriptionView.swift */; };
+		223AC0F224F3AD3800C85800 /* SelectionSortDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223AC0F124F3AD3800C85800 /* SelectionSortDescriptionView.swift */; };
 		223D5EF5244DA98100482127 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D5EF4244DA98100482127 /* NSDate+Extension.m */; };
 		22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22413E3122E83E2100F2C678 /* DeviceInfoGlobal.swift */; };
 		22413E3422E8400900F2C678 /* NotificationNameGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22413E3322E8400900F2C678 /* NotificationNameGlobal.swift */; };
@@ -24,7 +27,7 @@
 		22458205232604D90031CC7A /* BPIMDBOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22458204232604D90031CC7A /* BPIMDBOperator.swift */; };
 		22458207232604EA0031CC7A /* BPNormalDBOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22458206232604EA0031CC7A /* BPNormalDBOperator.swift */; };
 		2245820B2326549E0031CC7A /* BPCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245820A2326549E0031CC7A /* BPCacheManager.swift */; };
-		225C48E124DD425700594FEE /* BubbleAlgorithmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C48E024DD425700594FEE /* BubbleAlgorithmViewController.swift */; };
+		225C48E124DD425700594FEE /* AlgorithmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C48E024DD425700594FEE /* AlgorithmViewController.swift */; };
 		225C48E324DD45EE00594FEE /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C48E224DD45EE00594FEE /* BarView.swift */; };
 		225C48E524DD460F00594FEE /* BPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C48E424DD460F00594FEE /* BPView.swift */; };
 		225C48E724DD4FF800594FEE /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C48E624DD4FF800594FEE /* BaseTableView.swift */; };
@@ -92,7 +95,7 @@
 		CF26719A22FF0B1B00E6B47F /* BPBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719922FF0B1B00E6B47F /* BPBaseNavigationController.swift */; };
 		CF26719D22FF973300E6B47F /* PublishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719C22FF973300E6B47F /* PublishView.swift */; };
 		CF49A88024DFEE5300D8DAC4 /* BubbleSortTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49A87F24DFEE5300D8DAC4 /* BubbleSortTableView.swift */; };
-		CF49A88224DFF09C00D8DAC4 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49A88124DFF09C00D8DAC4 /* DescriptionView.swift */; };
+		CF49A88224DFF09C00D8DAC4 /* BaseDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49A88124DFF09C00D8DAC4 /* BaseDescriptionView.swift */; };
 		CF49A88724DFF4B900D8DAC4 /* TableFactoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49A88624DFF4B900D8DAC4 /* TableFactoryManager.swift */; };
 		CF6E171E235F56540008C466 /* BPWebViewImplementClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E171D235F56540008C466 /* BPWebViewImplementClass.swift */; };
 		CF6E17222362045A0008C466 /* FindRouteUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E17212362045A0008C466 /* FindRouteUtil.swift */; };
@@ -128,6 +131,9 @@
 		2233952E24E1133C0052C7CC /* SelectionSortTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSortTableView.swift; sourceTree = "<group>"; };
 		2233953024E138EA0052C7CC /* InsertionSortTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSortTableView.swift; sourceTree = "<group>"; };
 		2233953224E234650052C7CC /* ShellSortTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellSortTableView.swift; sourceTree = "<group>"; };
+		223AC0ED24F35AEF00C85800 /* DescriptionFactoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionFactoryManager.swift; sourceTree = "<group>"; };
+		223AC0EF24F35B5200C85800 /* BubbleSortDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleSortDescriptionView.swift; sourceTree = "<group>"; };
+		223AC0F124F3AD3800C85800 /* SelectionSortDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSortDescriptionView.swift; sourceTree = "<group>"; };
 		223D5EF3244DA98100482127 /* NSDate+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		223D5EF4244DA98100482127 /* NSDate+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		223D5EF7244DAAAA00482127 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -139,7 +145,7 @@
 		22458204232604D90031CC7A /* BPIMDBOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPIMDBOperator.swift; sourceTree = "<group>"; };
 		22458206232604EA0031CC7A /* BPNormalDBOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPNormalDBOperator.swift; sourceTree = "<group>"; };
 		2245820A2326549E0031CC7A /* BPCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPCacheManager.swift; sourceTree = "<group>"; };
-		225C48E024DD425700594FEE /* BubbleAlgorithmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleAlgorithmViewController.swift; sourceTree = "<group>"; };
+		225C48E024DD425700594FEE /* AlgorithmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmViewController.swift; sourceTree = "<group>"; };
 		225C48E224DD45EE00594FEE /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		225C48E424DD460F00594FEE /* BPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPView.swift; sourceTree = "<group>"; };
 		225C48E624DD4FF800594FEE /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
@@ -220,7 +226,7 @@
 		CF26719C22FF973300E6B47F /* PublishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishView.swift; sourceTree = "<group>"; };
 		CF27E37F22DE279E0056ADFA /* BaseProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF49A87F24DFEE5300D8DAC4 /* BubbleSortTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleSortTableView.swift; sourceTree = "<group>"; };
-		CF49A88124DFF09C00D8DAC4 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		CF49A88124DFF09C00D8DAC4 /* BaseDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDescriptionView.swift; sourceTree = "<group>"; };
 		CF49A88624DFF4B900D8DAC4 /* TableFactoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableFactoryManager.swift; sourceTree = "<group>"; };
 		CF6E171D235F56540008C466 /* BPWebViewImplementClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPWebViewImplementClass.swift; sourceTree = "<group>"; };
 		CF6E171F235F56C80008C466 /* WebViewControllerReadMe.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = WebViewControllerReadMe.md; sourceTree = "<group>"; };
@@ -275,6 +281,16 @@
 			path = Log;
 			sourceTree = "<group>";
 		};
+		223AC0EC24F35A2900C85800 /* Description */ = {
+			isa = PBXGroup;
+			children = (
+				CF49A88124DFF09C00D8DAC4 /* BaseDescriptionView.swift */,
+				223AC0EF24F35B5200C85800 /* BubbleSortDescriptionView.swift */,
+				223AC0F124F3AD3800C85800 /* SelectionSortDescriptionView.swift */,
+			);
+			path = Description;
+			sourceTree = "<group>";
+		};
 		22413E3022E83DF400F2C678 /* Global */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,7 +338,7 @@
 		225C48DB24DD41FF00594FEE /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				225C48E024DD425700594FEE /* BubbleAlgorithmViewController.swift */,
+				225C48E024DD425700594FEE /* AlgorithmViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -330,9 +346,9 @@
 		225C48DC24DD420600594FEE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				223AC0EC24F35A2900C85800 /* Description */,
 				CF49A87E24DFEDBA00D8DAC4 /* Sort */,
 				225C48E224DD45EE00594FEE /* BarView.swift */,
-				CF49A88124DFF09C00D8DAC4 /* DescriptionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -612,6 +628,7 @@
 			isa = PBXGroup;
 			children = (
 				CF49A88624DFF4B900D8DAC4 /* TableFactoryManager.swift */,
+				223AC0ED24F35AEF00C85800 /* DescriptionFactoryManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -870,14 +887,14 @@
 				22D4981A22FD0A8B00281530 /* BPScrollRefreshProtocol.swift in Sources */,
 				2201542323758D2A004E4A99 /* BPLabel.swift in Sources */,
 				2264EF8E22F979BD00A89C82 /* BPBaseRequest.swift in Sources */,
-				225C48E124DD425700594FEE /* BubbleAlgorithmViewController.swift in Sources */,
+				225C48E124DD425700594FEE /* AlgorithmViewController.swift in Sources */,
 				227DDFCF2376D72D006E38E8 /* Utils.swift in Sources */,
 				2245820B2326549E0031CC7A /* BPCacheManager.swift in Sources */,
 				2264EF7F22F820F900A89C82 /* BPAlerViewTwoButton.swift in Sources */,
 				CF8EB56422DCC05D00EC2FE5 /* SAMKeychain+Extension.swift in Sources */,
 				225C48E724DD4FF800594FEE /* BaseTableView.swift in Sources */,
 				22D018F92321F7F0007AFA1B /* BPDatabaseProtocol.swift in Sources */,
-				CF49A88224DFF09C00D8DAC4 /* DescriptionView.swift in Sources */,
+				CF49A88224DFF09C00D8DAC4 /* BaseDescriptionView.swift in Sources */,
 				CF8EB59E22DCD04300EC2FE5 /* Date+Extension.swift in Sources */,
 				CFFB34E02358C1C4002D440E /* BPBaseWebViewController.swift in Sources */,
 				224582032326044D0031CC7A /* NormalDBCenter.swift in Sources */,
@@ -902,6 +919,7 @@
 				22F1A30223B598680046F4D4 /* NSObject+Extension.swift in Sources */,
 				CF26719D22FF973300E6B47F /* PublishView.swift in Sources */,
 				2233952F24E1133C0052C7CC /* SelectionSortTableView.swift in Sources */,
+				223AC0EE24F35AEF00C85800 /* DescriptionFactoryManager.swift in Sources */,
 				22D018FB2321F800007AFA1B /* BPDatabaseManager.swift in Sources */,
 				223D5EF5244DA98100482127 /* NSDate+Extension.m in Sources */,
 				CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */,
@@ -914,6 +932,7 @@
 				22A44AB5244D98280039466E /* BPOCLog.m in Sources */,
 				2211803322EEE47500B77911 /* CALayer+Extension.swift in Sources */,
 				22AED510234DFEF200A91A68 /* BPSocketManager.swift in Sources */,
+				223AC0F024F35B5200C85800 /* BubbleSortDescriptionView.swift in Sources */,
 				22D4982122FD164600281530 /* BPRefreshFooterView.swift in Sources */,
 				22C6221B22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift in Sources */,
 				2264EF9622F98A3700A89C82 /* BPBaseButton.swift in Sources */,
@@ -923,6 +942,7 @@
 				2264EF8122F90EED00A89C82 /* BPBaseAlertView.swift in Sources */,
 				22C621B822DC805600A7C849 /* AppDelegate.swift in Sources */,
 				224581FE2325EFCD0031CC7A /* BPSQLManager.swift in Sources */,
+				223AC0F224F3AD3800C85800 /* SelectionSortDescriptionView.swift in Sources */,
 				2264EF8822F9302B00A89C82 /* BPAlertViewImage.swift in Sources */,
 				2264EF9022F979DB00A89C82 /* BPBaseResopnse.swift in Sources */,
 				225C48E324DD45EE00594FEE /* BarView.swift in Sources */,
