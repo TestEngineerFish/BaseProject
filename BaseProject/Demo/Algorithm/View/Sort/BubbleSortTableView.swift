@@ -20,8 +20,8 @@ class BubbleSortTableView: BaseTableView {
         if leftBar.number > rightBar.number {
             self.offset = 0
             let originColor  = leftBar.barView.backgroundColor
-            leftBar.barView.backgroundColor  = didSelectedColor
-            rightBar.barView.backgroundColor = didSelectedColor
+            leftBar.barView.backgroundColor  = willSelectColor
+            rightBar.barView.backgroundColor = willSelectColor
 
             self.exchangeFrame(leftBar: leftBar, rightBar: rightBar) { [weak self] in
                 guard let self = self else { return }
@@ -36,6 +36,9 @@ class BubbleSortTableView: BaseTableView {
             if self.offset < self.barList.count {
                 self.sort()
             } else {
+                self.barList.forEach { (barView) in
+                    barView.barView.backgroundColor = self.didSelectedColor
+                }
                 BPLog("排序完成✅")
             }
         }

@@ -14,7 +14,7 @@ class BubbleSortDescriptionView: BaseDescriptionView {
         super.bindProperty()
         self.setWorstTimeComplexity(content: "O(n^2)")
         self.setAverageTimeComplexity(context: "O(n^2)")
-        self.setBestTimeComplexity(context: "O(n^2)")
+        self.setBestTimeComplexity(context: "O(n)")
         self.spaceComplexityLabel.text = "O(1)"
         self.descriptionLabel.text     = "比较相邻的两个元素，如果第一个比第二大，则交换他们。如此反复，直到不需要交换。"
         self.virtueLabel.text          = "经典！简单！冒泡就相当于学代码先学“Hello word”，学算法先学“冒泡排序”"

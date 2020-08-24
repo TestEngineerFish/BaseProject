@@ -11,12 +11,12 @@ import Foundation
 class SelectionSortDescriptionView: BaseDescriptionView {
     override func bindProperty() {
         super.bindProperty()
-        self.spaceComplexityLabel.text = "O(1)"
         self.setWorstTimeComplexity(content: "O(n^2)")
         self.setAverageTimeComplexity(context: "O(n^2)")
-        self.setBestTimeComplexity(context: "O(n^2)")
-        self.descriptionLabel.text     = "比较相邻的两个元素，如果第一个比第二大，则交换他们。如此反复，直到不需要交换。"
-        self.virtueLabel.text          = "经典！简单！就相当于学代码先学“Hello word”，学算法先学“冒泡排序”"
+        self.setBestTimeComplexity(context: "O(n)")
+        self.spaceComplexityLabel.text = "O(1)"
+        self.descriptionLabel.text     = "从下标0开始往后找最小的值，找到后移动到下标位置，下标+1，继续往后查找，往复如此，直到下标等于数组长度"
+        self.virtueLabel.text          = "不占用额外的内存空间"
         self.defectLabel.text          = "效率低！因为是逐个对比，所以数组越长，效率越低！"
     }
 }

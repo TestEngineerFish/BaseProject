@@ -35,7 +35,7 @@ class BaseDescriptionView: BPView {
         let label = UILabel()
         label.text          = ""
         label.textColor     = UIColor.gray1
-        label.font          = UIFont.regularFont(ofSize: AdaptSize(16))
+        label.font          = UIFont.regularFont(ofSize: AdaptSize(14))
         label.textAlignment = .left
         label.numberOfLines = 0
         return label
@@ -86,7 +86,7 @@ class BaseDescriptionView: BPView {
         let label = UILabel()
         label.text          = ""
         label.textColor     = UIColor.gray1
-        label.font          = UIFont.regularFont(ofSize: AdaptSize(16))
+        label.font          = UIFont.regularFont(ofSize: AdaptSize(14))
         label.textAlignment = .left
         label.numberOfLines = 0
         return label
@@ -104,7 +104,7 @@ class BaseDescriptionView: BPView {
         let label = UILabel()
         label.text          = ""
         label.textColor     = UIColor.gray1
-        label.font          = UIFont.regularFont(ofSize: AdaptSize(16))
+        label.font          = UIFont.regularFont(ofSize: AdaptSize(14))
         label.textAlignment = .left
         label.numberOfLines = 0
         return label
@@ -122,7 +122,7 @@ class BaseDescriptionView: BPView {
         let label = UILabel()
         label.text          = ""
         label.textColor     = UIColor.gray1
-        label.font          = UIFont.regularFont(ofSize: AdaptSize(16))
+        label.font          = UIFont.regularFont(ofSize: AdaptSize(14))
         label.textAlignment = .left
         label.numberOfLines = 0
         return label
@@ -200,7 +200,7 @@ class BaseDescriptionView: BPView {
         spaceComplexityTitleLabel.sizeToFit()
         spaceComplexityTitleLabel.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(AdaptSize(15))
-            make.top.equalToSuperview().offset(AdaptSize(30))
+            make.top.equalToSuperview()
             make.width.equalTo(spaceComplexityTitleLabel.width)
         }
         spaceComplexityLabel.snp.makeConstraints { (make) in
