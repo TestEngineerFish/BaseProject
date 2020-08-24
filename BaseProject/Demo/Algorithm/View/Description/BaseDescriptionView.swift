@@ -23,23 +23,6 @@ class BaseDescriptionView: BPView {
         view.backgroundColor = UIColor.clear
         return view
     }()
-    var timeComplexityTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text          = "时间复杂度："
-        label.textColor     = UIColor.black1
-        label.font          = UIFont.mediumFont(ofSize: AdaptSize(16))
-        label.textAlignment = .left
-        return label
-    }()
-    var timeComplexityLabel: UILabel = {
-        let label = UILabel()
-        label.text          = ""
-        label.textColor     = UIColor.gray1
-        label.font          = UIFont.regularFont(ofSize: AdaptSize(16))
-        label.textAlignment = .left
-        label.numberOfLines = 0
-        return label
-    }()
     var spaceComplexityTitleLabel: UILabel = {
         let label = UILabel()
         label.text          = "空间复杂度："
@@ -55,6 +38,39 @@ class BaseDescriptionView: BPView {
         label.font          = UIFont.regularFont(ofSize: AdaptSize(16))
         label.textAlignment = .left
         label.numberOfLines = 0
+        return label
+    }()
+    var timeComplexityTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text          = "时间复杂度："
+        label.textColor     = UIColor.black1
+        label.font          = UIFont.mediumFont(ofSize: AdaptSize(16))
+        label.textAlignment = .left
+        return label
+    }()
+    var timeComplexityStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.spacing      = AdaptSize(5)
+        stackView.alignment    = .leading
+        stackView.distribution = .equalSpacing
+        return stackView
+    }()
+    /// 最坏时间复杂度
+    var worstTimeComplexityLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        return label
+    }()
+    /// 最好时间复杂度
+    var bestTimeComplexityLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        return label
+    }()
+    /// 平均时间复杂度
+    var averageTimeComplexityLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
         return label
     }()
     /// 通俗描述
@@ -159,16 +175,19 @@ class BaseDescriptionView: BPView {
         self.addSubview(switchView)
         self.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        contentView.addSubview(timeComplexityTitleLabel)
-        contentView.addSubview(timeComplexityLabel)
         contentView.addSubview(spaceComplexityTitleLabel)
         contentView.addSubview(spaceComplexityLabel)
+        contentView.addSubview(timeComplexityTitleLabel)
+        contentView.addSubview(timeComplexityStackView)
         contentView.addSubview(descriptionTitleLabel)
         contentView.addSubview(virtueTitleLabel)
         contentView.addSubview(defectTitleLabel)
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(virtueLabel)
         contentView.addSubview(defectLabel)
+        timeComplexityStackView.addArrangedSubview(worstTimeComplexityLabel)
+        timeComplexityStackView.addArrangedSubview(averageTimeComplexityLabel)
+        timeComplexityStackView.addArrangedSubview(bestTimeComplexityLabel)
 
         scrollView.snp.makeConstraints { (make) in
             make.left.top.right.equalToSuperview()
@@ -178,31 +197,33 @@ class BaseDescriptionView: BPView {
             make.edges.equalToSuperview()
             make.width.equalToSuperview()
         }
-        timeComplexityTitleLabel.sizeToFit()
-        timeComplexityTitleLabel.snp.makeConstraints { (make) in
-            make.left.top.equalToSuperview().offset(AdaptSize(30))
-            make.width.equalTo(timeComplexityTitleLabel.width)
-        }
-        timeComplexityLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(timeComplexityTitleLabel)
-            make.left.equalTo(timeComplexityTitleLabel.snp.right)
-            make.right.equalToSuperview().offset(AdaptSize(-15))
-        }
         spaceComplexityTitleLabel.sizeToFit()
         spaceComplexityTitleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(timeComplexityTitleLabel)
-            make.top.equalTo(timeComplexityTitleLabel.snp.bottom).offset(AdaptSize(5))
+            make.left.equalToSuperview().offset(AdaptSize(15))
+            make.top.equalToSuperview().offset(AdaptSize(30))
             make.width.equalTo(spaceComplexityTitleLabel.width)
         }
         spaceComplexityLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(spaceComplexityTitleLabel.snp.right)
             make.top.equalTo(spaceComplexityTitleLabel)
-            make.right.equalTo(timeComplexityLabel)
+            make.left.equalTo(spaceComplexityTitleLabel.snp.right)
+            make.right.equalToSuperview().offset(AdaptSize(-15))
+        }
+        timeComplexityTitleLabel.sizeToFit()
+        timeComplexityTitleLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(spaceComplexityTitleLabel)
+            make.top.equalTo(spaceComplexityTitleLabel.snp.bottom).offset(AdaptSize(5))
+            make.width.equalTo(timeComplexityTitleLabel.width)
+        }
+        timeComplexityStackView.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(AdaptSize(30))
+            make.right.equalToSuperview().offset(AdaptSize(-30))
+            make.top.equalTo(timeComplexityTitleLabel.snp.bottom).offset(AdaptSize(5))
+            make.height.equalTo(AdaptSize(20))
         }
         descriptionTitleLabel.sizeToFit()
         descriptionTitleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(timeComplexityTitleLabel)
-            make.top.equalTo(spaceComplexityLabel.snp.bottom).offset(AdaptSize(30))
+            make.left.equalToSuperview().offset(AdaptSize(15))
+            make.top.equalTo(timeComplexityStackView.snp.bottom).offset(AdaptSize(30))
             make.width.equalTo(descriptionTitleLabel.width)
         }
         descriptionLabel.snp.makeConstraints { (make) in
@@ -274,6 +295,33 @@ class BaseDescriptionView: BPView {
     private func switchChange() {
         let isOn = self.switchView.isOn
         BPCacheManager.set(isOn, forKey: .randomData)
+    }
+
+    /// 设置最坏时间复杂度
+    /// - Parameter text: 复杂度
+    internal func setWorstTimeComplexity(content text: String) {
+        let prefixStr = "最坏："
+        let attrStr   = NSMutableAttributedString(string: prefixStr + text, attributes:  [NSAttributedString.Key.foregroundColor : UIColor.gray1, NSAttributedString.Key.font : UIFont.regularFont(ofSize: AdaptSize(14))])
+        attrStr.addAttributes([NSAttributedString.Key.foregroundColor : UIColor.red1, NSAttributedString.Key.font : UIFont.mediumFont(ofSize: AdaptSize(14))], range: NSRange(location: 0, length: prefixStr.count))
+        self.worstTimeComplexityLabel.attributedText = attrStr
+    }
+
+    /// 设置平均时间复杂度
+    /// - Parameter text: 复杂度
+    internal func setAverageTimeComplexity(context text: String) {
+        let prefixStr = "平均："
+        let attrStr   = NSMutableAttributedString(string: prefixStr + text, attributes:  [NSAttributedString.Key.foregroundColor : UIColor.gray1, NSAttributedString.Key.font : UIFont.regularFont(ofSize: AdaptSize(14))])
+        attrStr.addAttributes([NSAttributedString.Key.foregroundColor : UIColor.black1, NSAttributedString.Key.font : UIFont.mediumFont(ofSize: AdaptSize(14))], range: NSRange(location: 0, length: prefixStr.count))
+        self.averageTimeComplexityLabel.attributedText = attrStr
+    }
+
+    /// 设置最好时间复杂度
+    /// - Parameter text: 复杂度
+    internal func setBestTimeComplexity(context text: String) {
+        let prefixStr = "最好："
+        let attrStr   = NSMutableAttributedString(string: prefixStr + text, attributes:  [NSAttributedString.Key.foregroundColor : UIColor.gray1, NSAttributedString.Key.font : UIFont.regularFont(ofSize: AdaptSize(14))])
+        attrStr.addAttributes([NSAttributedString.Key.foregroundColor : UIColor.green1, NSAttributedString.Key.font : UIFont.mediumFont(ofSize: AdaptSize(14))], range: NSRange(location: 0, length: prefixStr.count))
+        self.bestTimeComplexityLabel.attributedText = attrStr
     }
 }
 
