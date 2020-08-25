@@ -17,7 +17,7 @@ enum AlgorithmType: String {
     /// 是否双层显示
     func isDouble() -> Bool {
         switch self {
-        case .insertionSort:
+        case .insertionSort, .shellSort:
             return true
         default:
             return false

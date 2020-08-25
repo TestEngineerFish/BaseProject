@@ -135,7 +135,7 @@ class BaseDescriptionView: BPView {
         return button
     }()
 
-    let restartButton: BPBaseButton = {
+    let resetButton: BPBaseButton = {
         let button = BPBaseButton(.theme, frame: .zero)
         button.setTitle("重置", for: .normal)
         button.titleLabel?.font = UIFont.regularFont(ofSize: AdaptSize(16))
@@ -170,7 +170,7 @@ class BaseDescriptionView: BPView {
         super.createSubviews()
         self.backgroundColor = .white
         self.addSubview(startButton)
-        self.addSubview(restartButton)
+        self.addSubview(resetButton)
         self.addSubview(switchLabel)
         self.addSubview(switchView)
         self.addSubview(scrollView)
@@ -257,13 +257,13 @@ class BaseDescriptionView: BPView {
             make.bottom.equalToSuperview().offset(AdaptSize(-15))
             make.size.equalTo(CGSize(width: AdaptSize(100), height: AdaptSize(50)))
         }
-        restartButton.snp.makeConstraints { (make) in
+        resetButton.snp.makeConstraints { (make) in
             make.left.equalTo(startButton.snp.right).offset(AdaptSize(15))
             make.centerY.equalTo(startButton)
             make.size.equalTo(CGSize(width: AdaptSize(100), height: AdaptSize(50)))
         }
         switchLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(restartButton.snp.right).offset(AdaptSize(15))
+            make.left.equalTo(resetButton.snp.right).offset(AdaptSize(15))
             make.centerY.equalTo(startButton)
             make.size.equalTo(CGSize(width: AdaptSize(50), height: 20))
         }
@@ -277,9 +277,9 @@ class BaseDescriptionView: BPView {
     override func bindProperty() {
         super.bindProperty()
         self.switchView.isOn = BPCacheManager.object(forKey: .randomData) as? Bool ?? false
-        self.startButton.addTarget(self, action: #selector(startSort), for: .touchUpInside)
-        self.restartButton.addTarget(self, action: #selector(restart), for: .touchUpInside)
-        self.switchView.addTarget(self, action: #selector(switchChange), for: .valueChanged)
+        self.startButton.addTarget(self, action: #selector(self.startSort), for: .touchUpInside)
+        self.resetButton.addTarget(self, action: #selector(self.reset), for: .touchUpInside)
+        self.switchView.addTarget(self, action: #selector(self.switchChange), for: .valueChanged)
     }
     
     // MARK: ==== Event ====
@@ -288,8 +288,8 @@ class BaseDescriptionView: BPView {
         self.delegate?.start()
     }
     @objc
-    private func restart() {
-        self.delegate?.restart()
+    private func reset() {
+        self.delegate?.reset()
     }
     @objc
     private func switchChange() {

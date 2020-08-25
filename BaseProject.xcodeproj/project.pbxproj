@@ -19,6 +19,7 @@
 		223AC0F024F35B5200C85800 /* BubbleSortDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223AC0EF24F35B5200C85800 /* BubbleSortDescriptionView.swift */; };
 		223AC0F224F3AD3800C85800 /* SelectionSortDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223AC0F124F3AD3800C85800 /* SelectionSortDescriptionView.swift */; };
 		223AC0F424F3CEBA00C85800 /* InsertionSortDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223AC0F324F3CEBA00C85800 /* InsertionSortDescriptionView.swift */; };
+		223AC0F624F4EB2A00C85800 /* ShellSortDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223AC0F524F4EB2A00C85800 /* ShellSortDescriptionView.swift */; };
 		223D5EF5244DA98100482127 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 223D5EF4244DA98100482127 /* NSDate+Extension.m */; };
 		22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22413E3122E83E2100F2C678 /* DeviceInfoGlobal.swift */; };
 		22413E3422E8400900F2C678 /* NotificationNameGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22413E3322E8400900F2C678 /* NotificationNameGlobal.swift */; };
@@ -136,6 +137,7 @@
 		223AC0EF24F35B5200C85800 /* BubbleSortDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleSortDescriptionView.swift; sourceTree = "<group>"; };
 		223AC0F124F3AD3800C85800 /* SelectionSortDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSortDescriptionView.swift; sourceTree = "<group>"; };
 		223AC0F324F3CEBA00C85800 /* InsertionSortDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSortDescriptionView.swift; sourceTree = "<group>"; };
+		223AC0F524F4EB2A00C85800 /* ShellSortDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellSortDescriptionView.swift; sourceTree = "<group>"; };
 		223D5EF3244DA98100482127 /* NSDate+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		223D5EF4244DA98100482127 /* NSDate+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		223D5EF7244DAAAA00482127 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				223AC0EF24F35B5200C85800 /* BubbleSortDescriptionView.swift */,
 				223AC0F124F3AD3800C85800 /* SelectionSortDescriptionView.swift */,
 				223AC0F324F3CEBA00C85800 /* InsertionSortDescriptionView.swift */,
+				223AC0F524F4EB2A00C85800 /* ShellSortDescriptionView.swift */,
 			);
 			path = Description;
 			sourceTree = "<group>";
@@ -921,6 +924,7 @@
 				2261F49F24DD685800309DE3 /* AlgorithmModel.swift in Sources */,
 				225C48E524DD460F00594FEE /* BPView.swift in Sources */,
 				22F1A30223B598680046F4D4 /* NSObject+Extension.swift in Sources */,
+				223AC0F624F4EB2A00C85800 /* ShellSortDescriptionView.swift in Sources */,
 				CF26719D22FF973300E6B47F /* PublishView.swift in Sources */,
 				2233952F24E1133C0052C7CC /* SelectionSortTableView.swift in Sources */,
 				223AC0EE24F35AEF00C85800 /* DescriptionFactoryManager.swift in Sources */,

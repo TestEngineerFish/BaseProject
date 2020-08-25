@@ -9,15 +9,16 @@
 import UIKit
 
 protocol TableViewProtocol {
-    func restart()
+    func reset()
     func start()
 }
 
 class BaseTableView: BPView, TableViewProtocol {
     var type: AlgorithmType
-    var barList = [BarView]()
-    var index   = 0
-    var offset  = 0
+    var barList  = [BarView]()
+    var index    = 0
+    var offset   = 0
+    var duration = 0.5
 
     var normalColor      = UIColor.blue1
     var willSelectColor  = UIColor.orange1.withAlphaComponent(0.4)
@@ -63,7 +64,7 @@ class BaseTableView: BPView, TableViewProtocol {
     internal func exchangeFrame(leftBar: BarView, rightBar: BarView, finished block: (()->Void)?) {
         
         let leftBarFrame = leftBar.frame
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: duration, animations: {
             leftBar.frame = rightBar.frame
             rightBar.frame = leftBarFrame
         }) { (completed) in
@@ -89,7 +90,7 @@ class BaseTableView: BPView, TableViewProtocol {
     internal func transfromLeft(bar: BarView, block: (()->Void)?) {
         let tx = bar.transform.tx - bar.width * 2
         let ty = bar.transform.ty
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: duration, animations: {
             bar.transform = CGAffineTransform(translationX: tx, y: ty)
         }) { (finished) in
             if finished {
@@ -101,7 +102,7 @@ class BaseTableView: BPView, TableViewProtocol {
     internal func transfromRight(bar: BarView, block: (()->Void)?) {
         let tx = bar.transform.tx + bar.width * 2
         let ty = bar.transform.ty
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: duration, animations: {
             bar.transform = CGAffineTransform(translationX: tx, y: ty)
         }) { (finished) in
             if finished {
@@ -113,7 +114,7 @@ class BaseTableView: BPView, TableViewProtocol {
     internal func transfromDown(bar: BarView, block: (()->Void)?) {
         let tx = bar.transform.tx
         let ty = self.height / 2
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: duration, animations: {
             bar.transform = CGAffineTransform(translationX: tx, y: ty)
         }) { (finished) in
             if finished {
@@ -125,7 +126,7 @@ class BaseTableView: BPView, TableViewProtocol {
     internal func transfromUp(bar: BarView, block: (()->Void)?) {
         let tx = bar.transform.tx
         let ty = 0
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: duration, animations: {
             bar.transform = CGAffineTransform(translationX: tx, y: CGFloat(ty))
         }) { (finished) in
             if finished {
@@ -135,7 +136,7 @@ class BaseTableView: BPView, TableViewProtocol {
     }
     
     // MARK: ==== TableViewProtocol ====
-    func restart() {
+    func reset() {
         self.resetData()
         self.setData()
     }

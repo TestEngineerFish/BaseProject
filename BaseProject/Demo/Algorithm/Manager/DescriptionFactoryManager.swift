@@ -16,11 +16,11 @@ struct DescriptionFactoryManager {
             case .bubbleSort:
                 return BubbleSortDescriptionView(type: type, frame: rect)
             case .chooseSort:
-                return BubbleSortDescriptionView(type: type, frame: rect)
+                return SelectionSortDescriptionView(type: type, frame: rect)
             case .insertionSort:
-                return BubbleSortDescriptionView(type: type, frame: rect)
+                return InsertionSortDescriptionView(type: type, frame: rect)
             case .shellSort:
-                return BubbleSortDescriptionView(type: type, frame: rect)
+                return ShellSortDescription(type: type, frame: rect)
         }
     }
 }
