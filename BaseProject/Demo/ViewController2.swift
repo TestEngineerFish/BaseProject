@@ -10,9 +10,9 @@ import UIKit
 
 class ViewController2: BPViewController, UINavigationControllerDelegate {
 
+    var containerTransitionContext: BPContainerTransitionContext?
     weak var containerTransitionDelegate: BPContainerTransitionDelegate?
     var vcList = [UIViewController]()
-    var containerTransitionContext: BPContainerTransitionContext?
     private var tabBarItemSize = CGSize(width: AdaptSize(64), height: AdaptSize(44))
     private var shouldReserve  = false
     private var interactive    = false

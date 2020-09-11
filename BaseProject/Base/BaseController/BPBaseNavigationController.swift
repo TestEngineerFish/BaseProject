@@ -9,6 +9,27 @@
 import UIKit
 
 class BPBaseNavigationController: UINavigationController, UIGestureRecognizerDelegate {
+    /// 转场环境
+    var transitionContext: BPContainerTransitionContext?
+    /// 转场控制协议
+    weak var transitionDelegate: BPContainerTransitionDelegate?
+    /// 是否取消，页面回弹中
+    private var shouldReserve = false
+    /// 是否是交互式操作
+    private var isInteractive = false
+    /// 记录从哪儿过来（用户交互式操作的返回逻辑）
+    private var fromIndex: Int = 0
+    private var selectedIndex: Int = 0 {
+        willSet {
+            // 如果在回弹中，则不处理
+            if self.shouldReserve {
+                self.shouldReserve = false
+            } else {
+
+            }
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.registerNotification()
@@ -31,6 +52,19 @@ class BPBaseNavigationController: UINavigationController, UIGestureRecognizerDel
     @objc private func screenshotAction() {
         BPLog("检测到截屏")
         _ = self.getScreenshotImage()
+    }
+
+
+    /// 开始页面切换
+    /// - Parameters:
+    ///   - fromIndex: 起始VC的索引
+    ///   - toIndex: 目标VC的索引
+    private func transitionVC(fromIndex: Int, toIndex: Int) {
+        // 防止数组越界
+        guard fromIndex != toIndex, fromIndex >= 0, toIndex >= 0, fromIndex < self.viewControllers.count, toIndex < self.viewControllers.count, let delegate = self.transitionDelegate else {
+            return
+        }
+//        self.transitionContext = BPContainerTransitionContext(containerVC: self, containerView: <#T##UIView#>, fromVC: <#T##UIViewController#>, toVC: <#T##UIViewController#>)
     }
     
     // MARK: ==== Tools ====
