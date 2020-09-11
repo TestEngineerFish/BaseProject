@@ -33,6 +33,8 @@ class BPAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
         super.init()
     }
 
+    // MARK: ==== UIViewControllerAnimatedTransitioning ====
+
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3
     }

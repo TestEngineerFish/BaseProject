@@ -64,8 +64,8 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc  = AlgorithmViewController()
         vc.type = self.typeList[indexPath.row]
-//        self.navigationController?.present(vc, animated: true, completion: nil)
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.present(vc, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
 
 }

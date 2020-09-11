@@ -36,9 +36,13 @@ class BPContainerTransitionContext: NSObject, UIViewControllerContextTransitioni
         }
     }
 
+    /// 开始交互式转场
     func startInteractiveTranstion(delegate: BPContainerTransitionDelegate) {
+        // 获得转场动画控制器
         self.animationController = delegate.containerController(containerVC: self.containerVC, fromVC: self.fromVC, toVC: self.toVC)
+        // 获得动画持续时间
         self.transitionDuration  = self.animationController?.transitionDuration(using: self) ?? 0
+        // 获得转场代理
         if let interactionController = delegate.containerController(containerVC: containerVC, animationController: animationController!) {
             interactionController.startInteractiveTransition(self)
         } else {
@@ -46,8 +50,11 @@ class BPContainerTransitionContext: NSObject, UIViewControllerContextTransitioni
         }
     }
 
+    /// 开始非交互式转场
     func startNonInteractiveTransition(delegate: BPContainerTransitionDelegate) {
+        // 获得转场动画控制器
         self.animationController = delegate.containerController(containerVC: self.containerVC, fromVC: self.fromVC, toVC: self.toVC)
+        // 获得动画持续时间
         self.transitionDuration  = self.animationController?.transitionDuration(using: self) ?? 0
         self.activateNonInteractiveTransition()
     }
@@ -143,11 +150,12 @@ class BPContainerTransitionContext: NSObject, UIViewControllerContextTransitioni
 
     /// 更新百分比
     func updateInteractiveTransition(_ percent: CGFloat) {
-        if animationController != nil && isInteractive {
-            self.transitonPercent = percent
-            self.containerView.layer.timeOffset = CFTimeInterval(percent) * self.transitionDuration
-            (self.containerVC as? ViewController2)?.graduallChangeTabButtonAppear(fromIndex: fromIndex, toIndex: toIndex, percent: percent)
+        guard self.animationController != nil && self.isInteractive else {
+            return
         }
+        self.transitonPercent = percent
+        self.containerView.layer.timeOffset = CFTimeInterval(percent) * self.transitionDuration
+        (self.containerVC as? ViewController2)?.graduallChangeTabButtonAppear(fromIndex: fromIndex, toIndex: toIndex, percent: percent)
     }
 
     /// 用户交互转场完成

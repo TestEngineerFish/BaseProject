@@ -13,6 +13,7 @@ protocol BPContainerTransitionDelegate: NSObjectProtocol {
     /// - Parameters:
     ///   - containerVC: 容器视图
     func containerController(containerVC: UIViewController, fromVC: UIViewController, toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?
+    /// 获得转场代理
     func containerController(containerVC: UIViewController, animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?
 }
 

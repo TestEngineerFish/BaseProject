@@ -105,6 +105,19 @@ class ViewController2: BPViewController, UINavigationControllerDelegate {
         for title in titleList {
             let vc = UIViewController()
             vc.title = title
+            let dateLabel: UILabel = {
+                let label = UILabel()
+                let format = DateFormatter(withFormat: "HH:mm:ss", locale: "cn")
+                label.text          = format.string(from: Date())
+                label.textColor     = UIColor.black1
+                label.font          = UIFont.mediumFont(ofSize: AdaptSize(30))
+                label.textAlignment = .center
+                return label
+            }()
+            vc.view.addSubview(dateLabel)
+            dateLabel.snp.makeConstraints { (make) in
+                make.center.equalToSuperview()
+            }
             vc.view.backgroundColor = UIColor.randomColor()
             self.vcList.append(vc)
         }
@@ -126,11 +139,17 @@ class ViewController2: BPViewController, UINavigationControllerDelegate {
             self.buttonTabBar.isUserInteractionEnabled = false
             let fromVC = self.vcList[fromIndex]
             let toVC   = self.vcList[toIndex]
+            // 1、 准备转场环境
+            // - 1.1 控制视图
+            // - 1.2 fromeVC
+            // - 1.3 toVC
             self.containerTransitionContext = BPContainerTransitionContext(containerVC: self, containerView: self.containerView, fromVC: fromVC, toVC: toVC)
             self.containerTransitionContext?.finishedBlock = { [weak buttonTabBar] in
                 buttonTabBar?.isUserInteractionEnabled = true
             }
+            // 是否是交互式场景
             if self.interactive {
+                // 记录从哪儿来，方便回滚
                 self.priorSelectedIndex = fromIndex
                 self.containerTransitionContext?.startInteractiveTranstion(delegate: self.containerTransitionDelegate!)
             } else {
@@ -192,7 +211,7 @@ class ViewController2: BPViewController, UINavigationControllerDelegate {
             delegate.interactionController.updateInteractiveTransition(percentComplete: progress)
         case .cancelled, .ended:
             self.interactive = false
-            if progress > 0.6 {
+            if progress > 0.4 {
                 BPLog("interactive finished")
                 delegate.interactionController.finishInteractiveTransition()
             } else {
@@ -215,6 +234,7 @@ class ViewController2: BPViewController, UINavigationControllerDelegate {
         toItem.setTitleColor(toItemColor, for: .normal)
     }
 
+    /// 取消转场完成后
     func restoreSelectedIndex() {
         self.shouldReserve = true
         self.selectedIndex = self.priorSelectedIndex
