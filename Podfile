@@ -30,6 +30,7 @@ target 'BaseProject' do
   pod 'lottie-ios'
   # 数据库
   pod 'FMDB'
-  # Pods for BaseProject
+  # 全屏右滑返回
+  pod 'FDFullscreenPopGesture', '1.1'
 
 end

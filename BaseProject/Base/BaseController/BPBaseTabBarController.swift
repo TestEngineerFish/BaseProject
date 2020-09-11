@@ -17,7 +17,8 @@ protocol BPTabBarControllerProtocol {
 
 /// 自定义底部TabBar控制器,实现了TabBar的事件处理协议
 class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BPTabBarControllerProtocol {
-    
+
+    var containerVCDelegate: BPContainerTransitionDelegate?
     /// 发布页面
     lazy var publisView: PublishView = {
         let height    = kScreenHeight - kTabBarHeight
@@ -62,6 +63,8 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
         self.addChild(home)
         
         let dynamicVC = ViewController2()
+        self.containerVCDelegate = BPContainerViewControllerDelegate()
+        dynamicVC.containerTransitionDelegate = self.containerVCDelegate
         let dynamic = BPBaseNavigationController(rootViewController: dynamicVC)
         dynamic.tabBarItem.title         = "DYNAMIC"
         dynamic.tabBarItem.image         = UIImage(named: "dynamic_unselect")

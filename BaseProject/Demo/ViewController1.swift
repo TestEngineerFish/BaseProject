@@ -64,7 +64,42 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc  = AlgorithmViewController()
         vc.type = self.typeList[indexPath.row]
-        self.navigationController?.present(vc, animated: true, completion: nil)
+//        self.navigationController?.present(vc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
 }
+
+// 转场代理
+extension ViewController2: UIViewControllerTransitioningDelegate {
+
+}
+// 动画控制器
+//extension ViewController2: UIViewControllerAnimatedTransitioning {
+//    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+//        transitionContext?.containerView.backgroundColor = .blue
+//        let fromVC   = transitionContext?.viewController(forKey: .from)
+//        let toVC     = transitionContext?.viewController(forKey: .to)
+//        let fromView = transitionContext?.view(forKey: .from)
+//        let toView   = transitionContext?.view(forKey: .to)
+//        return 0.5
+//    }
+//
+//    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+//
+//    }
+//}
+// 交互控制器
+//extension ViewController2: UIViewControllerInteractiveTransitioning {
+//    func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+//
+//    }
+//}
+// 转场环境(生成转场需要的数据)
+//extension ViewController2: UIViewControllerContextTransitioning {
+//
+//}
+// 转场协调器
+//extension ViewController2: UIViewControllerTransitionCoordinator {
+//
+//}

@@ -7,6 +7,7 @@ PODS:
   - CocoaLumberjack/Core (3.6.0)
   - CocoaLumberjack/Swift (3.6.0):
     - CocoaLumberjack/Core
+  - FDFullscreenPopGesture (1.1)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - AlamofireObjectMapper (~> 5.2)
   - Bugly
   - CocoaLumberjack/Swift
+  - FDFullscreenPopGesture (= 1.1)
   - FMDB
   - Kingfisher (~> 5.7)
   - lottie-ios
@@ -40,6 +42,7 @@ SPEC REPOS:
     - AlamofireObjectMapper
     - Bugly
     - CocoaLumberjack
+    - FDFullscreenPopGesture
     - FMDB
     - Kingfisher
     - lottie-ios
@@ -54,6 +57,7 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   CocoaLumberjack: 78b0c238666f4f58db069738ec176f4519557516
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   Kingfisher: ff98240aebb7302bdc4f1ecd701761030ce18b16
   lottie-ios: 496ac5cea1bbf1a7bd1f1f472f3232eb1b8d744b
@@ -63,6 +67,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 5e33766899fd80fdee4511c1eebbf2cece0376af
+PODFILE CHECKSUM: ea6b8ab122b308c4d3467a5799528e4dad4a5bda
 
 COCOAPODS: 1.8.4
