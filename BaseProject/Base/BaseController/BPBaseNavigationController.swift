@@ -106,6 +106,7 @@ class BPBaseNavigationController: UINavigationController, UIGestureRecognizerDel
 
         switch gesture.state {
         case .began:
+            print("VC List: \(self.navigationController?.viewControllers)")
             self.isInteractive = true
             let velocityX      = gesture.velocity(in: view).x
 

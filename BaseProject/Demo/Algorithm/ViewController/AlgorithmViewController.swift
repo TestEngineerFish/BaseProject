@@ -78,6 +78,6 @@ class AlgorithmViewController: BPViewController {
 
     @objc
     private func back() {
-        (self.navigationController as? BPBaseNavigationController)?.selectedIndex = 0
+        UIViewController.currentNavigationController?.pop()
     }
 }

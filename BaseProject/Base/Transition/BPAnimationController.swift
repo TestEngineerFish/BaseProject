@@ -36,7 +36,7 @@ class BPAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     // MARK: ==== UIViewControllerAnimatedTransitioning ====
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 1.3
+        return 0.3
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -82,7 +82,7 @@ class BPAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
 
         // 设置动画
         toView?.transform = toViewTransform
-        
+
         UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
             fromView?.transform = fromViewTransform
             toView?.transform   = .identity

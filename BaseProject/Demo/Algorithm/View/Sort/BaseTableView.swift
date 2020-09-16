@@ -137,16 +137,15 @@ class BaseTableView: BPView, TableViewProtocol {
     
     // MARK: ==== TableViewProtocol ====
     func reset() {
+        let vc = UIViewController()
+        vc.view.backgroundColor = .orange1
+        UIViewController.currentNavigationController?.push(vc: vc)
+        return
         self.resetData()
         self.setData()
     }
     
     func start() {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .orange1
-        UIViewController.currentViewController?.navigationController?.viewControllers.append(vc)
-        (UIViewController.currentViewController?.navigationController as? BPBaseNavigationController)?.selectedIndex += 1
-        return
         self.sort()
     }
 }

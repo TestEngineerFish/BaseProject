@@ -34,7 +34,21 @@ extension UINavigationController {
             targetViewController = viewControllers[targetIndex]
             break
         }
-        
         return targetViewController
+    }
+
+    func push(vc: UIViewController, animation: Bool = true) {
+        self.addChild(vc)
+        if self.children.count > 1 {
+            self.tabBarController?.tabBar.isHidden = true
+        }
+        (self as? BPBaseNavigationController)?.selectedIndex += 1
+    }
+
+    func pop(animation: Bool = true) {
+        (self as? BPBaseNavigationController)?.selectedIndex -= 1
+        if self.children.count <= 2 {
+            self.tabBarController?.tabBar.isHidden = false
+        }
     }
 }

@@ -66,12 +66,10 @@ class BPContainerTransitionContext: NSObject, UIViewControllerContextTransitioni
         if timeOffset > 0 {
             self.containerView.layer.timeOffset = timeOffset
             self.transitonPercent = CGFloat(timeOffset / self.transitionDuration)
-            (self.containerVC as? ViewController2)?.graduallChangeTabButtonAppear(fromIndex: fromIndex, toIndex: toIndex, percent: self.transitonPercent)
         } else {
             displayLink.invalidate()
             self.containerView.layer.timeOffset = 0
             self.containerView.layer.speed      = 1
-            (self.containerVC as? ViewController2)?.graduallChangeTabButtonAppear(fromIndex: fromIndex, toIndex: toIndex, percent: 0)
             let fakeFromView = self.fromVC.view.snapshotView(afterScreenUpdates: true)
             self.containerView.addSubview(fakeFromView!)
             self.perform(#selector(self.removeFakeFromView(fakeView:)), with: fakeFromView, afterDelay: 1/60)
@@ -87,10 +85,7 @@ class BPContainerTransitionContext: NSObject, UIViewControllerContextTransitioni
     private func finishChangeItemAppear(displayLine: CADisplayLink) {
         let percentFrame = 1 / (transitionDuration * 60)
         self.transitonPercent += CGFloat(percentFrame)
-        if self.transitonPercent < 1.0 {
-            (self.containerVC as? ViewController2)?.graduallChangeTabButtonAppear(fromIndex: fromIndex, toIndex: toIndex, percent: self.transitonPercent)
-        } else {
-            (self.containerVC as? ViewController2)?.graduallChangeTabButtonAppear(fromIndex: fromIndex, toIndex: toIndex, percent: 1)
+        if self.transitonPercent > 1.0 {
             displayLine.invalidate()
         }
     }
