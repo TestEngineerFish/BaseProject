@@ -18,7 +18,6 @@ protocol BPTabBarControllerProtocol {
 /// 自定义底部TabBar控制器,实现了TabBar的事件处理协议
 class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BPTabBarControllerProtocol {
 
-    var containerVCDelegate: BPContainerTransitionDelegate?
     /// 发布页面
     lazy var publisView: PublishView = {
         let height    = kScreenHeight - kTabBarHeight
@@ -55,7 +54,10 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
     /// 设置底部TabBarItem
     func addChildViewController() {
         let vc = ViewController1()
-        let home = BPBaseNavigationController(rootViewController: vc)
+        let home = BPBaseNavigationController()
+        home.addChild(vc)
+//        home.view.addSubview(vc.view)
+//        vc.didMove(toParent: home)
         home.tabBarItem.title         = "HOME"
         home.tabBarItem.image         = UIImage(named: "home_unselect")
         home.tabBarItem.selectedImage = UIImage(named: "home_selected")
@@ -63,9 +65,10 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
         self.addChild(home)
         
         let dynamicVC = ViewController2()
-        self.containerVCDelegate = BPContainerViewControllerDelegate()
-        dynamicVC.containerTransitionDelegate = self.containerVCDelegate
-        let dynamic = BPBaseNavigationController(rootViewController: dynamicVC)
+        let dynamic = BPBaseNavigationController()
+        dynamic.addChild(dynamicVC)
+        dynamic.view.addSubview(dynamicVC.view)
+        dynamicVC.didMove(toParent: dynamic)
         dynamic.tabBarItem.title         = "DYNAMIC"
         dynamic.tabBarItem.image         = UIImage(named: "dynamic_unselect")
         dynamic.tabBarItem.selectedImage = UIImage(named: "dynamic_selected")

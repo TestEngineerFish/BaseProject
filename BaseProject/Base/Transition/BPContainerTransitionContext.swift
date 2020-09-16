@@ -21,7 +21,6 @@ class BPContainerTransitionContext: NSObject, UIViewControllerContextTransitioni
     private var transitionDuration: CFTimeInterval = .zero
     private var transitonPercent: CGFloat = .zero
     private var isCancelled: Bool = false
-    var finishedBlock: (()->Void)?
 
     init(containerVC: UIViewController, containerView: UIView, fromVC: UIViewController, toVC: UIViewController) {
         self.containerVC   = containerVC
@@ -30,9 +29,9 @@ class BPContainerTransitionContext: NSObject, UIViewControllerContextTransitioni
         self.toVC          = toVC
         super.init()
         self.toVC.view.frame = containerView.bounds
-        if let vc = containerVC as? ViewController2 {
-            self.fromIndex = vc.vcList.firstIndex(of: fromVC) ?? 0
-            self.toIndex   = vc.vcList.firstIndex(of: toVC) ?? 0
+        if let vc = containerVC as? BPBaseNavigationController {
+            self.fromIndex = vc.viewControllers.firstIndex(of: fromVC) ?? 0
+            self.toIndex   = vc.viewControllers.firstIndex(of: toVC) ?? 0
         }
     }
 
@@ -56,15 +55,8 @@ class BPContainerTransitionContext: NSObject, UIViewControllerContextTransitioni
         self.animationController = delegate.containerController(containerVC: self.containerVC, fromVC: self.fromVC, toVC: self.toVC)
         // 获得动画持续时间
         self.transitionDuration  = self.animationController?.transitionDuration(using: self) ?? 0
+        // 开始转场
         self.activateNonInteractiveTransition()
-    }
-
-    func activateInteractiveTransition() {
-        self.isInteractive = true
-        self.isCancelled   = false
-        self.containerVC.addChild(toVC)
-        self.containerView.layer.speed = 0
-        self.animationController?.animateTransition(using: self)
     }
 
     /// 取消转场时的回弹动画
@@ -109,6 +101,16 @@ class BPContainerTransitionContext: NSObject, UIViewControllerContextTransitioni
     }
 
     // MARK: ==== Tools ====
+
+    /// 交互式转场设置
+    func activateInteractiveTransition() {
+        self.isInteractive = true
+        self.isCancelled   = false
+        self.containerView.layer.speed = 0
+        self.animationController?.animateTransition(using: self)
+    }
+
+    /// 非交互式转场设置
     private func activateNonInteractiveTransition() {
         self.isInteractive = false
         self.isCancelled   = false
@@ -119,12 +121,10 @@ class BPContainerTransitionContext: NSObject, UIViewControllerContextTransitioni
     private func transitionEnd() {
         self.animationController?.animationEnded?(!self.isCancelled)
         if isCancelled {
-            (self.containerVC as? ViewController2)?.restoreSelectedIndex()
+            (self.containerVC as? BPBaseNavigationController)?.restoreSelectedIndex()
             self.isCancelled = false
         }
-        (self.containerVC as? ViewController2)?.containerTransitionContext = nil
-        (self.containerVC as? ViewController2)?.buttonTabBar.isUserInteractionEnabled = true
-        self.finishedBlock?()
+        (self.containerVC as? BPBaseNavigationController)?.transitionContext = nil
     }
 
     // MARK: ==== UIViewControllerContextTransitioning ====
@@ -155,7 +155,6 @@ class BPContainerTransitionContext: NSObject, UIViewControllerContextTransitioni
         }
         self.transitonPercent = percent
         self.containerView.layer.timeOffset = CFTimeInterval(percent) * self.transitionDuration
-        (self.containerVC as? ViewController2)?.graduallChangeTabButtonAppear(fromIndex: fromIndex, toIndex: toIndex, percent: percent)
     }
 
     /// 用户交互转场完成
@@ -192,9 +191,16 @@ class BPContainerTransitionContext: NSObject, UIViewControllerContextTransitioni
     func completeTransition(_ didComplete: Bool) {
         if didComplete {
             self.toVC.didMove(toParent: containerVC)
-            self.fromVC.willMove(toParent: nil)
-            self.fromVC.view.removeFromSuperview()
-            self.fromVC.removeFromParent()
+            if let animationType = self.animationController as? BPAnimationController {
+                switch animationType.transitionType {
+                case BPTransitionType.naviationTransition(.pop):
+                    self.fromVC.willMove(toParent: nil)
+                    self.fromVC.view.removeFromSuperview()
+                    self.fromVC.removeFromParent()
+                default:
+                    break
+                }
+            }
         } else {
             self.toVC.didMove(toParent: containerVC)
             self.toVC.willMove(toParent: nil)

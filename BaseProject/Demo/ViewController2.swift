@@ -8,10 +8,9 @@
 
 import UIKit
 
-class ViewController2: BPViewController, UINavigationControllerDelegate {
+class ViewController2: BPViewController, UINavigationControllerDelegate, BPContainerTransitionDelegate {
 
     var containerTransitionContext: BPContainerTransitionContext?
-    weak var containerTransitionDelegate: BPContainerTransitionDelegate?
     var vcList = [UIViewController]()
     private var tabBarItemSize = CGSize(width: AdaptSize(64), height: AdaptSize(44))
     private var shouldReserve  = false
@@ -135,7 +134,6 @@ class ViewController2: BPViewController, UINavigationControllerDelegate {
         guard fromIndex != toIndex, fromIndex >= 0, toIndex >= 0, fromIndex < self.vcList.count, toIndex < self.vcList.count else {
             return
         }
-        if self.containerTransitionDelegate != nil {
             self.buttonTabBar.isUserInteractionEnabled = false
             let fromVC = self.vcList[fromIndex]
             let toVC   = self.vcList[toIndex]
@@ -144,33 +142,20 @@ class ViewController2: BPViewController, UINavigationControllerDelegate {
             // - 1.2 fromeVC
             // - 1.3 toVC
             self.containerTransitionContext = BPContainerTransitionContext(containerVC: self, containerView: self.containerView, fromVC: fromVC, toVC: toVC)
-            self.containerTransitionContext?.finishedBlock = { [weak buttonTabBar] in
-                buttonTabBar?.isUserInteractionEnabled = true
-            }
+//            self.containerTransitionContext?.finishedBlock = { [weak buttonTabBar] in
+//                buttonTabBar?.isUserInteractionEnabled = true
+//            }
             // 是否是交互式场景
             if self.interactive {
                 // 记录从哪儿来，方便回滚
                 self.priorSelectedIndex = fromIndex
-                self.containerTransitionContext?.startInteractiveTranstion(delegate: self.containerTransitionDelegate!)
+                self.containerTransitionContext?.startInteractiveTranstion(delegate: self)
             } else {
-                self.containerTransitionContext?.startNonInteractiveTransition(delegate: self.containerTransitionDelegate!)
+                self.containerTransitionContext?.startNonInteractiveTransition(delegate: self)
                 self.changeTabBarAt(selectedIndex: toIndex)
             }
-            
-        } else {
-            let selectedVC = self.vcList[fromIndex]
-            selectedVC.willMove(toParent: nil)
-            selectedVC.view.removeFromSuperview()
-            selectedVC.removeFromParent()
-
-            let newSelectedVC = self.vcList[toIndex]
-            addChild(newSelectedVC)
-            self.containerView.addSubview(newSelectedVC.view)
-            newSelectedVC.didMove(toParent: self)
-
-            self.changeTabBarAt(selectedIndex: toIndex)
-        }
     }
+    /// 更新TabBarItem的字体颜色
     private func changeTabBarAt(selectedIndex: Int) {
         for (index, item) in buttonTabBar.subviews.enumerated() {
             guard let button = item as? UIButton else {
@@ -186,7 +171,7 @@ class ViewController2: BPViewController, UINavigationControllerDelegate {
 
     @objc
     private func handlePan(_ gesture: UIPanGestureRecognizer) {
-        guard !self.vcList.isEmpty, let delegate = self.containerTransitionDelegate as? BPContainerViewControllerDelegate else {
+        guard !self.vcList.isEmpty else {
             return
         }
         let translationX   = gesture.translation(in: view).x
@@ -196,6 +181,7 @@ class ViewController2: BPViewController, UINavigationControllerDelegate {
         case .began:
             self.interactive = true
             let velocityX = gesture.velocity(in: view).x
+            print("======= VelocityX:", velocityX)
             if velocityX < 0 {
                 if selectedIndex < self.vcList.count - 1 {
                     self.selectedIndex += 1
@@ -206,17 +192,17 @@ class ViewController2: BPViewController, UINavigationControllerDelegate {
                 }
             }
         case .changed:
-            BPLog("Progress:\(progress)")
-            BPLog("Selected index: \(selectedIndex)")
-            delegate.interactionController.updateInteractiveTransition(percentComplete: progress)
+//            BPLog("Progress:\(progress)")
+//            BPLog("Selected index: \(selectedIndex)")
+            self.interactionController.updateInteractiveTransition(percentComplete: progress)
         case .cancelled, .ended:
             self.interactive = false
             if progress > 0.4 {
-                BPLog("interactive finished")
-                delegate.interactionController.finishInteractiveTransition()
+//                BPLog("interactive finished")
+                self.interactionController.finishInteractiveTransition()
             } else {
-                BPLog("interactive cancel")
-                delegate.interactionController.cancelInteractiveTransition()
+//                BPLog("interactive cancel")
+                self.interactionController.cancelInteractiveTransition()
             }
         default:
             break
@@ -238,5 +224,23 @@ class ViewController2: BPViewController, UINavigationControllerDelegate {
     func restoreSelectedIndex() {
         self.shouldReserve = true
         self.selectedIndex = self.priorSelectedIndex
+    }
+
+    // MARK: ==== BPContainerTransitionDelegate ====
+    var interactionController = BPInteractiveTransition()
+
+    func containerController(containerVC: UIViewController, fromVC: UIViewController, toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard let fromIndex = (containerVC as? ViewController2)?.vcList.firstIndex(of: fromVC), let toIndex = (containerVC as? ViewController2)?.vcList.firstIndex(of: toVC) else {
+            return nil
+        }
+        if fromIndex > toIndex {
+            return BPAnimationController(type: .naviationTransition(.pop))
+        } else {
+            return BPAnimationController(type: .naviationTransition(.push))
+        }
+    }
+
+    func containerController(containerVC: UIViewController, animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return self.interactionController
     }
 }

@@ -16,25 +16,25 @@ protocol BPContainerTransitionDelegate: NSObjectProtocol {
     /// 获得转场代理
     func containerController(containerVC: UIViewController, animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?
 }
-
-class BPContainerViewControllerDelegate: NSObject, BPContainerTransitionDelegate {
-
-    var interactionController = BPInteractiveTransition()
-
-    func containerController(containerVC: UIViewController, fromVC: UIViewController, toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        guard let fromIndex = (containerVC as? ViewController2)?.vcList.firstIndex(of: fromVC), let toIndex = (containerVC as? ViewController2)?.vcList.firstIndex(of: toVC) else {
-            return nil
-        }
-        if fromIndex > toIndex {
-            return BPAnimationController(type: .naviationTransition(.pop))
-        } else {
-            return BPAnimationController(type: .naviationTransition(.push))
-        }
-    }
-
-    func containerController(containerVC: UIViewController, animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return self.interactionController
-    }
-
-
-}
+//
+//class BPContainerViewControllerDelegate: NSObject, BPContainerTransitionDelegate {
+//
+//    var interactionController = BPInteractiveTransition()
+//
+//    func containerController(containerVC: UIViewController, fromVC: UIViewController, toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        guard let fromIndex = (containerVC as? ViewController2)?.vcList.firstIndex(of: fromVC), let toIndex = (containerVC as? ViewController2)?.vcList.firstIndex(of: toVC) else {
+//            return nil
+//        }
+//        if fromIndex > toIndex {
+//            return BPAnimationController(type: .naviationTransition(.pop))
+//        } else {
+//            return BPAnimationController(type: .naviationTransition(.push))
+//        }
+//    }
+//
+//    func containerController(containerVC: UIViewController, animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+//        return self.interactionController
+//    }
+//
+//
+//}

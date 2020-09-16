@@ -26,7 +26,7 @@ enum ModalOperation {
 /// 转场动画控制器
 class BPAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
 
-    private var transitionType: BPTransitionType
+    var transitionType: BPTransitionType
 
     init(type: BPTransitionType) {
         self.transitionType = type
@@ -36,7 +36,7 @@ class BPAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     // MARK: ==== UIViewControllerAnimatedTransitioning ====
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.3
+        return 1.3
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -82,12 +82,14 @@ class BPAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
 
         // 设置动画
         toView?.transform = toViewTransform
+        
         UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
             fromView?.transform = fromViewTransform
             toView?.transform   = .identity
         }) { (finished) in
             fromView?.transform = .identity
             toView?.transform   = .identity
+            // 转场完成
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
     }

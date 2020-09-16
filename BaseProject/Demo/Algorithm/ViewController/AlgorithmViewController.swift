@@ -38,7 +38,7 @@ class AlgorithmViewController: BPViewController {
         self.view.addSubview(tableView!)
         self.titleLabel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
-            make.top.equalToSuperview().offset(AdaptSize(30))
+            make.top.equalToSuperview().offset(kNavHeight)
         }
         self.descriptionView?.snp.makeConstraints({ (make) in
             make.left.right.equalToSuperview()
@@ -54,11 +54,30 @@ class AlgorithmViewController: BPViewController {
 
     override func bindProperty() {
         super.bindProperty()
-        self.customNavigationBar?.isHidden = true
+//        self.customNavigationBar?.isHidden = true
         self.titleLabel.text = self.type.rawValue
         self.customNavigationBar?.leftButton.isHidden = true
         self.customNavigationBar?.title = self.type.rawValue
         self.tableView?.setData()
         self.descriptionView?.delegate = self.tableView
+        let backButton: UIButton = {
+            let button = UIButton()
+            button.setTitle("返回", for: .normal)
+            button.setTitleColor(UIColor.black, for: .normal)
+            button.titleLabel?.font = UIFont.regularFont(ofSize: AdaptSize(16))
+            return button
+        }()
+        self.customNavigationBar?.addSubview(backButton)
+        backButton.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(AdaptSize(15))
+            make.centerY.height.equalToSuperview()
+            make.width.equalTo(AdaptSize(50))
+        }
+        backButton.addTarget(self, action: #selector(self.back), for: .touchUpInside)
+    }
+
+    @objc
+    private func back() {
+        (self.navigationController as? BPBaseNavigationController)?.selectedIndex = 0
     }
 }
