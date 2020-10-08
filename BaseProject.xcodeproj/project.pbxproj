@@ -55,7 +55,6 @@
 		226F0B13250A103A00F453F6 /* BPContainerTransitionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F0B12250A103A00F453F6 /* BPContainerTransitionContext.swift */; };
 		226F0B15250A206D00F453F6 /* BPContainerTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F0B14250A206D00F453F6 /* BPContainerTransitionDelegate.swift */; };
 		226F0B17250A253D00F453F6 /* BPInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F0B16250A253D00F453F6 /* BPInteractiveTransition.swift */; };
-		2277CD1B2501F20500F26C33 /* YXRollNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277CD1A2501F20500F26C33 /* YXRollNumberView.swift */; };
 		227DDFCF2376D72D006E38E8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227DDFCE2376D72D006E38E8 /* Utils.swift */; };
 		2290EABC236D5EF2000BCA47 /* right11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABB236D5EF2000BCA47 /* right11-data.json */; };
 		2290EABE236D5EF6000BCA47 /* wrong11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABD236D5EF6000BCA47 /* wrong11-data.json */; };
@@ -80,6 +79,9 @@
 		22C6221D22DF120900A7C849 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6221C22DF120900A7C849 /* Error+Extension.swift */; };
 		22D018F92321F7F0007AFA1B /* BPDatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D018F82321F7F0007AFA1B /* BPDatabaseProtocol.swift */; };
 		22D018FB2321F800007AFA1B /* BPDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D018FA2321F800007AFA1B /* BPDatabaseManager.swift */; };
+		22D11F6A252DF85D005896E8 /* BPEarthItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D11F69252DF85D005896E8 /* BPEarthItemView.swift */; };
+		22D11F6D252DF97A005896E8 /* BPEarthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D11F6C252DF97A005896E8 /* BPEarthView.swift */; };
+		22D11F70252E0FF6005896E8 /* BPSocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D11F6F252E0FF6005896E8 /* BPSocketViewController.swift */; };
 		22D4980D22FBC67300281530 /* top-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 22D4980C22FBC67300281530 /* top-loading.json */; };
 		22D4980F22FBCD0800281530 /* center-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 22D4980E22FBCD0800281530 /* center-loading.json */; };
 		22D4981122FBCD9B00281530 /* BPBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981022FBCD9B00281530 /* BPBaseTableViewController.swift */; };
@@ -182,7 +184,7 @@
 		226F0B12250A103A00F453F6 /* BPContainerTransitionContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPContainerTransitionContext.swift; sourceTree = "<group>"; };
 		226F0B14250A206D00F453F6 /* BPContainerTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPContainerTransitionDelegate.swift; sourceTree = "<group>"; };
 		226F0B16250A253D00F453F6 /* BPInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPInteractiveTransition.swift; sourceTree = "<group>"; };
-		2277CD1A2501F20500F26C33 /* YXRollNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YXRollNumberView.swift; sourceTree = "<group>"; };
+		227D2F9F252EEF62009DB59C /* BPPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPPoint.h; sourceTree = "<group>"; };
 		227DDFCE2376D72D006E38E8 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2290EABB236D5EF2000BCA47 /* right11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "right11-data.json"; sourceTree = "<group>"; };
 		2290EABD236D5EF6000BCA47 /* wrong11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "wrong11-data.json"; sourceTree = "<group>"; };
@@ -215,6 +217,10 @@
 		22D018F72321F431007AFA1B /* IMDatabase.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = IMDatabase.md; sourceTree = "<group>"; };
 		22D018F82321F7F0007AFA1B /* BPDatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDatabaseProtocol.swift; sourceTree = "<group>"; };
 		22D018FA2321F800007AFA1B /* BPDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDatabaseManager.swift; sourceTree = "<group>"; };
+		22D11F69252DF85D005896E8 /* BPEarthItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPEarthItemView.swift; sourceTree = "<group>"; };
+		22D11F6C252DF97A005896E8 /* BPEarthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPEarthView.swift; sourceTree = "<group>"; };
+		22D11F6F252E0FF6005896E8 /* BPSocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPSocketViewController.swift; sourceTree = "<group>"; };
+		22D11F73252EE98C005896E8 /* BPMatrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPMatrix.h; sourceTree = "<group>"; };
 		22D4980C22FBC67300281530 /* top-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "top-loading.json"; sourceTree = "<group>"; };
 		22D4980E22FBCD0800281530 /* center-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "center-loading.json"; sourceTree = "<group>"; };
 		22D4981022FBCD9B00281530 /* BPBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseTableViewController.swift; sourceTree = "<group>"; };
@@ -486,7 +492,7 @@
 				CF26719322FF0A4300E6B47F /* ViewController2.swift */,
 				CF26719522FF0A5900E6B47F /* ViewController3.swift */,
 				CF26719722FF0A6B00E6B47F /* ViewController4.swift */,
-				2277CD1A2501F20500F26C33 /* YXRollNumberView.swift */,
+				22D11F6F252E0FF6005896E8 /* BPSocketViewController.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -537,6 +543,7 @@
 		22C621F822DC8E7600A7C849 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				22D11F68252DF825005896E8 /* Earth */,
 				CF6E17202362042C0008C466 /* Utils */,
 				CF87869722F709C20031E4B9 /* BPAuthoriationManager.swift */,
 				2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */,
@@ -578,6 +585,17 @@
 				224582022326044D0031CC7A /* NormalDBCenter.swift */,
 			);
 			path = FMDatabase;
+			sourceTree = "<group>";
+		};
+		22D11F68252DF825005896E8 /* Earth */ = {
+			isa = PBXGroup;
+			children = (
+				22D11F69252DF85D005896E8 /* BPEarthItemView.swift */,
+				22D11F6C252DF97A005896E8 /* BPEarthView.swift */,
+				22D11F73252EE98C005896E8 /* BPMatrix.h */,
+				227D2F9F252EEF62009DB59C /* BPPoint.h */,
+			);
+			path = Earth;
 			sourceTree = "<group>";
 		};
 		22D497FF22FBB0E700281530 /* LottieFiles */ = {
@@ -769,7 +787,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "沙庭宇";
 				TargetAttributes = {
 					22C621B322DC805600A7C849 = {
@@ -921,7 +939,6 @@
 				227DDFCF2376D72D006E38E8 /* Utils.swift in Sources */,
 				2245820B2326549E0031CC7A /* BPCacheManager.swift in Sources */,
 				2264EF7F22F820F900A89C82 /* BPAlerViewTwoButton.swift in Sources */,
-				2277CD1B2501F20500F26C33 /* YXRollNumberView.swift in Sources */,
 				CF8EB56422DCC05D00EC2FE5 /* SAMKeychain+Extension.swift in Sources */,
 				225C48E724DD4FF800594FEE /* BaseTableView.swift in Sources */,
 				22D018F92321F7F0007AFA1B /* BPDatabaseProtocol.swift in Sources */,
@@ -939,6 +956,7 @@
 				22C621EE22DC8A7800A7C849 /* UIDevice+Extension.swift in Sources */,
 				2264EF7D22F7C6E500A89C82 /* BPTopWindowView.swift in Sources */,
 				22D4981F22FD163A00281530 /* BPRefreshHeaderView.swift in Sources */,
+				22D11F6A252DF85D005896E8 /* BPEarthItemView.swift in Sources */,
 				226F0B15250A206D00F453F6 /* BPContainerTransitionDelegate.swift in Sources */,
 				22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */,
 				2264EF9422F97A2800A89C82 /* BPTaskRequest.swift in Sources */,
@@ -962,6 +980,7 @@
 				2264EF7B22F7BDE500A89C82 /* BPAlertManager.swift in Sources */,
 				CF26719A22FF0B1B00E6B47F /* BPBaseNavigationController.swift in Sources */,
 				226711382506218B00006534 /* BPAnimationController.swift in Sources */,
+				22D11F6D252DF97A005896E8 /* BPEarthView.swift in Sources */,
 				221F5C4A22E95B4000F9355C /* AppDelegate+Extension.swift in Sources */,
 				CF8EB5A622DCD1B300EC2FE5 /* BPViewController+CustomNavigationBar.swift in Sources */,
 				22A44AB5244D98280039466E /* BPOCLog.m in Sources */,
@@ -971,6 +990,7 @@
 				223AC0F024F35B5200C85800 /* BubbleSortDescriptionView.swift in Sources */,
 				22D4982122FD164600281530 /* BPRefreshFooterView.swift in Sources */,
 				22C6221B22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift in Sources */,
+				22D11F70252E0FF6005896E8 /* BPSocketViewController.swift in Sources */,
 				2264EF9622F98A3700A89C82 /* BPBaseButton.swift in Sources */,
 				2218AE3923D098D000EF2E42 /* BPLogManager.swift in Sources */,
 				CF26719222FEF6E700E6B47F /* BPTabBar.swift in Sources */,
@@ -1031,6 +1051,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1058,7 +1079,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1094,6 +1115,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1115,7 +1137,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -8,4 +8,5 @@
 #import "UIBezierPath+AllPoints.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "BPOCLog.h"
-
+#import "BPMatrix.h"
+#import "BPPoint.h"
