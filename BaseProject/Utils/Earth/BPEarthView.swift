@@ -10,7 +10,7 @@ import UIKit
 
 class BPEarthView: BPView {
 
-    let maxItem     = 100
+    var maxItem: Int
     var itemList    = [BPEarthItemView]()
     var bpPointList = [BPPoint]()
     var normalDirection: BPPoint = {
@@ -19,13 +19,28 @@ class BPEarthView: BPView {
         return BPPoint(x: x, y: y, z: 0)
     }()
 
-    var timer: CADisplayLink?
+    private var timer: CADisplayLink?
+    private var gestureTimer: CADisplayLink?
+    private var lastPoint: CGPoint = .zero
+    private var velocity: CGFloat  = .zero
 
-    override init(frame: CGRect) {
+    init(frame: CGRect, maxItem: Int) {
+        self.maxItem = maxItem > 1000 ? 1000 : maxItem
         super.init(frame: frame)
         self.createSubviews()
         self.bindProperty()
         self.timerStart()
+    }
+
+    deinit {
+        self.timerStop()
+        self.gestureStop()
+    }
+
+    override func removeFromSuperview() {
+        super.removeFromSuperview()
+        self.timerStop()
+        self.gestureStop()
     }
 
     required init?(coder: NSCoder) {
@@ -65,6 +80,8 @@ class BPEarthView: BPView {
 
     override func bindProperty() {
         super.bindProperty()
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(self.handlePanGestureAction(pan:)))
+        self.addGestureRecognizer(pan)
     }
 
     // MARK: ==== Event ====
@@ -73,6 +90,55 @@ class BPEarthView: BPView {
     private func autoTurnRotation() {
         for index in 0..<self.itemList.count {
             self.updateFrame(index: index, angle: 0.002)
+        }
+    }
+
+    /// 手动转转
+    @objc
+    private func gestureRotation() {
+        if velocity <= 0 {
+            self.gestureStop()
+            // 开始自动旋转
+            self.timerStart()
+        } else {
+            velocity -= 70
+            let duration = CGFloat(self.gestureTimer?.duration ?? 1)
+            let angle    = velocity / self.width * 2 * duration
+            for index in 0..<self.itemList.count {
+                self.updateFrame(index: index, angle: angle)
+            }
+        }
+    }
+    /// 处理用户滑动手势事件
+    @objc
+    private func handlePanGestureAction(pan:UIPanGestureRecognizer) {
+        switch pan.state {
+        case .began:
+            self.lastPoint = pan.location(in: self)
+            self.timerStop()
+//            self.timerStart()
+        case .changed:
+            let currentPoint = pan.location(in: self)
+            let direction    = BPPointMake(lastPoint.y - currentPoint.y, currentPoint.x - lastPoint.x, 0)
+            // 三角函数，计算直线距离
+            let sidePow  = pow(direction.x, 2) + pow(direction.y, 2)
+            let distance = sqrt(sidePow)
+            // 获得角度
+            let angle = distance / self.width / 2
+
+            for index in 0..<self.itemList.count {
+                self.updateFrame(index: index, angle: angle)
+            }
+
+            self.normalDirection = direction
+            self.lastPoint       = currentPoint
+        case .ended:
+            let velocityP = pan.velocity(in: self)
+            let sidePow   = pow(velocityP.x, 2) + pow(velocityP.y, 2)
+            self.velocity = sqrt(sidePow)
+            self.gestureStart()
+        default:
+            return
         }
     }
 
@@ -89,20 +155,34 @@ class BPEarthView: BPView {
 
     // MARK: ==== Tools ====
 
+    /// 自动旋转循环开始
     private func timerStart() {
         self.timer = CADisplayLink(target: self, selector: #selector(self.autoTurnRotation))
         self.timer?.add(to: RunLoop.main, forMode: .default)
     }
 
-    private func timerStop() {
+    /// 自动旋转循环停止
+    func timerStop() {
         self.timer?.invalidate()
         self.timer = nil
+    }
+
+    /// 手势旋转循环开始
+    private func gestureStart() {
+        self.gestureTimer = CADisplayLink(target: self, selector: #selector(self.gestureRotation))
+        self.gestureTimer?.add(to: RunLoop.main, forMode: .default)
+    }
+
+    /// 手势旋转循环停止
+    func gestureStop() {
+        self.gestureTimer?.invalidate()
+        self.gestureTimer = nil
     }
 
     private func setItemView(point: BPPoint, index: Int) {
         let itemView = self.itemList[index]
         let newX = (point.x + 1) * self.width / 2
-        let newY = (point.y + 1) * self.width / 2
+        let newY = (point.y + 1) * self.height / 2
         itemView.center = CGPoint(x: newX, y: newY)
 
         let transform = (point.z + 2) / 3

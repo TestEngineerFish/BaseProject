@@ -56,8 +56,6 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
         let vc = ViewController1()
         let home = BPBaseNavigationController()
         home.addChild(vc)
-//        home.view.addSubview(vc.view)
-//        vc.didMove(toParent: home)
         home.tabBarItem.title         = "HOME"
         home.tabBarItem.image         = UIImage(named: "home_unselect")
         home.tabBarItem.selectedImage = UIImage(named: "home_selected")
@@ -84,7 +82,10 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
         self.addChild(publish)
         
         let messageVC = ViewController3()
-        let message = BPBaseNavigationController(rootViewController: messageVC)
+        let message = BPBaseNavigationController()
+        message.addChild(messageVC)
+        message.view.addSubview(messageVC.view)
+        messageVC.didMove(toParent: message)
         message.tabBarItem.title         = "MESSAGE"
         message.tabBarItem.image         = UIImage(named: "message_unselect")
         message.tabBarItem.selectedImage = UIImage(named: "message_selected")

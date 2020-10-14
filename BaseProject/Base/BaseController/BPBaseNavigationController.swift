@@ -52,8 +52,8 @@ class BPBaseNavigationController: UINavigationController, UIGestureRecognizerDel
     }
 
     private func bindProperty() {
-        let panGresture = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
-        self.view.addGestureRecognizer(panGresture)
+//        let panGresture = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
+//        self.view.addGestureRecognizer(panGresture)
 //        self.view.sendSubviewToBack(self.containerView)
     }
     
@@ -106,7 +106,6 @@ class BPBaseNavigationController: UINavigationController, UIGestureRecognizerDel
 
         switch gesture.state {
         case .began:
-            print("VC List: \(self.navigationController?.viewControllers)")
             self.isInteractive = true
             let velocityX      = gesture.velocity(in: view).x
 
