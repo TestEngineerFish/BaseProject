@@ -8,19 +8,54 @@
 
 import Foundation
 
-enum BPRefreshStatus: Int {
+enum BPRefreshStatus {
+    
+    // 顶部默认状态
+    case headerNomral
     // 下拉滑动中
     case headerPulling
     // 下拉滑动超过阈值
     case headerPullMax
-    // 下拉滑动停止
-    case headerPullEnd
+    // 下拉刷新中
+    case headerLoading
+    
+    // 底部默认状态
+    case footerNormal
     // 上拉滑动中
     case footerPulling
     // 上拉滑动超过阈值
     case footerPullMax
-    // 上拉滑动停止
-    case footerPullEnd
+    // 上拉加载中
+    case footerLoading
+}
+
+protocol BPRefreshProtocol: NSObjectProtocol {
+    // -------- Header ---------
+    /// 恢复头部视图
+    /// - Parameter scrollView: scrollView
+    func recoverHeaderView(scrollView: UIScrollView)
+    /// 下拉Header中
+    /// - Parameter scrollView: scrollView
+    func pullingHeader(scrollView: UIScrollView)
+    /// 下拉Header超过最大长度
+    /// - Parameter scrollView: scrollView
+    func pullMaxHeader(scrollView: UIScrollView)
+    /// 刷新中
+    /// - Parameter scrollView: scrollView
+    func loadingHeader(scrollView: UIScrollView)
+    // -------- Footer ---------
+    /// 恢复底部视图
+    /// - Parameter scrollView: scrollView
+    func recoverFooterView(scrollView: UIScrollView)
+    /// 上拉Footer中
+    /// - Parameter scrollView: scrollView
+    func pullingFooter(scrollView: UIScrollView)
+    /// 上拉Footer超过最大长度
+    /// - Parameter scrollView: scrollView
+    func pullMaxFooter(scrollView: UIScrollView)
+    /// 加载中
+    /// - Parameter scrollView: scrollView
+    func loadingFooter(scrollView: UIScrollView)
 }
 
 private struct AssociatedKeys {
@@ -30,14 +65,15 @@ private struct AssociatedKeys {
     static var footerView          = "kFooterView"
     static var refreshDelegate     = "kRefreshDelegate"
     static var observerEnable      = "kObserverEnable"
+    static var refreshStatus       = "kRefreshStatus"
 }
 
 extension UIScrollView {
     
     /// 滑动代理
-    var refreshDelegate: BPScrollRefreshProtocol? {
+    var refreshDelegate: BPRefreshProtocol? {
         get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.refreshDelegate) as? BPScrollRefreshProtocol
+            return objc_getAssociatedObject(self, &AssociatedKeys.refreshDelegate) as? BPRefreshProtocol
         }
         
         set {
@@ -45,6 +81,45 @@ extension UIScrollView {
         }
     }
     
+    /// 刷新状态
+    var refreshStatus: BPRefreshStatus? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.refreshStatus) as? BPRefreshStatus
+        }
+        
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.refreshStatus, newValue, .OBJC_ASSOCIATION_ASSIGN)
+            guard let status = newValue else { return }
+            switch status {
+            case .headerNomral:
+                self.headerView?.setStatus(status: status)
+                self.refreshDelegate?.recoverHeaderView(scrollView: self)
+            case .headerPulling:
+                self.headerView?.setStatus(status: status)
+                self.refreshDelegate?.pullingHeader(scrollView: self)
+            case .headerPullMax:
+                self.headerView?.setStatus(status: status)
+                self.refreshDelegate?.pullMaxHeader(scrollView: self)
+            case .headerLoading:
+                self.headerView?.setStatus(status: status)
+                self.refreshDelegate?.pullingHeader(scrollView: self)
+            case .footerNormal:
+                self.footerView?.setStatus(status: status)
+                self.refreshDelegate?.recoverFooterView(scrollView: self)
+            case .footerPulling:
+                self.footerView?.setStatus(status: status)
+                self.refreshDelegate?.pullingFooter(scrollView: self)
+            case .footerPullMax:
+                self.footerView?.setStatus(status: status)
+                self.refreshDelegate?.pullMaxFooter(scrollView: self)
+            case .footerLoading:
+                self.footerView?.setStatus(status: status)
+                self.refreshDelegate?.loadingFooter(scrollView: self)
+            }
+        }
+    }
+    
+    /// 是否开启滑动监听
     var observerEnable: Bool {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.observerEnable) as? Bool ?? false
@@ -83,7 +158,6 @@ extension UIScrollView {
         }
     }
     
-    
     /// 刷新头部视图
     var headerView: BPRefreshHeaderView? {
         get {
@@ -106,23 +180,6 @@ extension UIScrollView {
         }
     }
     
-    private func setStatus(status: BPRefreshStatus, isRefresh: Bool = false) {
-        switch status {
-        case .headerPulling:
-            self.refreshDelegate?.pullingHeader(offsetY: self.contentOffset.y)
-        case .headerPullMax:
-            self.refreshDelegate?.pullMaxHeader(offsetY: self.contentOffset.y)
-        case .headerPullEnd:
-            self.refreshDelegate?.pullEndHeader(isRefresh: isRefresh)
-        case .footerPulling:
-            self.refreshDelegate?.pullingFooter(offsetY: self.contentOffset.y)
-        case .footerPullMax:
-            self.refreshDelegate?.pullMaxFooter(offsetY: self.contentOffset.y)
-        case .footerPullEnd:
-            self.refreshDelegate?.pullEndFooter(isRefresh: isRefresh)
-        }
-    }
-    
     // MARK: ==== KVO ====
     open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard keyPath == "contentOffset" else { return }
@@ -137,42 +194,93 @@ extension UIScrollView {
             if offsetY < 0 {
                 if offsetY > -pullHeaderMaxSize {
                     // 滑动中
-                    self.setStatus(status: .headerPulling)
+                    self.refreshStatus = .headerPulling
                 } else {
                     // 超过最大长度
-                    self.setStatus(status: .headerPullMax)
+                    self.refreshStatus = .headerPullMax
                 }
                 // 添加头部视图
                 if self.headerView == nil {
-                    self.headerView = BPRefreshHeaderView()
+                    self.createHeaderView()
                 }
             } else {
                 offsetY = self.height + offsetY - self.contentSize.height
-                if self.footerView == nil {
-                    self.footerView = BPRefreshFooterView()
-                }
-                if offsetY > pullFooterMaxSize {
-                    self.setStatus(status: .footerPullMax)
-                } else if offsetY > 0 {
-                    self.setStatus(status: .footerPulling)
+                // 忽略列表中滑动
+                if offsetY > 0 {
+                    if self.footerView == nil {
+                        self.createFooterView()
+                    }
+                    if offsetY > pullFooterMaxSize {
+                        // 滑动中
+                        self.refreshStatus = .footerPullMax
+                    } else  {
+                        // 超过最大长度
+                        self.refreshStatus = .footerPulling
+                    }
                 }
             }
         } else {
             // 防止多次触发回调
             guard self.observerEnable else { return }
-            // 手指移开
             if offsetY < 0 {
-                self.setStatus(status: .headerPullEnd, isRefresh: offsetY < -pullHeaderMaxSize)
-                BPLog(offsetY)
+                // 下拉
+                if self.refreshStatus == .some(.headerPullMax) {
+                    // 触发刷新
+                    self.refreshStatus = .headerLoading
+                } else if self.refreshStatus == .some(.headerLoading) {
+                    // 显示刷新中状态
+                    if offsetY < pullHeaderMaxSize {
+                        self.contentOffset.y = -pullHeaderMaxSize
+                    }
+                } else {
+                    // 恢复默认状态
+                    self.refreshStatus = .headerNomral
+                }
             } else {
+                // 上拉
                 offsetY = self.height + offsetY - self.contentSize.height
+                // 忽略列表中滑动
                 if offsetY > 0 {
-                    self.setStatus(status: .footerPullEnd, isRefresh: offsetY > pullFooterMaxSize)
+                    if self.refreshStatus == .some(.footerPullMax) {
+                        // 触发加载更多
+                        self.refreshStatus = .footerLoading
+                    } else if self.refreshStatus == .some(.footerLoading) {
+                        // 显示刷新中状态
+                        if offsetY < pullFooterMaxSize {
+//                            self.contentOffset.y = self.contentSize.height - self.height
+                        }
+                    } else {
+                        // 恢复默认状态
+                        self.refreshStatus = .footerNormal
+                    }
                 }
             }
             self.observerEnable = false
         }
         
+    }
+    
+    // MARK: ==== Tools ====
+    private func createHeaderView() {
+        self.headerView = BPRefreshHeaderView()
+        self.addSubview(headerView!)
+        headerView?.snp.makeConstraints({ (make) in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(self.snp.top)
+            make.height.equalTo(AdaptSize(50))
+            make.width.equalToSuperview()
+        })
+    }
+    
+    private func createFooterView() {
+        self.footerView = BPRefreshFooterView()
+        self.addSubview(footerView!)
+        footerView?.snp.makeConstraints({ (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(self.contentSize.height)
+            make.height.equalTo(AdaptSize(50))
+            make.width.equalToSuperview()
+        })
     }
     
 }

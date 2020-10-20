@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSource, BPScrollRefreshProtocol {
+class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSource, BPRefreshProtocol {
 
     var typeList: [AlgorithmType] = [.bubbleSort, .chooseSort, .insertionSort, .shellSort, .bubbleSort, .chooseSort, .insertionSort, .shellSort,.bubbleSort, .chooseSort, .insertionSort, .shellSort, .bubbleSort, .chooseSort, .insertionSort, .shellSort, .bubbleSort, .chooseSort, .insertionSort, .shellSort, .bubbleSort, .chooseSort, .insertionSort, .shellSort,  ]
 
@@ -71,7 +71,7 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
         self.navigationController?.push(vc: vc)
     }
     
-    // MARK: ==== BPScrollRefreshProtocol ====
+    // MARK: ==== BPRefreshProtocol ====
     func pullingHeader(offsetY: CGFloat) {
         BPLog("下拉中")
     }
