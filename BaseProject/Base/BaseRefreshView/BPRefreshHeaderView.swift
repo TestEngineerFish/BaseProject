@@ -41,7 +41,7 @@ class BPRefreshHeaderView: BPView {
             self.titleLabel.text = "下拉刷新"
         case .headerPullMax:
             self.titleLabel.text = "松手开始刷新"
-        case .headerPullEnd:
+        case .headerLoading:
             self.titleLabel.text = "刷新中～"
         default:
             return

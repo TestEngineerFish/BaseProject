@@ -66,33 +66,53 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.contentInset = .zero
+        return
         let vc  = AlgorithmViewController()
         vc.type = self.typeList[indexPath.row]
         self.navigationController?.push(vc: vc)
     }
     
     // MARK: ==== BPRefreshProtocol ====
-    func pullingHeader(offsetY: CGFloat) {
-        BPLog("下拉中")
-    }
-    
-    func pullMaxHeader(offsetY: CGFloat) {
-        BPLog("下拉超过阈值")
-    }
+    /// 恢复头部视图
+    /// - Parameter scrollView: scrollView
+    func recoverHeaderView(scrollView: UIScrollView) {
 
-    func pullEndHeader(isRefresh: Bool) {
-        BPLog("下拉结束 \(isRefresh)")
     }
-    
-    func pullingFooter(offsetY: CGFloat) {
-        BPLog("上拉中")
+    /// 下拉Header中
+    /// - Parameter scrollView: scrollView
+    func pullingHeader(scrollView: UIScrollView) {
+
     }
-    
-    func pullMaxFooter(offsetY: CGFloat) {
-        BPLog("上拉超过阈值")
+    /// 下拉Header超过最大长度
+    /// - Parameter scrollView: scrollView
+    func pullMaxHeader(scrollView: UIScrollView) {
+
     }
-    
-    func pullEndFooter(isRefresh: Bool) {
-        BPLog("上拉结束\(isRefresh)")
+    /// 刷新中
+    /// - Parameter scrollView: scrollView
+    func loadingHeader(scrollView: UIScrollView) {
+
+    }
+    // -------- Footer ---------
+    /// 恢复底部视图
+    /// - Parameter scrollView: scrollView
+    func recoverFooterView(scrollView: UIScrollView) {
+
+    }
+    /// 上拉Footer中
+    /// - Parameter scrollView: scrollView
+    func pullingFooter(scrollView: UIScrollView) {
+
+    }
+    /// 上拉Footer超过最大长度
+    /// - Parameter scrollView: scrollView
+    func pullMaxFooter(scrollView: UIScrollView) {
+
+    }
+    /// 加载中
+    /// - Parameter scrollView: scrollView
+    func loadingFooter(scrollView: UIScrollView) {
+
     }
 }

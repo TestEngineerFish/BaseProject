@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum BPRefreshStatus {
+enum BPRefreshStatus: Int {
     
     // 顶部默认状态
     case headerNomral
@@ -29,33 +29,34 @@ enum BPRefreshStatus {
     case footerLoading
 }
 
+@objc
 protocol BPRefreshProtocol: NSObjectProtocol {
     // -------- Header ---------
     /// 恢复头部视图
     /// - Parameter scrollView: scrollView
-    func recoverHeaderView(scrollView: UIScrollView)
+    @objc optional func recoverHeaderView(scrollView: UIScrollView)
     /// 下拉Header中
     /// - Parameter scrollView: scrollView
-    func pullingHeader(scrollView: UIScrollView)
+    @objc optional func pullingHeader(scrollView: UIScrollView)
     /// 下拉Header超过最大长度
     /// - Parameter scrollView: scrollView
-    func pullMaxHeader(scrollView: UIScrollView)
+    @objc optional func pullMaxHeader(scrollView: UIScrollView)
     /// 刷新中
     /// - Parameter scrollView: scrollView
-    func loadingHeader(scrollView: UIScrollView)
+    @objc optional func loadingHeader(scrollView: UIScrollView)
     // -------- Footer ---------
     /// 恢复底部视图
     /// - Parameter scrollView: scrollView
-    func recoverFooterView(scrollView: UIScrollView)
+    @objc optional func recoverFooterView(scrollView: UIScrollView)
     /// 上拉Footer中
     /// - Parameter scrollView: scrollView
-    func pullingFooter(scrollView: UIScrollView)
+    @objc optional func pullingFooter(scrollView: UIScrollView)
     /// 上拉Footer超过最大长度
     /// - Parameter scrollView: scrollView
-    func pullMaxFooter(scrollView: UIScrollView)
+    @objc optional func pullMaxFooter(scrollView: UIScrollView)
     /// 加载中
     /// - Parameter scrollView: scrollView
-    func loadingFooter(scrollView: UIScrollView)
+    @objc optional func loadingFooter(scrollView: UIScrollView)
 }
 
 private struct AssociatedKeys {
@@ -88,33 +89,33 @@ extension UIScrollView {
         }
         
         set {
-            objc_setAssociatedObject(self, &AssociatedKeys.refreshStatus, newValue, .OBJC_ASSOCIATION_ASSIGN)
+            objc_setAssociatedObject(self, &AssociatedKeys.refreshStatus, newValue, .OBJC_ASSOCIATION_RETAIN)
             guard let status = newValue else { return }
             switch status {
             case .headerNomral:
                 self.headerView?.setStatus(status: status)
-                self.refreshDelegate?.recoverHeaderView(scrollView: self)
+                self.refreshDelegate?.recoverHeaderView?(scrollView: self)
             case .headerPulling:
                 self.headerView?.setStatus(status: status)
-                self.refreshDelegate?.pullingHeader(scrollView: self)
+                self.refreshDelegate?.pullingHeader?(scrollView: self)
             case .headerPullMax:
                 self.headerView?.setStatus(status: status)
-                self.refreshDelegate?.pullMaxHeader(scrollView: self)
+                self.refreshDelegate?.pullMaxHeader?(scrollView: self)
             case .headerLoading:
                 self.headerView?.setStatus(status: status)
-                self.refreshDelegate?.pullingHeader(scrollView: self)
+                self.refreshDelegate?.pullingHeader?(scrollView: self)
             case .footerNormal:
                 self.footerView?.setStatus(status: status)
-                self.refreshDelegate?.recoverFooterView(scrollView: self)
+                self.refreshDelegate?.recoverFooterView?(scrollView: self)
             case .footerPulling:
                 self.footerView?.setStatus(status: status)
-                self.refreshDelegate?.pullingFooter(scrollView: self)
+                self.refreshDelegate?.pullingFooter?(scrollView: self)
             case .footerPullMax:
                 self.footerView?.setStatus(status: status)
-                self.refreshDelegate?.pullMaxFooter(scrollView: self)
+                self.refreshDelegate?.pullMaxFooter?(scrollView: self)
             case .footerLoading:
                 self.footerView?.setStatus(status: status)
-                self.refreshDelegate?.loadingFooter(scrollView: self)
+                self.refreshDelegate?.loadingFooter?(scrollView: self)
             }
         }
     }
@@ -227,10 +228,9 @@ extension UIScrollView {
                 if self.refreshStatus == .some(.headerPullMax) {
                     // 触发刷新
                     self.refreshStatus = .headerLoading
-                } else if self.refreshStatus == .some(.headerLoading) {
                     // 显示刷新中状态
                     if offsetY < pullHeaderMaxSize {
-                        self.contentOffset.y = -pullHeaderMaxSize
+                        self.contentInset = UIEdgeInsets(top: self.headerView?.height ?? 0, left: 0, bottom: 0, right: 0)
                     }
                 } else {
                     // 恢复默认状态
@@ -244,10 +244,9 @@ extension UIScrollView {
                     if self.refreshStatus == .some(.footerPullMax) {
                         // 触发加载更多
                         self.refreshStatus = .footerLoading
-                    } else if self.refreshStatus == .some(.footerLoading) {
                         // 显示刷新中状态
-                        if offsetY < pullFooterMaxSize {
-//                            self.contentOffset.y = self.contentSize.height - self.height
+                        if offsetY > pullFooterMaxSize {
+                            self.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.footerView?.height ?? 0, right: 0)
                         }
                     } else {
                         // 恢复默认状态

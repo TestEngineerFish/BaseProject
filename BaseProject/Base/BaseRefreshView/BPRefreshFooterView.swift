@@ -46,6 +46,7 @@ class BPRefreshFooterView: BPView {
         case .footerLoading:
             self.titleLabel.text = "加载中～"
         default:
+            self.titleLabel.text = "啥状态啊"
             return
         }
     }
