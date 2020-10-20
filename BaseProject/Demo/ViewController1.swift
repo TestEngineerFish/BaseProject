@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSource, BPScrollRefreshProtocol {
 
-    var typeList: [AlgorithmType] = [.bubbleSort, .chooseSort, .insertionSort, .shellSort]
+    var typeList: [AlgorithmType] = [.bubbleSort, .chooseSort, .insertionSort, .shellSort, .bubbleSort, .chooseSort, .insertionSort, .shellSort,.bubbleSort, .chooseSort, .insertionSort, .shellSort, .bubbleSort, .chooseSort, .insertionSort, .shellSort, .bubbleSort, .chooseSort, .insertionSort, .shellSort, .bubbleSort, .chooseSort, .insertionSort, .shellSort,  ]
 
     var tableView: UITableView = {
         let tableView = UITableView()
@@ -37,10 +37,14 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     }
 
     override func bindProperty() {
+        super.bindProperty()
         self.customNavigationBar?.title = "Algorithm"
         self.customNavigationBar?.leftButton.isHidden = true
         self.tableView.delegate   = self
         self.tableView.dataSource = self
+        self.tableView.refreshHeaderEnable = true
+        self.tableView.refreshFooterEnable = true
+        self.tableView.refreshDelegate = self
     }
 
     // MARK: ==== UITableViewDataSource && UITableViewDelegate ====
@@ -66,39 +70,29 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
         vc.type = self.typeList[indexPath.row]
         self.navigationController?.push(vc: vc)
     }
+    
+    // MARK: ==== BPScrollRefreshProtocol ====
+    func pullingHeader(offsetY: CGFloat) {
+        BPLog("下拉中")
+    }
+    
+    func pullMaxHeader(offsetY: CGFloat) {
+        BPLog("下拉超过阈值")
+    }
 
+    func pullEndHeader(isRefresh: Bool) {
+        BPLog("下拉结束 \(isRefresh)")
+    }
+    
+    func pullingFooter(offsetY: CGFloat) {
+        BPLog("上拉中")
+    }
+    
+    func pullMaxFooter(offsetY: CGFloat) {
+        BPLog("上拉超过阈值")
+    }
+    
+    func pullEndFooter(isRefresh: Bool) {
+        BPLog("上拉结束\(isRefresh)")
+    }
 }
-
-// 转场代理
-extension ViewController2: UIViewControllerTransitioningDelegate {
-
-}
-// 动画控制器
-//extension ViewController2: UIViewControllerAnimatedTransitioning {
-//    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-//        transitionContext?.containerView.backgroundColor = .blue
-//        let fromVC   = transitionContext?.viewController(forKey: .from)
-//        let toVC     = transitionContext?.viewController(forKey: .to)
-//        let fromView = transitionContext?.view(forKey: .from)
-//        let toView   = transitionContext?.view(forKey: .to)
-//        return 0.5
-//    }
-//
-//    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-//
-//    }
-//}
-// 交互控制器
-//extension ViewController2: UIViewControllerInteractiveTransitioning {
-//    func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
-//
-//    }
-//}
-// 转场环境(生成转场需要的数据)
-//extension ViewController2: UIViewControllerContextTransitioning {
-//
-//}
-// 转场协调器
-//extension ViewController2: UIViewControllerTransitionCoordinator {
-//
-//}

@@ -15,6 +15,26 @@ protocol BPScrollRefreshProtocol {
     var headerRefreshView: BPBaseRefreshControl? {get}
     /// 获取底部刷新的控制器视图
     var footerRefreshView: BPBaseRefreshControl? {get}
+    
+    /// 下拉Header中
+    /// - Parameter offsetY: 偏移量Y
+    func pullingHeader(offsetY: CGFloat)
+    /// 下拉Header超过最大长度
+    /// - Parameter offsetY: 偏移量Y
+    func pullMaxHeader(offsetY: CGFloat)
+    /// 下拉Header结束
+    /// - Parameter isRefresh: 是否触发刷新
+    func pullEndHeader(isRefresh: Bool)
+    /// 上拉Footer中
+    /// - Parameter offsetY: 偏移量Y
+    func pullingFooter(offsetY: CGFloat)
+    /// 上拉Footer超过最大长度
+    /// - Parameter offsetY: 偏移量Y
+    func pullMaxFooter(offsetY: CGFloat)
+    /// 上拉Footer结束
+    /// - Parameter isRefresh: 是否触发加载更多
+    func pullEndFooter(isRefresh: Bool)
+    
 }
 
 private struct AssociatedKeys {

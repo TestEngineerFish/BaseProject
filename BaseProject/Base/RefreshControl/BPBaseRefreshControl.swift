@@ -10,7 +10,8 @@ import UIKit
 
 class BPBaseRefreshControl: UIRefreshControl {
 
-
+    var delegate: BPScrollRefreshProtocol?
+    
     override func beginRefreshing() {
         super.beginRefreshing()
     }

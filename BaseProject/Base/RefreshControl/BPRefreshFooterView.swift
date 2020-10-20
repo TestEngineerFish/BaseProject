@@ -8,6 +8,6 @@
 
 import UIKit
 
-class BPRefreshFooterView: BPBaseRefreshControl {
+class BPRefreshFooterView: BPView {
     
 }

@@ -129,6 +129,8 @@
 		CFFB34EB23595EF9002D440E /* backbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFB34E523595EF9002D440E /* backbutton@2x.png */; };
 		CFFB34EC23595EF9002D440E /* webRefreshButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFB34E623595EF9002D440E /* webRefreshButton@3x.png */; };
 		CFFB34ED23595EF9002D440E /* webRefreshButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFB34E723595EF9002D440E /* webRefreshButton@2x.png */; };
+		E0A0B766253E8F4C00E97ED8 /* BPRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A0B765253E8F4C00E97ED8 /* BPRefreshView.swift */; };
+		E0A0B769253EAFE800E97ED8 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A0B768253EAFE800E97ED8 /* UIScrollView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -272,6 +274,8 @@
 		CFFB34E623595EF9002D440E /* webRefreshButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webRefreshButton@3x.png"; sourceTree = "<group>"; };
 		CFFB34E723595EF9002D440E /* webRefreshButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webRefreshButton@2x.png"; sourceTree = "<group>"; };
 		D1A3EF0650A7F2326222FB45 /* Pods-BaseProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.debug.xcconfig"; path = "Target Support Files/Pods-BaseProject/Pods-BaseProject.debug.xcconfig"; sourceTree = "<group>"; };
+		E0A0B765253E8F4C00E97ED8 /* BPRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPRefreshView.swift; sourceTree = "<group>"; };
+		E0A0B768253EAFE800E97ED8 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		FCE0B51EBB89FBFB5A61CACA /* Pods_BaseProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -535,6 +539,7 @@
 				22F1A30123B598680046F4D4 /* NSObject+Extension.swift */,
 				223D5EF3244DA98100482127 /* NSDate+Extension.h */,
 				223D5EF4244DA98100482127 /* NSDate+Extension.m */,
+				E0A0B768253EAFE800E97ED8 /* UIScrollView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -626,6 +631,7 @@
 				22D4981622FD05DD00281530 /* BPBaseRefreshControl.swift */,
 				22D4981E22FD163A00281530 /* BPRefreshHeaderView.swift */,
 				22D4982022FD164600281530 /* BPRefreshFooterView.swift */,
+				E0A0B765253E8F4C00E97ED8 /* BPRefreshView.swift */,
 			);
 			path = RefreshControl;
 			sourceTree = "<group>";
@@ -929,6 +935,7 @@
 				22D4981722FD05DD00281530 /* BPBaseRefreshControl.swift in Sources */,
 				22642BA6233A451D004E1DF9 /* NSObject+CrashDefender.m in Sources */,
 				22625315238F9F2B00A1CD54 /* Array+Extension.swift in Sources */,
+				E0A0B769253EAFE800E97ED8 /* UIScrollView+Extension.swift in Sources */,
 				223AC0F424F3CEBA00C85800 /* InsertionSortDescriptionView.swift in Sources */,
 				22D4981A22FD0A8B00281530 /* BPScrollRefreshProtocol.swift in Sources */,
 				2201542323758D2A004E4A99 /* BPLabel.swift in Sources */,
@@ -983,6 +990,7 @@
 				221F5C4A22E95B4000F9355C /* AppDelegate+Extension.swift in Sources */,
 				CF8EB5A622DCD1B300EC2FE5 /* BPViewController+CustomNavigationBar.swift in Sources */,
 				22A44AB5244D98280039466E /* BPOCLog.m in Sources */,
+				E0A0B766253E8F4C00E97ED8 /* BPRefreshView.swift in Sources */,
 				226F0B17250A253D00F453F6 /* BPInteractiveTransition.swift in Sources */,
 				2211803322EEE47500B77911 /* CALayer+Extension.swift in Sources */,
 				22AED510234DFEF200A91A68 /* BPSocketManager.swift in Sources */,
