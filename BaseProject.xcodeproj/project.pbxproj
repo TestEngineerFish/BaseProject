@@ -57,6 +57,7 @@
 		226F0B17250A253D00F453F6 /* BPInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F0B16250A253D00F453F6 /* BPInteractiveTransition.swift */; };
 		227D300A25372C96009DB59C /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D300925372C96009DB59C /* DrawView.swift */; };
 		227D300D253730E4009DB59C /* BPDrawPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D300C253730E4009DB59C /* BPDrawPath.swift */; };
+		227D303025407927009DB59C /* BPAlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D302F25407927009DB59C /* BPAlertDelegate.swift */; };
 		2290EABC236D5EF2000BCA47 /* right11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABB236D5EF2000BCA47 /* right11-data.json */; };
 		2290EABE236D5EF6000BCA47 /* wrong11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABD236D5EF6000BCA47 /* wrong11-data.json */; };
 		22A44AB2244D96DF0039466E /* BPSwiftMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A44AB1244D96DF0039466E /* BPSwiftMacro.swift */; };
@@ -187,6 +188,7 @@
 		227D2F9F252EEF62009DB59C /* BPPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPPoint.h; sourceTree = "<group>"; };
 		227D300925372C96009DB59C /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 		227D300C253730E4009DB59C /* BPDrawPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDrawPath.swift; sourceTree = "<group>"; };
+		227D302F25407927009DB59C /* BPAlertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAlertDelegate.swift; sourceTree = "<group>"; };
 		2290EABB236D5EF2000BCA47 /* right11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "right11-data.json"; sourceTree = "<group>"; };
 		2290EABD236D5EF6000BCA47 /* wrong11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "wrong11-data.json"; sourceTree = "<group>"; };
 		22A44AB0244D96600039466E /* BPOCMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPOCMacro.h; sourceTree = "<group>"; };
@@ -415,6 +417,15 @@
 			path = DrawView;
 			sourceTree = "<group>";
 		};
+		227D302E25407910009DB59C /* BaseAlert */ = {
+			isa = PBXGroup;
+			children = (
+				227D302F25407927009DB59C /* BPAlertDelegate.swift */,
+				2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */,
+			);
+			path = BaseAlert;
+			sourceTree = "<group>";
+		};
 		22868109230AA14D005E113E /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
@@ -556,7 +567,6 @@
 				227D300825372C44009DB59C /* DrawView */,
 				22D11F68252DF825005896E8 /* Earth */,
 				CF87869722F709C20031E4B9 /* BPAuthoriationManager.swift */,
-				2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */,
 				2264EF8222F9108500A89C82 /* AlertView */,
 			);
 			path = Utils;
@@ -703,6 +713,7 @@
 		CF8EB58522DCCB8200EC2FE5 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				227D302E25407910009DB59C /* BaseAlert */,
 				E0A0B76C253ED2DC00E97ED8 /* BaseRefreshView */,
 				226711362506215B00006534 /* Transition */,
 				22868109230AA14D005E113E /* BaseView */,
@@ -974,6 +985,7 @@
 				223AC0EE24F35AEF00C85800 /* DescriptionFactoryManager.swift in Sources */,
 				22D018FB2321F800007AFA1B /* BPDatabaseManager.swift in Sources */,
 				223D5EF5244DA98100482127 /* NSDate+Extension.m in Sources */,
+				227D303025407927009DB59C /* BPAlertDelegate.swift in Sources */,
 				CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */,
 				CF8EB5A222DCD0DC00EC2FE5 /* UIViewController+Extension.swift in Sources */,
 				CF87869A22F87BD60031E4B9 /* UIImage+Extension.swift in Sources */,

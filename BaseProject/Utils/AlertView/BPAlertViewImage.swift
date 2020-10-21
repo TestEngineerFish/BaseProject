@@ -29,15 +29,15 @@ class BPAlertViewImage: BPBaseAlertView {
         }
         self.imageView.touchOnBlock = touchBlockWrap
         self.closeButton.isHidden   = hideCloseBtn
-        self.setupSubviews()
+        self.createSubviews()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func setupSubviews() {
-        super.setupSubviews()
+    override func createSubviews() {
+        super.createSubviews()
         imageView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
             make.height.equalTo((kScreenWidth - 60) * 1.5)

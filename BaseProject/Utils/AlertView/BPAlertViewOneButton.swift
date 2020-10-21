@@ -25,15 +25,15 @@ class BPAlertViewOneButton: BPBaseAlertView {
         self.descriptionLabel.text = description
         self.rightButton.setTitle(buttonName, for: .normal)
         self.rightButton.addTarget(self, action: #selector(rightBtnAction), for: .touchUpInside)
-        self.setupSubviews()
+        self.createSubviews()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func setupSubviews() {
-        super.setupSubviews()
+    override func createSubviews() {
+        super.createSubviews()
         // 是否显示标题
         if let title = titleLabel.text, title.isNotEmpty {
             titleLabel.snp.makeConstraints { (make) in

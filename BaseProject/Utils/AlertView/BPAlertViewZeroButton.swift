@@ -20,15 +20,15 @@ class BPAlertViewZeroButton: BPBaseAlertView {
         self.descriptionHeight     = description.textHeight(font: self.descriptionLabel.font, width: kScreenWidth - 90)
         self.descriptionLabel.text = description
         self.closeButton.isHidden  = hideCloseBtn
-        self.setupSubviews()
+        self.createSubviews()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func setupSubviews() {
-        super.setupSubviews()
+    override func createSubviews() {
+        super.createSubviews()
         // 是否显示标题
         if let title = titleLabel.text, title.isNotEmpty {
             titleLabel.snp.makeConstraints { (make) in

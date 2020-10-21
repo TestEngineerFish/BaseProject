@@ -28,23 +28,28 @@ class PublishView: BPTopWindowView, UIScrollViewDelegate, UIGestureRecognizerDel
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setupSubviews()
-        // KVO监听PublishView的偏移量
-        self._publishView.addObserver(self, forKeyPath: "transform", options: [NSKeyValueObservingOptions(rawValue: NSKeyValueObservingOptions.new.rawValue | NSKeyValueObservingOptions.old.rawValue)], context: nil)
+        self.createSubviews()
+        self.bindProperty()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func setupSubviews() {
-        super.setupSubviews()
+
+    override func createSubviews() {
+        super.createSubviews()
         backgroundView.height = height
         addSubview(_publishView)
+    }
+
+    override func bindProperty() {
+        super.bindProperty()
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panView(pan:)))
         pan.cancelsTouchesInView = false
         pan.delaysTouchesEnded   = false
         _publishView.addGestureRecognizer(pan)
+        // KVO监听PublishView的偏移量
+        self._publishView.addObserver(self, forKeyPath: "transform", options: [NSKeyValueObservingOptions(rawValue: NSKeyValueObservingOptions.new.rawValue | NSKeyValueObservingOptions.old.rawValue)], context: nil)
     }
     
     /// 手势事件,处理滑动收起操作

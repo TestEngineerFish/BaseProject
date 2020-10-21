@@ -95,8 +95,8 @@ class BPBaseAlertView: BPTopWindowView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func setupSubviews() {
-        super.setupSubviews()
+    override func createSubviews() {
+        super.createSubviews()
         self.addSubview(containerView)
         self.addSubview(closeButton)
 
