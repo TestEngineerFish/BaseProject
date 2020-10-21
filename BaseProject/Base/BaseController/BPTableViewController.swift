@@ -8,27 +8,15 @@
 
 import UIKit
 
-class BPBaseTableViewController: UITableViewController {
+class BPTableViewController: UITableViewController {
 
     let dataSourceArray = Array(repeating: "好的", count: 20)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let refresh = UIRefreshControl()
-        refresh.attributedTitle = NSAttributedString(string: "刷新咯")
-        refresh .addTarget(self, action: #selector(_refresh), for: .valueChanged)
-        self.refreshControl = refresh
+//        self.tableView.refreshHeaderEnable = true
+//        self.tableView.refreshFooterEnable = true
     }
-
-    @objc func _refresh() {
-        if self.refreshControl?.isRefreshing ?? false {
-            print("refreshing")
-        } else {
-            print("refresh end")
-        }
-    }
-    
-
 
     // - MARK: Delegate
     // - MARK: DataSource

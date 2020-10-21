@@ -18,6 +18,8 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
         tableView.showsVerticalScrollIndicator   = false
         tableView.rowHeight = AdaptSize(44)
         tableView.backgroundColor = .gray1
+        tableView.refreshFooterEnable = true
+        tableView.refreshHeaderEnable = true
         return tableView
     }()
     
@@ -32,7 +34,7 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
         self.view.addSubview(tableView)
         self.tableView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(kNavHeight)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.left.right.bottom.equalToSuperview()
         }
     }
 
@@ -42,8 +44,6 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
         self.customNavigationBar?.leftButton.isHidden = true
         self.tableView.delegate   = self
         self.tableView.dataSource = self
-        self.tableView.refreshHeaderEnable = true
-        self.tableView.refreshFooterEnable = true
         self.tableView.refreshDelegate = self
     }
 
@@ -65,54 +65,29 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
         return UIView()
     }
 
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .zero
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.contentInset = .zero
-        return
         let vc  = AlgorithmViewController()
         vc.type = self.typeList[indexPath.row]
         self.navigationController?.push(vc: vc)
     }
     
     // MARK: ==== BPRefreshProtocol ====
-    /// 恢复头部视图
-    /// - Parameter scrollView: scrollView
-    func recoverHeaderView(scrollView: UIScrollView) {
-
-    }
-    /// 下拉Header中
-    /// - Parameter scrollView: scrollView
-    func pullingHeader(scrollView: UIScrollView) {
-
-    }
-    /// 下拉Header超过最大长度
-    /// - Parameter scrollView: scrollView
-    func pullMaxHeader(scrollView: UIScrollView) {
-
-    }
     /// 刷新中
     /// - Parameter scrollView: scrollView
-    func loadingHeader(scrollView: UIScrollView) {
-
-    }
-    // -------- Footer ---------
-    /// 恢复底部视图
-    /// - Parameter scrollView: scrollView
-    func recoverFooterView(scrollView: UIScrollView) {
-
-    }
-    /// 上拉Footer中
-    /// - Parameter scrollView: scrollView
-    func pullingFooter(scrollView: UIScrollView) {
-
-    }
-    /// 上拉Footer超过最大长度
-    /// - Parameter scrollView: scrollView
-    func pullMaxFooter(scrollView: UIScrollView) {
-
+    func loadingHeader(scrollView: UIScrollView, completion block: (()->Void)?) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
+            block?()
+        }
     }
     /// 加载中
     /// - Parameter scrollView: scrollView
-    func loadingFooter(scrollView: UIScrollView) {
-
+    func loadingFooter(scrollView: UIScrollView, completion block: (()->Void)?) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
+            block?()
+        }
     }
 }

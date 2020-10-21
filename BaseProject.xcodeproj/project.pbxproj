@@ -85,7 +85,7 @@
 		22D11F70252E0FF6005896E8 /* BPSocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D11F6F252E0FF6005896E8 /* BPSocketViewController.swift */; };
 		22D4980D22FBC67300281530 /* top-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 22D4980C22FBC67300281530 /* top-loading.json */; };
 		22D4980F22FBCD0800281530 /* center-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 22D4980E22FBCD0800281530 /* center-loading.json */; };
-		22D4981122FBCD9B00281530 /* BPBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981022FBCD9B00281530 /* BPBaseTableViewController.swift */; };
+		22D4981122FBCD9B00281530 /* BPTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981022FBCD9B00281530 /* BPTableViewController.swift */; };
 		22D4981322FBCDA900281530 /* BPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981222FBCDA900281530 /* BPViewController.swift */; };
 		22D4981522FBCDC600281530 /* BPNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981422FBCDC600281530 /* BPNavigationBar.swift */; };
 		22ED54B023687FEF00011B82 /* UIBezierPath+AllPoints.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED54AF23687FEF00011B82 /* UIBezierPath+AllPoints.m */; };
@@ -125,6 +125,7 @@
 		CFFB34EB23595EF9002D440E /* backbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFB34E523595EF9002D440E /* backbutton@2x.png */; };
 		CFFB34EC23595EF9002D440E /* webRefreshButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFB34E623595EF9002D440E /* webRefreshButton@3x.png */; };
 		CFFB34ED23595EF9002D440E /* webRefreshButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFB34E723595EF9002D440E /* webRefreshButton@2x.png */; };
+		E097EE13253FD4110065725A /* BPTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E097EE12253FD4110065725A /* BPTableView.swift */; };
 		E0A0B769253EAFE800E97ED8 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A0B768253EAFE800E97ED8 /* UIScrollView+Extension.swift */; };
 		E0A0B76E253ED2F700E97ED8 /* BPRefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A0B76D253ED2F700E97ED8 /* BPRefreshHeaderView.swift */; };
 		E0A0B772253ED30500E97ED8 /* BPRefreshFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A0B771253ED30500E97ED8 /* BPRefreshFooterView.swift */; };
@@ -223,7 +224,7 @@
 		22D11F73252EE98C005896E8 /* BPMatrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPMatrix.h; sourceTree = "<group>"; };
 		22D4980C22FBC67300281530 /* top-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "top-loading.json"; sourceTree = "<group>"; };
 		22D4980E22FBCD0800281530 /* center-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "center-loading.json"; sourceTree = "<group>"; };
-		22D4981022FBCD9B00281530 /* BPBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseTableViewController.swift; sourceTree = "<group>"; };
+		22D4981022FBCD9B00281530 /* BPTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTableViewController.swift; sourceTree = "<group>"; };
 		22D4981222FBCDA900281530 /* BPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPViewController.swift; sourceTree = "<group>"; };
 		22D4981422FBCDC600281530 /* BPNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPNavigationBar.swift; sourceTree = "<group>"; };
 		22ED54AE23687FEF00011B82 /* UIBezierPath+AllPoints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+AllPoints.h"; sourceTree = "<group>"; };
@@ -267,6 +268,7 @@
 		CFFB34E623595EF9002D440E /* webRefreshButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webRefreshButton@3x.png"; sourceTree = "<group>"; };
 		CFFB34E723595EF9002D440E /* webRefreshButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webRefreshButton@2x.png"; sourceTree = "<group>"; };
 		D1A3EF0650A7F2326222FB45 /* Pods-BaseProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.debug.xcconfig"; path = "Target Support Files/Pods-BaseProject/Pods-BaseProject.debug.xcconfig"; sourceTree = "<group>"; };
+		E097EE12253FD4110065725A /* BPTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTableView.swift; sourceTree = "<group>"; };
 		E0A0B768253EAFE800E97ED8 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		E0A0B76D253ED2F700E97ED8 /* BPRefreshHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPRefreshHeaderView.swift; sourceTree = "<group>"; };
 		E0A0B771253ED30500E97ED8 /* BPRefreshFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPRefreshFooterView.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				22D4981422FBCDC600281530 /* BPNavigationBar.swift */,
 				2201542223758D2A004E4A99 /* BPLabel.swift */,
 				225C48E424DD460F00594FEE /* BPView.swift */,
+				E097EE12253FD4110065725A /* BPTableView.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -713,7 +716,7 @@
 			children = (
 				CF6E171C235F55F40008C466 /* WebViewController */,
 				CF26719922FF0B1B00E6B47F /* BPBaseNavigationController.swift */,
-				22D4981022FBCD9B00281530 /* BPBaseTableViewController.swift */,
+				22D4981022FBCD9B00281530 /* BPTableViewController.swift */,
 				22D4981222FBCDA900281530 /* BPViewController.swift */,
 				CF26718F22FEB39B00E6B47F /* BPBaseTabBarController.swift */,
 			);
@@ -900,6 +903,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0A0B772253ED30500E97ED8 /* BPRefreshFooterView.swift in Sources */,
+				E097EE13253FD4110065725A /* BPTableView.swift in Sources */,
 				22458205232604D90031CC7A /* BPIMDBOperator.swift in Sources */,
 				22C621BA22DC805600A7C849 /* ViewController1.swift in Sources */,
 				22D4981322FBCDA900281530 /* BPViewController.swift in Sources */,
@@ -989,7 +993,7 @@
 				2264EF9622F98A3700A89C82 /* BPBaseButton.swift in Sources */,
 				2218AE3923D098D000EF2E42 /* BPLogManager.swift in Sources */,
 				CF26719222FEF6E700E6B47F /* BPTabBar.swift in Sources */,
-				22D4981122FBCD9B00281530 /* BPBaseTableViewController.swift in Sources */,
+				22D4981122FBCD9B00281530 /* BPTableViewController.swift in Sources */,
 				2264EF8122F90EED00A89C82 /* BPBaseAlertView.swift in Sources */,
 				22C621B822DC805600A7C849 /* AppDelegate.swift in Sources */,
 				224581FE2325EFCD0031CC7A /* BPSQLManager.swift in Sources */,
@@ -1148,7 +1152,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZUFNXAQBQM;
+				DEVELOPMENT_TEAM = A5LH7K7KL8;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -1175,7 +1179,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZUFNXAQBQM;
+				DEVELOPMENT_TEAM = A5LH7K7KL8;
 				INFOPLIST_FILE = BaseProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

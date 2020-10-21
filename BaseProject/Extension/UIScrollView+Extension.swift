@@ -11,7 +11,7 @@ import Foundation
 enum BPRefreshStatus: Int {
     
     // 顶部默认状态
-    case headerNomral
+    case headerNormal
     // 下拉滑动中
     case headerPulling
     // 下拉滑动超过阈值
@@ -43,7 +43,7 @@ protocol BPRefreshProtocol: NSObjectProtocol {
     @objc optional func pullMaxHeader(scrollView: UIScrollView)
     /// 刷新中
     /// - Parameter scrollView: scrollView
-    @objc optional func loadingHeader(scrollView: UIScrollView)
+    @objc optional func loadingHeader(scrollView: UIScrollView, completion block: (()->Void)?)
     // -------- Footer ---------
     /// 恢复底部视图
     /// - Parameter scrollView: scrollView
@@ -56,7 +56,7 @@ protocol BPRefreshProtocol: NSObjectProtocol {
     @objc optional func pullMaxFooter(scrollView: UIScrollView)
     /// 加载中
     /// - Parameter scrollView: scrollView
-    @objc optional func loadingFooter(scrollView: UIScrollView)
+    @objc optional func loadingFooter(scrollView: UIScrollView, completion block: (()->Void)?)
 }
 
 private struct AssociatedKeys {
@@ -83,7 +83,7 @@ extension UIScrollView {
     }
     
     /// 刷新状态
-    var refreshStatus: BPRefreshStatus? {
+    private var refreshStatus: BPRefreshStatus? {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.refreshStatus) as? BPRefreshStatus
         }
@@ -92,7 +92,7 @@ extension UIScrollView {
             objc_setAssociatedObject(self, &AssociatedKeys.refreshStatus, newValue, .OBJC_ASSOCIATION_RETAIN)
             guard let status = newValue else { return }
             switch status {
-            case .headerNomral:
+            case .headerNormal:
                 self.headerView?.setStatus(status: status)
                 self.refreshDelegate?.recoverHeaderView?(scrollView: self)
             case .headerPulling:
@@ -103,7 +103,12 @@ extension UIScrollView {
                 self.refreshDelegate?.pullMaxHeader?(scrollView: self)
             case .headerLoading:
                 self.headerView?.setStatus(status: status)
-                self.refreshDelegate?.pullingHeader?(scrollView: self)
+                self.refreshDelegate?.loadingHeader?(scrollView: self, completion: {[weak self] in
+                    self?.refreshCompletion()
+                })
+                if self.refreshDelegate == nil {
+                    self.refreshCompletion()
+                }
             case .footerNormal:
                 self.footerView?.setStatus(status: status)
                 self.refreshDelegate?.recoverFooterView?(scrollView: self)
@@ -115,13 +120,18 @@ extension UIScrollView {
                 self.refreshDelegate?.pullMaxFooter?(scrollView: self)
             case .footerLoading:
                 self.footerView?.setStatus(status: status)
-                self.refreshDelegate?.loadingFooter?(scrollView: self)
+                self.refreshDelegate?.loadingFooter?(scrollView: self, completion: {[weak self] in
+                    self?.refreshCompletion()
+                })
+                if self.refreshDelegate == nil {
+                    self.refreshCompletion()
+                }
             }
         }
     }
     
     /// 是否开启滑动监听
-    var observerEnable: Bool {
+    private var observerEnable: Bool {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.observerEnable) as? Bool ?? false
         }
@@ -144,6 +154,7 @@ extension UIScrollView {
                 self.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
             } else {
                 // 取消KVO监听
+                self.refreshCompletion()
                 self.removeObserver(self, forKeyPath: "contentOffset")
             }
         }
@@ -156,11 +167,28 @@ extension UIScrollView {
         
         set {
             objc_setAssociatedObject(self, &AssociatedKeys.refreshFooterEnable, newValue, .OBJC_ASSOCIATION_ASSIGN)
+            if newValue {
+                // 开启KVO监听
+                self.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
+            } else {
+                // 取消KVO监听
+                self.refreshCompletion()
+                self.removeObserver(self, forKeyPath: "contentOffset")
+            }
+        }
+    }
+    
+    private func refreshCompletion() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.contentInset  = .zero
+            self.refreshStatus = .headerNormal
+            self.refreshStatus = .footerNormal
         }
     }
     
     /// 刷新头部视图
-    var headerView: BPRefreshHeaderView? {
+    private var headerView: BPRefreshHeaderView? {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.headerView) as? BPRefreshHeaderView
         }
@@ -171,7 +199,7 @@ extension UIScrollView {
     }
     
     /// 加载跟多底部视图
-    var footerView: BPRefreshFooterView? {
+    private var footerView: BPRefreshFooterView? {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.footerView) as? BPRefreshFooterView
         }
@@ -212,10 +240,10 @@ extension UIScrollView {
                         self.createFooterView()
                     }
                     if offsetY > pullFooterMaxSize {
-                        // 滑动中
+                        // 超过最大长度
                         self.refreshStatus = .footerPullMax
                     } else  {
-                        // 超过最大长度
+                        // 滑动中
                         self.refreshStatus = .footerPulling
                     }
                 }
@@ -226,15 +254,15 @@ extension UIScrollView {
             if offsetY < 0 {
                 // 下拉
                 if self.refreshStatus == .some(.headerPullMax) {
-                    // 触发刷新
-                    self.refreshStatus = .headerLoading
                     // 显示刷新中状态
                     if offsetY < pullHeaderMaxSize {
                         self.contentInset = UIEdgeInsets(top: self.headerView?.height ?? 0, left: 0, bottom: 0, right: 0)
                     }
+                    // 触发刷新
+                    self.refreshStatus = .headerLoading
                 } else {
                     // 恢复默认状态
-                    self.refreshStatus = .headerNomral
+                    self.refreshStatus = .headerNormal
                 }
             } else {
                 // 上拉
@@ -242,12 +270,12 @@ extension UIScrollView {
                 // 忽略列表中滑动
                 if offsetY > 0 {
                     if self.refreshStatus == .some(.footerPullMax) {
-                        // 触发加载更多
-                        self.refreshStatus = .footerLoading
                         // 显示刷新中状态
                         if offsetY > pullFooterMaxSize {
                             self.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.footerView?.height ?? 0, right: 0)
                         }
+                        // 触发加载更多
+                        self.refreshStatus = .footerLoading
                     } else {
                         // 恢复默认状态
                         self.refreshStatus = .footerNormal

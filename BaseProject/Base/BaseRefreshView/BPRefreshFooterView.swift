@@ -37,8 +37,6 @@ class BPRefreshFooterView: BPView {
     
     func setStatus(status: BPRefreshStatus) {
         switch status {
-        case .footerNormal:
-            self.titleLabel.text = ""
         case .footerPulling:
             self.titleLabel.text = "上拉加载更多"
         case .footerPullMax:
@@ -46,7 +44,7 @@ class BPRefreshFooterView: BPView {
         case .footerLoading:
             self.titleLabel.text = "加载中～"
         default:
-            self.titleLabel.text = "啥状态啊"
+            self.titleLabel.text = ""
             return
         }
     }

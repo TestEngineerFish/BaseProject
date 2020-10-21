@@ -44,6 +44,7 @@ class BPRefreshHeaderView: BPView {
         case .headerLoading:
             self.titleLabel.text = "刷新中～"
         default:
+            self.titleLabel.text = ""
             return
         }
     }
