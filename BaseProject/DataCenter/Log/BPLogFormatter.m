@@ -29,7 +29,7 @@
 //    NSDate *nowDate      = [date dateByAddingTimeInterval:time];
     NSString *newDate = [date stringWithFormat:NSDate.ymdHmsFormat];
 
-    NSString *message = [NSString stringWithFormat:@"%@ | %@", newDate, logMessage->_message];
+    NSString *message = [NSString stringWithFormat:@"%@ | 【%@】%@", newDate, logLevel, logMessage->_message];
     DDLogMessage *newLogMessage = [[DDLogMessage alloc] initWithMessage:message level:logMessage.level flag:logMessage.flag context:logMessage.context file:logMessage.file function:logMessage.function line:logMessage.line tag:logMessage.tag options:logMessage.options timestamp:logMessage.timestamp];
     return [super formatLogMessage:newLogMessage];
 }

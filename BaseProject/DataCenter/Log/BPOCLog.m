@@ -21,7 +21,7 @@
 }
 
 - (void)socketLog:(NSString *)msg {
-    BPSocketLog(@"%@", msg);
+    BPSocketLog(@"*\n%@", msg);
 }
 
 + (instancetype)shared {
@@ -58,7 +58,7 @@
     self.loggerFoSocket = [[DDFileLogger alloc] initWithLogFileManager:fileManagerForSocket];
     BPLogFormatter *formatterForSocket = [[BPLogFormatter alloc] init];
     [formatterForSocket addToWhitelist:LOG_CONTEXT_SOCKET];
-    [self.loggerFoSocket setLogFormatter:formatterForRequest];
+    [self.loggerFoSocket setLogFormatter:formatterForSocket];
     self.loggerFoSocket.maximumFileSize = 1024 * 1024 * 1;
     self.loggerFoSocket.logFileManager.maximumNumberOfLogFiles = 5;
     [DDLog addLogger:self.loggerFoSocket withLevel:DDLogLevelVerbose | LOG_FLAG_SOCKET];

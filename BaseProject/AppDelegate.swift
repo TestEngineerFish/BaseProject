@@ -35,17 +35,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func initThirdPartyServices() {
         // ---- 日志 ----
-        DDLog.add(DDOSLogger.sharedInstance) // 发送到苹果控制台
-        let fileLogger = DDFileLogger()
-        fileLogger.rollingFrequency = 60 * 60 * 24
-        fileLogger.logFileManager.maximumNumberOfLogFiles = 7
-        DDLog.add(fileLogger)
-        // debug
-        DDLogVerbose("👽Verbose")
-        DDLogDebug("🤷🏻‍♂️Debug")
-        DDLogInfo("💻Info")
-        DDLogWarn("⚠️Warn")
-        DDLogError("❌Error")
+        BPOCLog.shared()?.launch()
+//        DDLog.add(DDOSLogger.sharedInstance) // 发送到苹果控制台
+//        let fileLogger = DDFileLogger()
+//        fileLogger.rollingFrequency = 60 * 60 * 24
+//        fileLogger.logFileManager.maximumNumberOfLogFiles = 7
+//        DDLog.add(fileLogger)
+//        // debug
+//        DDLogVerbose("👽Verbose")
+//        DDLogDebug("🤷🏻‍♂️Debug")
+//        DDLogInfo("💻Info")
+//        DDLogWarn("⚠️Warn")
+//        DDLogError("❌Error")
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

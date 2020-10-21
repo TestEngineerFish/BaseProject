@@ -27,10 +27,6 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
         super.viewDidLoad()
         self.createSubviews()
         self.bindProperty()
-        BPLog("BPLog")
-        BPRequestLog("BPRequestLog")
-        BPSocketLog("BPSocketLog")
-        BPLog(BPOCLog.shared()?.loggerFoRequest)
     }
 
     override func createSubviews() {
