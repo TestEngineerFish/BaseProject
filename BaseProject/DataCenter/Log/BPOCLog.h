@@ -10,6 +10,7 @@
 #import "CocoaLumberjack/CocoaLumberjack.h"
 @interface BPOCLog : NSObject
 
+@property (nonatomic, strong) DDFileLogger *loggerFoSocket;
 @property (nonatomic, strong) DDFileLogger *loggerFoRequest;
 @property (nonatomic, strong) DDFileLogger *loggerForEvent;
 
@@ -17,7 +18,8 @@
 // 启动日志
 - (void)launch;
 // 提供给Swift函数调用
-- (void)requestLog:(NSString *)msg;
 - (void)eventLog:(NSString *)msg;
+- (void)requestLog:(NSString *)msg;
+- (void)socketLog:(NSString *)msg;
 
 @end

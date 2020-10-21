@@ -34,3 +34,15 @@ public func BPRequestLog(_ items: Any..., separator: String = " ", terminator: S
     }
     BPOCLog.shared().request(message)
 }
+
+public func BPSocketLog(_ items: Any..., separator: String = " ", terminator: String = "\n") {
+    var message = ""
+    items.forEach { (item) in
+        if let itemStr = item as? String {
+            message += " " + itemStr
+        } else {
+            message += " \(item)"
+        }
+    }
+    BPOCLog.shared().socketLog(message)
+}

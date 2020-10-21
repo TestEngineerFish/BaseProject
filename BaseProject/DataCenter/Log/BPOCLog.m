@@ -12,12 +12,16 @@
 
 @implementation BPOCLog
 
+- (void)eventLog:(NSString *)msg {
+    BPLog(@"%@", msg);
+}
+
 - (void)requestLog:(NSString *)msg {
     BPRequestLog(@"*\n%@", msg);
 }
 
-- (void)eventLog:(NSString *)msg {
-    BPLog(@"%@", msg);
+- (void)socketLog:(NSString *)msg {
+    BPSocketLog(@"%@", msg);
 }
 
 + (instancetype)shared {
@@ -49,6 +53,15 @@
     self.loggerForEvent.maximumFileSize = 1024 * 1024 * 1;
     self.loggerForEvent.logFileManager.maximumNumberOfLogFiles = 5;
     [DDLog addLogger:self.loggerForEvent withLevel:DDLogLevelVerbose | LOG_FLAG_EVENT];
+    // Socket
+    DDLogFileManagerDefault *fileManagerForSocket = [[DDLogFileManagerDefault alloc] initWithLogsDirectory:[logsDirectory stringByAppendingPathComponent:@"Socket"]];
+    self.loggerFoSocket = [[DDFileLogger alloc] initWithLogFileManager:fileManagerForSocket];
+    BPLogFormatter *formatterForSocket = [[BPLogFormatter alloc] init];
+    [formatterForSocket addToWhitelist:LOG_CONTEXT_SOCKET];
+    [self.loggerFoSocket setLogFormatter:formatterForRequest];
+    self.loggerFoSocket.maximumFileSize = 1024 * 1024 * 1;
+    self.loggerFoSocket.logFileManager.maximumNumberOfLogFiles = 5;
+    [DDLog addLogger:self.loggerFoSocket withLevel:DDLogLevelVerbose | LOG_FLAG_SOCKET];
     // 控制台输出
     [DDLog addLogger:[DDOSLogger sharedInstance] withLevel:DDLogLevelInfo | LOG_FLAG_EVENT];
 }
