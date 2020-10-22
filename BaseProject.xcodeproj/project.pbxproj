@@ -130,6 +130,7 @@
 		E0A0B769253EAFE800E97ED8 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A0B768253EAFE800E97ED8 /* UIScrollView+Extension.swift */; };
 		E0A0B76E253ED2F700E97ED8 /* BPRefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A0B76D253ED2F700E97ED8 /* BPRefreshHeaderView.swift */; };
 		E0A0B772253ED30500E97ED8 /* BPRefreshFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A0B771253ED30500E97ED8 /* BPRefreshFooterView.swift */; };
+		E0DE9CEE254187E400D1FD1F /* BPEnvChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DE9CED254187E400D1FD1F /* BPEnvChangeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -274,6 +275,7 @@
 		E0A0B768253EAFE800E97ED8 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		E0A0B76D253ED2F700E97ED8 /* BPRefreshHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPRefreshHeaderView.swift; sourceTree = "<group>"; };
 		E0A0B771253ED30500E97ED8 /* BPRefreshFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPRefreshFooterView.swift; sourceTree = "<group>"; };
+		E0DE9CED254187E400D1FD1F /* BPEnvChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPEnvChangeViewController.swift; sourceTree = "<group>"; };
 		FCE0B51EBB89FBFB5A61CACA /* Pods_BaseProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -489,6 +491,7 @@
 				2264EF8F22F979DB00A89C82 /* BPBaseResopnse.swift */,
 				2264EF9122F97A0E00A89C82 /* BPNetworkService.swift */,
 				2264EF9322F97A2800A89C82 /* BPTaskRequest.swift */,
+				E0DE9CED254187E400D1FD1F /* BPEnvChangeViewController.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -985,6 +988,7 @@
 				2233952F24E1133C0052C7CC /* SelectionSortTableView.swift in Sources */,
 				223AC0EE24F35AEF00C85800 /* DescriptionFactoryManager.swift in Sources */,
 				22D018FB2321F800007AFA1B /* BPDatabaseManager.swift in Sources */,
+				E0DE9CEE254187E400D1FD1F /* BPEnvChangeViewController.swift in Sources */,
 				223D5EF5244DA98100482127 /* NSDate+Extension.m in Sources */,
 				CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */,
 				CF8EB5A222DCD0DC00EC2FE5 /* UIViewController+Extension.swift in Sources */,

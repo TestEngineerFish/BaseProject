@@ -12,8 +12,8 @@ import Kingfisher
 class BPAlertManager {
     
     static var share = BPAlertManager()
-    private var alertArray: [BPBaseAlertView] = []
-    private var isShowing: Bool = false
+    private var alertArray = [BPBaseAlertView]()
+    private var isShowing  = false
     
     /// 添加一个alertView
     /// - Parameter alertView: alert对象
@@ -31,13 +31,13 @@ class BPAlertManager {
         self.isShowing = true
         // 排序
         let alertView = self.alertArray.sorted { $0.priority.rawValue < $1.priority.rawValue }.first
+        // 关闭弹框后的闭包
         alertView?.closeActionBlock = { [weak self] in
-            guard let self = self else {
-                return
-            }
+            guard let self = self else { return }
             self.isShowing = false
             self.removeAlert()
         }
+        // 显示弹框
         alertView?.show()
     }
     
