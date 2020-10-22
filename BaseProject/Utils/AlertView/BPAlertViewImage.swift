@@ -13,19 +13,15 @@ class BPAlertViewImage: BPBaseAlertView {
 
     /// 纯图片Alert弹框
     /// - parameter imageStr: 图片路径
-    /// - parameter hideCloseBtn: 是否显示底部关闭按钮,默认不隐藏
+    /// - parameter hideCloseBtn: 是否隐藏底部关闭按钮,默认不隐藏
     /// - parameter touchBlock: 点击图片事件
-    init(imageStr: String, hideCloseBtn: Bool = true, touchBlock: ((String?) -> Void)?) {
+    init(imageStr: String, hideCloseBtn: Bool = false, touchBlock: ((String?) -> Void)?) {
         super.init(frame: .zero)
         self.imageUrlStr = imageStr
-        self.imageView.showImage(with: imageStr, placeholder: nil) { (progress) in
+        self.imageView.showImage(with: imageStr, placeholder: nil, completion: nil) { (progress) in
             BPLog(progress)
-        } completion: { (image: UIImage?, error: Error?, url: URL?) in
-            
         }
-
         self.imageActionBlock = touchBlock
-        
         self.closeButton.isHidden = hideCloseBtn
         self.createSubviews()
         self.bindProperty()
@@ -37,7 +33,6 @@ class BPAlertViewImage: BPBaseAlertView {
 
     override func createSubviews() {
         super.createSubviews()
-        kWindow.addSubview(mainView)
         mainView.addSubview(imageView)
         mainView.addSubview(closeButton)
         imageView.snp.makeConstraints { (make) in
@@ -61,5 +56,6 @@ class BPAlertViewImage: BPBaseAlertView {
     override func bindProperty() {
         super.bindProperty()
         self.mainView.backgroundColor = .clear
+        self.backgroundView.isUserInteractionEnabled = false
     }
 }

@@ -31,6 +31,8 @@ class BPBaseAlertView: BPTopWindowView {
     
     /// 弹框的默认宽度
     let mainViewWidth = AdaptSize(300)
+    /// 弹框的默认高度
+    var mainViewHeight: CGFloat = .zero
     /// 间距
     let leftPadding: CGFloat   = AdaptSize(15)
     let rightPadding: CGFloat  = AdaptSize(15)
@@ -88,8 +90,8 @@ class BPBaseAlertView: BPTopWindowView {
     }()
 
     // 左边按钮
-    var leftButton: BPBaseButton = {
-        let button = BPBaseButton()
+    var leftButton: BPButton = {
+        let button = BPButton(animation: false)
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.gray3), for: .normal)
         button.setTitleColor(UIColor.black1, for: .normal)
         button.titleLabel?.font    = UIFont.mediumFont(ofSize: AdaptSize(18))
@@ -98,8 +100,8 @@ class BPBaseAlertView: BPTopWindowView {
     }()
 
     // 右边按钮
-    var rightButton: BPBaseButton = {
-        let button = BPBaseButton()
+    var rightButton: BPButton = {
+        let button = BPButton(animation: false)
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.orange1), for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font    = UIFont.mediumFont(ofSize: AdaptSize(18))
@@ -108,8 +110,8 @@ class BPBaseAlertView: BPTopWindowView {
     }()
 
     // 关闭按钮
-    var closeButton: BPBaseButton = {
-        let button = BPBaseButton()
+    var closeButton: BPButton = {
+        let button = BPButton()
         button.setTitle(IconFont.close1.rawValue, for: .normal)
         button.setTitleColor(UIColor.black1.withAlphaComponent(0.8), for: .normal)
         button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(40))
@@ -122,10 +124,16 @@ class BPBaseAlertView: BPTopWindowView {
     var imageView: BPImageView = {
         let imageView = BPImageView()
         imageView.contentMode = UIView.ContentMode.scaleAspectFill
-        imageView.layer.cornerRadius  = AdaptSize(15)
-        imageView.layer.masksToBounds = true
+        imageView.isUserInteractionEnabled = true
+        imageView.layer.cornerRadius       = AdaptSize(15)
+        imageView.layer.masksToBounds      = true
         return imageView
     }()
+    
+    override func createSubviews() {
+        super.createSubviews()
+        self.addSubview(mainView)
+    }
     
     override func bindProperty() {
         super.bindProperty()
@@ -141,11 +149,7 @@ class BPBaseAlertView: BPTopWindowView {
     // MARK: ==== Event ====
     
     override func show() {
-        kWindow.addSubview(self)
-        kWindow.addSubview(mainView)
-        self.snp.remakeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
+        super.show()
         self.mainView.layer.addJellyAnimation()
     }
 

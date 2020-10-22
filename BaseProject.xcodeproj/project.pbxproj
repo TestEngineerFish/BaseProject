@@ -49,7 +49,7 @@
 		2264EF9022F979DB00A89C82 /* BPBaseResopnse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF8F22F979DB00A89C82 /* BPBaseResopnse.swift */; };
 		2264EF9222F97A0E00A89C82 /* BPNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF9122F97A0E00A89C82 /* BPNetworkService.swift */; };
 		2264EF9422F97A2800A89C82 /* BPTaskRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF9322F97A2800A89C82 /* BPTaskRequest.swift */; };
-		2264EF9622F98A3700A89C82 /* BPBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF9522F98A3700A89C82 /* BPBaseButton.swift */; };
+		2264EF9622F98A3700A89C82 /* BPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264EF9522F98A3700A89C82 /* BPButton.swift */; };
 		226711382506218B00006534 /* BPAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226711372506218B00006534 /* BPAnimationController.swift */; };
 		226DCB8A23C36116003C193B /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 226DCB8923C36116003C193B /* test.html */; };
 		226F0B13250A103A00F453F6 /* BPContainerTransitionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F0B12250A103A00F453F6 /* BPContainerTransitionContext.swift */; };
@@ -179,7 +179,7 @@
 		2264EF8F22F979DB00A89C82 /* BPBaseResopnse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseResopnse.swift; sourceTree = "<group>"; };
 		2264EF9122F97A0E00A89C82 /* BPNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPNetworkService.swift; sourceTree = "<group>"; };
 		2264EF9322F97A2800A89C82 /* BPTaskRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTaskRequest.swift; sourceTree = "<group>"; };
-		2264EF9522F98A3700A89C82 /* BPBaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseButton.swift; sourceTree = "<group>"; };
+		2264EF9522F98A3700A89C82 /* BPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPButton.swift; sourceTree = "<group>"; };
 		226711372506218B00006534 /* BPAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAnimationController.swift; sourceTree = "<group>"; };
 		226DCB8923C36116003C193B /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		226F0B12250A103A00F453F6 /* BPContainerTransitionContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPContainerTransitionContext.swift; sourceTree = "<group>"; };
@@ -429,7 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				CF26719122FEF6E700E6B47F /* BPTabBar.swift */,
-				2264EF9522F98A3700A89C82 /* BPBaseButton.swift */,
+				2264EF9522F98A3700A89C82 /* BPButton.swift */,
 				22A877BD22FAB679004FF3A7 /* BPImageView.swift */,
 				22D4981422FBCDC600281530 /* BPNavigationBar.swift */,
 				2201542223758D2A004E4A99 /* BPLabel.swift */,
@@ -1002,7 +1002,7 @@
 				223AC0F024F35B5200C85800 /* BubbleSortDescriptionView.swift in Sources */,
 				22C6221B22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift in Sources */,
 				22D11F70252E0FF6005896E8 /* BPSocketViewController.swift in Sources */,
-				2264EF9622F98A3700A89C82 /* BPBaseButton.swift in Sources */,
+				2264EF9622F98A3700A89C82 /* BPButton.swift in Sources */,
 				2218AE3923D098D000EF2E42 /* BPLogManager.swift in Sources */,
 				CF26719222FEF6E700E6B47F /* BPTabBar.swift in Sources */,
 				22D4981122FBCD9B00281530 /* BPTableViewController.swift in Sources */,

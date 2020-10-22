@@ -15,11 +15,11 @@ class ViewController4: BPViewController, BPSocketProtocol {
     var serverLabel         = UILabel()
     var serverPortTextField = UITextField()
     var sendTextField       = UITextField()
-    var statusButton        = BPBaseButton()
-    var sendButton          = BPBaseButton()
+    var statusButton        = BPButton()
+    var sendButton          = BPButton()
     var infoShowLabel       = UILabel()
     var infoTextView        = UITextView()
-    var clearButton         = BPBaseButton()
+    var clearButton         = BPButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()

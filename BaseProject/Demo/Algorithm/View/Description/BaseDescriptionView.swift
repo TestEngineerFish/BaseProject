@@ -128,15 +128,15 @@ class BaseDescriptionView: BPView {
         return label
     }()
 
-    let startButton: BPBaseButton = {
-        let button = BPBaseButton(.theme, frame: .zero)
+    let startButton: BPButton = {
+        let button = BPButton(.theme, frame: .zero)
         button.setTitle("开始", for: .normal)
         button.titleLabel?.font = UIFont.regularFont(ofSize: AdaptSize(16))
         return button
     }()
 
-    let resetButton: BPBaseButton = {
-        let button = BPBaseButton(.theme, frame: .zero)
+    let resetButton: BPButton = {
+        let button = BPButton(.theme, frame: .zero)
         button.setTitle("重置", for: .normal)
         button.titleLabel?.font = UIFont.regularFont(ofSize: AdaptSize(16))
         return button

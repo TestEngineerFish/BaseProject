@@ -162,14 +162,14 @@ class BPBaseWebViewController: UIViewController, WKScriptMessageHandler, WKUIDel
         let funcName = message.name
         let parameters = message.body
         if funciontList.contains(funcName) {
-            BPAlertManager.showAlertOntBtn(title: "JS调用了没有参数函数", description: "函数名:" + funcName + "参数是 : \(parameters)", buttonName: "知道了", closure: nil)
+            BPAlertManager.oneButton(title: "JS调用了没有参数函数", description: "函数名:" + funcName + "参数是 : \(parameters)", buttonName: "知道了", closure: nil)
         }
     }
     
     // TODO:WKUIDelegate
     /// 将web常见视图,转换成原生试视图展示
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
-        BPAlertManager.showAlertOntBtn(title: "捕获到JS的弹框", description: message, buttonName: "知道了", closure: completionHandler)
+        BPAlertManager.oneButton(title: "捕获到JS的弹框", description: message, buttonName: "知道了", closure: completionHandler)
     }
     
     // TODO: Tools

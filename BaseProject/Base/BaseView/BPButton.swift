@@ -25,15 +25,17 @@ enum YXButtonType: Int {
 }
 
 @IBDesignable
-class BPBaseButton: UIButton {
+class BPButton: UIButton {
     
-    var status: YXButtonStatusEnum = .normal
-    var type: YXButtonType
+    private var status: YXButtonStatusEnum = .normal
+    private var type: YXButtonType
+    private var showAnimation: Bool
     
     // MARK: ---- Init ----
     
-    init(_ type: YXButtonType = .normal, frame: CGRect = .zero) {
-        self.type = type
+    init(_ type: YXButtonType = .normal, frame: CGRect = .zero, animation: Bool = true) {
+        self.type          = type
+        self.showAnimation = animation
         super.init(frame: frame)
         
         self.bindProperty()
@@ -73,8 +75,7 @@ class BPBaseButton: UIButton {
             if type == .theme {
                 self.layer.cornerRadius  = self.size.height / 2
                 self.layer.masksToBounds = true
-                self.backgroundColor = UIColor.gradientColor(with: self.size, colors: [UIColor.hex(0xFDBA33).cgColor, UIColor.hex(0xFB8417).cgColor], direction: .vertical)
-                
+                self.backgroundColor     = UIColor.gradientColor(with: self.size, colors: [UIColor.hex(0xFDBA33).cgColor, UIColor.hex(0xFB8417).cgColor], direction: .vertical)
             } else if type == .border {
                 self.layer.cornerRadius  = self.size.height / 2
                 self.layer.masksToBounds = true
@@ -120,6 +121,9 @@ class BPBaseButton: UIButton {
         } else if type == .border {
             self.backgroundColor = UIColor.black.withAlphaComponent(0.9)
         }
+        guard self.showAnimation else {
+            return
+        }
         // 动画效果UI说暂时不要，哎…………伤心💔
         let animation = CAKeyframeAnimation(keyPath: "transform.scale")
         animation.values       = [0.9]
@@ -131,6 +135,9 @@ class BPBaseButton: UIButton {
     }
     
     @objc func touchUp(sender: UIButton) {
+        guard self.showAnimation else {
+            return
+        }
         // 动画效果UI说暂时不要，哎…………伤心💔
         let animation = CAKeyframeAnimation(keyPath: "transform.scale")
         animation.values       = [1.1, 0.95, 1.0]

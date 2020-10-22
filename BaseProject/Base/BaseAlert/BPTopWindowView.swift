@@ -15,6 +15,7 @@ class BPTopWindowView: BPView {
     internal var backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        view.layer.opacity   = .zero
         view.isUserInteractionEnabled = true
         return view
     }()
@@ -30,10 +31,6 @@ class BPTopWindowView: BPView {
     override func createSubviews() {
         super.createSubviews()
         self.addSubview(backgroundView)
-        kWindow.addSubview(self)
-        self.snp.remakeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
         backgroundView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -48,6 +45,10 @@ class BPTopWindowView: BPView {
     // MARK: ==== Event ===
     /// 显示弹框
     func show() {
+        kWindow.addSubview(self)
+        self.snp.remakeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
         UIView.animate(withDuration: 0.25) { [weak self] in
             self?.backgroundView.layer.opacity = 1.0
         }

@@ -10,15 +10,10 @@ import UIKit
 
 class BPAlertViewZeroButton: BPBaseAlertView {
     
-    /// 底部左右两个按钮的Alert弹框
-    /// - parameter title: 标题
-    /// - parameter description: 描述
-    /// - parameter hideCloseBtn: 是否隐藏右上角的关闭按钮
-    init(title: String?, description: String, hideCloseBtn: Bool = false) {
+    init(title: String?, description: String) {
         super.init(frame: .zero)
         self.titleLabel.text       = title
         self.descriptionLabel.text = description
-        self.closeButton.isHidden  = hideCloseBtn
         self.createSubviews()
         self.bindProperty()
     }
@@ -29,9 +24,9 @@ class BPAlertViewZeroButton: BPBaseAlertView {
 
     override func createSubviews() {
         super.createSubviews()
-        kWindow.addSubview(mainView)
         self.mainView.addSubview(titleLabel)
         self.mainView.addSubview(descriptionLabel)
+        
         // 是否显示标题
         if let title = titleLabel.text, title.isNotEmpty {
             titleLabel.snp.makeConstraints { (make) in
@@ -45,6 +40,7 @@ class BPAlertViewZeroButton: BPBaseAlertView {
                 make.left.right.equalTo(titleLabel)
                 make.height.equalTo(descriptionHeight)
             }
+            mainViewHeight += topPadding + titleHeight + defaultSpace + descriptionHeight + bottomPadding
         } else {
             descriptionLabel.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(topPadding)
@@ -52,17 +48,13 @@ class BPAlertViewZeroButton: BPBaseAlertView {
                 make.right.equalTo(-rightPadding)
                 make.height.equalTo(descriptionHeight)
             }
+            mainViewHeight += topPadding + descriptionHeight + bottomPadding
         }
-        let mainViewHeight = topPadding + titleHeight + defaultSpace + descriptionHeight + bottomPadding
+        
         mainView.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.width.equalTo(mainViewWidth)
             make.height.equalTo(mainViewHeight)
         }
     }
-    
-    override func bindProperty() {
-        super.bindProperty()
-    }
-
 }

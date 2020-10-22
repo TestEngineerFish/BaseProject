@@ -16,11 +16,11 @@ class BPSocketViewController: BPViewController, BPSocketProtocol {
     var serverPortTextField = UITextField()
     var sendTextField       = UITextField()
     var serverLabel         = UILabel()
-    var statusButton        = BPBaseButton()
-    var sendButton          = BPBaseButton()
+    var statusButton        = BPButton()
+    var sendButton          = BPButton()
     var infoShowLabel       = UILabel()
     var infoTextView        = UITextView()
-    var clearButton         = BPBaseButton()
+    var clearButton         = BPButton()
     var earthView: BPEarthView?
 
     override func viewDidLoad() {
