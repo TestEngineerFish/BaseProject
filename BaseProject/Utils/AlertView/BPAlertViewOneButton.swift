@@ -10,8 +10,6 @@ import UIKit
 
 class BPAlertViewOneButton: BPBaseAlertView {
 
-    private var rightAction: (() -> Void)?
-
     /// 底部左右两个按钮的Alert弹框
     /// - parameter title: 标题
     /// - parameter description: 描述
@@ -20,12 +18,11 @@ class BPAlertViewOneButton: BPBaseAlertView {
     init(title: String?, description: String, buttonName: String, closure: (() -> Void)?) {
         super.init(frame: .zero)
         self.titleLabel.text       = title
-        self.rightAction           = closure
-        self.descriptionHeight     = description.textHeight(font: self.descriptionLabel.font, width: kScreenWidth - 90)
         self.descriptionLabel.text = description
+        self.rightActionBlock      = closure
         self.rightButton.setTitle(buttonName, for: .normal)
-        self.rightButton.addTarget(self, action: #selector(rightBtnAction), for: .touchUpInside)
         self.createSubviews()
+        self.bindProperty()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -34,43 +31,43 @@ class BPAlertViewOneButton: BPBaseAlertView {
 
     override func createSubviews() {
         super.createSubviews()
+        kWindow.addSubview(mainView)
+        mainView.addSubview(titleLabel)
+        mainView.addSubview(descriptionLabel)
+        mainView.addSubview(rightButton)
         // 是否显示标题
         if let title = titleLabel.text, title.isNotEmpty {
             titleLabel.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(18)
-                make.left.equalToSuperview().offset(15)
-                make.right.equalToSuperview().offset(-15)
-                make.height.equalTo(22)
+                make.top.equalToSuperview().offset(topPadding)
+                make.left.equalToSuperview().offset(leftPadding)
+                make.right.equalToSuperview().offset(-rightPadding)
+                make.height.equalTo(titleHeight)
             }
-
             descriptionLabel.snp.makeConstraints { (make) in
-                make.top.equalTo(titleLabel.snp.bottom).offset(18)
+                make.top.equalTo(titleLabel.snp.bottom).offset(defaultSpace)
                 make.left.right.equalTo(titleLabel)
                 make.height.equalTo(descriptionHeight)
             }
         } else {
             descriptionLabel.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(18)
-                make.left.equalToSuperview().offset(15)
-                make.right.equalTo(-15)
+                make.top.equalToSuperview().offset(topPadding)
+                make.left.equalToSuperview().offset(leftPadding)
+                make.right.equalTo(-rightPadding)
                 make.height.equalTo(descriptionHeight)
             }
         }
 
         rightButton.snp.makeConstraints { (make) in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(15)
-            make.left.equalToSuperview().offset(15)
-            make.right.equalToSuperview().offset(-15)
-            make.height.equalTo(56)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(defaultSpace)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(buttonHeight)
         }
-
-        containerView.snp.makeConstraints { (make) in
-            make.bottom.equalTo(rightButton).offset(30)
+        
+        let mainViewHeight = topPadding + titleHeight + defaultSpace*2 + descriptionHeight + buttonHeight
+        mainView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.equalTo(mainViewWidth)
+            make.height.equalTo(mainViewHeight)
         }
-    }
-
-    override func rightBtnAction() {
-        self.rightAction?()
-        super.rightBtnAction()
     }
 }

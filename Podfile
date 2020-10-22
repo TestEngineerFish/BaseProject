@@ -32,5 +32,7 @@ target 'BaseProject' do
   pod 'FMDB'
   # 全屏右滑返回
   pod 'FDFullscreenPopGesture', '1.1'
+  # SVGA动画
+  pod 'SVGAPlayer'
 
 end

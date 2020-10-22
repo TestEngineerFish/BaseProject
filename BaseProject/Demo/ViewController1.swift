@@ -70,6 +70,12 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let title = "我是标题"
+        let description = "我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述"
+        BPAlertManager.showAlertImage(imageStr: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603354673520&di=02a3a98c3cca0d696f13be375d1f72e3&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201406%2F01%2F20140601003944_Znm2h.thumb.700_0.jpeg", hideCloseBtn: false) { (urlStr) in
+            BPLog(urlStr)
+        }.show()
+        return
         let vc  = AlgorithmViewController()
         vc.type = self.typeList[indexPath.row]
         self.navigationController?.push(vc: vc)

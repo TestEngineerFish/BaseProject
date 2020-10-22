@@ -15,3 +15,6 @@ public func AdaptSize(_ size: CGFloat) -> CGFloat {
     let newSize = kScreenWidth / (isPad ? 768 : 375) * size
     return newSize
 }
+
+/// 默认闭包
+typealias DefaultBlock = (()->Void)

@@ -8,17 +8,61 @@
 
 import UIKit
 
+/// 优先级由高到低
+enum BPAlertPriorityEnum: Int {
+    case A = 0
+    case B = 1
+    case C = 2
+    case D = 3
+    case E = 4
+    case F = 5
+    case normal = 100
+}
+
 /// AlertView的基类,默认只显示标题或者标题+描述信息
 class BPBaseAlertView: BPTopWindowView {
-
-    // 弹框中描述文字高度
-    var descriptionHeight: CGFloat = 0.0
-
+    
+    /// 弹框优先级
+    var priority: BPAlertPriorityEnum = .normal
+    /// 是否已展示过
+    var isShowed = false
+    /// 默认事件触发后自动关闭页面
+    var autoClose: Bool = true
+    
+    /// 弹框的默认宽度
+    let mainViewWidth = AdaptSize(300)
+    /// 间距
+    let leftPadding: CGFloat   = AdaptSize(15)
+    let rightPadding: CGFloat  = AdaptSize(15)
+    let topPadding: CGFloat    = AdaptSize(20)
+    let bottomPadding: CGFloat = AdaptSize(20)
+    let defaultSpace: CGFloat  = AdaptSize(15)
+    let buttonHeight: CGFloat  = AdaptSize(50)
+    let imageViewSize: CGSize  = CGSize(width: AdaptSize(300), height: AdaptSize(500))
+    let closeBtnSize: CGSize   = CGSize(width: AdaptSize(50), height: AdaptSize(50))
+    
+    // 标题的高度
+    var titleHeight: CGFloat {
+        get {
+            return self.titleLabel.textHeight(width: mainViewWidth - leftPadding - rightPadding)
+        }
+    }
+    // 描述的高度
+    var descriptionHeight: CGFloat {
+        get {
+            return self.descriptionLabel.textHeight(width: mainViewWidth - leftPadding - rightPadding)
+        }
+    }
+    var imageUrlStr: String?
+    var leftActionBlock: DefaultBlock?
+    var rightActionBlock: DefaultBlock?
+    var imageActionBlock: ((String?)->Void)?
+    
     // 弹框的背景
-    var containerView: UIView = {
+    var mainView: UIView = {
         let view = UIView()
         view.backgroundColor     = UIColor.white
-        view.layer.cornerRadius  = 20
+        view.layer.cornerRadius  = AdaptSize(15)
         view.layer.masksToBounds = true
         return view
     }()
@@ -28,7 +72,7 @@ class BPBaseAlertView: BPTopWindowView {
         let label           = UILabel()
         label.numberOfLines = 1
         label.textColor     = UIColor.black1
-        label.font          = UIFont.regularFont(ofSize: 16)
+        label.font          = UIFont.regularFont(ofSize: AdaptSize(16))
         label.textAlignment = .center
         return label
     }()
@@ -37,7 +81,7 @@ class BPBaseAlertView: BPTopWindowView {
     var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.black1.withAlphaComponent(0.5)
-        label.font = UIFont.regularFont(ofSize: 16)
+        label.font = UIFont.regularFont(ofSize: AdaptSize(16))
         label.numberOfLines = 0
         label.textAlignment = .left
         return label
@@ -48,22 +92,18 @@ class BPBaseAlertView: BPTopWindowView {
         let button = BPBaseButton()
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.gray3), for: .normal)
         button.setTitleColor(UIColor.black1, for: .normal)
-        button.titleLabel?.font    = UIFont.mediumFont(ofSize: 18)
+        button.titleLabel?.font    = UIFont.mediumFont(ofSize: AdaptSize(18))
         button.layer.cornerRadius  = 10
-        button.layer.masksToBounds = true
-        button.addTarget(self, action: #selector(leftBtnAction), for: .touchUpInside)
         return button
     }()
 
     // 右边按钮
     var rightButton: BPBaseButton = {
         let button = BPBaseButton()
-        button.setBackgroundImage(UIImage.imageWithColor(UIColor.green1), for: .normal)
+        button.setBackgroundImage(UIImage.imageWithColor(UIColor.orange1), for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font    = UIFont.mediumFont(ofSize: 18)
+        button.titleLabel?.font    = UIFont.mediumFont(ofSize: AdaptSize(18))
         button.layer.cornerRadius  = 10
-        button.layer.masksToBounds = true
-        button.addTarget(self, action: #selector(rightBtnAction), for: .touchUpInside)
         return button
     }()
 
@@ -72,57 +112,66 @@ class BPBaseAlertView: BPTopWindowView {
         let button = BPBaseButton()
         button.setTitle(IconFont.close1.rawValue, for: .normal)
         button.setTitleColor(UIColor.black1.withAlphaComponent(0.8), for: .normal)
-        button.titleLabel?.font = UIFont.iconFont(size: 40)
-        button.addTarget(self, action: #selector(closeBtnAction), for: .touchUpInside)
+        button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(40))
         button.isHidden = true
         button.backgroundColor = UIColor.clear
         return button
     }()
 
     // 图片
-    var imageView: BPBaseImageView = {
-        let imageView = BPBaseImageView()
+    var imageView: BPImageView = {
+        let imageView = BPImageView()
         imageView.contentMode = UIView.ContentMode.scaleAspectFill
+        imageView.layer.cornerRadius  = AdaptSize(15)
+        imageView.layer.masksToBounds = true
         return imageView
     }()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.containerView.layer.addJellyAnimation()
+    
+    override func bindProperty() {
+        super.bindProperty()
+        let tapBackground = UITapGestureRecognizer(target: self, action: #selector(closeAction))
+        let tapImage      = UITapGestureRecognizer(target: self, action: #selector(clickImageAction))
+        self.backgroundView.addGestureRecognizer(tapBackground)
+        self.imageView.addGestureRecognizer(tapImage)
+        self.leftButton.addTarget(self, action: #selector(leftAction), for: .touchUpInside)
+        self.rightButton.addTarget(self, action: #selector(rightAction), for: .touchUpInside)
+        self.closeButton.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
     }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func createSubviews() {
-        super.createSubviews()
-        self.addSubview(containerView)
-        self.addSubview(closeButton)
-
-        containerView.addSubview(titleLabel)
-        containerView.addSubview(descriptionLabel)
-        containerView.addSubview(leftButton)
-        containerView.addSubview(rightButton)
-        containerView.addSubview(imageView)
-
-        containerView.snp.makeConstraints { (make) in
-            make.center.equalTo(self)
-            make.width.equalTo(kScreenWidth - 60)
+    
+    // MARK: ==== Event ====
+    
+    override func show() {
+        kWindow.addSubview(self)
+        kWindow.addSubview(mainView)
+        self.snp.remakeConstraints { (make) in
+            make.edges.equalToSuperview()
         }
+        self.mainView.layer.addJellyAnimation()
+    }
 
-        closeButton.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: 60, height: 60))
-            make.top.equalTo(containerView.snp.bottom).offset(15)
-            make.centerX.equalToSuperview()
+    @objc func leftAction() {
+        self.leftActionBlock?()
+        if autoClose {
+            self.closeAction()
         }
     }
 
-    @objc func leftBtnAction() {
-        self.removeFromSuperview()
+    @objc func rightAction() {
+        self.rightActionBlock?()
+        if autoClose {
+            self.closeAction()
+        }
     }
-
-    @objc func rightBtnAction() {
-        self.removeFromSuperview()
+    
+    @objc func clickImageAction() {
+        self.imageActionBlock?(self.imageUrlStr)
+        if autoClose {
+            self.closeAction()
+        }
+    }
+    
+    @objc override func closeAction() {
+        self.mainView.removeFromSuperview()
+        super.closeAction()
     }
 }

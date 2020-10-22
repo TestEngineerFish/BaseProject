@@ -11,25 +11,24 @@ import Kingfisher
 
 class BPAlertViewImage: BPBaseAlertView {
 
-    typealias TouchOnImageBlock = (Source) -> Void
-    var tmpTouchBlack: TouchOnImageBlock?
-
     /// 纯图片Alert弹框
     /// - parameter imageStr: 图片路径
     /// - parameter hideCloseBtn: 是否显示底部关闭按钮,默认不隐藏
     /// - parameter touchBlock: 点击图片事件
-    init(imageStr: String, hideCloseBtn: Bool = true, touchBlock: ((Source) -> Void)?) {
+    init(imageStr: String, hideCloseBtn: Bool = true, touchBlock: ((String?) -> Void)?) {
         super.init(frame: .zero)
-        self.imageView.showImage(with: imageStr)
-        // 这里做个中间商赚差价,点击图片的闭包函数执行后,增加关闭当前View的事件
-        tmpTouchBlack = touchBlock
-        let touchBlockWrap: TouchOnImageBlock? = { (source) in
-            self.tmpTouchBlack?(source)
-            self.closeBtnAction()
+        self.imageUrlStr = imageStr
+        self.imageView.showImage(with: imageStr, placeholder: nil) { (progress) in
+            BPLog(progress)
+        } completion: { (image: UIImage?, error: Error?, url: URL?) in
+            
         }
-        self.imageView.touchOnBlock = touchBlockWrap
-        self.closeButton.isHidden   = hideCloseBtn
+
+        self.imageActionBlock = touchBlock
+        
+        self.closeButton.isHidden = hideCloseBtn
         self.createSubviews()
+        self.bindProperty()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -38,17 +37,29 @@ class BPAlertViewImage: BPBaseAlertView {
 
     override func createSubviews() {
         super.createSubviews()
+        kWindow.addSubview(mainView)
+        mainView.addSubview(imageView)
+        mainView.addSubview(closeButton)
         imageView.snp.makeConstraints { (make) in
-            make.top.left.right.equalToSuperview()
-            make.height.equalTo((kScreenWidth - 60) * 1.5)
+            make.top.centerX.equalToSuperview()
+            make.size.equalTo(imageViewSize)
         }
-
-        containerView.snp.makeConstraints { (make) in
-            make.bottom.equalTo(imageView)
+        closeButton.snp.makeConstraints { (make) in
+            make.top.equalTo(imageView.snp.bottom).offset(topPadding)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(closeBtnSize)
+        }
+        
+        let mainViewHeight = imageViewSize.height + topPadding + closeBtnSize.height
+        mainView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.equalTo(mainViewWidth)
+            make.height.equalTo(mainViewHeight)
         }
     }
-
-    override func closeBtnAction() {
-        super.closeBtnAction()
+    
+    override func bindProperty() {
+        super.bindProperty()
+        self.mainView.backgroundColor = .clear
     }
 }

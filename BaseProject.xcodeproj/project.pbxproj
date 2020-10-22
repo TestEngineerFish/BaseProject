@@ -57,13 +57,12 @@
 		226F0B17250A253D00F453F6 /* BPInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F0B16250A253D00F453F6 /* BPInteractiveTransition.swift */; };
 		227D300A25372C96009DB59C /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D300925372C96009DB59C /* DrawView.swift */; };
 		227D300D253730E4009DB59C /* BPDrawPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D300C253730E4009DB59C /* BPDrawPath.swift */; };
-		227D303025407927009DB59C /* BPAlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D302F25407927009DB59C /* BPAlertDelegate.swift */; };
 		2290EABC236D5EF2000BCA47 /* right11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABB236D5EF2000BCA47 /* right11-data.json */; };
 		2290EABE236D5EF6000BCA47 /* wrong11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABD236D5EF6000BCA47 /* wrong11-data.json */; };
 		22A44AB2244D96DF0039466E /* BPSwiftMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A44AB1244D96DF0039466E /* BPSwiftMacro.swift */; };
 		22A44AB5244D98280039466E /* BPOCLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A44AB4244D98280039466E /* BPOCLog.m */; };
 		22A44AB8244D98B40039466E /* BPLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A44AB7244D98B40039466E /* BPLogFormatter.m */; };
-		22A877BE22FAB679004FF3A7 /* BPBaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A877BD22FAB679004FF3A7 /* BPBaseImageView.swift */; };
+		22A877BE22FAB679004FF3A7 /* BPImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A877BD22FAB679004FF3A7 /* BPImageView.swift */; };
 		22AED50D234DD6AE00A91A68 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AED509234DD6AE00A91A68 /* GCDAsyncSocket.m */; };
 		22AED50E234DD6AE00A91A68 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AED50A234DD6AE00A91A68 /* GCDAsyncUdpSocket.m */; };
 		22AED510234DFEF200A91A68 /* BPSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AED50F234DFEF200A91A68 /* BPSocketManager.swift */; };
@@ -126,6 +125,7 @@
 		CFFB34EB23595EF9002D440E /* backbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFB34E523595EF9002D440E /* backbutton@2x.png */; };
 		CFFB34EC23595EF9002D440E /* webRefreshButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFB34E623595EF9002D440E /* webRefreshButton@3x.png */; };
 		CFFB34ED23595EF9002D440E /* webRefreshButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFB34E723595EF9002D440E /* webRefreshButton@2x.png */; };
+		E0547FFD254124640031C02D /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0547FFC254124640031C02D /* UILabel+Extension.swift */; };
 		E097EE13253FD4110065725A /* BPTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E097EE12253FD4110065725A /* BPTableView.swift */; };
 		E0A0B769253EAFE800E97ED8 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A0B768253EAFE800E97ED8 /* UIScrollView+Extension.swift */; };
 		E0A0B76E253ED2F700E97ED8 /* BPRefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A0B76D253ED2F700E97ED8 /* BPRefreshHeaderView.swift */; };
@@ -188,7 +188,6 @@
 		227D2F9F252EEF62009DB59C /* BPPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPPoint.h; sourceTree = "<group>"; };
 		227D300925372C96009DB59C /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 		227D300C253730E4009DB59C /* BPDrawPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDrawPath.swift; sourceTree = "<group>"; };
-		227D302F25407927009DB59C /* BPAlertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAlertDelegate.swift; sourceTree = "<group>"; };
 		2290EABB236D5EF2000BCA47 /* right11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "right11-data.json"; sourceTree = "<group>"; };
 		2290EABD236D5EF6000BCA47 /* wrong11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "wrong11-data.json"; sourceTree = "<group>"; };
 		22A44AB0244D96600039466E /* BPOCMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPOCMacro.h; sourceTree = "<group>"; };
@@ -197,7 +196,7 @@
 		22A44AB4244D98280039466E /* BPOCLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BPOCLog.m; sourceTree = "<group>"; };
 		22A44AB6244D98B30039466E /* BPLogFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPLogFormatter.h; sourceTree = "<group>"; };
 		22A44AB7244D98B40039466E /* BPLogFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BPLogFormatter.m; sourceTree = "<group>"; };
-		22A877BD22FAB679004FF3A7 /* BPBaseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseImageView.swift; sourceTree = "<group>"; };
+		22A877BD22FAB679004FF3A7 /* BPImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPImageView.swift; sourceTree = "<group>"; };
 		22AED509234DD6AE00A91A68 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		22AED50A234DD6AE00A91A68 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
 		22AED50B234DD6AE00A91A68 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
@@ -270,6 +269,7 @@
 		CFFB34E623595EF9002D440E /* webRefreshButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webRefreshButton@3x.png"; sourceTree = "<group>"; };
 		CFFB34E723595EF9002D440E /* webRefreshButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webRefreshButton@2x.png"; sourceTree = "<group>"; };
 		D1A3EF0650A7F2326222FB45 /* Pods-BaseProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.debug.xcconfig"; path = "Target Support Files/Pods-BaseProject/Pods-BaseProject.debug.xcconfig"; sourceTree = "<group>"; };
+		E0547FFC254124640031C02D /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		E097EE12253FD4110065725A /* BPTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTableView.swift; sourceTree = "<group>"; };
 		E0A0B768253EAFE800E97ED8 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		E0A0B76D253ED2F700E97ED8 /* BPRefreshHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPRefreshHeaderView.swift; sourceTree = "<group>"; };
@@ -420,7 +420,6 @@
 		227D302E25407910009DB59C /* BaseAlert */ = {
 			isa = PBXGroup;
 			children = (
-				227D302F25407927009DB59C /* BPAlertDelegate.swift */,
 				2264EF7C22F7C6E500A89C82 /* BPTopWindowView.swift */,
 			);
 			path = BaseAlert;
@@ -431,7 +430,7 @@
 			children = (
 				CF26719122FEF6E700E6B47F /* BPTabBar.swift */,
 				2264EF9522F98A3700A89C82 /* BPBaseButton.swift */,
-				22A877BD22FAB679004FF3A7 /* BPBaseImageView.swift */,
+				22A877BD22FAB679004FF3A7 /* BPImageView.swift */,
 				22D4981422FBCDC600281530 /* BPNavigationBar.swift */,
 				2201542223758D2A004E4A99 /* BPLabel.swift */,
 				225C48E424DD460F00594FEE /* BPView.swift */,
@@ -548,6 +547,7 @@
 				223D5EF3244DA98100482127 /* NSDate+Extension.h */,
 				223D5EF4244DA98100482127 /* NSDate+Extension.m */,
 				E0A0B768253EAFE800E97ED8 /* UIScrollView+Extension.swift */,
+				E0547FFC254124640031C02D /* UILabel+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -564,6 +564,7 @@
 		22C621F822DC8E7600A7C849 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E0A0B76C253ED2DC00E97ED8 /* BaseRefreshView */,
 				227D300825372C44009DB59C /* DrawView */,
 				22D11F68252DF825005896E8 /* Earth */,
 				CF87869722F709C20031E4B9 /* BPAuthoriationManager.swift */,
@@ -714,7 +715,6 @@
 			isa = PBXGroup;
 			children = (
 				227D302E25407910009DB59C /* BaseAlert */,
-				E0A0B76C253ED2DC00E97ED8 /* BaseRefreshView */,
 				226711362506215B00006534 /* Transition */,
 				22868109230AA14D005E113E /* BaseView */,
 				CF8EB5A422DCD18400EC2FE5 /* BaseController */,
@@ -930,8 +930,9 @@
 				CF8EB58B22DCCCA600EC2FE5 /* UIFont+Extension.swift in Sources */,
 				22A44AB2244D96DF0039466E /* BPSwiftMacro.swift in Sources */,
 				CF6E171E235F56540008C466 /* BPWebViewImplementClass.swift in Sources */,
+				E0547FFD254124640031C02D /* UILabel+Extension.swift in Sources */,
 				22A44AB8244D98B40039466E /* BPLogFormatter.m in Sources */,
-				22A877BE22FAB679004FF3A7 /* BPBaseImageView.swift in Sources */,
+				22A877BE22FAB679004FF3A7 /* BPImageView.swift in Sources */,
 				2264EF8622F91E0700A89C82 /* BPAlertViewZeroButton.swift in Sources */,
 				CF26719822FF0A6B00E6B47F /* ViewController4.swift in Sources */,
 				22ED54B023687FEF00011B82 /* UIBezierPath+AllPoints.m in Sources */,
@@ -985,7 +986,6 @@
 				223AC0EE24F35AEF00C85800 /* DescriptionFactoryManager.swift in Sources */,
 				22D018FB2321F800007AFA1B /* BPDatabaseManager.swift in Sources */,
 				223D5EF5244DA98100482127 /* NSDate+Extension.m in Sources */,
-				227D303025407927009DB59C /* BPAlertDelegate.swift in Sources */,
 				CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */,
 				CF8EB5A222DCD0DC00EC2FE5 /* UIViewController+Extension.swift in Sources */,
 				CF87869A22F87BD60031E4B9 /* UIImage+Extension.swift in Sources */,

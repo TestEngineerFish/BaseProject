@@ -102,10 +102,6 @@ class PublishView: BPTopWindowView, UIScrollViewDelegate, UIGestureRecognizerDel
         }
     }
 
-    override func closeBtnAction() {
-        // 不用处理,与touch事件会冲突
-    }
-
     // - MARK: KVO
     /// 通过发布页的滑动距离.来控制窗口上的背景色渐变显示和底部加号按钮的旋转
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

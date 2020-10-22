@@ -9,18 +9,18 @@
 import UIKit
 
 class BPAlertViewZeroButton: BPBaseAlertView {
-
+    
     /// 底部左右两个按钮的Alert弹框
     /// - parameter title: 标题
     /// - parameter description: 描述
-    /// - parameter hideCloseBtn: 是否显示右上角的关闭按钮
+    /// - parameter hideCloseBtn: 是否隐藏右上角的关闭按钮
     init(title: String?, description: String, hideCloseBtn: Bool = false) {
         super.init(frame: .zero)
         self.titleLabel.text       = title
-        self.descriptionHeight     = description.textHeight(font: self.descriptionLabel.font, width: kScreenWidth - 90)
         self.descriptionLabel.text = description
         self.closeButton.isHidden  = hideCloseBtn
         self.createSubviews()
+        self.bindProperty()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -29,35 +29,40 @@ class BPAlertViewZeroButton: BPBaseAlertView {
 
     override func createSubviews() {
         super.createSubviews()
+        kWindow.addSubview(mainView)
+        self.mainView.addSubview(titleLabel)
+        self.mainView.addSubview(descriptionLabel)
         // 是否显示标题
         if let title = titleLabel.text, title.isNotEmpty {
             titleLabel.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(18)
-                make.left.equalToSuperview().offset(15)
-                make.right.equalToSuperview().offset(-15)
-                make.height.equalTo(22)
+                make.top.equalToSuperview().offset(topPadding)
+                make.left.equalToSuperview().offset(leftPadding)
+                make.right.equalToSuperview().offset(-rightPadding)
+                make.height.equalTo(titleHeight)
             }
-
             descriptionLabel.snp.makeConstraints { (make) in
-                make.top.equalTo(titleLabel.snp.bottom).offset(18)
+                make.top.equalTo(titleLabel.snp.bottom).offset(defaultSpace)
                 make.left.right.equalTo(titleLabel)
                 make.height.equalTo(descriptionHeight)
             }
         } else {
             descriptionLabel.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(18)
-                make.left.equalToSuperview().offset(15)
-                make.right.equalTo(-15)
+                make.top.equalToSuperview().offset(topPadding)
+                make.left.equalToSuperview().offset(leftPadding)
+                make.right.equalTo(-rightPadding)
                 make.height.equalTo(descriptionHeight)
             }
         }
-
-        containerView.snp.makeConstraints { (make) in
-            make.bottom.equalTo(descriptionLabel).offset(30)
+        let mainViewHeight = topPadding + titleHeight + defaultSpace + descriptionHeight + bottomPadding
+        mainView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.equalTo(mainViewWidth)
+            make.height.equalTo(mainViewHeight)
         }
     }
-
-    override func closeBtnAction() {
-        super.closeBtnAction()
+    
+    override func bindProperty() {
+        super.bindProperty()
     }
+
 }
