@@ -39,13 +39,17 @@ class BPAlertViewImage: BPBaseAlertView {
             make.top.centerX.equalToSuperview()
             make.size.equalTo(imageViewSize)
         }
-        closeButton.snp.makeConstraints { (make) in
-            make.top.equalTo(imageView.snp.bottom).offset(topPadding)
-            make.centerX.equalToSuperview()
-            make.size.equalTo(closeBtnSize)
+        
+        mainViewHeight = imageViewSize.height
+        if !self.closeButton.isHidden {
+            closeButton.snp.makeConstraints { (make) in
+                make.top.equalTo(imageView.snp.bottom).offset(topPadding)
+                make.centerX.equalToSuperview()
+                make.size.equalTo(closeBtnSize)
+            }
+            mainViewHeight += topPadding + closeBtnSize.height
         }
         
-        let mainViewHeight = imageViewSize.height + topPadding + closeBtnSize.height
         mainView.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.width.equalTo(mainViewWidth)

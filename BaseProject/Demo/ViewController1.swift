@@ -70,10 +70,6 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let title = "我是标题"
-        let description = "我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述"
-        BPAlertManager.zeroButton(title: title, description: description).show()
-        return
         let vc  = AlgorithmViewController()
         vc.type = self.typeList[indexPath.row]
         self.navigationController?.push(vc: vc)

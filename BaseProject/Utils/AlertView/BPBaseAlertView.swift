@@ -58,6 +58,7 @@ class BPBaseAlertView: BPTopWindowView {
     var imageUrlStr: String?
     var leftActionBlock: DefaultBlock?
     var rightActionBlock: DefaultBlock?
+    var closeActionBlock: DefaultBlock?
     var imageActionBlock: ((String?)->Void)?
     
     // 弹框的背景
@@ -150,6 +151,7 @@ class BPBaseAlertView: BPTopWindowView {
     
     override func show() {
         super.show()
+        // 添加到队列中展示
         self.mainView.layer.addJellyAnimation()
     }
 
@@ -177,5 +179,6 @@ class BPBaseAlertView: BPTopWindowView {
     @objc override func closeAction() {
         self.mainView.removeFromSuperview()
         super.closeAction()
+        self.closeActionBlock?()
     }
 }
