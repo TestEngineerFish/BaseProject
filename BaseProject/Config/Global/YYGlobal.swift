@@ -75,6 +75,27 @@ public var kPathForMainStorageLocation: String {
 }
 
 // MARK: ---网络相关---
+/// 获取当前环境
+public var currentEnv: BPEnvType {
+    get {
+        let envInt = UserDefaults.standard.integer(forKey: "bp_env")
+        guard let env = BPEnvType(rawValue: envInt) else {
+            return .test
+        }
+        return env
+    }
+    
+    set {
+        UserDefaults.standard.setValue(newValue.rawValue, forKey: "bp_env")
+    }
+}
+
+/// 域名
+public var domainApi: String {
+    get {
+        return currentEnv.api
+    }
+}
 /// 是否有网络
 public var isReachable: Bool {
     get {

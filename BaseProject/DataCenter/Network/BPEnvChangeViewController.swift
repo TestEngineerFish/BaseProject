@@ -8,11 +8,14 @@
 
 import Foundation
 
-enum BPEnvType: Int {
-    case dev     = 0
-    case test    = 1
-    case pre     = 2
-    case release = 3
+public enum BPEnvType: Int {
+    /// 偏移量
+    static var offset = 1
+    
+    case dev     = 1
+    case test    = 2
+    case pre     = 3
+    case release = 4
     
     var api: String {
         get {
@@ -32,24 +35,23 @@ enum BPEnvType: Int {
         get {
             switch self {
             case .dev:
-                return "开发环境v"
+                return "开发环境"
             case .test:
                 return "测试环境"
             case .pre:
-                return "预发布环境"
+                return "预发环境"
             case .release:
                 return "正式环境"
             }
         }
     }
-    
 }
 
 class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITableViewDataSource {
     
     private var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.rowHeight = AdaptSize(44)
+        tableView.rowHeight = AdaptSize(55)
         tableView.showsVerticalScrollIndicator   = false
         tableView.showsHorizontalScrollIndicator = false
         return tableView
@@ -63,13 +65,17 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
     }()
     
     private var backButton: BPButton = {
-        let button = BPButton(.normal)
+        let button = BPButton(.border)
         button.setTitle("返回", for: .normal)
         return button
     }()
     
+    private var tmpEnv: BPEnvType?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.customNavigationBar?.leftButton.isHidden = true
+        self.customNavigationBar?.title = "选择环境"
         self.createSubviews()
         self.bindProperty()
     }
@@ -80,7 +86,8 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
         self.view.addSubview(changeButton)
         self.view.addSubview(backButton)
         tableView.snp.makeConstraints { (make) in
-            make.left.top.right.equalToSuperview()
+            make.top.equalToSuperview().offset(AdaptSize(100))
+            make.left.right.equalToSuperview()
             make.bottom.equalTo(changeButton.snp.top).offset(AdaptSize(20))
         }
         changeButton.snp.makeConstraints { (make) in
@@ -98,6 +105,19 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
         super.bindProperty()
         self.tableView.delegate   = self
         self.tableView.dataSource = self
+        self.backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        self.changeButton.addTarget(self, action: #selector(changeAction), for: .touchUpInside)
+    }
+    
+    // MARK: ==== Event ====
+    @objc private func backAction() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func changeAction() {
+        guard let newEnv = self.tmpEnv else { return }
+        currentEnv = newEnv
+        self.backAction()
     }
     
     // MARK: ==== UITableViewDataSource && UITableViewDelegate ====
@@ -106,12 +126,40 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let env = BPEnvType(rawValue: indexPath.row) else {
+        guard let env = BPEnvType(rawValue: indexPath.row + BPEnvType.offset) else {
             return UITableViewCell()
         }
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        // 设置选中的Cell样式
+        let cellStyle: UITableViewCell.CellStyle = {
+            var isSelected = false
+            if let tmpEnv = self.tmpEnv {
+                isSelected = env == tmpEnv
+            } else {
+                isSelected = env == currentEnv
+            }
+            return isSelected ? .value2 : .subtitle
+        }()
+        let cell = UITableViewCell(style: cellStyle, reuseIdentifier: nil)
         cell.textLabel?.text = env.title
+        cell.textLabel?.font = UIFont.mediumFont(ofSize: AdaptSize(20))
         cell.detailTextLabel?.text = env.api
+        cell.detailTextLabel?.font = UIFont.regularFont(ofSize: AdaptSize(13))
+        cell.detailTextLabel?.textColor = UIColor.gray1
+        cell.accessoryType = .disclosureIndicator
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let newEnv = BPEnvType(rawValue: indexPath.row + BPEnvType.offset) else {
+            return
+        }
+        // 临时选择，未确认切换
+        self.tmpEnv = newEnv
+        self.changeButton.setStatus(.normal)
+        tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
 }

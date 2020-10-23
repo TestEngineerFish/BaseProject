@@ -58,6 +58,18 @@ class BPViewController: UIViewController {
     internal func bindData() {}
 
     internal func registerNotification() {}
+    
+    // 切换环境
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        super.motionEnded(motion, with: event)
+        #if DEBUG
+        if event?.subtype == .some(.motionShake) && !(UIViewController.currentViewController?.isKind(of: BPEnvChangeViewController.classForCoder()) ?? false) {
+            let vc = BPEnvChangeViewController()
+            UIViewController.currentViewController?.present(vc, animated: true, completion: nil)
+            BPLog("用户目录：\(NSHomeDirectory())")
+        }
+        #endif
+    }
 
 }
 

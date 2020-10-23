@@ -560,6 +560,7 @@
 		22C621F822DC8E7600A7C849 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E0DE9CF02542641E00D1FD1F /* New Group */,
 				E054800325416B4E0031C02D /* Authoriation */,
 				E0A0B76C253ED2DC00E97ED8 /* BaseRefreshView */,
 				227D300825372C44009DB59C /* DrawView */,
@@ -758,6 +759,13 @@
 				E0A0B771253ED30500E97ED8 /* BPRefreshFooterView.swift */,
 			);
 			path = BaseRefreshView;
+			sourceTree = "<group>";
+		};
+		E0DE9CF02542641E00D1FD1F /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		FBA72A1EACBAF5BFC2A38AAD /* Pods */ = {
