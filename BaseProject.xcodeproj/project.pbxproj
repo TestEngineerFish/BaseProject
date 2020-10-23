@@ -131,6 +131,8 @@
 		E0A0B76E253ED2F700E97ED8 /* BPRefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A0B76D253ED2F700E97ED8 /* BPRefreshHeaderView.swift */; };
 		E0A0B772253ED30500E97ED8 /* BPRefreshFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A0B771253ED30500E97ED8 /* BPRefreshFooterView.swift */; };
 		E0DE9CEE254187E400D1FD1F /* BPEnvChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DE9CED254187E400D1FD1F /* BPEnvChangeViewController.swift */; };
+		E0DE9D02254282A900D1FD1F /* BPImageReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DE9D01254282A900D1FD1F /* BPImageReviewView.swift */; };
+		E0DE9D0A2542831200D1FD1F /* BPImageReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DE9D092542831200D1FD1F /* BPImageReviewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -276,6 +278,8 @@
 		E0A0B76D253ED2F700E97ED8 /* BPRefreshHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPRefreshHeaderView.swift; sourceTree = "<group>"; };
 		E0A0B771253ED30500E97ED8 /* BPRefreshFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPRefreshFooterView.swift; sourceTree = "<group>"; };
 		E0DE9CED254187E400D1FD1F /* BPEnvChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPEnvChangeViewController.swift; sourceTree = "<group>"; };
+		E0DE9D01254282A900D1FD1F /* BPImageReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPImageReviewView.swift; sourceTree = "<group>"; };
+		E0DE9D092542831200D1FD1F /* BPImageReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPImageReviewModel.swift; sourceTree = "<group>"; };
 		FCE0B51EBB89FBFB5A61CACA /* Pods_BaseProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -560,7 +564,7 @@
 		22C621F822DC8E7600A7C849 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				E0DE9CF02542641E00D1FD1F /* New Group */,
+				E0DE9CF02542641E00D1FD1F /* PreviewImage */,
 				E054800325416B4E0031C02D /* Authoriation */,
 				E0A0B76C253ED2DC00E97ED8 /* BaseRefreshView */,
 				227D300825372C44009DB59C /* DrawView */,
@@ -761,11 +765,13 @@
 			path = BaseRefreshView;
 			sourceTree = "<group>";
 		};
-		E0DE9CF02542641E00D1FD1F /* New Group */ = {
+		E0DE9CF02542641E00D1FD1F /* PreviewImage */ = {
 			isa = PBXGroup;
 			children = (
+				E0DE9D01254282A900D1FD1F /* BPImageReviewView.swift */,
+				E0DE9D092542831200D1FD1F /* BPImageReviewModel.swift */,
 			);
-			path = "New Group";
+			path = PreviewImage;
 			sourceTree = "<group>";
 		};
 		FBA72A1EACBAF5BFC2A38AAD /* Pods */ = {
@@ -964,8 +970,10 @@
 				CF8EB56422DCC05D00EC2FE5 /* SAMKeychain+Extension.swift in Sources */,
 				225C48E724DD4FF800594FEE /* BaseTableView.swift in Sources */,
 				22D018F92321F7F0007AFA1B /* BPDatabaseProtocol.swift in Sources */,
+				E0DE9D02254282A900D1FD1F /* BPImageReviewView.swift in Sources */,
 				CF49A88224DFF09C00D8DAC4 /* BaseDescriptionView.swift in Sources */,
 				CF8EB59E22DCD04300EC2FE5 /* Date+Extension.swift in Sources */,
+				E0DE9D0A2542831200D1FD1F /* BPImageReviewModel.swift in Sources */,
 				CFFB34E02358C1C4002D440E /* BPBaseWebViewController.swift in Sources */,
 				224582032326044D0031CC7A /* NormalDBCenter.swift in Sources */,
 				CF8EB56B22DCC45800EC2FE5 /* UserDefault+Extension.swift in Sources */,
