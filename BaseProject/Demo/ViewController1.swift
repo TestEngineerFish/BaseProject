@@ -70,8 +70,8 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        BPLog(domainApi)
-        return
+//        BPLog(domainApi)
+//        return
         let vc  = AlgorithmViewController()
         vc.type = self.typeList[indexPath.row]
         self.navigationController?.push(vc: vc)

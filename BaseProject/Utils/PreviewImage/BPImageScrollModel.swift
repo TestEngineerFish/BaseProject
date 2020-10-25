@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-struct BPImageReviewModel: Mappable {
+struct BPImageScrollModel: Mappable {
 
     /// 缩略图
     var thumImage: UIImage?
