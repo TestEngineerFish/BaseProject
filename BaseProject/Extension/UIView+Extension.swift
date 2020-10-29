@@ -255,6 +255,16 @@ extension UIView {
         maskLayer.path  = bezierPath.cgPath
         layer.mask      = maskLayer
     }
+
+    /// 高斯模糊
+    func setBlurEffect(style: UIBlurEffect.Style = .light) {
+        let blur = UIBlurEffect(style: style)
+        let effectView = UIVisualEffectView(effect: blur)
+        self.addSubview(effectView)
+        effectView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
 }
 
 public extension UIView {
