@@ -70,6 +70,13 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var imageModelList = [BPImageModel]()
+        for _ in 0..<10 {
+            let model = BPImageModel()
+            imageModelList.append(model)
+        }
+        BPImageBrowser(dataSource: imageModelList, current: 0).show()
+        return
         let vc  = AlgorithmViewController()
         vc.type = self.typeList[indexPath.row]
         self.navigationController?.push(vc: vc)
