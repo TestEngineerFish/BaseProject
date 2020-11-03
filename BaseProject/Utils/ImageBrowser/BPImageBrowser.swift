@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSource {
+class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSource, BPImageBrowserCellDelegate {
 
     let kBPImageBrowserCellID = "kBPImageBrowserCell"
     var imageModelList: [BPImageModel]
@@ -18,7 +18,6 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = kWindow.size
         layout.scrollDirection = .horizontal
-//        layout.minimumInteritemSpacing = .zero
         layout.minimumLineSpacing = .zero
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
@@ -26,13 +25,6 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
         collectionView.isPagingEnabled = true
         collectionView.autoresizingMask = UIView.AutoresizingMask(arrayLiteral: .flexibleWidth, .flexibleHeight)
         return collectionView
-    }()
-
-    var containerView: BPView = {
-        let view = BPView()
-        view.backgroundColor     = .clear
-        view.layer.masksToBounds = true
-        return view
     }()
 
     init(dataSource: [BPImageModel], current index: Int) {
@@ -79,12 +71,21 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
             make.edges.equalToSuperview()
         }
         self.autoresizingMask = UIView.AutoresizingMask(arrayLiteral: .flexibleHeight, .flexibleWidth)
-        
+    }
+
+    @objc private func hide() {
+        self.removeFromSuperview()
     }
 
     /// 长按手势事件
     @objc private func handleLongPressAction(sender: UILongPressGestureRecognizer) {
 
+    }
+
+    // MARK: ==== Tools ====
+    private func scrollToCurrentPage() {
+        let offsetY = kWindow.width * CGFloat(self.currentIndex)
+        self.collectionView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: false)
     }
 
     // MARK: ==== UICollectionViewDelegate && UICollectionViewDataSource ====
@@ -96,13 +97,14 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kBPImageBrowserCellID, for: indexPath) as? BPImageBrowserCell else {
             return UICollectionViewCell()
         }
+        cell.scrollView.zoomScale = 1
+        cell.delegate = self
         cell.backgroundColor = UIColor.randomColor()
         return cell
     }
 
-    // MARK: ==== Tools ====
-    private func scrollToCurrentPage() {
-        let offsetY = kWindow.width * CGFloat(self.currentIndex)
-        self.collectionView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: false)
+    // MARK: ==== BPImageBrowserCellDelegate ====
+    func clickAction() {
+        self.hide()
     }
 }
