@@ -70,16 +70,12 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        BPActionSheet().addItem(title: "我是标题") {
-            BPAlertManager.share.showZeroButton(title: nil, description: "你好👋")
-        }.addItem(title: "标题2", actionBlock: nil).show()
-        return
         var imageModelList = [BPImageModel]()
         for _ in 0..<10 {
             let model = BPImageModel()
             imageModelList.append(model)
         }
-        BPImageBrowser(dataSource: imageModelList, current: 0).show()
+        BPImageBrowser(dataSource: imageModelList, current: 1).show()
         return
         let vc  = AlgorithmViewController()
         vc.type = self.typeList[indexPath.row]

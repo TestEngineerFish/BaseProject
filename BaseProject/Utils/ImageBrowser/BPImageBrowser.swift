@@ -50,17 +50,17 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
 
     override func bindProperty() {
         super.bindProperty()
-        // 添加长按事件
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPressAction(sender:)))
-        self.addGestureRecognizer(longPress)
         self.collectionView.delegate   = self
         self.collectionView.dataSource = self
         self.collectionView.register(BPImageBrowserCell.classForCoder(), forCellWithReuseIdentifier: kBPImageBrowserCellID)
-        self.scrollToCurrentPage()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+            self.scrollToCurrentPage()
+        }
     }
 
     override func bindData() {
         super.bindData()
+
     }
 
     // MARK: ==== Event ====
@@ -77,15 +77,10 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
         self.removeFromSuperview()
     }
 
-    /// 长按手势事件
-    @objc private func handleLongPressAction(sender: UILongPressGestureRecognizer) {
-
-    }
-
     // MARK: ==== Tools ====
     private func scrollToCurrentPage() {
-        let offsetY = kWindow.width * CGFloat(self.currentIndex)
-        self.collectionView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: false)
+        let offsetX = kWindow.width * CGFloat(self.currentIndex)
+        self.collectionView.contentOffset = CGPoint(x: offsetX, y: 0)
     }
 
     // MARK: ==== UICollectionViewDelegate && UICollectionViewDataSource ====
@@ -109,6 +104,12 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func longPressAction() {
-        BPAlertManager.share.showZeroButton(title: "提示", description: "长按生效")
+        BPActionSheet().addItem(title: "保存") {
+            BPAlertManager.share.showZeroButton(title: nil, description: "保存成功")
+        }.show()
+    }
+
+    func closeAction() {
+        self.hide()
     }
 }

@@ -11,10 +11,17 @@ import UIKit
 protocol BPImageBrowserCellDelegate: NSObjectProtocol {
     func clickAction()
     func longPressAction()
+    func closeAction()
 }
 
 class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate {
 
+    /// 手指离开后，超过该值则关闭视图
+    let maxOffsetY: CGFloat = 100
+    /// 最大滑动缩放范围
+    let maxScaleY: CGFloat  = AdaptSize(1000)
+    /// 最小缩放比例
+    let minScale: CGFloat   = 0.5
     var delegate: BPImageBrowserCellDelegate?
 
     var scrollView: UIScrollView = {
@@ -26,7 +33,7 @@ class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate {
     private var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "dog")
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
@@ -54,25 +61,60 @@ class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate {
     }
 
     private func bindProperty() {
-//        self.imageView.isUserInteractionEnabled = true
         self.scrollView.delegate = self
-        let tapGes = UITapGestureRecognizer(target: self, action: #selector(tapAction))
-        let longPressGes = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressAction))
+        let tapGes = UITapGestureRecognizer(target: self, action: #selector(tapAction(sender:)))
+        let longPressGes = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressAction(sender:)))
+        let panGes = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(sender:)))
         self.addGestureRecognizer(tapGes)
         self.addGestureRecognizer(longPressGes)
+        self.addGestureRecognizer(panGes)
     }
 
     // MARK: ==== Event ====
     /// 点击手势事件
-    @objc private func tapAction() {
+    @objc private func tapAction(sender: UITapGestureRecognizer) {
         self.delegate?.clickAction()
     }
 
     /// 长按手势事件
-    @objc private func longPressAction() {
-        self.delegate?.longPressAction()
+    @objc private func longPressAction(sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            self.delegate?.longPressAction()
+        }
     }
-
+    var originPoint = CGPoint.zero
+    /// 滑动手势
+    @objc private func panAction(sender: UIPanGestureRecognizer) {
+        let point = sender.translation(in: self)
+        switch sender.state {
+        case .began:
+            self.originPoint = point
+        case .changed:
+            guard point.y > 0 else {
+                return
+            }
+            let scale: CGFloat = {
+                if point.y > self.maxScaleY {
+                    return self.minScale
+                } else {
+                    let _scale = (self.maxScaleY - point.y) / self.maxScaleY
+                    return _scale > self.minScale ? _scale : self.minScale
+                }
+            }()
+            // a:控制x轴缩放；d：控制y轴缩放；
+            self.imageView.transform = CGAffineTransform(a: scale, b: 0, c: 0, d: scale, tx: point.x, ty: point.y)
+        case .ended:
+            if point.y - originPoint.y > self.maxOffsetY {
+                self.delegate?.closeAction()
+            } else {
+                UIView.animate(withDuration: 0.15) {
+                    self.imageView.transform = .identity
+                }
+            }
+        default:
+            return
+        }
+    }
 
     // MARK: ==== UIScrollViewDelegate ====
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
