@@ -60,6 +60,6 @@ class BPAlertViewImage: BPBaseAlertView {
     override func bindProperty() {
         super.bindProperty()
         self.mainView.backgroundColor = .clear
-        self.backgroundView.isUserInteractionEnabled = false
+        self.backgroundView.isUserInteractionEnabled = self.closeButton.isHidden
     }
 }

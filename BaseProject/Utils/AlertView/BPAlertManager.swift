@@ -21,7 +21,8 @@ class BPAlertManager {
         }
         self.isShowing = true
         // 排序
-        guard let alertView = self.alertArray.sorted(by: { $0.priority.rawValue < $1.priority.rawValue }).first else {
+        self.alertArray.sort(by: { $0.priority.rawValue < $1.priority.rawValue })
+        guard let alertView = self.alertArray.first else {
             return
         }
         // 关闭弹框后的闭包
@@ -55,29 +56,33 @@ class BPAlertManager {
     }
 
     /// 默认样式: 底部左右两个按钮
-    func showTwoButton(title: String?, description: String, leftBtnName: String, leftBtnClosure: (() -> Void)?, rightBtnName: String, rightBtnClosure: (() -> Void)?) {
+    func showTwoButton(title: String?, description: String, leftBtnName: String, leftBtnClosure: (() -> Void)?, rightBtnName: String, rightBtnClosure: (() -> Void)?, priority: BPAlertPriorityEnum = .normal) {
         let alertView = BPAlerViewTwoButton(title: title, description: description, leftBtnName: leftBtnName, leftBtnClosure: leftBtnClosure, rightBtnName: rightBtnName, rightBtnClosure: rightBtnClosure)
+        alertView.priority = priority
         self.addAlert(alertView: alertView)
         self.show()
     }
 
     /// 底部一个按钮
-    func showOneButton(title: String?, description: String, buttonName: String, closure: (() -> Void)?) {
+    func showOneButton(title: String?, description: String, buttonName: String, closure: (() -> Void)?, priority: BPAlertPriorityEnum = .normal) {
         let alertView = BPAlertViewOneButton(title: title, description: description, buttonName: buttonName, closure: closure)
+        alertView.priority = priority
         self.addAlert(alertView: alertView)
         self.show()
     }
 
     /// 底部没有按钮
-    func showZeroButton(title: String?, description: String) {
+    func showZeroButton(title: String?, description: String, priority: BPAlertPriorityEnum = .normal) {
         let alertView = BPAlertViewZeroButton(title: title, description: description)
+        alertView.priority = priority
         self.addAlert(alertView: alertView)
         self.show()
     }
 
     /// 显示纯图片
-    func showOnlyImage(imageStr: String, hideCloseBtn: Bool = false, touchBlock: ((String?) -> Void)? = nil) {
+    func showOnlyImage(imageStr: String, hideCloseBtn: Bool = false, touchBlock: ((String?) -> Void)? = nil, priority: BPAlertPriorityEnum = .normal) {
         let alertView = BPAlertViewImage(imageStr: imageStr, hideCloseBtn: hideCloseBtn, touchBlock: touchBlock)
+        alertView.priority = priority
         self.addAlert(alertView: alertView)
         self.show()
     }
