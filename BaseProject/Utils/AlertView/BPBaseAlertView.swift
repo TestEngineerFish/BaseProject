@@ -151,7 +151,7 @@ class BPBaseAlertView: BPTopWindowView {
     
     override func show() {
         super.show()
-        // 添加到队列中展示
+        // 果冻动画
         self.mainView.layer.addJellyAnimation()
     }
 

@@ -10,6 +10,7 @@ import UIKit
 
 protocol BPImageBrowserCellDelegate: NSObjectProtocol {
     func clickAction()
+    func longPressAction()
 }
 
 class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate {
@@ -55,14 +56,23 @@ class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate {
     private func bindProperty() {
 //        self.imageView.isUserInteractionEnabled = true
         self.scrollView.delegate = self
-        let tapGes = UITapGestureRecognizer(target: self, action: #selector(hideAction))
+        let tapGes = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        let longPressGes = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressAction))
         self.addGestureRecognizer(tapGes)
+        self.addGestureRecognizer(longPressGes)
     }
 
     // MARK: ==== Event ====
-    @objc private func hideAction() {
+    /// 点击手势事件
+    @objc private func tapAction() {
         self.delegate?.clickAction()
     }
+
+    /// 长按手势事件
+    @objc private func longPressAction() {
+        self.delegate?.longPressAction()
+    }
+
 
     // MARK: ==== UIScrollViewDelegate ====
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {

@@ -107,4 +107,8 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
     func clickAction() {
         self.hide()
     }
+
+    func longPressAction() {
+        BPAlertManager.share.showZeroButton(title: "提示", description: "长按生效")
+    }
 }

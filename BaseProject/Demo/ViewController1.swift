@@ -70,6 +70,10 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        BPAlertManager.share.showZeroButton(title: nil, description: "你好0")
+        BPAlertManager.share.showZeroButton(title: nil, description: "你好1")
+        BPAlertManager.share.showZeroButton(title: nil, description: "你好2")
+        return
         var imageModelList = [BPImageModel]()
         for _ in 0..<10 {
             let model = BPImageModel()
