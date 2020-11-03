@@ -38,7 +38,7 @@ class BPTopWindowView: BPView {
 
     override func bindProperty() {
         super.bindProperty()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(closeAction))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hide))
         self.backgroundView.addGestureRecognizer(tap)
     }
 
@@ -54,9 +54,14 @@ class BPTopWindowView: BPView {
         }
     }
 
-    // MARK: ==== Tools ====
-
-    @objc func closeAction() {
-        self.removeFromSuperview()
+    /// 子类自己实现
+    @objc func hide() {
+        UIView.animate(withDuration: 0.25) { [weak self] in
+            self?.backgroundView.layer.opacity = 0.0
+        } completion: { [weak self] (finished) in
+            if finished {
+                self?.removeFromSuperview()
+            }
+        }
     }
 }

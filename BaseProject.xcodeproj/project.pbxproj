@@ -81,6 +81,7 @@
 		22CDA244254AFFC000B6FDCB /* BPImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CDA243254AFFC000B6FDCB /* BPImageModel.swift */; };
 		22CDA24D254EF52800B6FDCB /* BPImageBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CDA24C254EF52800B6FDCB /* BPImageBrowser.swift */; };
 		22CDA250254F9A9500B6FDCB /* BPImageBrowserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CDA24F254F9A9500B6FDCB /* BPImageBrowserCell.swift */; };
+		22CDA25425514FB600B6FDCB /* BPActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CDA25325514FB600B6FDCB /* BPActionSheet.swift */; };
 		22D018F92321F7F0007AFA1B /* BPDatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D018F82321F7F0007AFA1B /* BPDatabaseProtocol.swift */; };
 		22D018FB2321F800007AFA1B /* BPDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D018FA2321F800007AFA1B /* BPDatabaseManager.swift */; };
 		22D11F6A252DF85D005896E8 /* BPEarthItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D11F69252DF85D005896E8 /* BPEarthItemView.swift */; };
@@ -223,6 +224,7 @@
 		22CDA243254AFFC000B6FDCB /* BPImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPImageModel.swift; sourceTree = "<group>"; };
 		22CDA24C254EF52800B6FDCB /* BPImageBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPImageBrowser.swift; sourceTree = "<group>"; };
 		22CDA24F254F9A9500B6FDCB /* BPImageBrowserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPImageBrowserCell.swift; sourceTree = "<group>"; };
+		22CDA25325514FB600B6FDCB /* BPActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPActionSheet.swift; sourceTree = "<group>"; };
 		22D018F72321F431007AFA1B /* IMDatabase.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = IMDatabase.md; sourceTree = "<group>"; };
 		22D018F82321F7F0007AFA1B /* BPDatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDatabaseProtocol.swift; sourceTree = "<group>"; };
 		22D018FA2321F800007AFA1B /* BPDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDatabaseManager.swift; sourceTree = "<group>"; };
@@ -566,6 +568,7 @@
 		22C621F822DC8E7600A7C849 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				22CDA25225514F7D00B6FDCB /* ActionSheet */,
 				E0DE9CF02542641E00D1FD1F /* ImageBrowser */,
 				E054800325416B4E0031C02D /* Authoriation */,
 				E0A0B76C253ED2DC00E97ED8 /* BaseRefreshView */,
@@ -598,6 +601,14 @@
 				22C6221A22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		22CDA25225514F7D00B6FDCB /* ActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				22CDA25325514FB600B6FDCB /* BPActionSheet.swift */,
+			);
+			path = ActionSheet;
 			sourceTree = "<group>";
 		};
 		22D018F62321F36A007AFA1B /* FMDatabase */ = {
@@ -962,6 +973,7 @@
 				2264EF8422F91BF900A89C82 /* BPAlertViewOneButton.swift in Sources */,
 				2264EF9222F97A0E00A89C82 /* BPNetworkService.swift in Sources */,
 				22642BA6233A451D004E1DF9 /* NSObject+CrashDefender.m in Sources */,
+				22CDA25425514FB600B6FDCB /* BPActionSheet.swift in Sources */,
 				22625315238F9F2B00A1CD54 /* Array+Extension.swift in Sources */,
 				E0A0B769253EAFE800E97ED8 /* UIScrollView+Extension.swift in Sources */,
 				223AC0F424F3CEBA00C85800 /* InsertionSortDescriptionView.swift in Sources */,

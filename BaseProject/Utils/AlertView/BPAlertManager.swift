@@ -41,6 +41,9 @@ class BPAlertManager {
 
     /// 移除当前已显示的Alert
     private func removeAlert() {
+        guard !self.alertArray.isEmpty else {
+            return
+        }
         self.alertArray.removeFirst()
         // 如果队列中还有未显示的Alert，则继续显示
         guard !self.alertArray.isEmpty else {

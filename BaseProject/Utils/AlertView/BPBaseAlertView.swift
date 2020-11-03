@@ -138,13 +138,11 @@ class BPBaseAlertView: BPTopWindowView {
     
     override func bindProperty() {
         super.bindProperty()
-        let tapBackground = UITapGestureRecognizer(target: self, action: #selector(closeAction))
         let tapImage      = UITapGestureRecognizer(target: self, action: #selector(clickImageAction))
-        self.backgroundView.addGestureRecognizer(tapBackground)
         self.imageView.addGestureRecognizer(tapImage)
         self.leftButton.addTarget(self, action: #selector(leftAction), for: .touchUpInside)
         self.rightButton.addTarget(self, action: #selector(rightAction), for: .touchUpInside)
-        self.closeButton.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
+        self.closeButton.addTarget(self, action: #selector(hide), for: .touchUpInside)
     }
     
     // MARK: ==== Event ====
@@ -158,27 +156,29 @@ class BPBaseAlertView: BPTopWindowView {
     @objc func leftAction() {
         self.leftActionBlock?()
         if autoClose {
-            self.closeAction()
+            self.hide()
         }
     }
 
     @objc func rightAction() {
         self.rightActionBlock?()
         if autoClose {
-            self.closeAction()
+            self.hide()
         }
     }
     
     @objc func clickImageAction() {
         self.imageActionBlock?(self.imageUrlStr)
         if autoClose {
-            self.closeAction()
+            self.hide()
         }
     }
     
-    @objc override func closeAction() {
-        self.mainView.removeFromSuperview()
-        super.closeAction()
+    @objc override func hide() {
+        UIView.animate(withDuration: 0.25) { [weak self] in
+            self?.mainView.transform = CGAffineTransform(scaleX: 0, y: 0)
+        }
+        super.hide()
         self.closeActionBlock?()
     }
 }
