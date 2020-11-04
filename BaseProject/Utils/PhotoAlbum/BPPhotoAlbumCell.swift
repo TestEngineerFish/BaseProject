@@ -11,13 +11,15 @@ import Foundation
 class BPPhotoAlbumCell: UICollectionViewCell {
     var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
         return imageView
     }()
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
         self.createSubviews()
+        self.bindProperty()
     }
 
     required init?(coder: NSCoder) {
@@ -27,9 +29,13 @@ class BPPhotoAlbumCell: UICollectionViewCell {
     private func createSubviews() {
         self.addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
-            make.left.top.equalToSuperview().offset(AdaptSize(2))
-            make.right.bottom.equalToSuperview().offset(AdaptSize(-2))
+            make.left.top.equalToSuperview().offset(0.9)
+            make.right.bottom.equalToSuperview().offset(-0.9)
         }
+    }
+
+    private func bindProperty() {
+        self.imageView.layer.masksToBounds = true
     }
 
     func setData(image: UIImage?) {

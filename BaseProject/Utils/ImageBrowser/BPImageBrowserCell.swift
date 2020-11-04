@@ -148,7 +148,9 @@ class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate, UIGestureR
         if point.y > 0 {
             return false
         } else {
-            self.isScrolling = true
+            if point.x != 0 && point.y == 0 {
+                self.isScrolling = true
+            }
             return true
         }
     }

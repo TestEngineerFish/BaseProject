@@ -78,7 +78,7 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
         let imageView = UIImageView()
         imageView.frame       = startFrame!
         imageView.image       = startView.image
-        imageView.contentMode = startView.contentMode
+        imageView.contentMode = .scaleAspectFit
         self.addSubview(imageView)
         self.collectionView.isHidden = true
         UIView.animate(withDuration: 0.25) {
@@ -99,7 +99,7 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
         let imageView = UIImageView()
         imageView.frame       = currentView.frame
         imageView.image       = currentView.image
-        imageView.contentMode = currentView.contentMode
+        imageView.contentMode = .scaleAspectFit
         self.addSubview(imageView)
         self.collectionView.isHidden = true
         UIView.animate(withDuration: 0.25) { [weak self] in
