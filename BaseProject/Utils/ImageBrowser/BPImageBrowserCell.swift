@@ -9,9 +9,10 @@
 import UIKit
 
 protocol BPImageBrowserCellDelegate: NSObjectProtocol {
-    func clickAction()
+    func clickAction(imageView: UIImageView)
     func longPressAction()
-    func closeAction()
+    func scrolling(reduce scale: Float)
+    func closeAction(imageView: UIImageView)
 }
 
 class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate, UIGestureRecognizerDelegate {
@@ -24,6 +25,7 @@ class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate, UIGestureR
     let minScale: CGFloat   = 0.5
     weak var delegate: BPImageBrowserCellDelegate?
     var panGes: UIPanGestureRecognizer?
+    /// 页面是否在滑动中
     var isScrolling = false
 
     var scrollView: UIScrollView = {
@@ -63,6 +65,7 @@ class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate, UIGestureR
 
     private func bindProperty() {
         self.scrollView.delegate = self
+        self.backgroundColor = .clear
         let tapGes = UITapGestureRecognizer(target: self, action: #selector(tapAction(sender:)))
         let longPressGes = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressAction(sender:)))
         self.panGes = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(sender:)))
@@ -86,7 +89,7 @@ class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate, UIGestureR
 
     /// 点击手势事件
     @objc private func tapAction(sender: UITapGestureRecognizer) {
-        self.delegate?.clickAction()
+        self.delegate?.clickAction(imageView: self.imageView)
     }
 
     /// 长按手势事件
@@ -114,14 +117,15 @@ class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate, UIGestureR
                     return _scale > self.minScale ? _scale : self.minScale
                 }
             }()
+            self.delegate?.scrolling(reduce: Float(scale))
             // a:控制x轴缩放；d：控制y轴缩放；
             self.imageView.transform = CGAffineTransform(a: scale, b: 0, c: 0, d: scale, tx: point.x, ty: point.y)
         case .ended:
             if point.y - originPoint.y > self.maxOffsetY {
-                self.delegate?.closeAction()
+                self.delegate?.closeAction(imageView: self.imageView)
             } else {
-                UIView.animate(withDuration: 0.15) {
-                    self.imageView.transform = .identity
+                UIView.animate(withDuration: 0.15) { [weak self] in
+                    self?.imageView.transform = .identity
                 }
             }
         default:

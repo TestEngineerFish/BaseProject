@@ -9,8 +9,9 @@
 import Foundation
 
 class BPPhotoAlbumCell: UICollectionViewCell {
-    private var imageView: UIImageView = {
+    var imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 

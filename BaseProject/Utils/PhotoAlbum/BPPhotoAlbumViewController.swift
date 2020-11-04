@@ -101,6 +101,9 @@ class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UI
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        BPImageBrowser(dataSource: imageModelList, current: indexPath.row).show()
+        guard let cell = collectionView.cellForItem(at: indexPath) as? BPPhotoAlbumCell else {
+            return
+        }
+        BPImageBrowser(dataSource: imageModelList, current: indexPath.row).show(animationView: cell.imageView)
     }
 }
