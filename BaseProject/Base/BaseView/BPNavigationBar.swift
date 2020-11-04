@@ -192,20 +192,21 @@ extension BPNavigationBar {
         self.leftButton.addTarget(self, action: #selector(backViewController), for: .touchUpInside)
 
         /** 右边的第一个按钮 **/
+        self.rightFirstButton.titleLabel?.adjustsFontSizeToFitWidth = true
         self.rightFirstButton.setTitleColor(UIColor.black, for: .normal)
         self.rightFirstButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
         self.rightFirstButton.contentHorizontalAlignment = .right
         self.rightFirstButton.addTarget(self, action: #selector(rightButtonDidClick), for: .touchUpInside)
         if self.isLargeTitle {
-            self.rightFirstButton.frame = CGRect(x: kScreenWidth - 40, y: iPhoneXLater ? 8 : 18, width: 28, height: 29)
+            self.rightFirstButton.frame = CGRect(x: kScreenWidth - 40, y: iPhoneXLater ? 8 : 18, width: AdaptSize(28), height: AdaptSize(28))
             self.rightFirstButton.titleLabel?.font = UIFont.iconFont(size: 26)
         } else {
-            self.rightFirstButton.frame = CGRect(x: kScreenWidth - 42, y: 9, width: 26, height: 26)
+            self.rightFirstButton.frame = CGRect(x: kScreenWidth - 42, y: 9, width: AdaptSize(26), height: AdaptSize(26))
             self.rightFirstButton.titleLabel?.font = UIFont.iconFont(size: 26)
         }
 
         /** 右边第二个按钮 **/
-        self.rightSecondButton.frame = CGRect(x: kScreenWidth - 40 - 40, y: iPhoneXLater ? 8 : 18, width: 28, height: 29)
+        self.rightSecondButton.frame = CGRect(x: kScreenWidth - 40 - 40, y: iPhoneXLater ? 8 : 18, width: AdaptSize(26), height: AdaptSize(26))
         self.rightSecondButton.setTitleColor(UIColor.black, for: .normal)
         self.rightSecondButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
         self.rightSecondButton.contentHorizontalAlignment = .right

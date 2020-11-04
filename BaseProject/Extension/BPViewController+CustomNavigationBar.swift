@@ -57,11 +57,6 @@ extension BPViewController: BPCustomNavigationBarProtocol {
     
     // MARK: ++++++++++ Private ++++++++++
     private func createCustomNavigationBar() -> BPNavigationBar {
-        #if DEBUG
-        // 摇一摇功能
-        self.becomeFirstResponder()
-        #endif
-        
         let cnb = BPNavigationBar(largeTitle: self.isLargeTitle)
         objc_setAssociatedObject(self, &AssociatedKeys.customeNavigationBar, cnb, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         return cnb
