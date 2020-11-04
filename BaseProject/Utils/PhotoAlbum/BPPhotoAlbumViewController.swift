@@ -13,11 +13,11 @@ class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UI
     var isSelect: Bool = false {
         willSet {
             if newValue {
-                self.customNavigationBar?.title = "取消"
-                self.toolsView.show()
+                self.customNavigationBar?.rightFirstButton.setTitle("取消", for: .normal)
+                self.showToolsView()
             } else {
-                self.customNavigationBar?.title = "选择"
-                self.toolsView.hide()
+                self.customNavigationBar?.rightFirstButton.setTitle("选择", for: .normal)
+                self.hideToolsView()
             }
             self.collectionView.reloadData()
         }
@@ -50,9 +50,15 @@ class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UI
     override func createSubviews() {
         super.createSubviews()
         self.view.addSubview(collectionView)
+        self.view.addSubview(toolsView)
         collectionView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
             make.top.equalToSuperview().offset(kNavHeight)
+        }
+        toolsView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.top.equalToSuperview().offset(kScreenHeight)
+            make.height.equalTo(AdaptSize(50) + kSafeBottomMargin)
         }
     }
 
@@ -72,7 +78,17 @@ class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UI
     }
 
     // MARK: ==== Event ====
+    private func showToolsView() {
+        UIView.animate(withDuration: 0.25) {
+            self.toolsView.transform = CGAffineTransform(translationX: 0, y: -self.toolsView.height)
+        }
+    }
 
+    private func hideToolsView() {
+        UIView.animate(withDuration: 0.25) {
+            self.toolsView.transform = .identity
+        }
+    }
 
     // MARK: ==== BPPhotoAlbumToolsDelegate ====
     func clickShareAction() {
