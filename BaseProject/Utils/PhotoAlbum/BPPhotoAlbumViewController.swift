@@ -99,4 +99,8 @@ class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UI
         cell.setData(image: imageModelList[indexPath.row])
         return cell
     }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        BPImageBrowser(dataSource: imageModelList, current: indexPath.row).show()
+    }
 }

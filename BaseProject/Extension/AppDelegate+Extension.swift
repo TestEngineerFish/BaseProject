@@ -13,7 +13,7 @@ extension AppDelegate {
     /// 添加网络变化的监听
     func monitorNetWork() {
         networkManager?.listener = { (status) in
-            NotificationCenter.default.post(name: NotificationNameGlobal.kNetworkNotification, object: status)
+            NotificationCenter.default.post(name: BPNotificationName.kNetworkNotification, object: status)
             switch status {
             case .unknown, .notReachable:
                 print("没有网络")

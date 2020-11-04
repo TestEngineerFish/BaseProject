@@ -11,7 +11,7 @@ import UIKit
 class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSource, BPImageBrowserCellDelegate {
 
     let kBPImageBrowserCellID = "kBPImageBrowserCell"
-    var imageModelList: [BPImageModel]
+    var imageModelList: [UIImage?]
     var currentIndex: Int
 
     var collectionView: UICollectionView = {
@@ -27,7 +27,7 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
         return collectionView
     }()
 
-    init(dataSource: [BPImageModel], current index: Int) {
+    init(dataSource: [UIImage?], current index: Int) {
         self.imageModelList = dataSource
         self.currentIndex = index
         super.init(frame: .zero)
@@ -95,7 +95,13 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
         cell.scrollView.zoomScale = 1
         cell.delegate = self
         cell.backgroundColor = UIColor.randomColor()
+        cell.setData(image: self.imageModelList[indexPath.row])
         return cell
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        BPLog("scrollViewDidEndDecelerating")
+        NotificationCenter.default.post(name: BPNotificationName.kScrollDidEndDecelerating, object: nil)
     }
 
     // MARK: ==== BPImageBrowserCellDelegate ====

@@ -192,23 +192,23 @@ struct BPNetworkService {
         } else {
             if responseStatusCode == 10106 {
                 // 当登录状态失效时，通知上层
-                let loginExpired = Notification.Name(NotificationNameGlobal.kLoginStatusExpired)
+                let loginExpired = Notification.Name(BPNotificationName.kLoginStatusExpired)
                 NotificationCenter.default.post(name: loginExpired, object: nil)
             } else if responseStatusCode == 10109 {
                 //用户账号已封禁
-                let accountBlocked = Notification.Name(NotificationNameGlobal.kUserAccountHasBeenBlocked)
+                let accountBlocked = Notification.Name(BPNotificationName.kUserAccountHasBeenBlocked)
                 NotificationCenter.default.post(name: accountBlocked, object: baseResponse.statusMessage)
             } else if responseStatusCode == 10107 {
                 //用户资料信息审核不通过
-                let infoBlocked = Notification.Name(NotificationNameGlobal.kUserInfoHasBeenBlocked)
+                let infoBlocked = Notification.Name(BPNotificationName.kUserInfoHasBeenBlocked)
                 NotificationCenter.default.post(name: infoBlocked, object: nil)
             } else if responseStatusCode == 10105 {
                 //用户头像信息审核不通过
-                let avatarBlocked = Notification.Name(NotificationNameGlobal.kUserAvatarInfoHasBeenBlocked)
+                let avatarBlocked = Notification.Name(BPNotificationName.kUserAvatarInfoHasBeenBlocked)
                 NotificationCenter.default.post(name: avatarBlocked, object: nil)
             } else if responseStatusCode == 10108 {
                 //用户昵称信息审核不通过
-                let nicknameBlocked = Notification.Name(NotificationNameGlobal.kUserNicknameInfoHasBeenBlocked)
+                let nicknameBlocked = Notification.Name(BPNotificationName.kUserNicknameInfoHasBeenBlocked)
                 NotificationCenter.default.post(name: nicknameBlocked, object: nil)
             }
 

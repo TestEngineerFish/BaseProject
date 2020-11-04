@@ -14,7 +14,7 @@ protocol BPImageBrowserCellDelegate: NSObjectProtocol {
     func closeAction()
 }
 
-class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate {
+class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate, UIGestureRecognizerDelegate {
 
     /// 手指离开后，超过该值则关闭视图
     let maxOffsetY: CGFloat = 100
@@ -23,6 +23,8 @@ class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate {
     /// 最小缩放比例
     let minScale: CGFloat   = 0.5
     weak var delegate: BPImageBrowserCellDelegate?
+    var panGes: UIPanGestureRecognizer?
+    var isScrolling = false
 
     var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -32,7 +34,6 @@ class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate {
     }()
     private var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "dog")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -64,13 +65,25 @@ class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate {
         self.scrollView.delegate = self
         let tapGes = UITapGestureRecognizer(target: self, action: #selector(tapAction(sender:)))
         let longPressGes = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressAction(sender:)))
-        let panGes = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(sender:)))
+        self.panGes = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(sender:)))
         self.addGestureRecognizer(tapGes)
         self.addGestureRecognizer(longPressGes)
-        self.addGestureRecognizer(panGes)
+        self.addGestureRecognizer(panGes!)
+        panGes?.delegate = self
+
+        NotificationCenter.default.addObserver(self, selector: #selector(didEndScroll), name: BPNotificationName.kScrollDidEndDecelerating, object: nil)
     }
 
     // MARK: ==== Event ====
+
+    func setData(image: UIImage?) {
+        self.imageView.image = image
+    }
+
+    @objc private func didEndScroll() {
+        self.isScrolling = false
+    }
+
     /// 点击手势事件
     @objc private func tapAction(sender: UITapGestureRecognizer) {
         self.delegate?.clickAction()
@@ -90,7 +103,7 @@ class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate {
         case .began:
             self.originPoint = point
         case .changed:
-            guard point.y > 0 else {
+            guard point.y > 10, !isScrolling else {
                 return
             }
             let scale: CGFloat = {
@@ -120,4 +133,20 @@ class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return self.imageView
     }
+
+    // MARK: ==== UIGestureRecognizerDelegat ====
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard let panGes = gestureRecognizer as? UIPanGestureRecognizer else {
+            return false
+        }
+        let point = panGes.translation(in: self)
+        BPLog(point)
+        if point.y > 0 {
+            return false
+        } else {
+            self.isScrolling = true
+            return true
+        }
+    }
+
 }
