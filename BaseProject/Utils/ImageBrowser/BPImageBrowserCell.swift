@@ -22,7 +22,7 @@ class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate {
     let maxScaleY: CGFloat  = AdaptSize(1000)
     /// 最小缩放比例
     let minScale: CGFloat   = 0.5
-    var delegate: BPImageBrowserCellDelegate?
+    weak var delegate: BPImageBrowserCellDelegate?
 
     var scrollView: UIScrollView = {
         let scrollView = UIScrollView()

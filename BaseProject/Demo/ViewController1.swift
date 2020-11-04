@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSource, BPRefreshProtocol {
 
-    var typeList: [AlgorithmType] = [.bubbleSort, .chooseSort, .insertionSort, .shellSort, .bubbleSort, .chooseSort, .insertionSort, .shellSort,.bubbleSort, .chooseSort, .insertionSort, .shellSort, .bubbleSort, .chooseSort, .insertionSort, .shellSort, .bubbleSort, .chooseSort, .insertionSort, .shellSort, .bubbleSort, .chooseSort, .insertionSort, .shellSort,  ]
+    var typeList: [AlgorithmType] = [.bubbleSort, .chooseSort, .insertionSort, .shellSort]
 
     var tableView: UITableView = {
         let tableView = UITableView()
@@ -70,16 +70,25 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var imageModelList = [BPImageModel]()
-        for _ in 0..<10 {
-            let model = BPImageModel()
-            imageModelList.append(model)
+        var imageList = [UIImage?]()
+        for _ in 0..<100 {
+            let model = UIImage(named: "dog")
+            imageList.append(model)
         }
-        BPImageBrowser(dataSource: imageModelList, current: 1).show()
+        let vc = BPPhoteAlbumViewController()
+        vc.imageModelList = imageList
+        self.navigationController?.pushViewController(vc, animated: true)
         return
-        let vc  = AlgorithmViewController()
-        vc.type = self.typeList[indexPath.row]
-        self.navigationController?.push(vc: vc)
+//        var imageModelList = [BPImageModel]()
+//        for _ in 0..<10 {
+//            let model = BPImageModel()
+//            imageModelList.append(model)
+//        }
+//        BPImageBrowser(dataSource: imageModelList, current: 1).show()
+//        return
+//        let vc  = AlgorithmViewController()
+//        vc.type = self.typeList[indexPath.row]
+//        self.navigationController?.push(vc: vc)
     }
     
     // MARK: ==== BPRefreshProtocol ====

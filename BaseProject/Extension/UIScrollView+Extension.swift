@@ -72,7 +72,7 @@ private struct AssociatedKeys {
 extension UIScrollView {
     
     /// 滑动代理
-    var refreshDelegate: BPRefreshProtocol? {
+    weak var refreshDelegate: BPRefreshProtocol? {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.refreshDelegate) as? BPRefreshProtocol
         }
