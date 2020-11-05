@@ -11,7 +11,7 @@ import UIKit
 class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSource, BPImageBrowserCellDelegate {
 
     let kBPImageBrowserCellID = "kBPImageBrowserCell"
-    var imageModelList: [UIImage?]
+    var imageModelList: [BPMediaModel]
     var currentIndex: Int
     var startFrame: CGRect?
 
@@ -35,7 +35,7 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
         return view
     }()
 
-    init(dataSource: [UIImage?], current index: Int) {
+    init(dataSource: [BPMediaModel], current index: Int) {
         self.imageModelList = dataSource
         self.currentIndex = index
         super.init(frame: .zero)
@@ -153,7 +153,7 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
         }
         cell.scrollView.zoomScale = 1
         cell.delegate = self
-        cell.setData(image: self.imageModelList[indexPath.row])
+        cell.setData(model: self.imageModelList[indexPath.row])
         return cell
     }
 

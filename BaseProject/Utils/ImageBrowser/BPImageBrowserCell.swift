@@ -79,8 +79,15 @@ class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate, UIGestureR
 
     // MARK: ==== Event ====
 
-    func setData(image: UIImage?) {
-        self.imageView.image = image
+    func setData(model: BPMediaModel) {
+        model.showOriginImage(progress: nil) { [weak self] (image: UIImage?, errorMsg: String?) in
+            guard let self = self else { return }
+            if let _errorMsg = errorMsg {
+                BPAlertManager.share.showZeroButton(title: "Error", description: _errorMsg)
+            } else {
+                self.imageView.image = image
+            }
+        }
     }
 
     @objc private func didEndScroll() {

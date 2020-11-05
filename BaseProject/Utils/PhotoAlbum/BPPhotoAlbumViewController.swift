@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UICollectionViewDataSource, BPPhotoAlbumToolsDelegate {
+class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UICollectionViewDataSource, BPPhotoAlbumToolsDelegate, BPPhotoAlbumCellDelegate {
 
     var isSelect: Bool = false {
         willSet {
@@ -24,7 +24,10 @@ class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UI
     }
 
     let kBPPhotoAlbumCellID = "kBPPhotoAlbumCell"
-    var imageModelList: [UIImage?] = []
+    /// 总资源
+    var modelList: [BPMediaModel] = []
+    /// 已选资源
+    var selectedModelList: [BPMediaModel] = []
 
     var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -105,14 +108,14 @@ class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UI
 
     // MARK: ==== UICollectionViewDelegate && UICollectionViewDataSource ====
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.imageModelList.count
+        return self.modelList.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kBPPhotoAlbumCellID, for: indexPath) as? BPPhotoAlbumCell else {
             return UICollectionViewCell()
         }
-        cell.setData(image: imageModelList[indexPath.row])
+        cell.setData(model: modelList[indexPath.row], isSelected: false)
         return cell
     }
 
@@ -120,6 +123,14 @@ class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UI
         guard let cell = collectionView.cellForItem(at: indexPath) as? BPPhotoAlbumCell else {
             return
         }
-        BPImageBrowser(dataSource: imageModelList, current: indexPath.row).show(animationView: cell.imageView)
+        BPImageBrowser(dataSource: modelList, current: indexPath.row).show(animationView: cell.imageView)
+    }
+
+    // MARK: ==== BPPhotoAlbumCellDelegate ====
+    func selectedImage(image: UIImage?) {
+//        self.selectedModelList.append(image)
+    }
+
+    func unselectImage(image: UIImage?) {
     }
 }

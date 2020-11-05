@@ -52,7 +52,14 @@ class BPPhotoAlbumToolsView: BPView {
 
     override func createSubviews() {
         super.createSubviews()
-        let stackView = UIStackView(arrangedSubviews: [UIView(),shareButton, saveButton, deleteButton, UIView()])
+        let tmpView = UIView()
+        tmpView.isHidden = true
+        let itemSize = CGSize(width: AdaptSize(50), height: 50)
+        shareButton.size  = itemSize
+        saveButton.size   = itemSize
+        deleteButton.size = itemSize
+        tmpView.size      = itemSize
+        let stackView = UIStackView(arrangedSubviews: [tmpView,shareButton, saveButton, deleteButton, tmpView])
         stackView.alignment    = .center
         stackView.axis         = .horizontal
         stackView.distribution = .equalSpacing
@@ -62,15 +69,6 @@ class BPPhotoAlbumToolsView: BPView {
             make.top.equalToSuperview()
             make.right.equalToSuperview().offset(AdaptSize(-30))
             make.bottom.equalToSuperview().offset(-kSafeBottomMargin)
-        }
-        shareButton.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: AdaptSize(50), height: 50))
-        }
-        saveButton.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: AdaptSize(50), height: 50))
-        }
-        deleteButton.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: AdaptSize(50), height: 50))
         }
     }
 

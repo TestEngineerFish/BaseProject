@@ -70,13 +70,15 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var imageList = [UIImage?]()
-        for _ in 0..<100 {
-            let model = UIImage(named: "dog")
+        var imageList = [BPMediaModel]()
+        for _ in 0..<2 {
+            var model = BPMediaModel()
+            model.thumbnailRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1588620919,359805583&fm=26&gp=0.jpg"
+            model.originRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3313838802,2768404782&fm=26&gp=0.jpg"
             imageList.append(model)
         }
         let vc = BPPhoteAlbumViewController()
-        vc.imageModelList = imageList
+        vc.modelList = imageList
         self.navigationController?.pushViewController(vc, animated: true)
         return
 //        var imageModelList = [BPImageModel]()

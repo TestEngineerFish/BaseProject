@@ -9,7 +9,7 @@ target 'BaseProject' do
   # 异常监控
   pod 'Bugly'
   # 钥匙串访问
-  pod 'SAMKeychain'
+#  pod 'SAMKeychain'
   # 网络请求
   pod 'Alamofire', '~> 4.8.2'
   # JSON转对象
