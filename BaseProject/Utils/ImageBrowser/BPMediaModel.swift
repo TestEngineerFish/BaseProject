@@ -28,7 +28,7 @@ struct BPMediaModel: Mappable {
     /// - Parameters:
     ///   - progress: 下载远端缩略图的进度
     ///   - completion: 下载、加载图片完成回调
-    func showThumbImage(progress: ((CGFloat) ->Void)?, completion: ((UIImage?, String?)->Void)?) {
+    func getThumbImage(progress: ((CGFloat) ->Void)?, completion: ((UIImage?)->Void)?) {
         self.loadImage(localPath: thumbnailLocalPath, remotePath: thumbnailRemotePath, progress: progress, completion: completion)
     }
 
@@ -36,13 +36,13 @@ struct BPMediaModel: Mappable {
     /// - Parameters:
     ///   - progress: 下载远端缩略图的进度
     ///   - completion: 下载、加载图片完成回调
-    func showOriginImage(progress: ((CGFloat) ->Void)?, completion: ((UIImage?, String?)->Void)?) {
+    func getOriginImage(progress: ((CGFloat) ->Void)?, completion: ((UIImage?)->Void)?) {
         self.loadImage(localPath: originLocalPath, remotePath: originRemotePath, progress: progress, completion: completion)
     }
 
-    private func loadImage(localPath: String?, remotePath: String?, progress: ((CGFloat) ->Void)?, completion: ((UIImage?, String?)->Void)?) {
+    private func loadImage(localPath: String?, remotePath: String?, progress: ((CGFloat) ->Void)?, completion: ((UIImage?)->Void)?) {
         if let path = localPath, let image = UIImage(named: path) {
-            completion?(image, nil)
+            completion?(image)
         } else {
             guard let path = remotePath, let url = URL(string: path) else {
                 return
@@ -50,13 +50,14 @@ struct BPMediaModel: Mappable {
             UIImageView().kf.setImage(with: url, placeholder: nil, options: [.transition(ImageTransition.fade(1))]) { (receivedSize, totalSize) in
                 let progressValue = CGFloat(receivedSize)/CGFloat(totalSize)
                 progress?(progressValue)
+                BPLog(progressValue)
             } completionHandler: { (result: Result<RetrieveImageResult, KingfisherError>) in
-                do {
-                    let imageResult = try result.get()
-                    let image       = imageResult.image
-                    completion?(image, nil)
-                } catch {
-                    completion?(nil, (error as NSError?)?.message)
+                switch result {
+                case .success(let imageResult):
+                    completion?(imageResult.image)
+                case .failure(let error):
+                    BPLog("资源下载失败，地址：\(path), 原因：" + (error.errorDescription ?? ""))
+                    completion?(nil)
                 }
             }
         }

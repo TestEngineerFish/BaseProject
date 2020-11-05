@@ -71,8 +71,9 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var imageList = [BPMediaModel]()
-        for _ in 0..<2 {
+        for _ in 0..<1 {
             var model = BPMediaModel()
+            // 缺容错处理
             model.thumbnailRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1588620919,359805583&fm=26&gp=0.jpg"
             model.originRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3313838802,2768404782&fm=26&gp=0.jpg"
             imageList.append(model)

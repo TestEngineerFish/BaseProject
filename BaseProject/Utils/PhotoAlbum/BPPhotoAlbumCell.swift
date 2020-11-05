@@ -72,13 +72,8 @@ class BPPhotoAlbumCell: UICollectionViewCell {
 
     // MARK: ==== Event ====
     func setData(model: BPMediaModel, isSelected: Bool) {
-        model.showThumbImage(progress: nil) { [weak self] (image: UIImage?, errorMsg: String?) in
-            guard let self = self else { return }
-            if let _errorMsg = errorMsg {
-                BPAlertManager.share.showOneButton(title: "Error", description: _errorMsg, buttonName: "好的", closure: nil)
-            } else {
-                self.imageView.image = image
-            }
+        model.getThumbImage(progress: nil) { [weak self] (image: UIImage?) in
+            self?.imageView.image = image
         }
         let textColor = isSelected ? UIColor.orange1 : UIColor.black.withAlphaComponent(0.2)
         self.selectButton.setTitleColor(textColor, for: .normal)
