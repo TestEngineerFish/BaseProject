@@ -58,6 +58,7 @@
 		2276C896255247E60040DFFF /* BPPhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276C895255247E60040DFFF /* BPPhotoAlbumViewController.swift */; };
 		2276C89A255249320040DFFF /* BPPhotoAlbumToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276C899255249320040DFFF /* BPPhotoAlbumToolsView.swift */; };
 		2276C89D255251E30040DFFF /* BPPhotoAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276C89C255251E30040DFFF /* BPPhotoAlbumCell.swift */; };
+		2276C8A12555877A0040DFFF /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276C8A02555877A0040DFFF /* Double+Extension.swift */; };
 		227D300A25372C96009DB59C /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D300925372C96009DB59C /* DrawView.swift */; };
 		227D300D253730E4009DB59C /* BPDrawPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D300C253730E4009DB59C /* BPDrawPath.swift */; };
 		2290EABC236D5EF2000BCA47 /* right11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABB236D5EF2000BCA47 /* right11-data.json */; };
@@ -196,6 +197,7 @@
 		2276C895255247E60040DFFF /* BPPhotoAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPhotoAlbumViewController.swift; sourceTree = "<group>"; };
 		2276C899255249320040DFFF /* BPPhotoAlbumToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPhotoAlbumToolsView.swift; sourceTree = "<group>"; };
 		2276C89C255251E30040DFFF /* BPPhotoAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPhotoAlbumCell.swift; sourceTree = "<group>"; };
+		2276C8A02555877A0040DFFF /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		227D2F9F252EEF62009DB59C /* BPPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPPoint.h; sourceTree = "<group>"; };
 		227D300925372C96009DB59C /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 		227D300C253730E4009DB59C /* BPDrawPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDrawPath.swift; sourceTree = "<group>"; };
@@ -558,6 +560,7 @@
 				223D5EF4244DA98100482127 /* NSDate+Extension.m */,
 				E0A0B768253EAFE800E97ED8 /* UIScrollView+Extension.swift */,
 				E0547FFC254124640031C02D /* UILabel+Extension.swift */,
+				2276C8A02555877A0040DFFF /* Double+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1029,6 +1032,7 @@
 				22AED512234EC75500A91A68 /* Optional+Extension.swift in Sources */,
 				227D300A25372C96009DB59C /* DrawView.swift in Sources */,
 				22CDA244254AFFC000B6FDCB /* BPMediaModel.swift in Sources */,
+				2276C8A12555877A0040DFFF /* Double+Extension.swift in Sources */,
 				CF8EB59C22DCCEBC00EC2FE5 /* IconFontString.swift in Sources */,
 				CF26719622FF0A5900E6B47F /* ViewController3.swift in Sources */,
 				2261F49F24DD685800309DE3 /* AlgorithmModel.swift in Sources */,

@@ -52,14 +52,17 @@ class BPPhotoAlbumToolsView: BPView {
 
     override func createSubviews() {
         super.createSubviews()
-        let tmpView = UIView()
-        tmpView.isHidden = true
+        let leftView  = UIView()
+        let rightView = UIView()
+        leftView.backgroundColor  = .clear
+        rightView.backgroundColor = .clear
         let itemSize = CGSize(width: AdaptSize(50), height: 50)
-        shareButton.size  = itemSize
-        saveButton.size   = itemSize
-        deleteButton.size = itemSize
-        tmpView.size      = itemSize
-        let stackView = UIStackView(arrangedSubviews: [tmpView,shareButton, saveButton, deleteButton, tmpView])
+        shareButton.size    = itemSize
+        saveButton.size     = itemSize
+        deleteButton.size   = itemSize
+        leftView.size       = itemSize
+        rightView.size      = itemSize
+        let stackView = UIStackView(arrangedSubviews: [leftView,shareButton, saveButton, deleteButton, rightView])
         stackView.alignment    = .center
         stackView.axis         = .horizontal
         stackView.distribution = .equalSpacing

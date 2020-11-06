@@ -19,6 +19,7 @@ class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UI
                 self.customNavigationBar?.rightFirstButton.setTitle("选择", for: .normal)
                 self.hideToolsView()
             }
+            self.selectedModelList.removeAll()
             self.collectionView.reloadData()
         }
     }
@@ -67,14 +68,14 @@ class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UI
 
     override func bindProperty() {
         super.bindProperty()
-        self.customNavigationBar?.title = "图片和视频"
+        self.customNavigationBar?.title            = "图片和视频"
         self.customNavigationBar?.rightButtonTitle = "选择"
         self.customNavigationBar?.rightFirstButtonAction = { [weak self] in
             guard let self = self else { return }
             self.isSelect = !self.isSelect
             BPLog("开始选择")
         }
-        self.toolsView.delegate = self
+        self.toolsView.delegate        = self
         self.collectionView.delegate   = self
         self.collectionView.dataSource = self
         self.collectionView.register(BPPhotoAlbumCell.classForCoder(), forCellWithReuseIdentifier: self.kBPPhotoAlbumCellID)
@@ -82,14 +83,15 @@ class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UI
 
     // MARK: ==== Event ====
     private func showToolsView() {
-        UIView.animate(withDuration: 0.25) {
+        UIView.animate(withDuration: 0.25) { [weak self] in
+            guard let self = self else { return }
             self.toolsView.transform = CGAffineTransform(translationX: 0, y: -self.toolsView.height)
         }
     }
 
     private func hideToolsView() {
-        UIView.animate(withDuration: 0.25) {
-            self.toolsView.transform = .identity
+        UIView.animate(withDuration: 0.25) { [weak self] in
+            self?.toolsView.transform = .identity
         }
     }
 
@@ -115,7 +117,10 @@ class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UI
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kBPPhotoAlbumCellID, for: indexPath) as? BPPhotoAlbumCell else {
             return UICollectionViewCell()
         }
-        cell.setData(model: modelList[indexPath.row], isSelected: false)
+        let model     = self.modelList[indexPath.row]
+        let selected  = self.selectedModelList.contains(model)
+        cell.delegate = self
+        cell.setData(model: model, showSelect: self.isSelect, isSelected: selected)
         return cell
     }
 
@@ -127,10 +132,15 @@ class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UI
     }
 
     // MARK: ==== BPPhotoAlbumCellDelegate ====
-    func selectedImage(image: UIImage?) {
-//        self.selectedModelList.append(image)
+    func selectedImage(model: BPMediaModel) {
+        guard !self.selectedModelList.contains(model) else { return }
+        self.selectedModelList.append(model)
+        self.collectionView.reloadData()
     }
 
-    func unselectImage(image: UIImage?) {
+    func unselectImage(model: BPMediaModel) {
+        guard let index = self.selectedModelList.firstIndex(of: model) else { return }
+        self.selectedModelList.remove(at: index)
+        self.collectionView.reloadData()
     }
 }

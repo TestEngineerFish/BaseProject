@@ -12,4 +12,5 @@ public enum IconFont: String {
     case close1 = "\u{e62f}" // 关闭按钮(带圆圈的)
     case publis = "\u{e718}" // 加号按钮
     case select = "\u{e600}" // 选择按钮
+    case video  = "\u{e60e}" // 摄像机
 }

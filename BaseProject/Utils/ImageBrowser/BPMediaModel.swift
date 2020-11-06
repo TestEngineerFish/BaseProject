@@ -9,11 +9,18 @@
 import ObjectMapper
 import Kingfisher
 
-struct BPMediaModel: Mappable {
+enum BPMediaType: Int {
+    case image
+    case video
+}
+
+struct BPMediaModel: Mappable, Hashable {
     /// 资源ID
     var id: Int = 0
     /// 资源名称
     var name: String = ""
+    /// 资源类型
+    var type: BPMediaType = .image
     /// 缩略图本地地址
     var thumbnailLocalPath: String?
     /// 缩略图网络地址
@@ -22,6 +29,8 @@ struct BPMediaModel: Mappable {
     var originLocalPath: String?
     /// 原图网络地址
     var originRemotePath: String?
+    /// 视频时长
+    var videoTime: TimeInterval = .zero
 
 
     /// 显示缩略图，如果本地不存在则通过远端下载
