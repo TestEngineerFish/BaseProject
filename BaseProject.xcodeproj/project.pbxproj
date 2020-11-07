@@ -10,6 +10,7 @@
 		2201542123745BCB004E4A99 /* BPGlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201542023745BCB004E4A99 /* BPGlobalFunction.swift */; };
 		2201542323758D2A004E4A99 /* BPLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201542223758D2A004E4A99 /* BPLabel.swift */; };
 		2211803322EEE47500B77911 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2211803222EEE47500B77911 /* CALayer+Extension.swift */; };
+		2215C0682556ADDB00A85A38 /* BPDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2215C0672556ADDB00A85A38 /* BPDownloadManager.swift */; };
 		2218AE3923D098D000EF2E42 /* BPLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2218AE3823D098D000EF2E42 /* BPLogManager.swift */; };
 		221F5C4A22E95B4000F9355C /* AppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */; };
 		2233952F24E1133C0052C7CC /* SelectionSortTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233952E24E1133C0052C7CC /* SelectionSortTableView.swift */; };
@@ -59,6 +60,7 @@
 		2276C89A255249320040DFFF /* BPPhotoAlbumToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276C899255249320040DFFF /* BPPhotoAlbumToolsView.swift */; };
 		2276C89D255251E30040DFFF /* BPPhotoAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276C89C255251E30040DFFF /* BPPhotoAlbumCell.swift */; };
 		2276C8A12555877A0040DFFF /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276C8A02555877A0040DFFF /* Double+Extension.swift */; };
+		2276C8A5255685530040DFFF /* BPFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276C8A4255685530040DFFF /* BPFileManager.swift */; };
 		227D300A25372C96009DB59C /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D300925372C96009DB59C /* DrawView.swift */; };
 		227D300D253730E4009DB59C /* BPDrawPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D300C253730E4009DB59C /* BPDrawPath.swift */; };
 		2290EABC236D5EF2000BCA47 /* right11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABB236D5EF2000BCA47 /* right11-data.json */; };
@@ -145,6 +147,7 @@
 		2201542023745BCB004E4A99 /* BPGlobalFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPGlobalFunction.swift; sourceTree = "<group>"; };
 		2201542223758D2A004E4A99 /* BPLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPLabel.swift; sourceTree = "<group>"; };
 		2211803222EEE47500B77911 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
+		2215C0672556ADDB00A85A38 /* BPDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDownloadManager.swift; sourceTree = "<group>"; };
 		2218AE3823D098D000EF2E42 /* BPLogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPLogManager.swift; sourceTree = "<group>"; };
 		221F5C4922E95B4000F9355C /* AppDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Extension.swift"; sourceTree = "<group>"; };
 		2233952E24E1133C0052C7CC /* SelectionSortTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSortTableView.swift; sourceTree = "<group>"; };
@@ -198,6 +201,7 @@
 		2276C899255249320040DFFF /* BPPhotoAlbumToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPhotoAlbumToolsView.swift; sourceTree = "<group>"; };
 		2276C89C255251E30040DFFF /* BPPhotoAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPhotoAlbumCell.swift; sourceTree = "<group>"; };
 		2276C8A02555877A0040DFFF /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		2276C8A4255685530040DFFF /* BPFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPFileManager.swift; sourceTree = "<group>"; };
 		227D2F9F252EEF62009DB59C /* BPPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPPoint.h; sourceTree = "<group>"; };
 		227D300925372C96009DB59C /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 		227D300C253730E4009DB59C /* BPDrawPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDrawPath.swift; sourceTree = "<group>"; };
@@ -308,6 +312,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2215C0662556ADCA00A85A38 /* DownloadManager */ = {
+			isa = PBXGroup;
+			children = (
+				2215C0672556ADDB00A85A38 /* BPDownloadManager.swift */,
+			);
+			path = DownloadManager;
+			sourceTree = "<group>";
+		};
 		2218AE3723D098C200EF2E42 /* Log */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,14 +367,6 @@
 				22458206232604EA0031CC7A /* BPNormalDBOperator.swift */,
 			);
 			path = Database;
-			sourceTree = "<group>";
-		};
-		224582092326513B0031CC7A /* FileManager */ = {
-			isa = PBXGroup;
-			children = (
-				2245820A2326549E0031CC7A /* BPCacheManager.swift */,
-			);
-			path = FileManager;
 			sourceTree = "<group>";
 		};
 		225C48DA24DD41ED00594FEE /* Algorithm */ = {
@@ -425,6 +429,15 @@
 				226F0B14250A206D00F453F6 /* BPContainerTransitionDelegate.swift */,
 			);
 			path = Transition;
+			sourceTree = "<group>";
+		};
+		2276C8A3255685230040DFFF /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				2245820A2326549E0031CC7A /* BPCacheManager.swift */,
+				2276C8A4255685530040DFFF /* BPFileManager.swift */,
+			);
+			path = FileManager;
 			sourceTree = "<group>";
 		};
 		227D300825372C44009DB59C /* DrawView */ = {
@@ -577,9 +590,11 @@
 		22C621F822DC8E7600A7C849 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				2215C0662556ADCA00A85A38 /* DownloadManager */,
+				2276C8A3255685230040DFFF /* FileManager */,
 				22CDA2562552426700B6FDCB /* PhotoAlbum */,
-				22CDA25225514F7D00B6FDCB /* ActionSheet */,
 				E0DE9CF02542641E00D1FD1F /* ImageBrowser */,
+				22CDA25225514F7D00B6FDCB /* ActionSheet */,
 				E054800325416B4E0031C02D /* Authoriation */,
 				E0A0B76C253ED2DC00E97ED8 /* BaseRefreshView */,
 				227D300825372C44009DB59C /* DrawView */,
@@ -738,7 +753,6 @@
 			children = (
 				2218AE3723D098C200EF2E42 /* Log */,
 				22AED508234DD69300A91A68 /* Socket */,
-				224582092326513B0031CC7A /* FileManager */,
 				22D018F62321F36A007AFA1B /* FMDatabase */,
 				22C621C922DC815A00A7C849 /* Network */,
 			);
@@ -1029,6 +1043,7 @@
 				CF49A88024DFEE5300D8DAC4 /* BubbleSortTableView.swift in Sources */,
 				227D300D253730E4009DB59C /* BPDrawPath.swift in Sources */,
 				CF26719422FF0A4300E6B47F /* ViewController2.swift in Sources */,
+				2276C8A5255685530040DFFF /* BPFileManager.swift in Sources */,
 				22AED512234EC75500A91A68 /* Optional+Extension.swift in Sources */,
 				227D300A25372C96009DB59C /* DrawView.swift in Sources */,
 				22CDA244254AFFC000B6FDCB /* BPMediaModel.swift in Sources */,
@@ -1078,6 +1093,7 @@
 				CF8EB58D22DCCCFC00EC2FE5 /* String+Extension.swift in Sources */,
 				2201542123745BCB004E4A99 /* BPGlobalFunction.swift in Sources */,
 				22C621F722DC8E0B00A7C849 /* UIColor+Extension.swift in Sources */,
+				2215C0682556ADDB00A85A38 /* BPDownloadManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

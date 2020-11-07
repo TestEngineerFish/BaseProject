@@ -104,7 +104,7 @@ class BPPhotoAlbumCell: UICollectionViewCell {
         self.videoTimeLabel.isHidden = model.type != .video
         self.videoTimeLabel.text     = {
             var timeStr = ""
-            if model.videoTime > 3600 {
+            if Int(model.videoTime) >= hour {
                 timeStr = model.videoTime.hourMinuteSecondStr()
             } else {
                 timeStr = model.videoTime.minuteSecondStr()

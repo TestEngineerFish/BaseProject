@@ -14,7 +14,7 @@ import CocoaLumberjack
 
 struct BPNetworkService {
     private let MAX_CONCURRENT_OPERATION_COUNT: Int = 3
-    private let request_time_out: TimeInterval = 60
+    private let request_time_out: TimeInterval      = 60
 
     private var defaultConfiguration: URLSessionConfiguration {
         let _configuration = URLSessionConfiguration.default
@@ -24,6 +24,7 @@ struct BPNetworkService {
     }
 
     public static let `default` = BPNetworkService()
+    let networkManager = NetworkReachabilityManager()
     private init() {
         let sessionManager:SessionManager = Alamofire.SessionManager.init(configuration: self.defaultConfiguration)
         sessionManager.session.delegateQueue.maxConcurrentOperationCount = MAX_CONCURRENT_OPERATION_COUNT
@@ -35,6 +36,7 @@ struct BPNetworkService {
     /// - parameter type: 只是定义泛型对象类型,没有其他作用
     @discardableResult
     public func httpRequestTask <T> (_ type: T.Type, request: YYBaseRequest, success: ((_ response: T) -> Void)?, fail: ((_ responseError: NSError) -> Void)?) -> BPTaskRequest? where T: BPBaseResopnse {
+
         switch request.method {
         case .post:
             var _request = URLRequest(url: request.url)
@@ -237,5 +239,17 @@ struct BPNetworkService {
             return dict
         }
         return _parameters
+    }
+
+    // MARK: ==== Tools ====
+    private func checkNetwork() -> Bool {
+        // 是否有网络
+        if self.networkManager?.isReachable == .some(true) {
+            return true
+        } else {
+            // 是否有权限
+//            BPAuthorizationManager
+        }
+        return true
     }
 }

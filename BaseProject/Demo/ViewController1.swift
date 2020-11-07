@@ -74,8 +74,8 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
         for index in 0..<200 {
             var model = BPMediaModel()
             // 缺容错处理
-            model.id = index
-            model.type = index % 3 > 1 ? .video : .image
+            model.id        = index
+            model.type      = index % 3 > 1 ? .video : .thumbImage
             model.videoTime = Double(index) * 4
             model.thumbnailRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1588620919,359805583&fm=26&gp=0.jpg"
             model.originRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3313838802,2768404782&fm=26&gp=0.jpg"

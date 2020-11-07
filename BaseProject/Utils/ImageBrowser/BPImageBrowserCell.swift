@@ -146,7 +146,6 @@ class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate, UIGestureR
             return false
         }
         let point = panGes.translation(in: self)
-        BPLog(point)
         if point.y > 0 {
             return false
         } else {

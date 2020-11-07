@@ -78,6 +78,7 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
         self.customNavigationBar?.title = "选择环境"
         self.createSubviews()
         self.bindProperty()
+        self.printDocumentPath()
     }
     
     override func createSubviews() {
@@ -118,6 +119,11 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
         guard let newEnv = self.tmpEnv else { return }
         currentEnv = newEnv
         self.backAction()
+    }
+
+    /// 打印当前项目路径
+    private func printDocumentPath() {
+        BPLog(BPFileManager.share.documentPath)
     }
     
     // MARK: ==== UITableViewDataSource && UITableViewDelegate ====

@@ -118,6 +118,13 @@ public var isReachableOnEthernetOrWiFi: Bool {
     }
 }
 
+// MARK: ----时间----
+public var week: Int   = 604800
+public var day: Int    = 86400
+public var hour: Int   = 3600
+public var minute: Int = 60
+
+
 // MARK: ---其他---
 /// 当前Window
 public var kWindow: UIWindow {
