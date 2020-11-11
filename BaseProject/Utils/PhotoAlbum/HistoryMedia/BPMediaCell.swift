@@ -9,8 +9,8 @@
 import Photos
 
 protocol BPPhotoAlbumCellDelegate: NSObjectProtocol {
-    func selectedImage(indexPath: IndexPath)
-    func unselectImage(indexPath: IndexPath)
+    func selectedImage(model: Any)
+    func unselectImage(model: Any)
 }
 
 class BPMediaCell: UICollectionViewCell {
@@ -18,8 +18,6 @@ class BPMediaCell: UICollectionViewCell {
     var model: BPMediaModel?
     /// 系统相册列表使用
     var assetMode: PHAsset?
-    /// 下标
-    var indexPath: IndexPath?
 
     weak var delegate: BPPhotoAlbumCellDelegate?
 
@@ -28,6 +26,13 @@ class BPMediaCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         return imageView
+    }()
+
+    private var selectedBgView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        view.isHidden = true
+        return view
     }()
 
     private var videoIconLabel: UILabel = {
@@ -71,12 +76,16 @@ class BPMediaCell: UICollectionViewCell {
 
     private func createSubviews() {
         self.addSubview(imageView)
+        self.addSubview(selectedBgView)
         self.addSubview(selectButton)
         self.addSubview(videoIconLabel)
         self.addSubview(videoTimeLabel)
         imageView.snp.makeConstraints { (make) in
             make.left.top.equalToSuperview().offset(0.9)
             make.right.bottom.equalToSuperview().offset(-0.9)
+        }
+        selectedBgView.snp.makeConstraints { (make) in
+            make.edges.equalTo(imageView)
         }
         selectButton.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
@@ -102,9 +111,8 @@ class BPMediaCell: UICollectionViewCell {
     }
 
     // MARK: ==== Event ====
-    func setData(model: BPMediaModel, showSelect: Bool, isSelected: Bool, indexPath: IndexPath) {
+    func setData(model: BPMediaModel, showSelect: Bool, isSelected: Bool) {
         self.model     = model
-        self.indexPath = indexPath
         self.isSelected              = isSelected
         self.selectButton.isHidden   = !showSelect
         self.videoIconLabel.isHidden = model.type != .video
@@ -126,10 +134,10 @@ class BPMediaCell: UICollectionViewCell {
     }
 
     /// 显示系统相册中的照片
-    func setData(asset: PHAsset, showSelect: Bool, isSelected: Bool, indexPath: IndexPath) {
-        self.assetMode = asset
-        self.indexPath = indexPath
+    func setData(asset: PHAsset, showSelect: Bool, isSelected: Bool) {
+        self.assetMode               = asset
         self.isSelected              = isSelected
+        self.selectedBgView.isHidden = !isSelected
         self.imageView.image         = nil
         self.selectButton.isHidden   = !showSelect
         let imageSize = (kScreenWidth - 20) / 5.5 * UIScreen.main.scale
@@ -154,12 +162,19 @@ class BPMediaCell: UICollectionViewCell {
     }
 
     @objc private func selectedImage(sender: BPButton) {
-        guard let indexPath = self.indexPath else { return }
         self.isSelected = !self.isSelected
-        if self.isSelected {
-            self.delegate?.selectedImage(indexPath: indexPath)
+        var imageModel: Any
+        if let _model = self.model {
+            imageModel = _model
+        } else if let _model = self.assetMode {
+            imageModel = _model
         } else {
-            self.delegate?.unselectImage(indexPath: indexPath)
+            return
+        }
+        if self.isSelected {
+            self.delegate?.selectedImage(model: imageModel)
+        } else {
+            self.delegate?.unselectImage(model: imageModel)
         }
     }
 

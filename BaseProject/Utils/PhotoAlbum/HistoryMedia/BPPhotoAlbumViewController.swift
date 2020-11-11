@@ -28,7 +28,7 @@ class BPPhotoAlbumViewController: BPViewController, UICollectionViewDelegate, UI
     /// 总资源
     var modelList: [BPMediaModel] = []
     /// 已选资源
-    var selectedList: [IndexPath] = []
+    var selectedList: [BPMediaModel] = []
 
     var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -118,9 +118,9 @@ class BPPhotoAlbumViewController: BPViewController, UICollectionViewDelegate, UI
             return UICollectionViewCell()
         }
         let model     = self.modelList[indexPath.row]
-        let selected  = self.selectedList.contains(indexPath)
+        let selected  = self.selectedList.contains(model)
         cell.delegate = self
-        cell.setData(model: model, showSelect: self.isSelect, isSelected: selected, indexPath: indexPath)
+        cell.setData(model: model, showSelect: self.isSelect, isSelected: selected)
         return cell
     }
 
@@ -132,15 +132,15 @@ class BPPhotoAlbumViewController: BPViewController, UICollectionViewDelegate, UI
     }
 
     // MARK: ==== BPPhotoAlbumCellDelegate ====
-    func selectedImage(indexPath: IndexPath) {
-        guard !self.selectedList.contains(indexPath) else { return }
-        self.selectedList.append(indexPath)
-        self.collectionView.reloadItems(at: [indexPath])
+    func selectedImage(model: Any) {
+        guard let _model = model as? BPMediaModel, !self.selectedList.contains(_model) else { return }
+        self.selectedList.append(_model)
+        self.collectionView.reloadData()
     }
 
-    func unselectImage(indexPath: IndexPath) {
-        guard let index = self.selectedList.firstIndex(of: indexPath) else { return }
+    func unselectImage(model: Any) {
+        guard let _model = model as? BPMediaModel, let index = self.selectedList.firstIndex(of: _model) else { return }
         self.selectedList.remove(at: index)
-        self.collectionView.reloadItems(at: [indexPath])
+        self.collectionView.reloadData()
     }
 }

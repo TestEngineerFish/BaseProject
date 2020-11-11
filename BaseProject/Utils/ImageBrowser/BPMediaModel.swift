@@ -35,7 +35,9 @@ enum BPMediaType: Int {
     }
 }
 
-struct BPMediaModel: Mappable, Hashable {
+import Photos
+
+struct BPMediaModel: Mappable, Hashable, Equatable, Any {
     /// 资源ID
     var id: Int = 0
     /// 资源名称
@@ -85,5 +87,5 @@ struct BPMediaModel: Mappable, Hashable {
     init?(map: Map) {}
 
     mutating func mapping(map: Map) {}
-
+    
 }

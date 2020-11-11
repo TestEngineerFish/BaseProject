@@ -71,7 +71,7 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = BPSystemPhotoViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.present(vc, animated: true, completion: nil)
         return
 //        BPAuthorizationManager.share.authorizePhotoWith { (result) in
 //            if result {

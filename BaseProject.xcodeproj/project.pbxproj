@@ -459,6 +459,17 @@
 			path = DrawView;
 			sourceTree = "<group>";
 		};
+		2285310E255C2E060022BB8F /* HistoryMedia */ = {
+			isa = PBXGroup;
+			children = (
+				2276C895255247E60040DFFF /* BPPhotoAlbumViewController.swift */,
+				2276C899255249320040DFFF /* BPPhotoAlbumToolsView.swift */,
+				2276C89C255251E30040DFFF /* BPMediaCell.swift */,
+				2236231A255A5B9E0032C34A /* BPPhotoAlbumModel.swift */,
+			);
+			path = HistoryMedia;
+			sourceTree = "<group>";
+		};
 		22868109230AA14D005E113E /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
@@ -660,11 +671,8 @@
 		22CDA2562552426700B6FDCB /* PhotoAlbum */ = {
 			isa = PBXGroup;
 			children = (
+				2285310E255C2E060022BB8F /* HistoryMedia */,
 				22B12FE4255B91C3005F8623 /* SystemAlbum */,
-				2276C895255247E60040DFFF /* BPPhotoAlbumViewController.swift */,
-				2276C899255249320040DFFF /* BPPhotoAlbumToolsView.swift */,
-				2276C89C255251E30040DFFF /* BPMediaCell.swift */,
-				2236231A255A5B9E0032C34A /* BPPhotoAlbumModel.swift */,
 			);
 			path = PhotoAlbum;
 			sourceTree = "<group>";
