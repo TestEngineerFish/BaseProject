@@ -58,7 +58,7 @@ struct BPMediaModel: Mappable, Hashable {
     /// - Parameters:
     ///   - progress: 下载远端缩略图的进度
     ///   - completion: 下载、加载图片完成回调
-    func getThumbImage(progress: ((CGFloat) ->Void)?, completion: ((UIImage?)->Void)?) {
+    func getThumbImage(progress: ((CGFloat) ->Void)?, completion: DefaultImageBlock?) {
         if let path = self.thumbnailLocalPath, let image = UIImage(named: path) {
             completion?(image)
         } else {
@@ -71,7 +71,7 @@ struct BPMediaModel: Mappable, Hashable {
     /// - Parameters:
     ///   - progress: 下载远端缩略图的进度
     ///   - completion: 下载、加载图片完成回调
-    func getOriginImage(progress: ((CGFloat) ->Void)?, completion: ((UIImage?)->Void)?) {
+    func getOriginImage(progress: ((CGFloat) ->Void)?, completion: DefaultImageBlock?) {
         if let path = self.originLocalPath, let image = UIImage(named: path) {
             completion?(image)
         } else {

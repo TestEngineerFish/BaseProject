@@ -18,3 +18,4 @@ public func AdaptSize(_ size: CGFloat) -> CGFloat {
 
 /// 默认闭包
 typealias DefaultBlock = (()->Void)
+typealias DefaultImageBlock = ((UIImage?)->Void)

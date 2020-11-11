@@ -244,11 +244,11 @@ struct BPNetworkService {
     // MARK: ==== Tools ====
     private func checkNetwork() -> Bool {
         // 是否有网络
-        if self.networkManager?.isReachable == .some(true) {
+        if isReachable {
             return true
         } else {
             // 是否有权限
-//            BPAuthorizationManager
+            
         }
         return true
     }

@@ -113,7 +113,7 @@ class BPBaseAlertView: BPTopWindowView {
     // 关闭按钮
     var closeButton: BPButton = {
         let button = BPButton()
-        button.setTitle(IconFont.close1.rawValue, for: .normal)
+        button.setTitle(IconFont.close.rawValue, for: .normal)
         button.setTitleColor(UIColor.black1.withAlphaComponent(0.8), for: .normal)
         button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(40))
         button.isHidden = true

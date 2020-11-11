@@ -66,14 +66,6 @@ public var kSafeBottomMargin:CGFloat {
     }
 }
 
-// MARK: ---文件存储路径或目录---
-/// 存储总目录路径
-public var kPathForMainStorageLocation: String {
-    get {
-        return NSHomeDirectory() + "/Documents"
-    }
-}
-
 // MARK: ---网络相关---
 /// 获取当前环境
 public var currentEnv: BPEnvType {
@@ -84,7 +76,6 @@ public var currentEnv: BPEnvType {
         }
         return env
     }
-    
     set {
         UserDefaults.standard.setValue(newValue.rawValue, forKey: "bp_env")
     }
@@ -111,7 +102,7 @@ public var isReachableOnWWAN: Bool {
     }
 }
 
-/// 是否是Wifi或者以太网网络
+/// 是否是Wi-Fi或者以太网网络
 public var isReachableOnEthernetOrWiFi: Bool {
     get {
         return NetworkReachabilityManager()?.isReachableOnEthernetOrWiFi ?? false
@@ -126,6 +117,11 @@ public var minute: Int = 60
 
 
 // MARK: ---其他---
+
+public let projectName: String = {
+    return Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? ""
+}()
+
 /// 当前Window
 public var kWindow: UIWindow {
     get {

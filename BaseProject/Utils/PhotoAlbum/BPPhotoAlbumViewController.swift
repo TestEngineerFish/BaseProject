@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UICollectionViewDataSource, BPPhotoAlbumToolsDelegate, BPPhotoAlbumCellDelegate {
+class BPPhotoAlbumViewController: BPViewController, UICollectionViewDelegate, UICollectionViewDataSource, BPPhotoAlbumToolsDelegate, BPPhotoAlbumCellDelegate {
 
     var isSelect: Bool = false {
         willSet {
@@ -19,7 +19,7 @@ class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UI
                 self.customNavigationBar?.rightFirstButton.setTitle("选择", for: .normal)
                 self.hideToolsView()
             }
-            self.selectedModelList.removeAll()
+            self.selectedList.removeAll()
             self.collectionView.reloadData()
         }
     }
@@ -28,7 +28,7 @@ class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UI
     /// 总资源
     var modelList: [BPMediaModel] = []
     /// 已选资源
-    var selectedModelList: [BPMediaModel] = []
+    var selectedList: [IndexPath] = []
 
     var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -78,7 +78,7 @@ class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UI
         self.toolsView.delegate        = self
         self.collectionView.delegate   = self
         self.collectionView.dataSource = self
-        self.collectionView.register(BPPhotoAlbumCell.classForCoder(), forCellWithReuseIdentifier: self.kBPPhotoAlbumCellID)
+        self.collectionView.register(BPMediaCell.classForCoder(), forCellWithReuseIdentifier: self.kBPPhotoAlbumCellID)
     }
 
     // MARK: ==== Event ====
@@ -114,33 +114,33 @@ class BPPhoteAlbumViewController: BPViewController, UICollectionViewDelegate, UI
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kBPPhotoAlbumCellID, for: indexPath) as? BPPhotoAlbumCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kBPPhotoAlbumCellID, for: indexPath) as? BPMediaCell else {
             return UICollectionViewCell()
         }
         let model     = self.modelList[indexPath.row]
-        let selected  = self.selectedModelList.contains(model)
+        let selected  = self.selectedList.contains(indexPath)
         cell.delegate = self
-        cell.setData(model: model, showSelect: self.isSelect, isSelected: selected)
+        cell.setData(model: model, showSelect: self.isSelect, isSelected: selected, indexPath: indexPath)
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? BPPhotoAlbumCell else {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? BPMediaCell else {
             return
         }
         BPImageBrowser(dataSource: modelList, current: indexPath.row).show(animationView: cell.imageView)
     }
 
     // MARK: ==== BPPhotoAlbumCellDelegate ====
-    func selectedImage(model: BPMediaModel) {
-        guard !self.selectedModelList.contains(model) else { return }
-        self.selectedModelList.append(model)
-        self.collectionView.reloadData()
+    func selectedImage(indexPath: IndexPath) {
+        guard !self.selectedList.contains(indexPath) else { return }
+        self.selectedList.append(indexPath)
+        self.collectionView.reloadItems(at: [indexPath])
     }
 
-    func unselectImage(model: BPMediaModel) {
-        guard let index = self.selectedModelList.firstIndex(of: model) else { return }
-        self.selectedModelList.remove(at: index)
-        self.collectionView.reloadData()
+    func unselectImage(indexPath: IndexPath) {
+        guard let index = self.selectedList.firstIndex(of: indexPath) else { return }
+        self.selectedList.remove(at: index)
+        self.collectionView.reloadItems(at: [indexPath])
     }
 }

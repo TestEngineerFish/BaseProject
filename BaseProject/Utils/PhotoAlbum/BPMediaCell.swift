@@ -6,16 +6,20 @@
 //  Copyright © 2020 沙庭宇. All rights reserved.
 //
 
-import Foundation
+import Photos
 
 protocol BPPhotoAlbumCellDelegate: NSObjectProtocol {
-    func selectedImage(model: BPMediaModel)
-    func unselectImage(model: BPMediaModel)
+    func selectedImage(indexPath: IndexPath)
+    func unselectImage(indexPath: IndexPath)
 }
 
-class BPPhotoAlbumCell: UICollectionViewCell {
-
+class BPMediaCell: UICollectionViewCell {
+    /// 历史照片列表使用
     var model: BPMediaModel?
+    /// 系统相册列表使用
+    var assetMode: PHAsset?
+    /// 下标
+    var indexPath: IndexPath?
 
     weak var delegate: BPPhotoAlbumCellDelegate?
 
@@ -32,6 +36,7 @@ class BPPhotoAlbumCell: UICollectionViewCell {
         label.textColor     = UIColor.white
         label.font          = UIFont.iconFont(size: AdaptSize(18))
         label.textAlignment = .center
+        label.isHidden      = true
         return label
     }()
 
@@ -41,6 +46,7 @@ class BPPhotoAlbumCell: UICollectionViewCell {
         label.textColor     = UIColor.white
         label.font          = UIFont.regularFont(ofSize: AdaptSize(10))
         label.textAlignment = .left
+        label.isHidden      = true
         return label
     }()
 
@@ -96,8 +102,9 @@ class BPPhotoAlbumCell: UICollectionViewCell {
     }
 
     // MARK: ==== Event ====
-    func setData(model: BPMediaModel, showSelect: Bool, isSelected: Bool) {
-        self.model = model
+    func setData(model: BPMediaModel, showSelect: Bool, isSelected: Bool, indexPath: IndexPath) {
+        self.model     = model
+        self.indexPath = indexPath
         self.isSelected              = isSelected
         self.selectButton.isHidden   = !showSelect
         self.videoIconLabel.isHidden = model.type != .video
@@ -118,13 +125,41 @@ class BPPhotoAlbumCell: UICollectionViewCell {
         self.selectButton.setTitleColor(textColor, for: .normal)
     }
 
+    /// 显示系统相册中的照片
+    func setData(asset: PHAsset, showSelect: Bool, isSelected: Bool, indexPath: IndexPath) {
+        self.assetMode = asset
+        self.indexPath = indexPath
+        self.isSelected              = isSelected
+        self.imageView.image         = nil
+        self.selectButton.isHidden   = !showSelect
+        let imageSize = (kScreenWidth - 20) / 5.5 * UIScreen.main.scale
+        let options   = PHImageRequestOptions()
+        options.isSynchronous = false
+        PHCachingImageManager.default().requestImage(for: asset, targetSize: CGSize(width: imageSize, height: imageSize), contentMode: .default, options: options) { [weak self] (image: UIImage?, info:[AnyHashable : Any]?) in
+            self?.imageView.image = image
+        }
+//        self.videoIconLabel.isHidden = model.type != .video
+//        self.videoTimeLabel.isHidden = model.type != .video
+//        self.videoTimeLabel.text     = {
+//            var timeStr = ""
+//            if Int(model.videoTime) >= hour {
+//                timeStr = model.videoTime.hourMinuteSecondStr()
+//            } else {
+//                timeStr = model.videoTime.minuteSecondStr()
+//            }
+//            return timeStr
+//        }()
+        let textColor = isSelected ? UIColor.orange1 : UIColor.black.withAlphaComponent(0.2)
+        self.selectButton.setTitleColor(textColor, for: .normal)
+    }
+
     @objc private func selectedImage(sender: BPButton) {
-        guard let _model = self.model else { return }
+        guard let indexPath = self.indexPath else { return }
         self.isSelected = !self.isSelected
         if self.isSelected {
-            self.delegate?.selectedImage(model: _model)
+            self.delegate?.selectedImage(indexPath: indexPath)
         } else {
-            self.delegate?.unselectImage(model: _model)
+            self.delegate?.unselectImage(indexPath: indexPath)
         }
     }
 

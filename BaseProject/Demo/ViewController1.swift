@@ -70,21 +70,32 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var imageList = [BPMediaModel]()
-        for index in 0..<200 {
-            var model = BPMediaModel()
-            // 缺容错处理
-            model.id        = index
-            model.type      = index % 3 > 1 ? .video : .thumbImage
-            model.videoTime = Double(index) * 4
-            model.thumbnailRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1588620919,359805583&fm=26&gp=0.jpg"
-            model.originRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3313838802,2768404782&fm=26&gp=0.jpg"
-            imageList.append(model)
-        }
-        let vc = BPPhoteAlbumViewController()
-        vc.modelList = imageList
+        let vc = BPSystemPhotoViewController()
         self.navigationController?.pushViewController(vc, animated: true)
         return
+//        BPAuthorizationManager.share.authorizePhotoWith { (result) in
+//            if result {
+//                BPLog("Success!!")
+//            } else {
+//                BPLog("Fail!!")
+//            }
+//        }
+//        return
+//        var imageList = [BPMediaModel]()
+//        for index in 0..<200 {
+//            var model = BPMediaModel()
+//            // 缺容错处理
+//            model.id        = index
+//            model.type      = index % 3 > 1 ? .video : .thumbImage
+//            model.videoTime = Double(index) * 4
+//            model.thumbnailRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1588620919,359805583&fm=26&gp=0.jpg"
+//            model.originRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3313838802,2768404782&fm=26&gp=0.jpg"
+//            imageList.append(model)
+//        }
+//        let vc = BPPhoteAlbumViewController()
+//        vc.modelList = imageList
+//        self.navigationController?.pushViewController(vc, animated: true)
+//        return
 //        var imageModelList = [BPImageModel]()
 //        for _ in 0..<10 {
 //            let model = BPImageModel()
