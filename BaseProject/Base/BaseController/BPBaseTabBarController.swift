@@ -53,14 +53,14 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
     
     /// 设置底部TabBarItem
     func addChildViewController() {
-        let vc = ViewController1()
-        let home = BPBaseNavigationController()
-        home.addChild(vc)
-        home.tabBarItem.title         = "HOME"
-        home.tabBarItem.image         = UIImage(named: "home_unselect")
-        home.tabBarItem.selectedImage = UIImage(named: "home_selected")
-        home.tabBarItem.imageInsets   = UIEdgeInsets(top: -1.0, left: 0.0, bottom: 1.0, right: 0.0)
-        self.addChild(home)
+        let chatVC = BPChatListViewController()
+        let chatNC = BPBaseNavigationController()
+        chatNC.addChild(chatVC)
+        chatNC.tabBarItem.title         = "消息"
+        chatNC.tabBarItem.image         = UIImage(named: "home_unselect")
+        chatNC.tabBarItem.selectedImage = UIImage(named: "home_selected")
+        chatNC.tabBarItem.imageInsets   = UIEdgeInsets(top: -1.0, left: 0.0, bottom: 1.0, right: 0.0)
+        self.addChild(chatNC)
         
         let dynamicVC = ViewController2()
         let dynamic = BPBaseNavigationController()

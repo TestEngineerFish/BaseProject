@@ -66,9 +66,13 @@
 		2276C8A5255685530040DFFF /* BPFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276C8A4255685530040DFFF /* BPFileManager.swift */; };
 		227D300A25372C96009DB59C /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D300925372C96009DB59C /* DrawView.swift */; };
 		227D300D253730E4009DB59C /* BPDrawPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D300C253730E4009DB59C /* BPDrawPath.swift */; };
+		228341C5255E21240018A6F6 /* BPChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228341C4255E21240018A6F6 /* BPChatListViewController.swift */; };
+		228341C8255E219C0018A6F6 /* BPChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228341C7255E219C0018A6F6 /* BPChatRoomViewController.swift */; };
 		2285310A255BD38D0022BB8F /* BPSystemAlbumListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22853109255BD38D0022BB8F /* BPSystemAlbumListView.swift */; };
 		2290EABC236D5EF2000BCA47 /* right11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABB236D5EF2000BCA47 /* right11-data.json */; };
 		2290EABE236D5EF6000BCA47 /* wrong11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABD236D5EF6000BCA47 /* wrong11-data.json */; };
+		22980CB9255E459E0013170A /* BPMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22980CB8255E459E0013170A /* BPMessageModel.swift */; };
+		22980CC1255E47E40013170A /* BPChatRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22980CC0255E47E40013170A /* BPChatRoomCell.swift */; };
 		22A44AB2244D96DF0039466E /* BPSwiftMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A44AB1244D96DF0039466E /* BPSwiftMacro.swift */; };
 		22A44AB5244D98280039466E /* BPOCLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A44AB4244D98280039466E /* BPOCLog.m */; };
 		22A44AB8244D98B40039466E /* BPLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A44AB7244D98B40039466E /* BPLogFormatter.m */; };
@@ -107,6 +111,8 @@
 		22ED54B4236ACD5E00011B82 /* letter_A.json in Resources */ = {isa = PBXBuildFile; fileRef = 22ED54B3236ACD5E00011B82 /* letter_A.json */; };
 		22ED54BE236B119200011B82 /* letter.json in Resources */ = {isa = PBXBuildFile; fileRef = 22ED54BD236B119200011B82 /* letter.json */; };
 		22F1A30223B598680046F4D4 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F1A30123B598680046F4D4 /* NSObject+Extension.swift */; };
+		22FB2EE9255E239500B72884 /* BPChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB2EE8255E239500B72884 /* BPChatModel.swift */; };
+		22FB2EEC255E2D4900B72884 /* BPChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB2EEB255E2D4900B72884 /* BPChatCell.swift */; };
 		7B212ACC1EB4CBADF5DD63D4 /* Pods_BaseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE0B51EBB89FBFB5A61CACA /* Pods_BaseProject.framework */; };
 		CF26719022FEB39B00E6B47F /* BPBaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26718F22FEB39B00E6B47F /* BPBaseTabBarController.swift */; };
 		CF26719222FEF6E700E6B47F /* BPTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719122FEF6E700E6B47F /* BPTabBar.swift */; };
@@ -213,9 +219,13 @@
 		227D2F9F252EEF62009DB59C /* BPPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPPoint.h; sourceTree = "<group>"; };
 		227D300925372C96009DB59C /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 		227D300C253730E4009DB59C /* BPDrawPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDrawPath.swift; sourceTree = "<group>"; };
+		228341C4255E21240018A6F6 /* BPChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatListViewController.swift; sourceTree = "<group>"; };
+		228341C7255E219C0018A6F6 /* BPChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomViewController.swift; sourceTree = "<group>"; };
 		22853109255BD38D0022BB8F /* BPSystemAlbumListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPSystemAlbumListView.swift; sourceTree = "<group>"; };
 		2290EABB236D5EF2000BCA47 /* right11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "right11-data.json"; sourceTree = "<group>"; };
 		2290EABD236D5EF6000BCA47 /* wrong11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "wrong11-data.json"; sourceTree = "<group>"; };
+		22980CB8255E459E0013170A /* BPMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPMessageModel.swift; sourceTree = "<group>"; };
+		22980CC0255E47E40013170A /* BPChatRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomCell.swift; sourceTree = "<group>"; };
 		22A44AB0244D96600039466E /* BPOCMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPOCMacro.h; sourceTree = "<group>"; };
 		22A44AB1244D96DF0039466E /* BPSwiftMacro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPSwiftMacro.swift; sourceTree = "<group>"; };
 		22A44AB3244D98280039466E /* BPOCLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPOCLog.h; sourceTree = "<group>"; };
@@ -264,6 +274,8 @@
 		22ED54B3236ACD5E00011B82 /* letter_A.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = letter_A.json; sourceTree = "<group>"; };
 		22ED54BD236B119200011B82 /* letter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = letter.json; sourceTree = "<group>"; };
 		22F1A30123B598680046F4D4 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		22FB2EE8255E239500B72884 /* BPChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatModel.swift; sourceTree = "<group>"; };
+		22FB2EEB255E2D4900B72884 /* BPChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatCell.swift; sourceTree = "<group>"; };
 		62C207CFF7FD424CF4B3C8C3 /* Pods-BaseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.release.xcconfig"; path = "Target Support Files/Pods-BaseProject/Pods-BaseProject.release.xcconfig"; sourceTree = "<group>"; };
 		CF26718F22FEB39B00E6B47F /* BPBaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseTabBarController.swift; sourceTree = "<group>"; };
 		CF26719122FEF6E700E6B47F /* BPTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTabBar.swift; sourceTree = "<group>"; };
@@ -459,6 +471,22 @@
 			path = DrawView;
 			sourceTree = "<group>";
 		};
+		228341C2255E20850018A6F6 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				22980CBF255E468F0013170A /* ChatRoom */,
+				22980CBE255E46880013170A /* ChatList */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		228341C3255E20940018A6F6 /* Square */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Square;
+			sourceTree = "<group>";
+		};
 		2285310E255C2E060022BB8F /* HistoryMedia */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,6 +510,26 @@
 				E097EE12253FD4110065725A /* BPTableView.swift */,
 			);
 			path = BaseView;
+			sourceTree = "<group>";
+		};
+		22980CBE255E46880013170A /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				228341C4255E21240018A6F6 /* BPChatListViewController.swift */,
+				22FB2EEB255E2D4900B72884 /* BPChatCell.swift */,
+				22FB2EE8255E239500B72884 /* BPChatModel.swift */,
+			);
+			path = ChatList;
+			sourceTree = "<group>";
+		};
+		22980CBF255E468F0013170A /* ChatRoom */ = {
+			isa = PBXGroup;
+			children = (
+				228341C7255E219C0018A6F6 /* BPChatRoomViewController.swift */,
+				22980CB8255E459E0013170A /* BPMessageModel.swift */,
+				22980CC0255E47E40013170A /* BPChatRoomCell.swift */,
+			);
+			path = ChatRoom;
 			sourceTree = "<group>";
 		};
 		22AED508234DD69300A91A68 /* Socket */ = {
@@ -560,6 +608,8 @@
 		22C621DB22DC821000A7C849 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				228341C3255E20940018A6F6 /* Square */,
+				228341C2255E20850018A6F6 /* Chat */,
 				225C48DA24DD41ED00594FEE /* Algorithm */,
 				CFFB34E123595ED8002D440E /* WebSource */,
 				CF26719B22FF970F00E6B47F /* Publish */,
@@ -1029,6 +1079,7 @@
 				22A44AB2244D96DF0039466E /* BPSwiftMacro.swift in Sources */,
 				CF6E171E235F56540008C466 /* BPWebViewImplementClass.swift in Sources */,
 				E0547FFD254124640031C02D /* UILabel+Extension.swift in Sources */,
+				228341C5255E21240018A6F6 /* BPChatListViewController.swift in Sources */,
 				22A44AB8244D98B40039466E /* BPLogFormatter.m in Sources */,
 				22A877BE22FAB679004FF3A7 /* BPImageView.swift in Sources */,
 				2264EF8622F91E0700A89C82 /* BPAlertViewZeroButton.swift in Sources */,
@@ -1070,6 +1121,7 @@
 				22C621EE22DC8A7800A7C849 /* UIDevice+Extension.swift in Sources */,
 				2264EF7D22F7C6E500A89C82 /* BPTopWindowView.swift in Sources */,
 				22D11F6A252DF85D005896E8 /* BPEarthItemView.swift in Sources */,
+				22FB2EEC255E2D4900B72884 /* BPChatCell.swift in Sources */,
 				226F0B15250A206D00F453F6 /* BPContainerTransitionDelegate.swift in Sources */,
 				22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */,
 				2264EF9422F97A2800A89C82 /* BPTaskRequest.swift in Sources */,
@@ -1079,6 +1131,7 @@
 				2276C8A5255685530040DFFF /* BPFileManager.swift in Sources */,
 				22AED512234EC75500A91A68 /* Optional+Extension.swift in Sources */,
 				227D300A25372C96009DB59C /* DrawView.swift in Sources */,
+				22FB2EE9255E239500B72884 /* BPChatModel.swift in Sources */,
 				22CDA244254AFFC000B6FDCB /* BPMediaModel.swift in Sources */,
 				2276C8A12555877A0040DFFF /* Double+Extension.swift in Sources */,
 				CF8EB59C22DCCEBC00EC2FE5 /* IconFontString.swift in Sources */,
@@ -1087,6 +1140,7 @@
 				225C48E524DD460F00594FEE /* BPView.swift in Sources */,
 				22F1A30223B598680046F4D4 /* NSObject+Extension.swift in Sources */,
 				223AC0F624F4EB2A00C85800 /* ShellSortDescriptionView.swift in Sources */,
+				22980CB9255E459E0013170A /* BPMessageModel.swift in Sources */,
 				CF26719D22FF973300E6B47F /* PublishView.swift in Sources */,
 				2233952F24E1133C0052C7CC /* SelectionSortTableView.swift in Sources */,
 				223AC0EE24F35AEF00C85800 /* DescriptionFactoryManager.swift in Sources */,
@@ -1099,6 +1153,7 @@
 				2264EF7B22F7BDE500A89C82 /* BPAlertManager.swift in Sources */,
 				CF26719A22FF0B1B00E6B47F /* BPBaseNavigationController.swift in Sources */,
 				226711382506218B00006534 /* BPAnimationController.swift in Sources */,
+				22980CC1255E47E40013170A /* BPChatRoomCell.swift in Sources */,
 				223623172557F4E80032C34A /* BPSystemPhotoManager.swift in Sources */,
 				22D11F6D252DF97A005896E8 /* BPEarthView.swift in Sources */,
 				221F5C4A22E95B4000F9355C /* AppDelegate+Extension.swift in Sources */,
@@ -1118,6 +1173,7 @@
 				22D4981122FBCD9B00281530 /* BPTableViewController.swift in Sources */,
 				2264EF8122F90EED00A89C82 /* BPBaseAlertView.swift in Sources */,
 				22C621B822DC805600A7C849 /* AppDelegate.swift in Sources */,
+				228341C8255E219C0018A6F6 /* BPChatRoomViewController.swift in Sources */,
 				224581FE2325EFCD0031CC7A /* BPSQLManager.swift in Sources */,
 				223AC0F224F3AD3800C85800 /* SelectionSortDescriptionView.swift in Sources */,
 				2264EF8822F9302B00A89C82 /* BPAlertViewImage.swift in Sources */,
