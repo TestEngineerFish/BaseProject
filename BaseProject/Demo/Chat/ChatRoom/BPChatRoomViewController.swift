@@ -11,6 +11,7 @@ import Foundation
 class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableViewDataSource {
 
     private let cellID: String = "kBPChatRoomCell"
+    private var firstScrollToBool = true
     private var messageModelList: [BPMessageModel] = []
 
     private var tableView: UITableView = {
@@ -79,10 +80,9 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
 
     // MARK: ==== UITableViewDelegate && UITableViewDataSource ====
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 默认滑动到底部
-        let offsetY = tableView.contentSize.height
-        tableView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: false)
-        return self.messageModelList.count
+        let count = self.messageModelList.count
+        self.scrollViewToBottom(animated: false)
+        return count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,5 +92,18 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         let model = self.messageModelList[indexPath.row]
         cell.setData(model: model)
         return cell
+    }
+
+    // MARK: ==== Tools ===
+    private func scrollViewToBottom(animated: Bool) {
+        guard self.firstScrollToBool else {
+            return
+        }
+        self.firstScrollToBool = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.005) { [weak self] in
+            guard let self = self, !self.messageModelList.isEmpty else { return }
+            let offsetIndexPath = IndexPath(row: self.messageModelList.count - 1, section: 0)
+            self.tableView.scrollToRow(at: offsetIndexPath, at: .bottom, animated: false)
+        }
     }
 }

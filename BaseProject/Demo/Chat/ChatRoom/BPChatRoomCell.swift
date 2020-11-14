@@ -88,7 +88,6 @@ class BPChatRoomCell: UITableViewCell {
     func setData(model: BPMessageModel) {
         self.contentLabel.text     = model.text
         self.avatarImageView.image = UIImage(named: "dog")
-//        self.contentLabel.sizeToFit()
         switch model.fromType {
         case .me:
             self.leftArrowLayer.isHidden   = true
