@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableViewDataSource {
+class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableViewDataSource, BPChatRoomToolsViewDelegate {
 
     private let cellID: String = "kBPChatRoomCell"
     private var firstScrollToBool = true
@@ -24,11 +24,7 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         return tableView
     }()
 
-    private var toolsView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.orange1
-        return view
-    }()
+    private var toolsView = BPChatRoomToolsView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +44,7 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         }
         toolsView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
-            make.height.equalTo(AdaptSize(50))
+            make.height.equalTo(AdaptSize(55) + kSafeBottomMargin)
         }
     }
 
@@ -58,6 +54,7 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         self.tableView.dataSource = self
         self.tableView.register(BPChatRoomCell.classForCoder(), forCellReuseIdentifier: cellID)
         self.customNavigationBar?.title = "姓名"
+        self.toolsView.delegate = self
     }
 
     override func bindData() {
@@ -112,5 +109,26 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
             let offsetIndexPath = IndexPath(row: self.messageModelList.count - 1, section: 0)
             self.tableView.scrollToRow(at: offsetIndexPath, at: .bottom, animated: false)
         }
+    }
+
+    // MARK: ==== BPChatRoomToolsViewDelegate ====
+    func clickSwitchAction() {
+        BPLog("clickSwitchAction")
+    }
+
+    func clickEmojiAction() {
+        BPLog("clickEmojiAction")
+    }
+
+    func clickMoreAction() {
+        BPLog("clickMoreAction")
+    }
+
+    func recordingAction() {
+        BPLog("recordingAction")
+    }
+
+    func sendMessage(text: String) {
+        BPLog("sendMessage:\(text)")
     }
 }

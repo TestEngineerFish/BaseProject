@@ -48,7 +48,7 @@ class BPChatRoomCell: UITableViewCell {
         return arrowLayer
     }()
 
-    private var bubbleView: BPChatRoomBaseMessageCell?
+    private var bubbleView: BPChatRoomBaseMessageBubble?
 
     // 替换为自定义视图
     private var contentLabel: UILabel = {
@@ -130,7 +130,7 @@ class BPChatRoomCell: UITableViewCell {
         if self.bubbleView?.superview != nil {
             self.bubbleView?.removeFromSuperview()
         }
-        self.bubbleView = BPChatRoomMessageCellFactory.buildView(message: model)
+        self.bubbleView = BPChatRoomMessageBubbleFactory.buildView(message: model)
         self.bubbleView?.backgroundColor    = UIColor.randomColor()
         self.bubbleView?.layer.cornerRadius = 5
         self.addSubview(bubbleView!)

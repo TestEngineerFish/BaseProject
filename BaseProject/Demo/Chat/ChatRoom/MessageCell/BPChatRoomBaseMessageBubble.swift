@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BPChatRoomBaseMessageCell: BPView {
+class BPChatRoomBaseMessageBubble: BPView {
     var messageModel: BPMessageModel
 
     init(model: BPMessageModel) {

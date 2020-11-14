@@ -9,7 +9,7 @@
 import Kingfisher
 
 /// 图片消息
-class BPChatRoomImageMessageCell: BPChatRoomBaseMessageCell {
+class BPChatRoomImageMessageBubble: BPChatRoomBaseMessageBubble {
     private var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true

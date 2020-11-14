@@ -9,7 +9,7 @@
 import Foundation
 
 /// 文本消息
-class BPChatRoomTextMessageCell: BPChatRoomBaseMessageCell {
+class BPChatRoomTextMessageBubble: BPChatRoomBaseMessageBubble {
     private var textLabel: UILabel = {
         let label = UILabel()
         label.text          = ""

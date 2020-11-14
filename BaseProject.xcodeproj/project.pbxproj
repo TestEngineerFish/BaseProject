@@ -71,10 +71,12 @@
 		2285310A255BD38D0022BB8F /* BPSystemAlbumListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22853109255BD38D0022BB8F /* BPSystemAlbumListView.swift */; };
 		2290EABC236D5EF2000BCA47 /* right11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABB236D5EF2000BCA47 /* right11-data.json */; };
 		2290EABE236D5EF6000BCA47 /* wrong11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABD236D5EF6000BCA47 /* wrong11-data.json */; };
-		2297FE2F255FA796000D45C3 /* BPChatRoomMessageCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297FE2E255FA796000D45C3 /* BPChatRoomMessageCellFactory.swift */; };
-		2297FE32255FA83E000D45C3 /* BPChatRoomBaseMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297FE31255FA83E000D45C3 /* BPChatRoomBaseMessageCell.swift */; };
-		2297FE35255FA9AF000D45C3 /* BPChatRoomTextMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297FE34255FA9AF000D45C3 /* BPChatRoomTextMessageCell.swift */; };
-		2297FE38255FB058000D45C3 /* BPChatRoomImageMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297FE37255FB058000D45C3 /* BPChatRoomImageMessageCell.swift */; };
+		2297FE2F255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297FE2E255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift */; };
+		2297FE32255FA83E000D45C3 /* BPChatRoomBaseMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297FE31255FA83E000D45C3 /* BPChatRoomBaseMessageBubble.swift */; };
+		2297FE35255FA9AF000D45C3 /* BPChatRoomTextMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297FE34255FA9AF000D45C3 /* BPChatRoomTextMessageBubble.swift */; };
+		2297FE38255FB058000D45C3 /* BPChatRoomImageMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297FE37255FB058000D45C3 /* BPChatRoomImageMessageBubble.swift */; };
+		2297FE3D255FB58D000D45C3 /* BPChatRoomToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297FE3C255FB58D000D45C3 /* BPChatRoomToolsView.swift */; };
+		2297FE41255FD117000D45C3 /* BPChatRoomMoreToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297FE40255FD117000D45C3 /* BPChatRoomMoreToolsView.swift */; };
 		22980CB9255E459E0013170A /* BPMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22980CB8255E459E0013170A /* BPMessageModel.swift */; };
 		22980CC1255E47E40013170A /* BPChatRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22980CC0255E47E40013170A /* BPChatRoomCell.swift */; };
 		22A44AB2244D96DF0039466E /* BPSwiftMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A44AB1244D96DF0039466E /* BPSwiftMacro.swift */; };
@@ -228,10 +230,12 @@
 		22853109255BD38D0022BB8F /* BPSystemAlbumListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPSystemAlbumListView.swift; sourceTree = "<group>"; };
 		2290EABB236D5EF2000BCA47 /* right11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "right11-data.json"; sourceTree = "<group>"; };
 		2290EABD236D5EF6000BCA47 /* wrong11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "wrong11-data.json"; sourceTree = "<group>"; };
-		2297FE2E255FA796000D45C3 /* BPChatRoomMessageCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomMessageCellFactory.swift; sourceTree = "<group>"; };
-		2297FE31255FA83E000D45C3 /* BPChatRoomBaseMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomBaseMessageCell.swift; sourceTree = "<group>"; };
-		2297FE34255FA9AF000D45C3 /* BPChatRoomTextMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomTextMessageCell.swift; sourceTree = "<group>"; };
-		2297FE37255FB058000D45C3 /* BPChatRoomImageMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomImageMessageCell.swift; sourceTree = "<group>"; };
+		2297FE2E255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomMessageBubbleFactory.swift; sourceTree = "<group>"; };
+		2297FE31255FA83E000D45C3 /* BPChatRoomBaseMessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomBaseMessageBubble.swift; sourceTree = "<group>"; };
+		2297FE34255FA9AF000D45C3 /* BPChatRoomTextMessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomTextMessageBubble.swift; sourceTree = "<group>"; };
+		2297FE37255FB058000D45C3 /* BPChatRoomImageMessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomImageMessageBubble.swift; sourceTree = "<group>"; };
+		2297FE3C255FB58D000D45C3 /* BPChatRoomToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomToolsView.swift; sourceTree = "<group>"; };
+		2297FE40255FD117000D45C3 /* BPChatRoomMoreToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomMoreToolsView.swift; sourceTree = "<group>"; };
 		22980CB8255E459E0013170A /* BPMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPMessageModel.swift; sourceTree = "<group>"; };
 		22980CC0255E47E40013170A /* BPChatRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomCell.swift; sourceTree = "<group>"; };
 		22A44AB0244D96600039466E /* BPOCMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPOCMacro.h; sourceTree = "<group>"; };
@@ -523,12 +527,21 @@
 		2297FE29255FA6C7000D45C3 /* MessageCell */ = {
 			isa = PBXGroup;
 			children = (
-				2297FE2E255FA796000D45C3 /* BPChatRoomMessageCellFactory.swift */,
-				2297FE31255FA83E000D45C3 /* BPChatRoomBaseMessageCell.swift */,
-				2297FE34255FA9AF000D45C3 /* BPChatRoomTextMessageCell.swift */,
-				2297FE37255FB058000D45C3 /* BPChatRoomImageMessageCell.swift */,
+				2297FE2E255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift */,
+				2297FE31255FA83E000D45C3 /* BPChatRoomBaseMessageBubble.swift */,
+				2297FE34255FA9AF000D45C3 /* BPChatRoomTextMessageBubble.swift */,
+				2297FE37255FB058000D45C3 /* BPChatRoomImageMessageBubble.swift */,
 			);
 			path = MessageCell;
+			sourceTree = "<group>";
+		};
+		2297FE3B255FB50C000D45C3 /* ToolsView */ = {
+			isa = PBXGroup;
+			children = (
+				2297FE3C255FB58D000D45C3 /* BPChatRoomToolsView.swift */,
+				2297FE40255FD117000D45C3 /* BPChatRoomMoreToolsView.swift */,
+			);
+			path = ToolsView;
 			sourceTree = "<group>";
 		};
 		22980CBE255E46880013170A /* ChatList */ = {
@@ -544,6 +557,7 @@
 		22980CBF255E468F0013170A /* ChatRoom */ = {
 			isa = PBXGroup;
 			children = (
+				2297FE3B255FB50C000D45C3 /* ToolsView */,
 				228341C7255E219C0018A6F6 /* BPChatRoomViewController.swift */,
 				22980CB8255E459E0013170A /* BPMessageModel.swift */,
 				22980CC0255E47E40013170A /* BPChatRoomCell.swift */,
@@ -1090,7 +1104,7 @@
 				22458207232604EA0031CC7A /* BPNormalDBOperator.swift in Sources */,
 				223623142557B55D0032C34A /* BPSystemPhotoViewController.swift in Sources */,
 				22642BA9233A4745004E1DF9 /* NSArray+CrashDefender.m in Sources */,
-				2297FE35255FA9AF000D45C3 /* BPChatRoomTextMessageCell.swift in Sources */,
+				2297FE35255FA9AF000D45C3 /* BPChatRoomTextMessageBubble.swift in Sources */,
 				22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */,
 				CF87869822F709C20031E4B9 /* BPAuthoriationManager.swift in Sources */,
 				224582012326032B0031CC7A /* IMDBCenter.swift in Sources */,
@@ -1098,14 +1112,16 @@
 				22AED50E234DD6AE00A91A68 /* GCDAsyncUdpSocket.m in Sources */,
 				CF8EB58B22DCCCA600EC2FE5 /* UIFont+Extension.swift in Sources */,
 				22A44AB2244D96DF0039466E /* BPSwiftMacro.swift in Sources */,
-				2297FE38255FB058000D45C3 /* BPChatRoomImageMessageCell.swift in Sources */,
+				2297FE38255FB058000D45C3 /* BPChatRoomImageMessageBubble.swift in Sources */,
 				CF6E171E235F56540008C466 /* BPWebViewImplementClass.swift in Sources */,
 				E0547FFD254124640031C02D /* UILabel+Extension.swift in Sources */,
-				2297FE32255FA83E000D45C3 /* BPChatRoomBaseMessageCell.swift in Sources */,
+				2297FE32255FA83E000D45C3 /* BPChatRoomBaseMessageBubble.swift in Sources */,
 				228341C5255E21240018A6F6 /* BPChatListViewController.swift in Sources */,
 				22A44AB8244D98B40039466E /* BPLogFormatter.m in Sources */,
 				22A877BE22FAB679004FF3A7 /* BPImageView.swift in Sources */,
 				2264EF8622F91E0700A89C82 /* BPAlertViewZeroButton.swift in Sources */,
+				2297FE41255FD117000D45C3 /* BPChatRoomMoreToolsView.swift in Sources */,
+				2297FE3D255FB58D000D45C3 /* BPChatRoomToolsView.swift in Sources */,
 				CF26719822FF0A6B00E6B47F /* ViewController4.swift in Sources */,
 				22ED54B023687FEF00011B82 /* UIBezierPath+AllPoints.m in Sources */,
 				22C6221D22DF120900A7C849 /* Error+Extension.swift in Sources */,
@@ -1191,7 +1207,7 @@
 				22D11F70252E0FF6005896E8 /* BPSocketViewController.swift in Sources */,
 				2276C89A255249320040DFFF /* BPPhotoAlbumToolsView.swift in Sources */,
 				2264EF9622F98A3700A89C82 /* BPButton.swift in Sources */,
-				2297FE2F255FA796000D45C3 /* BPChatRoomMessageCellFactory.swift in Sources */,
+				2297FE2F255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift in Sources */,
 				2218AE3923D098D000EF2E42 /* BPLogManager.swift in Sources */,
 				CF26719222FEF6E700E6B47F /* BPTabBar.swift in Sources */,
 				22D4981122FBCD9B00281530 /* BPTableViewController.swift in Sources */,
