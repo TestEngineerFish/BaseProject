@@ -26,10 +26,10 @@ class BPChatRoomCell: UITableViewCell {
         path.addLine(to: CGPoint(x: AdaptSize(8), y: AdaptSize(10)))
         path.close()
         let arrowLayer = CAShapeLayer()
-        arrowLayer.path = path.cgPath
+        arrowLayer.path            = path.cgPath
         arrowLayer.backgroundColor = UIColor.clear.cgColor
-        arrowLayer.fillColor = UIColor.clear.cgColor
-        arrowLayer.isHidden  = true
+        arrowLayer.fillColor       = UIColor.clear.cgColor
+        arrowLayer.isHidden        = true
         return arrowLayer
     }()
 
@@ -40,19 +40,15 @@ class BPChatRoomCell: UITableViewCell {
         path.addLine(to: CGPoint(x: 0, y: AdaptSize(10)))
         path.close()
         let arrowLayer = CAShapeLayer()
-        arrowLayer.path = path.cgPath
-        arrowLayer.lineJoin = .round
+        arrowLayer.path            = path.cgPath
+        arrowLayer.lineJoin        = .round
         arrowLayer.backgroundColor = UIColor.clear.cgColor
-        arrowLayer.fillColor = UIColor.clear.cgColor
-        arrowLayer.isHidden  = true
+        arrowLayer.fillColor       = UIColor.clear.cgColor
+        arrowLayer.isHidden        = true
         return arrowLayer
     }()
 
-    private var bubbleView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.randomColor()
-        return view
-    }()
+    private var bubbleView: BPChatRoomBaseMessageCell?
 
     // 替换为自定义视图
     private var contentLabel: UILabel = {
@@ -68,6 +64,7 @@ class BPChatRoomCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.createSubviews()
+        self.bindProperty()
     }
 
     required init?(coder: NSCoder) {
@@ -75,61 +72,51 @@ class BPChatRoomCell: UITableViewCell {
     }
 
     private func createSubviews() {
-        self.rightArrowLayer.frame = CGRect(x: kScreenWidth - AdaptSize(70), y: AdaptSize(20), width: AdaptSize(8), height: AdaptSize(10))
-        self.leftArrowLayer.frame = CGRect(x: AdaptSize(70 - 8), y: AdaptSize(20), width: AdaptSize(8), height: AdaptSize(10))
+        self.rightArrowLayer.frame = CGRect(x: kScreenWidth - AdaptSize(71), y: AdaptSize(20), width: AdaptSize(8), height: AdaptSize(10))
+        self.leftArrowLayer.frame  = CGRect(x: AdaptSize(70 - 7), y: AdaptSize(20), width: AdaptSize(8), height: AdaptSize(10))
         self.addSubview(avatarImageView)
-        self.addSubview(bubbleView)
-        bubbleView.addSubview(contentLabel)
         self.layer.addSublayer(leftArrowLayer)
         self.layer.addSublayer(rightArrowLayer)
     }
 
+    private func bindProperty() {
+    }
+
     // MARK: ==== Evnet ====
     func setData(model: BPMessageModel) {
-        self.contentLabel.text     = model.text
+        self.messageModel = model
+        // 设置内容展示视图
+        self.setBubbleView()
+        // 设置箭头视图
+        self.setArrowView()
+        // 设置头像
         self.avatarImageView.image = UIImage(named: "dog")
         switch model.fromType {
         case .me:
-            self.leftArrowLayer.isHidden   = true
-            self.rightArrowLayer.isHidden  = false
-            self.leftArrowLayer.fillColor  = UIColor.clear.cgColor
-            self.rightArrowLayer.fillColor = UIColor.orange1.cgColor
             self.avatarImageView.snp.remakeConstraints { (make) in
                 make.top.equalToSuperview().offset(AdaptSize(5))
                 make.right.equalToSuperview().offset(AdaptSize(-15))
                 make.size.equalTo(CGSize(width: AdaptSize(40), height: AdaptSize(40)))
                 make.bottom.lessThanOrEqualToSuperview().offset(AdaptSize(-5)).priority(.high)
             }
-            self.bubbleView.snp.remakeConstraints { (make) in
+            self.bubbleView?.snp.remakeConstraints { (make) in
                 make.right.equalTo(avatarImageView.snp.left).offset(AdaptSize(-15))
                 make.top.equalTo(avatarImageView)
-                make.left.greaterThanOrEqualToSuperview().offset(AdaptSize(80))
+                make.left.greaterThanOrEqualToSuperview().offset(AdaptSize(100))
                 make.bottom.lessThanOrEqualToSuperview().offset(AdaptSize(-5)).priority(.low)
             }
-            self.contentLabel.snp.remakeConstraints { (make) in
-                make.left.top.equalToSuperview().offset(AdaptSize(8))
-                make.bottom.right.equalToSuperview().offset(AdaptSize(-8))
-            }
         case .friend:
-            self.leftArrowLayer.isHidden   = false
-            self.rightArrowLayer.isHidden  = true
-            self.leftArrowLayer.fillColor  = UIColor.orange1.cgColor
-            self.rightArrowLayer.fillColor = UIColor.clear.cgColor
             self.avatarImageView.snp.remakeConstraints { (make) in
                 make.top.equalToSuperview().offset(AdaptSize(5))
                 make.left.equalToSuperview().offset(AdaptSize(15))
                 make.size.equalTo(CGSize(width: AdaptSize(40), height: AdaptSize(40)))
                 make.bottom.lessThanOrEqualToSuperview().offset(AdaptSize(-5)).priority(.high)
             }
-            self.bubbleView.snp.remakeConstraints { (make) in
+            self.bubbleView?.snp.remakeConstraints { (make) in
                 make.left.equalTo(avatarImageView.snp.right).offset(AdaptSize(15))
                 make.top.equalTo(avatarImageView)
-                make.right.lessThanOrEqualToSuperview().offset(AdaptSize(-80))
+                make.right.lessThanOrEqualToSuperview().offset(AdaptSize(-100))
                 make.bottom.lessThanOrEqualToSuperview().offset(AdaptSize(-5)).priority(.low)
-            }
-            self.contentLabel.snp.remakeConstraints { (make) in
-                make.left.top.equalToSuperview().offset(AdaptSize(8))
-                make.bottom.right.equalToSuperview().offset(AdaptSize(-8))
             }
         default:
             break
@@ -137,4 +124,32 @@ class BPChatRoomCell: UITableViewCell {
     }
 
     // MARK: ==== Tools ===
+
+    private func setBubbleView() {
+        guard let model = self.messageModel else { return }
+        if self.bubbleView?.superview != nil {
+            self.bubbleView?.removeFromSuperview()
+        }
+        self.bubbleView = BPChatRoomMessageCellFactory.buildView(message: model)
+        self.bubbleView?.backgroundColor    = UIColor.randomColor()
+        self.bubbleView?.layer.cornerRadius = 5
+        self.addSubview(bubbleView!)
+    }
+
+    private func setArrowView() {
+        guard let model = self.messageModel else { return }
+        if model.fromType == .me || model.type == .image {
+            self.leftArrowLayer.isHidden = true
+        } else {
+            self.leftArrowLayer.isHidden = false
+        }
+        if model.fromType == .friend || model.type == .image {
+            self.rightArrowLayer.isHidden = true
+        } else {
+            self.rightArrowLayer.isHidden = false
+        }
+        // 设置箭头颜色
+        self.leftArrowLayer.fillColor  = self.bubbleView?.backgroundColor?.cgColor
+        self.rightArrowLayer.fillColor = self.bubbleView?.backgroundColor?.cgColor
+    }
 }

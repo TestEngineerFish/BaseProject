@@ -10,3 +10,4 @@
 #import "BPOCLog.h"
 #import "BPMatrix.h"
 #import "BPPoint.h"
+#import "Kingfisher.h"

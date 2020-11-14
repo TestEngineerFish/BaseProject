@@ -27,7 +27,7 @@ struct BPMessageModel: Mappable {
     var time: Double        = .zero
     var type: BPMessageType = .text
     var fromType: BPMessageFromType = .me
-    var imageModel: BPMediaModel?
+    var mediaModel: BPMediaModel? // 多媒体资源
 
     init() {}
     init?(map: Map) {}

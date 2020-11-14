@@ -72,6 +72,11 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
             if index % 3 > 1 {
                 message.fromType = .friend
             }
+            if index % 4 > 2 {
+                message.type = .image
+                let model = BPMediaModel()
+                message.mediaModel = model
+            }
             self.messageModelList.append(message)
         }
         self.tableView.reloadData()
@@ -95,6 +100,8 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
     }
 
     // MARK: ==== Tools ===
+    /// 滑动到列表底部
+    /// - Parameter animated: 是否显示动画
     private func scrollViewToBottom(animated: Bool) {
         guard self.firstScrollToBool else {
             return
