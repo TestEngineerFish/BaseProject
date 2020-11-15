@@ -14,6 +14,12 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
     private var firstScrollToBool = true
     private var messageModelList: [BPMessageModel] = []
 
+    private var contentView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.clear
+        return view
+    }()
+
     private var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor                = .white
@@ -35,17 +41,23 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
 
     override func createSubviews() {
         super.createSubviews()
-        self.view.addSubview(tableView)
-        self.view.addSubview(toolsView)
+        self.view.addSubview(contentView)
+        contentView.addSubview(tableView)
+        contentView.addSubview(toolsView)
+        contentView.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalToSuperview()
+            make.top.equalToSuperview().offset(kNavHeight)
+        }
         tableView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.bottom.equalTo(toolsView.snp.top)
-            make.top.equalToSuperview().offset(kNavHeight)
+            make.top.equalToSuperview()
         }
         toolsView.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalToSuperview()
-            make.height.equalTo(AdaptSize(55) + kSafeBottomMargin)
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview().offset(toolsView.moreViewHeight)
         }
+        self.view.sendSubviewToBack(contentView)
     }
 
     override func bindProperty() {
@@ -54,6 +66,7 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         self.tableView.dataSource = self
         self.tableView.register(BPChatRoomCell.classForCoder(), forCellReuseIdentifier: cellID)
         self.customNavigationBar?.title = "姓名"
+        self.customNavigationBar?.backgroundColor = .white
         self.toolsView.delegate = self
     }
 
@@ -96,6 +109,15 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.25) { [weak self] in
+            guard let self = self else { return }
+            self.contentView.transform = .identity
+            self.toolsView.status      = .normal
+
+        }
+    }
+
     // MARK: ==== Tools ===
     /// 滑动到列表底部
     /// - Parameter animated: 是否显示动画
@@ -112,16 +134,43 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
     }
 
     // MARK: ==== BPChatRoomToolsViewDelegate ====
-    func clickSwitchAction() {
+    func clickSwitchAction(transform: CGAffineTransform) {
         BPLog("clickSwitchAction")
+        self.view.isUserInteractionEnabled = false
+        UIView.animate(withDuration: 0.25) { [weak self] in
+            guard let self = self else { return }
+            self.contentView.transform = transform
+        } completion: { (finished) in
+            if finished {
+                self.view.isUserInteractionEnabled = true
+            }
+        }
+
     }
 
-    func clickEmojiAction() {
+    func clickEmojiAction(transform: CGAffineTransform) {
+        self.view.isUserInteractionEnabled = false
+        UIView.animate(withDuration: 0.25) { [weak self] in
+            guard let self = self else { return }
+            self.contentView.transform = transform
+        } completion: { (finished) in
+            if finished {
+                self.view.isUserInteractionEnabled = true
+            }
+        }
         BPLog("clickEmojiAction")
     }
 
-    func clickMoreAction() {
-        BPLog("clickMoreAction")
+    func clickMoreAction(transform: CGAffineTransform) {
+        self.view.isUserInteractionEnabled = false
+        UIView.animate(withDuration: 0.25) { [weak self] in
+            guard let self = self else { return }
+            self.contentView.transform = transform
+        } completion: { (finished) in
+            if finished {
+                self.view.isUserInteractionEnabled = true
+            }
+        }
     }
 
     func recordingAction() {

@@ -166,15 +166,15 @@ extension BPNavigationBar {
 extension BPNavigationBar {
 
     private func setSubviews() {
-
+        let offsetY = kStatusBarHeight
         /** 正常小标题 */
         self.titleLabel.font = UIFont.regularFont(ofSize: 16)
         self.titleLabel.textAlignment = .center
         self.titleLabel.textColor = UIColor.black
-        self.titleLabel.frame = CGRect(x: 75, y: 0, width: kScreenWidth - 150, height: 44)
+        self.titleLabel.frame = CGRect(x: 75, y: offsetY, width: kScreenWidth - 150, height: 44)
 
         /** 大标题 */
-        self.largeTitleButton.frame = CGRect(x: 8, y: 8, width: kScreenWidth - 110, height: 42)
+        self.largeTitleButton.frame = CGRect(x: 8, y: 8 + offsetY, width: kScreenWidth - 110, height: 42)
         self.largeTitleButton.setTitleColor(UIColor.black, for: .normal)
         self.largeTitleButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
         self.largeTitleButton.contentHorizontalAlignment = .left
@@ -183,7 +183,7 @@ extension BPNavigationBar {
         self.largeTitleButton.titleLabel?.lineBreakMode = .byTruncatingTail
 
         /** 左边的返回按钮 */
-        self.leftButton.frame = CGRect(x: 6, y: 9, width: 40, height: 26)
+        self.leftButton.frame = CGRect(x: 6, y: 9 + offsetY, width: 40, height: 26)
         self.leftButton.setTitleColor(UIColor.black, for: .normal)
         self.leftButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
         self.leftButton.setTitle(IconFont.back.rawValue, for: .normal)
@@ -198,15 +198,17 @@ extension BPNavigationBar {
         self.rightFirstButton.contentHorizontalAlignment = .right
         self.rightFirstButton.addTarget(self, action: #selector(rightButtonDidClick), for: .touchUpInside)
         if self.isLargeTitle {
-            self.rightFirstButton.frame = CGRect(x: kScreenWidth - 40, y: iPhoneXLater ? 8 : 18, width: AdaptSize(28), height: AdaptSize(28))
+            let y = (iPhoneXLater ? 8 : 18) + offsetY
+            self.rightFirstButton.frame = CGRect(x: kScreenWidth - 40, y: y, width: AdaptSize(28), height: AdaptSize(28))
             self.rightFirstButton.titleLabel?.font = UIFont.iconFont(size: 26)
         } else {
-            self.rightFirstButton.frame = CGRect(x: kScreenWidth - 42, y: 9, width: AdaptSize(26), height: AdaptSize(26))
+            self.rightFirstButton.frame = CGRect(x: kScreenWidth - 42, y: 9 + offsetY, width: AdaptSize(26), height: AdaptSize(26))
             self.rightFirstButton.titleLabel?.font = UIFont.iconFont(size: 26)
         }
 
         /** 右边第二个按钮 **/
-        self.rightSecondButton.frame = CGRect(x: kScreenWidth - 40 - 40, y: iPhoneXLater ? 8 : 18, width: AdaptSize(26), height: AdaptSize(26))
+        let y = (iPhoneXLater ? 8 : 18) + offsetY
+        self.rightSecondButton.frame = CGRect(x: kScreenWidth - 40 - 40, y: y + kStatusBarHeight, width: AdaptSize(26), height: AdaptSize(26))
         self.rightSecondButton.setTitleColor(UIColor.black, for: .normal)
         self.rightSecondButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
         self.rightSecondButton.contentHorizontalAlignment = .right
@@ -216,8 +218,8 @@ extension BPNavigationBar {
 
     private func createSubviews() {
 
-        let height: CGFloat = self.isLargeTitle ? 62.0 : 44.0
-        self.frame = CGRect(x: 0, y: kStatusBarHeight, width: kScreenWidth, height: height)
+        let height: CGFloat = (self.isLargeTitle ? 62.0 : 44.0) + kStatusBarHeight
+        self.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: height)
 
         if self.isLargeTitle {
             self.addSubview(self.largeTitleButton)

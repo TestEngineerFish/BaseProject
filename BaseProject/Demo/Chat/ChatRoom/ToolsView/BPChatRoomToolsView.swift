@@ -9,22 +9,65 @@
 import Foundation
 
 protocol BPChatRoomToolsViewDelegate: NSObjectProtocol {
-    func clickSwitchAction()
-    func clickEmojiAction()
-    func clickMoreAction()
+    func clickSwitchAction(transform:CGAffineTransform)
+    func clickEmojiAction(transform:CGAffineTransform)
+    func clickMoreAction(transform:CGAffineTransform)
     func recordingAction()
     func sendMessage(text: String)
 }
 
 class BPChatRoomToolsView: BPView, UITextFieldDelegate {
 
+    enum ToolsViewStatus: Int {
+        /// 默认状态
+        case normal
+        /// 显示软键盘（编辑中）
+        case showKeyboard
+        /// 显示录音按钮
+        case showRecordButton
+        /// 录音中
+        case recording
+        /// 显示表情视图
+        case showEmojiView
+        /// 显示更多功能视图
+        case showMoreView
+    }
+
+    var moreViewHeight: CGFloat = AdaptSize(120)
     weak var delegate: BPChatRoomToolsViewDelegate?
+
+    var status: ToolsViewStatus = ToolsViewStatus.normal {
+        willSet {
+            switch newValue {
+            case .normal:
+                self.moreView.isHidden     = true
+                self.recordButton.isHidden = true
+                self.switchButton.setTitle(IconFont.record.rawValue, for: .normal)
+            case .showKeyboard:
+                self.moreView.isHidden     = true
+                self.recordButton.isHidden = true
+                self.switchButton.setTitle(IconFont.record.rawValue, for: .normal)
+            case .showRecordButton:
+                self.moreView.isHidden     = true
+                self.recordButton.isHidden = false
+                self.switchButton.setTitle(IconFont.keyboard.rawValue, for: .normal)
+            case .showEmojiView:
+                self.moreView.isHidden     = false
+                self.recordButton.isHidden = true
+            case .showMoreView:
+                self.moreView.isHidden     = false
+                self.recordButton.isHidden = true
+            default:
+                break
+            }
+        }
+    }
 
     private var switchButton: BPButton = {
         let button = BPButton()
         button.setTitle(IconFont.record.rawValue, for: .normal)
         button.setTitleColor(UIColor.black1, for: .normal)
-        button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(30))
+        button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(25))
         return button
     }()
     private var recordButton: BPButton = {
@@ -33,7 +76,7 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
         button.layer.cornerRadius = 5
         button.setTitle("按住 说话", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
-        button.titleLabel?.font = UIFont.DINAlternateBold(ofSize: AdaptSize(18))
+        button.titleLabel?.font = UIFont.DINAlternateBold(ofSize: AdaptSize(16))
         return button
     }()
     private var textFieldView: UITextField = {
@@ -48,14 +91,14 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
         let button = BPButton()
         button.setTitle(IconFont.emoji.rawValue, for: .normal)
         button.setTitleColor(UIColor.black1, for: .normal)
-        button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(30))
+        button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(25))
         return button
     }()
     private var moreButton: BPButton = {
         let button = BPButton()
         button.setTitle(IconFont.more.rawValue, for: .normal)
         button.setTitleColor(UIColor.black1, for: .normal)
-        button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(30))
+        button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(32))
         return button
     }()
 
@@ -104,7 +147,8 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
         moreView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalTo(textFieldView.snp.bottom).offset(AdaptSize(10))
-            make.height.equalTo(AdaptSize(90))
+            make.height.equalTo(moreViewHeight)
+            make.bottom.equalToSuperview().offset(-kSafeBottomMargin)
         }
     }
 
@@ -121,54 +165,44 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
 
     // MARK: ==== Event ====
     @objc private func switchAction(sender: BPButton) {
-        if sender.currentTitle == IconFont.record.rawValue {
-            sender.setTitle(IconFont.keyboard.rawValue, for: .normal)
-            self.recordButton.isHidden = false
+        if self.status != .showRecordButton && self.status != .recording {
+            // 显示录音按钮，并位移到底部
+            self.status = .showRecordButton
+            self.delegate?.clickSwitchAction(transform: .identity)
         } else {
-            sender.setTitle(IconFont.record.rawValue, for: .normal)
-            self.recordButton.isHidden = true
+            // 显示编辑状态，并显示软键盘
+            self.status = .showKeyboard
+            self.delegate?.clickSwitchAction(transform: CGAffineTransform(translationX: 0, y: -self.moreView.height))
         }
-        self.delegate?.clickSwitchAction()
     }
 
     @objc private func emojiAction(sender: BPButton) {
-        self.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 0.25) { [weak self] in
-            guard let self = self else { return }
-            if self.transform.ty < 0 {
-                self.transform = .identity
-            } else {
-                self.transform = CGAffineTransform(translationX: 0, y: -self.moreView.height)
-            }
-        } completion: { (finished) in
-            if finished {
-                self.isUserInteractionEnabled = true
-                self.delegate?.clickEmojiAction()
-            }
+        if self.status != .showEmojiView {
+            // 显示Emoji表情列表，并位移
+            self.status = .showEmojiView
+            self.delegate?.clickEmojiAction(transform: CGAffineTransform(translationX: 0, y: -self.moreView.height))
+        } else {
+            // 显示编辑状态，并显示软键盘
+            self.status = .normal
+            self.delegate?.clickEmojiAction(transform: .identity)
         }
     }
 
     @objc private func moreAction(sender: BPButton) {
-        self.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 0.25) { [weak self] in
-            guard let self = self else { return }
-            if self.transform.ty < 0 {
-                self.transform = .identity
-            } else {
-                self.transform = CGAffineTransform(translationX: 0, y: -self.moreView.height)
-            }
-        } completion: { (finished) in
-            if finished {
-                self.isUserInteractionEnabled = true
-                self.delegate?.clickMoreAction()
-            }
+        if self.status != .showMoreView {
+            // 显示Emoji表情列表，并位移
+            self.status = .showMoreView
+            self.delegate?.clickMoreAction(transform: CGAffineTransform(translationX: 0, y: -self.moreView.height))
+        } else {
+            // 显示编辑状态，并显示软键盘
+            self.status = .normal
+            self.delegate?.clickMoreAction(transform: .identity)
         }
     }
 
     @objc private func recordingAction(sender: BPButton) {
         self.delegate?.recordingAction()
     }
-
 
     // MARK: ==== UITextFieldDelegate ====
 
