@@ -19,12 +19,10 @@ struct BPSessionModel: Mappable {
     var friendId: String = ""
     var avatarPath: String?
     var name: String     = ""
-    var lastMsg: String  = ""
-    var msgTime: Double  = .zero
-    var lastMsgStatus    = BPMessageStatus.success
     var isTop: Bool      = false
-    var type: BPSessionType = .normal
+    var type             = BPSessionType.normal
     var unreadCount: Int = 0
+    var lastMsgModel: BPMessageModel?
 
     init() {}
     init?(map: Map) {}

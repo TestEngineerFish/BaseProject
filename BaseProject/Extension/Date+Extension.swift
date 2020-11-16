@@ -143,6 +143,44 @@ public extension Date {
         components.calendar = c
         return components
     }
+
+    /// 用于IM的时间戳展示
+    func timeStr() -> String {
+        let calendar = Calendar.current
+        let now = self
+        let components = calendar.dateComponents([.year, .month, .weekOfMonth, .day, .hour, .minute, .second], from: self, to: Date())
+        if let year = components.year, year >= 1 {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "YYYY-MM-dd"
+            return formatter.string(from: now)
+        } else if let month = components.month, month >= 1 {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MM-dd"
+            return formatter.string(from: now)
+        } else if let week = components.weekOfYear, week >= 1 {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MM-dd"
+            return formatter.string(from: now)
+        } else if let day = components.day, day >= 1 {
+            if day == 1 {
+                return "昨天"
+            } else {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MM-dd"
+                return formatter.string(from: now)
+            }
+        } else if let hour = components.hour, hour >= 1 {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm"
+            return formatter.string(from: now)
+        } else if let minute = components.minute, minute >= 1 {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm"
+            return formatter.string(from: now)
+        } else {
+            return "刚刚"
+        }
+    }
 }
 
 extension Date {

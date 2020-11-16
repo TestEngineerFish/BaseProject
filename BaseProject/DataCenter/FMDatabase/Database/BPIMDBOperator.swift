@@ -57,7 +57,14 @@ class BPIMDBOperator: BPIMDBProtocol, BPDatabaseProtocol {
     // MARK: ==== Session ====
     @discardableResult
     func insertSession(model: BPSessionModel) -> Bool {
-        let values = [model.id, model.type.rawValue, model.friendId, model.name, model.avatarPath as Any, model.lastMsg, model.msgTime, model.lastMsgStatus.rawValue] as [Any]
+        let values = [model.id,
+                      model.type.rawValue,
+                      model.friendId,
+                      model.name,
+                      model.avatarPath as Any,
+                      model.lastMsgModel?.text ?? "",
+                      model.lastMsgModel?.time ?? 0,
+                      model.lastMsgModel?.status.rawValue ?? 0] as [Any]
         let sql    = BPSQLManager.IMSession.insertSession.rawValue
         let result = self.imRunner.executeUpdate(sql, withArgumentsIn: values)
         return result
@@ -88,7 +95,10 @@ class BPIMDBOperator: BPIMDBProtocol, BPDatabaseProtocol {
 
     @discardableResult
     func updateSession(model: BPSessionModel) -> Bool {
-        let params = [model.lastMsg, model.msgTime, model.lastMsgStatus.rawValue, model.unreadCount] as [Any]
+        let params = [model.lastMsgModel?.text ?? "",
+                      model.lastMsgModel?.time ?? 0,
+                      model.lastMsgModel?.status.rawValue ?? 0,
+                      model.unreadCount, model.id] as [Any]
         let sql = BPSQLManager.IMSession.updateSession.rawValue
         let result = self.imRunner.executeUpdate(sql, withArgumentsIn: params)
         return result
@@ -160,11 +170,13 @@ class BPIMDBOperator: BPIMDBProtocol, BPDatabaseProtocol {
         model.friendId      = result.string(forColumn: "friend_id") ?? ""
         model.avatarPath    = result.string(forColumn: "friend_avatar_url") ?? ""
         model.name          = result.string(forColumn: "friend_name") ?? ""
-        model.lastMsg       = result.string(forColumn: "last_msg") ?? ""
-        model.msgTime       = result.double(forColumn: "msg_time")
-        model.lastMsgStatus = BPMessageStatus(rawValue: Int(result.int(forColumn: "msg_status"))) ?? .success
         model.isTop         = (Int(result.int(forColumn: "is_top")) != 0)
         model.type          = BPSessionType(rawValue: Int(result.int(forColumn: "session_type"))) ?? .normal
+        var lastMsgModel = BPMessageModel()
+        lastMsgModel.text   = result.string(forColumn: "last_msg") ?? ""
+        lastMsgModel.time   = result.date(forColumn: "msg_time") ?? Date()
+        lastMsgModel.status = BPMessageStatus(rawValue: Int(result.int(forColumn: "msg_status"))) ?? .success
+        model.lastMsgModel = lastMsgModel
         return model
     }
 

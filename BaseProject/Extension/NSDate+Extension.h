@@ -73,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * 返回day天后的日期(若day为负数,则为|day|天前的日期)
  */
-- (NSDate *)dateAfterDay:(NSUInteger)day;
+- (NSDate *)dateAfterDay:(NSInteger)day;
 + (NSDate *)dateAfterDate:(NSDate *)date day:(NSInteger)day;
 
 /**

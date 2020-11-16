@@ -187,7 +187,7 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
     }
 
     func sendMessage(text: String) {
-        guard let _sessionModel = self.sessionModel else { return }
+        guard var _sessionModel = self.sessionModel else { return }
         BPLog("sendMessage:\(text)")
         var messageMode = BPMessageModel()
         messageMode.id        = "\(Date().local().timeIntervalSince1970)"
@@ -198,7 +198,11 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         messageMode.fromType  = .me
         messageMode.status    = .success
         messageMode.unread    = true
+        // 插入message表
         BPIMDBCenter.default.insertMessage(message: messageMode)
+        // 更新session表
+        _sessionModel.lastMsgModel = messageMode
+        BPIMDBCenter.default.updateSessionModel(model: _sessionModel)
         self.messageModelList.append(messageMode)
         let nextIndexPath = IndexPath(row: self.messageModelList.count - 1, section: 0)
         self.tableView.insertRows(at: [nextIndexPath], with: .none)

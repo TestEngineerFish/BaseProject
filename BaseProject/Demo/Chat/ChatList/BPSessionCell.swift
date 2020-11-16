@@ -83,7 +83,7 @@ class BPSessionCell: UITableViewCell {
         timeLabel.snp.makeConstraints { (make) in
             make.right.equalToSuperview().offset(AdaptSize(-15))
             make.centerY.equalTo(nameLabel)
-            make.width.equalTo(AdaptSize(50))
+            make.width.equalTo(AdaptSize(60))
         }
         lineView.snp.makeConstraints { (make) in
             make.left.equalTo(nameLabel)
@@ -101,7 +101,14 @@ class BPSessionCell: UITableViewCell {
     func setData(model: BPSessionModel) {
         self.avatarImageView.image = UIImage(named: "dog")
         self.nameLabel.text        = model.name
-        self.messageLabel.text     = model.lastMsg
-        self.timeLabel.text        = "\(model.msgTime)"
+        self.messageLabel.text     = model.lastMsgModel?.text
+        self.timeLabel.text        = model.lastMsgModel?.time.timeStr()
+        if model.lastMsgModel?.text == .some("") {
+            self.messageLabel.isHidden = true
+            self.timeLabel.isHidden    = true
+        } else {
+            self.messageLabel.isHidden = false
+            self.timeLabel.isHidden    = false
+        }
     }
 }

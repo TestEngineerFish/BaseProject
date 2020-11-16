@@ -39,6 +39,11 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
         self.bindData()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.bindData()
+    }
+
     override func createSubviews() {
         super.createSubviews()
         self.customNavigationBar?.rightButtonTitle = "Test"
@@ -86,7 +91,10 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
                 model.isTop    = index < 2
                 model.friendId = "\(index * 1000)"
                 model.name     = "Name\(index)"
-                model.lastMsg  = "Message\(index)"
+                var messageModel   = BPMessageModel()
+                messageModel.text  = "Message\(index)"
+                messageModel.time  = NSDate().afterDay(-index)
+                model.lastMsgModel = messageModel
                 BPIMDBOperator.default.insertSession(model: model)
                 // 删除所有当前会话消息
                 BPIMDBCenter.default.deleteAllMessage(session: model.id)
@@ -95,6 +103,7 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
                     var message = BPMessageModel()
                     message.id = "\(index)"
                     message.sessionId = model.id
+                    message.time = NSDate().afterDay(-index)
                     if index % 2 > 0 {
                         message.text = "Message"
                     } else {

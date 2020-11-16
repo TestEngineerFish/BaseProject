@@ -165,7 +165,7 @@
     return i;
 }
 
-- (NSDate *)dateAfterDay:(NSUInteger)day {
+- (NSDate *)dateAfterDay:(NSInteger)day {
     return [NSDate dateAfterDate:self day:day];
 }
 

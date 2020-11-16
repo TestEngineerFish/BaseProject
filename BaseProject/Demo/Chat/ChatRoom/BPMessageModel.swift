@@ -31,7 +31,7 @@ struct BPMessageModel: Mappable {
     var id: String          = ""
     var sessionId           = ""
     var text: String        = ""
-    var time: Date          = Date()
+    var time: Date          = Date(timeIntervalSinceNow: 0)
     var type: BPMessageType = .text
     var fromType: BPMessageFromType = .me
     var mediaModel: BPMediaModel? // 多媒体资源
