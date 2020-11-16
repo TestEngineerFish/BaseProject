@@ -155,18 +155,18 @@ public extension Date {
             return formatter.string(from: now)
         } else if let month = components.month, month >= 1 {
             let formatter = DateFormatter()
-            formatter.dateFormat = "MM-dd"
+            formatter.dateFormat = "MM-dd HH:mm"
             return formatter.string(from: now)
         } else if let week = components.weekOfYear, week >= 1 {
             let formatter = DateFormatter()
-            formatter.dateFormat = "MM-dd"
+            formatter.dateFormat = "MM-dd HH:mm"
             return formatter.string(from: now)
         } else if let day = components.day, day >= 1 {
             if day == 1 {
                 return "昨天"
             } else {
                 let formatter = DateFormatter()
-                formatter.dateFormat = "MM-dd"
+                formatter.dateFormat = "MM-dd HH:mm"
                 return formatter.string(from: now)
             }
         } else if let hour = components.hour, hour >= 1 {

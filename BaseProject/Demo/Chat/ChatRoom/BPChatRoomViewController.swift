@@ -10,7 +10,8 @@ import Foundation
 
 class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableViewDataSource, BPChatRoomToolsViewDelegate {
 
-    private let cellID: String = "kBPChatRoomCell"
+    private let textCellID: String  = "kBPChatRoomCell"
+    private let localCellID: String = "kBPChatRoomLocalTimeCell"
     var sessionModel: BPSessionModel?
     private var messageModelList: [BPMessageModel] = []
 
@@ -76,7 +77,8 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         self.view.backgroundColor = .gray3
         self.tableView.delegate   = self
         self.tableView.dataSource = self
-        self.tableView.register(BPChatRoomCell.classForCoder(), forCellReuseIdentifier: cellID)
+        self.tableView.register(BPChatRoomCell.classForCoder(), forCellReuseIdentifier: textCellID)
+        self.tableView.register(BPChatRoomLocalTimeCell.classForCoder(), forCellReuseIdentifier: localCellID)
         self.customNavigationBar?.title = "姓名"
         self.customNavigationBar?.backgroundColor  = .white
         self.customNavigationBar?.rightButtonTitle = "👮‍♀️"
@@ -129,12 +131,23 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? BPChatRoomCell else {
+        let model = self.messageModelList[indexPath.row]
+        switch model.fromType {
+        case .me, .friend:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: textCellID, for: indexPath) as? BPChatRoomCell else {
+                return UITableViewCell()
+            }
+            cell.setData(model: model)
+            return cell
+        case .local:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: localCellID, for: indexPath) as? BPChatRoomLocalTimeCell else {
+                return UITableViewCell()
+            }
+            cell.setData(time: model.time)
+            return cell
+        default:
             return UITableViewCell()
         }
-        let model = self.messageModelList[indexPath.row]
-        cell.setData(model: model)
-        return cell
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -150,6 +163,49 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
             let offsetIndexPath = IndexPath(row: self.messageModelList.count - 1, section: 0)
             self.tableView.scrollToRow(at: offsetIndexPath, at: .bottom, animated: false)
         }
+    }
+
+    /// 发送时间消息
+    private func sendTimeMessage() {
+        guard let _sessionModel = self.sessionModel else { return }
+        var messageModel = BPMessageModel()
+        messageModel.id        = "\(Date().local().timeIntervalSince1970)"
+        messageModel.sessionId = _sessionModel.id
+        messageModel.time      = Date()
+        messageModel.type      = .time
+        messageModel.fromType  = .local
+        messageModel.status    = .success
+        messageModel.unread    = true
+        self.sendMessageBlock(updateSession: false, message: messageModel)
+    }
+
+    private func sendTextMessage(text: String) {
+        guard let _sessionModel = self.sessionModel else { return }
+        var messageModel = BPMessageModel()
+        messageModel.id        = "\(Date().local().timeIntervalSince1970)"
+        messageModel.sessionId = _sessionModel.id
+        messageModel.text      = text
+        messageModel.time      = Date()
+        messageModel.type      = .text
+        messageModel.fromType  = .me
+        messageModel.status    = .success
+        messageModel.unread    = true
+        self.sendMessageBlock(message: messageModel)
+    }
+
+    private func sendMessageBlock(updateSession: Bool = true, message model: BPMessageModel) {
+        guard var _sessionModel = self.sessionModel else { return }
+        if updateSession {
+            // 更新session表
+            _sessionModel.lastMsgModel = model
+            BPIMDBCenter.default.updateSessionModel(model: _sessionModel)
+        }
+        // 插入message表
+        BPIMDBCenter.default.insertMessage(message: model)
+        // 更新列表
+        self.messageModelList.append(model)
+        let nextIndexPath = IndexPath(row: self.messageModelList.count - 1, section: 0)
+        self.tableView.insertRows(at: [nextIndexPath], with: .none)
     }
 
     // MARK: ==== BPChatRoomToolsViewDelegate ====
@@ -187,24 +243,7 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
     }
 
     func sendMessage(text: String) {
-        guard var _sessionModel = self.sessionModel else { return }
-        BPLog("sendMessage:\(text)")
-        var messageMode = BPMessageModel()
-        messageMode.id        = "\(Date().local().timeIntervalSince1970)"
-        messageMode.sessionId = _sessionModel.id
-        messageMode.text      = text
-        messageMode.time      = Date().local()
-        messageMode.type      = .text
-        messageMode.fromType  = .me
-        messageMode.status    = .success
-        messageMode.unread    = true
-        // 插入message表
-        BPIMDBCenter.default.insertMessage(message: messageMode)
-        // 更新session表
-        _sessionModel.lastMsgModel = messageMode
-        BPIMDBCenter.default.updateSessionModel(model: _sessionModel)
-        self.messageModelList.append(messageMode)
-        let nextIndexPath = IndexPath(row: self.messageModelList.count - 1, section: 0)
-        self.tableView.insertRows(at: [nextIndexPath], with: .none)
+        self.sendTimeMessage()
+        self.sendTextMessage(text: text)
     }
 }

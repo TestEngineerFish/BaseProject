@@ -11,7 +11,7 @@ import ObjectMapper
 enum BPMessageType: Int {
     case text   = 0
     case image  = 1
-    case system = 2
+    case time   = 2
 }
 
 enum BPMessageFromType: Int {

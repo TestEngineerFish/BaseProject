@@ -113,6 +113,13 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
                         message.fromType = .friend
                     }
                     if index % 4 > 2 {
+                        message.fromType = .local
+                        message.type = .time
+                        let model = BPMediaModel()
+                        message.mediaModel = model
+                    }
+                    if index % 5 > 2 {
+                        message.fromType = .me
                         message.type = .image
                         let model = BPMediaModel()
                         message.mediaModel = model
