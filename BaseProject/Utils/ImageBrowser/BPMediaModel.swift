@@ -74,7 +74,7 @@ struct BPMediaModel: Mappable, Hashable, Equatable, Any {
     ///   - progress: 下载远端缩略图的进度
     ///   - completion: 下载、加载图片完成回调
     func getOriginImage(progress: ((CGFloat) ->Void)?, completion: DefaultImageBlock?) {
-        if let path = self.originLocalPath, let image = UIImage(named: path) {
+        if let path = self.originLocalPath, let image = UIImage(contentsOfFile: path) {
             completion?(image)
         } else {
             guard let path = self.originRemotePath else { return }
@@ -86,6 +86,15 @@ struct BPMediaModel: Mappable, Hashable, Equatable, Any {
 
     init?(map: Map) {}
 
-    mutating func mapping(map: Map) {}
+    mutating func mapping(map: Map) {
+        self.id                  <- map["id"]
+        self.name                <- map["name"]
+        self.type                <- (map["type"], EnumTransform<BPMediaType>())
+        self.thumbnailLocalPath  <- map["thumbnailLocalPath"]
+        self.thumbnailRemotePath <- map["thumbnailRemotePath"]
+        self.originLocalPath     <- map["originLocalPath"]
+        self.originRemotePath    <- map["originRemotePath"]
+        self.videoTime           <- map["videoTime"]
+    }
     
 }

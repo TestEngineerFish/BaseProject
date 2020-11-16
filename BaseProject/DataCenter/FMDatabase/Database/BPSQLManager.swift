@@ -141,10 +141,11 @@ struct BPSQLManager {
             from_type,
             status,
             content,
+            media_json,
             create_time,
             is_unread)
         VALUES (?,?,?,?,?,
-                ?,?,?)
+                ?,?,?,?)
         """
         case deleteAllMessageWithSession =
         """

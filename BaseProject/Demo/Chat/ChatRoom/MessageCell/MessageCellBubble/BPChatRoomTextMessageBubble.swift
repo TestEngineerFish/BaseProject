@@ -20,6 +20,17 @@ class BPChatRoomTextMessageBubble: BPChatRoomBaseMessageBubble {
         return label
     }()
 
+    override init(model: BPMessageModel) {
+        super.init(model: model)
+        self.createSubviews()
+        self.bindProperty()
+        self.bindData()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func createSubviews() {
         super.createSubviews()
         self.addSubview(textLabel)

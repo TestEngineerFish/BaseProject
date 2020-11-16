@@ -80,6 +80,11 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
     // MARK: ==== Event ====
     @objc private func resetTestData() {
         DispatchQueue.global().async {
+            var imageLocalPath: String?
+            // 写入测试图片
+            if let imageData = UIImage(named: "dog")?.pngData() {
+                imageLocalPath = BPFileManager.share.saveMediaFile(name: "dog", data: imageData, type: .thumbImage)
+            }
             // 清空数据库数据
             BPIMDBCenter.default.deleteAllSession()
             // 插入测试数据
@@ -99,7 +104,7 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
                 // 删除所有当前会话消息
                 BPIMDBCenter.default.deleteAllMessage(session: model.id)
                 // 插入会话对应的消息
-                for index in 0..<100 {
+                for index in 0..<10 {
                     var message = BPMessageModel()
                     message.id = "\(index)"
                     message.sessionId = model.id
@@ -118,10 +123,13 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
                         let model = BPMediaModel()
                         message.mediaModel = model
                     }
-                    if index % 5 > 2 {
+                    if true {
                         message.fromType = .me
                         message.type = .image
-                        let model = BPMediaModel()
+                        var model = BPMediaModel()
+                        model.id = index + 100
+                        model.thumbnailLocalPath = imageLocalPath ?? ""
+                        model.originLocalPath    = imageLocalPath ?? ""
                         message.mediaModel = model
                     }
                     BPIMDBCenter.default.insertMessage(message: message)

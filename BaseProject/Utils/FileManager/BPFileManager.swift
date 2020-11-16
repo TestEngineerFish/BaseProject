@@ -11,7 +11,7 @@ import Foundation
 struct BPFileManager {
     static let share = BPFileManager()
 
-    func saveMediaFile(name: String, data: Data, type: BPMediaType) {
+    func saveMediaFile(name: String, data: Data, type: BPMediaType) -> String? {
         var path = ""
         switch type {
         case .thumbImage:
@@ -28,10 +28,11 @@ struct BPFileManager {
         self.checkFile(path: path)
         guard let fileHandle = FileHandle(forWritingAtPath: path) else {
             BPRequestLog("文件写入失败:", path)
-            return
+            return nil
         }
         fileHandle.write(data)
         BPRequestLog("文件写入成功")
+        return path
     }
 
     // MARK: ==== Tools ====

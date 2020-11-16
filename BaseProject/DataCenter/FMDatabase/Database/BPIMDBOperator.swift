@@ -118,7 +118,15 @@ class BPIMDBOperator: BPIMDBProtocol, BPDatabaseProtocol {
 
     // MARK: ==== Message ====
     func insertMessage(message model: BPMessageModel) -> Bool {
-        let params = [model.id, model.sessionId, model.type.rawValue, model.fromType.rawValue,  model.status.rawValue, model.text, model.time, model.unread] as [Any]
+        let params = [model.id,
+                      model.sessionId,
+                      model.type.rawValue,
+                      model.fromType.rawValue,
+                      model.status.rawValue,
+                      model.text,
+                      model.mediaModel?.toJSONString() ?? "",
+                      model.time,
+                      model.unread] as [Any]
         let sql = BPSQLManager.IMMessage.insertMessage.rawValue
         let result = self.imRunner.executeUpdate(sql, withArgumentsIn: params)
         return result
@@ -182,12 +190,12 @@ class BPIMDBOperator: BPIMDBProtocol, BPDatabaseProtocol {
 
     private func transformMessageModel(result: FMResultSet) -> BPMessageModel {
         var model = BPMessageModel()
-        model.id   = result.string(forColumn: "msg_id") ?? ""
-        model.text = result.string(forColumn: "content") ?? ""
-        model.time = result.date(forColumn: "create_time") ?? Date()
-        model.type = BPMessageType(rawValue: Int(result.int(forColumn: "type"))) ?? .text
+        model.id       = result.string(forColumn: "msg_id") ?? ""
+        model.text     = result.string(forColumn: "content") ?? ""
+        model.time     = result.date(forColumn: "create_time") ?? Date()
+        model.type     = BPMessageType(rawValue: Int(result.int(forColumn: "type"))) ?? .text
         model.fromType = BPMessageFromType(rawValue: Int(result.int(forColumn: "from_type"))) ?? .local
-        model.status = BPMessageStatus(rawValue: Int(result.int(forColumn: "status"))) ?? .success
+        model.status   = BPMessageStatus(rawValue: Int(result.int(forColumn: "status"))) ?? .success
         if let mediaJson = result.string(forColumn: "media_json"), let mediatModel = BPMediaModel(JSONString: mediaJson) {
             model.mediaModel = mediatModel
         }

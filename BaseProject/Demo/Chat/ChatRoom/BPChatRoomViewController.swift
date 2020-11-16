@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableViewDataSource, BPChatRoomToolsViewDelegate {
+class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableViewDataSource, BPChatRoomToolsViewDelegate, BPChatRoomCellDelegate {
 
     private let textCellID: String  = "kBPChatRoomCell"
     private let localCellID: String = "kBPChatRoomLocalTimeCell"
@@ -137,7 +137,8 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
             guard let cell = tableView.dequeueReusableCell(withIdentifier: textCellID, for: indexPath) as? BPChatRoomCell else {
                 return UITableViewCell()
             }
-            cell.setData(model: model)
+            cell.delegate = self
+            cell.setData(model: model, indexPath: indexPath)
             return cell
         case .local:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: localCellID, for: indexPath) as? BPChatRoomLocalTimeCell else {
@@ -245,5 +246,30 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
     func sendMessage(text: String) {
         self.sendTimeMessage()
         self.sendTextMessage(text: text)
+    }
+
+    // MARK: ==== BPChatRoomCellDelegate ====
+    func clickBubble(model: BPMessageModel, indexPath: IndexPath) {
+        var currentIndex = 0
+        var tmpIndex = 0
+        var mediaModelList = [BPMediaModel]()
+        for messageModel in self.messageModelList {
+            if messageModel.type == .image {
+                guard let mediaModel = messageModel.mediaModel else {
+                    break
+                }
+                if model.mediaModel?.id == mediaModel.id {
+                    currentIndex = tmpIndex
+                }
+                tmpIndex += 1
+                mediaModelList.append(mediaModel)
+            }
+        }
+        if model.type == .image {
+            guard let cell = self.tableView.cellForRow(at: indexPath) as? BPChatRoomCell, let bubbleView = cell.bubbleView as? BPChatRoomImageMessageBubble else {
+                return
+            }
+            BPImageBrowser(dataSource: mediaModelList, current: currentIndex).show(animationView: bubbleView.imageView)
+        }
     }
 }

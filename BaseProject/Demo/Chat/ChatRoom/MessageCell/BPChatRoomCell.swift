@@ -8,9 +8,15 @@
 
 import Foundation
 
+protocol BPChatRoomCellDelegate: NSObjectProtocol {
+    func clickBubble(model: BPMessageModel, indexPath: IndexPath)
+}
+
 class BPChatRoomCell: UITableViewCell {
 
     private var messageModel: BPMessageModel?
+    private var indexPath: IndexPath?
+    weak var delegate: BPChatRoomCellDelegate?
 
     private var avatarImageView: UIImageView = {
         let imageView = UIImageView()
@@ -49,7 +55,7 @@ class BPChatRoomCell: UITableViewCell {
         return arrowLayer
     }()
 
-    private var bubbleView: BPChatRoomBaseMessageBubble?
+    var bubbleView: BPChatRoomBaseMessageBubble?
 
     // 替换为自定义视图
     private var contentLabel: UILabel = {
@@ -86,8 +92,9 @@ class BPChatRoomCell: UITableViewCell {
     }
 
     // MARK: ==== Evnet ====
-    func setData(model: BPMessageModel) {
+    func setData(model: BPMessageModel, indexPath: IndexPath) {
         self.messageModel = model
+        self.indexPath    = indexPath
         // 设置内容展示视图
         self.setBubbleView()
         // 设置箭头视图
@@ -126,6 +133,14 @@ class BPChatRoomCell: UITableViewCell {
         }
     }
 
+    /// 点击bubble区域事件
+    @objc private func clickBubbleAction() {
+        guard let model = self.messageModel, let indexPath = self.indexPath else {
+            return
+        }
+        self.delegate?.clickBubble(model: model, indexPath: indexPath)
+    }
+
     // MARK: ==== Tools ===
 
     private func setBubbleView() {
@@ -146,6 +161,9 @@ class BPChatRoomCell: UITableViewCell {
         self.bubbleView?.backgroundColor    = bgColor
         self.bubbleView?.layer.cornerRadius = 5
         self.addSubview(bubbleView!)
+        // 设置事件
+        let tapAction = UITapGestureRecognizer(target: self, action: #selector(self.clickBubbleAction))
+        self.bubbleView?.addGestureRecognizer(tapAction)
     }
 
     private func setArrowView() {

@@ -73,7 +73,7 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     // MARK: ==== Animation ====
-    func showAnimation(startView: UIImageView) {
+    private func showAnimation(startView: UIImageView) {
         self.startFrame = startView.convert(startView.bounds, to: kWindow)
         let imageView = UIImageView()
         imageView.frame       = startFrame!
@@ -91,7 +91,7 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
 
-    func hideAnimation(currentView: UIImageView) {
+    private func hideAnimation(currentView: UIImageView) {
         guard let startFrame = self.startFrame else {
             self.hide()
             return
