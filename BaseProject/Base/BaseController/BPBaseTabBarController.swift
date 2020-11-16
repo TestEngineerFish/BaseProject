@@ -53,7 +53,7 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
     
     /// 设置底部TabBarItem
     func addChildViewController() {
-        let chatVC = BPChatListViewController()
+        let chatVC = BPSessionListViewController()
         let chatNC = BPBaseNavigationController()
         chatNC.addChild(chatVC)
         chatNC.tabBarItem.title         = "消息"

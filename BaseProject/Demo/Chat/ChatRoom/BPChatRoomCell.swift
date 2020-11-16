@@ -16,6 +16,7 @@ class BPChatRoomCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.layer.cornerRadius  = 5
         imageView.layer.masksToBounds = true
+        imageView.contentMode         = .scaleAspectFill
         return imageView
     }()
 

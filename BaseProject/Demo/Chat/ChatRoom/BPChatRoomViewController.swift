@@ -12,6 +12,7 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
 
     private let cellID: String = "kBPChatRoomCell"
     private var firstScrollToBool = true
+    var sessionModel: BPSessionModel?
     private var messageModelList: [BPMessageModel] = []
 
     private var contentView: UIView = {
@@ -67,31 +68,20 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         self.tableView.register(BPChatRoomCell.classForCoder(), forCellReuseIdentifier: cellID)
         self.customNavigationBar?.title = "姓名"
         self.customNavigationBar?.backgroundColor = .white
+        self.customNavigationBar?.rightButtonTitle = "👮‍♀️"
         self.toolsView.delegate = self
     }
 
     override func bindData() {
         super.bindData()
-        for index in 0..<100 {
-            var message = BPMessageModel()
-            if index % 2 > 0 {
-                message.text = "Message"
-            } else {
-                message.text = "Message \(index)\nMessage\nMessage\nMessage\nMessage\nMessage\nMessagenMessagenMessagenMessagenMessagenMessage"
-            }
-            if index % 3 > 1 {
-                message.fromType = .friend
-            }
-            if index % 4 > 2 {
-                message.type = .image
-                let model = BPMediaModel()
-                message.mediaModel = model
-            }
-            self.messageModelList.append(message)
+        guard let _sessionModel = self.sessionModel else {
+            return
         }
+        self.messageModelList = BPIMDBCenter.default.selectAllMessage(session: _sessionModel.id)
         self.tableView.reloadData()
     }
 
+    // MARK: ==== Event ====
 
     // MARK: ==== UITableViewDelegate && UITableViewDataSource ====
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

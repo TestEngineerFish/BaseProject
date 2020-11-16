@@ -9,9 +9,9 @@
 import ObjectMapper
 
 enum BPMessageType: Int {
-    case text
-    case image
-    case system
+    case text   = 0
+    case image  = 1
+    case system = 2
 }
 
 enum BPMessageFromType: Int {
@@ -21,13 +21,22 @@ enum BPMessageFromType: Int {
     case local// 时间戳等
 }
 
+enum BPMessageStatus: Int {
+    case success
+    case fail
+    case sending
+}
+
 struct BPMessageModel: Mappable {
-    var id: Int             = 0
+    var id: String          = ""
+    var sessionId           = ""
     var text: String        = ""
-    var time: Double        = .zero
+    var time: Date          = Date()
     var type: BPMessageType = .text
     var fromType: BPMessageFromType = .me
     var mediaModel: BPMediaModel? // 多媒体资源
+    var status: BPMessageStatus = .success
+    var unread: Bool        = true
 
     init() {}
     init?(map: Map) {}

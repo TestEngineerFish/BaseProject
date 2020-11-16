@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BPChatCell: UITableViewCell {
+class BPSessionCell: UITableViewCell {
     private var avatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius  = 5
@@ -98,10 +98,10 @@ class BPChatCell: UITableViewCell {
     }
 
     // MARK: ==== Event ====
-    func setData(model: BPChatModel) {
+    func setData(model: BPSessionModel) {
         self.avatarImageView.image = UIImage(named: "dog")
         self.nameLabel.text        = model.name
         self.messageLabel.text     = model.lastMsg
-        self.timeLabel.text        = model.lastTime
+        self.timeLabel.text        = "\(model.msgTime)"
     }
 }

@@ -14,8 +14,10 @@ struct BPSQLManager {
     static let createNormalTables = [CreateNormalTableSQLs.newsNotification.rawValue]
 
     /// 初始化IM系统数据时,构造的表结构
-    static let createIMTables = [CreateIMTableSQLs.recentSession.rawValue,
-                                CreateIMTableSQLs.recentSessionMap.rawValue]
+    static let createIMTables = [
+        CreateIMTableSQLs.session.rawValue,
+        CreateIMTableSQLs.message.rawValue,
+        CreateIMTableSQLs.friend.rawValue]
 
     // MARK: 创建表
     /// 创建普通数据的所需要的表结构
@@ -27,28 +29,127 @@ struct BPSQLManager {
     }
     /// 创建IM系统所需要的表结构
     enum CreateIMTableSQLs: String {
-        case recentSession =
+        case session =
         """
-        create table if not exists bp_recent_session(serial integer primary key, session_id text, session_type integer default 0, msg_id text, msg_from_user_id text, msg_from_user_name text, msg_from_user_avatar_url text, msg_content text, msg_type integer, msg_time integer, msg_status integer, msg_unread_count integer default 0, local_extend blob, remote_extend blob)
+        CREATE TABLE IF NOT EXISTS bp_session(
+            serial integer primary key,
+            session_id text,
+            session_type integer default 0,
+            is_top integer default 0,
+            friend_id text,
+            friend_name text,
+            friend_avatar_url text,
+            last_msg text,
+            msg_time integer,
+            msg_status integer,
+            msg_unread_count integer default 0,
+            create_time integer(32) NOT NULL DEFAULT(datetime('now', 'localtime')),
+            local_extend blob,
+            remote_extend blob);
         """
         case message =
         """
-        create table if not exists bp_message(serial integer primary key, msg_id integer, type integer, from_user_id text, to_user_id text, status integer, content text, time integer, unread integer, local_extend blob, remote_extend blob)
+        CREATE TABLE IF NOT EXISTS bp_message(
+            serial integer primary key,
+            msg_id text,
+            session_id text,
+            type integer,
+            status integer,
+            content text,
+            from_type integer,
+            media_json text,
+            create_time integer(32) NOT NULL DEFAULT(datetime('now', 'localtime')),
+            is_unread integer,
+            local_extend blob,
+            remote_extend blob
+        );
         """
-        case recentSessionMap =
+        case friend =
         """
-        create table if not exists bp_recent_session_map(serial integer primary key, session_id integer, message_table_name text)
+        CREATE TABLE IF NOT EXISTS bp_friend(
+            serial integer primary key,
+            friend_id integer,
+            name text,
+            friend_avatar_url text,
+            status integer,
+            create_time integer(32) NOT NULL DEFAULT(datetime('now', 'localtime')),
+            local_extend blob,
+            remote_extend blob);
+        """
+//        case recentSessionMap =
+//        """
+//        create table if not exists bp_session_map(serial integer primary key, session_id integer, message_table_name text)
+//        """
+    }
+
+    // MARK: IM表
+    // TODO: ==== Session ====
+    enum IMSession: String {
+        case selectAllSession =
+        """
+        SELECT * FROM bp_session
+        """
+        case selectSession =
+        """
+        SELECT * FROM bp_session
+        WHERE friend_id = ?
+        """
+        case insertSession =
+        """
+        INSERT INTO bp_session(
+            session_id,
+            session_type,
+            friend_id,
+            friend_name,
+            friend_avatar_url,
+            last_msg,
+            msg_time,
+            msg_status)
+        VALUES (?,?,?,?,?,
+                ?,?,?);
+        """
+        case updateSession =
+        """
+        UPDATE bp_session
+        SET last_msg = ?, msg_time = ?, msg_status = ?, msg_unread_count = ?
+        WHERE session_id = ?
+        """
+        case deleteSession =
+        """
+        DELETE FROM bp_session
+        WHERE session_id = ?
+        """
+        case deleteAllSession =
+        """
+        DELETE FROM bp_session
         """
     }
 
-    // MARK: 修改表
-
-
-    // MARK: 查询表
-    enum SelectIMTableSQLs: String {
-        case selectAllRecentSession =
+    // TODO: ==== Message ====
+    enum IMMessage: String {
+        case selectAllMessage =
         """
-        select * from bp_recent_session
+        SELECT * FROM bp_message
+        WHERE session_id = ?
+        """
+        case insertMessage =
+        """
+        INSERT INTO bp_message(
+            msg_id,
+            session_id,
+            type,
+            from_type,
+            status,
+            content,
+            create_time,
+            is_unread)
+        VALUES (?,?,?,?,?,
+                ?,?,?)
+        """
+        case deleteAllMessageWithSession =
+        """
+        DELETE FROM bp_message
+        WHERE session_id = ?
         """
     }
 

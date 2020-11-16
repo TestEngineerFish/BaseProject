@@ -8,19 +8,23 @@
 
 import ObjectMapper
 
-enum BPChatType: Int {
-    case normal
-    case group
+enum BPSessionType: Int {
+    case normal = 0
+    case system = 1
+    case group  = 2
 }
 
-struct BPChatModel: Mappable {
-    var id: Int          = 0
+struct BPSessionModel: Mappable {
+    var id: String       = ""
+    var friendId: String = ""
     var avatarPath: String?
     var name: String     = ""
     var lastMsg: String  = ""
-    var lastTime: String = ""
+    var msgTime: Double  = .zero
+    var lastMsgStatus    = BPMessageStatus.success
     var isTop: Bool      = false
-    var type: BPChatType = .normal
+    var type: BPSessionType = .normal
+    var unreadCount: Int = 0
 
     init() {}
     init?(map: Map) {}
