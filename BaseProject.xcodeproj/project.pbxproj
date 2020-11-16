@@ -135,7 +135,6 @@
 		CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869522F6F5380031E4B9 /* UINavigationController+Extension.swift */; };
 		CF87869822F709C20031E4B9 /* BPAuthoriationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869722F709C20031E4B9 /* BPAuthoriationManager.swift */; };
 		CF87869A22F87BD60031E4B9 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87869922F87BD60031E4B9 /* UIImage+Extension.swift */; };
-		CF8EB56422DCC05D00EC2FE5 /* SAMKeychain+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56322DCC05D00EC2FE5 /* SAMKeychain+Extension.swift */; };
 		CF8EB56622DCC09B00EC2FE5 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56522DCC09B00EC2FE5 /* Bundle+Extension.swift */; };
 		CF8EB56B22DCC45800EC2FE5 /* UserDefault+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EB56A22DCC45800EC2FE5 /* UserDefault+Extension.swift */; };
 		CF8EB57B22DCC61400EC2FE5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8EB57A22DCC61400EC2FE5 /* AVFoundation.framework */; };
@@ -307,7 +306,6 @@
 		CF87869522F6F5380031E4B9 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		CF87869722F709C20031E4B9 /* BPAuthoriationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BPAuthoriationManager.swift; path = BaseProject/Utils/Authoriation/BPAuthoriationManager.swift; sourceTree = SOURCE_ROOT; };
 		CF87869922F87BD60031E4B9 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
-		CF8EB56322DCC05D00EC2FE5 /* SAMKeychain+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SAMKeychain+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB56522DCC09B00EC2FE5 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB56A22DCC45800EC2FE5 /* UserDefault+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Extension.swift"; sourceTree = "<group>"; };
 		CF8EB57A22DCC61400EC2FE5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -489,6 +487,7 @@
 			isa = PBXGroup;
 			children = (
 				22980CBF255E468F0013170A /* ChatRoom */,
+				2297FE3B255FB50C000D45C3 /* ToolsView */,
 				22980CBE255E46880013170A /* ChatList */,
 			);
 			path = Chat;
@@ -559,7 +558,6 @@
 		22980CBF255E468F0013170A /* ChatRoom */ = {
 			isa = PBXGroup;
 			children = (
-				2297FE3B255FB50C000D45C3 /* ToolsView */,
 				228341C7255E219C0018A6F6 /* BPChatRoomViewController.swift */,
 				22980CB8255E459E0013170A /* BPMessageModel.swift */,
 				22980CC0255E47E40013170A /* BPChatRoomCell.swift */,
@@ -672,7 +670,6 @@
 			children = (
 				22C621ED22DC8A7800A7C849 /* UIDevice+Extension.swift */,
 				22C621F622DC8E0B00A7C849 /* UIColor+Extension.swift */,
-				CF8EB56322DCC05D00EC2FE5 /* SAMKeychain+Extension.swift */,
 				CF8EB56522DCC09B00EC2FE5 /* Bundle+Extension.swift */,
 				CF8EB56A22DCC45800EC2FE5 /* UserDefault+Extension.swift */,
 				CF8EB58A22DCCCA600EC2FE5 /* UIFont+Extension.swift */,
@@ -1153,7 +1150,6 @@
 				225C48E124DD425700594FEE /* AlgorithmViewController.swift in Sources */,
 				2245820B2326549E0031CC7A /* BPCacheManager.swift in Sources */,
 				2264EF7F22F820F900A89C82 /* BPAlerViewTwoButton.swift in Sources */,
-				CF8EB56422DCC05D00EC2FE5 /* SAMKeychain+Extension.swift in Sources */,
 				22CDA250254F9A9500B6FDCB /* BPImageBrowserCell.swift in Sources */,
 				225C48E724DD4FF800594FEE /* BaseTableView.swift in Sources */,
 				22D018F92321F7F0007AFA1B /* BPDatabaseProtocol.swift in Sources */,
@@ -1395,7 +1391,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = samOriginal.BaseProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.red00.miyue;
 				PRODUCT_NAME = BaseProject;
 				SWIFT_OBJC_BRIDGING_HEADER = "BaseProject/Resource/BaseProject-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1417,7 +1413,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = samOriginal.BaseProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.red00.miyue;
 				PRODUCT_NAME = BaseProject;
 				SWIFT_OBJC_BRIDGING_HEADER = "BaseProject/Resource/BaseProject-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

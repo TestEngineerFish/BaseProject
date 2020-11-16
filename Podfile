@@ -8,6 +8,8 @@ target 'BaseProject' do
   # Comment the next line if you don't want to use dynamic frameworks
   # 异常监控
   pod 'Bugly'
+  # 键盘管理
+  pod 'IQKeyboardManager'
   # 钥匙串访问
 #  pod 'SAMKeychain'
   # 网络请求

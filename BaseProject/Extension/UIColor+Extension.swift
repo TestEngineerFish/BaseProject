@@ -117,12 +117,6 @@ public extension UIColor {
     /// 主色黑 (red: 34, green: 34, blue: 34)
     static let black1 = ColorWithRGBA(red: 34, green: 34, blue: 34)
 
-    /// 文字背景灰色（red: 247, green: 247, blue: 247）
-    static let gray10 = ColorWithRGBA(red: 247, green: 247, blue: 247)
-
-    /// 按钮背景灰色（red: 247, green: 247, blue: 247）加 50% 透明度
-    static let gray11 = ColorWithRGBA(red: 247, green: 247, blue: 247).withAlphaComponent(0.5)
-
     /// 友友页面头像提示背景颜色（red: 233, green: 239, blue: 235）
     static let green6 = ColorWithRGBA(red: 233, green: 239, blue: 235)
 
@@ -159,35 +153,6 @@ public extension UIColor {
     /** 金黄色（友币图标底色） (red: 255, green: 190, blue: 0) */
     static let yellow2 = ColorWithRGBA(red: 255, green: 190, blue: 0)
 
-    /** 深灰色 (red: 136, green: 136, blue: 136) */
-    static let gray1 = ColorWithRGBA(red: 136, green: 136, blue: 136)
-
-    /** 浅灰色 (red: 165, green: 165, blue: 165) */
-    static let gray2 = ColorWithRGBA(red: 165, green: 165, blue: 165)
-
-    /** 浅灰色 (red: 241, green: 241, blue: 241) */
-    static let gray3 = ColorWithRGBA(red: 241, green: 241, blue: 241)
-
-    /** 浅灰色 (red: 213, green: 213, blue: 213) */
-    static let gray4 = ColorWithRGBA(red: 213, green: 213, blue: 213)
-
-    /** 浅灰色 (red: 179, green: 179, blue: 179) */
-    static let gray5 = ColorWithRGBA(red: 179, green: 179, blue: 179)
-
-    /** 浅灰色 (red: 245, green: 245, blue: 245) */
-    static let gray6 = ColorWithRGBA(red: 245, green: 245, blue: 245)
-
-    /** 浅灰色 (red: 193, green: 193, blue: 193) */
-    static let gray7 = ColorWithRGBA(red: 193, green: 193, blue: 193)
-
-    /** 浅灰色 (red: 157, green: 157, blue: 157) */
-    static let gray8 = ColorWithRGBA(red: 157, green: 157, blue: 157)
-
-    /** 浅灰色 (red: 239, green: 239, blue: 239) */
-    static let gray9 = ColorWithRGBA(red: 239, green: 239, blue: 239)
-
-    /** 浅灰色 (red: 239, green: 239, blue: 239) */
-    static let gray12 = ColorWithRGBA(red: 151, green: 151, blue: 151)
 
     /** 赞/喜欢 (red: 247, green: 98, blue: 96) */
     static let red1 = ColorWithRGBA(red: 233, green: 79, blue: 79)
@@ -227,5 +192,29 @@ public extension UIColor {
 
     /** qq 空间底色 (red: 255, green: 190, blue: 0) */
     static let orange1 = ColorWithRGBA(red: 255, green: 190, blue: 0)
+
+    // MARK: ==== Gray ====
+    /// 聊天室背景
+    static let gray0 = UIColor(red:0.95, green:0.95, blue:0.95, alpha:1.00)
+
+    /** 深灰色 (red: 136, green: 136, blue: 136) */
+    static let gray1 = ColorWithRGBA(red: 136, green: 136, blue: 136)
+
+    /// 聊天室底部工具栏背景色
+    static let gray2 = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1.00)
+
+    /** 浅灰色 (red: 241, green: 241, blue: 241) */
+    static let gray3 = ColorWithRGBA(red: 241, green: 241, blue: 241)
+
+    /** 浅灰色 (red: 245, green: 245, blue: 245) */
+    static let gray6 = ColorWithRGBA(red: 245, green: 245, blue: 245)
+
+    // MARK: ==== Green ====
+    /// 聊天室自己发送的消息气泡颜色
+    static let green0 = UIColor(red:0.67, green:0.91, blue:0.48, alpha:1.00)
+
+    // MARK: ==== White ====
+    /// 聊天室别人发送的消息气泡颜色
+    static let white0 = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.00)
 
 }

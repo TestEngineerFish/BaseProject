@@ -81,6 +81,8 @@ class BPChatRoomCell: UITableViewCell {
     }
 
     private func bindProperty() {
+        self.selectionStyle  = .none
+        self.backgroundColor = .clear
     }
 
     // MARK: ==== Evnet ====
@@ -132,7 +134,16 @@ class BPChatRoomCell: UITableViewCell {
             self.bubbleView?.removeFromSuperview()
         }
         self.bubbleView = BPChatRoomMessageBubbleFactory.buildView(message: model)
-        self.bubbleView?.backgroundColor    = UIColor.randomColor()
+        var bgColor = UIColor.clear
+        switch model.fromType {
+        case .me:
+            bgColor = .green0
+        case .friend:
+            bgColor = .white0
+        default:
+            break
+        }
+        self.bubbleView?.backgroundColor    = bgColor
         self.bubbleView?.layer.cornerRadius = 5
         self.addSubview(bubbleView!)
     }

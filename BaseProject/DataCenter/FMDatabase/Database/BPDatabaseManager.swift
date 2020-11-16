@@ -60,8 +60,6 @@ class BPDatabaseManager {
     /// - Throws: 构造失败异常
     private func imRunner() throws -> FMDatabase {
         let filePath = self.dbFilePath(fileName: BPDatabaseType.im.rawValue)
-        BPLog("++++")
-        BPLog(filePath)
         return try createRunner(type: .im, filePath: filePath, sqls: BPSQLManager.createIMTables)
     }
 

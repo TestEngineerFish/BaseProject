@@ -11,3 +11,4 @@
 #import "BPMatrix.h"
 #import "BPPoint.h"
 #import "Kingfisher.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>

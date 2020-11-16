@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit.UIDevice
-import SAMKeychain
 import CommonCrypto
 import AdSupport
 import CoreTelephony
@@ -56,38 +55,6 @@ public extension UIDevice {
             return nil
         }
         return uuid.uuidString
-    }()
-
-    /// 通用唯一标示码
-    /// UUID（Universally Unique Identifier）
-    /// 获取方法: UUID().uuidString
-    /// 每次获取都不一样.建议存储
-
-    /// openUDID
-    /// 设备唯一描述标识符
-    /// UDID（Unique Device Identifier Description)
-    /// 5.0之后已被苹果禁止获取
-    static let openUDID: String = {
-        var localOpenUDID: String = SAMKeychain.openUDID
-        if !localOpenUDID.isEmpty {
-            return localOpenUDID
-        }
-
-        var cStr: String = ProcessInfo.processInfo.globallyUniqueString
-        let strLen = CC_LONG(cStr.lengthOfBytes(using: String.Encoding.utf8))
-        let digestLen = Int(CC_MD5_DIGEST_LENGTH)
-        let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
-
-        CC_MD5(cStr, strLen, result)
-
-        let udid: String = String(format: "%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%08lx", result[0], result[1], result[2], result[3],
-                                  result[4], result[5], result[6], result[7],
-                                  result[8], result[9], result[10], result[11],
-                                  result[12], result[13], result[14], result[15],
-                                  arc4random() % 4294967295)
-        SAMKeychain.openUDID = udid
-
-        return udid
     }()
 
     /// 获取运营商信息

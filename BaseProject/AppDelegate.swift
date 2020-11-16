@@ -36,17 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func initThirdPartyServices() {
         // ---- 日志 ----
         BPOCLog.shared()?.launch()
-//        DDLog.add(DDOSLogger.sharedInstance) // 发送到苹果控制台
-//        let fileLogger = DDFileLogger()
-//        fileLogger.rollingFrequency = 60 * 60 * 24
-//        fileLogger.logFileManager.maximumNumberOfLogFiles = 7
-//        DDLog.add(fileLogger)
-//        // debug
-//        DDLogVerbose("👽Verbose")
-//        DDLogDebug("🤷🏻‍♂️Debug")
-//        DDLogInfo("💻Info")
-//        DDLogWarn("⚠️Warn")
-//        DDLogError("❌Error")
+        // ---- 软件盘 ----
+        IQKeyboardManager.shared().shouldResignOnTouchOutside = true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -71,6 +62,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    /// 禁止使用第三方软件盘
+    func application(_ application: UIApplication, shouldAllowExtensionPointIdentifier extensionPointIdentifier: UIApplication.ExtensionPointIdentifier) -> Bool {
+        if extensionPointIdentifier == UIApplication.ExtensionPointIdentifier.keyboard {
+            return false
+        }
+        return true
+    }
 
 }
 

@@ -147,10 +147,15 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if BPIMDBCenter.default.deleteAllSession() {
-                self.chatModelList.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
+            // 删除会话在（数据库）
+            BPIMDBCenter.default.deleteAllSession()
+            // 删除会话对应的消息（数据库）
+            let sessionModel = self.chatModelList[indexPath.row]
+            BPIMDBCenter.default.deleteAllMessage(session: sessionModel.id)
+            // 删除会话在（内存）
+            self.chatModelList.remove(at: indexPath.row)
+            // 删除会话（列表）
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
 }

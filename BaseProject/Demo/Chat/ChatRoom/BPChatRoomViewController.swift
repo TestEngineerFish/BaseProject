@@ -11,7 +11,6 @@ import Foundation
 class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableViewDataSource, BPChatRoomToolsViewDelegate {
 
     private let cellID: String = "kBPChatRoomCell"
-    private var firstScrollToBool = true
     var sessionModel: BPSessionModel?
     private var messageModelList: [BPMessageModel] = []
 
@@ -23,11 +22,11 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
 
     private var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor                = .white
+        tableView.backgroundColor                = .clear
         tableView.showsVerticalScrollIndicator   = false
         tableView.showsHorizontalScrollIndicator = false
-        tableView.estimatedRowHeight = AdaptSize(50)
-        tableView.separatorStyle = .none
+        tableView.estimatedRowHeight             = AdaptSize(50)
+        tableView.separatorStyle                 = .none
         return tableView
     }()
 
@@ -37,7 +36,18 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         self.createSubviews()
         self.bindProperty()
+        self.registerNotification()
         self.bindData()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        IQKeyboardManager.shared().isEnabled = false
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        IQKeyboardManager.shared().isEnabled = true
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func createSubviews() {
@@ -63,13 +73,20 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
 
     override func bindProperty() {
         super.bindProperty()
+        self.view.backgroundColor = .gray3
         self.tableView.delegate   = self
         self.tableView.dataSource = self
         self.tableView.register(BPChatRoomCell.classForCoder(), forCellReuseIdentifier: cellID)
         self.customNavigationBar?.title = "姓名"
-        self.customNavigationBar?.backgroundColor = .white
+        self.customNavigationBar?.backgroundColor  = .white
         self.customNavigationBar?.rightButtonTitle = "👮‍♀️"
         self.toolsView.delegate = self
+        IQKeyboardManager.shared().isEnableAutoToolbar = false
+    }
+
+    override func registerNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     override func bindData() {
@@ -82,6 +99,27 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
     }
 
     // MARK: ==== Event ====
+    @objc private func showKeyboard(notification: Notification) {
+        guard let frameValue = notification.userInfo?[BPChatRoomViewController.keyboardFrameEndUserInfoKey] as? CGRect, let durationTime = notification.userInfo?[BPChatRoomViewController.keyboardAnimationDurationUserInfoKey] as? TimeInterval else {
+            return
+        }
+        self.scrollViewToBottom()
+        UIView.animate(withDuration: durationTime) { [weak self] in
+            guard let self = self else { return }
+            let offsetY = -(frameValue.height - kSafeBottomMargin)
+            self.contentView.transform = CGAffineTransform(translationX: 0, y: offsetY)
+        }
+    }
+
+    @objc private func hideKeyboard(notification: Notification) {
+        guard let durationTime = notification.userInfo?[BPChatRoomViewController.keyboardAnimationDurationUserInfoKey] as? TimeInterval else {
+            return
+        }
+        UIView.animate(withDuration: durationTime) { [weak self] in
+            guard let self = self else { return }
+            self.contentView.transform = .identity
+        }
+    }
 
     // MARK: ==== UITableViewDelegate && UITableViewDataSource ====
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -99,23 +137,14 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         return cell
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        UIView.animate(withDuration: 0.25) { [weak self] in
-            guard let self = self else { return }
-            self.contentView.transform = .identity
-            self.toolsView.status      = .normal
-
-        }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        BPLog(scrollView.contentOffset)
     }
 
     // MARK: ==== Tools ===
     /// 滑动到列表底部
     /// - Parameter animated: 是否显示动画
-    private func scrollViewToBottom(animated: Bool) {
-        guard self.firstScrollToBool else {
-            return
-        }
-        self.firstScrollToBool = false
+    private func scrollViewToBottom(animated: Bool = true) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.005) { [weak self] in
             guard let self = self, !self.messageModelList.isEmpty else { return }
             let offsetIndexPath = IndexPath(row: self.messageModelList.count - 1, section: 0)
@@ -126,16 +155,6 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
     // MARK: ==== BPChatRoomToolsViewDelegate ====
     func clickSwitchAction(transform: CGAffineTransform) {
         BPLog("clickSwitchAction")
-        self.view.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 0.25) { [weak self] in
-            guard let self = self else { return }
-            self.contentView.transform = transform
-        } completion: { (finished) in
-            if finished {
-                self.view.isUserInteractionEnabled = true
-            }
-        }
-
     }
 
     func clickEmojiAction(transform: CGAffineTransform) {
@@ -168,6 +187,20 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
     }
 
     func sendMessage(text: String) {
+        guard let _sessionModel = self.sessionModel else { return }
         BPLog("sendMessage:\(text)")
+        var messageMode = BPMessageModel()
+        messageMode.id        = "\(Date().local().timeIntervalSince1970)"
+        messageMode.sessionId = _sessionModel.id
+        messageMode.text      = text
+        messageMode.time      = Date().local()
+        messageMode.type      = .text
+        messageMode.fromType  = .me
+        messageMode.status    = .success
+        messageMode.unread    = true
+        BPIMDBCenter.default.insertMessage(message: messageMode)
+        self.messageModelList.append(messageMode)
+        let nextIndexPath = IndexPath(row: self.messageModelList.count - 1, section: 0)
+        self.tableView.insertRows(at: [nextIndexPath], with: .none)
     }
 }

@@ -11,13 +11,23 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
+  - IQKeyboardManager (6.5.5)
   - Kingfisher (5.9.0):
     - Kingfisher/Core (= 5.9.0)
   - Kingfisher/Core (5.9.0)
   - lottie-ios (3.1.3)
   - ObjectMapper (3.5.1)
-  - SAMKeychain (1.5.3)
+  - Protobuf (3.12.0)
   - SnapKit (5.0.1)
+  - SSZipArchive (2.2.3)
+  - SVGAPlayer (2.5.3):
+    - SVGAPlayer/Core (= 2.5.3)
+    - SVGAPlayer/ProtoFiles (= 2.5.3)
+  - SVGAPlayer/Core (2.5.3):
+    - SSZipArchive (>= 1.8.1)
+    - SVGAPlayer/ProtoFiles
+  - SVGAPlayer/ProtoFiles (2.5.3):
+    - Protobuf (~> 3.4)
   - Toast-Swift (5.0.0)
   - ZipArchive (1.4.0)
 
@@ -28,11 +38,12 @@ DEPENDENCIES:
   - CocoaLumberjack/Swift
   - FDFullscreenPopGesture (= 1.1)
   - FMDB
+  - IQKeyboardManager
   - Kingfisher (~> 5.7)
   - lottie-ios
   - ObjectMapper (~> 3.5.1)
-  - SAMKeychain
   - SnapKit (~> 5.0.0)
+  - SVGAPlayer
   - Toast-Swift (~> 5.0.0)
   - ZipArchive
 
@@ -44,11 +55,14 @@ SPEC REPOS:
     - CocoaLumberjack
     - FDFullscreenPopGesture
     - FMDB
+    - IQKeyboardManager
     - Kingfisher
     - lottie-ios
     - ObjectMapper
-    - SAMKeychain
+    - Protobuf
     - SnapKit
+    - SSZipArchive
+    - SVGAPlayer
     - Toast-Swift
     - ZipArchive
 
@@ -59,14 +73,17 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 78b0c238666f4f58db069738ec176f4519557516
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  IQKeyboardManager: 3a8b9e603f8b0eeaf5f096a1f2b2cfcf121992ef
   Kingfisher: ff98240aebb7302bdc4f1ecd701761030ce18b16
   lottie-ios: 496ac5cea1bbf1a7bd1f1f472f3232eb1b8d744b
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
-  SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
+  Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
+  SVGAPlayer: 0272c32ad7d5db92cafe91a176b779dfc5c92565
   Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: ea6b8ab122b308c4d3467a5799528e4dad4a5bda
+PODFILE CHECKSUM: 9e1ce40604a06cbae262f1d7736b5527136ff306
 
 COCOAPODS: 1.8.4

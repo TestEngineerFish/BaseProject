@@ -94,7 +94,7 @@ class BPSessionCell: UITableViewCell {
     }
 
     private func bindProperty() {
-
+        self.selectionStyle  = .none
     }
 
     // MARK: ==== Event ====

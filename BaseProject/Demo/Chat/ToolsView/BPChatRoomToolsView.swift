@@ -38,6 +38,7 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
 
     var status: ToolsViewStatus = ToolsViewStatus.normal {
         willSet {
+            self.textFieldView.resignFirstResponder()
             switch newValue {
             case .normal:
                 self.moreView.isHidden     = true
@@ -47,6 +48,7 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
                 self.moreView.isHidden     = true
                 self.recordButton.isHidden = true
                 self.switchButton.setTitle(IconFont.record.rawValue, for: .normal)
+                self.textFieldView.becomeFirstResponder()
             case .showRecordButton:
                 self.moreView.isHidden     = true
                 self.recordButton.isHidden = false
@@ -80,11 +82,19 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
         return button
     }()
     private var textFieldView: UITextField = {
+        let leftView = UIView(frame: CGRect(x: .zero, y: .zero, width: AdaptSize(10), height: AdaptSize(10)))
+        let rightView = UIView(frame: CGRect(x: .zero, y: .zero, width: AdaptSize(10), height: .zero))
         let textFieldView = UITextField()
-        textFieldView.leftView = UIView()
-        textFieldView.rightView = UIView()
+        textFieldView.leftView           = leftView
+        textFieldView.rightView          = rightView
+        textFieldView.leftViewMode       = .always
+        textFieldView.rightViewMode      = .always
         textFieldView.layer.cornerRadius = 5
-        textFieldView.backgroundColor = .white
+        textFieldView.backgroundColor    = .white
+        textFieldView.returnKeyType      = .send
+        textFieldView.textColor          = .black1
+        textFieldView.font               = UIFont.regularFont(ofSize: 14)
+        textFieldView.enablesReturnKeyAutomatically = true // 无文字不可点
         return textFieldView
     }()
     private var emojiButton: BPButton = {
@@ -154,7 +164,7 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
 
     override func bindProperty() {
         super.bindProperty()
-        self.backgroundColor        = .gray5
+        self.backgroundColor        = .gray2
         self.recordButton.isHidden  = true
         self.moreView.isHidden      = true
         self.textFieldView.delegate = self
@@ -205,5 +215,12 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
     }
 
     // MARK: ==== UITextFieldDelegate ====
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let text = textField.text else {
+            return false
+        }
+        self.delegate?.sendMessage(text: text)
+        textField.text = ""
+        return true
+    }
 }
