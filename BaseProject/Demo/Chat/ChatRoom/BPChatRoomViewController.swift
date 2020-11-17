@@ -210,11 +210,7 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
     }
 
     // MARK: ==== BPChatRoomToolsViewDelegate ====
-    func clickSwitchAction(transform: CGAffineTransform) {
-        BPLog("clickSwitchAction")
-    }
-
-    func clickEmojiAction(transform: CGAffineTransform) {
+    func clickEmojiAction(transform:CGAffineTransform) {
         self.view.isUserInteractionEnabled = false
         UIView.animate(withDuration: 0.25) { [weak self] in
             guard let self = self else { return }
@@ -226,8 +222,19 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         }
         BPLog("clickEmojiAction")
     }
-
-    func clickMoreAction(transform: CGAffineTransform) {
+    func clickPhotoAction(transform:CGAffineTransform) {
+        BPLog("clickPhotoAction")
+    }
+    func clickCameraAction() {
+        BPLog("clickCameraAction")
+    }
+    func clickRecordAction(transform:CGAffineTransform) {
+        BPLog("clickRecordAction")
+    }
+    func clickGiftAction(transform:CGAffineTransform) {
+        BPLog("clickGiftAction")
+    }
+    func clickMoreAction(transform:CGAffineTransform) {
         self.view.isUserInteractionEnabled = false
         UIView.animate(withDuration: 0.25) { [weak self] in
             guard let self = self else { return }
@@ -238,11 +245,9 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
             }
         }
     }
-
     func recordingAction() {
         BPLog("recordingAction")
     }
-
     func sendMessage(text: String) {
         self.sendTimeMessage()
         self.sendTextMessage(text: text)

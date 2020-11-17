@@ -104,7 +104,7 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
                 // 删除所有当前会话消息
                 BPIMDBCenter.default.deleteAllMessage(session: model.id)
                 // 插入会话对应的消息
-                for index in 0..<10 {
+                for index in 0..<100 {
                     var message = BPMessageModel()
                     message.id = "\(index)"
                     message.sessionId = model.id
@@ -123,13 +123,15 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
                         let model = BPMediaModel()
                         message.mediaModel = model
                     }
-                    if true {
+                    if index % 5 > 3 {
                         message.fromType = .me
                         message.type = .image
                         var model = BPMediaModel()
                         model.id = index + 100
                         model.thumbnailLocalPath = imageLocalPath ?? ""
                         model.originLocalPath    = imageLocalPath ?? ""
+//                        model.thumbnailRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1588620919,359805583&fm=26&gp=0.jpg"
+//                        model.originRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3313838802,2768404782&fm=26&gp=0.jpg"
                         message.mediaModel = model
                     }
                     BPIMDBCenter.default.insertMessage(message: message)

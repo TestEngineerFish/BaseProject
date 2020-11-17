@@ -81,7 +81,7 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate, BP
         publish.tabBarItem.isEnabled     = false
         self.addChild(publish)
         
-        let messageVC = ViewController3()
+        let messageVC = ViewController1()
         let message = BPBaseNavigationController()
         message.addChild(messageVC)
         message.view.addSubview(messageVC.view)

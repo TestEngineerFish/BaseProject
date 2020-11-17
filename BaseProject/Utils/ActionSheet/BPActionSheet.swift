@@ -34,6 +34,7 @@ class BPActionSheet: BPTopWindowView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    @discardableResult
     func addItem(title: String, actionBlock: DefaultBlock?) -> BPActionSheet {
         let button = BPButton(.normal, frame: .zero, animation: true)
         button.setTitle(title, for: .normal)

@@ -74,8 +74,12 @@ struct BPMediaModel: Mappable, Hashable, Equatable, Any {
     ///   - progress: 下载远端缩略图的进度
     ///   - completion: 下载、加载图片完成回调
     func getOriginImage(progress: ((CGFloat) ->Void)?, completion: DefaultImageBlock?) {
-        if let path = self.originLocalPath, let image = UIImage(contentsOfFile: path) {
-            completion?(image)
+        if let path = self.originLocalPath {
+            BPImageView().showImage(with: path, placeholder: nil) { (image, error, url) in
+                completion?(image)
+            } downloadProgress: { (progress) in
+                BPLog(progress)
+            }
         } else {
             guard let path = self.originRemotePath else { return }
             BPDownloadManager.share.image(name: "OriginImage", urlStr: path, type: .originImage, progress: progress, completion: completion)
@@ -95,6 +99,11 @@ struct BPMediaModel: Mappable, Hashable, Equatable, Any {
         self.originLocalPath     <- map["originLocalPath"]
         self.originRemotePath    <- map["originRemotePath"]
         self.videoTime           <- map["videoTime"]
+    }
+
+    // MARK: ==== Tools ====
+    private func queryImageCache(path: String, block: DefaultImageBlock) {
+
     }
     
 }

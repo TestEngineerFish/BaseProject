@@ -124,7 +124,6 @@ class BPButton: UIButton {
         guard self.showAnimation else {
             return
         }
-        // 动画效果UI说暂时不要，哎…………伤心💔
         let animation = CAKeyframeAnimation(keyPath: "transform.scale")
         animation.values       = [0.9]
         animation.duration     = 0.1
@@ -138,7 +137,6 @@ class BPButton: UIButton {
         guard self.showAnimation else {
             return
         }
-        // 动画效果UI说暂时不要，哎…………伤心💔
         let animation = CAKeyframeAnimation(keyPath: "transform.scale")
         animation.values       = [1.1, 0.95, 1.0]
         animation.duration     = 0.2

@@ -54,7 +54,6 @@ class BPSystemAlbumListView: BPView, UITableViewDelegate, UITableViewDataSource 
         backgroundView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-
     }
 
     override func bindProperty() {

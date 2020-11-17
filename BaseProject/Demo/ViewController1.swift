@@ -70,10 +70,10 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = BPSystemPhotoViewController()
-        self.navigationController?.present(vc, animated: true, completion: nil)
-        return
-//        BPAuthorizationManager.share.authorizePhotoWith { (result) in
+//        let vc = BPSystemPhotoViewController()
+//        self.navigationController?.present(vc, animated: true, completion: nil)
+//        return
+//        BPAuthorizationManager.share.photo { (result) in
 //            if result {
 //                BPLog("Success!!")
 //            } else {
@@ -81,24 +81,24 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
 //            }
 //        }
 //        return
-//        var imageList = [BPMediaModel]()
-//        for index in 0..<200 {
-//            var model = BPMediaModel()
-//            // 缺容错处理
-//            model.id        = index
-//            model.type      = index % 3 > 1 ? .video : .thumbImage
-//            model.videoTime = Double(index) * 4
-//            model.thumbnailRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1588620919,359805583&fm=26&gp=0.jpg"
-//            model.originRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3313838802,2768404782&fm=26&gp=0.jpg"
-//            imageList.append(model)
-//        }
-//        let vc = BPPhoteAlbumViewController()
-//        vc.modelList = imageList
-//        self.navigationController?.pushViewController(vc, animated: true)
-//        return
-//        var imageModelList = [BPImageModel]()
+        var imageList = [BPMediaModel]()
+        for index in 0..<200 {
+            var model = BPMediaModel()
+            // 缺容错处理
+            model.id        = index
+            model.type      = index % 3 > 1 ? .video : .thumbImage
+            model.videoTime = Double(index) * 4
+            model.thumbnailRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1588620919,359805583&fm=26&gp=0.jpg"
+            model.originRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3313838802,2768404782&fm=26&gp=0.jpg"
+            imageList.append(model)
+        }
+        let vc = BPPhotoAlbumViewController()
+        vc.modelList = imageList
+        self.navigationController?.pushViewController(vc, animated: true)
+        return
+//        var imageModelList = [BPMediaModel]()
 //        for _ in 0..<10 {
-//            let model = BPImageModel()
+//            let model = BPMediaModel()
 //            imageModelList.append(model)
 //        }
 //        BPImageBrowser(dataSource: imageModelList, current: 1).show()
