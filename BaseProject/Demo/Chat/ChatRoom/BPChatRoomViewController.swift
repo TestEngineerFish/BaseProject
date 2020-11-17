@@ -224,12 +224,30 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
     }
     func clickPhotoAction(transform:CGAffineTransform) {
         BPLog("clickPhotoAction")
+        self.view.isUserInteractionEnabled = false
+        UIView.animate(withDuration: 0.25) { [weak self] in
+            guard let self = self else { return }
+            self.contentView.transform = transform
+        } completion: { (finished) in
+            if finished {
+                self.view.isUserInteractionEnabled = true
+            }
+        }
     }
     func clickCameraAction() {
         BPLog("clickCameraAction")
     }
     func clickRecordAction(transform:CGAffineTransform) {
         BPLog("clickRecordAction")
+        self.view.isUserInteractionEnabled = false
+        UIView.animate(withDuration: 0.25) { [weak self] in
+            guard let self = self else { return }
+            self.contentView.transform = transform
+        } completion: { (finished) in
+            if finished {
+                self.view.isUserInteractionEnabled = true
+            }
+        }
     }
     func clickGiftAction(transform:CGAffineTransform) {
         BPLog("clickGiftAction")

@@ -25,7 +25,8 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
     var moreViewHeight: CGFloat = AdaptSize(120)
     weak var delegate: BPChatRoomToolsViewDelegate?
 
-    private var currentSelectedButton: BPButton? {
+    /// 当前选择的安妮句
+    var currentSelectedButton: BPButton? {
         willSet {
             guard let _ = newValue, let button = currentSelectedButton else {
                 return
@@ -160,7 +161,6 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
     override func bindProperty() {
         super.bindProperty()
         self.backgroundColor        = .gray2
-        self.moreView.isHidden      = true
         self.textFieldView.delegate = self
         self.emojiButton.addTarget(self, action: #selector(clickEmojiButton(sender:)), for: .touchUpInside)
         self.phoneButton.addTarget(self, action: #selector(clickPhoneButton(sender:)), for: .touchUpInside)
@@ -199,6 +199,7 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
         case emojiButton:
             // 点击表情按钮
             self.switchButtonState(sender: sender)
+            self.moreView.showView(type: .emoji)
             if sender.isSelected {
                 self.delegate?.clickEmojiAction(transform: CGAffineTransform(translationX: 0, y: -self.moreView.height))
             } else {
@@ -214,6 +215,7 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
         case photoButton:
             // 点击相册按钮
             self.switchButtonState(sender: sender)
+            self.moreView.showView(type: .photo)
             if sender.isSelected {
                 self.delegate?.clickPhotoAction(transform: CGAffineTransform(translationX: 0, y: -self.moreView.height))
             } else {
@@ -226,6 +228,7 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
         case recordButton:
             // 点击录音按钮
             self.switchButtonState(sender: sender)
+            self.moreView.showView(type: .record)
             if sender.isSelected {
                 self.delegate?.clickRecordAction(transform: CGAffineTransform(translationX: 0, y: -self.moreView.height))
             } else {
@@ -242,6 +245,7 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
         case moreButton:
             // 点击更多按钮
             self.switchButtonState(sender: sender)
+            self.moreView.showView(type: .moreView)
             if sender.isSelected {
                 self.delegate?.clickMoreAction(transform: CGAffineTransform(translationX: 0, y: -self.moreView.height))
             } else {
