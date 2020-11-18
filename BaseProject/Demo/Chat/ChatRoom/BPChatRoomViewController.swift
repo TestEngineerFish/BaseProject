@@ -176,10 +176,11 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         messageModel.type      = .time
         messageModel.fromType  = .local
         messageModel.status    = .success
-        messageModel.unread    = true
+        messageModel.unread    = false
         self.sendMessageBlock(updateSession: false, message: messageModel)
     }
 
+    /// 发送文本消息
     private func sendTextMessage(text: String) {
         guard let _sessionModel = self.sessionModel else { return }
         var messageModel = BPMessageModel()
@@ -190,7 +191,28 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         messageModel.type      = .text
         messageModel.fromType  = .me
         messageModel.status    = .success
-        messageModel.unread    = true
+        messageModel.unread    = false
+        self.sendMessageBlock(message: messageModel)
+    }
+
+    /// 发送图片消息
+    private func sendImageMessage(image: UIImage) {
+        guard let _sessionModel = self.sessionModel, let imageData = image.pngData() else { return }
+        let imageName = "\(Date().hashValue)"
+        let path = BPFileManager.share.saveMediaFile(name: imageName, data: imageData, type: .originImage)
+        var mediaModel = BPMediaModel()
+        mediaModel.name            = imageName
+        mediaModel.originLocalPath = path
+
+        var messageModel = BPMessageModel()
+        messageModel.id         = "\(Date().local().timeIntervalSince1970)"
+        messageModel.sessionId  = _sessionModel.id
+        messageModel.time       = Date()
+        messageModel.type       = .image
+        messageModel.fromType   = .me
+        messageModel.status     = .success
+        messageModel.unread     = false
+        messageModel.mediaModel = mediaModel
         self.sendMessageBlock(message: messageModel)
     }
 
@@ -235,6 +257,10 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         }
     }
     func clickCameraAction() {
+        BPSystemPhotoManager.share.showCamera { [weak self] (image: UIImage?) in
+            guard let self = self, let _image = image else { return }
+            self.sendImageMessage(image: _image)
+        }
         BPLog("clickCameraAction")
     }
     func clickRecordAction(transform:CGAffineTransform) {

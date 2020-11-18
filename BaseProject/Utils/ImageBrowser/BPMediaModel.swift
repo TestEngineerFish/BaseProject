@@ -36,6 +36,7 @@ enum BPMediaType: Int {
 }
 
 import Photos
+import SDWebImage
 
 struct BPMediaModel: Mappable, Hashable, Equatable, Any {
     /// 资源ID
@@ -61,7 +62,9 @@ struct BPMediaModel: Mappable, Hashable, Equatable, Any {
     ///   - progress: 下载远端缩略图的进度
     ///   - completion: 下载、加载图片完成回调
     func getThumbImage(progress: ((CGFloat) ->Void)?, completion: DefaultImageBlock?) {
-        if let path = self.thumbnailLocalPath, let image = UIImage(named: path) {
+        if let path = self.thumbnailLocalPath {
+            var image = UIImage(contentsOfFile: path)
+            image = UIImage.sd_decodedImage(with: image)
             completion?(image)
         } else {
             guard let path = self.thumbnailRemotePath else { return }
@@ -75,11 +78,14 @@ struct BPMediaModel: Mappable, Hashable, Equatable, Any {
     ///   - completion: 下载、加载图片完成回调
     func getOriginImage(progress: ((CGFloat) ->Void)?, completion: DefaultImageBlock?) {
         if let path = self.originLocalPath {
-            BPImageView().showImage(with: path, placeholder: nil) { (image, error, url) in
-                completion?(image)
-            } downloadProgress: { (progress) in
-                BPLog(progress)
+            DispatchQueue.global().async {
+                var image = UIImage(contentsOfFile: path)
+                image = UIImage.sd_decodedImage(with: image)
+                DispatchQueue.main.async {
+                    completion?(image)
+                }
             }
+
         } else {
             guard let path = self.originRemotePath else { return }
             BPDownloadManager.share.image(name: "OriginImage", urlStr: path, type: .originImage, progress: progress, completion: completion)

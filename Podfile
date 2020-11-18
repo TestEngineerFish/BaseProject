@@ -36,5 +36,6 @@ target 'BaseProject' do
   pod 'FDFullscreenPopGesture', '1.1'
   # SVGA动画
   pod 'SVGAPlayer'
-
+  # 图片库
+  pod 'SDWebImage'
 end

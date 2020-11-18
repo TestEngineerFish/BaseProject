@@ -18,6 +18,9 @@ PODS:
   - lottie-ios (3.1.3)
   - ObjectMapper (3.5.1)
   - Protobuf (3.12.0)
+  - SDWebImage (5.8.0):
+    - SDWebImage/Core (= 5.8.0)
+  - SDWebImage/Core (5.8.0)
   - SnapKit (5.0.1)
   - SSZipArchive (2.2.3)
   - SVGAPlayer (2.5.3):
@@ -42,6 +45,7 @@ DEPENDENCIES:
   - Kingfisher (~> 5.7)
   - lottie-ios
   - ObjectMapper (~> 3.5.1)
+  - SDWebImage
   - SnapKit (~> 5.0.0)
   - SVGAPlayer
   - Toast-Swift (~> 5.0.0)
@@ -60,6 +64,7 @@ SPEC REPOS:
     - lottie-ios
     - ObjectMapper
     - Protobuf
+    - SDWebImage
     - SnapKit
     - SSZipArchive
     - SVGAPlayer
@@ -78,12 +83,13 @@ SPEC CHECKSUMS:
   lottie-ios: 496ac5cea1bbf1a7bd1f1f472f3232eb1b8d744b
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
+  SDWebImage: 84000f962cbfa70c07f19d2234cbfcf5d779b5dc
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   SVGAPlayer: 0272c32ad7d5db92cafe91a176b779dfc5c92565
   Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 9e1ce40604a06cbae262f1d7736b5527136ff306
+PODFILE CHECKSUM: edd2bd3bd9c60241888c666c82d56803c9ab2328
 
 COCOAPODS: 1.8.4

@@ -45,6 +45,8 @@ class BPChatRoomImageMessageBubble: BPChatRoomBaseMessageBubble {
 
     override func bindData() {
         super.bindData()
-        self.imageView.image = UIImage(named: "dog")
+        self.messageModel.mediaModel?.getOriginImage(progress: nil, completion: { (image) in
+            self.imageView.image = image
+        })
     }
 }

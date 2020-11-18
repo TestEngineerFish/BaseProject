@@ -199,10 +199,11 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
         case emojiButton:
             // 点击表情按钮
             self.switchButtonState(sender: sender)
-            self.moreView.showView(type: .emoji)
             if sender.isSelected {
+                self.moreView.showView(type: .emoji)
                 self.delegate?.clickEmojiAction(transform: CGAffineTransform(translationX: 0, y: -self.moreView.height))
             } else {
+                self.moreView.hideView()
                 self.delegate?.clickEmojiAction(transform: .identity)
             }
         case phoneButton:
@@ -215,10 +216,11 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
         case photoButton:
             // 点击相册按钮
             self.switchButtonState(sender: sender)
-            self.moreView.showView(type: .photo)
             if sender.isSelected {
+                self.moreView.showView(type: .photo)
                 self.delegate?.clickPhotoAction(transform: CGAffineTransform(translationX: 0, y: -self.moreView.height))
             } else {
+                self.moreView.hideView()
                 self.delegate?.clickPhotoAction(transform: .identity)
             }
         case cameraButton:
@@ -228,10 +230,11 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
         case recordButton:
             // 点击录音按钮
             self.switchButtonState(sender: sender)
-            self.moreView.showView(type: .record)
             if sender.isSelected {
+                self.moreView.showView(type: .record)
                 self.delegate?.clickRecordAction(transform: CGAffineTransform(translationX: 0, y: -self.moreView.height))
             } else {
+                self.moreView.hideView()
                 self.delegate?.clickRecordAction(transform: .identity)
             }
         case giftButton:
@@ -245,10 +248,11 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
         case moreButton:
             // 点击更多按钮
             self.switchButtonState(sender: sender)
-            self.moreView.showView(type: .moreView)
             if sender.isSelected {
+                self.moreView.showView(type: .moreView)
                 self.delegate?.clickMoreAction(transform: CGAffineTransform(translationX: 0, y: -self.moreView.height))
             } else {
+                self.moreView.hideView()
                 self.delegate?.clickMoreAction(transform: .identity)
             }
         default:

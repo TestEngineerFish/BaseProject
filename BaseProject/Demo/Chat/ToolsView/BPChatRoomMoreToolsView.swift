@@ -66,6 +66,7 @@ class BPChatRoomMoreToolsView: BPView {
     override func bindProperty() {
         super.bindProperty()
         self.backgroundColor = .clear
+//        self.photoView = BPSystemPhotoManager
     }
     private var currentShowView: BPView? {
         willSet {
@@ -97,6 +98,10 @@ class BPChatRoomMoreToolsView: BPView {
         case .moreView:
             self.currentShowView = self.moreView
         }
+    }
+
+    func hideView() {
+        self.currentShowView = nil
     }
 
     private func showContentView(content view: BPView) {
