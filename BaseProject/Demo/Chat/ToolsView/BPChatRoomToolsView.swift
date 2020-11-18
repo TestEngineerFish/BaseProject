@@ -19,7 +19,8 @@ protocol BPChatRoomToolsViewDelegate: NSObjectProtocol {
     func sendMessage(text: String)
 }
 
-class BPChatRoomToolsView: BPView, UITextFieldDelegate {
+/// 工具栏视图
+class BPChatRoomToolsView: BPView, UITextFieldDelegate, BPChatRoomMoreToolsViewDelegate {
 
     private let itemSize = CGSize(width: AdaptSize(35), height: AdaptSize(35))
     var moreViewHeight: CGFloat = AdaptSize(180)
@@ -38,10 +39,8 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
 
     private var textFieldView: UITextField = {
         let leftView = UIView(frame: CGRect(x: .zero, y: .zero, width: AdaptSize(10), height: AdaptSize(10)))
-        let rightView = UIView(frame: CGRect(x: .zero, y: .zero, width: AdaptSize(10), height: .zero))
         let textFieldView = UITextField()
         textFieldView.leftView           = leftView
-        textFieldView.rightView          = rightView
         textFieldView.leftViewMode       = .always
         textFieldView.rightViewMode      = .always
         textFieldView.layer.cornerRadius = 5
@@ -61,6 +60,7 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
         button.setTitleColor(UIColor.black1, for: .normal)
         button.setTitleColor(UIColor.orange1, for: .selected)
         button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(20))
+        button.titleEdgeInsets  = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: AdaptSize(5))
         return button
     }()
     private var phoneButton: BPButton = {
@@ -162,6 +162,7 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
         super.bindProperty()
         self.backgroundColor        = .gray2
         self.textFieldView.delegate = self
+        self.moreView.delegate      = self
         self.emojiButton.addTarget(self, action: #selector(clickEmojiButton(sender:)), for: .touchUpInside)
         self.phoneButton.addTarget(self, action: #selector(clickPhoneButton(sender:)), for: .touchUpInside)
         self.photoButton.addTarget(self, action: #selector(clickPhotoButton(sender:)), for: .touchUpInside)
@@ -195,6 +196,7 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
     }
 
     private func clickButton(sender: BPButton) {
+        self.textFieldView.resignFirstResponder()
         switch sender {
         case emojiButton:
             // 点击表情按钮
@@ -264,6 +266,13 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
     }
 
     // MARK: ==== UITextFieldDelegate ====
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if let currentButton = self.currentSelectedButton {
+            self.switchButtonState(sender: currentButton)
+            self.moreView.hideView()
+        }
+        return true
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let text = textField.text else {
             return false
@@ -271,6 +280,11 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
         self.delegate?.sendMessage(text: text)
         textField.text = ""
         return true
+    }
+
+    // MARK: === BPChatRoomMoreToolsViewDelegate ====
+    func selectedEmoji(model: BPEmojiModel) {
+        self.textFieldView.text = (self.textFieldView.text ?? "") + (model.name ?? "")
     }
 
 }

@@ -70,10 +70,10 @@
 		228341C5255E21240018A6F6 /* BPSessionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228341C4255E21240018A6F6 /* BPSessionListViewController.swift */; };
 		228341C8255E219C0018A6F6 /* BPChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228341C7255E219C0018A6F6 /* BPChatRoomViewController.swift */; };
 		2285310A255BD38D0022BB8F /* BPSystemAlbumListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22853109255BD38D0022BB8F /* BPSystemAlbumListView.swift */; };
-		228F3C9125651B13009EDA44 /* Emoji.plist in Resources */ = {isa = PBXBuildFile; fileRef = 228F3C9025651B13009EDA44 /* Emoji.plist */; };
 		228F3C9A25651D1E009EDA44 /* Emoji.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 228F3C9925651D1E009EDA44 /* Emoji.bundle */; };
 		228F3C9E25653690009EDA44 /* BPEmojiToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3C9D25653690009EDA44 /* BPEmojiToolView.swift */; };
 		228F3CA125653A1C009EDA44 /* BPEmojiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CA025653A1C009EDA44 /* BPEmojiCell.swift */; };
+		228F3CA525654D9C009EDA44 /* BPEmojiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CA425654D9C009EDA44 /* BPEmojiModel.swift */; };
 		2290EABC236D5EF2000BCA47 /* right11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABB236D5EF2000BCA47 /* right11-data.json */; };
 		2290EABE236D5EF6000BCA47 /* wrong11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABD236D5EF6000BCA47 /* wrong11-data.json */; };
 		2297FE2F255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297FE2E255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift */; };
@@ -234,10 +234,10 @@
 		228341C4255E21240018A6F6 /* BPSessionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPSessionListViewController.swift; sourceTree = "<group>"; };
 		228341C7255E219C0018A6F6 /* BPChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomViewController.swift; sourceTree = "<group>"; };
 		22853109255BD38D0022BB8F /* BPSystemAlbumListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPSystemAlbumListView.swift; sourceTree = "<group>"; };
-		228F3C9025651B13009EDA44 /* Emoji.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Emoji.plist; sourceTree = "<group>"; };
 		228F3C9925651D1E009EDA44 /* Emoji.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Emoji.bundle; sourceTree = "<group>"; };
 		228F3C9D25653690009EDA44 /* BPEmojiToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPEmojiToolView.swift; sourceTree = "<group>"; };
 		228F3CA025653A1C009EDA44 /* BPEmojiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPEmojiCell.swift; sourceTree = "<group>"; };
+		228F3CA425654D9C009EDA44 /* BPEmojiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPEmojiModel.swift; sourceTree = "<group>"; };
 		2290EABB236D5EF2000BCA47 /* right11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "right11-data.json"; sourceTree = "<group>"; };
 		2290EABD236D5EF6000BCA47 /* wrong11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "wrong11-data.json"; sourceTree = "<group>"; };
 		2297FE2E255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomMessageBubbleFactory.swift; sourceTree = "<group>"; };
@@ -549,7 +549,6 @@
 			isa = PBXGroup;
 			children = (
 				228F3C9925651D1E009EDA44 /* Emoji.bundle */,
-				228F3C9025651B13009EDA44 /* Emoji.plist */,
 			);
 			path = Emoji;
 			sourceTree = "<group>";
@@ -559,6 +558,7 @@
 			children = (
 				228F3C9D25653690009EDA44 /* BPEmojiToolView.swift */,
 				228F3CA025653A1C009EDA44 /* BPEmojiCell.swift */,
+				228F3CA425654D9C009EDA44 /* BPEmojiModel.swift */,
 			);
 			path = ToolsView;
 			sourceTree = "<group>";
@@ -1063,7 +1063,6 @@
 				CFFB34EB23595EF9002D440E /* backbutton@2x.png in Resources */,
 				22C621C222DC805600A7C849 /* LaunchScreen.storyboard in Resources */,
 				22ED54B4236ACD5E00011B82 /* letter_A.json in Resources */,
-				228F3C9125651B13009EDA44 /* Emoji.plist in Resources */,
 				2290EABC236D5EF2000BCA47 /* right11-data.json in Resources */,
 				CFFB34E923595EF9002D440E /* girl.png in Resources */,
 				22C621BF22DC805600A7C849 /* Assets.xcassets in Resources */,
@@ -1197,6 +1196,7 @@
 				225C48E724DD4FF800594FEE /* BaseTableView.swift in Sources */,
 				22D018F92321F7F0007AFA1B /* BPDatabaseProtocol.swift in Sources */,
 				CF49A88224DFF09C00D8DAC4 /* BaseDescriptionView.swift in Sources */,
+				228F3CA525654D9C009EDA44 /* BPEmojiModel.swift in Sources */,
 				CF8EB59E22DCD04300EC2FE5 /* Date+Extension.swift in Sources */,
 				CFFB34E02358C1C4002D440E /* BPBaseWebViewController.swift in Sources */,
 				224582032326044D0031CC7A /* NormalDBCenter.swift in Sources */,

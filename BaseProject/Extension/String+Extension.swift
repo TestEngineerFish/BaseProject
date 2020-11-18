@@ -245,17 +245,12 @@ public extension String {
         guard var matches = regex?.matches(in: self, options: .withoutAnchoringBounds, range: NSMakeRange(0, attrStr.string.count)), !matches.isEmpty else {
             return attrStr
         }
-        guard let path = Bundle.main.path(forResource: "Emoji", ofType: "plist"), let emojiDict = NSDictionary(contentsOfFile: path) else {
-            return attrStr
-        }
+
         matches.reverse()
         for result in matches {
-            let range = result.range
-            let emojiStr = (self as NSString).substring(with: range)
-            guard let emojiValue = emojiDict[emojiStr] as? String else {
-                continue
-            }
-            let imagePath = "Emoji.bundle/" + emojiValue
+            let range     = result.range
+            let emojiStr  = (self as NSString).substring(with: range)
+            let imagePath = "Emoji.bundle/" + emojiStr + ".png"
             guard let emojiImage = UIImage(named: imagePath) else {
                 continue
             }

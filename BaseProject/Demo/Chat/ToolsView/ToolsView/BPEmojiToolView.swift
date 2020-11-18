@@ -8,10 +8,16 @@
 
 import Foundation
 
-class BPEmojiToolView: BPView, UICollectionViewDelegate, UICollectionViewDataSource {
+protocol BPEmojiToolViewDelegate: NSObjectProtocol {
+    func selectedEmoji(model: BPEmojiModel)
+}
 
-    let cellID    = "kBPEmojiCell"
-    var emojiList = [UIImage?]()
+class BPEmojiToolView: BPView, UICollectionViewDelegate, UICollectionViewDataSource, BPEmojiCellDelegate {
+
+    let cellID         = "kBPEmojiCell"
+    var emojiModelList = [BPEmojiModel]()
+
+    weak var delegate: BPEmojiToolViewDelegate?
 
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -56,25 +62,41 @@ class BPEmojiToolView: BPView, UICollectionViewDelegate, UICollectionViewDataSou
 
     override func bindData() {
         super.bindData()
-        for index in 0..<63 {
-            let imageName  = "f_static_0\(index)"
-            let imagePath  = "Emoji.bundle/" + imageName
-            let emojiImage = UIImage(named: imagePath)
-            self.emojiList.append(emojiImage)
+        let assetUrl = Bundle.main.bundleURL.appendingPathComponent("Emoji.bundle")
+        guard let contents = try? FileManager.default.contentsOfDirectory(at: assetUrl, includingPropertiesForKeys: [.nameKey], options: .skipsHiddenFiles) else {
+            return
+        }
+        for item in contents {
+            var emojiName    = item.lastPathComponent
+            if emojiName.hasSuffix(".png") {
+                emojiName = emojiName.substring(fromIndex: 0, length: emojiName.count - 4)
+            }
+            let imagePath    = "Emoji.bundle/" + emojiName
+            let emojiImage   = UIImage(named: imagePath)
+            var emojiModel   = BPEmojiModel()
+            emojiModel.name  = emojiName
+            emojiModel.image = emojiImage
+            self.emojiModelList.append(emojiModel)
         }
         self.collectionView.reloadData()
     }
 
     // MARK: ==== UICollectionViewDelegate && UICollectionViewDataSource ====
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.emojiList.count
+        return self.emojiModelList.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? BPEmojiCell else {
             return UICollectionViewCell()
         }
-        let emojiImage = self.emojiList[indexPath.row]
-        cell.setData(image: emojiImage)
+        let emojiModel = self.emojiModelList[indexPath.row]
+        cell.setData(emoji: emojiModel)
+        cell.delegate = self
         return cell
+    }
+
+    // MARK: ==== BPEmojiCellDelegate ====
+    func selectedEmoji(model: BPEmojiModel) {
+        self.delegate?.selectedEmoji(model: model)
     }
 }

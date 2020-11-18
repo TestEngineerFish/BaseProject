@@ -8,7 +8,14 @@
 
 import Foundation
 
-class BPChatRoomMoreToolsView: BPView {
+protocol BPChatRoomMoreToolsViewDelegate: NSObjectProtocol {
+    func selectedEmoji(model: BPEmojiModel)
+}
+/// 工具栏底部更多详细视图
+class BPChatRoomMoreToolsView: BPView, BPEmojiToolViewDelegate {
+
+    weak var delegate: BPChatRoomMoreToolsViewDelegate?
+
     private var emojiView: BPEmojiToolView = {
         let view = BPEmojiToolView()
         view.layer.opacity   = .zero
@@ -65,6 +72,7 @@ class BPChatRoomMoreToolsView: BPView {
     override func bindProperty() {
         super.bindProperty()
         self.backgroundColor = .clear
+        self.emojiView.delegate = self
     }
     private var currentShowView: BPView? {
         willSet {
@@ -114,5 +122,10 @@ class BPChatRoomMoreToolsView: BPView {
         UIView.animate(withDuration: 0.15) {
             view.layer.opacity = .zero
         }
+    }
+
+    // MARK: ==== BPEmojiToolViewDelegate ====
+    func selectedEmoji(model: BPEmojiModel) {
+        self.delegate?.selectedEmoji(model: model)
     }
 }
