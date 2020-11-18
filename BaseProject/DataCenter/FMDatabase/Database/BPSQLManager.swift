@@ -43,6 +43,7 @@ struct BPSQLManager {
             msg_time integer,
             msg_status integer,
             msg_unread_count integer default 0,
+            last_show_time integer,
             create_time integer(32) NOT NULL DEFAULT(datetime('now', 'localtime')),
             local_extend blob,
             remote_extend blob);
@@ -112,6 +113,12 @@ struct BPSQLManager {
         """
         UPDATE bp_session
         SET last_msg = ?, msg_time = ?, msg_status = ?, msg_unread_count = ?
+        WHERE session_id = ?
+        """
+        case updateSessionLastShowTime =
+        """
+        UPDATE bp_session
+        SET last_show_time = ?
         WHERE session_id = ?
         """
         case deleteSession =

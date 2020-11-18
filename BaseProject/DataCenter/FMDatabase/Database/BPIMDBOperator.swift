@@ -21,6 +21,8 @@ protocol BPIMDBProtocol {
     func selectAllSession() -> [BPSessionModel]
     /// 更新最近会话记录
     func updateSession(model: BPSessionModel) -> Bool
+    /// 跟新最近会话中最后最后一条显示的时间戳
+    func updateSessionLastShowTime(model: BPSessionModel) -> Bool
     /// 删除某条最近会话记录
     /// - Parameter id: 会话ID
     func deleteSession(session id: String) -> Bool
@@ -104,6 +106,16 @@ class BPIMDBOperator: BPIMDBProtocol, BPDatabaseProtocol {
         return result
     }
 
+    @discardableResult
+    func updateSessionLastShowTime(model: BPSessionModel) -> Bool {
+        guard let time = model.lastShowTime else {
+            return false
+        }
+        let sql = BPSQLManager.IMSession.updateSessionLastShowTime.rawValue
+        let result = self.imRunner.executeUpdate(sql, withArgumentsIn: [time, model.id])
+        return result
+    }
+
     func deleteSession(session id: String) -> Bool {
         let sql = BPSQLManager.IMSession.deleteSession.rawValue
         let result = self.imRunner.executeUpdate(sql, withArgumentsIn: [id])
@@ -180,6 +192,7 @@ class BPIMDBOperator: BPIMDBProtocol, BPDatabaseProtocol {
         model.name          = result.string(forColumn: "friend_name") ?? ""
         model.isTop         = (Int(result.int(forColumn: "is_top")) != 0)
         model.type          = BPSessionType(rawValue: Int(result.int(forColumn: "session_type"))) ?? .normal
+        model.lastShowTime  = result.date(forColumn: "last_show_time")
         var lastMsgModel = BPMessageModel()
         lastMsgModel.text   = result.string(forColumn: "last_msg") ?? ""
         lastMsgModel.time   = result.date(forColumn: "msg_time") ?? Date()

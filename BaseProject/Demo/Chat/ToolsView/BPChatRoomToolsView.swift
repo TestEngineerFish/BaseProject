@@ -10,7 +10,7 @@ import Foundation
 
 protocol BPChatRoomToolsViewDelegate: NSObjectProtocol {
     func clickEmojiAction(transform:CGAffineTransform)
-    func clickPhotoAction(transform:CGAffineTransform)
+    func clickPhotoAction()
     func clickCameraAction()
     func clickRecordAction(transform:CGAffineTransform)
     func clickGiftAction(transform:CGAffineTransform)
@@ -22,7 +22,7 @@ protocol BPChatRoomToolsViewDelegate: NSObjectProtocol {
 class BPChatRoomToolsView: BPView, UITextFieldDelegate {
 
     private let itemSize = CGSize(width: AdaptSize(35), height: AdaptSize(35))
-    var moreViewHeight: CGFloat = AdaptSize(120)
+    var moreViewHeight: CGFloat = AdaptSize(180)
     weak var delegate: BPChatRoomToolsViewDelegate?
 
     /// 当前选择的安妮句
@@ -215,14 +215,7 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
             }.show()
         case photoButton:
             // 点击相册按钮
-            self.switchButtonState(sender: sender)
-            if sender.isSelected {
-                self.moreView.showView(type: .photo)
-                self.delegate?.clickPhotoAction(transform: CGAffineTransform(translationX: 0, y: -self.moreView.height))
-            } else {
-                self.moreView.hideView()
-                self.delegate?.clickPhotoAction(transform: .identity)
-            }
+            self.delegate?.clickPhotoAction()
         case cameraButton:
             // 显示拍照按钮
             BPLog("显示相机")
@@ -269,10 +262,6 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate {
             self.currentSelectedButton = nil
         }
     }
-
-//    @objc private func recordingAction(sender: BPButton) {
-//        self.delegate?.recordingAction()
-//    }
 
     // MARK: ==== UITextFieldDelegate ====
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

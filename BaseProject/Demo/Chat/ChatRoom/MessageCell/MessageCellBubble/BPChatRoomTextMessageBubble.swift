@@ -47,7 +47,8 @@ class BPChatRoomTextMessageBubble: BPChatRoomBaseMessageBubble {
 
     override func bindData() {
         super.bindData()
-        self.textLabel.text = self.messageModel.text
+        let attrStr = self.messageModel.text.convertToCommonEmations(font: textLabel.font, color: textLabel.textColor)
+        self.textLabel.attributedText = attrStr
     }
     
 }

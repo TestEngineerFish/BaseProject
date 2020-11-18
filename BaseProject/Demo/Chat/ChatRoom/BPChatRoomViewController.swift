@@ -57,7 +57,8 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         contentView.addSubview(tableView)
         contentView.addSubview(toolsView)
         contentView.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview().offset(toolsView.moreViewHeight)
             make.top.equalToSuperview().offset(kNavHeight)
         }
         tableView.snp.makeConstraints { (make) in
@@ -67,7 +68,7 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         }
         toolsView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
-            make.bottom.equalToSuperview().offset(toolsView.moreViewHeight)
+            make.bottom.equalToSuperview()
         }
         self.view.sendSubviewToBack(contentView)
     }
@@ -152,7 +153,7 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        BPLog(scrollView.contentOffset)
+        
     }
 
     // MARK: ==== Tools ===
@@ -168,7 +169,7 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
 
     /// 发送时间消息
     private func sendTimeMessage() {
-        guard let _sessionModel = self.sessionModel else { return }
+        guard var _sessionModel = self.sessionModel else { return }
         var messageModel = BPMessageModel()
         messageModel.id        = "\(Date().local().timeIntervalSince1970)"
         messageModel.sessionId = _sessionModel.id
@@ -177,7 +178,11 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         messageModel.fromType  = .local
         messageModel.status    = .success
         messageModel.unread    = false
-        self.sendMessageBlock(updateSession: false, message: messageModel)
+        self.sendMessageBlock(updateSession: false, checkTime: false, message: messageModel)
+        // 更新最后一条时间戳
+        _sessionModel.lastShowTime      = messageModel.time
+        BPIMDBCenter.default.updateSessionLastShowTime(model: _sessionModel)
+        self.sessionModel?.lastShowTime = messageModel.time
     }
 
     /// 发送文本消息
@@ -216,8 +221,16 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         self.sendMessageBlock(message: messageModel)
     }
 
-    private func sendMessageBlock(updateSession: Bool = true, message model: BPMessageModel) {
+    /// 发送消息
+    /// - Parameters:
+    ///   - updateSession: 是否更新最近会话列表
+    ///   - checkTime: 是否检测时间戳
+    ///   - model: 消息对象
+    private func sendMessageBlock(updateSession: Bool = true, checkTime: Bool = true, message model: BPMessageModel) {
         guard var _sessionModel = self.sessionModel else { return }
+        if checkTime {
+            self.checkLastShowTime()
+        }
         if updateSession {
             // 更新session表
             _sessionModel.lastMsgModel = model
@@ -229,6 +242,18 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         self.messageModelList.append(model)
         let nextIndexPath = IndexPath(row: self.messageModelList.count - 1, section: 0)
         self.tableView.insertRows(at: [nextIndexPath], with: .none)
+    }
+
+    /// 检查当前时间与上一条消息的时间
+    private func checkLastShowTime() {
+        if let lastTime = self.sessionModel?.lastShowTime {
+            // 如果距离上一次的时间消息，则发送时间戳
+            if Date().timeIntervalSince(lastTime).minute() >= 5 {
+                self.sendTimeMessage()
+            }
+        } else {
+            self.sendTimeMessage()
+        }
     }
 
     // MARK: ==== BPChatRoomToolsViewDelegate ====
@@ -244,16 +269,10 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         }
         BPLog("clickEmojiAction")
     }
-    func clickPhotoAction(transform:CGAffineTransform) {
-        BPLog("clickPhotoAction")
-        self.view.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 0.25) { [weak self] in
-            guard let self = self else { return }
-            self.contentView.transform = transform
-        } completion: { (finished) in
-            if finished {
-                self.view.isUserInteractionEnabled = true
-            }
+    func clickPhotoAction() {
+        BPSystemPhotoManager.share.showPhoto { [weak self] (image: UIImage?) in
+            guard let self = self, let _image = image else { return }
+            self.sendImageMessage(image: _image)
         }
     }
     func clickCameraAction() {
@@ -293,7 +312,6 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         BPLog("recordingAction")
     }
     func sendMessage(text: String) {
-        self.sendTimeMessage()
         self.sendTextMessage(text: text)
     }
 

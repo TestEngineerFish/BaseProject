@@ -9,10 +9,9 @@
 import Foundation
 
 class BPChatRoomMoreToolsView: BPView {
-    private var emojiView: BPView = {
-        let view = BPView()
+    private var emojiView: BPEmojiToolView = {
+        let view = BPEmojiToolView()
         view.layer.opacity   = .zero
-        view.backgroundColor = .yellow1
         return view
     }()
     private var photoView: BPView = {
@@ -66,7 +65,6 @@ class BPChatRoomMoreToolsView: BPView {
     override func bindProperty() {
         super.bindProperty()
         self.backgroundColor = .clear
-//        self.photoView = BPSystemPhotoManager
     }
     private var currentShowView: BPView? {
         willSet {
@@ -107,6 +105,8 @@ class BPChatRoomMoreToolsView: BPView {
     private func showContentView(content view: BPView) {
         UIView.animate(withDuration: 0.15) {
             view.layer.opacity = 1.0
+        } completion: { (finished) in
+            self.bringSubviewToFront(view)
         }
     }
 

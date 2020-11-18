@@ -79,6 +79,7 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
 
     // MARK: ==== Event ====
     @objc private func resetTestData() {
+        BPToastManager.share.showToast(message: "插入测试数据中……", complete: nil)
         DispatchQueue.global().async {
             var imageLocalPath: String?
             // 写入测试图片
@@ -137,9 +138,9 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
                     BPIMDBCenter.default.insertMessage(message: message)
                 }
             }
-        }
-        BPToastManager.share.showToast(message: "插入测试数据中……") { [weak self] in
-            self?.bindData()
+            DispatchQueue.main.async { [weak self] in
+                self?.bindData()
+            }
         }
     }
 
