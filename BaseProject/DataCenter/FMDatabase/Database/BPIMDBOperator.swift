@@ -21,8 +21,10 @@ protocol BPIMDBProtocol {
     func selectAllSession() -> [BPSessionModel]
     /// 更新最近会话记录
     func updateSession(model: BPSessionModel) -> Bool
-    /// 跟新最近会话中最后最后一条显示的时间戳
+    /// 更新最近会话中最后最后一条显示的时间戳
     func updateSessionLastShowTime(model: BPSessionModel) -> Bool
+    /// 更新最近会话的草稿内容
+    func updateSessionDraft(model: BPSessionModel) -> Bool
     /// 删除某条最近会话记录
     /// - Parameter id: 会话ID
     func deleteSession(session id: String) -> Bool
@@ -101,7 +103,7 @@ class BPIMDBOperator: BPIMDBProtocol, BPDatabaseProtocol {
                       model.lastMsgModel?.time ?? 0,
                       model.lastMsgModel?.status.rawValue ?? 0,
                       model.unreadCount, model.id] as [Any]
-        let sql = BPSQLManager.IMSession.updateSession.rawValue
+        let sql    = BPSQLManager.IMSession.updateSession.rawValue
         let result = self.imRunner.executeUpdate(sql, withArgumentsIn: params)
         return result
     }
@@ -111,19 +113,29 @@ class BPIMDBOperator: BPIMDBProtocol, BPDatabaseProtocol {
         guard let time = model.lastShowTime else {
             return false
         }
-        let sql = BPSQLManager.IMSession.updateSessionLastShowTime.rawValue
+        let sql    = BPSQLManager.IMSession.updateSessionLastShowTime.rawValue
         let result = self.imRunner.executeUpdate(sql, withArgumentsIn: [time, model.id])
         return result
     }
 
+    @discardableResult
+    func updateSessionDraft(model: BPSessionModel) -> Bool {
+        guard let draftText = model.draftText, let draftTime = model.draftTime else {
+            return false
+        }
+        let sql    = BPSQLManager.IMSession.updateSessionDraft.rawValue
+        let result = self.imRunner.executeUpdate(sql, withArgumentsIn: [draftText, draftTime, model.id])
+        return result
+    }
+
     func deleteSession(session id: String) -> Bool {
-        let sql = BPSQLManager.IMSession.deleteSession.rawValue
+        let sql    = BPSQLManager.IMSession.deleteSession.rawValue
         let result = self.imRunner.executeUpdate(sql, withArgumentsIn: [id])
         return result
     }
 
     func deleteAllSession() -> Bool {
-        let sql = BPSQLManager.IMSession.deleteAllSession.rawValue
+        let sql    = BPSQLManager.IMSession.deleteAllSession.rawValue
         let result = self.imRunner.executeUpdate(sql, withArgumentsIn: [])
         return result
     }
@@ -193,6 +205,8 @@ class BPIMDBOperator: BPIMDBProtocol, BPDatabaseProtocol {
         model.isTop         = (Int(result.int(forColumn: "is_top")) != 0)
         model.type          = BPSessionType(rawValue: Int(result.int(forColumn: "session_type"))) ?? .normal
         model.lastShowTime  = result.date(forColumn: "last_show_time")
+        model.draftText     = result.string(forColumn: "draft_content")
+        model.draftTime     = result.date(forColumn: "draft_time")
         var lastMsgModel = BPMessageModel()
         lastMsgModel.text   = result.string(forColumn: "last_msg") ?? ""
         lastMsgModel.time   = result.date(forColumn: "msg_time") ?? Date()

@@ -45,6 +45,15 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         super.viewWillAppear(animated)
         IQKeyboardManager.shared().isEnabled = false
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // 存储草稿
+        if let draftContent = self.toolsView.textFieldView.text, var _sessionModel = self.sessionModel {
+            _sessionModel.draftText = draftContent
+            _sessionModel.draftTime = Date()
+            BPIMDBCenter.default.updateSessionDraft(model: _sessionModel)
+        }
+    }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         IQKeyboardManager.shared().isEnabled = true
@@ -84,6 +93,7 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         self.customNavigationBar?.backgroundColor  = .white
         self.customNavigationBar?.rightButtonTitle = "👮‍♀️"
         self.toolsView.delegate = self
+        self.toolsView.textFieldView.text = self.sessionModel?.draftText
         IQKeyboardManager.shared().isEnableAutoToolbar = false
     }
 

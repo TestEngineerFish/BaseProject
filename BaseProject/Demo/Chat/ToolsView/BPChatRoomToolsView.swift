@@ -37,7 +37,7 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate, BPChatRoomMoreToolsViewD
         }
     }
 
-    private var textFieldView: UITextField = {
+    var textFieldView: UITextField = {
         let leftView = UIView(frame: CGRect(x: .zero, y: .zero, width: AdaptSize(10), height: AdaptSize(10)))
         let textFieldView = UITextField()
         textFieldView.leftView           = leftView

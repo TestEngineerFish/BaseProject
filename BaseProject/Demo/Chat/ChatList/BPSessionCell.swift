@@ -101,9 +101,16 @@ class BPSessionCell: UITableViewCell {
     func setData(model: BPSessionModel) {
         self.avatarImageView.image = UIImage(named: "dog")
         self.nameLabel.text        = model.name
-        self.messageLabel.text     = model.lastMsgModel?.text
-        self.timeLabel.text        = model.lastMsgModel?.time.timeStr()
-        if model.lastMsgModel?.text == .some("") {
+        // 如果有草稿，则显示草稿
+        if let draftContent = model.draftText, !draftContent.isEmpty {
+            self.messageLabel.text = "【草稿】" + draftContent
+            self.timeLabel.text    = model.draftTime?.timeStr()
+        } else {
+            self.messageLabel.text = model.lastMsgModel?.text
+            self.timeLabel.text    = model.lastMsgModel?.time.timeStr()
+        }
+
+        if self.messageLabel.text?.isEmpty ?? true {
             self.messageLabel.isHidden = true
             self.timeLabel.isHidden    = true
         } else {

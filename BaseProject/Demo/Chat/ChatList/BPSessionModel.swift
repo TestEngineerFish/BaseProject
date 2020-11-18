@@ -24,6 +24,8 @@ struct BPSessionModel: Mappable {
     var unreadCount: Int = 0
     var lastMsgModel: BPMessageModel?
     var lastShowTime: Date? // 最后一条时间戳消息的时间，用于判断发送消息是否需要显示时间
+    var draftText: String?  // 草稿文案
+    var draftTime: Date?    // 草稿时间
 
     init() {}
     init?(map: Map) {}

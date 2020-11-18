@@ -44,6 +44,8 @@ struct BPSQLManager {
             msg_status integer,
             msg_unread_count integer default 0,
             last_show_time integer,
+            draft_content text,
+            draft_time integer,
             create_time integer(32) NOT NULL DEFAULT(datetime('now', 'localtime')),
             local_extend blob,
             remote_extend blob);
@@ -77,10 +79,6 @@ struct BPSQLManager {
             local_extend blob,
             remote_extend blob);
         """
-//        case recentSessionMap =
-//        """
-//        create table if not exists bp_session_map(serial integer primary key, session_id integer, message_table_name text)
-//        """
     }
 
     // MARK: IM表
@@ -112,13 +110,19 @@ struct BPSQLManager {
         case updateSession =
         """
         UPDATE bp_session
-        SET last_msg = ?, msg_time = ?, msg_status = ?, msg_unread_count = ?
+        SET last_msg = ?, msg_time = ?, msg_status = ?, msg_unread_count = ?, draft_content = NULL, draft_time = NULL
         WHERE session_id = ?
         """
         case updateSessionLastShowTime =
         """
         UPDATE bp_session
         SET last_show_time = ?
+        WHERE session_id = ?
+        """
+        case updateSessionDraft =
+        """
+        UPDATE bp_session
+        SET draft_content = ?, draft_time = ?
         WHERE session_id = ?
         """
         case deleteSession =

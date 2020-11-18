@@ -45,6 +45,18 @@ struct BPIMDBCenter: BPDatabaseProtocol {
         }
     }
 
+    func updateSessionDraft(model: BPSessionModel) {
+        // 查询是否存在
+        let result = BPIMDBOperator.default.selectSession(friend: model.friendId)
+        if result {
+            // 更新
+            BPIMDBOperator.default.updateSessionDraft(model: model)
+        } else {
+            // 插入
+            BPIMDBOperator.default.insertSession(model: model)
+        }
+    }
+
     /// 删除某条聊天记录
     @discardableResult
     func deleteSession(session id: String) -> Bool {
