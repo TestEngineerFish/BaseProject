@@ -223,7 +223,8 @@ class BPIMDBOperator: BPIMDBProtocol, BPDatabaseProtocol {
         model.type     = BPMessageType(rawValue: Int(result.int(forColumn: "type"))) ?? .text
         model.fromType = BPMessageFromType(rawValue: Int(result.int(forColumn: "from_type"))) ?? .local
         model.status   = BPMessageStatus(rawValue: Int(result.int(forColumn: "status"))) ?? .success
-        if let mediaJson = result.string(forColumn: "media_json"), let mediatModel = BPMediaModel(JSONString: mediaJson) {
+        if let mediaJson = result.string(forColumn: "media_json"), !mediaJson.isEmpty {
+            let mediatModel  = BPMediaModel(JSONString: mediaJson)
             model.mediaModel = mediatModel
         }
         return model
