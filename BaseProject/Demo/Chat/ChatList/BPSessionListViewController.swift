@@ -89,27 +89,24 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
             // 清空数据库数据
             BPIMDBCenter.default.deleteAllSession()
             // 插入测试数据
-            for index in 0..<3 {
+            for index in 0..<30 {
                 // 插入会话
-                var model = BPSessionModel()
-                model.id       = "\(index)"
-                model.type     = BPSessionType(rawValue: index % 3) ?? .normal
-                model.isTop    = index < 2
-                model.friendId = "\(index * 1000)"
-                model.name     = "Name\(index)"
-                var messageModel   = BPMessageModel()
-                messageModel.text  = "Message\(index)"
-                messageModel.time  = NSDate().afterDay(-index)
-                model.lastMsgModel = messageModel
-                BPIMDBOperator.default.insertSession(model: model)
+                var sessionModel = BPSessionModel()
+                sessionModel.isTop    = index % 10 == 0
+                sessionModel.id       = "\(index)"
+                sessionModel.type     = BPSessionType(rawValue: index % 3) ?? .normal
+                sessionModel.friendId = "\(index * 1000)"
+                sessionModel.friendName = "Name\(index)"
+
                 // 删除所有当前会话消息
-                BPIMDBCenter.default.deleteAllMessage(session: model.id)
+                BPIMDBCenter.default.deleteAllMessage(session: sessionModel.id)
                 // 插入会话对应的消息
-                for index in 0..<100 {
+                let maxMessageCount = 99
+                for index in 0...maxMessageCount {
                     var message = BPMessageModel()
-                    message.id = "\(index)"
-                    message.sessionId = model.id
-                    message.time = NSDate().afterDay(-index)
+                    message.id        = "\(index)"
+                    message.sessionId = sessionModel.id
+                    message.time      = NSDate().afterDay(-index)
                     if index % 2 > 0 {
                         message.text = "Message"
                     } else {
@@ -120,23 +117,30 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
                     }
                     if index % 4 > 2 {
                         message.fromType = .local
-                        message.type = .time
+                        message.type     = .time
                         let model = BPMediaModel()
                         message.mediaModel = model
                     }
                     if index % 5 > 3 {
                         message.fromType = .me
-                        message.type = .image
+                        message.type     = .image
                         var model = BPMediaModel()
-                        model.id = "\(index + 100)"
-                        model.thumbnailLocalPath = imageLocalPath ?? ""
-                        model.originLocalPath    = imageLocalPath ?? ""
-//                        model.thumbnailRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1588620919,359805583&fm=26&gp=0.jpg"
-//                        model.originRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3313838802,2768404782&fm=26&gp=0.jpg"
+                        model.id                  = "\(index + 100)"
+                        model.thumbnailLocalPath  = imageLocalPath ?? ""
+                        model.originLocalPath     = imageLocalPath ?? ""
+                        model.thumbnailRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1588620919,359805583&fm=26&gp=0.jpg"
+                        model.originRemotePath = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3313838802,2768404782&fm=26&gp=0.jpg"
                         message.mediaModel = model
                     }
                     BPIMDBCenter.default.insertMessage(message: message)
+                    if index == maxMessageCount {
+                        sessionModel.lastMessage       = message.text
+                        sessionModel.lastMessageTime   = message.time
+                        sessionModel.lastMessageType   = message.type
+                        sessionModel.lastMessageStatus = message.status
+                    }
                 }
+                BPIMDBOperator.default.insertSession(model: sessionModel)
             }
             DispatchQueue.main.async { [weak self] in
                 self?.bindData()

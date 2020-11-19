@@ -30,22 +30,22 @@ struct BPSQLManager {
     /// 创建IM系统所需要的表结构
     enum CreateIMTableSQLs: String {
         case session =
+                // 添加最后一条的消息类型
         """
         CREATE TABLE IF NOT EXISTS bp_session(
             serial integer primary key,
             session_id text,
-            session_type integer default 0,
-            is_top integer default 0,
+            session_type integer(4) default 0,
+            is_top integer(2) default 0,
             friend_id text,
             friend_name text,
-            friend_avatar_url text,
+            friend_avatar_path text,
             last_msg text,
-            msg_time integer,
-            msg_status integer,
-            msg_unread_count integer default 0,
-            last_show_time integer,
-            draft_content text,
-            draft_time integer,
+            last_msg_time integer,
+            last_msg_type integer(4),
+            last_msg_status integer(4),
+            last_timestamp integer,
+            unread_count integer default 0,
             create_time integer(32) NOT NULL DEFAULT(datetime('now', 'localtime')),
             local_extend blob,
             remote_extend blob);
@@ -73,7 +73,7 @@ struct BPSQLManager {
             serial integer primary key,
             friend_id integer,
             name text,
-            friend_avatar_url text,
+            friend_avatar_path text,
             status integer,
             create_time integer(32) NOT NULL DEFAULT(datetime('now', 'localtime')),
             local_extend blob,
@@ -87,6 +87,7 @@ struct BPSQLManager {
         case selectAllSession =
         """
         SELECT * FROM bp_session
+        ORDER by COALESCE(is_top, 0) DESC, last_msg_time DESC
         """
         case selectSession =
         """
@@ -98,31 +99,27 @@ struct BPSQLManager {
         INSERT INTO bp_session(
             session_id,
             session_type,
+            is_top,
             friend_id,
             friend_name,
-            friend_avatar_url,
+            friend_avatar_path,
             last_msg,
-            msg_time,
-            msg_status)
+            last_msg_time,
+            last_msg_type,
+            last_msg_status)
         VALUES (?,?,?,?,?,
-                ?,?,?);
+                ?,?,?,?,?);
         """
         case updateSession =
         """
         UPDATE bp_session
-        SET last_msg = ?, msg_time = ?, msg_status = ?, msg_unread_count = ?, draft_content = NULL, draft_time = NULL
+        SET last_msg = ?, last_msg_time = ?, last_msg_type = ?, last_msg_status = ?, unread_count = ?
         WHERE session_id = ?
         """
-        case updateSessionLastShowTime =
+        case updateSessionLastTimestamp =
         """
         UPDATE bp_session
-        SET last_show_time = ?
-        WHERE session_id = ?
-        """
-        case updateSessionDraft =
-        """
-        UPDATE bp_session
-        SET draft_content = ?, draft_time = ?
+        SET last_timestamp = ?
         WHERE session_id = ?
         """
         case deleteSession =

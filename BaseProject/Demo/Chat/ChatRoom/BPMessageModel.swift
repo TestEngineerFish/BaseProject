@@ -12,6 +12,7 @@ enum BPMessageType: Int {
     case text   = 0
     case image  = 1
     case time   = 2
+    case draft  = 99
 }
 
 enum BPMessageFromType: Int {
@@ -25,6 +26,7 @@ enum BPMessageStatus: Int {
     case success
     case fail
     case sending
+    case editing
 }
 
 struct BPMessageModel: Mappable {

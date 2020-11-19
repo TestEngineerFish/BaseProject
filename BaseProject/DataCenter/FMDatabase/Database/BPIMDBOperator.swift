@@ -23,8 +23,6 @@ protocol BPIMDBProtocol {
     func updateSession(model: BPSessionModel) -> Bool
     /// 更新最近会话中最后最后一条显示的时间戳
     func updateSessionLastShowTime(model: BPSessionModel) -> Bool
-    /// 更新最近会话的草稿内容
-    func updateSessionDraft(model: BPSessionModel) -> Bool
     /// 删除某条最近会话记录
     /// - Parameter id: 会话ID
     func deleteSession(session id: String) -> Bool
@@ -63,12 +61,14 @@ class BPIMDBOperator: BPIMDBProtocol, BPDatabaseProtocol {
     func insertSession(model: BPSessionModel) -> Bool {
         let values = [model.id,
                       model.type.rawValue,
+                      model.isTop,
                       model.friendId,
-                      model.name,
-                      model.avatarPath as Any,
-                      model.lastMsgModel?.text ?? "",
-                      model.lastMsgModel?.time ?? 0,
-                      model.lastMsgModel?.status.rawValue ?? 0] as [Any]
+                      model.friendName,
+                      model.friendAvatarPath as Any,
+                      model.lastMessage as Any,
+                      model.lastMessageTime as Any,
+                      model.lastMessageType.rawValue,
+                      model.lastMessageStatus.rawValue] as [Any]
         let sql    = BPSQLManager.IMSession.insertSession.rawValue
         let result = self.imRunner.executeUpdate(sql, withArgumentsIn: values)
         return result
@@ -99,10 +99,12 @@ class BPIMDBOperator: BPIMDBProtocol, BPDatabaseProtocol {
 
     @discardableResult
     func updateSession(model: BPSessionModel) -> Bool {
-        let params = [model.lastMsgModel?.text ?? "",
-                      model.lastMsgModel?.time ?? 0,
-                      model.lastMsgModel?.status.rawValue ?? 0,
-                      model.unreadCount, model.id] as [Any]
+        let params = [model.lastMessage as Any,
+                      model.lastMessageTime as Any,
+                      model.lastMessageType.rawValue,
+                      model.lastMessageStatus.rawValue,
+                      model.unreadCount,
+                      model.id] as [Any]
         let sql    = BPSQLManager.IMSession.updateSession.rawValue
         let result = self.imRunner.executeUpdate(sql, withArgumentsIn: params)
         return result
@@ -110,21 +112,11 @@ class BPIMDBOperator: BPIMDBProtocol, BPDatabaseProtocol {
 
     @discardableResult
     func updateSessionLastShowTime(model: BPSessionModel) -> Bool {
-        guard let time = model.lastShowTime else {
+        guard let time = model.lastTimestamp else {
             return false
         }
-        let sql    = BPSQLManager.IMSession.updateSessionLastShowTime.rawValue
+        let sql    = BPSQLManager.IMSession.updateSessionLastTimestamp.rawValue
         let result = self.imRunner.executeUpdate(sql, withArgumentsIn: [time, model.id])
-        return result
-    }
-
-    @discardableResult
-    func updateSessionDraft(model: BPSessionModel) -> Bool {
-        guard let draftText = model.draftText, let draftTime = model.draftTime else {
-            return false
-        }
-        let sql    = BPSQLManager.IMSession.updateSessionDraft.rawValue
-        let result = self.imRunner.executeUpdate(sql, withArgumentsIn: [draftText, draftTime, model.id])
         return result
     }
 
@@ -199,19 +191,17 @@ class BPIMDBOperator: BPIMDBProtocol, BPDatabaseProtocol {
     private func transformSessionModel(result: FMResultSet) -> BPSessionModel {
         var model = BPSessionModel()
         model.id            = result.string(forColumn: "session_id") ?? ""
-        model.friendId      = result.string(forColumn: "friend_id") ?? ""
-        model.avatarPath    = result.string(forColumn: "friend_avatar_url") ?? ""
-        model.name          = result.string(forColumn: "friend_name") ?? ""
-        model.isTop         = (Int(result.int(forColumn: "is_top")) != 0)
         model.type          = BPSessionType(rawValue: Int(result.int(forColumn: "session_type"))) ?? .normal
-        model.lastShowTime  = result.date(forColumn: "last_show_time")
-        model.draftText     = result.string(forColumn: "draft_content")
-        model.draftTime     = result.date(forColumn: "draft_time")
-        var lastMsgModel = BPMessageModel()
-        lastMsgModel.text   = result.string(forColumn: "last_msg") ?? ""
-        lastMsgModel.time   = result.date(forColumn: "msg_time") ?? Date()
-        lastMsgModel.status = BPMessageStatus(rawValue: Int(result.int(forColumn: "msg_status"))) ?? .success
-        model.lastMsgModel = lastMsgModel
+        model.isTop         = (Int(result.int(forColumn: "is_top")) != 0)
+        model.friendId      = result.string(forColumn: "friend_id") ?? ""
+        model.friendName    = result.string(forColumn: "friend_name") ?? ""
+        model.friendAvatarPath    = result.string(forColumn: "friend_avatar_path") ?? ""
+        model.lastMessage   = result.string(forColumn: "last_msg")
+        model.lastMessageTime = result.date(forColumn: "last_msg_time")
+        model.lastMessageType = BPMessageType(rawValue: Int(result.int(forColumn: "last_msg_type"))) ?? .text
+        model.lastTimestamp = result.date(forColumn: "last_timestamp")
+        model.unreadCount   = Int(result.int(forColumn: "unread_count"))
+        model.createTime    = result.date(forColumn: "create_time")
         return model
     }
 

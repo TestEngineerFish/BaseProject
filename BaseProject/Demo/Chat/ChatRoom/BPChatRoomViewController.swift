@@ -47,11 +47,32 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // 存储草稿
-        if let draftContent = self.toolsView.textFieldView.text, var _sessionModel = self.sessionModel {
-            _sessionModel.draftText = draftContent
-            _sessionModel.draftTime = Date()
-            BPIMDBCenter.default.updateSessionDraft(model: _sessionModel)
+
+        guard var _sessionModel = self.sessionModel else {
+            return
+        }
+        let draftContent = self.toolsView.textFieldView.text ?? ""
+        if draftContent.isEmpty {
+            if _sessionModel.lastMessageType == .draft, _sessionModel.lastMessage?.isEmpty != .some(true) {
+                guard let lastMessageModel = self.messageModelList.last else {
+                    return
+                }
+                // 移除草稿，显示最后一条已发消息
+                _sessionModel.lastMessage       = lastMessageModel.text
+                _sessionModel.lastTimestamp     = lastMessageModel.time
+                _sessionModel.lastMessageType   = lastMessageModel.type
+                _sessionModel.lastMessageStatus = lastMessageModel.status
+                BPIMDBCenter.default.updateSessionModel(model: _sessionModel)
+            }
+        } else {
+            if draftContent != sessionModel?.lastMessage {
+                // 存储草稿
+                _sessionModel.lastMessage       = draftContent
+                _sessionModel.lastTimestamp     = Date()
+                _sessionModel.lastMessageType   = .draft
+                _sessionModel.lastMessageStatus = .editing
+                BPIMDBCenter.default.updateSessionModel(model: _sessionModel)
+            }
         }
     }
     override func viewDidDisappear(_ animated: Bool) {
@@ -93,7 +114,6 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         self.customNavigationBar?.backgroundColor  = .white
         self.customNavigationBar?.rightButtonTitle = "👮‍♀️"
         self.toolsView.delegate = self
-        self.toolsView.textFieldView.text = self.sessionModel?.draftText
         IQKeyboardManager.shared().isEnableAutoToolbar = false
     }
 
@@ -109,6 +129,9 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         }
         self.messageModelList = BPIMDBCenter.default.selectAllMessage(session: _sessionModel.id)
         self.tableView.reloadData()
+        if _sessionModel.lastMessageType == .draft {
+            self.toolsView.textFieldView.text = _sessionModel.lastMessage
+        }
     }
 
     // MARK: ==== Event ====
@@ -190,9 +213,9 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         messageModel.unread    = false
         self.sendMessageBlock(updateSession: false, checkTime: false, message: messageModel)
         // 更新最后一条时间戳
-        _sessionModel.lastShowTime      = messageModel.time
+        _sessionModel.lastTimestamp      = messageModel.time
         BPIMDBCenter.default.updateSessionLastShowTime(model: _sessionModel)
-        self.sessionModel?.lastShowTime = messageModel.time
+        self.sessionModel?.lastTimestamp = messageModel.time
     }
 
     /// 发送文本消息
@@ -244,7 +267,10 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         }
         if updateSession {
             // 更新session表
-            _sessionModel.lastMsgModel = model
+            _sessionModel.lastMessage       = model.text
+            _sessionModel.lastMessageTime   = model.time
+            _sessionModel.lastMessageType   = model.type
+            _sessionModel.lastMessageStatus = model.status
             BPIMDBCenter.default.updateSessionModel(model: _sessionModel)
         }
         // 插入message表
@@ -257,7 +283,7 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
 
     /// 检查当前时间与上一条消息的时间
     private func checkLastShowTime() {
-        if let lastTime = self.sessionModel?.lastShowTime {
+        if let lastTime = self.sessionModel?.lastTimestamp {
             // 如果距离上一次的时间消息，则发送时间戳
             if Date().timeIntervalSince(lastTime).minute() >= 5 {
                 self.sendTimeMessage()
