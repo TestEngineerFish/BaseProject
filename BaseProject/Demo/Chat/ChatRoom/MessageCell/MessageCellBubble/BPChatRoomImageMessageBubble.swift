@@ -45,14 +45,8 @@ class BPChatRoomImageMessageBubble: BPChatRoomBaseMessageBubble {
 
     override func bindData() {
         super.bindData()
-        self.messageModel.mediaModel?.getOriginImage(progress: nil, completion: { (image) in
-            if let _image = image {
-                self.imageView.image = _image
-            } else {
-                self.messageModel.mediaModel?.getThumbImage(progress: nil, completion: { (image) in
-                    self.imageView.image = image
-                })
-            }
+        self.messageModel.mediaModel?.getImage(progress: nil, completion: { [weak self] (image) in
+            self?.imageView.image = image
         })
     }
 }

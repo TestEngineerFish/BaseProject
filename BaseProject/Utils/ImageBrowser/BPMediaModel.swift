@@ -40,7 +40,7 @@ import SDWebImage
 
 struct BPMediaModel: Mappable, Hashable, Equatable, Any {
     /// 资源ID
-    var id: Int = 0
+    var id: String = ""
     /// 资源名称
     var name: String = ""
     /// 资源类型
@@ -62,12 +62,13 @@ struct BPMediaModel: Mappable, Hashable, Equatable, Any {
     ///   - progress: 下载远端缩略图的进度
     ///   - completion: 下载、加载图片完成回调
     func getThumbImage(progress: ((CGFloat) ->Void)?, completion: DefaultImageBlock?) {
-        if let path = self.thumbnailLocalPath {
-            var image = UIImage(contentsOfFile: path)
-            image = UIImage.sd_decodedImage(with: image)
+        if let path = self.thumbnailLocalPath, let image = UIImage(named: path) {
             completion?(image)
         } else {
-            guard let path = self.thumbnailRemotePath else { return }
+            guard let path = self.thumbnailRemotePath else {
+                completion?(nil)
+                return
+            }
             BPDownloadManager.share.image(name: "ThumbImage", urlStr: path, type: .thumbImage, progress: progress, completion: completion)
         }
     }
@@ -77,18 +78,26 @@ struct BPMediaModel: Mappable, Hashable, Equatable, Any {
     ///   - progress: 下载远端缩略图的进度
     ///   - completion: 下载、加载图片完成回调
     func getOriginImage(progress: ((CGFloat) ->Void)?, completion: DefaultImageBlock?) {
-        if let path = self.originLocalPath {
-            DispatchQueue.global().async {
-                var image = UIImage(contentsOfFile: path)
-                image = UIImage.sd_decodedImage(with: image)
-                DispatchQueue.main.async {
-                    completion?(image)
-                }
-            }
-
+        if let path = self.originLocalPath, let image = UIImage(named: path) {
+            completion?(image)
         } else {
-            guard let path = self.originRemotePath else { return }
+            guard let path = self.originRemotePath else {
+                completion?(nil)
+                return
+            }
             BPDownloadManager.share.image(name: "OriginImage", urlStr: path, type: .originImage, progress: progress, completion: completion)
+        }
+    }
+
+    // 默认获取原图，如果没有则获取缩略图
+    func getImage(progress: ((CGFloat) ->Void)?, completion: DefaultImageBlock?) {
+        self.getOriginImage(progress: progress) { (image) in
+            if let _image = image {
+                completion?(_image)
+            } else {
+                // 获取缩略图
+                self.getThumbImage(progress: progress, completion: completion)
+            }
         }
     }
 

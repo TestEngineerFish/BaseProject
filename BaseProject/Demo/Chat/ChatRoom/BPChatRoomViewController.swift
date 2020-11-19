@@ -218,6 +218,7 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         var mediaModel = BPMediaModel()
         mediaModel.name            = imageName
         mediaModel.originLocalPath = path
+        mediaModel.id              = "\(Date().local().timeIntervalSince1970)"
 
         var messageModel = BPMessageModel()
         messageModel.id         = "\(Date().local().timeIntervalSince1970)"
@@ -327,9 +328,10 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
 
     // MARK: ==== BPChatRoomCellDelegate ====
     func clickBubble(model: BPMessageModel, indexPath: IndexPath) {
-        var currentIndex = 0
-        var tmpIndex = 0
+        var currentIndex   = 0
+        var tmpIndex       = 0
         var mediaModelList = [BPMediaModel]()
+        // 过滤得到图片资源数组，并得到当前图片的下标
         for messageModel in self.messageModelList {
             if messageModel.type == .image {
                 guard let mediaModel = messageModel.mediaModel else {
