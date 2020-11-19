@@ -27,7 +27,7 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
         tableView.backgroundColor                = .white
         tableView.showsVerticalScrollIndicator   = false
         tableView.showsHorizontalScrollIndicator = false
-        tableView.rowHeight = AdaptSize(50)
+        tableView.rowHeight = AdaptSize(55)
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -168,16 +168,20 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
         self.navigationController?.push(vc: charRoomVC, animation: true)
     }
 
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let topAction = UITableViewRowAction(style: .normal, title: "置顶") { [weak self] (action, indexPath) in
+            guard let self = self else { return }
+            let sessionModel = self.chatModelList[indexPath.row]
+            let result = BPIMDBCenter.default.updateSessionTop(isTop: !sessionModel.isTop, session: sessionModel.id)
+            if result {
+                self.chatModelList[indexPath.row].isTop = !self.chatModelList[indexPath.row].isTop
+                self.bindData()
+            }
+        }
+        topAction.backgroundColor = .orange1
 
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
-
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "删除") { [weak self] (action:UITableViewRowAction, indexPath) in
+            guard let self = self else { return }
             // 删除会话在（数据库）
             BPIMDBCenter.default.deleteAllSession()
             // 删除会话对应的消息（数据库）
@@ -188,5 +192,6 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
             // 删除会话（列表）
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+        return [deleteAction, topAction]
     }
 }

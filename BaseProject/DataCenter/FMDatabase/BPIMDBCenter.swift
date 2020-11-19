@@ -45,6 +45,11 @@ struct BPIMDBCenter: BPDatabaseProtocol {
             BPIMDBOperator.default.insertSession(model: model)
         }
     }
+
+    /// 更新Session置顶状态
+    func updateSessionTop(isTop: Bool, session id: String) -> Bool {
+        return BPIMDBOperator.default.updateSessionTop(isTop: isTop, session: id)
+    }
     
     /// 删除某条聊天记录
     @discardableResult

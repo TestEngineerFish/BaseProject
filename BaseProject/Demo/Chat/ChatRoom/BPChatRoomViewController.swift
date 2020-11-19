@@ -68,7 +68,7 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
             if draftContent != sessionModel?.lastMessage {
                 // 存储草稿
                 _sessionModel.lastMessage       = draftContent
-                _sessionModel.lastTimestamp     = Date()
+                _sessionModel.lastMessageTime   = Date()
                 _sessionModel.lastMessageType   = .draft
                 _sessionModel.lastMessageStatus = .editing
                 BPIMDBCenter.default.updateSessionModel(model: _sessionModel)

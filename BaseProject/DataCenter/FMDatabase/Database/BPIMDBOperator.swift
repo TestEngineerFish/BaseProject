@@ -23,6 +23,8 @@ protocol BPIMDBProtocol {
     func updateSession(model: BPSessionModel) -> Bool
     /// 更新最近会话中最后最后一条显示的时间戳
     func updateSessionLastShowTime(model: BPSessionModel) -> Bool
+    /// 设置、取消置顶
+    func updateSessionTop(isTop: Bool, session id: String) -> Bool
     /// 删除某条最近会话记录
     /// - Parameter id: 会话ID
     func deleteSession(session id: String) -> Bool
@@ -117,6 +119,13 @@ class BPIMDBOperator: BPIMDBProtocol, BPDatabaseProtocol {
         }
         let sql    = BPSQLManager.IMSession.updateSessionLastTimestamp.rawValue
         let result = self.imRunner.executeUpdate(sql, withArgumentsIn: [time, model.id])
+        return result
+    }
+
+    @discardableResult
+    func updateSessionTop(isTop: Bool, session id: String) -> Bool {
+        let sql    = BPSQLManager.IMSession.updateSessionTop.rawValue
+        let result = self.imRunner.executeUpdate(sql, withArgumentsIn: [isTop, id])
         return result
     }
 

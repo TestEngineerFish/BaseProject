@@ -122,6 +122,12 @@ struct BPSQLManager {
         SET last_timestamp = ?
         WHERE session_id = ?
         """
+        case updateSessionTop =
+        """
+        UPDATE bp_session
+        SET is_top = ?
+        WHERE session_id = ?
+        """
         case deleteSession =
         """
         DELETE FROM bp_session
