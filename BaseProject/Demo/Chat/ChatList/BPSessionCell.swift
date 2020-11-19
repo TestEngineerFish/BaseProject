@@ -37,7 +37,7 @@ class BPSessionCell: UITableViewCell {
     private var timeLabel: UILabel = {
         let label = UILabel()
         label.text          = ""
-        label.textColor     = UIColor.gray1
+        label.textColor     = UIColor.gray0
         label.font          = UIFont.regularFont(ofSize: AdaptSize(11))
         label.textAlignment = .right
         return label
@@ -103,14 +103,17 @@ class BPSessionCell: UITableViewCell {
         self.nameLabel.text        = model.name
         // 如果有草稿，则显示草稿
         if let draftContent = model.draftText, !draftContent.isEmpty {
-            self.messageLabel.text = "【草稿】" + draftContent
-            self.timeLabel.text    = model.draftTime?.timeStr()
+            let mutAttrContent = draftContent.convertToCommonEmations(font: messageLabel.font, color: UIColor.gray1)
+            let prefixAttr = NSAttributedString(string: "[草稿] ", attributes: [NSAttributedString.Key.font : messageLabel.font!, NSAttributedString.Key.foregroundColor : UIColor.red1])
+            mutAttrContent.insert(prefixAttr, at: 0)
+            self.messageLabel.attributedText = mutAttrContent
+            self.timeLabel.text = model.draftTime?.timeStr()
         } else {
-            self.messageLabel.text = model.lastMsgModel?.text
+            self.messageLabel.attributedText = model.lastMsgModel?.text.convertToCommonEmations(font: messageLabel.font!, color: UIColor.gray1)
             self.timeLabel.text    = model.lastMsgModel?.time.timeStr()
         }
 
-        if self.messageLabel.text?.isEmpty ?? true {
+        if self.messageLabel.attributedText == nil {
             self.messageLabel.isHidden = true
             self.timeLabel.isHidden    = true
         } else {
