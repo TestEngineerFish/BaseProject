@@ -35,6 +35,16 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
         return view
     }()
 
+    private var albumButton: BPButton = {
+        let button = BPButton()
+        button.setTitle("全部", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.regularFont(ofSize: AdaptSize(14))
+        button.backgroundColor  = UIColor.gray1
+        button.layer.cornerRadius = AdaptSize(5)
+        return button
+    }()
+
     init(dataSource: [BPMediaModel], current index: Int) {
         self.imageModelList = dataSource
         self.currentIndex = index
@@ -52,11 +62,17 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
         super.createSubviews()
         self.addSubview(backgroundView)
         self.addSubview(collectionView)
+        self.addSubview(albumButton)
         backgroundView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
+        }
+        albumButton.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(AdaptSize(40))
+            make.right.equalToSuperview().offset(-AdaptSize(20))
+            make.size.equalTo(CGSize(width: AdaptSize(40), height: AdaptSize(25)))
         }
     }
 
@@ -67,9 +83,10 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
         self.collectionView.dataSource = self
         self.collectionView.register(BPImageBrowserCell.classForCoder(), forCellWithReuseIdentifier: kBPImageBrowserCellID)
         self.collectionView.isHidden = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-            self.scrollToCurrentPage()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) { [weak self] in
+            self?.scrollToCurrentPage()
         }
+        self.albumButton.addTarget(self, action: #selector(self.showAlubmVC), for: .touchUpInside)
     }
 
     // MARK: ==== Animation ====
@@ -120,7 +137,7 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
     /// 显示入场动画
     /// - Parameter animationView: 动画参考对象
     func show(animationView: UIImageView?) {
-        kWindow.addSubview(self)
+        UIViewController.currentViewController?.view.addSubview(self)
         self.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -134,6 +151,12 @@ class BPImageBrowser: BPView, UICollectionViewDelegate, UICollectionViewDataSour
 
     @objc private func hide() {
         self.removeFromSuperview()
+    }
+
+    @objc private func showAlubmVC() {
+        let vc = BPPhotoAlbumViewController()
+        vc.modelList = self.imageModelList
+        UIViewController.currentNavigationController?.pushViewController(vc, animated: true)
     }
 
     // MARK: ==== Tools ====

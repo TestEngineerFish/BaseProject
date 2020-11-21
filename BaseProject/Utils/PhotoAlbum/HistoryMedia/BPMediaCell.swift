@@ -117,6 +117,7 @@ class BPMediaCell: UICollectionViewCell {
         self.selectButton.isHidden   = !showSelect
         self.videoIconLabel.isHidden = model.type != .video
         self.videoTimeLabel.isHidden = model.type != .video
+        self.selectedBgView.isHidden = !isSelected
         self.videoTimeLabel.text     = {
             var timeStr = ""
             if Int(model.videoTime) >= hour {
@@ -126,7 +127,7 @@ class BPMediaCell: UICollectionViewCell {
             }
             return timeStr
         }()
-        model.getThumbImage(progress: nil) { [weak self] (image: UIImage?) in
+        model.getImage(progress: nil) {[weak self] (image: UIImage?) in
             self?.imageView.image = image
         }
         let textColor = isSelected ? UIColor.orange1 : UIColor.black.withAlphaComponent(0.2)
@@ -146,17 +147,6 @@ class BPMediaCell: UICollectionViewCell {
         PHCachingImageManager.default().requestImage(for: asset, targetSize: CGSize(width: imageSize, height: imageSize), contentMode: .default, options: options) { [weak self] (image: UIImage?, info:[AnyHashable : Any]?) in
             self?.imageView.image = image
         }
-//        self.videoIconLabel.isHidden = model.type != .video
-//        self.videoTimeLabel.isHidden = model.type != .video
-//        self.videoTimeLabel.text     = {
-//            var timeStr = ""
-//            if Int(model.videoTime) >= hour {
-//                timeStr = model.videoTime.hourMinuteSecondStr()
-//            } else {
-//                timeStr = model.videoTime.minuteSecondStr()
-//            }
-//            return timeStr
-//        }()
         let textColor = isSelected ? UIColor.orange1 : UIColor.black.withAlphaComponent(0.2)
         self.selectButton.setTitleColor(textColor, for: .normal)
     }
