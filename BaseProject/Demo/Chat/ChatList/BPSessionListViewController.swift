@@ -101,8 +101,8 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
                 // 删除所有当前会话消息
                 BPIMDBCenter.default.deleteAllMessage(session: sessionModel.id)
                 // 插入会话对应的消息
-                let maxMessageCount = 99
-                for index in 0...maxMessageCount {
+                let maxMessageCount = 100
+                for index in 1...maxMessageCount {
                     var message = BPMessageModel()
                     message.id        = "\(index)"
                     message.sessionId = sessionModel.id

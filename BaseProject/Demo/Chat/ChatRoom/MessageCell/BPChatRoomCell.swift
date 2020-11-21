@@ -8,15 +8,9 @@
 
 import Foundation
 
-protocol BPChatRoomCellDelegate: NSObjectProtocol {
-    func clickBubble(model: BPMessageModel, indexPath: IndexPath)
-}
 
-class BPChatRoomCell: UITableViewCell {
 
-    private var messageModel: BPMessageModel?
-    private var indexPath: IndexPath?
-    weak var delegate: BPChatRoomCellDelegate?
+class BPChatRoomCell: BPChatRoomBaseCell, BPChatRoomBubbleDelegate {
 
     private var avatarImageView: UIImageView = {
         let imageView = UIImageView()
@@ -68,17 +62,8 @@ class BPChatRoomCell: UITableViewCell {
         return label
     }()
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.createSubviews()
-        self.bindProperty()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private func createSubviews() {
+    override func createSubviews() {
+        super.createSubviews()
         self.rightArrowLayer.frame = CGRect(x: kScreenWidth - AdaptSize(71), y: AdaptSize(20), width: AdaptSize(8), height: AdaptSize(10))
         self.leftArrowLayer.frame  = CGRect(x: AdaptSize(70 - 7), y: AdaptSize(20), width: AdaptSize(8), height: AdaptSize(10))
         self.addSubview(avatarImageView)
@@ -86,15 +71,13 @@ class BPChatRoomCell: UITableViewCell {
         self.layer.addSublayer(rightArrowLayer)
     }
 
-    private func bindProperty() {
-        self.selectionStyle  = .none
-        self.backgroundColor = .clear
+    override func bindProperty() {
+        super.bindProperty()
     }
 
     // MARK: ==== Evnet ====
-    func setData(model: BPMessageModel, indexPath: IndexPath) {
-        self.messageModel = model
-        self.indexPath    = indexPath
+    override func bindData(message model: BPMessageModel, indexPath: IndexPath) {
+        super.bindData(message: model, indexPath: indexPath)
         // 设置内容展示视图
         self.setBubbleView()
         // 设置箭头视图
@@ -104,41 +87,33 @@ class BPChatRoomCell: UITableViewCell {
         switch model.fromType {
         case .me:
             self.avatarImageView.snp.remakeConstraints { (make) in
-                make.top.equalToSuperview().offset(AdaptSize(5))
+                make.top.equalToSuperview().offset(topSpace)
                 make.right.equalToSuperview().offset(AdaptSize(-15))
                 make.size.equalTo(CGSize(width: AdaptSize(40), height: AdaptSize(40)))
-                make.bottom.lessThanOrEqualToSuperview().offset(AdaptSize(-5)).priority(.high)
+                make.bottom.lessThanOrEqualToSuperview().offset(-bottomSpace).priority(.high)
             }
             self.bubbleView?.snp.remakeConstraints { (make) in
                 make.right.equalTo(avatarImageView.snp.left).offset(AdaptSize(-15))
                 make.top.equalTo(avatarImageView)
                 make.left.greaterThanOrEqualToSuperview().offset(AdaptSize(100))
-                make.bottom.lessThanOrEqualToSuperview().offset(AdaptSize(-5)).priority(.low)
+                make.bottom.lessThanOrEqualToSuperview().offset(-bottomSpace).priority(.low)
             }
         case .friend:
             self.avatarImageView.snp.remakeConstraints { (make) in
                 make.top.equalToSuperview().offset(AdaptSize(5))
                 make.left.equalToSuperview().offset(AdaptSize(15))
                 make.size.equalTo(CGSize(width: AdaptSize(40), height: AdaptSize(40)))
-                make.bottom.lessThanOrEqualToSuperview().offset(AdaptSize(-5)).priority(.high)
+                make.bottom.lessThanOrEqualToSuperview().offset(-bottomSpace).priority(.high)
             }
             self.bubbleView?.snp.remakeConstraints { (make) in
                 make.left.equalTo(avatarImageView.snp.right).offset(AdaptSize(15))
                 make.top.equalTo(avatarImageView)
                 make.right.lessThanOrEqualToSuperview().offset(AdaptSize(-100))
-                make.bottom.lessThanOrEqualToSuperview().offset(AdaptSize(-5)).priority(.low)
+                make.bottom.lessThanOrEqualToSuperview().offset(-bottomSpace).priority(.low)
             }
         default:
             break
         }
-    }
-
-    /// 点击bubble区域事件
-    @objc private func clickBubbleAction() {
-        guard let model = self.messageModel, let indexPath = self.indexPath else {
-            return
-        }
-        self.delegate?.clickBubble(model: model, indexPath: indexPath)
     }
 
     // MARK: ==== Tools ===
@@ -146,6 +121,7 @@ class BPChatRoomCell: UITableViewCell {
     private func setBubbleView() {
         guard let model = self.messageModel else { return }
         if self.bubbleView?.superview != nil {
+            self.bubbleView?.delegate = nil
             self.bubbleView?.removeFromSuperview()
         }
         self.bubbleView = BPChatRoomMessageBubbleFactory.buildView(message: model)
@@ -161,9 +137,7 @@ class BPChatRoomCell: UITableViewCell {
         self.bubbleView?.backgroundColor    = bgColor
         self.bubbleView?.layer.cornerRadius = 5
         self.addSubview(bubbleView!)
-        // 设置事件
-        let tapAction = UITapGestureRecognizer(target: self, action: #selector(self.clickBubbleAction))
-        self.bubbleView?.addGestureRecognizer(tapAction)
+        self.bubbleView?.delegate = self
     }
 
     private func setArrowView() {
@@ -181,5 +155,20 @@ class BPChatRoomCell: UITableViewCell {
         // 设置箭头颜色
         self.leftArrowLayer.fillColor  = self.bubbleView?.backgroundColor?.cgColor
         self.rightArrowLayer.fillColor = self.bubbleView?.backgroundColor?.cgColor
+    }
+
+    // MARK: ==== BPChatRoomBubbleDelegate ====
+    func clickBubble() {
+        guard let _messageModel = self.messageModel, let _indexPath = self.indexPath else {
+            return
+        }
+        self.delegate?.clickBubble(model: _messageModel, indexPath: _indexPath)
+    }
+
+    func withDrawMessage() {
+        guard let _messageModel = self.messageModel, let _indexPath = self.indexPath else {
+            return
+        }
+        self.delegate?.drawAction(model: _messageModel, indexPath: _indexPath)
     }
 }

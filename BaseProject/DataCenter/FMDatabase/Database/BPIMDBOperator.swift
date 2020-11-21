@@ -37,7 +37,7 @@ protocol BPIMDBProtocol {
     /// 查询消息记录
     func selectAllMessage(session id: String) -> [BPMessageModel]
     /// 更新消息记录
-    func updateMessage() -> Bool
+    func updateMessage(message model: BPMessageModel) -> Bool
     /// 删除消息记录
     func deleteAllMessage(session id: String) -> Bool
 
@@ -170,8 +170,10 @@ class BPIMDBOperator: BPIMDBProtocol, BPDatabaseProtocol {
         return messageModelList
     }
 
-    func updateMessage() -> Bool {
-        return true
+    func updateMessage(message model: BPMessageModel) -> Bool {
+        let sql = BPSQLManager.IMMessage.updateMessage.rawValue
+        let result = self.imRunner.executeUpdate(sql, withArgumentsIn: [model.type.rawValue, model.status.rawValue, model.id])
+        return result
     }
 
     func deleteAllMessage(session id: String) -> Bool {

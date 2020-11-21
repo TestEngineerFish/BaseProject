@@ -10,8 +10,6 @@ import Foundation
 
 class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableViewDataSource, BPChatRoomToolsViewDelegate, BPChatRoomCellDelegate {
 
-    private let textCellID: String  = "kBPChatRoomCell"
-    private let localCellID: String = "kBPChatRoomLocalTimeCell"
     var sessionModel: BPSessionModel?
     private var messageModelList: [BPMessageModel] = []
 
@@ -58,20 +56,17 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
                     return
                 }
                 // 移除草稿，显示最后一条已发消息
-                _sessionModel.lastMessage       = lastMessageModel.text
-                _sessionModel.lastTimestamp     = lastMessageModel.time
-                _sessionModel.lastMessageType   = lastMessageModel.type
-                _sessionModel.lastMessageStatus = lastMessageModel.status
-                BPIMDBCenter.default.updateSessionModel(model: _sessionModel)
+                self.updateSession(message: lastMessageModel)
             }
         } else {
             if draftContent != sessionModel?.lastMessage {
                 // 存储草稿
-                _sessionModel.lastMessage       = draftContent
-                _sessionModel.lastMessageTime   = Date()
-                _sessionModel.lastMessageType   = .draft
-                _sessionModel.lastMessageStatus = .editing
-                BPIMDBCenter.default.updateSessionModel(model: _sessionModel)
+                var draftMessageModel = BPMessageModel()
+                draftMessageModel.text   = draftContent
+                draftMessageModel.time   = Date()
+                draftMessageModel.type   = .draft
+                draftMessageModel.status = .editing
+                self.updateSession(message: draftMessageModel)
             }
         }
     }
@@ -108,8 +103,9 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         self.view.backgroundColor = .gray3
         self.tableView.delegate   = self
         self.tableView.dataSource = self
-        self.tableView.register(BPChatRoomCell.classForCoder(), forCellReuseIdentifier: textCellID)
-        self.tableView.register(BPChatRoomLocalTimeCell.classForCoder(), forCellReuseIdentifier: localCellID)
+        self.tableView.register(BPChatRoomCell.classForCoder(), forCellReuseIdentifier: BPMessageType.text.cellID)
+        self.tableView.register(BPChatRoomLocalTimeCell.classForCoder(), forCellReuseIdentifier: BPMessageType.time.cellID)
+        self.tableView.register(BPChatRoomWithDrawCell.classForCoder(), forCellReuseIdentifier: BPMessageType.withDraw.cellID)
         self.customNavigationBar?.title = "姓名"
         self.customNavigationBar?.backgroundColor  = .white
         self.customNavigationBar?.rightButtonTitle = "👮‍♀️"
@@ -157,6 +153,21 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         }
     }
 
+    /// 撤回消息
+    private func withDrawAction(model: BPMessageModel, indexPath: IndexPath) {
+        BPLog("撤回消息")
+        /// 更新数据库数据
+        if BPIMDBCenter.default.updateMesssage(message: model) {
+            /// 更新最近聊天记录
+            self.updateSession(message: model)
+            /// 更新内存数据
+            self.messageModelList[indexPath.row].fromType = .local
+            self.messageModelList[indexPath.row].type     = .withDraw
+            /// 刷新列表
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
+
     // MARK: ==== UITableViewDelegate && UITableViewDataSource ====
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = self.messageModelList.count
@@ -166,23 +177,12 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = self.messageModelList[indexPath.row]
-        switch model.fromType {
-        case .me, .friend:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: textCellID, for: indexPath) as? BPChatRoomCell else {
-                return UITableViewCell()
-            }
-            cell.delegate = self
-            cell.setData(model: model, indexPath: indexPath)
-            return cell
-        case .local:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: localCellID, for: indexPath) as? BPChatRoomLocalTimeCell else {
-                return UITableViewCell()
-            }
-            cell.setData(time: model.time)
-            return cell
-        default:
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: model.type.cellID, for: indexPath) as? BPChatRoomBaseCell else {
             return UITableViewCell()
         }
+        cell.delegate = self
+        cell.bindData(message: model, indexPath: indexPath)
+        return cell
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -261,17 +261,11 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
     ///   - checkTime: 是否检测时间戳
     ///   - model: 消息对象
     private func sendMessageBlock(updateSession: Bool = true, checkTime: Bool = true, message model: BPMessageModel) {
-        guard var _sessionModel = self.sessionModel else { return }
         if checkTime {
             self.checkLastShowTime()
         }
         if updateSession {
-            // 更新session表
-            _sessionModel.lastMessage       = model.text
-            _sessionModel.lastMessageTime   = model.time
-            _sessionModel.lastMessageType   = model.type
-            _sessionModel.lastMessageStatus = model.status
-            BPIMDBCenter.default.updateSessionModel(model: _sessionModel)
+            self.updateSession(message: model)
         }
         // 插入message表
         BPIMDBCenter.default.insertMessage(message: model)
@@ -291,6 +285,18 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
         } else {
             self.sendTimeMessage()
         }
+    }
+
+    /// 更新session表
+    private func updateSession(message model: BPMessageModel) {
+        guard var _sessionModel = self.sessionModel else {
+            return
+        }
+        _sessionModel.lastMessage       = model.text
+        _sessionModel.lastMessageTime   = model.time
+        _sessionModel.lastMessageType   = model.type
+        _sessionModel.lastMessageStatus = model.status
+        BPIMDBCenter.default.updateSessionModel(model: _sessionModel)
     }
 
     // MARK: ==== BPChatRoomToolsViewDelegate ====
@@ -376,5 +382,16 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
             }
             BPImageBrowser(dataSource: mediaModelList, current: currentIndex).show(animationView: bubbleView.imageView)
         }
+    }
+
+    func drawAction(model: BPMessageModel, indexPath: IndexPath) {
+        var _model = model
+        _model.type   = .withDraw
+        _model.status = .success
+        self.withDrawAction(model: _model, indexPath: indexPath)
+    }
+
+    func reeditAction(model: BPMessageModel, indexPath: IndexPath) {
+        BPLog("重新编辑")
     }
 }

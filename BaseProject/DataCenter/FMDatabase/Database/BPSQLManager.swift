@@ -113,7 +113,11 @@ struct BPSQLManager {
         case updateSession =
         """
         UPDATE bp_session
-        SET last_msg = ?, last_msg_time = ?, last_msg_type = ?, last_msg_status = ?, unread_count = ?
+        SET last_msg = ?,
+            last_msg_time = ?,
+            last_msg_type = ?,
+            last_msg_status = ?,
+            unread_count = ?
         WHERE session_id = ?
         """
         case updateSessionLastTimestamp =
@@ -145,6 +149,13 @@ struct BPSQLManager {
         """
         SELECT * FROM bp_message
         WHERE session_id = ?
+        """
+        case updateMessage =
+        """
+        UPDATE bp_message
+        SET type = ?,
+            status = ?
+        WHERE msg_id = ?
         """
         case insertMessage =
         """

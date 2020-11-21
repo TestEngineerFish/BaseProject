@@ -67,6 +67,10 @@ struct BPIMDBCenter: BPDatabaseProtocol {
         return BPIMDBOperator.default.selectAllMessage(session: id)
     }
 
+    func updateMesssage(message model: BPMessageModel) -> Bool {
+        return BPIMDBOperator.default.updateMessage(message: model)
+    }
+
     @discardableResult
     func insertMessage(message model: BPMessageModel) -> Bool {
         return BPIMDBOperator.default.insertMessage(message: model)

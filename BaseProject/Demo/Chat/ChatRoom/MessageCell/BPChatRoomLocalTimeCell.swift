@@ -8,41 +8,33 @@
 
 import Foundation
 
-class BPChatRoomLocalTimeCell: UITableViewCell {
+class BPChatRoomLocalTimeCell: BPChatRoomBaseCell {
+    
     private var timeLabel: UILabel = {
         let label = UILabel()
         label.text          = ""
         label.textColor     = UIColor.gray1
-        label.font          = UIFont.regularFont(ofSize: 11)
+        label.font          = UIFont.regularFont(ofSize: AdaptSize(11))
         label.textAlignment = .center
         return label
     }()
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.createSubviews()
-        self.bindProperty()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private func createSubviews() {
+    override func createSubviews() {
+        super.createSubviews()
         self.addSubview(timeLabel)
         timeLabel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
-            make.top.equalToSuperview().offset(AdaptSize(5))
-            make.bottom.equalToSuperview().offset(AdaptSize(-5))
+            make.top.equalToSuperview().offset(topSpace)
+            make.bottom.equalToSuperview().offset(-bottomSpace)
         }
     }
 
-    private func bindProperty() {
-        self.backgroundColor = .clear
-        self.selectionStyle  = .none
+    override func bindProperty() {
+        super.bindProperty()
     }
 
-    func setData(time: Date) {
-        self.timeLabel.text = time.timeStr()
+    override func bindData(message model: BPMessageModel, indexPath: IndexPath) {
+        super.bindData(message: model, indexPath: indexPath)
+        self.timeLabel.text = model.time.timeStr()
     }
 }

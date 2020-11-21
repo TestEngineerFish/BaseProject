@@ -116,6 +116,8 @@ class BPSessionCell: UITableViewCell {
             self.messageLabel.attributedText = mutAttrContent
         case .image:
             self.messageLabel.attributedText = NSAttributedString(string: "[图片]")
+        case .withDraw:
+            self.messageLabel.attributedText = NSAttributedString(string: "你撤回了一条消息")
         default:
             self.messageLabel.attributedText = model.lastMessage?.convertToCommonEmations(font: messageLabel.font!, color: UIColor.gray1)
         }

@@ -74,6 +74,8 @@
 		228F3C9E25653690009EDA44 /* BPEmojiToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3C9D25653690009EDA44 /* BPEmojiToolView.swift */; };
 		228F3CA125653A1C009EDA44 /* BPEmojiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CA025653A1C009EDA44 /* BPEmojiCell.swift */; };
 		228F3CA525654D9C009EDA44 /* BPEmojiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CA425654D9C009EDA44 /* BPEmojiModel.swift */; };
+		228F3CA92568B0D5009EDA44 /* BPChatRoomWithDrawCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CA82568B0D5009EDA44 /* BPChatRoomWithDrawCell.swift */; };
+		228F3CAC2568C973009EDA44 /* BPChatRoomBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CAB2568C973009EDA44 /* BPChatRoomBaseCell.swift */; };
 		2290EABC236D5EF2000BCA47 /* right11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABB236D5EF2000BCA47 /* right11-data.json */; };
 		2290EABE236D5EF6000BCA47 /* wrong11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABD236D5EF6000BCA47 /* wrong11-data.json */; };
 		2297FE2F255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297FE2E255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift */; };
@@ -238,6 +240,8 @@
 		228F3C9D25653690009EDA44 /* BPEmojiToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPEmojiToolView.swift; sourceTree = "<group>"; };
 		228F3CA025653A1C009EDA44 /* BPEmojiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPEmojiCell.swift; sourceTree = "<group>"; };
 		228F3CA425654D9C009EDA44 /* BPEmojiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPEmojiModel.swift; sourceTree = "<group>"; };
+		228F3CA82568B0D5009EDA44 /* BPChatRoomWithDrawCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomWithDrawCell.swift; sourceTree = "<group>"; };
+		228F3CAB2568C973009EDA44 /* BPChatRoomBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomBaseCell.swift; sourceTree = "<group>"; };
 		2290EABB236D5EF2000BCA47 /* right11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "right11-data.json"; sourceTree = "<group>"; };
 		2290EABD236D5EF6000BCA47 /* wrong11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "wrong11-data.json"; sourceTree = "<group>"; };
 		2297FE2E255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomMessageBubbleFactory.swift; sourceTree = "<group>"; };
@@ -478,8 +482,10 @@
 		22741ACD2562C2BC00FB7FD8 /* MessageCell */ = {
 			isa = PBXGroup;
 			children = (
+				228F3CAB2568C973009EDA44 /* BPChatRoomBaseCell.swift */,
 				22980CC0255E47E40013170A /* BPChatRoomCell.swift */,
 				22741AC92562C2A500FB7FD8 /* BPChatRoomLocalTimeCell.swift */,
+				228F3CA82568B0D5009EDA44 /* BPChatRoomWithDrawCell.swift */,
 				2297FE29255FA6C7000D45C3 /* MessageCellBubble */,
 			);
 			path = MessageCell;
@@ -566,10 +572,10 @@
 		2297FE29255FA6C7000D45C3 /* MessageCellBubble */ = {
 			isa = PBXGroup;
 			children = (
-				2297FE2E255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift */,
 				2297FE31255FA83E000D45C3 /* BPChatRoomBaseMessageBubble.swift */,
 				2297FE34255FA9AF000D45C3 /* BPChatRoomTextMessageBubble.swift */,
 				2297FE37255FB058000D45C3 /* BPChatRoomImageMessageBubble.swift */,
+				2297FE2E255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift */,
 			);
 			path = MessageCellBubble;
 			sourceTree = "<group>";
@@ -1165,6 +1171,7 @@
 				22741ACA2562C2A500FB7FD8 /* BPChatRoomLocalTimeCell.swift in Sources */,
 				E0547FFD254124640031C02D /* UILabel+Extension.swift in Sources */,
 				2297FE32255FA83E000D45C3 /* BPChatRoomBaseMessageBubble.swift in Sources */,
+				228F3CAC2568C973009EDA44 /* BPChatRoomBaseCell.swift in Sources */,
 				228341C5255E21240018A6F6 /* BPSessionListViewController.swift in Sources */,
 				22A44AB8244D98B40039466E /* BPLogFormatter.m in Sources */,
 				22A877BE22FAB679004FF3A7 /* BPImageView.swift in Sources */,
@@ -1233,6 +1240,7 @@
 				22980CB9255E459E0013170A /* BPMessageModel.swift in Sources */,
 				CF26719D22FF973300E6B47F /* PublishView.swift in Sources */,
 				2233952F24E1133C0052C7CC /* SelectionSortTableView.swift in Sources */,
+				228F3CA92568B0D5009EDA44 /* BPChatRoomWithDrawCell.swift in Sources */,
 				223AC0EE24F35AEF00C85800 /* DescriptionFactoryManager.swift in Sources */,
 				22D018FB2321F800007AFA1B /* BPDatabaseManager.swift in Sources */,
 				E0DE9CEE254187E400D1FD1F /* BPEnvChangeViewController.swift in Sources */,
