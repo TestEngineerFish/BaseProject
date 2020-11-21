@@ -393,5 +393,6 @@ class BPChatRoomViewController: BPViewController, UITableViewDelegate, UITableVi
 
     func reeditAction(model: BPMessageModel, indexPath: IndexPath) {
         BPLog("重新编辑")
+        self.toolsView.textFieldView.text = (self.toolsView.textFieldView.text ?? "") + model.text
     }
 }
