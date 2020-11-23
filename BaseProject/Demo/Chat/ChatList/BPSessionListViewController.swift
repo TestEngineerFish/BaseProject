@@ -80,7 +80,8 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
     // MARK: ==== Event ====
     @objc private func resetTestData() {
         BPToastManager.share.showToast(message: "插入测试数据中……", complete: nil)
-        DispatchQueue.global().async {
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
             var imageLocalPath: String?
             // 写入测试图片
             if let imageData = UIImage(named: "dog")?.pngData() {
@@ -172,9 +173,8 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
         let topAction = UITableViewRowAction(style: .normal, title: "置顶") { [weak self] (action, indexPath) in
             guard let self = self else { return }
             let sessionModel = self.chatModelList[indexPath.row]
-            let result = BPIMDBCenter.default.updateSessionTop(isTop: !sessionModel.isTop, session: sessionModel.id)
+            let result       = BPIMDBCenter.default.updateSessionTop(isTop: !sessionModel.isTop, session: sessionModel.id)
             if result {
-                self.chatModelList[indexPath.row].isTop = !self.chatModelList[indexPath.row].isTop
                 self.bindData()
             }
         }
@@ -182,10 +182,10 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
 
         let deleteAction = UITableViewRowAction(style: .destructive, title: "删除") { [weak self] (action:UITableViewRowAction, indexPath) in
             guard let self = self else { return }
-            // 删除会话在（数据库）
-            BPIMDBCenter.default.deleteAllSession()
-            // 删除会话对应的消息（数据库）
             let sessionModel = self.chatModelList[indexPath.row]
+            // 删除会话在（数据库）
+            BPIMDBCenter.default.deleteSession(session: sessionModel.id)
+            // 删除会话对应的消息（数据库）
             BPIMDBCenter.default.deleteAllMessage(session: sessionModel.id)
             // 删除会话在（内存）
             self.chatModelList.remove(at: indexPath.row)

@@ -12,7 +12,7 @@ struct BPToastManager {
     static let share = BPToastManager()
 
     func showToast(title: String? = nil, message: String, complete block: DefaultBlock?) {
-        kWindow.makeToast(message, duration: 1, point: kWindow.center, title: title, image: nil, style: ToastStyle()) { (finished) in
+        kWindow.makeToast(message, duration: 3, point: kWindow.center, title: title, image: nil, style: ToastStyle()) { (finished) in
             block?()
         }
     }
