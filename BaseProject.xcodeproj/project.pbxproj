@@ -79,6 +79,9 @@
 		228F3CB1256A190B009EDA44 /* BPRecordToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CB0256A190B009EDA44 /* BPRecordToolView.swift */; };
 		228F3CB9256E6C22009EDA44 /* BPPondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CB8256E6C22009EDA44 /* BPPondViewController.swift */; };
 		228F3CBE256E7157009EDA44 /* BPPublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CBD256E7157009EDA44 /* BPPublishViewController.swift */; };
+		228F3CC1256E7C89009EDA44 /* BPPublishTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CC0256E7C89009EDA44 /* BPPublishTipsView.swift */; };
+		228F3CC4256E86BF009EDA44 /* BPPubilshToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CC3256E86BF009EDA44 /* BPPubilshToolsView.swift */; };
+		228F3CC8256E878E009EDA44 /* BPPubilshToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CC7256E878E009EDA44 /* BPPubilshToolBar.swift */; };
 		2290EABC236D5EF2000BCA47 /* right11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABB236D5EF2000BCA47 /* right11-data.json */; };
 		2290EABE236D5EF6000BCA47 /* wrong11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABD236D5EF6000BCA47 /* wrong11-data.json */; };
 		2297FE2F255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297FE2E255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift */; };
@@ -247,6 +250,9 @@
 		228F3CB0256A190B009EDA44 /* BPRecordToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPRecordToolView.swift; sourceTree = "<group>"; };
 		228F3CB8256E6C22009EDA44 /* BPPondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPondViewController.swift; sourceTree = "<group>"; };
 		228F3CBD256E7157009EDA44 /* BPPublishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishViewController.swift; sourceTree = "<group>"; };
+		228F3CC0256E7C89009EDA44 /* BPPublishTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishTipsView.swift; sourceTree = "<group>"; };
+		228F3CC3256E86BF009EDA44 /* BPPubilshToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPubilshToolsView.swift; sourceTree = "<group>"; };
+		228F3CC7256E878E009EDA44 /* BPPubilshToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPubilshToolBar.swift; sourceTree = "<group>"; };
 		2290EABB236D5EF2000BCA47 /* right11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "right11-data.json"; sourceTree = "<group>"; };
 		2290EABD236D5EF6000BCA47 /* wrong11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "wrong11-data.json"; sourceTree = "<group>"; };
 		2297FE2E255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomMessageBubbleFactory.swift; sourceTree = "<group>"; };
@@ -582,6 +588,15 @@
 			path = Pond;
 			sourceTree = "<group>";
 		};
+		228F3CC6256E86C6009EDA44 /* ToolsView */ = {
+			isa = PBXGroup;
+			children = (
+				228F3CC3256E86BF009EDA44 /* BPPubilshToolsView.swift */,
+				228F3CC7256E878E009EDA44 /* BPPubilshToolBar.swift */,
+			);
+			path = ToolsView;
+			sourceTree = "<group>";
+		};
 		2297FE29255FA6C7000D45C3 /* MessageCellBubble */ = {
 			isa = PBXGroup;
 			children = (
@@ -874,7 +889,9 @@
 		CF26719B22FF970F00E6B47F /* Publish */ = {
 			isa = PBXGroup;
 			children = (
+				228F3CC6256E86C6009EDA44 /* ToolsView */,
 				228F3CBD256E7157009EDA44 /* BPPublishViewController.swift */,
+				228F3CC0256E7C89009EDA44 /* BPPublishTipsView.swift */,
 			);
 			path = Publish;
 			sourceTree = "<group>";
@@ -1174,6 +1191,7 @@
 				22642BA9233A4745004E1DF9 /* NSArray+CrashDefender.m in Sources */,
 				2297FE35255FA9AF000D45C3 /* BPChatRoomTextMessageBubble.swift in Sources */,
 				22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */,
+				228F3CC8256E878E009EDA44 /* BPPubilshToolBar.swift in Sources */,
 				CF87869822F709C20031E4B9 /* BPAuthoriationManager.swift in Sources */,
 				224582012326032B0031CC7A /* BPIMDBCenter.swift in Sources */,
 				CF26719022FEB39B00E6B47F /* BPBaseTabBarController.swift in Sources */,
@@ -1241,6 +1259,7 @@
 				CF26719422FF0A4300E6B47F /* ViewController2.swift in Sources */,
 				2276C8A5255685530040DFFF /* BPFileManager.swift in Sources */,
 				22AED512234EC75500A91A68 /* Optional+Extension.swift in Sources */,
+				228F3CC4256E86BF009EDA44 /* BPPubilshToolsView.swift in Sources */,
 				227D300A25372C96009DB59C /* DrawView.swift in Sources */,
 				22FB2EE9255E239500B72884 /* BPSessionModel.swift in Sources */,
 				22CDA244254AFFC000B6FDCB /* BPMediaModel.swift in Sources */,
@@ -1273,6 +1292,7 @@
 				228F3CBE256E7157009EDA44 /* BPPublishViewController.swift in Sources */,
 				CF8EB5A622DCD1B300EC2FE5 /* BPViewController+CustomNavigationBar.swift in Sources */,
 				22A44AB5244D98280039466E /* BPOCLog.m in Sources */,
+				228F3CC1256E7C89009EDA44 /* BPPublishTipsView.swift in Sources */,
 				226F0B17250A253D00F453F6 /* BPInteractiveTransition.swift in Sources */,
 				2211803322EEE47500B77911 /* CALayer+Extension.swift in Sources */,
 				22AED510234DFEF200A91A68 /* BPSocketManager.swift in Sources */,

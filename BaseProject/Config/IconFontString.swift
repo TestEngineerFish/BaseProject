@@ -13,7 +13,12 @@ public enum IconFont: String {
     case select   = "\u{e600}" // 选择按钮
     case video    = "\u{e60e}" // 摄像机
     case more     = "\u{e616}" // 更多（加号）
-    case record   = "\u{e61f}" // 语音
-    case keyboard = "\u{e69f}" // 语音
-    case emoji    = "\u{e745}" // 语音
+    case phone    = "\u{e6a3}" // 电话
+    case photo    = "\u{e608}" // 照片
+    case camera   = "\u{e60b}" // 拍照
+    case record   = "\u{e61f}" // 录音
+    case gift     = "\u{e606}" // 礼物
+    case keyboard = "\u{e69f}" // 键盘
+    case emoji    = "\u{e745}" // 表情
+    case remind   = "\u{e70d}" // @
 }

@@ -65,48 +65,48 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate, BPChatRoomMoreToolsViewD
     }()
     private var phoneButton: BPButton = {
         let button = BPButton()
-        button.setTitle("电话", for: .normal)
+        button.setTitle(IconFont.phone.rawValue, for: .normal)
         button.setTitleColor(UIColor.black1, for: .normal)
-        button.titleLabel?.font = UIFont.regularFont(ofSize: AdaptSize(13))
+        button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(20))
         return button
     }()
     private var photoButton: BPButton = {
         let button = BPButton()
-        button.setTitle("照片", for: .normal)
+        button.setTitle(IconFont.photo.rawValue, for: .normal)
         button.setTitleColor(UIColor.black1, for: .normal)
         button.setTitleColor(UIColor.orange1, for: .selected)
-        button.titleLabel?.font = UIFont.regularFont(ofSize: AdaptSize(13))
+        button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(25))
         return button
     }()
     private var cameraButton: BPButton = {
         let button = BPButton()
-        button.setTitle("拍照", for: .normal)
+        button.setTitle(IconFont.camera.rawValue, for: .normal)
         button.setTitleColor(UIColor.black1, for: .normal)
         button.setTitleColor(UIColor.orange1, for: .selected)
-        button.titleLabel?.font = UIFont.regularFont(ofSize: AdaptSize(13))
+        button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(25))
         return button
     }()
     private var recordButton: BPButton = {
         let button = BPButton()
-        button.setTitle("录音", for: .normal)
+        button.setTitle(IconFont.record.rawValue, for: .normal)
         button.setTitleColor(UIColor.black1, for: .normal)
-        button.titleLabel?.font = UIFont.regularFont(ofSize: AdaptSize(13))
+        button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(20))
         return button
     }()
     private var giftButton: BPButton = {
         let button = BPButton()
-        button.setTitle("礼物", for: .normal)
+        button.setTitle(IconFont.gift.rawValue, for: .normal)
         button.setTitleColor(UIColor.black1, for: .normal)
         button.setTitleColor(UIColor.orange1, for: .selected)
-        button.titleLabel?.font = UIFont.regularFont(ofSize: AdaptSize(13))
+        button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(25))
         return button
     }()
     private var moreButton: BPButton = {
         let button = BPButton()
-        button.setTitle("更多", for: .normal)
+        button.setTitle(IconFont.more.rawValue, for: .normal)
         button.setTitleColor(UIColor.black1, for: .normal)
         button.setTitleColor(UIColor.orange1, for: .selected)
-        button.titleLabel?.font = UIFont.regularFont(ofSize: AdaptSize(13))
+        button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(25))
         return button
     }()
 
