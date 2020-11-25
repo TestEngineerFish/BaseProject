@@ -12,9 +12,10 @@ class BPPubilshTipsView: BPView {
 
     private var localButton: BPButton = {
         let button = BPButton()
-        button.setTitle("  ! 你在那里  ", for: .normal)
+        let title = String(format: "  %@ 你在哪里  ", IconFont.local.rawValue)
+        button.setTitle(title, for: .normal)
         button.setTitleColor(UIColor.gray1, for: .normal)
-        button.titleLabel?.font  = UIFont.systemFont(ofSize: AdaptSize(11))
+        button.titleLabel?.font  = UIFont.iconFont(size: AdaptSize(11))
         button.layer.borderWidth = 0.9
         button.layer.borderColor = UIColor.gray0.cgColor
         return button
@@ -30,7 +31,7 @@ class BPPubilshTipsView: BPView {
     }()
     private var limitButton: BPButton = {
         let button = BPButton()
-        button.setTitle("广场可见 " + IconFont.back.rawValue, for: .normal)
+        button.setTitle("广场可见 " + IconFont.arrow.rawValue, for: .normal)
         button.setTitleColor(UIColor.gray1, for: .normal)
         button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(11))
         return button

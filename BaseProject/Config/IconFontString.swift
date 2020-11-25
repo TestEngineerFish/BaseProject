@@ -9,6 +9,7 @@
 public enum IconFont: String {
     case back     = "\u{e610}" // 返回按钮
     case close    = "\u{e62f}" // 关闭按钮(带圆圈的)
+    case arrow    = "\u{e622}" // 向右箭头
     case publis   = "\u{e718}" // 加号按钮
     case select   = "\u{e600}" // 选择按钮
     case video    = "\u{e60e}" // 摄像机
@@ -21,4 +22,5 @@ public enum IconFont: String {
     case keyboard = "\u{e69f}" // 键盘
     case emoji    = "\u{e745}" // 表情
     case remind   = "\u{e70d}" // @
+    case local    = "\u{e621}" // 位置
 }
