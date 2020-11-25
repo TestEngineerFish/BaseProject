@@ -21,6 +21,6 @@ public enum IconFont: String {
     case gift     = "\u{e606}" // 礼物
     case keyboard = "\u{e69f}" // 键盘
     case emoji    = "\u{e745}" // 表情
-    case remind   = "\u{e70d}" // @
+    case remind   = "\u{e60d}" // @
     case local    = "\u{e621}" // 位置
 }

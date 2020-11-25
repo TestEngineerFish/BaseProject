@@ -41,7 +41,7 @@ class BPPubilshToolBar: BPView {
         let button = BPButton()
         button.setTitle(IconFont.remind.rawValue, for: .normal)
         button.setTitleColor(UIColor.gray1, for: .normal)
-        button.titleLabel?.font = UIFont.regularFont(ofSize: AdaptSize(15))
+        button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(20))
         return button
     }()
 
