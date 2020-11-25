@@ -24,7 +24,7 @@ class BPCenterTabBar: UITabBar {
         let view     = UIView()
         view.width   = CGFloat(50)
         view.height  = CGFloat(50)
-        view.layer.setGradient(colors: [UIColor.hex(0x1BDFAC), UIColor.hex(0x15D558)], direction: .vertical)
+        view.layer.setGradient(colors: [UIColor.orange1, UIColor.hex(0xFF7F00)], direction: .vertical)
         view.layer.cornerRadius = view.height/2
         view.layer.masksToBounds = true
         view.isUserInteractionEnabled = true

@@ -12,7 +12,7 @@ class BPRecordToolView: BPView {
     private var timeLabel: UILabel = {
         let label = UILabel()
         label.text          = ""
-        label.textColor     = UIColor.black
+        label.textColor     = UIColor.orange1
         label.font          = UIFont.mediumFont(ofSize: AdaptSize(15))
         label.textAlignment = .center
         return label
@@ -45,5 +45,5 @@ class BPRecordToolView: BPView {
         return button
     }()
 
-    
+
 }
