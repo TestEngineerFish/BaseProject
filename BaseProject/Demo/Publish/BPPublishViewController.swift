@@ -8,12 +8,14 @@
 
 import Foundation
 
-class BPPubilshViewController: BPViewController {
+class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTipsViewDelegate, BPPublishToolBarDelegate {
 
+    private let toolsViewHeight = AdaptSize(360)
     private var textView: IQTextView = {
         let textView = IQTextView()
         textView.placeholder = "记录你的心情"
         textView.font = UIFont.regularFont(ofSize: AdaptSize(16))
+        textView.backgroundColor = .randomColor()
         return textView
     }()
     private var lineView: BPView = {
@@ -27,7 +29,8 @@ class BPPubilshViewController: BPViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.customNavigationBar?.title = "发布帖子"
-        self.customNavigationBar?.leftButton.setTitle(IconFont.close.rawValue, for: .normal)
+        self.customNavigationBar?.leftButton.setTitle(IconFont.close1.rawValue, for: .normal)
+        self.customNavigationBar?.leftButton.titleLabel?.font = UIFont.iconFont(size: 18)
         self.customNavigationBar?.rightFirstButton.setTitle("发布", for: .normal)
         self.customNavigationBar?.setNeedsLayout()
         self.createSubviews()
@@ -59,11 +62,85 @@ class BPPubilshViewController: BPViewController {
         toolsView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
             make.top.equalTo(tipsView.snp.bottom)
-            make.height.equalTo(AdaptSize(180))
+            make.height.equalTo(toolsViewHeight)
         }
     }
 
     override func bindProperty() {
         super.bindProperty()
+        self.textView.delegate = self
+        self.tipsView.delegate = self
+        self.toolsView.toolBar.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard(notification:)), name: BPPubilshViewController.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(notification:)), name: BPPubilshViewController.keyboardWillHideNotification, object: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    // MARK: ==== Event ====
+    @objc private func showKeyboard(notification: Notification) {
+        guard let frameValue = notification.userInfo?["UIKeyboardFrameEndUserInfoKey"] as? CGRect, let _ = notification.userInfo?["UIKeyboardAnimationDurationUserInfoKey"] as? Double else {
+            return
+        }
+        let margin = kScreenHeight - frameValue.minY + self.toolsView.toolBarHeight
+
+        self.toolsView.snp.updateConstraints { (make) in
+            make.height.equalTo(margin)
+        }
+    }
+
+    @objc private func hideKeyboard(notification: Notification) {
+        self.toolsView.snp.updateConstraints { (make) in
+            make.height.equalTo(toolsViewHeight)
+        }
+    }
+
+    // MARK: ==== UITextViewDelegate ====
+    func textViewDidBeginEditing(_ textView: UITextView) {
+
+    }
+
+    // MARK: ==== BPPubilshTipsViewDelegate ====
+    func clickLocalAction() {
+        BPLog("selectLocalAction")
+        let vc = BPPublishLocalViewController()
+        self.present(vc, animated: true, completion: nil)
+    }
+
+    func clickTagAction() {
+        let vc = BPPublishTagViewController()
+        self.present(vc, animated: true, completion: nil)
+        BPLog("appendTagAction")
+    }
+
+    func clickLimitAction() {
+        BPLog("setLimitAction")
+        let vc = BPPublishLimitViewController()
+        self.present(vc, animated: true, completion: nil)
+    }
+
+    // MARK: ==== BPPublishToolBarDelegate ====
+    func clickRecordAction() {
+        BPLog("clickRecordAction")
+    }
+
+    func clickCameraAction() {
+        BPLog("clickCameraAction")
+    }
+
+    func clickPhotoAction() {
+        BPLog("clickPhotoAction")
+    }
+
+    func clickEmojiAction() {
+        BPLog("clickEmojiAction")
+    }
+
+    func clickRemindAction() {
+        BPLog("clickRemindAction")
+        let vc = BPPublishRemindViewController()
+        self.present(vc, animated: true, completion: nil)
     }
 }

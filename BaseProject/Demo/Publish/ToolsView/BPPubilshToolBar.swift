@@ -8,7 +8,18 @@
 
 import Foundation
 
+protocol BPPublishToolBarDelegate: NSObjectProtocol {
+    func clickRecordAction()
+    func clickCameraAction()
+    func clickPhotoAction()
+    func clickEmojiAction()
+    func clickRemindAction()
+}
+
 class BPPubilshToolBar: BPView {
+
+    weak var delegate: BPPublishToolBarDelegate?
+
     private var recordButton: BPButton = {
         let button = BPButton()
         button.setTitle(IconFont.record.rawValue, for: .normal)
@@ -105,18 +116,18 @@ class BPPubilshToolBar: BPView {
 
     // MARK: ==== Event ====
     @objc private func recordAction() {
-
+        self.delegate?.clickRecordAction()
     }
     @objc private func cameraAction() {
-
+        self.delegate?.clickCameraAction()
     }
     @objc private func photoAction() {
-
+        self.delegate?.clickPhotoAction()
     }
     @objc private func emojiAction() {
-
+        self.delegate?.clickEmojiAction()
     }
     @objc private func remindAction() {
-
+        self.delegate?.clickRemindAction()
     }
 }

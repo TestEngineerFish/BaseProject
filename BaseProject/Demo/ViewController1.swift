@@ -17,7 +17,7 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
         tableView.showsHorizontalScrollIndicator = false
         tableView.showsVerticalScrollIndicator   = false
         tableView.rowHeight           = AdaptSize(44)
-        tableView.backgroundColor     = .gray1
+        tableView.backgroundColor     = .white
         tableView.refreshFooterEnable = true
         tableView.refreshHeaderEnable = true
         return tableView

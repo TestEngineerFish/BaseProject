@@ -113,8 +113,8 @@ class BPChatRoomMoreToolsView: BPView, BPEmojiToolViewDelegate {
     private func showContentView(content view: BPView) {
         UIView.animate(withDuration: 0.15) {
             view.layer.opacity = 1.0
-        } completion: { (finished) in
-            self.bringSubviewToFront(view)
+        } completion: { [weak self] (finished) in
+            self?.bringSubviewToFront(view)
         }
     }
 

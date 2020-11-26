@@ -8,7 +8,15 @@
 
 import Foundation
 
+protocol BPPubilshTipsViewDelegate: NSObjectProtocol {
+    func clickLocalAction()
+    func clickTagAction()
+    func clickLimitAction()
+}
+
 class BPPubilshTipsView: BPView {
+
+    weak var delegate: BPPubilshTipsViewDelegate?
 
     private var localButton: BPButton = {
         let button = BPButton()
@@ -83,14 +91,14 @@ class BPPubilshTipsView: BPView {
 
     // MARK: ==== Event ====
     @objc private func selectLocalAction() {
-        BPLog("selectLocalAction")
+        self.delegate?.clickLocalAction()
     }
 
     @objc private func appendTagAction() {
-        BPLog("appendTagAction")
+        self.delegate?.clickTagAction()
     }
 
     @objc private func setLimitAction() {
-        BPLog("setLimitAction")
+        self.delegate?.clickLimitAction()
     }
 }

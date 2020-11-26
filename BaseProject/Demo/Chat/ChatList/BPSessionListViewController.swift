@@ -90,7 +90,7 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
             // 清空数据库数据
             BPIMDBCenter.default.deleteAllSession()
             // 插入测试数据
-            for index in 0..<30 {
+            for index in 0..<10 {
                 // 插入会话
                 var sessionModel = BPSessionModel()
                 sessionModel.isTop    = index % 10 == 0

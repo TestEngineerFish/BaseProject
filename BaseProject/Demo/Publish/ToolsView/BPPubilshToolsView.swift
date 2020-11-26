@@ -10,6 +10,7 @@ import Foundation
 
 class BPPubilshToolsView: BPView {
 
+    let toolBarHeight = AdaptSize(40)
     var toolBar = BPPubilshToolBar()
     private var contentView: BPView = {
         let view = BPView()
@@ -33,7 +34,7 @@ class BPPubilshToolsView: BPView {
         self.addSubview(contentView)
         toolBar.snp.makeConstraints { (make) in
             make.left.top.right.equalToSuperview()
-            make.height.equalTo(AdaptSize(40))
+            make.height.equalTo(toolBarHeight)
         }
         contentView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()

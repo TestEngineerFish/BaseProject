@@ -103,6 +103,11 @@
 		22AED512234EC75500A91A68 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AED511234EC75500A91A68 /* Optional+Extension.swift */; };
 		22AED514234ED5DB00A91A68 /* BPServerSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AED513234ED5DB00A91A68 /* BPServerSocketManager.swift */; };
 		22B12FE2255AD67D005F8623 /* BPSystemAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B12FE1255AD67D005F8623 /* BPSystemAlbumCell.swift */; };
+		22C07110256FFAAA002EEF8C /* BPPublishLocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C0710F256FFAAA002EEF8C /* BPPublishLocalViewController.swift */; };
+		22C07114256FFB31002EEF8C /* BPPublishTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C07113256FFB31002EEF8C /* BPPublishTagViewController.swift */; };
+		22C07117256FFB64002EEF8C /* BPPublishLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C07116256FFB64002EEF8C /* BPPublishLimitViewController.swift */; };
+		22C0711A256FFB9A002EEF8C /* BPPublishRemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C07119256FFB9A002EEF8C /* BPPublishRemindViewController.swift */; };
+		22C07120256FFD35002EEF8C /* BPPublishLimitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C0711F256FFD35002EEF8C /* BPPublishLimitCell.swift */; };
 		22C621B822DC805600A7C849 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B722DC805600A7C849 /* AppDelegate.swift */; };
 		22C621BA22DC805600A7C849 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B922DC805600A7C849 /* ViewController1.swift */; };
 		22C621BF22DC805600A7C849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22C621BE22DC805600A7C849 /* Assets.xcassets */; };
@@ -279,6 +284,11 @@
 		22AED511234EC75500A91A68 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		22AED513234ED5DB00A91A68 /* BPServerSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPServerSocketManager.swift; sourceTree = "<group>"; };
 		22B12FE1255AD67D005F8623 /* BPSystemAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPSystemAlbumCell.swift; sourceTree = "<group>"; };
+		22C0710F256FFAAA002EEF8C /* BPPublishLocalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishLocalViewController.swift; sourceTree = "<group>"; };
+		22C07113256FFB31002EEF8C /* BPPublishTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishTagViewController.swift; sourceTree = "<group>"; };
+		22C07116256FFB64002EEF8C /* BPPublishLimitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishLimitViewController.swift; sourceTree = "<group>"; };
+		22C07119256FFB9A002EEF8C /* BPPublishRemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishRemindViewController.swift; sourceTree = "<group>"; };
+		22C0711F256FFD35002EEF8C /* BPPublishLimitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishLimitCell.swift; sourceTree = "<group>"; };
 		22C621B422DC805600A7C849 /* BaseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C621B722DC805600A7C849 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22C621B922DC805600A7C849 /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
@@ -523,7 +533,6 @@
 			isa = PBXGroup;
 			children = (
 				22980CBF255E468F0013170A /* ChatRoom */,
-				2297FE3B255FB50C000D45C3 /* ToolsView */,
 				22980CBE255E46880013170A /* ChatList */,
 			);
 			path = Chat;
@@ -569,7 +578,7 @@
 			path = Emoji;
 			sourceTree = "<group>";
 		};
-		228F3C9C2565362D009EDA44 /* ToolsView */ = {
+		228F3C9C2565362D009EDA44 /* MoreView */ = {
 			isa = PBXGroup;
 			children = (
 				228F3C9D25653690009EDA44 /* BPEmojiToolView.swift */,
@@ -577,7 +586,7 @@
 				228F3CA425654D9C009EDA44 /* BPEmojiModel.swift */,
 				228F3CB0256A190B009EDA44 /* BPRecordToolView.swift */,
 			);
-			path = ToolsView;
+			path = MoreView;
 			sourceTree = "<group>";
 		};
 		228F3CB7256E6C10009EDA44 /* Pond */ = {
@@ -613,7 +622,7 @@
 			children = (
 				2297FE3C255FB58D000D45C3 /* BPChatRoomToolsView.swift */,
 				2297FE40255FD117000D45C3 /* BPChatRoomMoreToolsView.swift */,
-				228F3C9C2565362D009EDA44 /* ToolsView */,
+				228F3C9C2565362D009EDA44 /* MoreView */,
 			);
 			path = ToolsView;
 			sourceTree = "<group>";
@@ -634,6 +643,7 @@
 				228341C7255E219C0018A6F6 /* BPChatRoomViewController.swift */,
 				22980CB8255E459E0013170A /* BPMessageModel.swift */,
 				22741ACD2562C2BC00FB7FD8 /* MessageCell */,
+				2297FE3B255FB50C000D45C3 /* ToolsView */,
 			);
 			path = ChatRoom;
 			sourceTree = "<group>";
@@ -668,6 +678,42 @@
 				223623162557F4E80032C34A /* BPSystemPhotoManager.swift */,
 			);
 			path = SystemAlbum;
+			sourceTree = "<group>";
+		};
+		22C0710E256FFA67002EEF8C /* Function */ = {
+			isa = PBXGroup;
+			children = (
+				22C0711E256FFD1D002EEF8C /* Model */,
+				22C0711D256FFD09002EEF8C /* View */,
+				22C0711C256FFCFE002EEF8C /* ViewController */,
+			);
+			path = Function;
+			sourceTree = "<group>";
+		};
+		22C0711C256FFCFE002EEF8C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				22C0710F256FFAAA002EEF8C /* BPPublishLocalViewController.swift */,
+				22C07113256FFB31002EEF8C /* BPPublishTagViewController.swift */,
+				22C07116256FFB64002EEF8C /* BPPublishLimitViewController.swift */,
+				22C07119256FFB9A002EEF8C /* BPPublishRemindViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		22C0711D256FFD09002EEF8C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				22C0711F256FFD35002EEF8C /* BPPublishLimitCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		22C0711E256FFD1D002EEF8C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		22C621AB22DC805600A7C849 = {
@@ -889,6 +935,7 @@
 		CF26719B22FF970F00E6B47F /* Publish */ = {
 			isa = PBXGroup;
 			children = (
+				22C0710E256FFA67002EEF8C /* Function */,
 				228F3CC6256E86C6009EDA44 /* ToolsView */,
 				228F3CBD256E7157009EDA44 /* BPPublishViewController.swift */,
 				228F3CC0256E7C89009EDA44 /* BPPublishTipsView.swift */,
@@ -1179,8 +1226,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0A0B772253ED30500E97ED8 /* BPRefreshFooterView.swift in Sources */,
+				22C0711A256FFB9A002EEF8C /* BPPublishRemindViewController.swift in Sources */,
+				22C07110256FFAAA002EEF8C /* BPPublishLocalViewController.swift in Sources */,
 				E097EE13253FD4110065725A /* BPTableView.swift in Sources */,
 				22458205232604D90031CC7A /* BPIMDBOperator.swift in Sources */,
+				22C07120256FFD35002EEF8C /* BPPublishLimitCell.swift in Sources */,
 				22C621BA22DC805600A7C849 /* ViewController1.swift in Sources */,
 				22D4981322FBCDA900281530 /* BPViewController.swift in Sources */,
 				22AED514234ED5DB00A91A68 /* BPServerSocketManager.swift in Sources */,
@@ -1254,6 +1304,7 @@
 				226F0B15250A206D00F453F6 /* BPContainerTransitionDelegate.swift in Sources */,
 				22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */,
 				2264EF9422F97A2800A89C82 /* BPTaskRequest.swift in Sources */,
+				22C07117256FFB64002EEF8C /* BPPublishLimitViewController.swift in Sources */,
 				CF49A88024DFEE5300D8DAC4 /* BubbleSortTableView.swift in Sources */,
 				227D300D253730E4009DB59C /* BPDrawPath.swift in Sources */,
 				CF26719422FF0A4300E6B47F /* ViewController2.swift in Sources */,
@@ -1293,6 +1344,7 @@
 				CF8EB5A622DCD1B300EC2FE5 /* BPViewController+CustomNavigationBar.swift in Sources */,
 				22A44AB5244D98280039466E /* BPOCLog.m in Sources */,
 				228F3CC1256E7C89009EDA44 /* BPPublishTipsView.swift in Sources */,
+				22C07114256FFB31002EEF8C /* BPPublishTagViewController.swift in Sources */,
 				226F0B17250A253D00F453F6 /* BPInteractiveTransition.swift in Sources */,
 				2211803322EEE47500B77911 /* CALayer+Extension.swift in Sources */,
 				22AED510234DFEF200A91A68 /* BPSocketManager.swift in Sources */,

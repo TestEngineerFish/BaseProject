@@ -9,6 +9,7 @@
 public enum IconFont: String {
     case back     = "\u{e610}" // 返回按钮
     case close    = "\u{e62f}" // 关闭按钮(带圆圈的)
+    case close1   = "\u{e625}" // 关闭按钮(不带圆圈的)
     case arrow    = "\u{e622}" // 向右箭头
     case publis   = "\u{e718}" // 加号按钮
     case select   = "\u{e600}" // 选择按钮
