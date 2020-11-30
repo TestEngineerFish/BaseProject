@@ -7,21 +7,38 @@
 //
 
 public enum IconFont: String {
-    case back     = "\u{e610}" // 返回按钮
-    case close    = "\u{e62f}" // 关闭按钮(带圆圈的)
-    case close1   = "\u{e625}" // 关闭按钮(不带圆圈的)
-    case arrow    = "\u{e622}" // 向右箭头
-    case publis   = "\u{e718}" // 加号按钮
-    case select   = "\u{e600}" // 选择按钮
-    case video    = "\u{e60e}" // 摄像机
-    case more     = "\u{e616}" // 更多（加号）
-    case phone    = "\u{e6a3}" // 电话
-    case photo    = "\u{e608}" // 照片
-    case camera   = "\u{e60b}" // 拍照
-    case record   = "\u{e61f}" // 录音
-    case gift     = "\u{e606}" // 礼物
-    case keyboard = "\u{e69f}" // 键盘
-    case emoji    = "\u{e745}" // 表情
-    case remind   = "\u{e60d}" // @
-    case local    = "\u{e621}" // 位置
+    /// 返回按钮
+    case back     = "\u{e610}"
+    /// 关闭按钮(带圆圈的)
+    case close    = "\u{e62f}"
+    /// 关闭按钮(不带圆圈的)
+    case close1   = "\u{e625}"
+    /// 向右箭头
+    case arrow    = "\u{e622}"
+    /// 加号按钮
+    case publis   = "\u{e718}"
+    /// 选择按钮
+    case select   = "\u{e600}"
+    /// 摄像机
+    case video    = "\u{e60e}"
+    /// 更多（加号）
+    case more     = "\u{e616}"
+    /// 电话
+    case phone    = "\u{e6a3}"
+    /// 照片
+    case photo    = "\u{e608}"
+    /// 拍照
+    case camera   = "\u{e60b}"
+    /// 录音
+    case record   = "\u{e61f}"
+    /// 礼物
+    case gift     = "\u{e606}"
+    /// 键盘
+    case keyboard = "\u{e69f}"
+    /// 表情
+    case emoji    = "\u{e745}"
+    /// @
+    case remind   = "\u{e60d}"
+    /// 位置
+    case local    = "\u{e621}"
 }

@@ -18,11 +18,11 @@ class BPView: UIView {
     }
 
     /// 初始化子视图
-    func createSubviews() {}
+    internal func createSubviews() {}
 
     /// 初始化属性
-    func bindProperty() {}
+    internal func bindProperty() {}
     
     /// 初始化数据
-    func bindData() {}
+    internal func bindData() {}
 }

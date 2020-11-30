@@ -170,7 +170,11 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let topAction = UITableViewRowAction(style: .normal, title: "置顶") { [weak self] (action, indexPath) in
+        let model = self.chatModelList[indexPath.row]
+        let title = model.isTop ? "取消置顶" : "置顶"
+        let color = model.isTop ? UIColor.gray1 : UIColor.orange1
+
+        let topAction = UITableViewRowAction(style: .normal, title: title) { [weak self] (action, indexPath) in
             guard let self = self else { return }
             let sessionModel = self.chatModelList[indexPath.row]
             let result       = BPIMDBCenter.default.updateSessionTop(isTop: !sessionModel.isTop, session: sessionModel.id)
@@ -178,7 +182,7 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
                 self.bindData()
             }
         }
-        topAction.backgroundColor = .orange1
+        topAction.backgroundColor = color
 
         let deleteAction = UITableViewRowAction(style: .destructive, title: "删除") { [weak self] (action:UITableViewRowAction, indexPath) in
             guard let self = self else { return }

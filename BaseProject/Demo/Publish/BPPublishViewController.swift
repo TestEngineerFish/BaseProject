@@ -10,6 +10,8 @@ import Foundation
 
 class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTipsViewDelegate, BPPublishToolBarDelegate {
 
+    var model: BPPublishModel?
+
     private let toolsViewHeight = AdaptSize(360)
     private var textView: IQTextView = {
         let textView = IQTextView()
@@ -28,17 +30,13 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.customNavigationBar?.title = "发布帖子"
-        self.customNavigationBar?.leftButton.setTitle(IconFont.close1.rawValue, for: .normal)
-        self.customNavigationBar?.leftButton.titleLabel?.font = UIFont.iconFont(size: 18)
-        self.customNavigationBar?.rightFirstButton.setTitle("发布", for: .normal)
-        self.customNavigationBar?.setNeedsLayout()
         self.createSubviews()
         self.bindProperty()
     }
 
     override func createSubviews() {
         super.createSubviews()
+        self.setCustomNaviation()
         self.view.addSubview(lineView)
         self.view.addSubview(textView)
         self.view.addSubview(tipsView)
@@ -75,6 +73,18 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
         NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(notification:)), name: BPPubilshViewController.keyboardWillHideNotification, object: nil)
     }
 
+    private func setCustomNaviation() {
+        self.customNavigationBar?.title = "发布帖子"
+        self.customNavigationBar?.leftButton.setTitle(IconFont.close1.rawValue, for: .normal)
+        self.customNavigationBar?.leftButton.titleLabel?.font = UIFont.iconFont(size: AdaptSize(15))
+        self.customNavigationBar?.rightFirstButton.setTitle("发布", for: .normal)
+        self.customNavigationBar?.leftButton.left = AdaptSize(15)
+        self.customNavigationBar?.leftButtonAction = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -95,6 +105,10 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
         self.toolsView.snp.updateConstraints { (make) in
             make.height.equalTo(toolsViewHeight)
         }
+    }
+
+    private func updateTipsView() {
+        self.tipsView.bindProperty()
     }
 
     // MARK: ==== UITextViewDelegate ====
@@ -118,6 +132,10 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
     func clickLimitAction() {
         BPLog("setLimitAction")
         let vc = BPPublishLimitViewController()
+        vc.selectedBlock = { [weak self] (type: BPPublishLimitType) in
+            guard let self = self else { return }
+            self.model?.limitType = type
+        }
         self.present(vc, animated: true, completion: nil)
     }
 

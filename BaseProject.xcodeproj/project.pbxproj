@@ -84,6 +84,9 @@
 		228F3CC8256E878E009EDA44 /* BPPubilshToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CC7256E878E009EDA44 /* BPPubilshToolBar.swift */; };
 		2290EABC236D5EF2000BCA47 /* right11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABB236D5EF2000BCA47 /* right11-data.json */; };
 		2290EABE236D5EF6000BCA47 /* wrong11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABD236D5EF6000BCA47 /* wrong11-data.json */; };
+		229727A92570DEC300E67BB1 /* BPPublishLocalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229727A82570DEC300E67BB1 /* BPPublishLocalCell.swift */; };
+		229727AD2571499F00E67BB1 /* BPPublishImageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229727AC2571499F00E67BB1 /* BPPublishImageListView.swift */; };
+		229727C2257503FF00E67BB1 /* BPPublishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229727C1257503FF00E67BB1 /* BPPublishModel.swift */; };
 		2297FE2F255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297FE2E255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift */; };
 		2297FE32255FA83E000D45C3 /* BPChatRoomBaseMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297FE31255FA83E000D45C3 /* BPChatRoomBaseMessageBubble.swift */; };
 		2297FE35255FA9AF000D45C3 /* BPChatRoomTextMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297FE34255FA9AF000D45C3 /* BPChatRoomTextMessageBubble.swift */; };
@@ -260,6 +263,9 @@
 		228F3CC7256E878E009EDA44 /* BPPubilshToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPubilshToolBar.swift; sourceTree = "<group>"; };
 		2290EABB236D5EF2000BCA47 /* right11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "right11-data.json"; sourceTree = "<group>"; };
 		2290EABD236D5EF6000BCA47 /* wrong11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "wrong11-data.json"; sourceTree = "<group>"; };
+		229727A82570DEC300E67BB1 /* BPPublishLocalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishLocalCell.swift; sourceTree = "<group>"; };
+		229727AC2571499F00E67BB1 /* BPPublishImageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishImageListView.swift; sourceTree = "<group>"; };
+		229727C1257503FF00E67BB1 /* BPPublishModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishModel.swift; sourceTree = "<group>"; };
 		2297FE2E255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomMessageBubbleFactory.swift; sourceTree = "<group>"; };
 		2297FE31255FA83E000D45C3 /* BPChatRoomBaseMessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomBaseMessageBubble.swift; sourceTree = "<group>"; };
 		2297FE34255FA9AF000D45C3 /* BPChatRoomTextMessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomTextMessageBubble.swift; sourceTree = "<group>"; };
@@ -602,6 +608,8 @@
 			children = (
 				228F3CC3256E86BF009EDA44 /* BPPubilshToolsView.swift */,
 				228F3CC7256E878E009EDA44 /* BPPubilshToolBar.swift */,
+				228F3CC0256E7C89009EDA44 /* BPPublishTipsView.swift */,
+				229727AC2571499F00E67BB1 /* BPPublishImageListView.swift */,
 			);
 			path = ToolsView;
 			sourceTree = "<group>";
@@ -705,6 +713,7 @@
 			isa = PBXGroup;
 			children = (
 				22C0711F256FFD35002EEF8C /* BPPublishLimitCell.swift */,
+				229727A82570DEC300E67BB1 /* BPPublishLocalCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -712,6 +721,7 @@
 		22C0711E256FFD1D002EEF8C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				229727C1257503FF00E67BB1 /* BPPublishModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -938,7 +948,6 @@
 				22C0710E256FFA67002EEF8C /* Function */,
 				228F3CC6256E86C6009EDA44 /* ToolsView */,
 				228F3CBD256E7157009EDA44 /* BPPublishViewController.swift */,
-				228F3CC0256E7C89009EDA44 /* BPPublishTipsView.swift */,
 			);
 			path = Publish;
 			sourceTree = "<group>";
@@ -1274,6 +1283,7 @@
 				2276C896255247E60040DFFF /* BPPhotoAlbumViewController.swift in Sources */,
 				22625315238F9F2B00A1CD54 /* Array+Extension.swift in Sources */,
 				E0A0B769253EAFE800E97ED8 /* UIScrollView+Extension.swift in Sources */,
+				229727C2257503FF00E67BB1 /* BPPublishModel.swift in Sources */,
 				223AC0F424F3CEBA00C85800 /* InsertionSortDescriptionView.swift in Sources */,
 				2201542323758D2A004E4A99 /* BPLabel.swift in Sources */,
 				2264EF8E22F979BD00A89C82 /* BPBaseRequest.swift in Sources */,
@@ -1291,6 +1301,7 @@
 				224582032326044D0031CC7A /* NormalDBCenter.swift in Sources */,
 				22CDA24D254EF52800B6FDCB /* BPImageBrowser.swift in Sources */,
 				CF8EB56B22DCC45800EC2FE5 /* UserDefault+Extension.swift in Sources */,
+				229727AD2571499F00E67BB1 /* BPPublishImageListView.swift in Sources */,
 				22C621F122DC8D1000A7C849 /* YYGlobal.swift in Sources */,
 				22D4981522FBCDC600281530 /* BPNavigationBar.swift in Sources */,
 				226F0B13250A103A00F453F6 /* BPContainerTransitionContext.swift in Sources */,
@@ -1320,6 +1331,7 @@
 				2261F49F24DD685800309DE3 /* AlgorithmModel.swift in Sources */,
 				225C48E524DD460F00594FEE /* BPView.swift in Sources */,
 				22F1A30223B598680046F4D4 /* NSObject+Extension.swift in Sources */,
+				229727A92570DEC300E67BB1 /* BPPublishLocalCell.swift in Sources */,
 				223AC0F624F4EB2A00C85800 /* ShellSortDescriptionView.swift in Sources */,
 				22980CB9255E459E0013170A /* BPMessageModel.swift in Sources */,
 				2233952F24E1133C0052C7CC /* SelectionSortTableView.swift in Sources */,

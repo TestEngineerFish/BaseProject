@@ -59,12 +59,14 @@ class BPPublishLimitViewController: BPViewController, UITableViewDelegate, UITab
     var currentLimitType: BPPublishLimitType = .all
     private let limitTypeList: [BPPublishLimitType]  = [.all, .home, .stranger, .me, .anonymity]
     private let cellID: String = "kBPPublishLimitCell"
+    var selectedBlock: ((BPPublishLimitType)->Void)?
 
     private var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor                = .white
         tableView.showsVerticalScrollIndicator   = false
         tableView.showsHorizontalScrollIndicator = false
+        tableView.isScrollEnabled = false
         return tableView
     }()
 
@@ -76,8 +78,7 @@ class BPPublishLimitViewController: BPViewController, UITableViewDelegate, UITab
 
     override func createSubviews() {
         super.createSubviews()
-        self.customNavigationBar?.leftButton.isHidden = true
-        self.customNavigationBar?.title = "发布设置"
+        self.setCustomNaviation()
         self.view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
@@ -90,6 +91,29 @@ class BPPublishLimitViewController: BPViewController, UITableViewDelegate, UITab
         self.tableView.delegate   = self
         self.tableView.dataSource = self
         self.tableView.register(BPPublishLimitCell.classForCoder(), forCellReuseIdentifier: cellID)
+    }
+
+    private func setCustomNaviation() {
+        let lineView: BPView = {
+            let view = BPView()
+            view.backgroundColor = UIColor.gray3
+            view.layer.cornerRadius = AdaptSize(2)
+            return view
+        }()
+        self.customNavigationBar?.leftButton.setTitle(IconFont.close1.rawValue, for: .normal)
+        self.customNavigationBar?.leftButton.titleLabel?.font = UIFont.iconFont(size: 15)
+        self.customNavigationBar?.left = AdaptSize(15)
+        self.customNavigationBar?.leftButtonAction = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(animated: true, completion: nil)
+        }
+        self.customNavigationBar?.title = "发布设置"
+        self.customNavigationBar?.addSubview(lineView)
+        lineView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(AdaptSize(15))
+            make.size.equalTo(CGSize(width: AdaptSize(45), height: AdaptSize(4)))
+            make.centerX.equalToSuperview()
+        }
     }
 
     // MARK: ==== UITableViewDelegate && UITableViewDataSource ====
@@ -113,8 +137,8 @@ class BPPublishLimitViewController: BPViewController, UITableViewDelegate, UITab
             view.addSubview(titleLabel)
             titleLabel.snp.makeConstraints { (make) in
                 make.left.equalToSuperview().offset(AdaptSize(15))
-                make.top.equalToSuperview().offset(AdaptSize(12))
-                make.bottom.equalToSuperview().offset(AdaptSize(-8))
+                make.top.equalToSuperview().offset(AdaptSize(10))
+                make.bottom.equalToSuperview().offset(AdaptSize(-5))
                 make.right.equalToSuperview().offset(AdaptSize(-15))
             }
             return view
@@ -141,8 +165,10 @@ class BPPublishLimitViewController: BPViewController, UITableViewDelegate, UITab
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.currentLimitType = self.limitTypeList[indexPath.row]
+        let type = self.limitTypeList[indexPath.row]
+        self.currentLimitType = type
         BPLog("\(self.currentLimitType.title)")
+        self.selectedBlock?(type)
         tableView.reloadData()
     }
 }
