@@ -8,11 +8,20 @@
 
 import Foundation
 
-class BPPublishImageListView: BPView {
+class BPPublishImageListView: BPView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, BPPublishImageCellDelegate {
 
-    private var imageViewList = [BPView]()
-    private var itemSize      = CGFloat.zero
-    private let space         = AdaptSize(10)
+    private let cellID = "kBPPublishImageCell"
+    private var imageViewList = [UIImage]()
+    let imageHeight: CGFloat  = AdaptSize(60)
+
+    var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = AdaptSize(5)
+        layout.scrollDirection    = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,40 +35,53 @@ class BPPublishImageListView: BPView {
 
     override func createSubviews() {
         super.createSubviews()
+        self.addSubview(collectionView)
+        collectionView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
 
     override func bindProperty() {
         super.bindProperty()
-        self.itemSize = (kScreenWidth - AdaptSize(20)) / 4 - space
+        collectionView.delegate   = self
+        collectionView.dataSource = self
+        collectionView.register(BPPublishImageCell.classForCoder(), forCellWithReuseIdentifier: cellID)
     }
 
     // MARK: ==== Event ====
-    func addImage() {
-        guard imageViewList.count < 4 else {
-            return
-        }
-        let imageView: BPView = {
-            let view = BPView()
-            view.backgroundColor = UIColor.randomColor()
-            let offsetX = (itemSize + space) * CGFloat(imageViewList.count)
-            view.frame  = CGRect(x: offsetX, y: 0, width: itemSize, height: itemSize)
-            return view
-        }()
-        self.addSubview(imageView)
-        self.imageViewList.append(imageView)
-        // 首次添加
-        if self.imageViewList.isEmpty {
-            let addView: BPView = {
-                let view = BPView()
-                view.backgroundColor = UIColor.gray0
-                view.frame = CGRect(x: imageView.right + space, y: 0, width: itemSize, height: itemSize)
-                return view
-            }()
-            self.addSubview(addView)
-            self.imageViewList.append(addView)
-        } else {
-            
-        }
+    func addImage(image: UIImage) {
+        self.imageViewList.append(image)
+        self.collectionView.reloadData()
+    }
 
+    // MARK: ==== UICollectionViewDelegate && UICollectionViewDataSource && UICollectionViewDelegateFlowLayout ====
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageViewList.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? BPPublishImageCell else {
+            return UICollectionViewCell()
+        }
+        let image = self.imageViewList[indexPath.row]
+        cell.delegate = self
+        cell.setImage(image: image, indexPath: indexPath)
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: imageHeight, height: imageHeight)
+    }
+
+    // MARK: ==== BPPublishImageCellDelegate ====
+    func deleteImage(indexPath: IndexPath) {
+        self.imageViewList.remove(at: indexPath.row)
+        self.collectionView.reloadData()
+        if imageViewList.isEmpty && self.superview != nil {
+            self.snp.updateConstraints { (make) in
+                make.height.equalTo(0)
+            }
+        }
     }
 }

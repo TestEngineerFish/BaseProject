@@ -14,9 +14,9 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
 
     private var textView: IQTextView = {
         let textView = IQTextView()
-        textView.placeholder = "记录你的心情"
-        textView.font = UIFont.regularFont(ofSize: AdaptSize(16))
-        textView.backgroundColor = .randomColor()
+        textView.placeholder     = "记录你的心情"
+        textView.font            = UIFont.regularFont(ofSize: AdaptSize(16))
+        textView.backgroundColor = .white
         return textView
     }()
     private var lineView: BPView = {
@@ -100,13 +100,11 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
         guard let frameValue = notification.userInfo?["UIKeyboardFrameEndUserInfoKey"] as? CGRect, let _ = notification.userInfo?["UIKeyboardAnimationDurationUserInfoKey"] as? Double else {
             return
         }
+        self.toolsView.resetContentView()
         let margin = kScreenHeight - frameValue.minY - kSafeBottomMargin + toolsView.toolBarHeight
         self.toolsView.snp.updateConstraints { (make) in
             make.height.equalTo(margin)
         }
-//        DispatchQueue.main.async {
-//            self.toolsView.resetContentView()
-//        }
     }
 
     @objc private func hideKeyboard(notification: Notification) {
@@ -161,9 +159,10 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
     func clickCameraAction() {
         BPSystemPhotoManager.share.showCamera { [weak self] (image: UIImage?) in
             guard let self = self, let _image = image else { return }
-            self.imageListView.backgroundColor = .randomColor()
-            self.imageListView.snp.updateConstraints { (make) in
-                make.height.equalTo(AdaptSize(100))
+            self.imageListView.addImage(image: _image)
+            self.imageListView.snp.updateConstraints { [weak self] (make) in
+                guard let self = self else { return }
+                make.height.equalTo(self.imageListView.imageHeight)
             }
         }
         BPLog("clickCameraAction")
@@ -172,9 +171,10 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
     func clickPhotoAction() {
         BPSystemPhotoManager.share.showPhoto { [weak self] (image: UIImage?) in
             guard let self = self, let _image = image else { return }
-            self.imageListView.backgroundColor = .randomColor()
-            self.imageListView.snp.updateConstraints { (make) in
-                make.height.equalTo(AdaptSize(100))
+            self.imageListView.addImage(image: _image)
+            self.imageListView.snp.updateConstraints { [weak self] (make) in
+                guard let self = self else { return }
+                make.height.equalTo(self.imageListView.imageHeight)
             }
         }
         BPLog("clickPhotoAction")

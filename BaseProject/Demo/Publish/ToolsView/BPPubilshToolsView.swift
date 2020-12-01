@@ -162,7 +162,7 @@ class BPPubilshToolsView: BPView {
     /// 恢复默认状态
     func resetContentView() {
         guard let button = self.currentSelectedButton else { return }
-        self.clickButton(sender: button)
+        self.clickButton(sender: button, isReset: true)
     }
 
     // 设置按钮的选中状态
@@ -175,7 +175,7 @@ class BPPubilshToolsView: BPView {
         }
     }
 
-    private func clickButton(sender: BPButton) {
+    private func clickButton(sender: BPButton, isReset: Bool = false) {
         let hideHeight = toolBarHeight + kSafeBottomMargin
         let showHeight = hideHeight + contentViewHeight
         switch sender {
@@ -186,7 +186,9 @@ class BPPubilshToolsView: BPView {
                 self.delegate?.clickRecordAction(content: showHeight)
             } else {
                 self.contentView.hideView()
-                self.delegate?.clickEmojiAction(content: hideHeight)
+                if !isReset {
+                    self.delegate?.clickEmojiAction(content: hideHeight)
+                }
             }
         case cameraButton:
             self.delegate?.clickCameraAction()
@@ -199,7 +201,9 @@ class BPPubilshToolsView: BPView {
                 self.delegate?.clickEmojiAction(content: showHeight)
             } else {
                 self.contentView.hideView()
-                self.delegate?.clickEmojiAction(content: hideHeight)
+                if !isReset {
+                    self.delegate?.clickEmojiAction(content: hideHeight)
+                }
             }
         case remindButton:
             self.delegate?.clickRemindAction()
