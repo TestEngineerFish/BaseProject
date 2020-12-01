@@ -11,7 +11,7 @@ import Foundation
 protocol BPChatRoomMoreToolsViewDelegate: NSObjectProtocol {
     func selectedEmoji(model: BPEmojiModel)
 }
-/// 工具栏底部更多详细视图
+/// 工具栏底部更多内容视图
 class BPChatRoomMoreToolsView: BPView, BPEmojiToolViewDelegate {
 
     weak var delegate: BPChatRoomMoreToolsViewDelegate?

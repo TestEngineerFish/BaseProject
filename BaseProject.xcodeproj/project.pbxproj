@@ -81,7 +81,6 @@
 		228F3CBE256E7157009EDA44 /* BPPublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CBD256E7157009EDA44 /* BPPublishViewController.swift */; };
 		228F3CC1256E7C89009EDA44 /* BPPublishTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CC0256E7C89009EDA44 /* BPPublishTipsView.swift */; };
 		228F3CC4256E86BF009EDA44 /* BPPubilshToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CC3256E86BF009EDA44 /* BPPubilshToolsView.swift */; };
-		228F3CC8256E878E009EDA44 /* BPPubilshToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CC7256E878E009EDA44 /* BPPubilshToolBar.swift */; };
 		2290EABC236D5EF2000BCA47 /* right11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABB236D5EF2000BCA47 /* right11-data.json */; };
 		2290EABE236D5EF6000BCA47 /* wrong11-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2290EABD236D5EF6000BCA47 /* wrong11-data.json */; };
 		229727A92570DEC300E67BB1 /* BPPublishLocalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229727A82570DEC300E67BB1 /* BPPublishLocalCell.swift */; };
@@ -260,7 +259,6 @@
 		228F3CBD256E7157009EDA44 /* BPPublishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishViewController.swift; sourceTree = "<group>"; };
 		228F3CC0256E7C89009EDA44 /* BPPublishTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishTipsView.swift; sourceTree = "<group>"; };
 		228F3CC3256E86BF009EDA44 /* BPPubilshToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPubilshToolsView.swift; sourceTree = "<group>"; };
-		228F3CC7256E878E009EDA44 /* BPPubilshToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPubilshToolBar.swift; sourceTree = "<group>"; };
 		2290EABB236D5EF2000BCA47 /* right11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "right11-data.json"; sourceTree = "<group>"; };
 		2290EABD236D5EF6000BCA47 /* wrong11-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "wrong11-data.json"; sourceTree = "<group>"; };
 		229727A82570DEC300E67BB1 /* BPPublishLocalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishLocalCell.swift; sourceTree = "<group>"; };
@@ -607,7 +605,6 @@
 			isa = PBXGroup;
 			children = (
 				228F3CC3256E86BF009EDA44 /* BPPubilshToolsView.swift */,
-				228F3CC7256E878E009EDA44 /* BPPubilshToolBar.swift */,
 				228F3CC0256E7C89009EDA44 /* BPPublishTipsView.swift */,
 				229727AC2571499F00E67BB1 /* BPPublishImageListView.swift */,
 			);
@@ -1250,7 +1247,6 @@
 				22642BA9233A4745004E1DF9 /* NSArray+CrashDefender.m in Sources */,
 				2297FE35255FA9AF000D45C3 /* BPChatRoomTextMessageBubble.swift in Sources */,
 				22413E3222E83E2100F2C678 /* DeviceInfoGlobal.swift in Sources */,
-				228F3CC8256E878E009EDA44 /* BPPubilshToolBar.swift in Sources */,
 				CF87869822F709C20031E4B9 /* BPAuthoriationManager.swift in Sources */,
 				224582012326032B0031CC7A /* BPIMDBCenter.swift in Sources */,
 				CF26719022FEB39B00E6B47F /* BPBaseTabBarController.swift in Sources */,

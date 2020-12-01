@@ -8,11 +8,11 @@
 
 import Foundation
 
-class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTipsViewDelegate, BPPublishToolBarDelegate {
+class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTipsViewDelegate, BPPubilshToolsViewDelegate {
 
-    var model: BPPublishModel?
+    var model: BPPublishModel = BPPublishModel()
 
-    private let toolsViewHeight = AdaptSize(360)
+    private let toolsViewHeight = AdaptSize(400)
     private var textView: IQTextView = {
         let textView = IQTextView()
         textView.placeholder = "记录你的心情"
@@ -68,7 +68,7 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
         super.bindProperty()
         self.textView.delegate = self
         self.tipsView.delegate = self
-        self.toolsView.toolBar.delegate = self
+        self.toolsView.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard(notification:)), name: BPPubilshViewController.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(notification:)), name: BPPubilshViewController.keyboardWillHideNotification, object: nil)
     }
@@ -108,7 +108,7 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
     }
 
     private func updateTipsView() {
-        self.tipsView.bindProperty()
+        self.tipsView.setDate(model: model)
     }
 
     // MARK: ==== UITextViewDelegate ====
@@ -132,9 +132,11 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
     func clickLimitAction() {
         BPLog("setLimitAction")
         let vc = BPPublishLimitViewController()
+        vc.currentLimitType = model.limitType
         vc.selectedBlock = { [weak self] (type: BPPublishLimitType) in
             guard let self = self else { return }
-            self.model?.limitType = type
+            self.model.limitType = type
+            self.updateTipsView()
         }
         self.present(vc, animated: true, completion: nil)
     }

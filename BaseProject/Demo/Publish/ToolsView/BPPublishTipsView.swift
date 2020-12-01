@@ -26,6 +26,7 @@ class BPPubilshTipsView: BPView {
         button.titleLabel?.font  = UIFont.iconFont(size: AdaptSize(11))
         button.layer.borderWidth = 0.9
         button.layer.borderColor = UIColor.gray0.cgColor
+        button.contentHorizontalAlignment = .left
         return button
     }()
     private var tagButton: BPButton = {
@@ -35,6 +36,7 @@ class BPPubilshTipsView: BPView {
         button.titleLabel?.font  = UIFont.systemFont(ofSize: AdaptSize(11))
         button.layer.borderWidth = 0.9
         button.layer.borderColor = UIColor.gray0.cgColor
+        button.contentHorizontalAlignment = .left
         return button
     }()
     private var limitButton: BPButton = {
@@ -42,6 +44,7 @@ class BPPubilshTipsView: BPView {
         button.setTitle("广场可见 " + IconFont.arrow.rawValue, for: .normal)
         button.setTitleColor(UIColor.gray1, for: .normal)
         button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(11))
+        button.contentHorizontalAlignment = .right
         return button
     }()
 
@@ -75,12 +78,12 @@ class BPPubilshTipsView: BPView {
         }
         limitButton.sizeToFit()
         limitButton.snp.makeConstraints { (make) in
+            make.centerY.height.equalToSuperview()
             make.right.equalToSuperview().offset(AdaptSize(-15))
-            make.centerY.equalToSuperview()
-            make.size.equalTo(limitButton.size)
+            make.left.greaterThanOrEqualTo(tagButton.snp.left).offset(AdaptSize(15))
         }
         localButton.layer.cornerRadius = localButton.size.height/2
-        tagButton.layer.cornerRadius   = tagButton.size.height/2
+        tagButton.layer.cornerRadius   = limitButton.size.height/2
     }
     override func bindProperty() {
         super.bindProperty()
@@ -100,5 +103,9 @@ class BPPubilshTipsView: BPView {
 
     @objc private func setLimitAction() {
         self.delegate?.clickLimitAction()
+    }
+
+    func setDate(model: BPPublishModel) {
+        self.limitButton.setTitle(model.limitType.title, for: .normal)
     }
 }

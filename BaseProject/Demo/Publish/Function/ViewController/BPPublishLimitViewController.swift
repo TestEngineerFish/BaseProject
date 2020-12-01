@@ -102,7 +102,7 @@ class BPPublishLimitViewController: BPViewController, UITableViewDelegate, UITab
         }()
         self.customNavigationBar?.leftButton.setTitle(IconFont.close1.rawValue, for: .normal)
         self.customNavigationBar?.leftButton.titleLabel?.font = UIFont.iconFont(size: 15)
-        self.customNavigationBar?.left = AdaptSize(15)
+        self.customNavigationBar?.leftButton.left = AdaptSize(15)
         self.customNavigationBar?.leftButtonAction = { [weak self] in
             guard let self = self else { return }
             self.dismiss(animated: true, completion: nil)

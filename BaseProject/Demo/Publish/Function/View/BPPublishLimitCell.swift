@@ -54,6 +54,7 @@ class BPPublishLimitCell: UITableViewCell {
             make.left.equalToSuperview().offset(AdaptSize(15))
             make.right.equalTo(selectButton.snp.left).offset(AdaptSize(-15))
             make.top.equalToSuperview().offset(AdaptSize(10))
+            make.height.equalTo(AdaptSize(13))
         }
         subtitleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom)
