@@ -12,7 +12,6 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
 
     var model: BPPublishModel = BPPublishModel()
 
-    private let toolsViewHeight = AdaptSize(400)
     private var textView: IQTextView = {
         let textView = IQTextView()
         textView.placeholder = "记录你的心情"
@@ -25,8 +24,9 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
         view.backgroundColor = UIColor.gray0
         return view
     }()
-    private var tipsView  = BPPubilshTipsView()
-    private var toolsView = BPPubilshToolsView()
+    private var imageListView = BPPublishImageListView()
+    private var tipsView      = BPPubilshTipsView()
+    private var toolsView     = BPPubilshToolsView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +39,7 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
         self.setCustomNaviation()
         self.view.addSubview(lineView)
         self.view.addSubview(textView)
+        self.view.addSubview(imageListView)
         self.view.addSubview(tipsView)
         self.view.addSubview(toolsView)
         lineView.snp.makeConstraints { (make) in
@@ -50,17 +51,22 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
             make.left.equalToSuperview().offset(AdaptSize(15))
             make.right.equalToSuperview().offset(AdaptSize(-15))
             make.top.equalTo(lineView.snp.bottom)
-            make.bottom.equalTo(tipsView.snp.top)
+        }
+        imageListView.snp.makeConstraints { (make) in
+            make.left.right.equalTo(textView)
+            make.height.equalTo(0)
+            make.top.equalTo(textView.snp.bottom)
         }
         tipsView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
-            make.top.equalTo(textView.snp.bottom)
+            make.top.equalTo(imageListView.snp.bottom)
             make.height.equalTo(AdaptSize(30))
         }
         toolsView.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalToSuperview()
+            make.left.right.equalToSuperview()
             make.top.equalTo(tipsView.snp.bottom)
-            make.height.equalTo(toolsViewHeight)
+            make.height.equalTo(toolsView.toolBarHeight)
+            make.bottom.equalToSuperview().offset(-kSafeBottomMargin)
         }
     }
 
@@ -94,16 +100,18 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
         guard let frameValue = notification.userInfo?["UIKeyboardFrameEndUserInfoKey"] as? CGRect, let _ = notification.userInfo?["UIKeyboardAnimationDurationUserInfoKey"] as? Double else {
             return
         }
-        let margin = kScreenHeight - frameValue.minY + self.toolsView.toolBarHeight
-
+        let margin = kScreenHeight - frameValue.minY - kSafeBottomMargin + toolsView.toolBarHeight
         self.toolsView.snp.updateConstraints { (make) in
             make.height.equalTo(margin)
         }
+//        DispatchQueue.main.async {
+//            self.toolsView.resetContentView()
+//        }
     }
 
     @objc private func hideKeyboard(notification: Notification) {
         self.toolsView.snp.updateConstraints { (make) in
-            make.height.equalTo(toolsViewHeight)
+            make.height.equalTo(toolsView.toolBarHeight)
         }
     }
 
@@ -141,21 +149,43 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
         self.present(vc, animated: true, completion: nil)
     }
 
-    // MARK: ==== BPPublishToolBarDelegate ====
-    func clickRecordAction() {
+    // MARK: ==== BPPubilshToolsViewDelegate ====
+    func clickRecordAction(content height:CGFloat) {
         BPLog("clickRecordAction")
+        self.textView.resignFirstResponder()
+        self.toolsView.snp.updateConstraints { (make) in
+            make.height.equalTo(height)
+        }
     }
 
     func clickCameraAction() {
+        BPSystemPhotoManager.share.showCamera { [weak self] (image: UIImage?) in
+            guard let self = self, let _image = image else { return }
+            self.imageListView.backgroundColor = .randomColor()
+            self.imageListView.snp.updateConstraints { (make) in
+                make.height.equalTo(AdaptSize(100))
+            }
+        }
         BPLog("clickCameraAction")
     }
 
     func clickPhotoAction() {
+        BPSystemPhotoManager.share.showPhoto { [weak self] (image: UIImage?) in
+            guard let self = self, let _image = image else { return }
+            self.imageListView.backgroundColor = .randomColor()
+            self.imageListView.snp.updateConstraints { (make) in
+                make.height.equalTo(AdaptSize(100))
+            }
+        }
         BPLog("clickPhotoAction")
     }
 
-    func clickEmojiAction() {
+    func clickEmojiAction(content height:CGFloat) {
         BPLog("clickEmojiAction")
+        self.textView.resignFirstResponder()
+        self.toolsView.snp.updateConstraints { (make) in
+            make.height.equalTo(height)
+        }
     }
 
     func clickRemindAction() {

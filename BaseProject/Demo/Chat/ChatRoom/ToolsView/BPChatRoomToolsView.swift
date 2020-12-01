@@ -90,6 +90,7 @@ class BPChatRoomToolsView: BPView, UITextFieldDelegate, BPChatRoomMoreToolsViewD
         let button = BPButton()
         button.setTitle(IconFont.record.rawValue, for: .normal)
         button.setTitleColor(UIColor.black1, for: .normal)
+        button.setTitleColor(UIColor.orange1, for: .selected)
         button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(20))
         return button
     }()

@@ -9,22 +9,36 @@
 import Foundation
 
 protocol BPPubilshToolsViewDelegate: NSObjectProtocol {
-    func clickRecordAction()
+    func clickRecordAction(content height:CGFloat)
     func clickCameraAction()
     func clickPhotoAction()
-    func clickEmojiAction()
+    func clickEmojiAction(content height:CGFloat)
     func clickRemindAction()
 }
 
 class BPPubilshToolsView: BPView {
-
-    let toolBarHeight = AdaptSize(40)
+    /// 工具栏默认高度
+    let toolBarHeight     = AdaptSize(40)
+    /// 工具视图默认高度
+    private let contentViewHeight = AdaptSize(360)
     var delegate: BPPubilshToolsViewDelegate?
+
+    /// 当前选择的选项
+    private var currentSelectedButton: BPButton? {
+        willSet {
+            guard let _ = newValue, let button = currentSelectedButton else {
+                return
+            }
+            // 更改上一个按钮的选中状态
+            self.clickButton(sender: button)
+        }
+    }
 
     private var recordButton: BPButton = {
         let button = BPButton()
         button.setTitle(IconFont.record.rawValue, for: .normal)
         button.setTitleColor(UIColor.gray1, for: .normal)
+        button.setTitleColor(UIColor.orange1, for: .selected)
         button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(20))
         return button
     }()
@@ -32,6 +46,7 @@ class BPPubilshToolsView: BPView {
         let button = BPButton()
         button.setTitle(IconFont.camera.rawValue, for: .normal)
         button.setTitleColor(UIColor.gray1, for: .normal)
+        button.setTitleColor(UIColor.orange1, for: .selected)
         button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(25))
         return button
     }()
@@ -39,6 +54,7 @@ class BPPubilshToolsView: BPView {
         let button = BPButton()
         button.setTitle(IconFont.photo.rawValue, for: .normal)
         button.setTitleColor(UIColor.gray1, for: .normal)
+        button.setTitleColor(UIColor.orange1, for: .selected)
         button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(25))
         return button
     }()
@@ -46,6 +62,7 @@ class BPPubilshToolsView: BPView {
         let button = BPButton()
         button.setTitle(IconFont.emoji.rawValue, for: .normal)
         button.setTitleColor(UIColor.gray1, for: .normal)
+        button.setTitleColor(UIColor.orange1, for: .selected)
         button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(20))
         return button
     }()
@@ -53,14 +70,11 @@ class BPPubilshToolsView: BPView {
         let button = BPButton()
         button.setTitle(IconFont.remind.rawValue, for: .normal)
         button.setTitleColor(UIColor.gray1, for: .normal)
+        button.setTitleColor(UIColor.orange1, for: .selected)
         button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(20))
         return button
     }()
-    private var contentView: BPView = {
-        let view = BPView()
-        view.backgroundColor = UIColor.randomColor()
-        return view
-    }()
+    private var contentView = BPPublishToolsMoreView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -121,27 +135,76 @@ class BPPubilshToolsView: BPView {
 
     override func bindProperty() {
         super.bindProperty()
-        self.recordButton.addTarget(self, action: #selector(self.recordAction), for: .touchUpInside)
-        self.cameraButton.addTarget(self, action: #selector(self.cameraAction), for: .touchUpInside)
-        self.photoButton.addTarget(self, action: #selector(self.photoAction), for: .touchUpInside)
-        self.emojiButton.addTarget(self, action: #selector(self.emojiAction), for: .touchUpInside)
-        self.remindButton.addTarget(self, action: #selector(self.remindAction), for: .touchUpInside)
+        self.recordButton.addTarget(self, action: #selector(self.recordAction(sender:)), for: .touchUpInside)
+        self.cameraButton.addTarget(self, action: #selector(self.cameraAction(sender:)), for: .touchUpInside)
+        self.photoButton.addTarget(self, action: #selector(self.photoAction(sender:)), for: .touchUpInside)
+        self.emojiButton.addTarget(self, action: #selector(self.emojiAction(sender:)), for: .touchUpInside)
+        self.remindButton.addTarget(self, action: #selector(self.remindAction(sender:)), for: .touchUpInside)
     }
 
     // MARK: ==== Event ====
-    @objc private func recordAction() {
-        self.delegate?.clickRecordAction()
+    @objc private func recordAction(sender:BPButton) {
+        self.clickButton(sender: sender)
     }
-    @objc private func cameraAction() {
-        self.delegate?.clickCameraAction()
+    @objc private func cameraAction(sender:BPButton) {
+        self.clickButton(sender: sender)
     }
-    @objc private func photoAction() {
-        self.delegate?.clickPhotoAction()
+    @objc private func photoAction(sender:BPButton) {
+        self.clickButton(sender: sender)
     }
-    @objc private func emojiAction() {
-        self.delegate?.clickEmojiAction()
+    @objc private func emojiAction(sender:BPButton) {
+        self.clickButton(sender: sender)
     }
-    @objc private func remindAction() {
-        self.delegate?.clickRemindAction()
+    @objc private func remindAction(sender:BPButton) {
+        self.clickButton(sender: sender)
+    }
+
+    /// 恢复默认状态
+    func resetContentView() {
+        guard let button = self.currentSelectedButton else { return }
+        self.clickButton(sender: button)
+    }
+
+    // 设置按钮的选中状态
+    private func switchButtonState(sender: BPButton) {
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            self.currentSelectedButton = sender
+        } else {
+            self.currentSelectedButton = nil
+        }
+    }
+
+    private func clickButton(sender: BPButton) {
+        let hideHeight = toolBarHeight + kSafeBottomMargin
+        let showHeight = hideHeight + contentViewHeight
+        switch sender {
+        case recordButton:
+            self.switchButtonState(sender: sender)
+            if sender.isSelected {
+                self.contentView.showView(type: .record)
+                self.delegate?.clickRecordAction(content: showHeight)
+            } else {
+                self.contentView.hideView()
+                self.delegate?.clickEmojiAction(content: hideHeight)
+            }
+        case cameraButton:
+            self.delegate?.clickCameraAction()
+        case photoButton:
+            self.delegate?.clickPhotoAction()
+        case emojiButton:
+            self.switchButtonState(sender: sender)
+            if sender.isSelected {
+                self.contentView.showView(type: .emoji)
+                self.delegate?.clickEmojiAction(content: showHeight)
+            } else {
+                self.contentView.hideView()
+                self.delegate?.clickEmojiAction(content: hideHeight)
+            }
+        case remindButton:
+            self.delegate?.clickRemindAction()
+        default:
+            break
+        }
     }
 }
