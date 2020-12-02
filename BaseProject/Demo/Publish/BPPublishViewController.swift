@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTipsViewDelegate, BPPubilshToolsViewDelegate {
+class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTipsViewDelegate, BPPubilshToolsViewDelegate, BPPublishToolsMoreViewDelegate {
 
     var model: BPPublishModel = BPPublishModel()
 
@@ -16,6 +16,7 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
         let textView = IQTextView()
         textView.placeholder     = "记录你的心情"
         textView.font            = UIFont.regularFont(ofSize: AdaptSize(16))
+        textView.textColor       = UIColor.black1
         textView.backgroundColor = .white
         return textView
     }()
@@ -72,9 +73,10 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
 
     override func bindProperty() {
         super.bindProperty()
-        self.textView.delegate = self
-        self.tipsView.delegate = self
+        self.textView.delegate  = self
+        self.tipsView.delegate  = self
         self.toolsView.delegate = self
+        self.toolsView.contentView.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard(notification:)), name: BPPubilshViewController.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(notification:)), name: BPPubilshViewController.keyboardWillHideNotification, object: nil)
     }
@@ -120,6 +122,12 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
     // MARK: ==== UITextViewDelegate ====
     func textViewDidBeginEditing(_ textView: UITextView) {
 
+    }
+
+    func textViewDidChange(_ textView: UITextView) {
+        // 富文本会覆盖原字体和颜色，这里重新设置
+        textView.font      = UIFont.regularFont(ofSize: AdaptSize(16))
+        textView.textColor = UIColor.black1
     }
 
     // MARK: ==== BPPubilshTipsViewDelegate ====
@@ -192,5 +200,15 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
         BPLog("clickRemindAction")
         let vc = BPPublishRemindViewController()
         self.present(vc, animated: true, completion: nil)
+    }
+
+    // MARK: ==== BPChatRoomMoreToolsViewDelegate ====
+    func selectedEmoji(model: BPEmojiModel) {
+        let font  = UIFont.regularFont(ofSize: AdaptSize(16))
+        let color = UIColor.black1
+        let emoji = (model.name ?? "").convertToCommonEmations(font: font, color: color)
+        let attr  = NSMutableAttributedString(attributedString: self.textView.attributedText)
+        attr.append(emoji)
+        self.textView.attributedText = attr
     }
 }

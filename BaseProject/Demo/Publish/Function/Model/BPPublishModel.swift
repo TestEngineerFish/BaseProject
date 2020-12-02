@@ -9,8 +9,18 @@
 import ObjectMapper
 
 struct BPPublishModel: Mappable {
-
+    var content: NSAttributedString?
+    var tagList: [BPTagModel] = []
     var limitType: BPPublishLimitType = .all
+
+    init() {}
+    init?(map: Map) {}
+    mutating func mapping(map: Map) {}
+}
+
+struct BPTagModel: Mappable {
+    var id: Int      = 0
+    var name: String = ""
 
     init() {}
     init?(map: Map) {}

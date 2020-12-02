@@ -77,7 +77,8 @@ class BPPublishImageListView: BPView, UICollectionViewDelegate, UICollectionView
     // MARK: ==== BPPublishImageCellDelegate ====
     func deleteImage(indexPath: IndexPath) {
         self.imageViewList.remove(at: indexPath.row)
-        self.collectionView.reloadData()
+        self.collectionView.deleteItems(at: [indexPath])
+        // 如果无照片，则不显示当前视图
         if imageViewList.isEmpty && self.superview != nil {
             self.snp.updateConstraints { (make) in
                 make.height.equalTo(0)

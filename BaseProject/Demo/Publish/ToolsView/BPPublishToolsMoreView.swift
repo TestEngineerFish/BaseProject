@@ -14,7 +14,7 @@ protocol BPPublishToolsMoreViewDelegate: NSObjectProtocol {
 /// 工具栏底部更多内容视图
 class BPPublishToolsMoreView: BPView, BPEmojiToolViewDelegate {
 
-    weak var delegate: BPChatRoomMoreToolsViewDelegate?
+    weak var delegate: BPPublishToolsMoreViewDelegate?
 
     private var emojiView: BPEmojiToolView = {
         let view = BPEmojiToolView()

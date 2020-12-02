@@ -66,7 +66,6 @@ class BPPublishLimitViewController: BPViewController, UITableViewDelegate, UITab
         tableView.backgroundColor                = .white
         tableView.showsVerticalScrollIndicator   = false
         tableView.showsHorizontalScrollIndicator = false
-        tableView.isScrollEnabled = false
         return tableView
     }()
 
@@ -94,20 +93,21 @@ class BPPublishLimitViewController: BPViewController, UITableViewDelegate, UITab
     }
 
     private func setCustomNaviation() {
+        self.customNavigationBar?.title = "发布设置"
+        self.customNavigationBar?.leftButton.setTitle(IconFont.close1.rawValue, for: .normal)
+        self.customNavigationBar?.leftButton.titleLabel?.font = UIFont.iconFont(size: 15)
+        self.customNavigationBar?.leftButton.left  = AdaptSize(15)
+        self.customNavigationBar?.leftButtonAction = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(animated: true, completion: nil)
+        }
+
         let lineView: BPView = {
             let view = BPView()
             view.backgroundColor = UIColor.gray3
             view.layer.cornerRadius = AdaptSize(2)
             return view
         }()
-        self.customNavigationBar?.leftButton.setTitle(IconFont.close1.rawValue, for: .normal)
-        self.customNavigationBar?.leftButton.titleLabel?.font = UIFont.iconFont(size: 15)
-        self.customNavigationBar?.leftButton.left = AdaptSize(15)
-        self.customNavigationBar?.leftButtonAction = { [weak self] in
-            guard let self = self else { return }
-            self.dismiss(animated: true, completion: nil)
-        }
-        self.customNavigationBar?.title = "发布设置"
         self.customNavigationBar?.addSubview(lineView)
         lineView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(AdaptSize(15))

@@ -21,6 +21,7 @@
 		2236231B255A5B9E0032C34A /* BPPhotoAlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2236231A255A5B9E0032C34A /* BPPhotoAlbumModel.swift */; };
 		22369ED92576103F00DC5297 /* BPPublishToolsMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22369ED82576103F00DC5297 /* BPPublishToolsMoreView.swift */; };
 		22369EDE257693C300DC5297 /* BPPublishImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22369EDD257693C300DC5297 /* BPPublishImageCell.swift */; };
+		22369EE225779EB100DC5297 /* BPPublishTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22369EE125779EB100DC5297 /* BPPublishTagCell.swift */; };
 		223AC0EE24F35AEF00C85800 /* DescriptionFactoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223AC0ED24F35AEF00C85800 /* DescriptionFactoryManager.swift */; };
 		223AC0F024F35B5200C85800 /* BubbleSortDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223AC0EF24F35B5200C85800 /* BubbleSortDescriptionView.swift */; };
 		223AC0F224F3AD3800C85800 /* SelectionSortDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223AC0F124F3AD3800C85800 /* SelectionSortDescriptionView.swift */; };
@@ -107,6 +108,8 @@
 		22AED512234EC75500A91A68 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AED511234EC75500A91A68 /* Optional+Extension.swift */; };
 		22AED514234ED5DB00A91A68 /* BPServerSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AED513234ED5DB00A91A68 /* BPServerSocketManager.swift */; };
 		22B12FE2255AD67D005F8623 /* BPSystemAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B12FE1255AD67D005F8623 /* BPSystemAlbumCell.swift */; };
+		22BD5BE62577A632007250D5 /* BPPublishTagHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BD5BE52577A632007250D5 /* BPPublishTagHeaderView.swift */; };
+		22BD5BFC2577C3E3007250D5 /* BPCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BD5BFB2577C3E3007250D5 /* BPCollectionViewFlowLayout.swift */; };
 		22C07110256FFAAA002EEF8C /* BPPublishLocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C0710F256FFAAA002EEF8C /* BPPublishLocalViewController.swift */; };
 		22C07114256FFB31002EEF8C /* BPPublishTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C07113256FFB31002EEF8C /* BPPublishTagViewController.swift */; };
 		22C07117256FFB64002EEF8C /* BPPublishLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C07116256FFB64002EEF8C /* BPPublishLimitViewController.swift */; };
@@ -196,6 +199,7 @@
 		2236231A255A5B9E0032C34A /* BPPhotoAlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPhotoAlbumModel.swift; sourceTree = "<group>"; };
 		22369ED82576103F00DC5297 /* BPPublishToolsMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishToolsMoreView.swift; sourceTree = "<group>"; };
 		22369EDD257693C300DC5297 /* BPPublishImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishImageCell.swift; sourceTree = "<group>"; };
+		22369EE125779EB100DC5297 /* BPPublishTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishTagCell.swift; sourceTree = "<group>"; };
 		223AC0ED24F35AEF00C85800 /* DescriptionFactoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionFactoryManager.swift; sourceTree = "<group>"; };
 		223AC0EF24F35B5200C85800 /* BubbleSortDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleSortDescriptionView.swift; sourceTree = "<group>"; };
 		223AC0F124F3AD3800C85800 /* SelectionSortDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSortDescriptionView.swift; sourceTree = "<group>"; };
@@ -292,6 +296,8 @@
 		22AED511234EC75500A91A68 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		22AED513234ED5DB00A91A68 /* BPServerSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPServerSocketManager.swift; sourceTree = "<group>"; };
 		22B12FE1255AD67D005F8623 /* BPSystemAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPSystemAlbumCell.swift; sourceTree = "<group>"; };
+		22BD5BE52577A632007250D5 /* BPPublishTagHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishTagHeaderView.swift; sourceTree = "<group>"; };
+		22BD5BFB2577C3E3007250D5 /* BPCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		22C0710F256FFAAA002EEF8C /* BPPublishLocalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishLocalViewController.swift; sourceTree = "<group>"; };
 		22C07113256FFB31002EEF8C /* BPPublishTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishTagViewController.swift; sourceTree = "<group>"; };
 		22C07116256FFB64002EEF8C /* BPPublishLimitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishLimitViewController.swift; sourceTree = "<group>"; };
@@ -725,6 +731,8 @@
 			children = (
 				22C0711F256FFD35002EEF8C /* BPPublishLimitCell.swift */,
 				229727A82570DEC300E67BB1 /* BPPublishLocalCell.swift */,
+				22369EE125779EB100DC5297 /* BPPublishTagCell.swift */,
+				22BD5BE52577A632007250D5 /* BPPublishTagHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1043,6 +1051,7 @@
 				22D4981022FBCD9B00281530 /* BPTableViewController.swift */,
 				22D4981222FBCDA900281530 /* BPViewController.swift */,
 				CF26718F22FEB39B00E6B47F /* BPBaseTabBarController.swift */,
+				22BD5BFB2577C3E3007250D5 /* BPCollectionViewFlowLayout.swift */,
 			);
 			path = BaseController;
 			sourceTree = "<group>";
@@ -1276,9 +1285,11 @@
 				228341C5255E21240018A6F6 /* BPSessionListViewController.swift in Sources */,
 				22A44AB8244D98B40039466E /* BPLogFormatter.m in Sources */,
 				22A877BE22FAB679004FF3A7 /* BPImageView.swift in Sources */,
+				22BD5BE62577A632007250D5 /* BPPublishTagHeaderView.swift in Sources */,
 				22369ED92576103F00DC5297 /* BPPublishToolsMoreView.swift in Sources */,
 				2264EF8622F91E0700A89C82 /* BPAlertViewZeroButton.swift in Sources */,
 				2297FE41255FD117000D45C3 /* BPChatRoomMoreToolsView.swift in Sources */,
+				22369EE225779EB100DC5297 /* BPPublishTagCell.swift in Sources */,
 				2297FE3D255FB58D000D45C3 /* BPChatRoomToolsView.swift in Sources */,
 				CF26719822FF0A6B00E6B47F /* ViewController4.swift in Sources */,
 				22ED54B023687FEF00011B82 /* UIBezierPath+AllPoints.m in Sources */,
@@ -1331,6 +1342,7 @@
 				227D300D253730E4009DB59C /* BPDrawPath.swift in Sources */,
 				CF26719422FF0A4300E6B47F /* ViewController2.swift in Sources */,
 				2276C8A5255685530040DFFF /* BPFileManager.swift in Sources */,
+				22BD5BFC2577C3E3007250D5 /* BPCollectionViewFlowLayout.swift in Sources */,
 				22AED512234EC75500A91A68 /* Optional+Extension.swift in Sources */,
 				228F3CC4256E86BF009EDA44 /* BPPubilshToolsView.swift in Sources */,
 				227D300A25372C96009DB59C /* DrawView.swift in Sources */,

@@ -74,7 +74,7 @@ class BPPubilshToolsView: BPView {
         button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(20))
         return button
     }()
-    private var contentView = BPPublishToolsMoreView()
+    var contentView = BPPublishToolsMoreView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
