@@ -10,6 +10,7 @@
 		2201542123745BCB004E4A99 /* BPGlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201542023745BCB004E4A99 /* BPGlobalFunction.swift */; };
 		2201542323758D2A004E4A99 /* BPLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201542223758D2A004E4A99 /* BPLabel.swift */; };
 		220936D525837CAC00FA910F /* BPEarthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220936D425837CAC00FA910F /* BPEarthViewController.swift */; };
+		220936D9258388C200FA910F /* BPDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220936D8258388C200FA910F /* BPDrawViewController.swift */; };
 		2211803322EEE47500B77911 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2211803222EEE47500B77911 /* CALayer+Extension.swift */; };
 		2215C0682556ADDB00A85A38 /* BPDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2215C0672556ADDB00A85A38 /* BPDownloadManager.swift */; };
 		2218AE3923D098D000EF2E42 /* BPLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2218AE3823D098D000EF2E42 /* BPLogManager.swift */; };
@@ -121,7 +122,6 @@
 		22C621BA22DC805600A7C849 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621B922DC805600A7C849 /* ViewController1.swift */; };
 		22C621BF22DC805600A7C849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22C621BE22DC805600A7C849 /* Assets.xcassets */; };
 		22C621C222DC805600A7C849 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C621C022DC805600A7C849 /* LaunchScreen.storyboard */; };
-		22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621DE22DC886300A7C849 /* YYBaseModel.swift */; };
 		22C621EE22DC8A7800A7C849 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621ED22DC8A7800A7C849 /* UIDevice+Extension.swift */; };
 		22C621F122DC8D1000A7C849 /* YYGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621F022DC8D1000A7C849 /* YYGlobal.swift */; };
 		22C621F722DC8E0B00A7C849 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C621F622DC8E0B00A7C849 /* UIColor+Extension.swift */; };
@@ -190,6 +190,7 @@
 		2201542023745BCB004E4A99 /* BPGlobalFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPGlobalFunction.swift; sourceTree = "<group>"; };
 		2201542223758D2A004E4A99 /* BPLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPLabel.swift; sourceTree = "<group>"; };
 		220936D425837CAC00FA910F /* BPEarthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPEarthViewController.swift; sourceTree = "<group>"; };
+		220936D8258388C200FA910F /* BPDrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDrawViewController.swift; sourceTree = "<group>"; };
 		2211803222EEE47500B77911 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		2215C0672556ADDB00A85A38 /* BPDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDownloadManager.swift; sourceTree = "<group>"; };
 		2218AE3823D098D000EF2E42 /* BPLogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPLogManager.swift; sourceTree = "<group>"; };
@@ -313,7 +314,6 @@
 		22C621BE22DC805600A7C849 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22C621C122DC805600A7C849 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22C621C322DC805600A7C849 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22C621DE22DC886300A7C849 /* YYBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYBaseModel.swift; sourceTree = "<group>"; };
 		22C621ED22DC8A7800A7C849 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		22C621F022DC8D1000A7C849 /* YYGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYGlobal.swift; sourceTree = "<group>"; };
 		22C621F622DC8E0B00A7C849 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -581,6 +581,7 @@
 			children = (
 				227D300925372C96009DB59C /* DrawView.swift */,
 				227D300C253730E4009DB59C /* BPDrawPath.swift */,
+				220936D8258388C200FA910F /* BPDrawViewController.swift */,
 			);
 			path = DrawView;
 			sourceTree = "<group>";
@@ -823,7 +824,7 @@
 				224E5388258377ED00FB3A38 /* WebSocket */,
 				CFFB34E123595ED8002D440E /* WebSource */,
 				CF26719B22FF970F00E6B47F /* Publish */,
-				22C621DE22DC886300A7C849 /* YYBaseModel.swift */,
+				227D300825372C44009DB59C /* DrawView */,
 				22C621B922DC805600A7C849 /* ViewController1.swift */,
 				CF26719322FF0A4300E6B47F /* ViewController2.swift */,
 				CF26719522FF0A5900E6B47F /* ViewController3.swift */,
@@ -887,7 +888,6 @@
 				22CDA25225514F7D00B6FDCB /* ActionSheet */,
 				E054800325416B4E0031C02D /* Authoriation */,
 				E0A0B76C253ED2DC00E97ED8 /* BaseRefreshView */,
-				227D300825372C44009DB59C /* DrawView */,
 				2264EF8222F9108500A89C82 /* AlertView */,
 			);
 			path = Utils;
@@ -1344,7 +1344,6 @@
 				22D11F6A252DF85D005896E8 /* BPEarthItemView.swift in Sources */,
 				22FB2EEC255E2D4900B72884 /* BPSessionCell.swift in Sources */,
 				226F0B15250A206D00F453F6 /* BPContainerTransitionDelegate.swift in Sources */,
-				22C621DF22DC886300A7C849 /* YYBaseModel.swift in Sources */,
 				2264EF9422F97A2800A89C82 /* BPTaskRequest.swift in Sources */,
 				22C07117256FFB64002EEF8C /* BPPublishLimitViewController.swift in Sources */,
 				CF49A88024DFEE5300D8DAC4 /* BubbleSortTableView.swift in Sources */,
@@ -1417,6 +1416,7 @@
 				CF8EB58D22DCCCFC00EC2FE5 /* String+Extension.swift in Sources */,
 				2201542123745BCB004E4A99 /* BPGlobalFunction.swift in Sources */,
 				22C621F722DC8E0B00A7C849 /* UIColor+Extension.swift in Sources */,
+				220936D9258388C200FA910F /* BPDrawViewController.swift in Sources */,
 				2215C0682556ADDB00A85A38 /* BPDownloadManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

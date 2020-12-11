@@ -10,22 +10,8 @@ import UIKit
 
 class ViewController3: BPViewController {
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.black
-        self.customNavigationBar?.isHidden = true
-        self.createSubviews()
-
-        let drawView = DrawView(frame: self.view.bounds)
-        self.view.addSubview(drawView)
     }
-
-    override func createSubviews() {
-        super.createSubviews()
-    }
-
-
-
 
 }

@@ -71,7 +71,7 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate {
         sessionNC.tabBarItem.selectedImage = UIImage(named: "message_selected")
         self.addChild(sessionNC)
         
-        let profileVC = BPWebSocketServer()
+        let profileVC = ViewController3()
         let profileNC = BPBaseNavigationController()
         profileNC.addChild(profileVC)
         profileNC.tabBarItem.title         = "我的"

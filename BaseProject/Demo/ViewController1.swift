@@ -13,11 +13,12 @@ enum BPFunctionType: String {
     case chat      = "聊天"
     case webSocket = "WebSocket"
     case earth     = "球形动效"
+    case draw      = "绘制"
 }
 
 class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSource, BPRefreshProtocol {
 
-    var typeList: [BPFunctionType] = [.algorithm, .chat, .webSocket, .earth]
+    var typeList: [BPFunctionType] = [.algorithm, .chat, .webSocket, .earth, .draw]
 
     var tableView: UITableView = {
         let tableView = UITableView()
@@ -89,6 +90,9 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
             self.navigationController?.pushViewController(vc, animated: true)
         case .earth:
             let vc = BPEarthViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        case .draw:
+            let vc = BPDrawViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         }
 
