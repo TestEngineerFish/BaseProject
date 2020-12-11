@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2201542123745BCB004E4A99 /* BPGlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201542023745BCB004E4A99 /* BPGlobalFunction.swift */; };
 		2201542323758D2A004E4A99 /* BPLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201542223758D2A004E4A99 /* BPLabel.swift */; };
+		220936D525837CAC00FA910F /* BPEarthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220936D425837CAC00FA910F /* BPEarthViewController.swift */; };
 		2211803322EEE47500B77911 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2211803222EEE47500B77911 /* CALayer+Extension.swift */; };
 		2215C0682556ADDB00A85A38 /* BPDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2215C0672556ADDB00A85A38 /* BPDownloadManager.swift */; };
 		2218AE3923D098D000EF2E42 /* BPLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2218AE3823D098D000EF2E42 /* BPLogManager.swift */; };
@@ -188,6 +189,7 @@
 /* Begin PBXFileReference section */
 		2201542023745BCB004E4A99 /* BPGlobalFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPGlobalFunction.swift; sourceTree = "<group>"; };
 		2201542223758D2A004E4A99 /* BPLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPLabel.swift; sourceTree = "<group>"; };
+		220936D425837CAC00FA910F /* BPEarthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPEarthViewController.swift; sourceTree = "<group>"; };
 		2211803222EEE47500B77911 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		2215C0672556ADDB00A85A38 /* BPDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDownloadManager.swift; sourceTree = "<group>"; };
 		2218AE3823D098D000EF2E42 /* BPLogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPLogManager.swift; sourceTree = "<group>"; };
@@ -396,6 +398,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		220936D025837C8100FA910F /* Earth */ = {
+			isa = PBXGroup;
+			children = (
+				220936D125837C8C00FA910F /* View */,
+				220936D425837CAC00FA910F /* BPEarthViewController.swift */,
+			);
+			path = Earth;
+			sourceTree = "<group>";
+		};
+		220936D125837C8C00FA910F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				22D11F69252DF85D005896E8 /* BPEarthItemView.swift */,
+				22D11F6C252DF97A005896E8 /* BPEarthView.swift */,
+				22D11F73252EE98C005896E8 /* BPMatrix.h */,
+				227D2F9F252EEF62009DB59C /* BPPoint.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2215C0662556ADCA00A85A38 /* DownloadManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -795,6 +817,7 @@
 		22C621DB22DC821000A7C849 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				220936D025837C8100FA910F /* Earth */,
 				225C48DA24DD41ED00594FEE /* Algorithm */,
 				228341C2255E20850018A6F6 /* Chat */,
 				224E5388258377ED00FB3A38 /* WebSocket */,
@@ -865,7 +888,6 @@
 				E054800325416B4E0031C02D /* Authoriation */,
 				E0A0B76C253ED2DC00E97ED8 /* BaseRefreshView */,
 				227D300825372C44009DB59C /* DrawView */,
-				22D11F68252DF825005896E8 /* Earth */,
 				2264EF8222F9108500A89C82 /* AlertView */,
 			);
 			path = Utils;
@@ -921,17 +943,6 @@
 				224582022326044D0031CC7A /* NormalDBCenter.swift */,
 			);
 			path = FMDatabase;
-			sourceTree = "<group>";
-		};
-		22D11F68252DF825005896E8 /* Earth */ = {
-			isa = PBXGroup;
-			children = (
-				22D11F69252DF85D005896E8 /* BPEarthItemView.swift */,
-				22D11F6C252DF97A005896E8 /* BPEarthView.swift */,
-				22D11F73252EE98C005896E8 /* BPMatrix.h */,
-				227D2F9F252EEF62009DB59C /* BPPoint.h */,
-			);
-			path = Earth;
 			sourceTree = "<group>";
 		};
 		22D497FF22FBB0E700281530 /* LottieFiles */ = {
@@ -1310,6 +1321,7 @@
 				2245820B2326549E0031CC7A /* BPCacheManager.swift in Sources */,
 				228F3C9E25653690009EDA44 /* BPEmojiToolView.swift in Sources */,
 				2264EF7F22F820F900A89C82 /* BPAlerViewTwoButton.swift in Sources */,
+				220936D525837CAC00FA910F /* BPEarthViewController.swift in Sources */,
 				22CDA250254F9A9500B6FDCB /* BPImageBrowserCell.swift in Sources */,
 				225C48E724DD4FF800594FEE /* BaseTableView.swift in Sources */,
 				22D018F92321F7F0007AFA1B /* BPDatabaseProtocol.swift in Sources */,
