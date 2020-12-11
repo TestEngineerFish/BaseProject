@@ -36,6 +36,7 @@
 		22458205232604D90031CC7A /* BPIMDBOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22458204232604D90031CC7A /* BPIMDBOperator.swift */; };
 		22458207232604EA0031CC7A /* BPNormalDBOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22458206232604EA0031CC7A /* BPNormalDBOperator.swift */; };
 		2245820B2326549E0031CC7A /* BPCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245820A2326549E0031CC7A /* BPCacheManager.swift */; };
+		224E5384258372D100FB3A38 /* BPAlgorithmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224E5383258372D100FB3A38 /* BPAlgorithmListViewController.swift */; };
 		225C48E124DD425700594FEE /* AlgorithmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C48E024DD425700594FEE /* AlgorithmViewController.swift */; };
 		225C48E324DD45EE00594FEE /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C48E224DD45EE00594FEE /* BarView.swift */; };
 		225C48E524DD460F00594FEE /* BPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C48E424DD460F00594FEE /* BPView.swift */; };
@@ -80,7 +81,6 @@
 		228F3CA92568B0D5009EDA44 /* BPChatRoomWithDrawCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CA82568B0D5009EDA44 /* BPChatRoomWithDrawCell.swift */; };
 		228F3CAC2568C973009EDA44 /* BPChatRoomBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CAB2568C973009EDA44 /* BPChatRoomBaseCell.swift */; };
 		228F3CB1256A190B009EDA44 /* BPRecordToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CB0256A190B009EDA44 /* BPRecordToolView.swift */; };
-		228F3CB9256E6C22009EDA44 /* BPPondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CB8256E6C22009EDA44 /* BPPondViewController.swift */; };
 		228F3CBE256E7157009EDA44 /* BPPublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CBD256E7157009EDA44 /* BPPublishViewController.swift */; };
 		228F3CC1256E7C89009EDA44 /* BPPublishTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CC0256E7C89009EDA44 /* BPPublishTipsView.swift */; };
 		228F3CC4256E86BF009EDA44 /* BPPubilshToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F3CC3256E86BF009EDA44 /* BPPubilshToolsView.swift */; };
@@ -110,6 +110,7 @@
 		22B12FE2255AD67D005F8623 /* BPSystemAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B12FE1255AD67D005F8623 /* BPSystemAlbumCell.swift */; };
 		22BD5BE62577A632007250D5 /* BPPublishTagHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BD5BE52577A632007250D5 /* BPPublishTagHeaderView.swift */; };
 		22BD5BFC2577C3E3007250D5 /* BPCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BD5BFB2577C3E3007250D5 /* BPCollectionViewFlowLayout.swift */; };
+		22BD5BFF2577E54E007250D5 /* BPPublishTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BD5BFE2577E54E007250D5 /* BPPublishTagsView.swift */; };
 		22C07110256FFAAA002EEF8C /* BPPublishLocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C0710F256FFAAA002EEF8C /* BPPublishLocalViewController.swift */; };
 		22C07114256FFB31002EEF8C /* BPPublishTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C07113256FFB31002EEF8C /* BPPublishTagViewController.swift */; };
 		22C07117256FFB64002EEF8C /* BPPublishLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C07116256FFB64002EEF8C /* BPPublishLimitViewController.swift */; };
@@ -133,7 +134,7 @@
 		22D018FB2321F800007AFA1B /* BPDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D018FA2321F800007AFA1B /* BPDatabaseManager.swift */; };
 		22D11F6A252DF85D005896E8 /* BPEarthItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D11F69252DF85D005896E8 /* BPEarthItemView.swift */; };
 		22D11F6D252DF97A005896E8 /* BPEarthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D11F6C252DF97A005896E8 /* BPEarthView.swift */; };
-		22D11F70252E0FF6005896E8 /* BPSocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D11F6F252E0FF6005896E8 /* BPSocketViewController.swift */; };
+		22D11F70252E0FF6005896E8 /* BPWebSocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D11F6F252E0FF6005896E8 /* BPWebSocketClient.swift */; };
 		22D4980D22FBC67300281530 /* top-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 22D4980C22FBC67300281530 /* top-loading.json */; };
 		22D4980F22FBCD0800281530 /* center-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 22D4980E22FBCD0800281530 /* center-loading.json */; };
 		22D4981122FBCD9B00281530 /* BPTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4981022FBCD9B00281530 /* BPTableViewController.swift */; };
@@ -150,7 +151,7 @@
 		CF26719222FEF6E700E6B47F /* BPTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719122FEF6E700E6B47F /* BPTabBar.swift */; };
 		CF26719422FF0A4300E6B47F /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719322FF0A4300E6B47F /* ViewController2.swift */; };
 		CF26719622FF0A5900E6B47F /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719522FF0A5900E6B47F /* ViewController3.swift */; };
-		CF26719822FF0A6B00E6B47F /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719722FF0A6B00E6B47F /* ViewController4.swift */; };
+		CF26719822FF0A6B00E6B47F /* BPWebSocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719722FF0A6B00E6B47F /* BPWebSocketServer.swift */; };
 		CF26719A22FF0B1B00E6B47F /* BPBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26719922FF0B1B00E6B47F /* BPBaseNavigationController.swift */; };
 		CF49A88024DFEE5300D8DAC4 /* BubbleSortTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49A87F24DFEE5300D8DAC4 /* BubbleSortTableView.swift */; };
 		CF49A88224DFF09C00D8DAC4 /* BaseDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49A88124DFF09C00D8DAC4 /* BaseDescriptionView.swift */; };
@@ -216,6 +217,7 @@
 		22458204232604D90031CC7A /* BPIMDBOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPIMDBOperator.swift; sourceTree = "<group>"; };
 		22458206232604EA0031CC7A /* BPNormalDBOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPNormalDBOperator.swift; sourceTree = "<group>"; };
 		2245820A2326549E0031CC7A /* BPCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPCacheManager.swift; sourceTree = "<group>"; };
+		224E5383258372D100FB3A38 /* BPAlgorithmListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPAlgorithmListViewController.swift; sourceTree = "<group>"; };
 		225C48E024DD425700594FEE /* AlgorithmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmViewController.swift; sourceTree = "<group>"; };
 		225C48E224DD45EE00594FEE /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		225C48E424DD460F00594FEE /* BPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPView.swift; sourceTree = "<group>"; };
@@ -263,7 +265,6 @@
 		228F3CA82568B0D5009EDA44 /* BPChatRoomWithDrawCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomWithDrawCell.swift; sourceTree = "<group>"; };
 		228F3CAB2568C973009EDA44 /* BPChatRoomBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPChatRoomBaseCell.swift; sourceTree = "<group>"; };
 		228F3CB0256A190B009EDA44 /* BPRecordToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPRecordToolView.swift; sourceTree = "<group>"; };
-		228F3CB8256E6C22009EDA44 /* BPPondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPondViewController.swift; sourceTree = "<group>"; };
 		228F3CBD256E7157009EDA44 /* BPPublishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishViewController.swift; sourceTree = "<group>"; };
 		228F3CC0256E7C89009EDA44 /* BPPublishTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishTipsView.swift; sourceTree = "<group>"; };
 		228F3CC3256E86BF009EDA44 /* BPPubilshToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPubilshToolsView.swift; sourceTree = "<group>"; };
@@ -298,6 +299,7 @@
 		22B12FE1255AD67D005F8623 /* BPSystemAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPSystemAlbumCell.swift; sourceTree = "<group>"; };
 		22BD5BE52577A632007250D5 /* BPPublishTagHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishTagHeaderView.swift; sourceTree = "<group>"; };
 		22BD5BFB2577C3E3007250D5 /* BPCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		22BD5BFE2577E54E007250D5 /* BPPublishTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishTagsView.swift; sourceTree = "<group>"; };
 		22C0710F256FFAAA002EEF8C /* BPPublishLocalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishLocalViewController.swift; sourceTree = "<group>"; };
 		22C07113256FFB31002EEF8C /* BPPublishTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishTagViewController.swift; sourceTree = "<group>"; };
 		22C07116256FFB64002EEF8C /* BPPublishLimitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPublishLimitViewController.swift; sourceTree = "<group>"; };
@@ -324,7 +326,7 @@
 		22D018FA2321F800007AFA1B /* BPDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPDatabaseManager.swift; sourceTree = "<group>"; };
 		22D11F69252DF85D005896E8 /* BPEarthItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPEarthItemView.swift; sourceTree = "<group>"; };
 		22D11F6C252DF97A005896E8 /* BPEarthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPEarthView.swift; sourceTree = "<group>"; };
-		22D11F6F252E0FF6005896E8 /* BPSocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPSocketViewController.swift; sourceTree = "<group>"; };
+		22D11F6F252E0FF6005896E8 /* BPWebSocketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPWebSocketClient.swift; sourceTree = "<group>"; };
 		22D11F73252EE98C005896E8 /* BPMatrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPMatrix.h; sourceTree = "<group>"; };
 		22D4980C22FBC67300281530 /* top-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "top-loading.json"; sourceTree = "<group>"; };
 		22D4980E22FBCD0800281530 /* center-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "center-loading.json"; sourceTree = "<group>"; };
@@ -343,7 +345,7 @@
 		CF26719122FEF6E700E6B47F /* BPTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPTabBar.swift; sourceTree = "<group>"; };
 		CF26719322FF0A4300E6B47F /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		CF26719522FF0A5900E6B47F /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
-		CF26719722FF0A6B00E6B47F /* ViewController4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
+		CF26719722FF0A6B00E6B47F /* BPWebSocketServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPWebSocketServer.swift; sourceTree = "<group>"; };
 		CF26719922FF0B1B00E6B47F /* BPBaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPBaseNavigationController.swift; sourceTree = "<group>"; };
 		CF27E37F22DE279E0056ADFA /* BaseProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF49A87F24DFEE5300D8DAC4 /* BubbleSortTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleSortTableView.swift; sourceTree = "<group>"; };
@@ -459,6 +461,15 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		224E5388258377ED00FB3A38 /* WebSocket */ = {
+			isa = PBXGroup;
+			children = (
+				CF26719722FF0A6B00E6B47F /* BPWebSocketServer.swift */,
+				22D11F6F252E0FF6005896E8 /* BPWebSocketClient.swift */,
+			);
+			path = WebSocket;
+			sourceTree = "<group>";
+		};
 		225C48DA24DD41ED00594FEE /* Algorithm */ = {
 			isa = PBXGroup;
 			children = (
@@ -474,6 +485,7 @@
 			isa = PBXGroup;
 			children = (
 				225C48E024DD425700594FEE /* AlgorithmViewController.swift */,
+				224E5383258372D100FB3A38 /* BPAlgorithmListViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -560,13 +572,6 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
-		228341C3255E20940018A6F6 /* Square */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Square;
-			sourceTree = "<group>";
-		};
 		2285310E255C2E060022BB8F /* HistoryMedia */ = {
 			isa = PBXGroup;
 			children = (
@@ -611,18 +616,11 @@
 			path = MoreView;
 			sourceTree = "<group>";
 		};
-		228F3CB7256E6C10009EDA44 /* Pond */ = {
-			isa = PBXGroup;
-			children = (
-				228F3CB8256E6C22009EDA44 /* BPPondViewController.swift */,
-			);
-			path = Pond;
-			sourceTree = "<group>";
-		};
 		228F3CC6256E86C6009EDA44 /* ToolsView */ = {
 			isa = PBXGroup;
 			children = (
 				22369EDC257693B100DC5297 /* Cells */,
+				22BD5BFE2577E54E007250D5 /* BPPublishTagsView.swift */,
 				229727AC2571499F00E67BB1 /* BPPublishImageListView.swift */,
 				228F3CC0256E7C89009EDA44 /* BPPublishTipsView.swift */,
 				228F3CC3256E86BF009EDA44 /* BPPubilshToolsView.swift */,
@@ -797,18 +795,15 @@
 		22C621DB22DC821000A7C849 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				228F3CB7256E6C10009EDA44 /* Pond */,
-				228341C3255E20940018A6F6 /* Square */,
-				228341C2255E20850018A6F6 /* Chat */,
 				225C48DA24DD41ED00594FEE /* Algorithm */,
+				228341C2255E20850018A6F6 /* Chat */,
+				224E5388258377ED00FB3A38 /* WebSocket */,
 				CFFB34E123595ED8002D440E /* WebSource */,
 				CF26719B22FF970F00E6B47F /* Publish */,
 				22C621DE22DC886300A7C849 /* YYBaseModel.swift */,
 				22C621B922DC805600A7C849 /* ViewController1.swift */,
 				CF26719322FF0A4300E6B47F /* ViewController2.swift */,
 				CF26719522FF0A5900E6B47F /* ViewController3.swift */,
-				CF26719722FF0A6B00E6B47F /* ViewController4.swift */,
-				22D11F6F252E0FF6005896E8 /* BPSocketViewController.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1256,6 +1251,7 @@
 			files = (
 				E0A0B772253ED30500E97ED8 /* BPRefreshFooterView.swift in Sources */,
 				22C0711A256FFB9A002EEF8C /* BPPublishRemindViewController.swift in Sources */,
+				224E5384258372D100FB3A38 /* BPAlgorithmListViewController.swift in Sources */,
 				22C07110256FFAAA002EEF8C /* BPPublishLocalViewController.swift in Sources */,
 				E097EE13253FD4110065725A /* BPTableView.swift in Sources */,
 				22458205232604D90031CC7A /* BPIMDBOperator.swift in Sources */,
@@ -1288,10 +1284,11 @@
 				22BD5BE62577A632007250D5 /* BPPublishTagHeaderView.swift in Sources */,
 				22369ED92576103F00DC5297 /* BPPublishToolsMoreView.swift in Sources */,
 				2264EF8622F91E0700A89C82 /* BPAlertViewZeroButton.swift in Sources */,
+				22BD5BFF2577E54E007250D5 /* BPPublishTagsView.swift in Sources */,
 				2297FE41255FD117000D45C3 /* BPChatRoomMoreToolsView.swift in Sources */,
 				22369EE225779EB100DC5297 /* BPPublishTagCell.swift in Sources */,
 				2297FE3D255FB58D000D45C3 /* BPChatRoomToolsView.swift in Sources */,
-				CF26719822FF0A6B00E6B47F /* ViewController4.swift in Sources */,
+				CF26719822FF0A6B00E6B47F /* BPWebSocketServer.swift in Sources */,
 				22ED54B023687FEF00011B82 /* UIBezierPath+AllPoints.m in Sources */,
 				22A7132925623BE100B918FF /* BPToastManager.swift in Sources */,
 				22C6221D22DF120900A7C849 /* Error+Extension.swift in Sources */,
@@ -1363,7 +1360,6 @@
 				22D018FB2321F800007AFA1B /* BPDatabaseManager.swift in Sources */,
 				E0DE9CEE254187E400D1FD1F /* BPEnvChangeViewController.swift in Sources */,
 				223D5EF5244DA98100482127 /* NSDate+Extension.m in Sources */,
-				228F3CB9256E6C22009EDA44 /* BPPondViewController.swift in Sources */,
 				CF87869622F6F5380031E4B9 /* UINavigationController+Extension.swift in Sources */,
 				228F3CB1256A190B009EDA44 /* BPRecordToolView.swift in Sources */,
 				CF8EB5A222DCD0DC00EC2FE5 /* UIViewController+Extension.swift in Sources */,
@@ -1386,7 +1382,7 @@
 				223AC0F024F35B5200C85800 /* BubbleSortDescriptionView.swift in Sources */,
 				22C6221B22DF11AC00A7C849 /* YYUsrHomePageDataRequestAPI.swift in Sources */,
 				2285310A255BD38D0022BB8F /* BPSystemAlbumListView.swift in Sources */,
-				22D11F70252E0FF6005896E8 /* BPSocketViewController.swift in Sources */,
+				22D11F70252E0FF6005896E8 /* BPWebSocketClient.swift in Sources */,
 				2276C89A255249320040DFFF /* BPPhotoAlbumToolsView.swift in Sources */,
 				2264EF9622F98A3700A89C82 /* BPButton.swift in Sources */,
 				2297FE2F255FA796000D45C3 /* BPChatRoomMessageBubbleFactory.swift in Sources */,

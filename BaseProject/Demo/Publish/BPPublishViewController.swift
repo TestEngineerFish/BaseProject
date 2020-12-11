@@ -25,6 +25,8 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
         view.backgroundColor = UIColor.gray0
         return view
     }()
+
+    private var tagsView      = BPPublishTagsView()
     private var imageListView = BPPublishImageListView()
     private var tipsView      = BPPubilshTipsView()
     private var toolsView     = BPPubilshToolsView()
@@ -40,6 +42,7 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
         self.setCustomNaviation()
         self.view.addSubview(lineView)
         self.view.addSubview(textView)
+        self.view.addSubview(tagsView)
         self.view.addSubview(imageListView)
         self.view.addSubview(tipsView)
         self.view.addSubview(toolsView)
@@ -53,10 +56,15 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
             make.right.equalToSuperview().offset(AdaptSize(-15))
             make.top.equalTo(lineView.snp.bottom)
         }
+        tagsView.snp.makeConstraints { (make) in
+            make.left.right.equalTo(textView)
+            make.top.equalTo(textView.snp.bottom)
+            make.height.equalTo(0)
+        }
         imageListView.snp.makeConstraints { (make) in
             make.left.right.equalTo(textView)
             make.height.equalTo(0)
-            make.top.equalTo(textView.snp.bottom)
+            make.top.equalTo(tagsView.snp.bottom)
         }
         tipsView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
@@ -115,6 +123,15 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
         }
     }
 
+    // TODO: ---- 更新布局约束 ----
+    private func updateTagsView() {
+        self.tagsView.setData(tags: self.model.tagList)
+        let tagViewH = self.tagsView.collectionView.bounds.height
+        self.tagsView.snp.updateConstraints { (make) in
+            make.height.equalTo(20)
+        }
+    }
+
     private func updateTipsView() {
         self.tipsView.setDate(model: model)
     }
@@ -139,6 +156,11 @@ class BPPubilshViewController: BPViewController, UITextViewDelegate, BPPubilshTi
 
     func clickTagAction() {
         let vc = BPPublishTagViewController()
+        vc.setTagBlock = { [weak self] (tagModelList: [BPTagModel]) in
+            guard let self = self else { return }
+            self.model.tagList = tagModelList
+            self.updateTagsView()
+        }
         self.present(vc, animated: true, completion: nil)
         BPLog("appendTagAction")
     }

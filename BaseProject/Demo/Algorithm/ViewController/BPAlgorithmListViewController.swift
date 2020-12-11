@@ -1,22 +1,16 @@
 //
-//  ViewController.swift
+//  BPAlgorithmListViewController.swift
 //  BaseProject
 //
-//  Created by 沙庭宇 on 2019/7/15.
-//  Copyright © 2019 沙庭宇. All rights reserved.
+//  Created by 沙庭宇 on 2020/12/11.
+//  Copyright © 2020 沙庭宇. All rights reserved.
 //
 
 import UIKit
 
-enum BPFunctionType: String {
-    case algorithm = "算法图解"
-    case chat      = "聊天"
-    case webSocket = "WebSocket"
-}
+class BPAlgorithmListViewController: BPViewController, UITableViewDelegate, UITableViewDataSource, BPRefreshProtocol {
 
-class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSource, BPRefreshProtocol {
-
-    var typeList: [BPFunctionType] = [.algorithm, .chat, .webSocket]
+    var typeList: [AlgorithmType] = [.bubbleSort, .chooseSort, .insertionSort, .shellSort]
 
     var tableView: UITableView = {
         let tableView = UITableView()
@@ -28,7 +22,7 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
         tableView.refreshHeaderEnable = true
         return tableView
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.createSubviews()
@@ -46,10 +40,10 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
 
     override func bindProperty() {
         super.bindProperty()
-        self.customNavigationBar?.title = "Function"
-        self.customNavigationBar?.leftButton.isHidden = true
+        self.customNavigationBar?.title = "Algorithm"
         self.tableView.delegate   = self
         self.tableView.dataSource = self
+        self.tableView.refreshDelegate = self
     }
 
     // MARK: ==== UITableViewDataSource && UITableViewDelegate ====
@@ -73,20 +67,26 @@ class ViewController1: BPViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.01
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let type = self.typeList[indexPath.row]
-        switch type {
-        case .algorithm:
-            let vc = BPAlgorithmListViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
-        case .chat:
-            let vc = BPSessionListViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
-        case .webSocket:
-            let vc = BPWebSocketClient()
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc  = AlgorithmViewController()
+        vc.type = self.typeList[indexPath.row]
+        self.navigationController?.present(vc, animated: true, completion: nil)
+    }
+
+    // MARK: ==== BPRefreshProtocol ====
+    /// 刷新中
+    /// - Parameter scrollView: scrollView
+    func loadingHeader(scrollView: UIScrollView, completion block: (()->Void)?) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
+            block?()
+        }
+    }
+    /// 加载中
+    /// - Parameter scrollView: scrollView
+    func loadingFooter(scrollView: UIScrollView, completion block: (()->Void)?) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
+            block?()
+        }
     }
 }

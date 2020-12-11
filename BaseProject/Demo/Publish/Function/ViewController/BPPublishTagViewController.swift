@@ -8,12 +8,13 @@
 
 import Foundation
 
-class BPPublishTagViewController: BPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, BPPublishTagCellDelegate, BPPublishTagHeaderViewDelegate {
+class BPPublishTagViewController: BPViewController, UICollectionViewDelegate, UICollectionViewDataSource, BPPublishTagCellDelegate, BPPublishTagHeaderViewDelegate {
 
     private let cellID: String = "kBPPublishTagCell"
     private let headID: String = "kBPCollectionHeader"
     private var selectedTagModelList = [BPTagModel]()
     private var unSelectTagModelList = [BPTagModel]()
+    var setTagBlock:(([BPTagModel])->Void)?
 
     private var collectionView: UICollectionView = {
         let layout = BPCollectionViewFlowLayout(type: .left)
@@ -73,6 +74,14 @@ class BPPublishTagViewController: BPViewController, UICollectionViewDelegate, UI
         self.customNavigationBar?.leftButton.left  = AdaptSize(15)
         self.customNavigationBar?.leftButtonAction = { [weak self] in
             self?.dismiss(animated: true, completion: nil)
+        }
+        self.customNavigationBar?.rightButtonTitle = "完成"
+        self.customNavigationBar?.rightFirstButton.titleLabel?.font = UIFont.regularFont(ofSize: 15)
+        self.customNavigationBar?.rightFirstButton.right = AdaptSize(15)
+        self.customNavigationBar?.rightFirstButtonAction = { [weak self] in
+            guard let self = self else { return }
+            self.setTagBlock?(self.selectedTagModelList)
+            self.dismiss(animated: true, completion: nil)
         }
         
         let lineView: BPView = {

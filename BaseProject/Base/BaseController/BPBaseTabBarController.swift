@@ -41,7 +41,7 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate {
         let chatVC = ViewController1()
         let chatNC = BPBaseNavigationController()
         chatNC.addChild(chatVC)
-        chatNC.tabBarItem.title         = "广场"
+        chatNC.tabBarItem.title         = "功能"
         chatNC.tabBarItem.image         = UIImage(named: "home_unselect")
         chatNC.tabBarItem.selectedImage = UIImage(named: "home_selected")
         chatNC.tabBarItem.imageInsets   = UIEdgeInsets(top: -1.0, left: 0.0, bottom: 1.0, right: 0.0)
@@ -63,7 +63,7 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate {
         publish.tabBarItem.isEnabled     = false
         self.addChild(publish)
         
-        let sessionVC = BPSessionListViewController()
+        let sessionVC = ViewController3()
         let sessionNC = BPBaseNavigationController()
         sessionNC.addChild(sessionVC)
         sessionNC.tabBarItem.title         = "聊天"
@@ -71,7 +71,7 @@ class BPBaseTabBarController: UITabBarController, UITabBarControllerDelegate {
         sessionNC.tabBarItem.selectedImage = UIImage(named: "message_selected")
         self.addChild(sessionNC)
         
-        let profileVC = ViewController4()
+        let profileVC = BPWebSocketServer()
         let profileNC = BPBaseNavigationController()
         profileNC.addChild(profileVC)
         profileNC.tabBarItem.title         = "我的"

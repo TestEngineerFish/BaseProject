@@ -67,7 +67,6 @@ class BPSessionListViewController: BPViewController, UITableViewDelegate, UITabl
         self.tableView.register(BPSessionCell.classForCoder(), forCellReuseIdentifier: cellID)
         // 设置导航栏
         self.customNavigationBar?.title = "消息"
-        self.customNavigationBar?.leftButton.isHidden = true
     }
 
     override func bindData() {

@@ -68,8 +68,9 @@ public extension UIView {
         }
         
         set {
+            guard let superW = superview?.width else { return }
             var frame = self.frame
-            frame.origin.x = newValue + self.frame.size.width
+            frame.origin.x = superW - newValue - frame.width
             self.frame = frame
         }
     }
