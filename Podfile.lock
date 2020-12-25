@@ -52,8 +52,7 @@ DEPENDENCIES:
   - ZipArchive
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - Alamofire
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
     - AlamofireObjectMapper
     - Bugly
     - CocoaLumberjack
@@ -62,7 +61,6 @@ SPEC REPOS:
     - IQKeyboardManager
     - Kingfisher
     - lottie-ios
-    - ObjectMapper
     - Protobuf
     - SDWebImage
     - SnapKit
@@ -70,6 +68,9 @@ SPEC REPOS:
     - SVGAPlayer
     - Toast-Swift
     - ZipArchive
+  trunk:
+    - Alamofire
+    - ObjectMapper
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
@@ -90,6 +91,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: edd2bd3bd9c60241888c666c82d56803c9ab2328
+PODFILE CHECKSUM: ce781032d100696c1407e525014d7be3b307db64
 
 COCOAPODS: 1.8.4
