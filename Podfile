@@ -1,6 +1,8 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '10.0'
-#source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '11.0'
+
+source 'https://github.com/BPModels/BPSpecs.git'
+source 'https://github.com/CocoaPods/Specs.git'
 
 use_frameworks!
 
@@ -38,4 +40,7 @@ target 'BaseProject' do
   pod 'SVGAPlayer'
   # 图片库
   pod 'SDWebImage'
+  
+  # 私有库
+  pod 'BPCommon'
 end

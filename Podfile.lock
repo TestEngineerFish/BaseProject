@@ -3,6 +3,9 @@ PODS:
   - AlamofireObjectMapper (5.2.1):
     - Alamofire (~> 4.7)
     - ObjectMapper (~> 3.4)
+  - BPCommon (0.3.8):
+    - Kingfisher (~> 5.7)
+    - ObjectMapper
   - Bugly (2.5.0)
   - CocoaLumberjack/Core (3.6.0)
   - CocoaLumberjack/Swift (3.6.0):
@@ -37,6 +40,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.8.2)
   - AlamofireObjectMapper (~> 5.2)
+  - BPCommon
   - Bugly
   - CocoaLumberjack/Swift
   - FDFullscreenPopGesture (= 1.1)
@@ -52,7 +56,9 @@ DEPENDENCIES:
   - ZipArchive
 
 SPEC REPOS:
-  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+  https://github.com/BPModels/BPSpecs.git:
+    - BPCommon
+  https://github.com/CocoaPods/Specs.git:
     - AlamofireObjectMapper
     - Bugly
     - CocoaLumberjack
@@ -75,6 +81,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
+  BPCommon: 06927553b4001e993df7660a317ee2d5c9d06171
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   CocoaLumberjack: 78b0c238666f4f58db069738ec176f4519557516
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
@@ -91,6 +98,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: ce781032d100696c1407e525014d7be3b307db64
+PODFILE CHECKSUM: 2bdcf80d707d18b353c3585cd2f143e6d340ac7b
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.11.2
