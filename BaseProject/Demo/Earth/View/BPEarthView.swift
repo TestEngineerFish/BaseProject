@@ -169,6 +169,7 @@ class BPEarthView: BPView {
 
     /// 手势旋转循环开始
     private func gestureStart() {
+        self.gestureStop()
         self.gestureTimer = CADisplayLink(target: self, selector: #selector(self.gestureRotation))
         self.gestureTimer?.add(to: RunLoop.main, forMode: .default)
     }
